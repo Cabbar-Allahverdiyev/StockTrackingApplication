@@ -12,7 +12,7 @@ namespace ConsoleUI
             UserManager userManager = new UserManager(new EfUserDal());
             foreach (var user in userManager.GetAll().Data)
             {
-                Console.WriteLine(user.Address);
+                Console.WriteLine(user.FirstName,user.LastName);
             }
 
         }

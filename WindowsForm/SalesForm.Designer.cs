@@ -114,6 +114,7 @@ namespace WindowsForm
             this.ButtonSalesFormIstifadecileriSirala.TabIndex = 1;
             this.ButtonSalesFormIstifadecileriSirala.Text = "Istifadecileri Sirala";
             this.ButtonSalesFormIstifadecileriSirala.UseVisualStyleBackColor = true;
+            this.ButtonSalesFormIstifadecileriSirala.Click += new System.EventHandler(this.ButtonSalesFormIstifadecileriSirala_Click);
             // 
             // ButtonSalesFormIstifadeciElaveEtmek
             // 
@@ -123,6 +124,7 @@ namespace WindowsForm
             this.ButtonSalesFormIstifadeciElaveEtmek.TabIndex = 0;
             this.ButtonSalesFormIstifadeciElaveEtmek.Text = "Istifadeci elave etmek ";
             this.ButtonSalesFormIstifadeciElaveEtmek.UseVisualStyleBackColor = true;
+            this.ButtonSalesFormIstifadeciElaveEtmek.Click += new System.EventHandler(this.ButtonSalesFormIstifadeciElaveEtmek_Click);
             // 
             // dataGridView1
             // 

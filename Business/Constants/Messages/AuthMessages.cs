@@ -15,5 +15,6 @@ namespace Business.Constants.Messages
         public static string UserAlreadyExists = "İstifadəçi mövcuddur";
         public static string AccessTokenCreated = "Token yaradıldı";
 
+        public static string passwordAndPasswordRepeatNotEquals="Şifrə ilə şifrə təkrarı eyni deyil";
     }
 }

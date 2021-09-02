@@ -173,7 +173,7 @@ namespace WindowsForm
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(571, 417);
+            this.ClientSize = new System.Drawing.Size(368, 331);
             this.Controls.Add(this.ButtonFormUserAddEalveEt);
             this.Controls.Add(this.TextBoxFormUserAddAddress);
             this.Controls.Add(this.TextBoxFormUserAddSifreTekrari);
@@ -190,7 +190,7 @@ namespace WindowsForm
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "FormUserAdd";
-            this.Text = "FormUserAdd";
+            this.Text = "User Add";
             this.ResumeLayout(false);
             this.PerformLayout();
 

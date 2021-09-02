@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants.Messages;
 using Core.Entities.Concrete;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using Core.Utilities.Security.Hashing;
 using Core.Utilities.Security.JWT;
@@ -23,21 +24,27 @@ namespace Business.Concrete
         }
 
 
-        public IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string password)
+        public IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string password,string passwordRepeat)
         {
-            byte[] passwordHash, passwordSalt;
-            HashingHelper.CreatePasswordHash(password, out passwordHash, out passwordSalt);
-            var user = new User
-            {
-                FirstName=userForRegisterDto.FirstName,
-                LastName=userForRegisterDto.LastName,
-                Email=userForRegisterDto.Email,
-                PasswordHash=passwordHash,
-                PasswordSalt=passwordSalt,
-                Status=true
-            };
-            _userService.Add(user);
-            return new SuccessDataResult<User>(user,AuthMessages.UserRegistered);
+            //Bu metod artiq UserManager-de Register adi ile
+            //byte[] passwordHash, passwordSalt;
+            //HashingHelper.CreatePasswordHash(password, out passwordHash, out passwordSalt);
+            //var user = new User
+            //{
+            //    FirstName=userForRegisterDto.FirstName,
+            //    LastName=userForRegisterDto.LastName,
+            //    Email=userForRegisterDto.Email,
+            //    Address=userForRegisterDto.Address,
+            //    PhoneNumber=userForRegisterDto.PhoneNumber,
+            //    PasswordHash=passwordHash,
+            //    PasswordSalt=passwordSalt,
+            //    Status=true
+            //};
+            //_userService.Add(user);
+           
+            var userRegister=_userService.Register(userForRegisterDto, password, passwordRepeat);
+            ////buralara mutleq nezer yetir
+            return new SuccessDataResult<User>(AuthMessages.UserRegistered);
         }
 
 
@@ -58,10 +65,7 @@ namespace Business.Concrete
         }
 
 
-        public IDataResult<AccessToken> CreateAccessToken(User user)
-        {
-            throw new NotImplementedException();
-        }
+       
 
 
 
@@ -73,6 +77,22 @@ namespace Business.Concrete
                 return new ErrorResult(UserMessages.UserAlreadyExists);
             }
             return new SuccessResult();
+        }
+
+
+
+        public IDataResult<AccessToken> CreateAccessToken(User user)
+        {
+            var claims = _userService.GetClaims(user).Data;
+            var accessToken = _tokenHelper.CreateToken(user, claims);
+
+            //IResult result = BusinessRules.Run();
+
+            //if (result != null)
+            //{
+            //    return result;
+            //}
+            return new SuccessDataResult<AccessToken>(accessToken,AuthMessages.AccessTokenCreated);
         }
     }
 }

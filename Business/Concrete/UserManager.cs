@@ -2,8 +2,11 @@
 using Business.Constants.Messages;
 using Core.Entities.Concrete;
 using Core.Utilities;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
+using Core.Utilities.Security.Hashing;
 using DataAccess.Abstract;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,6 +22,7 @@ namespace Business.Concrete
         }
         public IResult Add(User user)
         {
+
             _userDal.Add(user);
             return new SuccessResult(UserMessages.UserAdded);
         }
@@ -54,10 +58,63 @@ namespace Business.Concrete
             return new SuccessDataResult<List<OperationClaim>>(get);
         }
 
+
+
+
+        public IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string password,string passwordRepeat)
+        {
+            IResult result = BusinessRules.Run(PasswordRepeatCompatibilityWithPassword(password,passwordRepeat));
+
+            if (result != null)
+            {
+                return new ErrorDataResult<User>(result.Message);
+            }
+
+
+            byte[] passwordHash, passwordSalt;
+            HashingHelper.CreatePasswordHash(password, out passwordHash, out passwordSalt);
+            var user = new User
+            {
+                FirstName = userForRegisterDto.FirstName,
+                LastName = userForRegisterDto.LastName,
+                Email = userForRegisterDto.Email,
+                Address = userForRegisterDto.Address,
+                PhoneNumber = userForRegisterDto.PhoneNumber,
+                PasswordHash = passwordHash,
+                PasswordSalt = passwordSalt,
+                Status = true
+            };
+            Add(user);
+            return new SuccessDataResult<User>(user, AuthMessages.UserRegistered);
+        }
+
+
+
+
         public IResult Update(User user)
         {
             _userDal.Update(user);
             return new SuccessResult(UserMessages.UserUpdated);
         }
+
+
+
+
+
+
+
+
+        //elave metodlar
+        private IResult PasswordRepeatCompatibilityWithPassword(string password,string passwordRepeat)
+        {
+            if (!password.Equals(passwordRepeat))
+            {
+                return new ErrorResult(AuthMessages.passwordAndPasswordRepeatNotEquals);
+            }
+            return new SuccessResult();
+        }
+
+
+
     }
 }
