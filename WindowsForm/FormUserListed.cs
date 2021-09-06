@@ -1,4 +1,9 @@
 ﻿using Business.Abstract;
+using Business.Constants.Messages;
+using Business.ValidationRules.FluentValidation;
+using Core.Entities.Concrete;
+using Entities.DTOs;
+using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,21 +17,22 @@ namespace WindowsForm
     public partial class FormUserListed : Form
     {
         IUserService _userService;
+        User user = new User();
         public FormUserListed(IUserService userService)
         {
             InitializeComponent();
             _userService = userService;
         }
 
-        DataTable dataTable = new DataTable();
+
 
         private void FormUserListed_Load(object sender, EventArgs e)
         {
-            var userGetAll=_userService.GetAll().Data;
+            var getUserDetails = _userService.GetUserDetails();
 
-           DataGridViewUserListed.DataSource = userGetAll;
+            DataGridViewUserListed.DataSource = getUserDetails.Data;
 
-       
+
         }
 
         private void DataGridViewUserListed_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -36,6 +42,102 @@ namespace WindowsForm
             TextBoxFormUserListedEmail.Text = DataGridViewUserListed.CurrentRow.Cells["Email"].Value.ToString();
             TextBoxFormUserListedPhoneNumber.Text = DataGridViewUserListed.CurrentRow.Cells["PhoneNumber"].Value.ToString();
             TextBoxFormUserListedAddress.Text = DataGridViewUserListed.CurrentRow.Cells["Address"].Value.ToString();
+        }
+
+        private void ButtonFormUserListedGuncelle_Click(object sender, EventArgs e)
+        {
+
+            user.Id = Convert.ToInt32(DataGridViewUserListed.CurrentRow.Cells["UserId"].Value);
+            user.FirstName = TextBoxFormUserListedAd.Text;
+            user.LastName = TextBoxFormUserListedSoyad.Text;
+            user.Email = TextBoxFormUserListedEmail.Text;
+            user.PhoneNumber = TextBoxFormUserListedPhoneNumber.Text;
+            user.Address = TextBoxFormUserListedAddress.Text;
+
+            UserValidator validationRules = new UserValidator();
+            ValidationResult results = validationRules.Validate(user);
+
+            if (results.IsValid == false)
+            {
+                foreach (ValidationFailure failure in results.Errors)
+                {
+                    MessageBox.Show(failure.ErrorMessage);
+                }
+                return;
+            }
+
+            var userUpdated = _userService.Update(user);
+
+            if (userUpdated.Success)
+            {
+                MessageBox.Show(UserMessages.UserUpdated, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DataGridViewUserListed.DataSource = _userService.GetUserDetails().Data;
+            }
+            else
+            {
+                MessageBox.Show(UserMessages.UserIsNotUpdating, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
+        }
+
+        private void ButtonFormUserListedSil_Click(object sender, EventArgs e)
+        {
+            user.Id = Convert.ToInt32(DataGridViewUserListed.CurrentRow.Cells["UserId"].Value);
+            var userDeleted = _userService.Delete(user);
+            if (userDeleted.Success)
+            {
+                MessageBox.Show(UserMessages.UserDeleted);
+                DataGridViewUserListed.DataSource = _userService.GetUserDetails().Data;
+            }
+            else
+            {
+                MessageBox.Show(UserMessages.UserIsNotDeleted, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+        }
+
+        private void TextBoxFormUserListedAxtar_TextChanged(object sender, EventArgs e)
+        {
+            //Mutleq tekmillesdir
+            if (TextBoxFormUserListedAxtar.Text.Length==0)
+            {
+                DataGridViewUserListed.DataSource = _userService.GetUserDetails();
+                return;
+            }
+            
+            int userId = Convert.ToInt32(TextBoxFormUserListedAxtar.Text);
+            var userGetDetail = _userService.GetUserDetailsByUserId(userId);
+            if (userGetDetail.Success )
+            {
+                DataGridViewUserListed.DataSource = userGetDetail.Data;
+            }
+            else
+            {
+                MessageBox.Show(UserMessages.UserNotFound, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+        }
+
+        private void ButtonAxtar_Click(object sender, EventArgs e)
+        {
+            // TextBoxFormUserListedAxtar_TextChanged(sender,e);
+
+            //if (TextBoxFormUserListedAxtar.Text.Length == 0)
+            //{
+            //    return;
+            //}
+            //int userId = Convert.ToInt32(TextBoxFormUserListedAxtar.Text);
+            //var userGetDetail = _userService.GetUserDetailsByUserId(userId);
+
+            //if (userGetDetail.Success)
+            //{
+            //    DataGridViewUserListed.DataSource = userGetDetail.Data;
+            //}
+            //else
+            //{
+            //    MessageBox.Show(UserMessages.UserNotFound, "window title", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
         }
     }
 }

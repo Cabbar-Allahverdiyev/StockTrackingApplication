@@ -18,5 +18,11 @@ namespace Business.Abstract
 
         IDataResult<User> GetByMail(string email);
         IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string password,string passwordRepeeat);
+
+        //DTOs
+        IDataResult<List<UserDto>> GetUserDetails();
+        IDataResult<List<UserDto>> GetUserDetailsByUserId(int userId);
+        IDataResult<UserDto> GetUserDetail(int userId);
+
     }
 }

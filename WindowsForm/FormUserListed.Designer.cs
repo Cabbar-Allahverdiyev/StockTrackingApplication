@@ -44,60 +44,67 @@ namespace WindowsForm
             this.ButtonFormUserListedSil = new System.Windows.Forms.Button();
             this.TextBoxFormUserListedAxtar = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.ButtonAxtar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewUserListed)).BeginInit();
             this.SuspendLayout();
             // 
             // DataGridViewUserListed
             // 
+            this.DataGridViewUserListed.AllowUserToAddRows = false;
+            this.DataGridViewUserListed.AllowUserToDeleteRows = false;
+            this.DataGridViewUserListed.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DataGridViewUserListed.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.DataGridViewUserListed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridViewUserListed.Location = new System.Drawing.Point(218, 52);
+            this.DataGridViewUserListed.Location = new System.Drawing.Point(213, 41);
             this.DataGridViewUserListed.Name = "DataGridViewUserListed";
+            this.DataGridViewUserListed.ReadOnly = true;
             this.DataGridViewUserListed.RowTemplate.Height = 25;
-            this.DataGridViewUserListed.Size = new System.Drawing.Size(628, 402);
+            this.DataGridViewUserListed.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DataGridViewUserListed.Size = new System.Drawing.Size(701, 425);
             this.DataGridViewUserListed.TabIndex = 0;
             this.DataGridViewUserListed.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewUserListed_CellDoubleClick);
             // 
             // ButtonFormUserListedGuncelle
             // 
-            this.ButtonFormUserListedGuncelle.Location = new System.Drawing.Point(137, 233);
+            this.ButtonFormUserListedGuncelle.Location = new System.Drawing.Point(132, 222);
             this.ButtonFormUserListedGuncelle.Name = "ButtonFormUserListedGuncelle";
             this.ButtonFormUserListedGuncelle.Size = new System.Drawing.Size(75, 23);
             this.ButtonFormUserListedGuncelle.TabIndex = 29;
             this.ButtonFormUserListedGuncelle.Text = "Yenile";
             this.ButtonFormUserListedGuncelle.UseVisualStyleBackColor = true;
+            this.ButtonFormUserListedGuncelle.Click += new System.EventHandler(this.ButtonFormUserListedGuncelle_Click);
             // 
             // TextBoxFormUserListedAddress
             // 
-            this.TextBoxFormUserListedAddress.Location = new System.Drawing.Point(110, 204);
+            this.TextBoxFormUserListedAddress.Location = new System.Drawing.Point(105, 193);
             this.TextBoxFormUserListedAddress.Name = "TextBoxFormUserListedAddress";
             this.TextBoxFormUserListedAddress.Size = new System.Drawing.Size(102, 23);
             this.TextBoxFormUserListedAddress.TabIndex = 28;
             // 
             // TextBoxFormUserListedPhoneNumber
             // 
-            this.TextBoxFormUserListedPhoneNumber.Location = new System.Drawing.Point(110, 166);
+            this.TextBoxFormUserListedPhoneNumber.Location = new System.Drawing.Point(105, 155);
             this.TextBoxFormUserListedPhoneNumber.Name = "TextBoxFormUserListedPhoneNumber";
             this.TextBoxFormUserListedPhoneNumber.Size = new System.Drawing.Size(102, 23);
             this.TextBoxFormUserListedPhoneNumber.TabIndex = 25;
             // 
             // TextBoxFormUserListedEmail
             // 
-            this.TextBoxFormUserListedEmail.Location = new System.Drawing.Point(110, 128);
+            this.TextBoxFormUserListedEmail.Location = new System.Drawing.Point(105, 117);
             this.TextBoxFormUserListedEmail.Name = "TextBoxFormUserListedEmail";
             this.TextBoxFormUserListedEmail.Size = new System.Drawing.Size(102, 23);
             this.TextBoxFormUserListedEmail.TabIndex = 24;
             // 
             // TextBoxFormUserListedSoyad
             // 
-            this.TextBoxFormUserListedSoyad.Location = new System.Drawing.Point(110, 90);
+            this.TextBoxFormUserListedSoyad.Location = new System.Drawing.Point(105, 79);
             this.TextBoxFormUserListedSoyad.Name = "TextBoxFormUserListedSoyad";
             this.TextBoxFormUserListedSoyad.Size = new System.Drawing.Size(102, 23);
             this.TextBoxFormUserListedSoyad.TabIndex = 23;
             // 
             // TextBoxFormUserListedAd
             // 
-            this.TextBoxFormUserListedAd.Location = new System.Drawing.Point(110, 52);
+            this.TextBoxFormUserListedAd.Location = new System.Drawing.Point(105, 41);
             this.TextBoxFormUserListedAd.Name = "TextBoxFormUserListedAd";
             this.TextBoxFormUserListedAd.Size = new System.Drawing.Size(102, 23);
             this.TextBoxFormUserListedAd.TabIndex = 22;
@@ -105,7 +112,7 @@ namespace WindowsForm
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 207);
+            this.label7.Location = new System.Drawing.Point(7, 196);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(49, 15);
             this.label7.TabIndex = 21;
@@ -114,7 +121,7 @@ namespace WindowsForm
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 169);
+            this.label4.Location = new System.Drawing.Point(7, 158);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(86, 15);
             this.label4.TabIndex = 18;
@@ -123,7 +130,7 @@ namespace WindowsForm
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 131);
+            this.label3.Location = new System.Drawing.Point(7, 120);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(36, 15);
             this.label3.TabIndex = 17;
@@ -132,7 +139,7 @@ namespace WindowsForm
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 93);
+            this.label2.Location = new System.Drawing.Point(4, 82);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 15);
             this.label2.TabIndex = 16;
@@ -141,7 +148,7 @@ namespace WindowsForm
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 55);
+            this.label1.Location = new System.Drawing.Point(7, 44);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(22, 15);
             this.label1.TabIndex = 15;
@@ -149,28 +156,40 @@ namespace WindowsForm
             // 
             // ButtonFormUserListedSil
             // 
-            this.ButtonFormUserListedSil.Location = new System.Drawing.Point(925, 55);
+            this.ButtonFormUserListedSil.Location = new System.Drawing.Point(920, 44);
             this.ButtonFormUserListedSil.Name = "ButtonFormUserListedSil";
             this.ButtonFormUserListedSil.Size = new System.Drawing.Size(75, 23);
             this.ButtonFormUserListedSil.TabIndex = 30;
             this.ButtonFormUserListedSil.Text = "Sil";
             this.ButtonFormUserListedSil.UseVisualStyleBackColor = true;
+            this.ButtonFormUserListedSil.Click += new System.EventHandler(this.ButtonFormUserListedSil_Click);
             // 
             // TextBoxFormUserListedAxtar
             // 
-            this.TextBoxFormUserListedAxtar.Location = new System.Drawing.Point(782, 12);
+            this.TextBoxFormUserListedAxtar.Location = new System.Drawing.Point(741, 15);
             this.TextBoxFormUserListedAxtar.Name = "TextBoxFormUserListedAxtar";
-            this.TextBoxFormUserListedAxtar.Size = new System.Drawing.Size(137, 23);
+            this.TextBoxFormUserListedAxtar.Size = new System.Drawing.Size(173, 23);
             this.TextBoxFormUserListedAxtar.TabIndex = 31;
+            this.TextBoxFormUserListedAxtar.TextChanged += new System.EventHandler(this.TextBoxFormUserListedAxtar_TextChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(739, 15);
+            this.label5.Location = new System.Drawing.Point(698, 18);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(37, 15);
             this.label5.TabIndex = 32;
             this.label5.Text = "Axtar:";
+            // 
+            // ButtonAxtar
+            // 
+            this.ButtonAxtar.Location = new System.Drawing.Point(920, 15);
+            this.ButtonAxtar.Name = "ButtonAxtar";
+            this.ButtonAxtar.Size = new System.Drawing.Size(75, 23);
+            this.ButtonAxtar.TabIndex = 33;
+            this.ButtonAxtar.Text = "Axtar";
+            this.ButtonAxtar.UseVisualStyleBackColor = true;
+            this.ButtonAxtar.Click += new System.EventHandler(this.ButtonAxtar_Click);
             // 
             // FormUserListed
             // 
@@ -178,6 +197,7 @@ namespace WindowsForm
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1012, 513);
+            this.Controls.Add(this.ButtonAxtar);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.TextBoxFormUserListedAxtar);
             this.Controls.Add(this.ButtonFormUserListedSil);
@@ -220,5 +240,6 @@ namespace WindowsForm
         private System.Windows.Forms.Button ButtonFormUserListedSil;
         private System.Windows.Forms.TextBox TextBoxFormUserListedAxtar;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button ButtonAxtar;
     }
 }

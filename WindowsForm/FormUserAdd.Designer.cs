@@ -44,6 +44,8 @@ namespace WindowsForm
             this.TextBoxFormUserAddSifreTekrari = new System.Windows.Forms.TextBox();
             this.TextBoxFormUserAddAddress = new System.Windows.Forms.TextBox();
             this.ButtonFormUserAddEalveEt = new System.Windows.Forms.Button();
+            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -168,12 +170,17 @@ namespace WindowsForm
             this.ButtonFormUserAddEalveEt.UseVisualStyleBackColor = true;
             this.ButtonFormUserAddEalveEt.Click += new System.EventHandler(this.ButtonFormUserAddEalveEt_Click);
             // 
+            // fileSystemWatcher1
+            // 
+            this.fileSystemWatcher1.EnableRaisingEvents = true;
+            this.fileSystemWatcher1.SynchronizingObject = this;
+            // 
             // FormUserAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(368, 331);
+            this.ClientSize = new System.Drawing.Size(328, 315);
             this.Controls.Add(this.ButtonFormUserAddEalveEt);
             this.Controls.Add(this.TextBoxFormUserAddAddress);
             this.Controls.Add(this.TextBoxFormUserAddSifreTekrari);
@@ -191,6 +198,7 @@ namespace WindowsForm
             this.Controls.Add(this.label1);
             this.Name = "FormUserAdd";
             this.Text = "User Add";
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -213,5 +221,6 @@ namespace WindowsForm
         private System.Windows.Forms.TextBox TextBoxFormUserAddSifreTekrari;
         private System.Windows.Forms.TextBox TextBoxFormUserAddAddress;
         private System.Windows.Forms.Button ButtonFormUserAddEalveEt;
+        private System.IO.FileSystemWatcher fileSystemWatcher1;
     }
 }

@@ -1,10 +1,11 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
 using Business.Constants.Messages;
+using Business.ValidationRules.FluentValidation;
 using Core.Entities.Concrete;
 using Core.Utilities.Security.JWT;
-using DataAccess.Concrete.EntityFramework;
 using Entities.DTOs;
+using FluentValidation.Results;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -20,19 +21,23 @@ namespace WindowsForm
     {
 
         IUserService _userService;
+        //BindingList<string> errors = new BindingList<string>();
         //  IAuthService authService = new AuthManager(new UserManager(new EfUserDal()),new JwtHelper());
 
         public FormUserAdd(IUserService userService)
         {
             InitializeComponent();
-           
+
             _userService = userService;
+
            
+
+
         }
-       
+
         private void ButtonFormUserAddEalveEt_Click(object sender, EventArgs e)
         {
-            
+            User user = new User();
             UserForRegisterDto userForRegisterDto = new UserForRegisterDto();
             string passwordRepeat;
 
@@ -44,19 +49,39 @@ namespace WindowsForm
             userForRegisterDto.Password = TextBoxFormUserAddSifre.Text;
             passwordRepeat = TextBoxFormUserAddSifreTekrari.Text;
 
-            var userRegister=_userService.Register(userForRegisterDto,userForRegisterDto.Password,passwordRepeat);
+            user.FirstName = userForRegisterDto.FirstName;
+            user.LastName = userForRegisterDto.LastName;
+            user.Email = userForRegisterDto.Email;
+            user.Address = userForRegisterDto.Address;
+            user.PhoneNumber = userForRegisterDto.PhoneNumber;
+
+
+            UserValidator validationRules = new UserValidator();
+            ValidationResult results = validationRules.Validate(user);
+
+            if (results.IsValid == false)
+            {
+                foreach (ValidationFailure failure in results.Errors)
+                {
+                    MessageBox.Show(failure.ErrorMessage);    
+                }
+                return;
+            }
+
+            var userRegister = _userService.Register(userForRegisterDto, userForRegisterDto.Password, passwordRepeat);
 
 
             //var result = _authService.CreateAccessToken(registerResult.Data);
-            if (!userRegister.Success)
-            {
-                MessageBox.Show(userRegister.Message);
-            }
             if (userRegister.Success)
             {
-                MessageBox.Show(UserMessages.UserAdded);
+                MessageBox.Show(AuthMessages.UserRegistered, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            
+            else
+            {
+                MessageBox.Show(AuthMessages.RegistirationFailed, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             foreach (Control control in this.Controls)
             {
                 if (control is TextBox && userRegister.Success)
@@ -66,5 +91,7 @@ namespace WindowsForm
             }
 
         }
+
+
     }
 }
