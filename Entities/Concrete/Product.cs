@@ -14,10 +14,13 @@ namespace Entities.Concrete
         public int UnitsInStock { get; set; }
         public int UnitsOnOder { get; set; }
         public int ReorderLevel { get; set; }
+        public decimal PurchasePrice { get; set; }
         public decimal UnitPrice { get; set; }
         public string ProductName { get; set; }
+        public string BarcoodeNumber { get; set; }
         public string QuantityPerUnit { get; set; }
         public string Description { get; set; }
+        public DateTime LastModifiedDate { get; set; }
         public bool Discontinued { get; set; }
     }
 }

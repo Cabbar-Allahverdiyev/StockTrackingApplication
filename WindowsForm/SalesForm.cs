@@ -17,6 +17,9 @@ namespace WindowsForm
        
         FormUserAdd _formUserAdd = new FormUserAdd(new UserManager(new EfUserDal()));
         FormUserListed _formUserListed = new FormUserListed(new UserManager(new EfUserDal()));
+        FormProductAdd _formProductAdd = new FormProductAdd();
+        FormBrand _formBrand = new FormBrand();
+        FormCategory _formCategory = new FormCategory();
 
 
 
@@ -43,6 +46,21 @@ namespace WindowsForm
         private void ButtonSalesFormIstifadecileriSirala_Click(object sender, EventArgs e)
         {
             _formUserListed.ShowDialog();
+        }
+
+        private void ButtonSalesFormMehsulElaveEtmek_Click(object sender, EventArgs e)
+        {
+            _formProductAdd.ShowDialog();
+        }
+
+        private void ButtonSalesFormMarka_Click(object sender, EventArgs e)
+        {
+            _formBrand.ShowDialog();
+        }
+
+        private void ButtonFormKateqoriya_Click(object sender, EventArgs e)
+        {
+            _formCategory.ShowDialog();
         }
     }
 }

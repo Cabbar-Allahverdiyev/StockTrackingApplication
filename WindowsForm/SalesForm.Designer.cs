@@ -30,6 +30,8 @@ namespace WindowsForm
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ButtonFormKateqoriya = new System.Windows.Forms.Button();
+            this.ButtonSalesFormMarka = new System.Windows.Forms.Button();
             this.ButtonSalesFormSatislariSirala = new System.Windows.Forms.Button();
             this.ButtonSalesFormMehsullariSirala = new System.Windows.Forms.Button();
             this.ButtonSalesFormMehsulElaveEtmek = new System.Windows.Forms.Button();
@@ -68,6 +70,8 @@ namespace WindowsForm
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.ButtonFormKateqoriya);
+            this.panel1.Controls.Add(this.ButtonSalesFormMarka);
             this.panel1.Controls.Add(this.ButtonSalesFormSatislariSirala);
             this.panel1.Controls.Add(this.ButtonSalesFormMehsullariSirala);
             this.panel1.Controls.Add(this.ButtonSalesFormMehsulElaveEtmek);
@@ -79,38 +83,59 @@ namespace WindowsForm
             this.panel1.Size = new System.Drawing.Size(967, 70);
             this.panel1.TabIndex = 0;
             // 
+            // ButtonFormKateqoriya
+            // 
+            this.ButtonFormKateqoriya.Location = new System.Drawing.Point(744, 12);
+            this.ButtonFormKateqoriya.Name = "ButtonFormKateqoriya";
+            this.ButtonFormKateqoriya.Size = new System.Drawing.Size(92, 43);
+            this.ButtonFormKateqoriya.TabIndex = 6;
+            this.ButtonFormKateqoriya.Text = "Kateqoriya";
+            this.ButtonFormKateqoriya.UseVisualStyleBackColor = true;
+            this.ButtonFormKateqoriya.Click += new System.EventHandler(this.ButtonFormKateqoriya_Click);
+            // 
+            // ButtonSalesFormMarka
+            // 
+            this.ButtonSalesFormMarka.Location = new System.Drawing.Point(623, 12);
+            this.ButtonSalesFormMarka.Name = "ButtonSalesFormMarka";
+            this.ButtonSalesFormMarka.Size = new System.Drawing.Size(92, 43);
+            this.ButtonSalesFormMarka.TabIndex = 5;
+            this.ButtonSalesFormMarka.Text = "Marka";
+            this.ButtonSalesFormMarka.UseVisualStyleBackColor = true;
+            this.ButtonSalesFormMarka.Click += new System.EventHandler(this.ButtonSalesFormMarka_Click);
+            // 
             // ButtonSalesFormSatislariSirala
             // 
-            this.ButtonSalesFormSatislariSirala.Location = new System.Drawing.Point(812, 12);
+            this.ButtonSalesFormSatislariSirala.Location = new System.Drawing.Point(512, 12);
             this.ButtonSalesFormSatislariSirala.Name = "ButtonSalesFormSatislariSirala";
-            this.ButtonSalesFormSatislariSirala.Size = new System.Drawing.Size(142, 43);
+            this.ButtonSalesFormSatislariSirala.Size = new System.Drawing.Size(92, 43);
             this.ButtonSalesFormSatislariSirala.TabIndex = 4;
             this.ButtonSalesFormSatislariSirala.Text = "Satislari sirala";
             this.ButtonSalesFormSatislariSirala.UseVisualStyleBackColor = true;
             // 
             // ButtonSalesFormMehsullariSirala
             // 
-            this.ButtonSalesFormMehsullariSirala.Location = new System.Drawing.Point(612, 12);
+            this.ButtonSalesFormMehsullariSirala.Location = new System.Drawing.Point(387, 12);
             this.ButtonSalesFormMehsullariSirala.Name = "ButtonSalesFormMehsullariSirala";
-            this.ButtonSalesFormMehsullariSirala.Size = new System.Drawing.Size(142, 43);
+            this.ButtonSalesFormMehsullariSirala.Size = new System.Drawing.Size(92, 43);
             this.ButtonSalesFormMehsullariSirala.TabIndex = 3;
             this.ButtonSalesFormMehsullariSirala.Text = "Mehsullari sirala";
             this.ButtonSalesFormMehsullariSirala.UseVisualStyleBackColor = true;
             // 
             // ButtonSalesFormMehsulElaveEtmek
             // 
-            this.ButtonSalesFormMehsulElaveEtmek.Location = new System.Drawing.Point(412, 12);
+            this.ButtonSalesFormMehsulElaveEtmek.Location = new System.Drawing.Point(262, 12);
             this.ButtonSalesFormMehsulElaveEtmek.Name = "ButtonSalesFormMehsulElaveEtmek";
-            this.ButtonSalesFormMehsulElaveEtmek.Size = new System.Drawing.Size(142, 43);
+            this.ButtonSalesFormMehsulElaveEtmek.Size = new System.Drawing.Size(92, 43);
             this.ButtonSalesFormMehsulElaveEtmek.TabIndex = 2;
             this.ButtonSalesFormMehsulElaveEtmek.Text = "Mehsul elave etmek";
             this.ButtonSalesFormMehsulElaveEtmek.UseVisualStyleBackColor = true;
+            this.ButtonSalesFormMehsulElaveEtmek.Click += new System.EventHandler(this.ButtonSalesFormMehsulElaveEtmek_Click);
             // 
             // ButtonSalesFormIstifadecileriSirala
             // 
-            this.ButtonSalesFormIstifadecileriSirala.Location = new System.Drawing.Point(212, 12);
+            this.ButtonSalesFormIstifadecileriSirala.Location = new System.Drawing.Point(137, 12);
             this.ButtonSalesFormIstifadecileriSirala.Name = "ButtonSalesFormIstifadecileriSirala";
-            this.ButtonSalesFormIstifadecileriSirala.Size = new System.Drawing.Size(142, 43);
+            this.ButtonSalesFormIstifadecileriSirala.Size = new System.Drawing.Size(92, 43);
             this.ButtonSalesFormIstifadecileriSirala.TabIndex = 1;
             this.ButtonSalesFormIstifadecileriSirala.Text = "Istifadecileri Sirala";
             this.ButtonSalesFormIstifadecileriSirala.UseVisualStyleBackColor = true;
@@ -120,7 +145,7 @@ namespace WindowsForm
             // 
             this.ButtonSalesFormIstifadeciElaveEtmek.Location = new System.Drawing.Point(12, 12);
             this.ButtonSalesFormIstifadeciElaveEtmek.Name = "ButtonSalesFormIstifadeciElaveEtmek";
-            this.ButtonSalesFormIstifadeciElaveEtmek.Size = new System.Drawing.Size(142, 43);
+            this.ButtonSalesFormIstifadeciElaveEtmek.Size = new System.Drawing.Size(92, 43);
             this.ButtonSalesFormIstifadeciElaveEtmek.TabIndex = 0;
             this.ButtonSalesFormIstifadeciElaveEtmek.Text = "Istifadeci elave etmek ";
             this.ButtonSalesFormIstifadeciElaveEtmek.UseVisualStyleBackColor = true;
@@ -414,5 +439,7 @@ namespace WindowsForm
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button ButtonFormKateqoriya;
+        private System.Windows.Forms.Button ButtonSalesFormMarka;
     }
 }

@@ -32,6 +32,8 @@ namespace WindowsForm
             this.label1 = new System.Windows.Forms.Label();
             this.ButtonFormCategoryElaveEt = new System.Windows.Forms.Button();
             this.TextBoxFormCategoryKategoriya = new System.Windows.Forms.TextBox();
+            this.DataGridViewFormCategory = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridViewFormCategory)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -51,6 +53,7 @@ namespace WindowsForm
             this.ButtonFormCategoryElaveEt.TabIndex = 1;
             this.ButtonFormCategoryElaveEt.Text = "Elave Et";
             this.ButtonFormCategoryElaveEt.UseVisualStyleBackColor = true;
+            this.ButtonFormCategoryElaveEt.Click += new System.EventHandler(this.ButtonFormCategoryElaveEt_Click);
             // 
             // TextBoxFormCategoryKategoriya
             // 
@@ -59,18 +62,35 @@ namespace WindowsForm
             this.TextBoxFormCategoryKategoriya.Size = new System.Drawing.Size(180, 23);
             this.TextBoxFormCategoryKategoriya.TabIndex = 2;
             // 
+            // DataGridViewFormCategory
+            // 
+            this.DataGridViewFormCategory.AllowUserToAddRows = false;
+            this.DataGridViewFormCategory.AllowUserToDeleteRows = false;
+            this.DataGridViewFormCategory.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.DataGridViewFormCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGridViewFormCategory.Location = new System.Drawing.Point(309, 30);
+            this.DataGridViewFormCategory.Name = "DataGridViewFormCategory";
+            this.DataGridViewFormCategory.ReadOnly = true;
+            this.DataGridViewFormCategory.RowTemplate.Height = 25;
+            this.DataGridViewFormCategory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DataGridViewFormCategory.Size = new System.Drawing.Size(371, 310);
+            this.DataGridViewFormCategory.TabIndex = 3;
+            // 
             // FormCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(291, 158);
+            this.ClientSize = new System.Drawing.Size(692, 366);
+            this.Controls.Add(this.DataGridViewFormCategory);
             this.Controls.Add(this.TextBoxFormCategoryKategoriya);
             this.Controls.Add(this.ButtonFormCategoryElaveEt);
             this.Controls.Add(this.label1);
             this.Name = "FormCategory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form Category";
+            this.Load += new System.EventHandler(this.FormCategory_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridViewFormCategory)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -81,5 +101,6 @@ namespace WindowsForm
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button ButtonFormCategoryElaveEt;
         private System.Windows.Forms.TextBox TextBoxFormCategoryKategoriya;
+        private System.Windows.Forms.DataGridView DataGridViewFormCategory;
     }
 }

@@ -23,7 +23,6 @@ namespace Business.Constants.Messages
 
 
         public static string ErrorMessage = "Xəta";
-
-       
+        public static string InformationMessage = "Məlumat";
     }
 }

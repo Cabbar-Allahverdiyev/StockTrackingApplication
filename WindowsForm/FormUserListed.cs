@@ -17,7 +17,7 @@ namespace WindowsForm
     public partial class FormUserListed : Form
     {
         IUserService _userService;
-        User user = new User();
+        
         public FormUserListed(IUserService userService)
         {
             InitializeComponent();
@@ -46,7 +46,7 @@ namespace WindowsForm
 
         private void ButtonFormUserListedGuncelle_Click(object sender, EventArgs e)
         {
-
+            User user = new User();
             user.Id = Convert.ToInt32(DataGridViewUserListed.CurrentRow.Cells["UserId"].Value);
             user.FirstName = TextBoxFormUserListedAd.Text;
             user.LastName = TextBoxFormUserListedSoyad.Text;
@@ -83,6 +83,7 @@ namespace WindowsForm
 
         private void ButtonFormUserListedSil_Click(object sender, EventArgs e)
         {
+            User user = new User();
             user.Id = Convert.ToInt32(DataGridViewUserListed.CurrentRow.Cells["UserId"].Value);
             var userDeleted = _userService.Delete(user);
             if (userDeleted.Success)
