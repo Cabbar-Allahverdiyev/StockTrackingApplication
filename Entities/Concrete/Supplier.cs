@@ -15,7 +15,6 @@ namespace Entities.Concrete
         public string City { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-        //database-e yaz
         public bool IsSupplierActive { get; set; }
     }
 }

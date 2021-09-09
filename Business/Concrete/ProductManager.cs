@@ -27,6 +27,7 @@ namespace Business.Concrete
         public IResult Add(Product product)
         {
             product.Discontinued = true;
+            product.LastModifiedDate = DateTime.Now;
             _productDal.Add(product);
             return new SuccessResult(ProductMessages.ProductAdded);
         }
@@ -58,12 +59,20 @@ namespace Business.Concrete
         public IDataResult<List<ProducViewtDto>> GetProductViewDetails()
         {
             List<ProducViewtDto> get = _productDal.GetProductViewDetails();
+            if (get==null)
+            {
+                return new ErrorDataResult<List<ProducViewtDto>>(ProductMessages.ProductNotFound);
+            }
             return new SuccessDataResult<List<ProducViewtDto>>(get, ProductMessages.ProductGetAll);
         }
 
         public IDataResult<ProducViewtDto> GetProductViewDetail(int productId)
         {
             ProducViewtDto get = _productDal.GetProductViewDetail(productId);
+            if (get == null)
+            {
+                return new ErrorDataResult<ProducViewtDto>(ProductMessages.ProductNotFound);
+            }
             return new SuccessDataResult<ProducViewtDto>(get, ProductMessages.ProductFound);
         }
     }

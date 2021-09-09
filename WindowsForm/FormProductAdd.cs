@@ -1,5 +1,6 @@
 ﻿using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,10 +27,13 @@ namespace WindowsForm
 
             CategoryGetComboBox();
             BrandGetComboBox();
+            SupplierGetComboBox();
         }
 
         private void ButtonFormProductAddYeniMehsulElaveEt_Click(object sender, EventArgs e)
         {
+            Product product = new Product();
+
 
         }
 

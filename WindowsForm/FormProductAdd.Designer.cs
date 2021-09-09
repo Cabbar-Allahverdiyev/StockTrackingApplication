@@ -63,12 +63,20 @@ namespace WindowsForm
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.TextBoxFormProductAddVahiddekiKemiyyet = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.TextBoxFormProductAddAciqlama = new System.Windows.Forms.TextBox();
             this.GroupBoxFormProductAddYeniMehsul.SuspendLayout();
             this.GroupBoxFormProductAddVarOlanMehsul.SuspendLayout();
             this.SuspendLayout();
             // 
             // GroupBoxFormProductAddYeniMehsul
             // 
+            this.GroupBoxFormProductAddYeniMehsul.Controls.Add(this.label17);
+            this.GroupBoxFormProductAddYeniMehsul.Controls.Add(this.TextBoxFormProductAddAciqlama);
+            this.GroupBoxFormProductAddYeniMehsul.Controls.Add(this.label16);
+            this.GroupBoxFormProductAddYeniMehsul.Controls.Add(this.TextBoxFormProductAddVahiddekiKemiyyet);
             this.GroupBoxFormProductAddYeniMehsul.Controls.Add(this.label15);
             this.GroupBoxFormProductAddYeniMehsul.Controls.Add(this.ComboBoxFormProductAddTedarikci);
             this.GroupBoxFormProductAddYeniMehsul.Controls.Add(this.label14);
@@ -379,6 +387,38 @@ namespace WindowsForm
             this.textBox8.Size = new System.Drawing.Size(164, 23);
             this.textBox8.TabIndex = 4;
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(6, 257);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(114, 15);
+            this.label16.TabIndex = 17;
+            this.label16.Text = "Vahiddeki Kemiyyet:";
+            // 
+            // TextBoxFormProductAddVahiddekiKemiyyet
+            // 
+            this.TextBoxFormProductAddVahiddekiKemiyyet.Location = new System.Drawing.Point(126, 254);
+            this.TextBoxFormProductAddVahiddekiKemiyyet.Name = "TextBoxFormProductAddVahiddekiKemiyyet";
+            this.TextBoxFormProductAddVahiddekiKemiyyet.Size = new System.Drawing.Size(156, 23);
+            this.TextBoxFormProductAddVahiddekiKemiyyet.TabIndex = 16;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 286);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(60, 15);
+            this.label17.TabIndex = 19;
+            this.label17.Text = "Aciqlama:";
+            // 
+            // TextBoxFormProductAddAciqlama
+            // 
+            this.TextBoxFormProductAddAciqlama.Location = new System.Drawing.Point(126, 283);
+            this.TextBoxFormProductAddAciqlama.Name = "TextBoxFormProductAddAciqlama";
+            this.TextBoxFormProductAddAciqlama.Size = new System.Drawing.Size(156, 23);
+            this.TextBoxFormProductAddAciqlama.TabIndex = 18;
+            // 
             // FormProductAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -435,5 +475,9 @@ namespace WindowsForm
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox ComboBoxFormProductAddTedarikci;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox TextBoxFormProductAddAciqlama;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox TextBoxFormProductAddVahiddekiKemiyyet;
     }
 }
