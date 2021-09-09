@@ -7,7 +7,8 @@ using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfSupplierDal : EfEntityRepositoryBase<Supplier, StockTrackingProjectContext>, ISupplierDal
+    public class EfSupplierDal : EfEntityRepositoryBase<Supplier, StockTrackingProjectContext>
+                                , ISupplierDal
     {
     }
 }

@@ -62,6 +62,7 @@ namespace WindowsForm
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.ButtonSalesFormTedarukculer = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.GroupBoxSalesFormMusteriEmeliyyatlari.SuspendLayout();
@@ -70,6 +71,7 @@ namespace WindowsForm
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.ButtonSalesFormTedarukculer);
             this.panel1.Controls.Add(this.ButtonFormKateqoriya);
             this.panel1.Controls.Add(this.ButtonSalesFormMarka);
             this.panel1.Controls.Add(this.ButtonSalesFormSatislariSirala);
@@ -376,6 +378,16 @@ namespace WindowsForm
             this.label5.TabIndex = 0;
             this.label5.Text = "BarkodNo";
             // 
+            // ButtonSalesFormTedarukculer
+            // 
+            this.ButtonSalesFormTedarukculer.Location = new System.Drawing.Point(858, 12);
+            this.ButtonSalesFormTedarukculer.Name = "ButtonSalesFormTedarukculer";
+            this.ButtonSalesFormTedarukculer.Size = new System.Drawing.Size(92, 43);
+            this.ButtonSalesFormTedarukculer.TabIndex = 7;
+            this.ButtonSalesFormTedarukculer.Text = "Tedarukculer";
+            this.ButtonSalesFormTedarukculer.UseVisualStyleBackColor = true;
+            this.ButtonSalesFormTedarukculer.Click += new System.EventHandler(this.ButtonSalesFormTedarukculer_Click);
+            // 
             // SalesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -441,5 +453,6 @@ namespace WindowsForm
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button ButtonFormKateqoriya;
         private System.Windows.Forms.Button ButtonSalesFormMarka;
+        private System.Windows.Forms.Button ButtonSalesFormTedarukculer;
     }
 }

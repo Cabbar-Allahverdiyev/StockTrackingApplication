@@ -56,12 +56,12 @@ namespace WindowsForm
             else
             {
                 MessageBox.Show(BrandMessages.BrandNotAdded, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Stop);
-
+                return;
             }
 
             foreach (Control control in this.Controls)
             {
-                if (control is TextBox && brandAdd.Success)
+                if (control is TextBox)
                 {
                     control.Text = "";
                 }

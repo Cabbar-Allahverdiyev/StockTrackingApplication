@@ -42,7 +42,7 @@ namespace WindowsForm
             {
                 foreach (ValidationFailure failure in results.Errors)
                 {
-                    MessageBox.Show(failure.ErrorMessage);
+                    MessageBox.Show(failure.ErrorMessage,AuthMessages.ErrorMessage,MessageBoxButtons.OK,MessageBoxIcon.Error);
                 }
                 return;
             }

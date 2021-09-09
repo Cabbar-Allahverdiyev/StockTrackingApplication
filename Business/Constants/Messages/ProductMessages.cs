@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
+
 namespace Business.Constants.Messages
 {
     public static class ProductMessages
@@ -15,5 +16,7 @@ namespace Business.Constants.Messages
         public static string ProductGetAll = "Məhsul sıralandi";
         public static string ProductFound = "Məhsul tapıldı";
         public static string ProductNotFound = "Belə bir məhsul yoxdur";
+
+        
     }
 }
