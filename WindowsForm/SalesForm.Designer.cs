@@ -30,6 +30,7 @@ namespace WindowsForm
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ButtonSalesFormTedarukculer = new System.Windows.Forms.Button();
             this.ButtonFormKateqoriya = new System.Windows.Forms.Button();
             this.ButtonSalesFormMarka = new System.Windows.Forms.Button();
             this.ButtonSalesFormSatislariSirala = new System.Windows.Forms.Button();
@@ -62,7 +63,6 @@ namespace WindowsForm
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.ButtonSalesFormTedarukculer = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.GroupBoxSalesFormMusteriEmeliyyatlari.SuspendLayout();
@@ -84,6 +84,16 @@ namespace WindowsForm
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(967, 70);
             this.panel1.TabIndex = 0;
+            // 
+            // ButtonSalesFormTedarukculer
+            // 
+            this.ButtonSalesFormTedarukculer.Location = new System.Drawing.Point(858, 12);
+            this.ButtonSalesFormTedarukculer.Name = "ButtonSalesFormTedarukculer";
+            this.ButtonSalesFormTedarukculer.Size = new System.Drawing.Size(92, 43);
+            this.ButtonSalesFormTedarukculer.TabIndex = 7;
+            this.ButtonSalesFormTedarukculer.Text = "Tedarukculer";
+            this.ButtonSalesFormTedarukculer.UseVisualStyleBackColor = true;
+            this.ButtonSalesFormTedarukculer.Click += new System.EventHandler(this.ButtonSalesFormTedarukculer_Click);
             // 
             // ButtonFormKateqoriya
             // 
@@ -160,6 +170,7 @@ namespace WindowsForm
             this.dataGridView1.Location = new System.Drawing.Point(266, 86);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(603, 384);
             this.dataGridView1.TabIndex = 1;
             // 
@@ -377,16 +388,6 @@ namespace WindowsForm
             this.label5.Size = new System.Drawing.Size(60, 15);
             this.label5.TabIndex = 0;
             this.label5.Text = "BarkodNo";
-            // 
-            // ButtonSalesFormTedarukculer
-            // 
-            this.ButtonSalesFormTedarukculer.Location = new System.Drawing.Point(858, 12);
-            this.ButtonSalesFormTedarukculer.Name = "ButtonSalesFormTedarukculer";
-            this.ButtonSalesFormTedarukculer.Size = new System.Drawing.Size(92, 43);
-            this.ButtonSalesFormTedarukculer.TabIndex = 7;
-            this.ButtonSalesFormTedarukculer.Text = "Tedarukculer";
-            this.ButtonSalesFormTedarukculer.UseVisualStyleBackColor = true;
-            this.ButtonSalesFormTedarukculer.Click += new System.EventHandler(this.ButtonSalesFormTedarukculer_Click);
             // 
             // SalesForm
             // 

@@ -32,6 +32,8 @@ namespace WindowsForm
 
         private void ButtonSupplierFormElaveEt_Click(object sender, EventArgs e)
         {
+           
+
             Supplier supplier = new Supplier();
             supplier.CompanyName = TextBoxSupplierFormSirketAdi.Text;
             supplier.ContactName = TextBoxSupplierFormAd.Text;
@@ -57,10 +59,10 @@ namespace WindowsForm
             if (!supplierAdd.Success)
             {
                 MessageBox.Show(supplierAdd.Message, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                return;
             }
-            MessageBox.Show(supplierAdd.Message, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+            MessageBox.Show(supplierAdd.Message, AuthMessages.InformationMessage, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            DataGridViewSupplierForm.DataSource = _suplierManager.GetAll().Data;
 
             foreach (Control control in this.Controls)
             {
@@ -73,6 +75,6 @@ namespace WindowsForm
 
         }
 
-       
+        
     }
 }

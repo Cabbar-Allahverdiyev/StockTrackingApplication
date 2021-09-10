@@ -20,6 +20,7 @@ namespace WindowsForm
         FormProductAdd _formProductAdd = new FormProductAdd();
         FormBrand _formBrand = new FormBrand();
         FormCategory _formCategory = new FormCategory();
+        SupplierForm _supplierForm = new SupplierForm();
         
 
 
@@ -66,7 +67,7 @@ namespace WindowsForm
 
         private void ButtonSalesFormTedarukculer_Click(object sender, EventArgs e)
         {
-
+            _supplierForm.ShowDialog();
         }
     }
 }

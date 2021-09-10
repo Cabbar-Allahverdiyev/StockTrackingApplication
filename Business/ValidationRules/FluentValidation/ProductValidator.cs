@@ -11,7 +11,7 @@ namespace Business.ValidationRules.FluentValidation
     {
         public ProductValidator()
         {
-            RuleFor(p => p.BarcoodeNumber).NotEmpty();
+            RuleFor(p => p.BarcodeNumber).NotEmpty();
             RuleFor(p => p.BrandId).NotEmpty();
             RuleFor(p => p.CategoryId).NotEmpty();
             RuleFor(p => p.ProductName).NotEmpty();

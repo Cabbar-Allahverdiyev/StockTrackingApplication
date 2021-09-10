@@ -69,35 +69,36 @@ namespace WindowsForm
             // 
             // TextBoxSupplierFormSirketAdi
             // 
-            this.TextBoxSupplierFormSirketAdi.Location = new System.Drawing.Point(119, 28);
+            this.TextBoxSupplierFormSirketAdi.Location = new System.Drawing.Point(99, 28);
             this.TextBoxSupplierFormSirketAdi.Name = "TextBoxSupplierFormSirketAdi";
-            this.TextBoxSupplierFormSirketAdi.Size = new System.Drawing.Size(123, 23);
+            this.TextBoxSupplierFormSirketAdi.Size = new System.Drawing.Size(143, 23);
             this.TextBoxSupplierFormSirketAdi.TabIndex = 2;
             // 
             // DataGridViewSupplierForm
             // 
             this.DataGridViewSupplierForm.AllowUserToAddRows = false;
             this.DataGridViewSupplierForm.AllowUserToDeleteRows = false;
+            this.DataGridViewSupplierForm.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DataGridViewSupplierForm.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.DataGridViewSupplierForm.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridViewSupplierForm.Location = new System.Drawing.Point(296, 25);
             this.DataGridViewSupplierForm.Name = "DataGridViewSupplierForm";
             this.DataGridViewSupplierForm.ReadOnly = true;
             this.DataGridViewSupplierForm.RowTemplate.Height = 25;
-            this.DataGridViewSupplierForm.Size = new System.Drawing.Size(314, 336);
+            this.DataGridViewSupplierForm.Size = new System.Drawing.Size(710, 502);
             this.DataGridViewSupplierForm.TabIndex = 3;
             // 
             // TextBoxSupplierFormAd
             // 
-            this.TextBoxSupplierFormAd.Location = new System.Drawing.Point(119, 57);
+            this.TextBoxSupplierFormAd.Location = new System.Drawing.Point(99, 57);
             this.TextBoxSupplierFormAd.Name = "TextBoxSupplierFormAd";
-            this.TextBoxSupplierFormAd.Size = new System.Drawing.Size(123, 23);
+            this.TextBoxSupplierFormAd.Size = new System.Drawing.Size(143, 23);
             this.TextBoxSupplierFormAd.TabIndex = 5;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(68, 57);
+            this.label2.Location = new System.Drawing.Point(68, 60);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(25, 15);
             this.label2.TabIndex = 4;
@@ -105,15 +106,15 @@ namespace WindowsForm
             // 
             // TextBoxSupplierFormNeZamanGelir
             // 
-            this.TextBoxSupplierFormNeZamanGelir.Location = new System.Drawing.Point(119, 86);
+            this.TextBoxSupplierFormNeZamanGelir.Location = new System.Drawing.Point(99, 86);
             this.TextBoxSupplierFormNeZamanGelir.Name = "TextBoxSupplierFormNeZamanGelir";
-            this.TextBoxSupplierFormNeZamanGelir.Size = new System.Drawing.Size(123, 23);
+            this.TextBoxSupplierFormNeZamanGelir.Size = new System.Drawing.Size(143, 23);
             this.TextBoxSupplierFormNeZamanGelir.TabIndex = 7;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 86);
+            this.label3.Location = new System.Drawing.Point(7, 89);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 15);
             this.label3.TabIndex = 6;
@@ -121,15 +122,15 @@ namespace WindowsForm
             // 
             // TextBoxSupplierFormSeher
             // 
-            this.TextBoxSupplierFormSeher.Location = new System.Drawing.Point(119, 115);
+            this.TextBoxSupplierFormSeher.Location = new System.Drawing.Point(99, 115);
             this.TextBoxSupplierFormSeher.Name = "TextBoxSupplierFormSeher";
-            this.TextBoxSupplierFormSeher.Size = new System.Drawing.Size(123, 23);
+            this.TextBoxSupplierFormSeher.Size = new System.Drawing.Size(143, 23);
             this.TextBoxSupplierFormSeher.TabIndex = 9;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(53, 144);
+            this.label4.Location = new System.Drawing.Point(53, 147);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 15);
             this.label4.TabIndex = 8;
@@ -137,15 +138,15 @@ namespace WindowsForm
             // 
             // TextBoxSupplierFormAdres
             // 
-            this.TextBoxSupplierFormAdres.Location = new System.Drawing.Point(119, 144);
+            this.TextBoxSupplierFormAdres.Location = new System.Drawing.Point(99, 144);
             this.TextBoxSupplierFormAdres.Name = "TextBoxSupplierFormAdres";
-            this.TextBoxSupplierFormAdres.Size = new System.Drawing.Size(123, 23);
+            this.TextBoxSupplierFormAdres.Size = new System.Drawing.Size(143, 23);
             this.TextBoxSupplierFormAdres.TabIndex = 11;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(54, 115);
+            this.label5.Location = new System.Drawing.Point(54, 118);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(39, 15);
             this.label5.TabIndex = 10;
@@ -153,15 +154,15 @@ namespace WindowsForm
             // 
             // TextBoxSupplierFormEmail
             // 
-            this.TextBoxSupplierFormEmail.Location = new System.Drawing.Point(119, 173);
+            this.TextBoxSupplierFormEmail.Location = new System.Drawing.Point(99, 173);
             this.TextBoxSupplierFormEmail.Name = "TextBoxSupplierFormEmail";
-            this.TextBoxSupplierFormEmail.Size = new System.Drawing.Size(123, 23);
+            this.TextBoxSupplierFormEmail.Size = new System.Drawing.Size(143, 23);
             this.TextBoxSupplierFormEmail.TabIndex = 13;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(54, 173);
+            this.label6.Location = new System.Drawing.Point(54, 176);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(39, 15);
             this.label6.TabIndex = 12;
@@ -169,15 +170,15 @@ namespace WindowsForm
             // 
             // TextBoxSupplierFormTelefon
             // 
-            this.TextBoxSupplierFormTelefon.Location = new System.Drawing.Point(119, 202);
+            this.TextBoxSupplierFormTelefon.Location = new System.Drawing.Point(99, 202);
             this.TextBoxSupplierFormTelefon.Name = "TextBoxSupplierFormTelefon";
-            this.TextBoxSupplierFormTelefon.Size = new System.Drawing.Size(123, 23);
+            this.TextBoxSupplierFormTelefon.Size = new System.Drawing.Size(143, 23);
             this.TextBoxSupplierFormTelefon.TabIndex = 15;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(43, 202);
+            this.label7.Location = new System.Drawing.Point(43, 205);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(50, 15);
             this.label7.TabIndex = 14;
@@ -188,7 +189,7 @@ namespace WindowsForm
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(646, 447);
+            this.ClientSize = new System.Drawing.Size(1048, 560);
             this.Controls.Add(this.TextBoxSupplierFormTelefon);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.TextBoxSupplierFormEmail);

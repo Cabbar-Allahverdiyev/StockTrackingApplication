@@ -36,37 +36,39 @@ namespace WindowsForm
         private void ButtonFormProductAddYeniMehsulElaveEt_Click(object sender, EventArgs e)
         {
             Product product = new Product();
-            product.BarcoodeNumber = TextBoxFormProductAddBarkodNo.Text;
+            product.BarcodeNumber = TextBoxFormProductAddBarkodNo.Text;
             product.BrandId = Convert.ToInt32(ComboBoxFormProductAddMarka.SelectedValue);
             product.CategoryId = Convert.ToInt32(ComboBoxFormProductAddKategoriya.SelectedValue);
             product.SupplierId = Convert.ToInt32(ComboBoxFormProductAddTedarikci.SelectedValue);
 
-            //product.ProductName = TextBoxFormProductAddMehsulAdi.Text;
-            //product.UnitsInStock = Convert.ToInt32(TextBoxFormProductAddMiqdar.Text);
-            //product.PurchasePrice = Convert.ToDecimal(TextBoxFormProductAddAlisQiymet.Text);
-            //product.UnitPrice = Convert.ToDecimal(TextBoxFormProductAddSatisQiymet.Text);
-            //product.QuantityPerUnit = TextBoxFormProductAddKemiyyet.Text;
-            //product.Description = TextBoxFormProductAddAciqlama.Text;
+            product.ProductName = TextBoxFormProductAddMehsulAdi.Text;
+            product.UnitsInStock = Convert.ToInt32(TextBoxFormProductAddMiqdar.Text);
+            product.PurchasePrice = Convert.ToDecimal(TextBoxFormProductAddAlisQiymet.Text);
+            product.UnitPrice = Convert.ToDecimal(TextBoxFormProductAddSatisQiymet.Text);
+            product.QuantityPerUnit = TextBoxFormProductAddKemiyyet.Text;
+            product.Description = TextBoxFormProductAddAciqlama.Text;
 
 
-            //ProductValidator validationRules = new ProductValidator();
-            //ValidationResult results = validationRules.Validate(product);
-            //if (!results.IsValid)
-            //{
-            //    foreach (ValidationFailure validationFailure in results.Errors)
-            //    {
-            //        MessageBox.Show(validationFailure.ErrorMessage, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    }
-            //}
-            //var productAdd = _productManager.Add(product);
-            //if (!productAdd.Success)
-            //{
-            //    MessageBox.Show(productAdd.Message, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
-            //MessageBox.Show(productAdd.Message, AuthMessages.InformationMessage, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ProductValidator validationRules = new ProductValidator();
+            ValidationResult results = validationRules.Validate(product);
+            if (!results.IsValid)
+            {
+                foreach (ValidationFailure validationFailure in results.Errors)
+                {
+                    MessageBox.Show(validationFailure.ErrorMessage, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-            MessageBox.Show($"{product.SupplierId}{product.CategoryId}{product.BrandId}");
+            }
+            var productAdd = _productManager.Add(product);
+            if (!productAdd.Success)
+            {
+                MessageBox.Show(productAdd.Message, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            MessageBox.Show(productAdd.Message, AuthMessages.InformationMessage, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
             foreach (Control control in this.Controls)
             {
                 if (control is TextBox)
@@ -75,9 +77,9 @@ namespace WindowsForm
                 }
                 if (control is ComboBox)
                 {
-                    control.Text ="";
+                    control.Text = "";
                 }
-                
+
             }
 
         }
