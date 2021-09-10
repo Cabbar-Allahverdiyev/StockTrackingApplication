@@ -13,7 +13,10 @@ namespace Business.Abstract
         IResult Add(Product product);
         IResult Update(Product product);
         IResult Delete(Product product);
-        IDataResult<List<ProducViewtDto>> GetProductViewDetails();
-        IDataResult<ProducViewtDto> GetProductViewDetail(int productId);
+        IDataResult<Product> GetByProductId(int productId);
+        IDataResult<List<ProducViewDetailDto>> GetProductViewDetails();
+        IDataResult<List<ProductViewDashboardDetailDto>> GetProductViewDasgboardDetails();
+        IDataResult<List<ProductCompactDetailDto>> GetProductCompactDetails();
+        IDataResult<ProducViewDetailDto> GetProductViewDetail(int productId);
     }
 }

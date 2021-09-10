@@ -13,7 +13,7 @@ namespace WindowsForm
 {
     public partial class SalesForm : Form
     {
-        
+        ProductManager _productManager = new ProductManager(new EfProductDal());
        
         FormUserAdd _formUserAdd = new FormUserAdd(new UserManager(new EfUserDal()));
         FormUserListed _formUserListed = new FormUserListed(new UserManager(new EfUserDal()));
@@ -23,21 +23,18 @@ namespace WindowsForm
         SupplierForm _supplierForm = new SupplierForm();
         
 
-
-
-        //public SalesForm(FormUserAdd formUserAdd)
-        //{
-
-        //  
-        //}
-
         public SalesForm()
         {
             InitializeComponent();
              
             
         }
-        
+
+        private void SalesForm_Load(object sender, EventArgs e)
+        {
+            DataGridViewSalesForm.DataSource = _productManager.GetProductViewDasgboardDetails().Data;
+        }
+
         private void ButtonSalesFormIstifadeciElaveEtmek_Click(object sender, EventArgs e)
         {
            
@@ -68,6 +65,11 @@ namespace WindowsForm
         private void ButtonSalesFormTedarukculer_Click(object sender, EventArgs e)
         {
             _supplierForm.ShowDialog();
+        }
+
+        private void ButtonSalesFormYenile_Click(object sender, EventArgs e)
+        {
+            DataGridViewSalesForm.DataSource = _productManager.GetProductViewDasgboardDetails().Data;
         }
     }
 }

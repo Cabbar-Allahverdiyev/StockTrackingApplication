@@ -52,23 +52,26 @@ namespace WindowsForm
             this.TextBoxFormProductAddMiqdar = new System.Windows.Forms.TextBox();
             this.TextBoxFormProductAddBarkodNo = new System.Windows.Forms.TextBox();
             this.GroupBoxFormProductAddVarOlanMehsul = new System.Windows.Forms.GroupBox();
-            this.ButtonFormProductAddVarOlanElaveEt = new System.Windows.Forms.Button();
+            this.LabelMiqdarVB = new System.Windows.Forms.Label();
+            this.ButtonVarOlanElaveEt = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.textBoxVarOlanSatisQiymet = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.textBoxVarOlanAlisQiymet = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.textBoxVarOlanMiqdar = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textBoxVarOlanBarkodNo = new System.Windows.Forms.TextBox();
+            this.textBoxVarOlanMehsulAdi = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.DataGridViewProductList = new System.Windows.Forms.DataGridView();
+            this.label12 = new System.Windows.Forms.Label();
+            this.comboBoxVarOlanKateqoriya = new System.Windows.Forms.ComboBox();
+            this.comboBoxVarOlanMarka = new System.Windows.Forms.ComboBox();
             this.GroupBoxFormProductAddYeniMehsul.SuspendLayout();
             this.GroupBoxFormProductAddVarOlanMehsul.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridViewProductList)).BeginInit();
             this.SuspendLayout();
             // 
             // GroupBoxFormProductAddYeniMehsul
@@ -277,21 +280,22 @@ namespace WindowsForm
             // 
             // GroupBoxFormProductAddVarOlanMehsul
             // 
-            this.GroupBoxFormProductAddVarOlanMehsul.Controls.Add(this.ButtonFormProductAddVarOlanElaveEt);
+            this.GroupBoxFormProductAddVarOlanMehsul.Controls.Add(this.comboBoxVarOlanMarka);
+            this.GroupBoxFormProductAddVarOlanMehsul.Controls.Add(this.comboBoxVarOlanKateqoriya);
+            this.GroupBoxFormProductAddVarOlanMehsul.Controls.Add(this.LabelMiqdarVB);
+            this.GroupBoxFormProductAddVarOlanMehsul.Controls.Add(this.ButtonVarOlanElaveEt);
             this.GroupBoxFormProductAddVarOlanMehsul.Controls.Add(this.label7);
-            this.GroupBoxFormProductAddVarOlanMehsul.Controls.Add(this.textBox12);
+            this.GroupBoxFormProductAddVarOlanMehsul.Controls.Add(this.textBoxVarOlanSatisQiymet);
             this.GroupBoxFormProductAddVarOlanMehsul.Controls.Add(this.label8);
-            this.GroupBoxFormProductAddVarOlanMehsul.Controls.Add(this.textBox11);
+            this.GroupBoxFormProductAddVarOlanMehsul.Controls.Add(this.textBoxVarOlanAlisQiymet);
             this.GroupBoxFormProductAddVarOlanMehsul.Controls.Add(this.label9);
-            this.GroupBoxFormProductAddVarOlanMehsul.Controls.Add(this.textBox7);
             this.GroupBoxFormProductAddVarOlanMehsul.Controls.Add(this.label10);
-            this.GroupBoxFormProductAddVarOlanMehsul.Controls.Add(this.textBox10);
+            this.GroupBoxFormProductAddVarOlanMehsul.Controls.Add(this.textBoxVarOlanMiqdar);
             this.GroupBoxFormProductAddVarOlanMehsul.Controls.Add(this.label11);
-            this.GroupBoxFormProductAddVarOlanMehsul.Controls.Add(this.textBox6);
+            this.GroupBoxFormProductAddVarOlanMehsul.Controls.Add(this.textBoxVarOlanBarkodNo);
             this.GroupBoxFormProductAddVarOlanMehsul.Controls.Add(this.label12);
-            this.GroupBoxFormProductAddVarOlanMehsul.Controls.Add(this.textBox9);
+            this.GroupBoxFormProductAddVarOlanMehsul.Controls.Add(this.textBoxVarOlanMehsulAdi);
             this.GroupBoxFormProductAddVarOlanMehsul.Controls.Add(this.label13);
-            this.GroupBoxFormProductAddVarOlanMehsul.Controls.Add(this.textBox8);
             this.GroupBoxFormProductAddVarOlanMehsul.Location = new System.Drawing.Point(343, 12);
             this.GroupBoxFormProductAddVarOlanMehsul.Name = "GroupBoxFormProductAddVarOlanMehsul";
             this.GroupBoxFormProductAddVarOlanMehsul.Size = new System.Drawing.Size(265, 261);
@@ -299,14 +303,24 @@ namespace WindowsForm
             this.GroupBoxFormProductAddVarOlanMehsul.TabStop = false;
             this.GroupBoxFormProductAddVarOlanMehsul.Text = "Var olan mehsul";
             // 
-            // ButtonFormProductAddVarOlanElaveEt
+            // LabelMiqdarVB
             // 
-            this.ButtonFormProductAddVarOlanElaveEt.Location = new System.Drawing.Point(175, 225);
-            this.ButtonFormProductAddVarOlanElaveEt.Name = "ButtonFormProductAddVarOlanElaveEt";
-            this.ButtonFormProductAddVarOlanElaveEt.Size = new System.Drawing.Size(84, 23);
-            this.ButtonFormProductAddVarOlanElaveEt.TabIndex = 3;
-            this.ButtonFormProductAddVarOlanElaveEt.Text = "Elave Et";
-            this.ButtonFormProductAddVarOlanElaveEt.UseVisualStyleBackColor = true;
+            this.LabelMiqdarVB.AutoSize = true;
+            this.LabelMiqdarVB.ForeColor = System.Drawing.Color.Firebrick;
+            this.LabelMiqdarVB.Location = new System.Drawing.Point(6, 225);
+            this.LabelMiqdarVB.Name = "LabelMiqdarVB";
+            this.LabelMiqdarVB.Size = new System.Drawing.Size(14, 15);
+            this.LabelMiqdarVB.TabIndex = 21;
+            this.LabelMiqdarVB.Text = "#";
+            // 
+            // ButtonVarOlanElaveEt
+            // 
+            this.ButtonVarOlanElaveEt.Location = new System.Drawing.Point(175, 225);
+            this.ButtonVarOlanElaveEt.Name = "ButtonVarOlanElaveEt";
+            this.ButtonVarOlanElaveEt.Size = new System.Drawing.Size(84, 23);
+            this.ButtonVarOlanElaveEt.TabIndex = 3;
+            this.ButtonVarOlanElaveEt.Text = "Elave Et";
+            this.ButtonVarOlanElaveEt.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
@@ -317,12 +331,12 @@ namespace WindowsForm
             this.label7.TabIndex = 20;
             this.label7.Text = "Satis qiymeti:";
             // 
-            // textBox12
+            // textBoxVarOlanSatisQiymet
             // 
-            this.textBox12.Location = new System.Drawing.Point(96, 196);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(164, 23);
-            this.textBox12.TabIndex = 15;
+            this.textBoxVarOlanSatisQiymet.Location = new System.Drawing.Point(96, 196);
+            this.textBoxVarOlanSatisQiymet.Name = "textBoxVarOlanSatisQiymet";
+            this.textBoxVarOlanSatisQiymet.Size = new System.Drawing.Size(164, 23);
+            this.textBoxVarOlanSatisQiymet.TabIndex = 15;
             // 
             // label8
             // 
@@ -333,12 +347,12 @@ namespace WindowsForm
             this.label8.TabIndex = 19;
             this.label8.Text = "Alis qiymeti:";
             // 
-            // textBox11
+            // textBoxVarOlanAlisQiymet
             // 
-            this.textBox11.Location = new System.Drawing.Point(96, 167);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(164, 23);
-            this.textBox11.TabIndex = 7;
+            this.textBoxVarOlanAlisQiymet.Location = new System.Drawing.Point(96, 167);
+            this.textBoxVarOlanAlisQiymet.Name = "textBoxVarOlanAlisQiymet";
+            this.textBoxVarOlanAlisQiymet.Size = new System.Drawing.Size(164, 23);
+            this.textBoxVarOlanAlisQiymet.TabIndex = 7;
             // 
             // label9
             // 
@@ -349,13 +363,6 @@ namespace WindowsForm
             this.label9.TabIndex = 18;
             this.label9.Text = "Miqdar:";
             // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(96, 51);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(164, 23);
-            this.textBox7.TabIndex = 3;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -365,12 +372,12 @@ namespace WindowsForm
             this.label10.TabIndex = 17;
             this.label10.Text = "Mehsul adi:";
             // 
-            // textBox10
+            // textBoxVarOlanMiqdar
             // 
-            this.textBox10.Location = new System.Drawing.Point(96, 138);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(164, 23);
-            this.textBox10.TabIndex = 6;
+            this.textBoxVarOlanMiqdar.Location = new System.Drawing.Point(96, 138);
+            this.textBoxVarOlanMiqdar.Name = "textBoxVarOlanMiqdar";
+            this.textBoxVarOlanMiqdar.Size = new System.Drawing.Size(164, 23);
+            this.textBoxVarOlanMiqdar.TabIndex = 6;
             // 
             // label11
             // 
@@ -381,28 +388,20 @@ namespace WindowsForm
             this.label11.TabIndex = 16;
             this.label11.Text = "Marka:";
             // 
-            // textBox6
+            // textBoxVarOlanBarkodNo
             // 
-            this.textBox6.Location = new System.Drawing.Point(96, 22);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(164, 23);
-            this.textBox6.TabIndex = 2;
+            this.textBoxVarOlanBarkodNo.Enabled = false;
+            this.textBoxVarOlanBarkodNo.Location = new System.Drawing.Point(96, 22);
+            this.textBoxVarOlanBarkodNo.Name = "textBoxVarOlanBarkodNo";
+            this.textBoxVarOlanBarkodNo.Size = new System.Drawing.Size(164, 23);
+            this.textBoxVarOlanBarkodNo.TabIndex = 2;
             // 
-            // label12
+            // textBoxVarOlanMehsulAdi
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 54);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(66, 15);
-            this.label12.TabIndex = 15;
-            this.label12.Text = "Kategoriya:";
-            // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(96, 109);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(164, 23);
-            this.textBox9.TabIndex = 5;
+            this.textBoxVarOlanMehsulAdi.Location = new System.Drawing.Point(96, 109);
+            this.textBoxVarOlanMehsulAdi.Name = "textBoxVarOlanMehsulAdi";
+            this.textBoxVarOlanMehsulAdi.Size = new System.Drawing.Size(164, 23);
+            this.textBoxVarOlanMehsulAdi.TabIndex = 5;
             // 
             // label13
             // 
@@ -413,19 +412,53 @@ namespace WindowsForm
             this.label13.TabIndex = 14;
             this.label13.Text = "BarkodNo:";
             // 
-            // textBox8
+            // DataGridViewProductList
             // 
-            this.textBox8.Location = new System.Drawing.Point(96, 80);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(164, 23);
-            this.textBox8.TabIndex = 4;
+            this.DataGridViewProductList.AllowUserToAddRows = false;
+            this.DataGridViewProductList.AllowUserToDeleteRows = false;
+            this.DataGridViewProductList.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.DataGridViewProductList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGridViewProductList.Location = new System.Drawing.Point(626, 18);
+            this.DataGridViewProductList.Name = "DataGridViewProductList";
+            this.DataGridViewProductList.ReadOnly = true;
+            this.DataGridViewProductList.RowTemplate.Height = 25;
+            this.DataGridViewProductList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DataGridViewProductList.Size = new System.Drawing.Size(452, 438);
+            this.DataGridViewProductList.TabIndex = 2;
+            this.DataGridViewProductList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewProductList_CellDoubleClick);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 54);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(66, 15);
+            this.label12.TabIndex = 15;
+            this.label12.Text = "Kategoriya:";
+            // 
+            // comboBoxVarOlanKateqoriya
+            // 
+            this.comboBoxVarOlanKateqoriya.FormattingEnabled = true;
+            this.comboBoxVarOlanKateqoriya.Location = new System.Drawing.Point(96, 51);
+            this.comboBoxVarOlanKateqoriya.Name = "comboBoxVarOlanKateqoriya";
+            this.comboBoxVarOlanKateqoriya.Size = new System.Drawing.Size(162, 23);
+            this.comboBoxVarOlanKateqoriya.TabIndex = 22;
+            // 
+            // comboBoxVarOlanMarka
+            // 
+            this.comboBoxVarOlanMarka.FormattingEnabled = true;
+            this.comboBoxVarOlanMarka.Location = new System.Drawing.Point(96, 80);
+            this.comboBoxVarOlanMarka.Name = "comboBoxVarOlanMarka";
+            this.comboBoxVarOlanMarka.Size = new System.Drawing.Size(162, 23);
+            this.comboBoxVarOlanMarka.TabIndex = 23;
             // 
             // FormProductAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1096, 467);
+            this.Controls.Add(this.DataGridViewProductList);
             this.Controls.Add(this.GroupBoxFormProductAddVarOlanMehsul);
             this.Controls.Add(this.GroupBoxFormProductAddYeniMehsul);
             this.Name = "FormProductAdd";
@@ -436,6 +469,7 @@ namespace WindowsForm
             this.GroupBoxFormProductAddYeniMehsul.PerformLayout();
             this.GroupBoxFormProductAddVarOlanMehsul.ResumeLayout(false);
             this.GroupBoxFormProductAddVarOlanMehsul.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridViewProductList)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -459,26 +493,28 @@ namespace WindowsForm
         private System.Windows.Forms.TextBox TextBoxFormProductAddMehsulAdi;
         private System.Windows.Forms.TextBox TextBoxFormProductAddBarkodNo;
         private System.Windows.Forms.GroupBox GroupBoxFormProductAddVarOlanMehsul;
-        private System.Windows.Forms.Button ButtonFormProductAddVarOlanElaveEt;
+        private System.Windows.Forms.Button ButtonVarOlanElaveEt;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox textBoxVarOlanSatisQiymet;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox textBoxVarOlanAlisQiymet;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox textBoxVarOlanMiqdar;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox textBoxVarOlanBarkodNo;
+        private System.Windows.Forms.TextBox textBoxVarOlanMehsulAdi;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox ComboBoxFormProductAddTedarikci;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox TextBoxFormProductAddAciqlama;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox TextBoxFormProductAddKemiyyet;
+        private System.Windows.Forms.Label LabelMiqdarVB;
+        private System.Windows.Forms.DataGridView DataGridViewProductList;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox comboBoxVarOlanMarka;
+        private System.Windows.Forms.ComboBox comboBoxVarOlanKateqoriya;
     }
 }

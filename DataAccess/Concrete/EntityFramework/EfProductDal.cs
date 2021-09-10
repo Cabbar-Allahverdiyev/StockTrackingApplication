@@ -13,7 +13,8 @@ namespace DataAccess.Concrete.EntityFramework
     public class EfProductDal : EfEntityRepositoryBase<Product, StockTrackingProjectContext>
                                , IProductDal
     {
-        public List<ProducViewtDto> GetProductViewDetails(Expression<Func<ProducViewtDto, bool>> filter = null)
+
+        public List<ProducViewDetailDto> GetProductViewDetails(Expression<Func<ProducViewDetailDto, bool>> filter = null)
         {
             using (StockTrackingProjectContext context=new StockTrackingProjectContext())
             {
@@ -21,7 +22,7 @@ namespace DataAccess.Concrete.EntityFramework
                              join c in context.Categories on p.CategoryId equals c.Id
                              join b in context.Brands on p.BrandId equals b.Id
                              join s in context.Suppliers on p.SupplierId equals s.Id
-                             select new ProducViewtDto
+                             select new ProducViewDetailDto
                              {
                                  ProductId = p.Id,
                                  Kateqoriya = c.CategoryName,
@@ -47,7 +48,7 @@ namespace DataAccess.Concrete.EntityFramework
             }
         }
 
-        public ProducViewtDto GetProductViewDetail(int productId)
+        public List<ProductViewDashboardDetailDto> GetProductViewDashboardDetails(Expression<Func<ProductViewDashboardDetailDto, bool>> filter = null)
         {
             using (StockTrackingProjectContext context = new StockTrackingProjectContext())
             {
@@ -55,7 +56,54 @@ namespace DataAccess.Concrete.EntityFramework
                              join c in context.Categories on p.CategoryId equals c.Id
                              join b in context.Brands on p.BrandId equals b.Id
                              join s in context.Suppliers on p.SupplierId equals s.Id
-                             select new ProducViewtDto
+                             select new ProductViewDashboardDetailDto
+                             {
+                                 ProductId = p.Id,
+                                 Kateqoriya = c.CategoryName,
+                                 Marka = b.BrandName,
+                                 TedarikciSirket = s.CompanyName,
+                                 StokdakiVahid = p.UnitsInStock,
+                                 Qiymet = p.UnitPrice,
+                                 MehsulAdi = p.ProductName,
+                                 BarcodeNomresi = p.BarcodeNumber,
+                                 Kemiyyet = p.QuantityPerUnit,
+                                 Aciqlama = p.Description,
+                                 SonDeyistirilmeTaixi = p.LastModifiedDate,
+                                 Sonlanmis = p.Discontinued
+
+                             };
+                return filter == null ? result.ToList() : result.Where(filter).ToList();
+
+            }
+        }
+
+        public List<ProductCompactDetailDto> GetProductCompactDetails(Expression<Func<ProductCompactDetailDto, bool>> filter = null)
+        {
+            using (StockTrackingProjectContext context = new StockTrackingProjectContext())
+            {
+                var result = from p in context.Products
+                             join b in context.Brands on p.BrandId equals b.Id
+                             select new ProductCompactDetailDto
+                             {
+                                 ProductId = p.Id,
+                                 Marka = b.BrandName,
+                                 MehsulAdi = p.ProductName,
+                                 BarcodeNomresi = p.BarcodeNumber
+                             };
+                return filter == null ? result.ToList() : result.Where(filter).ToList();
+
+            }
+        }
+
+        public ProducViewDetailDto GetProductViewDetail(int productId)
+        {
+            using (StockTrackingProjectContext context = new StockTrackingProjectContext())
+            {
+                var result = from p in context.Products
+                             join c in context.Categories on p.CategoryId equals c.Id
+                             join b in context.Brands on p.BrandId equals b.Id
+                             join s in context.Suppliers on p.SupplierId equals s.Id
+                             select new ProducViewDetailDto
                              {
                                  ProductId = p.Id,
                                  Kateqoriya = c.CategoryName,
@@ -79,5 +127,7 @@ namespace DataAccess.Concrete.EntityFramework
                 return result.SingleOrDefault();
             }
         }
+
+      
     }
 }
