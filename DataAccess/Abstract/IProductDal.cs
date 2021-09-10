@@ -13,6 +13,7 @@ namespace DataAccess.Abstract
         List<ProducViewDetailDto> GetProductViewDetails(Expression<Func<ProducViewDetailDto, bool>> filter = null);
         List<ProductViewDashboardDetailDto> GetProductViewDashboardDetails(Expression<Func<ProductViewDashboardDetailDto, bool>> filter = null);
         List<ProductCompactDetailDto> GetProductCompactDetails(Expression<Func<ProductCompactDetailDto, bool>> filter = null);
-        ProducViewDetailDto GetProductViewDetail(int productId);
+        ProductCompactDetailDto GetByProductCompactDetail(Expression<Func<ProductCompactDetailDto, bool>> filter);
+        ProducViewDetailDto GetProductIdProductViewDetail(int productId);
     }
 }

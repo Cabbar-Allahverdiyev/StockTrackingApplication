@@ -24,14 +24,19 @@ namespace WindowsForm
         CategoryManager _categoryManager = new CategoryManager(new EfCategoryDal());
         BrandManager _brandManager = new BrandManager(new EfBrandDal());
         SupplierManager _supplierManager = new SupplierManager(new EfSupplierDal());
-       
+
 
         private void FormProductAdd_Load(object sender, EventArgs e)
         {
-           
+
             DataGridViewProductList.DataSource = _productManager.GetProductCompactDetails().Data;
-            CategoryGetComboBox();
-            BrandGetComboBox();
+
+            CategoryGetComboBoxYeni();
+            CategoryGetComboBoxVarOlan();
+
+            BrandGetComboBoxVarOlan();
+            BrandGetComboBoxYeni();
+
             SupplierGetComboBox();
             GroupBoxVarOlanMehsulControlClear();
             GroupBoxYeniMehsulControlClear();
@@ -80,45 +85,61 @@ namespace WindowsForm
 
         private void DataGridViewProductList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-             textBoxVarOlanBarkodNo.Text = DataGridViewProductList.CurrentRow.Cells["BarcodeNomresi"].Value.ToString();
-            
-             textBoxVarOlanMehsulAdi.Text = DataGridViewProductList.CurrentRow.Cells["MehsulAdi"].Value.ToString();
-            var productGet=_productManager.GetByProductId(Convert.ToInt32(DataGridViewProductList.CurrentRow.Cells["ProductId"].Value.ToString()));
-            LabelMiqdarVB.Text = productGet.Data.UnitsInStock.ToString();
+            //var productGetId = _productManager.GetByProductId(
+            //        Convert.ToInt32(DataGridViewProductList.CurrentRow.Cells["ProductId"].Value.ToString())
+            //    );
+            var productViewDetailByProductId = _productManager.GetProductViewProductIdDetail(
+                     Convert.ToInt32(DataGridViewProductList.CurrentRow.Cells["ProductId"].Value.ToString())
+                );
+            textBoxVarOlanBarkodNo.Text = DataGridViewProductList.CurrentRow.Cells["BarcodeNomresi"].Value.ToString();
+            textBoxVarOlanMehsulAdi.Text = DataGridViewProductList.CurrentRow.Cells["MehsulAdi"].Value.ToString();
+            comboBoxVarOlanKateqoriya.Text = productViewDetailByProductId.Data.Kateqoriya;
+            comboBoxVarOlanMarka.Text = productViewDetailByProductId.Data.Marka;
+            LabelMiqdarVB.Text = productViewDetailByProductId.Data.StokdakiVahid.ToString();
 
         }
 
 
+         
 
-
-        private void CategoryGetComboBox()
+        private void CategoryGetComboBoxVarOlan()
         {
-           
-            var categoryGetAll = _categoryManager.GetAll();
 
-            ComboBoxFormProductAddKategoriya.DataSource = categoryGetAll.Data;
-            ComboBoxFormProductAddKategoriya.DisplayMember = "CategoryName";
-            ComboBoxFormProductAddKategoriya.ValueMember = "Id";
+            var categoryGetAll = _categoryManager.GetAll();
 
             comboBoxVarOlanKateqoriya.DataSource = categoryGetAll.Data;
             comboBoxVarOlanKateqoriya.DisplayMember = "CategoryName";
             comboBoxVarOlanKateqoriya.ValueMember = "Id";
 
-            
+
         }
 
-        private void BrandGetComboBox()
+        private void CategoryGetComboBoxYeni()
+        {
+            var categoryGetAll = _categoryManager.GetAll();
+
+            ComboBoxFormProductAddKategoriya.DataSource = categoryGetAll.Data;
+            ComboBoxFormProductAddKategoriya.DisplayMember = "CategoryName";
+            ComboBoxFormProductAddKategoriya.ValueMember = "Id";
+        }
+
+        private void BrandGetComboBoxVarOlan()
+        {
+            var brandGetAll = _brandManager.GetAll();
+
+            comboBoxVarOlanMarka.DataSource = brandGetAll.Data;
+            comboBoxVarOlanMarka.DisplayMember = "BrandName";
+            comboBoxVarOlanMarka.ValueMember = "Id";
+
+        }
+
+        private void BrandGetComboBoxYeni()
         {
             var brandGetAll = _brandManager.GetAll();
 
             ComboBoxFormProductAddMarka.DataSource = brandGetAll.Data;
             ComboBoxFormProductAddMarka.DisplayMember = "BrandName";
             ComboBoxFormProductAddMarka.ValueMember = "Id";
-
-            comboBoxVarOlanMarka.DataSource = brandGetAll.Data;
-            comboBoxVarOlanMarka.DisplayMember="BrandName";
-            comboBoxVarOlanMarka.ValueMember="Id";
-
         }
 
         private void SupplierGetComboBox()
@@ -161,6 +182,24 @@ namespace WindowsForm
             }
         }
 
+        private void textBoxAxtar_TextChanged(object sender, EventArgs e)
+        {
+            if (textBoxAxtar.Text.Length == 0)
+            {
+                DataGridViewProductList.DataSource = _productManager.GetProductCompactDetails().Data;
+                return;
+            }
 
+            string productName = textBoxAxtar.Text.ToString();
+            var productGetDetailsByName = _productManager.GetByPrdouctNameCompactDetails(productName);
+            if (productGetDetailsByName.Success)
+            {
+                DataGridViewProductList.DataSource = productGetDetailsByName.Data;
+            }
+            else
+            {
+                MessageBox.Show(ProductMessages.ProductNotFound, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }

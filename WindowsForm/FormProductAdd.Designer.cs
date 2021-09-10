@@ -52,6 +52,8 @@ namespace WindowsForm
             this.TextBoxFormProductAddMiqdar = new System.Windows.Forms.TextBox();
             this.TextBoxFormProductAddBarkodNo = new System.Windows.Forms.TextBox();
             this.GroupBoxFormProductAddVarOlanMehsul = new System.Windows.Forms.GroupBox();
+            this.comboBoxVarOlanMarka = new System.Windows.Forms.ComboBox();
+            this.comboBoxVarOlanKateqoriya = new System.Windows.Forms.ComboBox();
             this.LabelMiqdarVB = new System.Windows.Forms.Label();
             this.ButtonVarOlanElaveEt = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
@@ -63,12 +65,12 @@ namespace WindowsForm
             this.textBoxVarOlanMiqdar = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.textBoxVarOlanBarkodNo = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.textBoxVarOlanMehsulAdi = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.DataGridViewProductList = new System.Windows.Forms.DataGridView();
-            this.label12 = new System.Windows.Forms.Label();
-            this.comboBoxVarOlanKateqoriya = new System.Windows.Forms.ComboBox();
-            this.comboBoxVarOlanMarka = new System.Windows.Forms.ComboBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.textBoxAxtar = new System.Windows.Forms.TextBox();
             this.GroupBoxFormProductAddYeniMehsul.SuspendLayout();
             this.GroupBoxFormProductAddVarOlanMehsul.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewProductList)).BeginInit();
@@ -303,6 +305,22 @@ namespace WindowsForm
             this.GroupBoxFormProductAddVarOlanMehsul.TabStop = false;
             this.GroupBoxFormProductAddVarOlanMehsul.Text = "Var olan mehsul";
             // 
+            // comboBoxVarOlanMarka
+            // 
+            this.comboBoxVarOlanMarka.FormattingEnabled = true;
+            this.comboBoxVarOlanMarka.Location = new System.Drawing.Point(96, 80);
+            this.comboBoxVarOlanMarka.Name = "comboBoxVarOlanMarka";
+            this.comboBoxVarOlanMarka.Size = new System.Drawing.Size(162, 23);
+            this.comboBoxVarOlanMarka.TabIndex = 23;
+            // 
+            // comboBoxVarOlanKateqoriya
+            // 
+            this.comboBoxVarOlanKateqoriya.FormattingEnabled = true;
+            this.comboBoxVarOlanKateqoriya.Location = new System.Drawing.Point(96, 51);
+            this.comboBoxVarOlanKateqoriya.Name = "comboBoxVarOlanKateqoriya";
+            this.comboBoxVarOlanKateqoriya.Size = new System.Drawing.Size(162, 23);
+            this.comboBoxVarOlanKateqoriya.TabIndex = 22;
+            // 
             // LabelMiqdarVB
             // 
             this.LabelMiqdarVB.AutoSize = true;
@@ -396,6 +414,15 @@ namespace WindowsForm
             this.textBoxVarOlanBarkodNo.Size = new System.Drawing.Size(164, 23);
             this.textBoxVarOlanBarkodNo.TabIndex = 2;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 54);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(66, 15);
+            this.label12.TabIndex = 15;
+            this.label12.Text = "Kategoriya:";
+            // 
             // textBoxVarOlanMehsulAdi
             // 
             this.textBoxVarOlanMehsulAdi.Location = new System.Drawing.Point(96, 109);
@@ -418,39 +445,31 @@ namespace WindowsForm
             this.DataGridViewProductList.AllowUserToDeleteRows = false;
             this.DataGridViewProductList.BackgroundColor = System.Drawing.SystemColors.Control;
             this.DataGridViewProductList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridViewProductList.Location = new System.Drawing.Point(626, 18);
+            this.DataGridViewProductList.Location = new System.Drawing.Point(626, 63);
             this.DataGridViewProductList.Name = "DataGridViewProductList";
             this.DataGridViewProductList.ReadOnly = true;
             this.DataGridViewProductList.RowTemplate.Height = 25;
             this.DataGridViewProductList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridViewProductList.Size = new System.Drawing.Size(452, 438);
+            this.DataGridViewProductList.Size = new System.Drawing.Size(452, 393);
             this.DataGridViewProductList.TabIndex = 2;
             this.DataGridViewProductList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewProductList_CellDoubleClick);
             // 
-            // label12
+            // label18
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 54);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(66, 15);
-            this.label12.TabIndex = 15;
-            this.label12.Text = "Kategoriya:";
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(900, 40);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(37, 15);
+            this.label18.TabIndex = 3;
+            this.label18.Text = "Axtar:";
             // 
-            // comboBoxVarOlanKateqoriya
+            // textBoxAxtar
             // 
-            this.comboBoxVarOlanKateqoriya.FormattingEnabled = true;
-            this.comboBoxVarOlanKateqoriya.Location = new System.Drawing.Point(96, 51);
-            this.comboBoxVarOlanKateqoriya.Name = "comboBoxVarOlanKateqoriya";
-            this.comboBoxVarOlanKateqoriya.Size = new System.Drawing.Size(162, 23);
-            this.comboBoxVarOlanKateqoriya.TabIndex = 22;
-            // 
-            // comboBoxVarOlanMarka
-            // 
-            this.comboBoxVarOlanMarka.FormattingEnabled = true;
-            this.comboBoxVarOlanMarka.Location = new System.Drawing.Point(96, 80);
-            this.comboBoxVarOlanMarka.Name = "comboBoxVarOlanMarka";
-            this.comboBoxVarOlanMarka.Size = new System.Drawing.Size(162, 23);
-            this.comboBoxVarOlanMarka.TabIndex = 23;
+            this.textBoxAxtar.Location = new System.Drawing.Point(943, 37);
+            this.textBoxAxtar.Name = "textBoxAxtar";
+            this.textBoxAxtar.Size = new System.Drawing.Size(135, 23);
+            this.textBoxAxtar.TabIndex = 4;
+            this.textBoxAxtar.TextChanged += new System.EventHandler(this.textBoxAxtar_TextChanged);
             // 
             // FormProductAdd
             // 
@@ -458,6 +477,8 @@ namespace WindowsForm
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1096, 467);
+            this.Controls.Add(this.textBoxAxtar);
+            this.Controls.Add(this.label18);
             this.Controls.Add(this.DataGridViewProductList);
             this.Controls.Add(this.GroupBoxFormProductAddVarOlanMehsul);
             this.Controls.Add(this.GroupBoxFormProductAddYeniMehsul);
@@ -471,6 +492,7 @@ namespace WindowsForm
             this.GroupBoxFormProductAddVarOlanMehsul.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewProductList)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -516,5 +538,7 @@ namespace WindowsForm
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox comboBoxVarOlanMarka;
         private System.Windows.Forms.ComboBox comboBoxVarOlanKateqoriya;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox textBoxAxtar;
     }
 }

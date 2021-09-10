@@ -17,6 +17,8 @@ namespace Business.Abstract
         IDataResult<List<ProducViewDetailDto>> GetProductViewDetails();
         IDataResult<List<ProductViewDashboardDetailDto>> GetProductViewDasgboardDetails();
         IDataResult<List<ProductCompactDetailDto>> GetProductCompactDetails();
-        IDataResult<ProducViewDetailDto> GetProductViewDetail(int productId);
+        IDataResult<List<ProductCompactDetailDto>> GetByPrdouctNameCompactDetails(string productName);
+        IDataResult<ProducViewDetailDto> GetProductViewProductIdDetail(int productId);
+
     }
 }

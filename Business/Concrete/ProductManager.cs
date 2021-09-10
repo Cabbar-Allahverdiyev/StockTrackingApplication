@@ -53,9 +53,24 @@ namespace Business.Concrete
             List<Product> get = _productDal.GetAll();
             return new SuccessDataResult<List<Product>>(get, ProductMessages.ProductGetAll);
         }
- 
+
+
+        //Metodlar--------------->
+        [CacheAspect]
+        public IDataResult<Product> GetByProductId(int productId)
+        {
+            Product get = _productDal.Get(p => p.Id == productId);
+            if (get == null)
+            {
+                return new ErrorDataResult<Product>(ProductMessages.ProductNotFound);
+            }
+            return new SuccessDataResult<Product>(get, ProductMessages.ProductFound);
+        }
+
+
 
         //DTOs------------------------------------>
+        [CacheAspect]
         public IDataResult<List<ProducViewDetailDto>> GetProductViewDetails()
         {
             List<ProducViewDetailDto> get = _productDal.GetProductViewDetails();
@@ -66,6 +81,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<ProducViewDetailDto>>(get, ProductMessages.ProductGetAll);
         }
 
+        [CacheAspect]
         public IDataResult<List<ProductViewDashboardDetailDto>> GetProductViewDasgboardDetails()
         {
             List<ProductViewDashboardDetailDto> get = _productDal.GetProductViewDashboardDetails();
@@ -76,6 +92,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<ProductViewDashboardDetailDto>>(get, ProductMessages.ProductGetAll);
         }
 
+        [CacheAspect]
         public IDataResult<List<ProductCompactDetailDto>> GetProductCompactDetails()
         {
             List<ProductCompactDetailDto> get = _productDal.GetProductCompactDetails();
@@ -87,9 +104,31 @@ namespace Business.Concrete
 
         }
 
-        public IDataResult<ProducViewDetailDto> GetProductViewDetail(int productId)
+        [CacheAspect]
+        public IDataResult<List<ProductCompactDetailDto>> GetByPrdouctNameCompactDetails(string productName)
         {
-            ProducViewDetailDto get = _productDal.GetProductViewDetail(productId);
+            List<ProductCompactDetailDto> get = _productDal.GetProductCompactDetails(p=>p.MehsulAdi==productName);
+            if (get==null)
+            {
+                return new ErrorDataResult<List<ProductCompactDetailDto>>(ProductMessages.ProductNotFound);
+            }
+            return new SuccessDataResult<List<ProductCompactDetailDto>>(get, ProductMessages.ProductGetAll);
+        }
+
+        public IDataResult<ProductCompactDetailDto> GetByProductCompacProductIdDetail(int productId)
+        {
+            ProductCompactDetailDto get = _productDal.GetByProductCompactDetail(p=>p.ProductId==productId);
+            
+            if (get == null)
+            {
+                return new ErrorDataResult<ProductCompactDetailDto>(ProductMessages.ProductNotFound);
+            }
+            return new SuccessDataResult<ProductCompactDetailDto>(get, ProductMessages.ProductFound);
+        }
+
+        public IDataResult<ProducViewDetailDto> GetProductViewProductIdDetail(int productId)
+        {
+            ProducViewDetailDto get = _productDal.GetProductIdProductViewDetail(productId);
             if (get == null)
             {
                 return new ErrorDataResult<ProducViewDetailDto>(ProductMessages.ProductNotFound);
@@ -97,16 +136,9 @@ namespace Business.Concrete
             return new SuccessDataResult<ProducViewDetailDto>(get, ProductMessages.ProductFound);
         }
 
-        //Metodlar--------------->
+        
 
-        public IDataResult<Product> GetByProductId(int productId)
-        {
-            Product get = _productDal.Get(p=>p.Id==productId);
-            if (get == null)
-            {
-                return new ErrorDataResult<Product>(ProductMessages.ProductNotFound);
-            }
-            return new SuccessDataResult<Product>(get, ProductMessages.ProductFound);
-        }
+
+
     }
 }
