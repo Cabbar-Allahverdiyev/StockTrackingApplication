@@ -21,6 +21,7 @@ namespace WindowsForm
         FormBrand _formBrand = new FormBrand();
         FormCategory _formCategory = new FormCategory();
         SupplierForm _supplierForm = new SupplierForm();
+        FormProductList _formProductList = new FormProductList();
         
 
         public SalesForm()
@@ -39,12 +40,14 @@ namespace WindowsForm
         {
            
             _formUserAdd.ShowDialog();  
+            
 
         }
 
         private void ButtonSalesFormIstifadecileriSirala_Click(object sender, EventArgs e)
         {
             _formUserListed.ShowDialog();
+
         }
 
         private void ButtonSalesFormMehsulElaveEtmek_Click(object sender, EventArgs e)
@@ -67,9 +70,21 @@ namespace WindowsForm
             _supplierForm.ShowDialog();
         }
 
+        private void ButtonSalesFormMehsullariSirala_Click(object sender, EventArgs e)
+        {
+            _formProductList.ShowDialog();
+        }
+
         private void ButtonSalesFormYenile_Click(object sender, EventArgs e)
         {
             DataGridViewSalesForm.DataSource = _productManager.GetProductViewDasgboardDetails().Data;
         }
+
+        private void ButtonX_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+       
     }
 }

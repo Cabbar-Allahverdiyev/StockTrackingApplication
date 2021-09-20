@@ -21,6 +21,7 @@ namespace Business.Abstract
 
         //DTOs
         IDataResult<List<UserDto>> GetUserDetails();
+        IDataResult<List<UserDto>> GetUserDetailsByUserName(string userName);
         IDataResult<List<UserDto>> GetUserDetailsByUserId(int userId);
         IDataResult<UserDto> GetUserDetail(int userId);
 

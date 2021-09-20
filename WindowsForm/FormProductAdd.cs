@@ -46,7 +46,7 @@ namespace WindowsForm
         private void ButtonFormProductAddYeniMehsulElaveEt_Click(object sender, EventArgs e)
         {
             Product product = new Product();
-            product.BarcodeNumber = TextBoxFormProductAddBarkodNo.Text;
+            product.BarcodeNumber = Convert.ToInt32(TextBoxFormProductAddBarkodNo.Text);
             product.BrandId = Convert.ToInt32(ComboBoxFormProductAddMarka.SelectedValue);
             product.CategoryId = Convert.ToInt32(ComboBoxFormProductAddKategoriya.SelectedValue);
             product.SupplierId = Convert.ToInt32(ComboBoxFormProductAddTedarikci.SelectedValue);
@@ -78,16 +78,33 @@ namespace WindowsForm
             }
             MessageBox.Show(productAdd.Message, AuthMessages.InformationMessage, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-
             GroupBoxYeniMehsulControlClear();
+            DataGridViewProductList.DataSource = _productManager.GetProductCompactDetails().Data;
+
+        }
+
+        private void buttonYeniMehsulSil_Click(object sender, EventArgs e)
+        {
+
+
+            if (DataGridViewProductList.CurrentRow == null)
+            {
+                MessageBox.Show(ProductMessages.ProductNotSelected, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            Product product = new Product();
+            product.Id = Convert.ToInt32(DataGridViewProductList.CurrentRow.Cells["ProductId"].Value);
+            var productDeleted = _productManager.Delete(product);
+            MessageBox.Show(productDeleted.Message, AuthMessages.InformationMessage, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            DataGridViewProductList.DataSource = _productManager.GetProductCompactDetails().Data;
 
         }
 
         private void DataGridViewProductList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //var productGetId = _productManager.GetByProductId(
-            //        Convert.ToInt32(DataGridViewProductList.CurrentRow.Cells["ProductId"].Value.ToString())
-            //    );
+
             var productViewDetailByProductId = _productManager.GetProductViewProductIdDetail(
                      Convert.ToInt32(DataGridViewProductList.CurrentRow.Cells["ProductId"].Value.ToString())
                 );
@@ -100,7 +117,69 @@ namespace WindowsForm
         }
 
 
-         
+
+
+
+        private void textBoxAxtar_TextChanged(object sender, EventArgs e)
+        {
+            if (textBoxAxtar.Text == "")
+            {
+                LabelMiqdarVB.Text = "";
+                GroupBoxVarOlanMehsulControlClear();
+                DataGridViewProductList.DataSource = _productManager.GetProductCompactDetails().Data;
+                return;
+            }
+
+            string productName = textBoxAxtar.Text.ToString();
+            var productGetDetailsByName = _productManager.GetByPrdouctNameCompactDetails(productName);
+            if (productGetDetailsByName.Success)
+            {
+                DataGridViewProductList.DataSource = productGetDetailsByName.Data;
+            }
+            else
+            {
+                MessageBox.Show(ProductMessages.ProductNotFound, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+
+
+
+        //Elave Metodlar---------------------->
+
+        private void GroupBoxYeniMehsulControlClear()
+        {
+            foreach (Control control in GroupBoxFormProductAddYeniMehsul.Controls)
+            {
+                if (control is TextBox)
+                {
+                    control.Text = "";
+                }
+                if (control is ComboBox)
+                {
+                    control.Text = "";
+                }
+
+            }
+        }
+
+        private void GroupBoxVarOlanMehsulControlClear()
+        {
+            foreach (Control control in GroupBoxFormProductAddVarOlanMehsul.Controls)
+            {
+                if (control is TextBox)
+                {
+                    control.Text = "";
+                }
+                if (control is ComboBox)
+                {
+                    control.Text = "";
+                }
+
+            }
+        }
+
+
 
         private void CategoryGetComboBoxVarOlan()
         {
@@ -150,56 +229,7 @@ namespace WindowsForm
             ComboBoxFormProductAddTedarikci.ValueMember = "Id";
         }
 
-        private void GroupBoxYeniMehsulControlClear()
-        {
-            foreach (Control control in GroupBoxFormProductAddYeniMehsul.Controls)
-            {
-                if (control is TextBox)
-                {
-                    control.Text = "";
-                }
-                if (control is ComboBox)
-                {
-                    control.Text = "";
-                }
 
-            }
-        }
 
-        private void GroupBoxVarOlanMehsulControlClear()
-        {
-            foreach (Control control in GroupBoxFormProductAddVarOlanMehsul.Controls)
-            {
-                if (control is TextBox)
-                {
-                    control.Text = "";
-                }
-                if (control is ComboBox)
-                {
-                    control.Text = "";
-                }
-
-            }
-        }
-
-        private void textBoxAxtar_TextChanged(object sender, EventArgs e)
-        {
-            if (textBoxAxtar.Text.Length == 0)
-            {
-                DataGridViewProductList.DataSource = _productManager.GetProductCompactDetails().Data;
-                return;
-            }
-
-            string productName = textBoxAxtar.Text.ToString();
-            var productGetDetailsByName = _productManager.GetByPrdouctNameCompactDetails(productName);
-            if (productGetDetailsByName.Success)
-            {
-                DataGridViewProductList.DataSource = productGetDetailsByName.Data;
-            }
-            else
-            {
-                MessageBox.Show(ProductMessages.ProductNotFound, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
     }
 }

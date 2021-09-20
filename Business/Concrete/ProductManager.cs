@@ -3,6 +3,7 @@ using Business.Constants.Messages;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -26,6 +27,14 @@ namespace Business.Concrete
         [CacheRemoveAspect("IProductService.Get")]
         public IResult Add(Product product)
         {
+            IResult result = BusinessRules.Run(IsBarcodeNumberExists(product.BarcodeNumber)
+                                               , IsProductNameExists(product.ProductName)
+                                               );
+
+            if (result != null)
+            {
+                return new ErrorDataResult<Product>(result.Message);
+            }
             product.Discontinued = false;
             product.LastModifiedDate = DateTime.Now;
             _productDal.Add(product);
@@ -43,6 +52,7 @@ namespace Business.Concrete
         [CacheRemoveAspect("IProductService.Get")]
         public IResult Update(Product product)
         {
+            product.LastModifiedDate = DateTime.Now;
             _productDal.Update(product);
             return new SuccessResult(ProductMessages.ProductUpdated);
         }
@@ -74,7 +84,7 @@ namespace Business.Concrete
         public IDataResult<List<ProducViewDetailDto>> GetProductViewDetails()
         {
             List<ProducViewDetailDto> get = _productDal.GetProductViewDetails();
-            if (get==null)
+            if (get == null)
             {
                 return new ErrorDataResult<List<ProducViewDetailDto>>(ProductMessages.ProductNotFound);
             }
@@ -107,8 +117,8 @@ namespace Business.Concrete
         [CacheAspect]
         public IDataResult<List<ProductCompactDetailDto>> GetByPrdouctNameCompactDetails(string productName)
         {
-            List<ProductCompactDetailDto> get = _productDal.GetProductCompactDetails(p=>p.MehsulAdi==productName);
-            if (get==null)
+            List<ProductCompactDetailDto> get = _productDal.GetProductCompactDetails(p => p.MehsulAdi == productName);
+            if (get == null)
             {
                 return new ErrorDataResult<List<ProductCompactDetailDto>>(ProductMessages.ProductNotFound);
             }
@@ -117,8 +127,8 @@ namespace Business.Concrete
 
         public IDataResult<ProductCompactDetailDto> GetByProductCompacProductIdDetail(int productId)
         {
-            ProductCompactDetailDto get = _productDal.GetByProductCompactDetail(p=>p.ProductId==productId);
-            
+            ProductCompactDetailDto get = _productDal.GetByProductCompactDetail(p => p.ProductId == productId);
+
             if (get == null)
             {
                 return new ErrorDataResult<ProductCompactDetailDto>(ProductMessages.ProductNotFound);
@@ -136,7 +146,33 @@ namespace Business.Concrete
             return new SuccessDataResult<ProducViewDetailDto>(get, ProductMessages.ProductFound);
         }
 
-        
+
+        //Elave Metodlar------------------------->
+        private IResult IsBarcodeNumberExists(int barcodeNumber)
+        {
+            List<Product> getAll = _productDal.GetAll();
+            foreach (Product product in getAll)
+            {
+                if (product.BarcodeNumber == barcodeNumber)
+                {
+                    return new ErrorResult(ProductMessages.BarcodeNumberAvailable);
+                }
+            }
+            return new SuccessResult();
+        }
+
+        private IResult IsProductNameExists(string productName)
+        {
+            List<Product> getAll = _productDal.GetAll();
+            foreach (Product product in getAll)
+            {
+                if (product.ProductName.Equals(productName))
+                {
+                    return new ErrorResult(ProductMessages.ProductNameAvailable);
+                }
+            }
+            return new SuccessResult();
+        }
 
 
 

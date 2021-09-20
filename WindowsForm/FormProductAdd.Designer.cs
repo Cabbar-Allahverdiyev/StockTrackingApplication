@@ -71,6 +71,7 @@ namespace WindowsForm
             this.DataGridViewProductList = new System.Windows.Forms.DataGridView();
             this.label18 = new System.Windows.Forms.Label();
             this.textBoxAxtar = new System.Windows.Forms.TextBox();
+            this.buttonYeniMehsulSil = new System.Windows.Forms.Button();
             this.GroupBoxFormProductAddYeniMehsul.SuspendLayout();
             this.GroupBoxFormProductAddVarOlanMehsul.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewProductList)).BeginInit();
@@ -99,9 +100,9 @@ namespace WindowsForm
             this.GroupBoxFormProductAddYeniMehsul.Controls.Add(this.TextBoxFormProductAddAlisQiymet);
             this.GroupBoxFormProductAddYeniMehsul.Controls.Add(this.TextBoxFormProductAddMiqdar);
             this.GroupBoxFormProductAddYeniMehsul.Controls.Add(this.TextBoxFormProductAddBarkodNo);
-            this.GroupBoxFormProductAddYeniMehsul.Location = new System.Drawing.Point(12, 12);
+            this.GroupBoxFormProductAddYeniMehsul.Location = new System.Drawing.Point(12, 41);
             this.GroupBoxFormProductAddYeniMehsul.Name = "GroupBoxFormProductAddYeniMehsul";
-            this.GroupBoxFormProductAddYeniMehsul.Size = new System.Drawing.Size(288, 383);
+            this.GroupBoxFormProductAddYeniMehsul.Size = new System.Drawing.Size(288, 347);
             this.GroupBoxFormProductAddYeniMehsul.TabIndex = 0;
             this.GroupBoxFormProductAddYeniMehsul.TabStop = false;
             this.GroupBoxFormProductAddYeniMehsul.Text = "Yeni mehsul";
@@ -166,7 +167,7 @@ namespace WindowsForm
             // 
             // ButtonFormProductAddYeniMehsulElaveEt
             // 
-            this.ButtonFormProductAddYeniMehsulElaveEt.Location = new System.Drawing.Point(207, 354);
+            this.ButtonFormProductAddYeniMehsulElaveEt.Location = new System.Drawing.Point(207, 312);
             this.ButtonFormProductAddYeniMehsulElaveEt.Name = "ButtonFormProductAddYeniMehsulElaveEt";
             this.ButtonFormProductAddYeniMehsulElaveEt.Size = new System.Drawing.Size(75, 23);
             this.ButtonFormProductAddYeniMehsulElaveEt.TabIndex = 2;
@@ -298,7 +299,7 @@ namespace WindowsForm
             this.GroupBoxFormProductAddVarOlanMehsul.Controls.Add(this.label12);
             this.GroupBoxFormProductAddVarOlanMehsul.Controls.Add(this.textBoxVarOlanMehsulAdi);
             this.GroupBoxFormProductAddVarOlanMehsul.Controls.Add(this.label13);
-            this.GroupBoxFormProductAddVarOlanMehsul.Location = new System.Drawing.Point(343, 12);
+            this.GroupBoxFormProductAddVarOlanMehsul.Location = new System.Drawing.Point(343, 41);
             this.GroupBoxFormProductAddVarOlanMehsul.Name = "GroupBoxFormProductAddVarOlanMehsul";
             this.GroupBoxFormProductAddVarOlanMehsul.Size = new System.Drawing.Size(265, 261);
             this.GroupBoxFormProductAddVarOlanMehsul.TabIndex = 1;
@@ -324,10 +325,11 @@ namespace WindowsForm
             // LabelMiqdarVB
             // 
             this.LabelMiqdarVB.AutoSize = true;
+            this.LabelMiqdarVB.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LabelMiqdarVB.ForeColor = System.Drawing.Color.Firebrick;
             this.LabelMiqdarVB.Location = new System.Drawing.Point(6, 225);
             this.LabelMiqdarVB.Name = "LabelMiqdarVB";
-            this.LabelMiqdarVB.Size = new System.Drawing.Size(14, 15);
+            this.LabelMiqdarVB.Size = new System.Drawing.Size(19, 21);
             this.LabelMiqdarVB.TabIndex = 21;
             this.LabelMiqdarVB.Text = "#";
             // 
@@ -445,7 +447,7 @@ namespace WindowsForm
             this.DataGridViewProductList.AllowUserToDeleteRows = false;
             this.DataGridViewProductList.BackgroundColor = System.Drawing.SystemColors.Control;
             this.DataGridViewProductList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridViewProductList.Location = new System.Drawing.Point(626, 63);
+            this.DataGridViewProductList.Location = new System.Drawing.Point(632, 41);
             this.DataGridViewProductList.Name = "DataGridViewProductList";
             this.DataGridViewProductList.ReadOnly = true;
             this.DataGridViewProductList.RowTemplate.Height = 25;
@@ -457,7 +459,7 @@ namespace WindowsForm
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(900, 40);
+            this.label18.Location = new System.Drawing.Point(906, 15);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(37, 15);
             this.label18.TabIndex = 3;
@@ -465,11 +467,20 @@ namespace WindowsForm
             // 
             // textBoxAxtar
             // 
-            this.textBoxAxtar.Location = new System.Drawing.Point(943, 37);
+            this.textBoxAxtar.Location = new System.Drawing.Point(949, 12);
             this.textBoxAxtar.Name = "textBoxAxtar";
             this.textBoxAxtar.Size = new System.Drawing.Size(135, 23);
             this.textBoxAxtar.TabIndex = 4;
             this.textBoxAxtar.TextChanged += new System.EventHandler(this.textBoxAxtar_TextChanged);
+            // 
+            // buttonYeniMehsulSil
+            // 
+            this.buttonYeniMehsulSil.Location = new System.Drawing.Point(1009, 440);
+            this.buttonYeniMehsulSil.Name = "buttonYeniMehsulSil";
+            this.buttonYeniMehsulSil.Size = new System.Drawing.Size(75, 23);
+            this.buttonYeniMehsulSil.TabIndex = 21;
+            this.buttonYeniMehsulSil.Text = "Sil";
+            this.buttonYeniMehsulSil.UseVisualStyleBackColor = true;
             // 
             // FormProductAdd
             // 
@@ -477,6 +488,7 @@ namespace WindowsForm
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1096, 467);
+            this.Controls.Add(this.buttonYeniMehsulSil);
             this.Controls.Add(this.textBoxAxtar);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.DataGridViewProductList);
@@ -484,7 +496,7 @@ namespace WindowsForm
             this.Controls.Add(this.GroupBoxFormProductAddYeniMehsul);
             this.Name = "FormProductAdd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form Product Add";
+            this.Text = "v";
             this.Load += new System.EventHandler(this.FormProductAdd_Load);
             this.GroupBoxFormProductAddYeniMehsul.ResumeLayout(false);
             this.GroupBoxFormProductAddYeniMehsul.PerformLayout();
@@ -540,5 +552,6 @@ namespace WindowsForm
         private System.Windows.Forms.ComboBox comboBoxVarOlanKateqoriya;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox textBoxAxtar;
+        private System.Windows.Forms.Button buttonYeniMehsulSil;
     }
 }

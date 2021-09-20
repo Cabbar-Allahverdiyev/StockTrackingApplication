@@ -30,9 +30,6 @@ namespace WindowsForm
 
             _userService = userService;
 
-           
-
-
         }
 
         private void ButtonFormUserAddEalveEt_Click(object sender, EventArgs e)
@@ -63,9 +60,10 @@ namespace WindowsForm
             {
                 foreach (ValidationFailure failure in results.Errors)
                 {
-                    MessageBox.Show(failure.ErrorMessage);    
+                    MessageBox.Show(failure.ErrorMessage);
+                    return;
                 }
-                return;
+                
             }
 
             var userRegister = _userService.Register(userForRegisterDto, userForRegisterDto.Password, passwordRepeat);
@@ -78,7 +76,7 @@ namespace WindowsForm
             }
             else
             {
-                MessageBox.Show(AuthMessages.RegistirationFailed, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show(userRegister.Message, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

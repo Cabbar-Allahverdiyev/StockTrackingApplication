@@ -17,7 +17,6 @@ namespace Business.Constants.Messages
         public static string CategoryGetAll = "Kateqoriya sıralandi";
         public static string CategoryFound = "Kateqoriya tapıldı";
         public static string CategoryNotFound = "Belə bir Kateqoriya yoxdur";
-
-      
+        public static string CategoryNameAvailable= "Sistemdə bu ad ilə eyni eyni adlı kateqoriya var, zəhmət olmasa basqa ad sınayın";
     }
 }

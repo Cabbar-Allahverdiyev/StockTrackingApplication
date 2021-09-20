@@ -30,6 +30,7 @@ namespace WindowsForm
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ButtonX = new System.Windows.Forms.Label();
             this.ButtonSalesFormTedarukculer = new System.Windows.Forms.Button();
             this.ButtonFormKateqoriya = new System.Windows.Forms.Button();
             this.ButtonSalesFormMarka = new System.Windows.Forms.Button();
@@ -72,6 +73,7 @@ namespace WindowsForm
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.ButtonX);
             this.panel1.Controls.Add(this.ButtonSalesFormTedarukculer);
             this.panel1.Controls.Add(this.ButtonFormKateqoriya);
             this.panel1.Controls.Add(this.ButtonSalesFormMarka);
@@ -85,6 +87,17 @@ namespace WindowsForm
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1370, 70);
             this.panel1.TabIndex = 0;
+            // 
+            // ButtonX
+            // 
+            this.ButtonX.AutoSize = true;
+            this.ButtonX.Font = new System.Drawing.Font("Segoe UI Symbol", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ButtonX.Location = new System.Drawing.Point(1339, 0);
+            this.ButtonX.Name = "ButtonX";
+            this.ButtonX.Size = new System.Drawing.Size(19, 21);
+            this.ButtonX.TabIndex = 8;
+            this.ButtonX.Text = "X";
+            this.ButtonX.Click += new System.EventHandler(this.ButtonX_Click);
             // 
             // ButtonSalesFormTedarukculer
             // 
@@ -133,6 +146,7 @@ namespace WindowsForm
             this.ButtonSalesFormMehsullariSirala.TabIndex = 3;
             this.ButtonSalesFormMehsullariSirala.Text = "Mehsullari sirala";
             this.ButtonSalesFormMehsullariSirala.UseVisualStyleBackColor = true;
+            this.ButtonSalesFormMehsullariSirala.Click += new System.EventHandler(this.ButtonSalesFormMehsullariSirala_Click);
             // 
             // ButtonSalesFormMehsulElaveEtmek
             // 
@@ -422,12 +436,14 @@ namespace WindowsForm
             this.Controls.Add(this.ButtonSalesFormSil);
             this.Controls.Add(this.DataGridViewSalesForm);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SalesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sales Form";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.SalesForm_Load);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewSalesForm)).EndInit();
             this.GroupBoxSalesFormMusteriEmeliyyatlari.ResumeLayout(false);
             this.GroupBoxSalesFormMusteriEmeliyyatlari.PerformLayout();
@@ -475,5 +491,6 @@ namespace WindowsForm
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label LabelSalesFormUmuniCem_qiymet;
         private System.Windows.Forms.Button ButtonSalesFormYenile;
+        private System.Windows.Forms.Label ButtonX;
     }
 }

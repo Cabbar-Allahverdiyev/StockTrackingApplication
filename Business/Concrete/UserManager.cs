@@ -30,7 +30,12 @@ namespace Business.Concrete
         [CacheRemoveAspect("IUserService.Get")]
         public IResult Add(User user)
         {
-
+            IResult result = BusinessRules.Run(IsThereFirstNameAndLastNameAvailable(user.FirstName,user.LastName)
+                                                , IsEmailExists(user.Email));
+            if (result!=null)
+            {
+               return new  ErrorDataResult<User>(result.Message);
+            }
             _userDal.Add(user);
             return new SuccessResult(UserMessages.UserAdded);
         }
@@ -62,6 +67,11 @@ namespace Business.Concrete
         public IDataResult<List<UserDto>> GetUserDetails()
         {
             return new SuccessDataResult<List<UserDto>>(_userDal.GetUserDetails(), UserMessages.UserDetailsListed);
+        }
+
+        public IDataResult<List<UserDto>> GetUserDetailsByUserName(string userName)
+        {
+            return new SuccessDataResult<List<UserDto>>(_userDal.GetUserDetails(u=>u.FirstName==userName), UserMessages.UserDetailsByNameListed);
         }
 
         [CacheAspect]
@@ -118,6 +128,8 @@ namespace Business.Concrete
             IResult result = BusinessRules.Run(PasswordRepeatCompatibilityWithPassword(password, passwordRepeat)
                                                , IsPasswordNull(password)
                                                , PasswordCannotBeLessThanSixCharacters(password)
+                                               , IsThereFirstNameAndLastNameAvailable(userForRegisterDto.FirstName,userForRegisterDto.LastName)
+                                               ,IsEmailExists(userForRegisterDto.Email)
                                                );
 
             if (result != null)
@@ -139,6 +151,7 @@ namespace Business.Concrete
                 PasswordSalt = passwordSalt,
                 Status = true
             };
+
             Add(user);
             return new SuccessDataResult<User>(user, AuthMessages.UserRegistered);
         }
@@ -178,6 +191,34 @@ namespace Business.Concrete
             if (password.Length >= 6)
             {
                 return new ErrorResult(AuthMessages.PasswordLessThanSixCharacters);
+            }
+            return new SuccessResult();
+        }
+
+        private IResult IsThereFirstNameAndLastNameAvailable(string firstName,string lastName)
+        {
+            List<User> userGetAll = _userDal.GetAll();
+            foreach (User user in userGetAll)
+            {
+                if (user.FirstName.Equals(firstName))
+                {
+                    if (user.LastName.Equals(lastName))
+                    {
+                        return new ErrorResult(UserMessages.FirstNameAndLastNameAvailable);
+                    }
+                }
+            }
+            return new SuccessResult();
+        }
+        private IResult IsEmailExists(string email)
+        {
+            List<User> userGetAll = _userDal.GetAll();
+            foreach (User user in userGetAll)
+            {
+                if (user.Email.Equals(email))
+                {
+                    return new ErrorResult(UserMessages.EmailAvailable);
+                }
             }
             return new SuccessResult();
         }

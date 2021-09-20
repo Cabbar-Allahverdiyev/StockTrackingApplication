@@ -107,15 +107,23 @@ namespace WindowsForm
                 return;
             }
             
-            int userId = Convert.ToInt32(TextBoxFormUserListedAxtar.Text);
-            var userGetDetail = _userService.GetUserDetailsByUserId(userId);
-            if (userGetDetail.Success )
+            string userName = TextBoxFormUserListedAxtar.Text;
+            var userGetDetails = _userService.GetUserDetailsByUserName(userName);
+            if (userGetDetails.Success )
             {
-                DataGridViewUserListed.DataSource = userGetDetail.Data;
+               //Bura nezer et
+                //if (userGetDetails.Data==null)
+                //{
+                //    DataGridViewUserListed.DataSource = _userService.GetUserDetails();
+                //    return;
+                //}
+                DataGridViewUserListed.DataSource = userGetDetails.Data;
             }
             else
             {
+               
                 MessageBox.Show(UserMessages.UserNotFound, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
         }

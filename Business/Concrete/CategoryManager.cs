@@ -3,6 +3,7 @@ using Business.Constants.Messages;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -19,13 +20,19 @@ namespace Business.Concrete
         {
             _categoryDal = categoryDal;
         }
-
+       
         //CRUD
 
         [ValidationAspect(typeof(CategoryValidator))]
         [CacheRemoveAspect("ICategoryService.Get")]
         public IResult Add(Category category)
         {
+            IResult result = BusinessRules.Run(IsCategoryManagerExists(category.CategoryName));
+            if (result != null)
+            {
+                return new ErrorDataResult<Category>(result.Message);
+            }
+
             _categoryDal.Add(category);
             return new SuccessResult(ProductMessages.ProductAdded);
         }
@@ -51,6 +58,23 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Category>>(get,ProductMessages.ProductGetAll);
         }
 
+
+
+        //Elave Metodlar----------------->
+
+        
+        private IResult IsCategoryManagerExists(string categoryName)
+        {
+            List<Category> getAllCategories = _categoryDal.GetAll();
+            foreach (Category category in getAllCategories)
+            {
+                if (category.CategoryName.Equals(categoryName))
+                {
+                    return new ErrorResult(CategoryMessages.CategoryNameAvailable);
+                }
+            }
+            return new SuccessResult();
+        }
         
     }
 }
