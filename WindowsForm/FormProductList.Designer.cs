@@ -64,7 +64,7 @@ namespace WindowsForm
             this.dataGridViewFormPrdouctList.AllowUserToDeleteRows = false;
             this.dataGridViewFormPrdouctList.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridViewFormPrdouctList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewFormPrdouctList.Location = new System.Drawing.Point(295, 50);
+            this.dataGridViewFormPrdouctList.Location = new System.Drawing.Point(294, 50);
             this.dataGridViewFormPrdouctList.Name = "dataGridViewFormPrdouctList";
             this.dataGridViewFormPrdouctList.ReadOnly = true;
             this.dataGridViewFormPrdouctList.RowTemplate.Height = 25;
@@ -279,6 +279,7 @@ namespace WindowsForm
             this.buttonSil.TabIndex = 4;
             this.buttonSil.Text = "Sil";
             this.buttonSil.UseVisualStyleBackColor = true;
+            this.buttonSil.Click += new System.EventHandler(this.buttonSil_Click);
             // 
             // label1
             // 
@@ -295,6 +296,7 @@ namespace WindowsForm
             this.textBoxAxtar.Name = "textBoxAxtar";
             this.textBoxAxtar.Size = new System.Drawing.Size(145, 23);
             this.textBoxAxtar.TabIndex = 6;
+            this.textBoxAxtar.TextChanged += new System.EventHandler(this.textBoxAxtar_TextChanged);
             // 
             // FormProductList
             // 

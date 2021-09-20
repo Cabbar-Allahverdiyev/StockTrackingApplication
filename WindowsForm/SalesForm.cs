@@ -33,7 +33,7 @@ namespace WindowsForm
 
         private void SalesForm_Load(object sender, EventArgs e)
         {
-            DataGridViewSalesForm.DataSource = _productManager.GetProductViewDasgboardDetails().Data;
+            DataGridViewSalesForm.DataSource = _productManager.GetAllProductViewDasgboardDetails().Data;
         }
 
         private void ButtonSalesFormIstifadeciElaveEtmek_Click(object sender, EventArgs e)
@@ -77,7 +77,7 @@ namespace WindowsForm
 
         private void ButtonSalesFormYenile_Click(object sender, EventArgs e)
         {
-            DataGridViewSalesForm.DataSource = _productManager.GetProductViewDasgboardDetails().Data;
+            DataGridViewSalesForm.DataSource = _productManager.GetAllProductViewDasgboardDetails().Data;
         }
 
         private void ButtonX_Click(object sender, EventArgs e)
@@ -85,6 +85,9 @@ namespace WindowsForm
             Application.Exit();
         }
 
-       
+        private void ButtonSalesFormSil_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

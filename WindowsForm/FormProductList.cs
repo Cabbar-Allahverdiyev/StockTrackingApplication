@@ -33,7 +33,7 @@ namespace WindowsForm
 
         private void FormProductList_Load(object sender, EventArgs e)
         {
-            IDataResult<List<ProductViewDashboardDetailDto>> getProductDashboard = _productManager.GetProductViewDasgboardDetails();
+            IDataResult<List<ProductViewDashboardDetailDto>> getProductDashboard = _productManager.GetAllProductViewDasgboardDetails();
             dataGridViewFormPrdouctList.DataSource = getProductDashboard.Data;
 
             BrandGetComboBoxVarOlan();
@@ -112,7 +112,7 @@ namespace WindowsForm
             MessageBox.Show(productUpdated.Message, AuthMessages.InformationMessage, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             GroupBoxVarOlanMehsulControlClear();
-            dataGridViewFormPrdouctList.DataSource = _productManager.GetProductViewDasgboardDetails().Data;
+            dataGridViewFormPrdouctList.DataSource = _productManager.GetAllProductViewDasgboardDetails().Data;
 
 
 
@@ -172,6 +172,33 @@ namespace WindowsForm
                 LabelMiqdarVB.Text = "";
 
 
+            }
+        }
+
+        private void buttonSil_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxAxtar_TextChanged(object sender, EventArgs e)
+        {
+            if (textBoxAxtar.Text == "")
+            {
+                LabelMiqdarVB.Text = "";
+                GroupBoxVarOlanMehsulControlClear();
+                dataGridViewFormPrdouctList.DataSource = _productManager.GetAllProductViewDasgboardDetails().Data;
+                return;
+            }
+
+            int barcodeNumber = Convert.ToInt32(textBoxAxtar.Text);
+            IDataResult<List<ProductViewDashboardDetailDto>>  productGetDetailsByName = _productManager.GetProductViewDasgboardDetailByBarcodeNumber(barcodeNumber);
+            if (productGetDetailsByName.Success)
+            {
+                dataGridViewFormPrdouctList.DataSource = productGetDetailsByName.Data;
+            }
+            else
+            {
+                MessageBox.Show(ProductMessages.ProductNotFound, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

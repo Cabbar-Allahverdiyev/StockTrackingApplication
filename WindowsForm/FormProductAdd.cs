@@ -83,6 +83,7 @@ namespace WindowsForm
 
         }
 
+      
         private void buttonYeniMehsulSil_Click(object sender, EventArgs e)
         {
 
@@ -229,7 +230,6 @@ namespace WindowsForm
             ComboBoxFormProductAddTedarikci.ValueMember = "Id";
         }
 
-
-
+        
     }
 }

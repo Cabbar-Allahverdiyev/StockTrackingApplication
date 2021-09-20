@@ -15,7 +15,8 @@ namespace Business.Abstract
         IResult Delete(Product product);
         IDataResult<Product> GetByProductId(int productId);
         IDataResult<List<ProducViewDetailDto>> GetProductViewDetails();
-        IDataResult<List<ProductViewDashboardDetailDto>> GetProductViewDasgboardDetails();
+        IDataResult<List<ProductViewDashboardDetailDto>> GetAllProductViewDasgboardDetails();
+        IDataResult<List<ProductViewDashboardDetailDto>> GetProductViewDasgboardDetailByBarcodeNumber(int barcodeNumber);
         IDataResult<List<ProductCompactDetailDto>> GetProductCompactDetails();
         IDataResult<List<ProductCompactDetailDto>> GetByPrdouctNameCompactDetails(string productName);
         IDataResult<ProducViewDetailDto> GetProductViewProductIdDetail(int productId);

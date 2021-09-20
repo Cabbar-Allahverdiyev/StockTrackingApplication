@@ -200,6 +200,7 @@ namespace WindowsForm
             this.ButtonSalesFormSil.TabIndex = 2;
             this.ButtonSalesFormSil.Text = "Sil";
             this.ButtonSalesFormSil.UseVisualStyleBackColor = true;
+            this.ButtonSalesFormSil.Click += new System.EventHandler(this.ButtonSalesFormSil_Click);
             // 
             // ButonSalesFormSatisIptal
             // 

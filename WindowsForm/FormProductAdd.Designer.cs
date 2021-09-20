@@ -481,6 +481,7 @@ namespace WindowsForm
             this.buttonYeniMehsulSil.TabIndex = 21;
             this.buttonYeniMehsulSil.Text = "Sil";
             this.buttonYeniMehsulSil.UseVisualStyleBackColor = true;
+            this.buttonYeniMehsulSil.Click += new System.EventHandler(this.buttonYeniMehsulSil_Click);
             // 
             // FormProductAdd
             // 

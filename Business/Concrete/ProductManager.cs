@@ -92,9 +92,19 @@ namespace Business.Concrete
         }
 
         [CacheAspect]
-        public IDataResult<List<ProductViewDashboardDetailDto>> GetProductViewDasgboardDetails()
+        public IDataResult<List<ProductViewDashboardDetailDto>> GetAllProductViewDasgboardDetails()
         {
             List<ProductViewDashboardDetailDto> get = _productDal.GetProductViewDashboardDetails();
+            if (get == null)
+            {
+                return new ErrorDataResult<List<ProductViewDashboardDetailDto>>(ProductMessages.ProductNotFound);
+            }
+            return new SuccessDataResult<List<ProductViewDashboardDetailDto>>(get, ProductMessages.ProductGetAll);
+        }
+
+        public IDataResult<List<ProductViewDashboardDetailDto>> GetProductViewDasgboardDetailByBarcodeNumber(int barcodeNumber)
+        {
+            List<ProductViewDashboardDetailDto> get = _productDal.GetProductViewDashboardDetails(p => p.BarcodeNomresi.Equals(barcodeNumber));
             if (get == null)
             {
                 return new ErrorDataResult<List<ProductViewDashboardDetailDto>>(ProductMessages.ProductNotFound);
@@ -174,7 +184,6 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-
-
+      
     }
 }
