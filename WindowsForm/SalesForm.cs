@@ -1,6 +1,8 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
+using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +16,7 @@ namespace WindowsForm
     public partial class SalesForm : Form
     {
         ProductManager _productManager = new ProductManager(new EfProductDal());
-       
+
         FormUserAdd _formUserAdd = new FormUserAdd(new UserManager(new EfUserDal()));
         FormUserListed _formUserListed = new FormUserListed(new UserManager(new EfUserDal()));
         FormProductAdd _formProductAdd = new FormProductAdd();
@@ -22,25 +24,25 @@ namespace WindowsForm
         FormCategory _formCategory = new FormCategory();
         SupplierForm _supplierForm = new SupplierForm();
         FormProductList _formProductList = new FormProductList();
-        
+
 
         public SalesForm()
         {
             InitializeComponent();
-             
-            
+
+
         }
 
         private void SalesForm_Load(object sender, EventArgs e)
         {
-            DataGridViewSalesForm.DataSource = _productManager.GetAllProductViewDasgboardDetails().Data;
+            dataGridViewProductList.DataSource = _productManager.GetAllProductViewDasgboardDetails().Data;
         }
 
         private void ButtonSalesFormIstifadeciElaveEtmek_Click(object sender, EventArgs e)
         {
-           
-            _formUserAdd.ShowDialog();  
-            
+
+            _formUserAdd.ShowDialog();
+
 
         }
 
@@ -77,7 +79,7 @@ namespace WindowsForm
 
         private void ButtonSalesFormYenile_Click(object sender, EventArgs e)
         {
-            DataGridViewSalesForm.DataSource = _productManager.GetAllProductViewDasgboardDetails().Data;
+            dataGridViewProductList.DataSource = _productManager.GetAllProductViewDasgboardDetails().Data;
         }
 
         private void ButtonX_Click(object sender, EventArgs e)
@@ -87,6 +89,50 @@ namespace WindowsForm
 
         private void ButtonSalesFormSil_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void DataGridViewSalesForm_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textBoxBarkodNo.Text = dataGridViewProductList.CurrentRow.Cells["BarcodeNomresi"].Value.ToString();
+            textBoxMehsulAdi.Text = dataGridViewProductList.CurrentRow.Cells["MehsulAdi"].Value.ToString();
+            textBoxMaxQiymet.Text = dataGridViewProductList.CurrentRow.Cells["Qiymet"].Value.ToString();
+        }
+
+        private void ButtonSalesFormElaveEt_Click(object sender, EventArgs e)
+        {
+            CartAddDto cartAddDto = new CartAddDto();
+            cartAddDto.BarcodeNumber = int.Parse(textBoxBarkodNo.Text);
+            cartAddDto.UnitPrice = decimal.Parse(textBoxMaxQiymet.Text);
+        }
+
+        private void textBoxMiqdar_TextChanged(object sender, EventArgs e)
+        {
+            if (textBoxMiqdar.Text=="")
+            {
+                textBoxCem.Text = "";
+                return;
+            }
+            textBoxCem.Text = (Convert.ToDecimal(textBoxQiymet.Text) * Convert.ToInt32(textBoxMiqdar.Text)).ToString();
+
+        }
+
+        private void textBoxQiymet_TextChanged(object sender, EventArgs e)
+        {
+            
+            if (textBoxQiymet.Text == "")
+            {
+                textBoxCem.Text = "";
+                return;
+            }
+            if (textBoxMiqdar.Text=="")
+            {
+                textBoxCem.Text = "";
+                return;
+            }
+            int miqdar = Convert.ToInt32(textBoxMiqdar.Text);
+            decimal qiymet = Convert.ToDecimal(textBoxQiymet.Text);
+            textBoxCem.Text = ( qiymet*miqdar ).ToString();
 
         }
     }
