@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Business.ValidationRules
 {
-    public class CartValidator : AbstractValidator<Sale>, IEntityValidator
+    public class CartValidator : AbstractValidator<Cart>, IEntityValidator
     {
         public CartValidator()
         {

@@ -77,6 +77,17 @@ namespace Business.Concrete
             return new SuccessDataResult<Product>(get, ProductMessages.ProductFound);
         }
 
+        [CacheAspect]
+        public IDataResult<Product> GetByProductBarodeNumber(int barodeNumber)
+        {
+            Product get = _productDal.Get(p => p.BarcodeNumber == barodeNumber);
+            if (get == null)
+            {
+                return new ErrorDataResult<Product>(ProductMessages.ProductNotFound);
+            }
+            return new SuccessDataResult<Product>(get, ProductMessages.ProductFound);
+        }
+
 
 
         //DTOs------------------------------------>

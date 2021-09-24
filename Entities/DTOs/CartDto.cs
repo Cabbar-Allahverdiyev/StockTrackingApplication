@@ -7,11 +7,12 @@ namespace Entities.DTOs
 {
     public class CartDto : IDto
     {
-        public int Id { get; set; }
+        public int CartId { get; set; }
         public int ProductId { get; set; }
         public int BarcodeNumber { get; set; }
         public string ProductName { get; set; }
         public decimal UnitPrice { get; set; }
+        public int UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public decimal SoldPrice { get; set; }

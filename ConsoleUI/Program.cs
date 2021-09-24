@@ -13,14 +13,17 @@ namespace ConsoleUI
         {
             // UserManager userManager = new UserManager(new EfUserDal());
             // ProductManager productManager = new ProductManager(new EfProductDal());
-            SupplierManager supplierManager = new SupplierManager(new EfSupplierDal());
-            EfSupplierDal efSupplierDal = new EfSupplierDal();
-            var get = efSupplierDal.GetAll();    
+            //SupplierManager supplierManager = new SupplierManager(new EfSupplierDal());
+            //EfSupplierDal efSupplierDal = new EfSupplierDal();
+            CartManager _cartManager = new CartManager(new EfCartDal());
+            var get = _cartManager.GetByCartBarcodeNumber(2);
 
-            foreach (var s in get)
+            if (get==null)
             {
-                Console.WriteLine(s.CompanyName);
+                 Console.WriteLine(get.Message);
+                return;
             }
+            Console.WriteLine(get.Message);
             //foreach (var p in supplierManager.GetAll().Data)
             //{
             //    Console.WriteLine(p.CompanyName);

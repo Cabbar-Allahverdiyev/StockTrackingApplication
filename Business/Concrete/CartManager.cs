@@ -7,6 +7,7 @@ using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -31,7 +32,7 @@ namespace Business.Concrete
             {
                 return new ErrorDataResult<Cart>(result.Message);
             }
-
+            cart.CartDate = DateTime.Now;
             _cartDal.Add(cart);
             return new SuccessResult(CartMessages.Added);
         }
@@ -47,6 +48,7 @@ namespace Business.Concrete
         [CacheRemoveAspect("ICartService.Get")]
         public IResult Update(Cart cart)
         {
+            cart.CartDate = DateTime.Now;
             _cartDal.Update(cart);
             return new SuccessResult(CartMessages.Updated);
         }
@@ -62,6 +64,38 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Cart>>(get,CartMessages.GetAll);
         }
 
-       
+        //Metodlar------------------>
+        [CacheAspect] 
+        public IDataResult<CartAddDto> GetCartAddDetailByBarcodeNumber(int barcodeNumber)
+        {
+            CartAddDto get = _cartDal.GetCartAddDetailByBarcodeNumber(barcodeNumber);
+            if (get == null)
+            {
+                return new ErrorDataResult<CartAddDto>(ProductMessages.ProductNotFound);
+            }
+            return new SuccessDataResult<CartAddDto>(get, ProductMessages.ProductFound);
+        } 
+        [CacheAspect] 
+        public IDataResult<CartAddDto> GetCartAddDetailByProductId(int productId)
+        {
+            CartAddDto get = _cartDal.GetCartAddDetailByProductId(productId);
+            if (get == null)
+            {
+                return new ErrorDataResult<CartAddDto>(ProductMessages.ProductNotFound);
+            }
+            return new SuccessDataResult<CartAddDto>(get, ProductMessages.ProductFound);
+        }  
+        [CacheAspect] 
+        public IDataResult<CartDto> GetCartDtoDetailByProductId(int productId)
+        {
+            CartDto get = _cartDal.GetCartDtoDetailByProductId(productId);
+            if (get == null)
+            {
+                return new ErrorDataResult<CartDto>(CartMessages.NotFound);
+            }
+            return new SuccessDataResult<CartDto>(get, CartMessages.Found);
+        }
+
+
     }
 }

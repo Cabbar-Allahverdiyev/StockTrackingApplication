@@ -1,8 +1,12 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
+using Business.Constants.Messages;
+using Business.ValidationRules;
+using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using Entities.DTOs;
+using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,12 +14,15 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using WindowsForm.Core.Controllers;
 
 namespace WindowsForm
 {
     public partial class SalesForm : Form
     {
         ProductManager _productManager = new ProductManager(new EfProductDal());
+        CartManager _cartManager = new CartManager(new EfCartDal());
+        ResultControllers resultControllers = new ResultControllers();
 
         FormUserAdd _formUserAdd = new FormUserAdd(new UserManager(new EfUserDal()));
         FormUserListed _formUserListed = new FormUserListed(new UserManager(new EfUserDal()));
@@ -24,6 +31,10 @@ namespace WindowsForm
         FormCategory _formCategory = new FormCategory();
         SupplierForm _supplierForm = new SupplierForm();
         FormProductList _formProductList = new FormProductList();
+
+
+        bool isBarcodeNumberExists = false;
+
 
 
         public SalesForm()
@@ -36,6 +47,9 @@ namespace WindowsForm
         private void SalesForm_Load(object sender, EventArgs e)
         {
             dataGridViewProductList.DataSource = _productManager.GetAllProductViewDasgboardDetails().Data;
+            dataGridViewCartList.DataSource = _cartManager.GetAll().Data;
+            GroupBoxMehsulControlClear();
+
         }
 
         private void ButtonSalesFormIstifadeciElaveEtmek_Click(object sender, EventArgs e)
@@ -89,11 +103,36 @@ namespace WindowsForm
 
         private void ButtonSalesFormSil_Click(object sender, EventArgs e)
         {
+            Cart cart = new Cart();
+            CartAddDto cartAddDto = _cartManager.GetCartAddDetailByBarcodeNumber(int.Parse(textBoxBarkodNo.Text)).Data;
+            cart.Id = cartAddDto.CartId;
 
+            if (cartAddDto.Quantity <= 1 ||textBoxMiqdar.Text == "" || cartAddDto.Quantity <= Convert.ToInt32(textBoxMiqdar.Text))
+            {
+                IResult result = _cartManager.Delete(cart);
+                resultControllers.ResultIsSucces(result);
+            }
+            else
+            {
+                cart.ProductId = int.Parse(textBoxProductId.Text);
+                cart.UserId = cartAddDto.UserId;
+                cart.Quantity = cartAddDto.Quantity - Convert.ToInt32(textBoxMiqdar.Text);
+                cart.SoldPrice = cartAddDto.SoldPrice;
+                CalculateTotalPrice(cart.Quantity, cart.SoldPrice);
+                cart.TotalPrice = Convert.ToDecimal(textBoxCem.Text);
+                //  CartValidation(cart);
+                IResult result = _cartManager.Update(cart);
+                resultControllers.ResultIsSucces(result);
+
+            }
+            GroupBoxMehsulControlClear();
+            dataGridViewCartList.DataSource = _cartManager.GetAll().Data;
         }
 
         private void DataGridViewSalesForm_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            GroupBoxMehsulControlClear();
+            textBoxProductId.Text = dataGridViewProductList.CurrentRow.Cells["ProductId"].Value.ToString();
             textBoxBarkodNo.Text = dataGridViewProductList.CurrentRow.Cells["BarcodeNomresi"].Value.ToString();
             textBoxMehsulAdi.Text = dataGridViewProductList.CurrentRow.Cells["MehsulAdi"].Value.ToString();
             textBoxMaxQiymet.Text = dataGridViewProductList.CurrentRow.Cells["Qiymet"].Value.ToString();
@@ -101,39 +140,154 @@ namespace WindowsForm
 
         private void ButtonSalesFormElaveEt_Click(object sender, EventArgs e)
         {
-            CartAddDto cartAddDto = new CartAddDto();
-            cartAddDto.BarcodeNumber = int.Parse(textBoxBarkodNo.Text);
-            cartAddDto.UnitPrice = decimal.Parse(textBoxMaxQiymet.Text);
+            Cart cart = new Cart();
+            IResult cartUpdated;
+            IResult cartAdded;
+            if (textBoxProductId.Text == "")
+            {
+                MessageBox.Show(ProductMessages.SureFillInFields, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            cart.ProductId = int.Parse(textBoxProductId.Text);
+            cart.SoldPrice = decimal.Parse(textBoxQiymet.Text);
+            cart.Quantity = int.Parse(textBoxMiqdar.Text);
+            cart.TotalPrice = decimal.Parse(textBoxCem.Text);
+            cart.UserId = 2;
+
+            CartValidation(cart);
+
+            IsBarcodeNumberExists();
+            if (isBarcodeNumberExists == true)
+            {
+                CartAddDto cartAddDto = _cartManager.GetCartAddDetailByBarcodeNumber(int.Parse(textBoxBarkodNo.Text)).Data;
+                cart.Id = cartAddDto.CartId;
+                cart.Quantity = cartAddDto.Quantity + int.Parse(textBoxMiqdar.Text);
+                cart.SoldPrice = decimal.Parse(textBoxQiymet.Text);
+                cart.TotalPrice = cart.SoldPrice * cart.Quantity;
+                cartUpdated = _cartManager.Update(cart);
+                resultControllers.ResultIsSucces(cartUpdated);
+
+            }
+            else
+            {
+                cartAdded = _cartManager.Add(cart);
+                resultControllers.ResultIsSucces(cartAdded);
+
+            }
+            dataGridViewCartList.DataSource = _cartManager.GetAll().Data;
+            GroupBoxMehsulControlClear();
         }
 
         private void textBoxMiqdar_TextChanged(object sender, EventArgs e)
         {
-            if (textBoxMiqdar.Text=="")
+
+            try
+            {
+                CalculateTotalPrice(int.Parse(textBoxMiqdar.Text), decimal.Parse(textBoxQiymet.Text));
+            }
+            catch (Exception)
             {
                 textBoxCem.Text = "";
                 return;
             }
-            textBoxCem.Text = (Convert.ToDecimal(textBoxQiymet.Text) * Convert.ToInt32(textBoxMiqdar.Text)).ToString();
-
         }
 
         private void textBoxQiymet_TextChanged(object sender, EventArgs e)
         {
-            
-            if (textBoxQiymet.Text == "")
+            try
+            {
+                CalculateTotalPrice(int.Parse(textBoxMiqdar.Text), decimal.Parse(textBoxQiymet.Text));
+            }
+            catch (Exception)
             {
                 textBoxCem.Text = "";
                 return;
+                
             }
-            if (textBoxMiqdar.Text=="")
-            {
-                textBoxCem.Text = "";
-                return;
-            }
-            int miqdar = Convert.ToInt32(textBoxMiqdar.Text);
-            decimal qiymet = Convert.ToDecimal(textBoxQiymet.Text);
-            textBoxCem.Text = ( qiymet*miqdar ).ToString();
 
         }
+
+        private void dataGridViewCartList_DoubleClick(object sender, EventArgs e)
+        {
+            GroupBoxMehsulControlClear();
+
+            textBoxProductId.Text = dataGridViewCartList.CurrentRow.Cells["ProductId"].Value.ToString();
+
+            CartDto cartDto = _cartManager.GetCartDtoDetailByProductId(Convert.ToInt32(textBoxProductId.Text)).Data;
+            textBoxBarkodNo.Text = cartDto.BarcodeNumber.ToString();
+            textBoxMehsulAdi.Text = cartDto.ProductName.ToString();
+            textBoxMaxQiymet.Text = cartDto.UnitPrice.ToString();
+
+            textBoxQiymet.Text = dataGridViewCartList.CurrentRow.Cells["SoldPrice"].Value.ToString();
+            textBoxMiqdar.Text = dataGridViewCartList.CurrentRow.Cells["Quantity"].Value.ToString();
+            textBoxCem.Text = dataGridViewCartList.CurrentRow.Cells["TotalPrice"].Value.ToString();
+
+        }
+
+
+
+
+        //Elave metodlar--------------------------->
+        private void CalculateTotalPrice(int quantity, decimal price)
+        {
+            if (quantity <= 0||price<=0)
+            {
+                textBoxCem.Text = "";
+                return;
+            }
+            else
+            {
+
+                textBoxCem.Text = (price * quantity).ToString();
+                return;
+            }
+            
+
+        }
+
+
+        private void GroupBoxMehsulControlClear()
+        {
+            foreach (Control control in groupBoxMehsul.Controls)
+            {
+                if (control is TextBox)
+                {
+                    control.Text = "";
+                }
+
+            }
+            textBoxMiqdar.Text = "1";
+        }
+
+        private void IsBarcodeNumberExists()
+        {
+            IDataResult<CartAddDto> result = _cartManager.GetCartAddDetailByBarcodeNumber(Convert.ToInt32(textBoxBarkodNo.Text));
+            if (result.Success)
+            {
+                isBarcodeNumberExists = true;
+                return;
+            }
+            isBarcodeNumberExists = false;
+            return;
+
+        }
+
+        private void CartValidation(Cart cart)
+        {
+            CartValidator validationRules = new CartValidator();
+            ValidationResult results = validationRules.Validate(cart);
+            if (!results.IsValid)
+            {
+                foreach (ValidationFailure validationFailure in results.Errors)
+                {
+                    MessageBox.Show(validationFailure.ErrorMessage, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+        }
+
+
+
+
     }
 }

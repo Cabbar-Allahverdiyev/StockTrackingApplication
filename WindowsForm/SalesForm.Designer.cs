@@ -42,14 +42,14 @@ namespace WindowsForm
             this.dataGridViewProductList = new System.Windows.Forms.DataGridView();
             this.ButtonSalesFormSil = new System.Windows.Forms.Button();
             this.ButonSalesFormSatisIptal = new System.Windows.Forms.Button();
-            this.GroupBoxSalesFormMusteriEmeliyyatlari = new System.Windows.Forms.GroupBox();
+            this.groupBoxMusteri = new System.Windows.Forms.GroupBox();
             this.TextBoxSalesFormTelefon = new System.Windows.Forms.TextBox();
             this.TextBoxSalesFormSoyad = new System.Windows.Forms.TextBox();
             this.TextBoxSalesFormAd = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBoxMehsul = new System.Windows.Forms.GroupBox();
             this.textBoxProductId = new System.Windows.Forms.TextBox();
             this.textBoxMaxQiymet = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -71,8 +71,8 @@ namespace WindowsForm
             this.dataGridViewCartList = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductList)).BeginInit();
-            this.GroupBoxSalesFormMusteriEmeliyyatlari.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.groupBoxMusteri.SuspendLayout();
+            this.groupBoxMehsul.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCartList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -200,9 +200,9 @@ namespace WindowsForm
             // 
             // ButtonSalesFormSil
             // 
-            this.ButtonSalesFormSil.Location = new System.Drawing.Point(1283, 86);
+            this.ButtonSalesFormSil.Location = new System.Drawing.Point(167, 260);
             this.ButtonSalesFormSil.Name = "ButtonSalesFormSil";
-            this.ButtonSalesFormSil.Size = new System.Drawing.Size(75, 23);
+            this.ButtonSalesFormSil.Size = new System.Drawing.Size(71, 23);
             this.ButtonSalesFormSil.TabIndex = 2;
             this.ButtonSalesFormSil.Text = "Sil";
             this.ButtonSalesFormSil.UseVisualStyleBackColor = true;
@@ -217,20 +217,20 @@ namespace WindowsForm
             this.ButonSalesFormSatisIptal.Text = "Satis iptal";
             this.ButonSalesFormSatisIptal.UseVisualStyleBackColor = true;
             // 
-            // GroupBoxSalesFormMusteriEmeliyyatlari
+            // groupBoxMusteri
             // 
-            this.GroupBoxSalesFormMusteriEmeliyyatlari.Controls.Add(this.TextBoxSalesFormTelefon);
-            this.GroupBoxSalesFormMusteriEmeliyyatlari.Controls.Add(this.TextBoxSalesFormSoyad);
-            this.GroupBoxSalesFormMusteriEmeliyyatlari.Controls.Add(this.TextBoxSalesFormAd);
-            this.GroupBoxSalesFormMusteriEmeliyyatlari.Controls.Add(this.label4);
-            this.GroupBoxSalesFormMusteriEmeliyyatlari.Controls.Add(this.label3);
-            this.GroupBoxSalesFormMusteriEmeliyyatlari.Controls.Add(this.label2);
-            this.GroupBoxSalesFormMusteriEmeliyyatlari.Location = new System.Drawing.Point(12, 86);
-            this.GroupBoxSalesFormMusteriEmeliyyatlari.Name = "GroupBoxSalesFormMusteriEmeliyyatlari";
-            this.GroupBoxSalesFormMusteriEmeliyyatlari.Size = new System.Drawing.Size(244, 130);
-            this.GroupBoxSalesFormMusteriEmeliyyatlari.TabIndex = 8;
-            this.GroupBoxSalesFormMusteriEmeliyyatlari.TabStop = false;
-            this.GroupBoxSalesFormMusteriEmeliyyatlari.Text = "Musteri";
+            this.groupBoxMusteri.Controls.Add(this.TextBoxSalesFormTelefon);
+            this.groupBoxMusteri.Controls.Add(this.TextBoxSalesFormSoyad);
+            this.groupBoxMusteri.Controls.Add(this.TextBoxSalesFormAd);
+            this.groupBoxMusteri.Controls.Add(this.label4);
+            this.groupBoxMusteri.Controls.Add(this.label3);
+            this.groupBoxMusteri.Controls.Add(this.label2);
+            this.groupBoxMusteri.Location = new System.Drawing.Point(12, 86);
+            this.groupBoxMusteri.Name = "groupBoxMusteri";
+            this.groupBoxMusteri.Size = new System.Drawing.Size(244, 130);
+            this.groupBoxMusteri.TabIndex = 8;
+            this.groupBoxMusteri.TabStop = false;
+            this.groupBoxMusteri.Text = "Musteri";
             // 
             // TextBoxSalesFormTelefon
             // 
@@ -280,28 +280,29 @@ namespace WindowsForm
             this.label2.TabIndex = 0;
             this.label2.Text = "Ad";
             // 
-            // groupBox2
+            // groupBoxMehsul
             // 
-            this.groupBox2.Controls.Add(this.textBoxProductId);
-            this.groupBox2.Controls.Add(this.textBoxMaxQiymet);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.textBoxCem);
-            this.groupBox2.Controls.Add(this.textBoxQiymet);
-            this.groupBox2.Controls.Add(this.ButtonSalesFormElaveEt);
-            this.groupBox2.Controls.Add(this.textBoxMehsulAdi);
-            this.groupBox2.Controls.Add(this.textBoxMiqdar);
-            this.groupBox2.Controls.Add(this.textBoxBarkodNo);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Location = new System.Drawing.Point(12, 264);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(244, 284);
-            this.groupBox2.TabIndex = 9;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Mehsul";
+            this.groupBoxMehsul.Controls.Add(this.textBoxProductId);
+            this.groupBoxMehsul.Controls.Add(this.textBoxMaxQiymet);
+            this.groupBoxMehsul.Controls.Add(this.label10);
+            this.groupBoxMehsul.Controls.Add(this.textBoxCem);
+            this.groupBoxMehsul.Controls.Add(this.textBoxQiymet);
+            this.groupBoxMehsul.Controls.Add(this.ButtonSalesFormElaveEt);
+            this.groupBoxMehsul.Controls.Add(this.textBoxMehsulAdi);
+            this.groupBoxMehsul.Controls.Add(this.textBoxMiqdar);
+            this.groupBoxMehsul.Controls.Add(this.ButtonSalesFormSil);
+            this.groupBoxMehsul.Controls.Add(this.textBoxBarkodNo);
+            this.groupBoxMehsul.Controls.Add(this.label9);
+            this.groupBoxMehsul.Controls.Add(this.label8);
+            this.groupBoxMehsul.Controls.Add(this.label6);
+            this.groupBoxMehsul.Controls.Add(this.label5);
+            this.groupBoxMehsul.Controls.Add(this.label7);
+            this.groupBoxMehsul.Location = new System.Drawing.Point(12, 264);
+            this.groupBoxMehsul.Name = "groupBoxMehsul";
+            this.groupBoxMehsul.Size = new System.Drawing.Size(244, 298);
+            this.groupBoxMehsul.TabIndex = 9;
+            this.groupBoxMehsul.TabStop = false;
+            this.groupBoxMehsul.Text = "Mehsul";
             // 
             // textBoxProductId
             // 
@@ -476,6 +477,7 @@ namespace WindowsForm
             this.dataGridViewCartList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewCartList.Size = new System.Drawing.Size(1010, 203);
             this.dataGridViewCartList.TabIndex = 15;
+            this.dataGridViewCartList.DoubleClick += new System.EventHandler(this.dataGridViewCartList_DoubleClick);
             // 
             // SalesForm
             // 
@@ -488,10 +490,9 @@ namespace WindowsForm
             this.Controls.Add(this.LabelSalesFormUmuniCem_qiymet);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ButtonSalesFormSatisEtmek);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.GroupBoxSalesFormMusteriEmeliyyatlari);
+            this.Controls.Add(this.groupBoxMehsul);
+            this.Controls.Add(this.groupBoxMusteri);
             this.Controls.Add(this.ButonSalesFormSatisIptal);
-            this.Controls.Add(this.ButtonSalesFormSil);
             this.Controls.Add(this.dataGridViewProductList);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -503,10 +504,10 @@ namespace WindowsForm
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductList)).EndInit();
-            this.GroupBoxSalesFormMusteriEmeliyyatlari.ResumeLayout(false);
-            this.GroupBoxSalesFormMusteriEmeliyyatlari.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.groupBoxMusteri.ResumeLayout(false);
+            this.groupBoxMusteri.PerformLayout();
+            this.groupBoxMehsul.ResumeLayout(false);
+            this.groupBoxMehsul.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCartList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -524,14 +525,14 @@ namespace WindowsForm
         private System.Windows.Forms.DataGridView dataGridViewProductList;
         private System.Windows.Forms.Button ButtonSalesFormSil;
         private System.Windows.Forms.Button ButonSalesFormSatisIptal;
-        private System.Windows.Forms.GroupBox GroupBoxSalesFormMusteriEmeliyyatlari;
+        private System.Windows.Forms.GroupBox groupBoxMusteri;
         private System.Windows.Forms.TextBox TextBoxSalesFormTelefon;
         private System.Windows.Forms.TextBox TextBoxSalesFormSoyad;
         private System.Windows.Forms.TextBox TextBoxSalesFormAd;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBoxMehsul;
         private System.Windows.Forms.TextBox textBoxCem;
         private System.Windows.Forms.TextBox textBoxQiymet;
         private System.Windows.Forms.TextBox textBoxMiqdar;
