@@ -116,6 +116,14 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-        
+        public IDataResult<List<Cart>> GetAllByUserId(int userId)
+        {
+            List<Cart> carts = _cartDal.GetAll(c => c.UserId == userId);
+            if (carts is null)
+            {
+                return new ErrorDataResult<List<Cart>>(CartMessages.NotFound);
+            }
+            return new SuccessDataResult<List<Cart>>(carts,CartMessages.Found);
+        }
     }
 }

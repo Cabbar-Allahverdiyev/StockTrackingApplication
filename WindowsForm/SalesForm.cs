@@ -195,6 +195,23 @@ namespace WindowsForm
 
         private void ButtonSalesFormSatisEtmek_Click(object sender, EventArgs e)
         {
+            Sale sale = new Sale();
+            //Product product = new Product();
+
+            IDataResult<List<Cart>> carts = _cartManager.GetAllByUserId(2);
+
+            foreach (Cart cart in carts.Data)
+            {
+                Product product = _productManager.GetByProductId(cart.ProductId).Data;
+                product.UnitsOnOrder += cart.Quantity;
+                
+            }
+            //for (int i = 0; i < dataGridViewCartList.Rows.Count-1; i++)
+            //{
+
+            //}
+
+            //_productManager.Update(product);
             TotalPriceLabelWrite();
         }
 
@@ -326,9 +343,9 @@ namespace WindowsForm
         private decimal TotalCartPriceCalculation()
         {
             decimal tolalPrice = 0;
-            decimal price ;
+            decimal price;
             List<Cart> carts = _cartManager.GetAll().Data;
-            
+
             foreach (Cart cart in carts)
             {
                 price = cart.TotalPrice;
@@ -336,11 +353,11 @@ namespace WindowsForm
             }
             return tolalPrice;
         }
-        private void TotalPriceLabelWrite() 
+        private void TotalPriceLabelWrite()
         {
-            LabelSalesFormUmuniCem_qiymet.Text = TotalCartPriceCalculation().ToString(); 
+            LabelSalesFormUmuniCem_qiymet.Text = TotalCartPriceCalculation().ToString();
         }
 
-        
+
     }
 }

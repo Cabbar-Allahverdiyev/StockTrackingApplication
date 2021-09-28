@@ -19,6 +19,7 @@ namespace Business.Abstract
 
         IResult ByUserIdAllRemove(int userId);
         IDataResult<List<CartViewDto>> GetAllCartViewDetailsByUserId(int userId);
+        IDataResult<List<Cart>> GetAllByUserId(int userId);
 
        
     }

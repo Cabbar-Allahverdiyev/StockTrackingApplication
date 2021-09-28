@@ -69,6 +69,8 @@ namespace WindowsForm
             this.LabelSalesFormUmuniCem_qiymet = new System.Windows.Forms.Label();
             this.ButtonSalesFormYenile = new System.Windows.Forms.Button();
             this.dataGridViewCartList = new System.Windows.Forms.DataGridView();
+            this.textBoxAxtarBarcodeNumber = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductList)).BeginInit();
             this.groupBoxMusteri.SuspendLayout();
@@ -201,7 +203,7 @@ namespace WindowsForm
             // 
             // ButtonSalesFormSil
             // 
-            this.ButtonSalesFormSil.Location = new System.Drawing.Point(167, 260);
+            this.ButtonSalesFormSil.Location = new System.Drawing.Point(167, 289);
             this.ButtonSalesFormSil.Name = "ButtonSalesFormSil";
             this.ButtonSalesFormSil.Size = new System.Drawing.Size(71, 23);
             this.ButtonSalesFormSil.TabIndex = 2;
@@ -284,6 +286,8 @@ namespace WindowsForm
             // 
             // groupBoxMehsul
             // 
+            this.groupBoxMehsul.Controls.Add(this.label11);
+            this.groupBoxMehsul.Controls.Add(this.textBoxAxtarBarcodeNumber);
             this.groupBoxMehsul.Controls.Add(this.textBoxProductId);
             this.groupBoxMehsul.Controls.Add(this.textBoxMaxQiymet);
             this.groupBoxMehsul.Controls.Add(this.label10);
@@ -301,7 +305,7 @@ namespace WindowsForm
             this.groupBoxMehsul.Controls.Add(this.label7);
             this.groupBoxMehsul.Location = new System.Drawing.Point(12, 264);
             this.groupBoxMehsul.Name = "groupBoxMehsul";
-            this.groupBoxMehsul.Size = new System.Drawing.Size(244, 298);
+            this.groupBoxMehsul.Size = new System.Drawing.Size(244, 318);
             this.groupBoxMehsul.TabIndex = 9;
             this.groupBoxMehsul.TabStop = false;
             this.groupBoxMehsul.Text = "Mehsul";
@@ -309,7 +313,7 @@ namespace WindowsForm
             // textBoxProductId
             // 
             this.textBoxProductId.Enabled = false;
-            this.textBoxProductId.Location = new System.Drawing.Point(100, 17);
+            this.textBoxProductId.Location = new System.Drawing.Point(100, 46);
             this.textBoxProductId.Name = "textBoxProductId";
             this.textBoxProductId.Size = new System.Drawing.Size(138, 23);
             this.textBoxProductId.TabIndex = 14;
@@ -317,7 +321,7 @@ namespace WindowsForm
             // textBoxMaxQiymet
             // 
             this.textBoxMaxQiymet.Enabled = false;
-            this.textBoxMaxQiymet.Location = new System.Drawing.Point(100, 106);
+            this.textBoxMaxQiymet.Location = new System.Drawing.Point(100, 135);
             this.textBoxMaxQiymet.Name = "textBoxMaxQiymet";
             this.textBoxMaxQiymet.Size = new System.Drawing.Size(138, 23);
             this.textBoxMaxQiymet.TabIndex = 13;
@@ -325,7 +329,7 @@ namespace WindowsForm
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 106);
+            this.label10.Location = new System.Drawing.Point(6, 135);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(72, 15);
             this.label10.TabIndex = 12;
@@ -334,14 +338,14 @@ namespace WindowsForm
             // textBoxCem
             // 
             this.textBoxCem.Enabled = false;
-            this.textBoxCem.Location = new System.Drawing.Point(100, 195);
+            this.textBoxCem.Location = new System.Drawing.Point(100, 224);
             this.textBoxCem.Name = "textBoxCem";
             this.textBoxCem.Size = new System.Drawing.Size(138, 23);
             this.textBoxCem.TabIndex = 9;
             // 
             // textBoxQiymet
             // 
-            this.textBoxQiymet.Location = new System.Drawing.Point(100, 135);
+            this.textBoxQiymet.Location = new System.Drawing.Point(100, 164);
             this.textBoxQiymet.Name = "textBoxQiymet";
             this.textBoxQiymet.Size = new System.Drawing.Size(138, 23);
             this.textBoxQiymet.TabIndex = 8;
@@ -349,7 +353,7 @@ namespace WindowsForm
             // 
             // ButtonSalesFormElaveEt
             // 
-            this.ButtonSalesFormElaveEt.Location = new System.Drawing.Point(167, 224);
+            this.ButtonSalesFormElaveEt.Location = new System.Drawing.Point(167, 253);
             this.ButtonSalesFormElaveEt.Name = "ButtonSalesFormElaveEt";
             this.ButtonSalesFormElaveEt.Size = new System.Drawing.Size(71, 30);
             this.ButtonSalesFormElaveEt.TabIndex = 11;
@@ -360,14 +364,14 @@ namespace WindowsForm
             // textBoxMehsulAdi
             // 
             this.textBoxMehsulAdi.Enabled = false;
-            this.textBoxMehsulAdi.Location = new System.Drawing.Point(100, 76);
+            this.textBoxMehsulAdi.Location = new System.Drawing.Point(100, 105);
             this.textBoxMehsulAdi.Name = "textBoxMehsulAdi";
             this.textBoxMehsulAdi.Size = new System.Drawing.Size(138, 23);
             this.textBoxMehsulAdi.TabIndex = 6;
             // 
             // textBoxMiqdar
             // 
-            this.textBoxMiqdar.Location = new System.Drawing.Point(100, 166);
+            this.textBoxMiqdar.Location = new System.Drawing.Point(100, 195);
             this.textBoxMiqdar.Name = "textBoxMiqdar";
             this.textBoxMiqdar.Size = new System.Drawing.Size(138, 23);
             this.textBoxMiqdar.TabIndex = 7;
@@ -375,8 +379,7 @@ namespace WindowsForm
             // 
             // textBoxBarkodNo
             // 
-            this.textBoxBarkodNo.Enabled = false;
-            this.textBoxBarkodNo.Location = new System.Drawing.Point(100, 46);
+            this.textBoxBarkodNo.Location = new System.Drawing.Point(100, 75);
             this.textBoxBarkodNo.Name = "textBoxBarkodNo";
             this.textBoxBarkodNo.Size = new System.Drawing.Size(138, 23);
             this.textBoxBarkodNo.TabIndex = 5;
@@ -384,7 +387,7 @@ namespace WindowsForm
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 198);
+            this.label9.Location = new System.Drawing.Point(6, 227);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(35, 15);
             this.label9.TabIndex = 4;
@@ -393,7 +396,7 @@ namespace WindowsForm
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 138);
+            this.label8.Location = new System.Drawing.Point(6, 167);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(49, 15);
             this.label8.TabIndex = 3;
@@ -402,7 +405,7 @@ namespace WindowsForm
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 76);
+            this.label6.Location = new System.Drawing.Point(6, 105);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(68, 15);
             this.label6.TabIndex = 1;
@@ -411,7 +414,7 @@ namespace WindowsForm
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 46);
+            this.label5.Location = new System.Drawing.Point(6, 75);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(63, 15);
             this.label5.TabIndex = 0;
@@ -420,7 +423,7 @@ namespace WindowsForm
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 169);
+            this.label7.Location = new System.Drawing.Point(6, 198);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(48, 15);
             this.label7.TabIndex = 2;
@@ -482,6 +485,22 @@ namespace WindowsForm
             this.dataGridViewCartList.TabIndex = 15;
             this.dataGridViewCartList.DoubleClick += new System.EventHandler(this.dataGridViewCartList_DoubleClick);
             // 
+            // textBoxAxtarBarcodeNumber
+            // 
+            this.textBoxAxtarBarcodeNumber.Location = new System.Drawing.Point(100, 17);
+            this.textBoxAxtarBarcodeNumber.Name = "textBoxAxtarBarcodeNumber";
+            this.textBoxAxtarBarcodeNumber.Size = new System.Drawing.Size(138, 23);
+            this.textBoxAxtarBarcodeNumber.TabIndex = 16;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(57, 20);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(37, 15);
+            this.label11.TabIndex = 17;
+            this.label11.Text = "Axtar:";
+            // 
             // SalesForm
             // 
             this.AcceptButton = this.ButtonSalesFormElaveEt;
@@ -499,7 +518,6 @@ namespace WindowsForm
             this.Controls.Add(this.ButonSalesFormSatisIptal);
             this.Controls.Add(this.dataGridViewProductList);
             this.Controls.Add(this.panel1);
-            this.Enabled = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SalesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -561,5 +579,7 @@ namespace WindowsForm
         private System.Windows.Forms.TextBox textBoxMaxQiymet;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBoxProductId;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textBoxAxtarBarcodeNumber;
     }
 }
