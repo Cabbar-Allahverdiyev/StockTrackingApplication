@@ -16,5 +16,8 @@ namespace Business.Constants.Messages
         public static string GetAll = "Satış sıralandi";
         public static string Found = "Satış tapıldı";
         public static string NotFound = "Belə bir Satış yoxdur";
+
+
+        public static string SaleCancel = "Satış ləğv edildi";
     }
 }

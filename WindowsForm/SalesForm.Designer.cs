@@ -142,6 +142,7 @@ namespace WindowsForm
             this.ButtonSalesFormSatislariSirala.TabIndex = 4;
             this.ButtonSalesFormSatislariSirala.Text = "Satislari sirala";
             this.ButtonSalesFormSatislariSirala.UseVisualStyleBackColor = true;
+            this.ButtonSalesFormSatislariSirala.Click += new System.EventHandler(this.ButtonSalesFormSatislariSirala_Click);
             // 
             // ButtonSalesFormMehsullariSirala
             // 
@@ -216,6 +217,7 @@ namespace WindowsForm
             this.ButonSalesFormSatisIptal.TabIndex = 3;
             this.ButonSalesFormSatisIptal.Text = "Satis iptal";
             this.ButonSalesFormSatisIptal.UseVisualStyleBackColor = true;
+            this.ButonSalesFormSatisIptal.Click += new System.EventHandler(this.ButonSalesFormSatisIptal_Click);
             // 
             // groupBoxMusteri
             // 
@@ -432,6 +434,7 @@ namespace WindowsForm
             this.ButtonSalesFormSatisEtmek.TabIndex = 10;
             this.ButtonSalesFormSatisEtmek.Text = "Satis Etmek";
             this.ButtonSalesFormSatisEtmek.UseVisualStyleBackColor = true;
+            this.ButtonSalesFormSatisEtmek.Click += new System.EventHandler(this.ButtonSalesFormSatisEtmek_Click);
             // 
             // label1
             // 
@@ -481,6 +484,7 @@ namespace WindowsForm
             // 
             // SalesForm
             // 
+            this.AcceptButton = this.ButtonSalesFormElaveEt;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -495,6 +499,7 @@ namespace WindowsForm
             this.Controls.Add(this.ButonSalesFormSatisIptal);
             this.Controls.Add(this.dataGridViewProductList);
             this.Controls.Add(this.panel1);
+            this.Enabled = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SalesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

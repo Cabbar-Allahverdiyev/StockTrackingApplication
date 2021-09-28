@@ -17,6 +17,9 @@ namespace Business.Abstract
         IResult Update(Cart cart);
         IResult Delete(Cart cart);
 
+        IResult ByUserIdAllRemove(int userId);
+        IDataResult<List<CartViewDto>> GetAllCartViewDetailsByUserId(int userId);
+
        
     }
 }

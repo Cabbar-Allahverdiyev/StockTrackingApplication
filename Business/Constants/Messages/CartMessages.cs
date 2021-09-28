@@ -16,5 +16,6 @@ namespace Business.Constants.Messages
         public static string GetAll = "Səbət sıralandi";
         public static string Found = "Səbət tapıldı";
         public static string NotFound = "Belə bir Səbət yoxdur";
+       
     }
 }

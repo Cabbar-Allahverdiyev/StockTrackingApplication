@@ -31,6 +31,7 @@ namespace WindowsForm
         FormCategory _formCategory = new FormCategory();
         SupplierForm _supplierForm = new SupplierForm();
         FormProductList _formProductList = new FormProductList();
+        FormSalesList _formSalesList = new FormSalesList();
 
 
         bool isBarcodeNumberExists = false;
@@ -40,30 +41,24 @@ namespace WindowsForm
         public SalesForm()
         {
             InitializeComponent();
-
-
+            TotalPriceLabelWrite();
         }
 
         private void SalesForm_Load(object sender, EventArgs e)
         {
-            dataGridViewProductList.DataSource = _productManager.GetAllProductViewDasgboardDetails().Data;
-            dataGridViewCartList.DataSource = _cartManager.GetAll().Data;
+            ProductListRefesh();
+            CartListRefesh();
             GroupBoxMehsulControlClear();
-
         }
 
         private void ButtonSalesFormIstifadeciElaveEtmek_Click(object sender, EventArgs e)
         {
-
             _formUserAdd.ShowDialog();
-
-
         }
 
         private void ButtonSalesFormIstifadecileriSirala_Click(object sender, EventArgs e)
         {
             _formUserListed.ShowDialog();
-
         }
 
         private void ButtonSalesFormMehsulElaveEtmek_Click(object sender, EventArgs e)
@@ -91,13 +86,20 @@ namespace WindowsForm
             _formProductList.ShowDialog();
         }
 
+        private void ButtonSalesFormSatislariSirala_Click(object sender, EventArgs e)
+        {
+            _formSalesList.ShowDialog();
+        }
+
         private void ButtonSalesFormYenile_Click(object sender, EventArgs e)
         {
-            dataGridViewProductList.DataSource = _productManager.GetAllProductViewDasgboardDetails().Data;
+            ProductListRefesh();
+            CartListRefesh();
         }
 
         private void ButtonX_Click(object sender, EventArgs e)
         {
+            RemoveCart();
             Application.Exit();
         }
 
@@ -107,7 +109,7 @@ namespace WindowsForm
             CartAddDto cartAddDto = _cartManager.GetCartAddDetailByBarcodeNumber(int.Parse(textBoxBarkodNo.Text)).Data;
             cart.Id = cartAddDto.CartId;
 
-            if (cartAddDto.Quantity <= 1 ||textBoxMiqdar.Text == "" || cartAddDto.Quantity <= Convert.ToInt32(textBoxMiqdar.Text))
+            if (cartAddDto.Quantity <= 1 || textBoxMiqdar.Text == "" || cartAddDto.Quantity <= Convert.ToInt32(textBoxMiqdar.Text))
             {
                 IResult result = _cartManager.Delete(cart);
                 resultControllers.ResultIsSucces(result);
@@ -126,7 +128,18 @@ namespace WindowsForm
 
             }
             GroupBoxMehsulControlClear();
-            dataGridViewCartList.DataSource = _cartManager.GetAll().Data;
+            TotalPriceLabelWrite();
+            CartListRefesh();
+        }
+
+        private void ButonSalesFormSatisIptal_Click(object sender, EventArgs e)
+        {
+
+            RemoveCart();
+            CartListRefesh();
+            TotalPriceLabelWrite();
+            MessageBox.Show(SaleMessages.SaleCancel, AuthMessages.InformationMessage, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
 
         private void DataGridViewSalesForm_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -174,13 +187,19 @@ namespace WindowsForm
                 resultControllers.ResultIsSucces(cartAdded);
 
             }
-            dataGridViewCartList.DataSource = _cartManager.GetAll().Data;
+
+            CartListRefesh();
+            TotalPriceLabelWrite();
             GroupBoxMehsulControlClear();
+        }
+
+        private void ButtonSalesFormSatisEtmek_Click(object sender, EventArgs e)
+        {
+            TotalPriceLabelWrite();
         }
 
         private void textBoxMiqdar_TextChanged(object sender, EventArgs e)
         {
-
             try
             {
                 CalculateTotalPrice(int.Parse(textBoxMiqdar.Text), decimal.Parse(textBoxQiymet.Text));
@@ -202,7 +221,7 @@ namespace WindowsForm
             {
                 textBoxCem.Text = "";
                 return;
-                
+
             }
 
         }
@@ -218,10 +237,9 @@ namespace WindowsForm
             textBoxMehsulAdi.Text = cartDto.ProductName.ToString();
             textBoxMaxQiymet.Text = cartDto.UnitPrice.ToString();
 
-            textBoxQiymet.Text = dataGridViewCartList.CurrentRow.Cells["SoldPrice"].Value.ToString();
-            textBoxMiqdar.Text = dataGridViewCartList.CurrentRow.Cells["Quantity"].Value.ToString();
-            textBoxCem.Text = dataGridViewCartList.CurrentRow.Cells["TotalPrice"].Value.ToString();
-
+            textBoxQiymet.Text = dataGridViewCartList.CurrentRow.Cells["Qiymet"].Value.ToString();
+            textBoxMiqdar.Text = dataGridViewCartList.CurrentRow.Cells["Miqdar"].Value.ToString();
+            textBoxCem.Text = dataGridViewCartList.CurrentRow.Cells["Cem"].Value.ToString();
         }
 
 
@@ -230,7 +248,7 @@ namespace WindowsForm
         //Elave metodlar--------------------------->
         private void CalculateTotalPrice(int quantity, decimal price)
         {
-            if (quantity <= 0||price<=0)
+            if (quantity <= 0 || price <= 0)
             {
                 textBoxCem.Text = "";
                 return;
@@ -239,10 +257,9 @@ namespace WindowsForm
             {
 
                 textBoxCem.Text = (price * quantity).ToString();
+
                 return;
             }
-            
-
         }
 
 
@@ -269,7 +286,6 @@ namespace WindowsForm
             }
             isBarcodeNumberExists = false;
             return;
-
         }
 
         private void CartValidation(Cart cart)
@@ -286,8 +302,45 @@ namespace WindowsForm
             }
         }
 
+        private void RemoveCart()
+        {
+            Cart cart = new Cart();
+            cart.UserId = 2;    //Mutleq Dinamiklesdir
+            _cartManager.ByUserIdAllRemove(cart.UserId);
 
 
 
+        }
+
+        private void CartListRefesh()
+        {
+            dataGridViewCartList.DataSource = _cartManager.GetAllCartViewDetailsByUserId(2).Data;
+        }
+
+        private void ProductListRefesh()
+        {
+            dataGridViewProductList.DataSource = _productManager.GetAllProductViewDasgboardDetails().Data;
+        }
+
+
+        private decimal TotalCartPriceCalculation()
+        {
+            decimal tolalPrice = 0;
+            decimal price ;
+            List<Cart> carts = _cartManager.GetAll().Data;
+            
+            foreach (Cart cart in carts)
+            {
+                price = cart.TotalPrice;
+                tolalPrice += price;
+            }
+            return tolalPrice;
+        }
+        private void TotalPriceLabelWrite() 
+        {
+            LabelSalesFormUmuniCem_qiymet.Text = TotalCartPriceCalculation().ToString(); 
+        }
+
+        
     }
 }

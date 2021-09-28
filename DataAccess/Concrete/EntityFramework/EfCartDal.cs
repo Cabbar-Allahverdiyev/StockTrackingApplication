@@ -7,12 +7,15 @@ using System.Linq;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Concrete.EntityFramework
 {
     public class EfCartDal : EfEntityRepositoryBase<Cart, StockTrackingProjectContext>
                                , ICartDal
     {
+
+       
         public CartAddDto GetCartAddDetailByBarcodeNumber(int barcodeNumber)
         {
             using (StockTrackingProjectContext context = new StockTrackingProjectContext())
@@ -89,6 +92,29 @@ namespace DataAccess.Concrete.EntityFramework
 
                 return result.SingleOrDefault();
 
+            }
+        }
+
+        public List<CartViewDto> GetAllCartViewDetails(Expression<Func<CartViewDto, bool>> filter = null)
+        {
+            using (StockTrackingProjectContext context = new StockTrackingProjectContext())
+            {
+                var result = from c in context.Carts
+                             join p in context.Products on c.ProductId equals p.Id
+                             join u in context.Users on c.UserId equals u.Id
+                             select new CartViewDto {
+                                 Id=c.Id,
+                                 ProductId=c.ProductId,
+                                 MehsulAdi=p.ProductName,
+                                 UserId=c.UserId,
+                                 Istifadeci = $"{u.FirstName} {u.LastName}",
+                                 Qiymet=c.SoldPrice,
+                                 Miqdar=c.Quantity,
+                                 Cem=c.TotalPrice,
+                                 CartDate=c.CartDate
+                             };
+
+                return filter == null ? result.ToList() : result.Where(filter).ToList();
             }
         }
     }

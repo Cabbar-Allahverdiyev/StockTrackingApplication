@@ -13,5 +13,6 @@ namespace DataAccess.Abstract
         CartDto GetCartDtoDetailByProductId(int productId);
         CartAddDto GetCartAddDetailByBarcodeNumber(int barcodeNumber);
         CartAddDto GetCartAddDetailByProductId(int productId);
+        List<CartViewDto> GetAllCartViewDetails(Expression<Func<CartViewDto, bool>> filter = null);
     }
 }

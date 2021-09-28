@@ -64,8 +64,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Cart>>(get,CartMessages.GetAll);
         }
 
-        //Metodlar------------------>
-        [CacheAspect] 
+        //Dtos------------------>
         public IDataResult<CartAddDto> GetCartAddDetailByBarcodeNumber(int barcodeNumber)
         {
             CartAddDto get = _cartDal.GetCartAddDetailByBarcodeNumber(barcodeNumber);
@@ -75,7 +74,7 @@ namespace Business.Concrete
             }
             return new SuccessDataResult<CartAddDto>(get, ProductMessages.ProductFound);
         } 
-        [CacheAspect] 
+        
         public IDataResult<CartAddDto> GetCartAddDetailByProductId(int productId)
         {
             CartAddDto get = _cartDal.GetCartAddDetailByProductId(productId);
@@ -85,7 +84,7 @@ namespace Business.Concrete
             }
             return new SuccessDataResult<CartAddDto>(get, ProductMessages.ProductFound);
         }  
-        [CacheAspect] 
+        
         public IDataResult<CartDto> GetCartDtoDetailByProductId(int productId)
         {
             CartDto get = _cartDal.GetCartDtoDetailByProductId(productId);
@@ -96,6 +95,27 @@ namespace Business.Concrete
             return new SuccessDataResult<CartDto>(get, CartMessages.Found);
         }
 
+        public IDataResult<List<CartViewDto>> GetAllCartViewDetailsByUserId(int userId)
+        {
+            List<CartViewDto> get = _cartDal.GetAllCartViewDetails(c=>c.UserId==userId);
+            if (get is null)
+            {
+                return new ErrorDataResult<List<CartViewDto>>(CartMessages.NotFound);
+            }
+            return new SuccessDataResult<List<CartViewDto>>(get, CartMessages.Found);
+        }
 
+        // Metodlar-------------------------------------->
+        public IResult ByUserIdAllRemove(int userId)
+        {
+            List<Cart> carts = _cartDal.GetAll(c=>c.UserId==userId);
+            foreach (var cart in carts)
+            {
+                _cartDal.Delete(cart);
+            }
+            return new SuccessResult();
+        }
+
+        
     }
 }
