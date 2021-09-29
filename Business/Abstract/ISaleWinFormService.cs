@@ -1,5 +1,6 @@
 ﻿using Core.Utilities.Results;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,5 +13,6 @@ namespace Business.Abstract
         IResult Add(SaleWinForm saleWinForm);
         IResult Update(SaleWinForm saleWinForm);
         IResult Delete(SaleWinForm saleWinForm);
+        IDataResult<List<SaleWinFormDto>> GetAllSaleWinFormDtoDetails();
     }
 }

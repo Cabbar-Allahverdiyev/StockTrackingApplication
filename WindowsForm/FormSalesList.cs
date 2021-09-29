@@ -24,7 +24,7 @@ namespace WindowsForm
         }
         private void SaleListRefesh()
         {
-            dataGridViewSaleList.DataSource = _saleWinFormManager.GetAll().Data;   
+            dataGridViewSaleList.DataSource = _saleWinFormManager.GetAllSaleWinFormDtoDetails().Data;   
         }
     }
 }

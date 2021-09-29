@@ -6,6 +6,7 @@ using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -56,5 +57,15 @@ namespace Business.Concrete
         }
 
 
+        //Metodlar----------------------->
+        public IDataResult<List<SaleWinFormDto>> GetAllSaleWinFormDtoDetails()
+        {
+            List<SaleWinFormDto> get = _saleWinFormDal.GetAllWinFormDtoDetails();
+            if (get is null)
+            {
+                return new ErrorDataResult<List<SaleWinFormDto>>(SaleMessages.NotFound);
+            }
+            return new SuccessDataResult<List<SaleWinFormDto>>(get,SaleMessages.Found);
+        }
     }
 }
