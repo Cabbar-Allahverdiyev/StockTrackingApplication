@@ -2,6 +2,7 @@
 using Business.Concrete;
 using Business.Constants.Messages;
 using Business.ValidationRules;
+using Business.ValidationRules.FluentValidation;
 using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
@@ -22,7 +23,9 @@ namespace WindowsForm
     {
         ProductManager _productManager = new ProductManager(new EfProductDal());
         CartManager _cartManager = new CartManager(new EfCartDal());
+        SaleWinFormManager _saleWinFormManager = new SaleWinFormManager(new EfSaleWinForm());
         ResultControllers resultControllers = new ResultControllers();
+        ResultControllersMessageList resultControllersMessageList = new ResultControllersMessageList();
 
         FormUserAdd _formUserAdd = new FormUserAdd(new UserManager(new EfUserDal()));
         FormUserListed _formUserListed = new FormUserListed(new UserManager(new EfUserDal()));
@@ -195,23 +198,40 @@ namespace WindowsForm
 
         private void ButtonSalesFormSatisEtmek_Click(object sender, EventArgs e)
         {
-            Sale sale = new Sale();
+            SaleWinForm saleWinForm = new SaleWinForm();
             //Product product = new Product();
 
             IDataResult<List<Cart>> carts = _cartManager.GetAllByUserId(2);
+            IResult saleWinFormAdded;
+            IResult productUpdated;
+            List<string> messages=new List<string>();
+            string resultMessage;
 
             foreach (Cart cart in carts.Data)
             {
                 Product product = _productManager.GetByProductId(cart.ProductId).Data;
                 product.UnitsOnOrder += cart.Quantity;
-                
+                saleWinForm.Id = 0;
+                saleWinForm.ProductId = cart.ProductId;
+                saleWinForm.UserId = cart.UserId;
+                saleWinForm.SoldPrice = cart.SoldPrice;
+                saleWinForm.Quantity = cart.Quantity;
+                SaleWinFormValidation(saleWinForm);
+                saleWinFormAdded= _saleWinFormManager.Add(saleWinForm);
+                productUpdated= _productManager.Update(product);
+                messages.Add(resultControllersMessageList.ResultIsSuccesMessage(saleWinFormAdded));
+                messages.Add(resultControllersMessageList.ResultIsSuccesMessage(productUpdated));
+                //resultControllersMessageList.ResultIsSuccesMessage(saleWinFormAdded);
+                //resultControllersMessageList.ResultIsSuccesMessage(productUpdated);
+
+
             }
-            //for (int i = 0; i < dataGridViewCartList.Rows.Count-1; i++)
-            //{
+            foreach (string message in messages)
+            {
+                resultMessage = $"{message}";
+            }
+            MessageBox.Show(messages, AuthMessages.InformationMessage, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            //}
-
-            //_productManager.Update(product);
             TotalPriceLabelWrite();
         }
 
@@ -309,6 +329,20 @@ namespace WindowsForm
         {
             CartValidator validationRules = new CartValidator();
             ValidationResult results = validationRules.Validate(cart);
+            if (!results.IsValid)
+            {
+                foreach (ValidationFailure validationFailure in results.Errors)
+                {
+                    MessageBox.Show( $"{validationFailure.ErrorMessage} {}", AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+        }
+
+        private void SaleWinFormValidation(SaleWinForm saleWinForm)
+        {
+            SaleWinFormValidator validationRules = new SaleWinFormValidator();
+            ValidationResult results = validationRules.Validate(saleWinForm);
             if (!results.IsValid)
             {
                 foreach (ValidationFailure validationFailure in results.Errors)

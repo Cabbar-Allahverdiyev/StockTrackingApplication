@@ -21,6 +21,7 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Sale> Sales { get; set; }
         public DbSet<Cart> Carts { get; set; }
+        public DbSet<SaleWinForm> SalesWinForms { get; set; }
 
         public DbSet<BarcodeNumber> BarcodeNumbers { get; set; }
     }

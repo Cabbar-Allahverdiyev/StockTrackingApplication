@@ -1,4 +1,8 @@
 ﻿using Business.Abstract;
+using Business.Constants.Messages;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -15,24 +19,42 @@ namespace Business.Concrete
         {
             _saleWinFormDal = saleWinFormDal;
         }
+
+        [ValidationAspect(typeof(SaleWinFormValidator))]
+        [CacheRemoveAspect("ISaleWinFormService.Get")]
         public IResult Add(SaleWinForm saleWinForm)
         {
-            throw new NotImplementedException();
+            saleWinForm.SellDate = DateTime.Now;
+            _saleWinFormDal.Add(saleWinForm);
+            return new SuccessResult(SaleMessages.Added);
         }
 
-        public IResult Delete(SaleWinForm saleWinForm)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IDataResult<List<SaleWinForm>> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
+        [ValidationAspect(typeof(SaleWinFormValidator))]
         public IResult Update(SaleWinForm saleWinForm)
         {
-            throw new NotImplementedException();
+            saleWinForm.SellDate = DateTime.Now;
+            _saleWinFormDal.Update(saleWinForm);
+            return new SuccessResult(SaleMessages.Updated);
         }
+
+        [CacheRemoveAspect("ISaleWinFormService.Get")]
+        public IResult Delete(SaleWinForm saleWinForm)
+        {
+            _saleWinFormDal.Delete(saleWinForm);
+            return new SuccessResult(SaleMessages.Deleted);
+        }
+
+        [CacheAspect]
+        public IDataResult<List<SaleWinForm>> GetAll()
+        {
+            List<SaleWinForm> get = _saleWinFormDal.GetAll();
+            if (get is null)
+            {
+                return new ErrorDataResult<List<SaleWinForm>>(SaleMessages.NotFound);
+            }
+            return new SuccessDataResult<List<SaleWinForm>>(get, SaleMessages.Found);
+        }
+
+
     }
 }
