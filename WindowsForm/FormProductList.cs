@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using Business.ValidationRules.FluentValidation;
 using FluentValidation.Results;
 using Business.Constants.Messages;
+using WindowsForm.Core.Constants.Messages;
 
 namespace WindowsForm
 {
@@ -23,7 +24,6 @@ namespace WindowsForm
             InitializeComponent();
         }
         ProductManager _productManager = new ProductManager(new EfProductDal());
-        FormProductAdd formProductAdd = new FormProductAdd();
         Product product = new Product();
 
 
@@ -70,52 +70,61 @@ namespace WindowsForm
 
         private void ButtonVarOlanYenile_Click(object sender, EventArgs e)
         {
-            int newUnitInStock = 0;
-            if (textBoxVarOlanStokaElaveEdilecekMiqdar.Text != "")
+            try
             {
-                newUnitInStock = Convert.ToInt32(textBoxVarOlanStokaElaveEdilecekMiqdar.Text);
-            }
-            else
-            {
-                newUnitInStock = 0;
-            }
-
-            product.BarcodeNumber = Convert.ToInt32(textBoxVarOlanBarkodNo.Text);
-            product.CategoryId = Convert.ToInt32(comboBoxVarOlanKateqoriya.SelectedValue);
-            product.BrandId = Convert.ToInt32(comboBoxVarOlanMarka.SelectedValue);
-            product.SupplierId = Convert.ToInt32(comboBoxVarOlanTedarikci.SelectedValue);
-            product.ProductName = textBoxVarOlanMehsulAdi.Text;
-            product.UnitsInStock = product.UnitsInStock + newUnitInStock;
-            product.PurchasePrice = Convert.ToDecimal(textBoxVarOlanAlisQiymet.Text);
-            product.UnitPrice = Convert.ToDecimal(textBoxVarOlanSatisQiymet.Text);
-            product.Description = TextBoxVarOlanAciqlama.Text;
-
-            ProductValidator validationRules = new ProductValidator();
-            ValidationResult results = validationRules.Validate(product);
-            if (!results.IsValid)
-            {
-                foreach (ValidationFailure validationFailure in results.Errors)
+                int newUnitInStock = 0;
+                if (textBoxVarOlanStokaElaveEdilecekMiqdar.Text != "")
                 {
-                    MessageBox.Show(validationFailure.ErrorMessage, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    newUnitInStock = Convert.ToInt32(textBoxVarOlanStokaElaveEdilecekMiqdar.Text);
+                }
+                else
+                {
+                    newUnitInStock = 0;
                 }
 
+                product.BarcodeNumber = Convert.ToInt32(textBoxVarOlanBarkodNo.Text);
+                product.CategoryId = Convert.ToInt32(comboBoxVarOlanKateqoriya.SelectedValue);
+                product.BrandId = Convert.ToInt32(comboBoxVarOlanMarka.SelectedValue);
+                product.SupplierId = Convert.ToInt32(comboBoxVarOlanTedarikci.SelectedValue);
+                product.ProductName = textBoxVarOlanMehsulAdi.Text;
+                product.UnitsInStock += newUnitInStock;
+                product.PurchasePrice = Convert.ToDecimal(textBoxVarOlanAlisQiymet.Text);
+                product.UnitPrice = Convert.ToDecimal(textBoxVarOlanSatisQiymet.Text);
+                product.Description = TextBoxVarOlanAciqlama.Text;
+
+                ProductValidator validationRules = new ProductValidator();
+                ValidationResult results = validationRules.Validate(product);
+                if (!results.IsValid)
+                {
+                    foreach (ValidationFailure validationFailure in results.Errors)
+                    {
+                        FormsMessage.ErrorMessage(validationFailure.ErrorMessage);
+                        return;
+                    }
+
+                }
+
+                IResult productUpdated = _productManager.Update(product);
+
+                if (!productUpdated.Success)
+                {
+                    FormsMessage.ErrorMessage(productUpdated.Message);
+                    return;
+                }
+                FormsMessage.InformationMessage(productUpdated.Message);
+                GroupBoxVarOlanMehsulControlClear();
+                dataGridViewFormPrdouctList.DataSource = _productManager.GetAllProductViewDasgboardDetails().Data;
+
+
+
             }
-
-            IResult productUpdated = _productManager.Update(product);
-
-            if (!productUpdated.Success)
+            catch (Exception)
             {
-                MessageBox.Show(productUpdated.Message, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+
+                FormsMessage.ErrorMessage(AuthMessages.ErrorMessage);
+                return; ;
             }
-            MessageBox.Show(productUpdated.Message, AuthMessages.InformationMessage, MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            GroupBoxVarOlanMehsulControlClear();
-            dataGridViewFormPrdouctList.DataSource = _productManager.GetAllProductViewDasgboardDetails().Data;
-
-
-
+            
         }
 
 
@@ -156,24 +165,7 @@ namespace WindowsForm
             comboBoxVarOlanTedarikci.ValueMember = "Id";
         }
 
-        private void GroupBoxVarOlanMehsulControlClear()
-        {
-            foreach (Control control in GroupBoxVarOlanMehsul.Controls)
-            {
-                if (control is TextBox)
-                {
-                    control.Text = "";
-                }
-                if (control is ComboBox)
-                {
-                    control.Text = "";
-                }
-
-                LabelMiqdarVB.Text = "";
-
-
-            }
-        }
+        
 
         private void buttonSil_Click(object sender, EventArgs e)
         {
@@ -198,10 +190,29 @@ namespace WindowsForm
             }
             else
             {
-                MessageBox.Show(ProductMessages.ProductNotFound, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                FormsMessage.ErrorMessage(ProductMessages.ProductNotFound);
             }
         }
 
-       
+
+        private void GroupBoxVarOlanMehsulControlClear()
+        {
+            foreach (Control control in GroupBoxVarOlanMehsul.Controls)
+            {
+                if (control is TextBox)
+                {
+                    control.Text = "";
+                }
+                if (control is ComboBox)
+                {
+                    control.Text = "";
+                }
+
+                LabelMiqdarVB.Text = "";
+
+
+            }
+        }
+
     }
 }

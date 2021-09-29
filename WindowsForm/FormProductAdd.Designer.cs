@@ -341,6 +341,7 @@ namespace WindowsForm
             this.ButtonVarOlanElaveEt.TabIndex = 3;
             this.ButtonVarOlanElaveEt.Text = "Elave Et";
             this.ButtonVarOlanElaveEt.UseVisualStyleBackColor = true;
+            this.ButtonVarOlanElaveEt.Click += new System.EventHandler(this.ButtonVarOlanElaveEt_Click);
             // 
             // label7
             // 

@@ -12,7 +12,7 @@ namespace WindowsForm
 {
     public partial class FormSalesList : Form
     {
-        SaleManager _saleManager = new SaleManager(new EfSaleDal());
+        SaleWinFormManager _saleWinFormManager = new SaleWinFormManager(new EfSaleWinFormDal());
         public FormSalesList()
         {
             InitializeComponent();
@@ -24,7 +24,7 @@ namespace WindowsForm
         }
         private void SaleListRefesh()
         {
-            dataGridViewSaleList.DataSource = _saleManager.GetAll().Data;   
+            dataGridViewSaleList.DataSource = _saleWinFormManager.GetAll().Data;   
         }
     }
 }

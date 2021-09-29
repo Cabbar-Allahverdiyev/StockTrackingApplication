@@ -15,6 +15,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers;
 
 namespace WindowsForm
@@ -23,8 +24,7 @@ namespace WindowsForm
     {
         ProductManager _productManager = new ProductManager(new EfProductDal());
         CartManager _cartManager = new CartManager(new EfCartDal());
-        SaleWinFormManager _saleWinFormManager = new SaleWinFormManager(new EfSaleWinForm());
-        ResultControllers resultControllers = new ResultControllers();
+        SaleWinFormManager _saleWinFormManager = new SaleWinFormManager(new EfSaleWinFormDal());
         ResultControllersMessageList resultControllersMessageList = new ResultControllersMessageList();
 
         FormUserAdd _formUserAdd = new FormUserAdd(new UserManager(new EfUserDal()));
@@ -115,7 +115,12 @@ namespace WindowsForm
             if (cartAddDto.Quantity <= 1 || textBoxMiqdar.Text == "" || cartAddDto.Quantity <= Convert.ToInt32(textBoxMiqdar.Text))
             {
                 IResult result = _cartManager.Delete(cart);
-                resultControllers.ResultIsSucces(result);
+                if (!result.Success)
+                {
+                    ResultControllers.ResultIsSucces(result);
+                    return;
+                }
+                
             }
             else
             {
@@ -127,7 +132,11 @@ namespace WindowsForm
                 cart.TotalPrice = Convert.ToDecimal(textBoxCem.Text);
                 //  CartValidation(cart);
                 IResult result = _cartManager.Update(cart);
-                resultControllers.ResultIsSucces(result);
+                if (!result.Success)
+                {
+                    ResultControllers.ResultIsSucces(result);
+                    return;
+                }
 
             }
             GroupBoxMehsulControlClear();
@@ -141,7 +150,8 @@ namespace WindowsForm
             RemoveCart();
             CartListRefesh();
             TotalPriceLabelWrite();
-            MessageBox.Show(SaleMessages.SaleCancel, AuthMessages.InformationMessage, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            FormsMessage.InformationMessage(SaleMessages.SaleCancel);
+            
 
         }
 
@@ -161,7 +171,7 @@ namespace WindowsForm
             IResult cartAdded;
             if (textBoxProductId.Text == "")
             {
-                MessageBox.Show(ProductMessages.SureFillInFields, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                FormsMessage.ErrorMessage(ProductMessages.SureFillInFields);
                 return;
             }
             cart.ProductId = int.Parse(textBoxProductId.Text);
@@ -170,7 +180,17 @@ namespace WindowsForm
             cart.TotalPrice = decimal.Parse(textBoxCem.Text);
             cart.UserId = 2;
 
-            CartValidation(cart);
+            CartValidator validationRules = new CartValidator();
+            ValidationResult results = validationRules.Validate(cart);
+            if (!results.IsValid)
+            {
+                foreach (ValidationFailure validationFailure in results.Errors)
+                {
+                    FormsMessage.ErrorMessage(validationFailure.ErrorMessage);
+                    return;
+                }
+            }
+            // CartValidation(cart);
 
             IsBarcodeNumberExists();
             if (isBarcodeNumberExists == true)
@@ -181,14 +201,21 @@ namespace WindowsForm
                 cart.SoldPrice = decimal.Parse(textBoxQiymet.Text);
                 cart.TotalPrice = cart.SoldPrice * cart.Quantity;
                 cartUpdated = _cartManager.Update(cart);
-                resultControllers.ResultIsSucces(cartUpdated);
-
+                if (!cartUpdated.Success)
+                {
+                    ResultControllers.ResultIsSucces(cartUpdated);
+                    return;
+                }
+                FormsMessage.InformationMessage(cartUpdated.Message);
             }
             else
             {
                 cartAdded = _cartManager.Add(cart);
-                resultControllers.ResultIsSucces(cartAdded);
-
+                if (!cartAdded.Success)
+                {
+                    ResultControllers.ResultIsSucces(cartAdded);
+                    return;
+                }
             }
 
             CartListRefesh();
@@ -199,13 +226,12 @@ namespace WindowsForm
         private void ButtonSalesFormSatisEtmek_Click(object sender, EventArgs e)
         {
             SaleWinForm saleWinForm = new SaleWinForm();
-            //Product product = new Product();
-
             IDataResult<List<Cart>> carts = _cartManager.GetAllByUserId(2);
             IResult saleWinFormAdded;
             IResult productUpdated;
-            List<string> messages=new List<string>();
-            string resultMessage;
+            List<string> messages = new List<string>();
+            string resultMessage = "";
+            string newResultMessage = "";
 
             foreach (Cart cart in carts.Data)
             {
@@ -216,22 +242,36 @@ namespace WindowsForm
                 saleWinForm.UserId = cart.UserId;
                 saleWinForm.SoldPrice = cart.SoldPrice;
                 saleWinForm.Quantity = cart.Quantity;
-                SaleWinFormValidation(saleWinForm);
-                saleWinFormAdded= _saleWinFormManager.Add(saleWinForm);
-                productUpdated= _productManager.Update(product);
-                messages.Add(resultControllersMessageList.ResultIsSuccesMessage(saleWinFormAdded));
-                messages.Add(resultControllersMessageList.ResultIsSuccesMessage(productUpdated));
-                //resultControllersMessageList.ResultIsSuccesMessage(saleWinFormAdded);
-                //resultControllersMessageList.ResultIsSuccesMessage(productUpdated);
 
-
+                SaleWinFormValidator validationRules = new SaleWinFormValidator();
+                ValidationResult results = validationRules.Validate(saleWinForm);
+                if (!results.IsValid)
+                {
+                    foreach (ValidationFailure validationFailure in results.Errors)
+                    {
+                        FormsMessage.ErrorMessage(validationFailure.ErrorMessage);
+                        return;
+                    }
+                }
+                //SaleWinFormValidation(saleWinForm);
+                saleWinFormAdded = _saleWinFormManager.Add(saleWinForm);
+                productUpdated = _productManager.Update(product);
+                messages.Add(product.ProductName + resultControllersMessageList.ResultIsSuccesMessage(saleWinFormAdded));
+                messages.Add(product.ProductName + resultControllersMessageList.ResultIsSuccesMessage(productUpdated));
+            
             }
             foreach (string message in messages)
             {
-                resultMessage = $"{message}";
-            }
-            MessageBox.Show(messages, AuthMessages.InformationMessage, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                resultMessage += $"// {message} {newResultMessage}//       ";
 
+            }
+            FormsMessage.InformationMessage(resultMessage);
+
+            RemoveCart();
+            CartListRefesh();
+            ProductListRefesh();
+            GroupBoxMehsulControlClear();
+            //GroupBoxIstifadeciControlClear();
             TotalPriceLabelWrite();
         }
 
@@ -277,6 +317,12 @@ namespace WindowsForm
             textBoxQiymet.Text = dataGridViewCartList.CurrentRow.Cells["Qiymet"].Value.ToString();
             textBoxMiqdar.Text = dataGridViewCartList.CurrentRow.Cells["Miqdar"].Value.ToString();
             textBoxCem.Text = dataGridViewCartList.CurrentRow.Cells["Cem"].Value.ToString();
+        }
+
+        private void buttonTemizle_Click(object sender, EventArgs e)
+        {
+            GroupBoxMehsulControlClear();
+            
         }
 
 
@@ -333,7 +379,7 @@ namespace WindowsForm
             {
                 foreach (ValidationFailure validationFailure in results.Errors)
                 {
-                    MessageBox.Show( $"{validationFailure.ErrorMessage} {}", AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    FormsMessage.ErrorMessage(validationFailure.ErrorMessage);
                     return;
                 }
             }
@@ -392,6 +438,6 @@ namespace WindowsForm
             LabelSalesFormUmuniCem_qiymet.Text = TotalCartPriceCalculation().ToString();
         }
 
-
+        
     }
 }

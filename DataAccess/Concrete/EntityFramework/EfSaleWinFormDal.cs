@@ -7,7 +7,7 @@ using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfSaleWinForm : EfEntityRepositoryBase<SaleWinForm, StockTrackingProjectContext>
+    public class EfSaleWinFormDal : EfEntityRepositoryBase<SaleWinForm, StockTrackingProjectContext>
                                , ISaleWinFormDal
     {
     }

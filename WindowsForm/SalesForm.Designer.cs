@@ -50,6 +50,8 @@ namespace WindowsForm
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBoxMehsul = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBoxAxtarBarcodeNumber = new System.Windows.Forms.TextBox();
             this.textBoxProductId = new System.Windows.Forms.TextBox();
             this.textBoxMaxQiymet = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -69,8 +71,7 @@ namespace WindowsForm
             this.LabelSalesFormUmuniCem_qiymet = new System.Windows.Forms.Label();
             this.ButtonSalesFormYenile = new System.Windows.Forms.Button();
             this.dataGridViewCartList = new System.Windows.Forms.DataGridView();
-            this.textBoxAxtarBarcodeNumber = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.buttonTemizle = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductList)).BeginInit();
             this.groupBoxMusteri.SuspendLayout();
@@ -310,6 +311,22 @@ namespace WindowsForm
             this.groupBoxMehsul.TabStop = false;
             this.groupBoxMehsul.Text = "Mehsul";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(57, 20);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(37, 15);
+            this.label11.TabIndex = 17;
+            this.label11.Text = "Axtar:";
+            // 
+            // textBoxAxtarBarcodeNumber
+            // 
+            this.textBoxAxtarBarcodeNumber.Location = new System.Drawing.Point(100, 17);
+            this.textBoxAxtarBarcodeNumber.Name = "textBoxAxtarBarcodeNumber";
+            this.textBoxAxtarBarcodeNumber.Size = new System.Drawing.Size(138, 23);
+            this.textBoxAxtarBarcodeNumber.TabIndex = 16;
+            // 
             // textBoxProductId
             // 
             this.textBoxProductId.Enabled = false;
@@ -485,21 +502,15 @@ namespace WindowsForm
             this.dataGridViewCartList.TabIndex = 15;
             this.dataGridViewCartList.DoubleClick += new System.EventHandler(this.dataGridViewCartList_DoubleClick);
             // 
-            // textBoxAxtarBarcodeNumber
+            // buttonTemizle
             // 
-            this.textBoxAxtarBarcodeNumber.Location = new System.Drawing.Point(100, 17);
-            this.textBoxAxtarBarcodeNumber.Name = "textBoxAxtarBarcodeNumber";
-            this.textBoxAxtarBarcodeNumber.Size = new System.Drawing.Size(138, 23);
-            this.textBoxAxtarBarcodeNumber.TabIndex = 16;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(57, 20);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(37, 15);
-            this.label11.TabIndex = 17;
-            this.label11.Text = "Axtar:";
+            this.buttonTemizle.Location = new System.Drawing.Point(179, 589);
+            this.buttonTemizle.Name = "buttonTemizle";
+            this.buttonTemizle.Size = new System.Drawing.Size(70, 26);
+            this.buttonTemizle.TabIndex = 16;
+            this.buttonTemizle.Text = "Temizle";
+            this.buttonTemizle.UseVisualStyleBackColor = true;
+            this.buttonTemizle.Click += new System.EventHandler(this.buttonTemizle_Click);
             // 
             // SalesForm
             // 
@@ -508,6 +519,7 @@ namespace WindowsForm
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1378, 780);
+            this.Controls.Add(this.buttonTemizle);
             this.Controls.Add(this.dataGridViewCartList);
             this.Controls.Add(this.ButtonSalesFormYenile);
             this.Controls.Add(this.LabelSalesFormUmuniCem_qiymet);
@@ -581,5 +593,6 @@ namespace WindowsForm
         private System.Windows.Forms.TextBox textBoxProductId;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBoxAxtarBarcodeNumber;
+        private System.Windows.Forms.Button buttonTemizle;
     }
 }

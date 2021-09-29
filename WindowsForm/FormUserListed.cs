@@ -2,6 +2,7 @@
 using Business.Constants.Messages;
 using Business.ValidationRules.FluentValidation;
 using Core.Entities.Concrete;
+using Core.Utilities.Results;
 using Entities.DTOs;
 using FluentValidation.Results;
 using System;
@@ -11,6 +12,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using WindowsForm.Core.Constants.Messages;
 
 namespace WindowsForm
 {
@@ -61,21 +63,22 @@ namespace WindowsForm
             {
                 foreach (ValidationFailure failure in results.Errors)
                 {
-                    MessageBox.Show(failure.ErrorMessage);
+                    FormsMessage.ErrorMessage(failure.ErrorMessage);
+                    return;
                 }
-                return;
+               
             }
 
             var userUpdated = _userService.Update(user);
 
             if (userUpdated.Success)
             {
-                MessageBox.Show(UserMessages.UserUpdated, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                FormsMessage.InformationMessage(userUpdated.Message);
                 DataGridViewUserListed.DataSource = _userService.GetUserDetails().Data;
             }
             else
             {
-                MessageBox.Show(UserMessages.UserIsNotUpdating, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                FormsMessage.ErrorMessage(UserMessages.UserIsNotUpdating);
                 return;
             }
 
@@ -85,15 +88,15 @@ namespace WindowsForm
         {
             User user = new User();
             user.Id = Convert.ToInt32(DataGridViewUserListed.CurrentRow.Cells["UserId"].Value);
-            var userDeleted = _userService.Delete(user);
+            IResult userDeleted = _userService.Delete(user);
             if (userDeleted.Success)
             {
-                MessageBox.Show(UserMessages.UserDeleted);
+                FormsMessage.InformationMessage(userDeleted.Message);
                 DataGridViewUserListed.DataSource = _userService.GetUserDetails().Data;
             }
             else
             {
-                MessageBox.Show(UserMessages.UserIsNotDeleted, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                FormsMessage.ErrorMessage(userDeleted.Message);
                 return;
             }
         }
@@ -121,8 +124,7 @@ namespace WindowsForm
             }
             else
             {
-               
-                MessageBox.Show(UserMessages.UserNotFound, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                FormsMessage.ErrorMessage(UserMessages.UserNotFound);
                 return;
             }
 

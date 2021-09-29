@@ -11,6 +11,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using WindowsForm.Core.Constants.Messages;
 
 namespace WindowsForm
 {
@@ -49,19 +50,19 @@ namespace WindowsForm
             {
                 foreach (ValidationFailure failure in results.Errors)
                 {
-                    MessageBox.Show(failure.ErrorMessage, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    
+                    FormsMessage.ErrorMessage(failure.ErrorMessage);
+                    return;
                 }
-                return;
+                
             }
 
            var supplierAdd= _suplierManager.Add(supplier);
             if (!supplierAdd.Success)
             {
-                MessageBox.Show(supplierAdd.Message, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                FormsMessage.ErrorMessage(supplierAdd.Message);
                 return;
             }
-            MessageBox.Show(supplierAdd.Message, AuthMessages.InformationMessage, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            FormsMessage.InformationMessage(supplierAdd.Message);
             DataGridViewSupplierForm.DataSource = _suplierManager.GetAll().Data;
 
             foreach (Control control in this.Controls)

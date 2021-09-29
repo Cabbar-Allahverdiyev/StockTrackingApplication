@@ -14,6 +14,8 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using WindowsForm.Core.Constants.Messages;
+using WindowsForm.Core.Controllers;
 
 namespace WindowsForm
 {
@@ -60,7 +62,7 @@ namespace WindowsForm
             {
                 foreach (ValidationFailure failure in results.Errors)
                 {
-                    MessageBox.Show(failure.ErrorMessage);
+                    FormsMessage.ErrorMessage(failure.ErrorMessage);
                     return;
                 }
                 
@@ -70,15 +72,12 @@ namespace WindowsForm
 
 
             //var result = _authService.CreateAccessToken(registerResult.Data);
-            if (userRegister.Success)
+            if (!userRegister.Success)
             {
-                MessageBox.Show(AuthMessages.UserRegistered, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show(userRegister.Message, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ResultControllers.ResultIsSucces(userRegister);
                 return;
             }
+            FormsMessage.InformationMessage(userRegister.Message);       
 
             foreach (Control control in this.Controls)
             {

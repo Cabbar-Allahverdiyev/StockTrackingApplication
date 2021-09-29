@@ -1,6 +1,7 @@
 ﻿using Business.Concrete;
 using Business.Constants.Messages;
 using Business.ValidationRules.FluentValidation;
+using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using FluentValidation.Results;
@@ -11,6 +12,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using WindowsForm.Core.Constants.Messages;
 
 namespace WindowsForm
 {
@@ -42,21 +44,22 @@ namespace WindowsForm
             {
                 foreach (ValidationFailure failure in results.Errors)
                 {
-                    MessageBox.Show(failure.ErrorMessage,AuthMessages.ErrorMessage,MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    FormsMessage.ErrorMessage(failure.ErrorMessage);
+                    return;
                 }
-                return;
+               
             }
 
-            var categoryAdd = _categoryManager.Add(category);
+            IResult categoryAdd = _categoryManager.Add(category);
             if (categoryAdd.Success)
             {
-                MessageBox.Show(CategoryMessages.CategoryAdded,AuthMessages.InformationMessage,MessageBoxButtons.OK,MessageBoxIcon.Information);
+                FormsMessage.InformationMessage(categoryAdd.Message);
                 DataGridViewFormCategory.DataSource = _categoryManager.GetAll().Data;
 
             }
             else
             {
-                MessageBox.Show(CategoryMessages.CategoryNotAdded, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                FormsMessage.ErrorMessage(CategoryMessages.CategoryNotAdded);
 
             }
 

@@ -1,8 +1,10 @@
 ﻿using Business.Concrete;
 using Business.Constants.Messages;
 using Business.ValidationRules.FluentValidation;
+using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
+using Entities.DTOs;
 using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
@@ -11,6 +13,9 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using WindowsForm.Core.Constants.Messages;
+using WindowsForm.Core.Controllers;
+
 
 namespace WindowsForm
 {
@@ -25,6 +30,7 @@ namespace WindowsForm
         BrandManager _brandManager = new BrandManager(new EfBrandDal());
         SupplierManager _supplierManager = new SupplierManager(new EfSupplierDal());
 
+        
 
         private void FormProductAdd_Load(object sender, EventArgs e)
         {
@@ -45,42 +51,57 @@ namespace WindowsForm
 
         private void ButtonFormProductAddYeniMehsulElaveEt_Click(object sender, EventArgs e)
         {
-            Product product = new Product();
-            product.BarcodeNumber = Convert.ToInt32(TextBoxFormProductAddBarkodNo.Text);
-            product.BrandId = Convert.ToInt32(ComboBoxFormProductAddMarka.SelectedValue);
-            product.CategoryId = Convert.ToInt32(ComboBoxFormProductAddKategoriya.SelectedValue);
-            product.SupplierId = Convert.ToInt32(ComboBoxFormProductAddTedarikci.SelectedValue);
-
-            product.ProductName = TextBoxFormProductAddMehsulAdi.Text;
-            product.UnitsInStock = Convert.ToInt16(TextBoxFormProductAddMiqdar.Text);
-            product.PurchasePrice = Convert.ToDecimal(TextBoxFormProductAddAlisQiymet.Text);
-            product.UnitPrice = Convert.ToDecimal(TextBoxFormProductAddSatisQiymet.Text);
-            product.QuantityPerUnit = TextBoxFormProductAddKemiyyet.Text;
-            product.Description = TextBoxFormProductAddAciqlama.Text;
-
-
-            ProductValidator validationRules = new ProductValidator();
-            ValidationResult results = validationRules.Validate(product);
-            if (!results.IsValid)
+            try
             {
-                foreach (ValidationFailure validationFailure in results.Errors)
+                Product product = new Product();
+                product.BarcodeNumber = Convert.ToInt32(TextBoxFormProductAddBarkodNo.Text);
+                product.BrandId = Convert.ToInt32(ComboBoxFormProductAddMarka.SelectedValue);
+                product.CategoryId = Convert.ToInt32(ComboBoxFormProductAddKategoriya.SelectedValue);
+                product.SupplierId = Convert.ToInt32(ComboBoxFormProductAddTedarikci.SelectedValue);
+
+                product.ProductName = TextBoxFormProductAddMehsulAdi.Text;
+                product.UnitsInStock = Convert.ToInt32(TextBoxFormProductAddMiqdar.Text);
+                product.PurchasePrice = Convert.ToDecimal(TextBoxFormProductAddAlisQiymet.Text);
+                product.UnitPrice = Convert.ToDecimal(TextBoxFormProductAddSatisQiymet.Text);
+                product.QuantityPerUnit = TextBoxFormProductAddKemiyyet.Text;
+                product.Description = TextBoxFormProductAddAciqlama.Text;
+
+
+                // ProductValidation(product);
+
+                ProductValidator validationRules = new ProductValidator();
+                ValidationResult results = validationRules.Validate(product);
+                if (!results.IsValid)
                 {
-                    MessageBox.Show(validationFailure.ErrorMessage, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    foreach (ValidationFailure validationFailure in results.Errors)
+                    {
+                        FormsMessage.ErrorMessage(validationFailure.ErrorMessage);
+                        return;
+                    }
+
+                }
+
+                IResult productAdd = _productManager.Add(product);
+                if (!productAdd.Success)
+                {
+                    ResultControllers.ResultIsSucces(productAdd);
                     return;
                 }
 
+                FormsMessage.InformationMessage(productAdd.Message);
+
+                GroupBoxYeniMehsulControlClear();
+                DataGridViewProductList.DataSource = _productManager.GetProductCompactDetails().Data;
+
+
             }
-            var productAdd = _productManager.Add(product);
-            if (!productAdd.Success)
+            catch (Exception)
             {
-                MessageBox.Show(productAdd.Message, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                FormsMessage.ErrorMessage(AuthMessages.ErrorMessage);
                 return;
             }
-            MessageBox.Show(productAdd.Message, AuthMessages.InformationMessage, MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            GroupBoxYeniMehsulControlClear();
-            DataGridViewProductList.DataSource = _productManager.GetProductCompactDetails().Data;
-
+           
         }
 
       
@@ -90,23 +111,30 @@ namespace WindowsForm
 
             if (DataGridViewProductList.CurrentRow == null)
             {
-                MessageBox.Show(ProductMessages.ProductNotSelected, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                FormsMessage.ErrorMessage(ProductMessages.ProductNotSelected);
                 return;
             }
 
             Product product = new Product();
             product.Id = Convert.ToInt32(DataGridViewProductList.CurrentRow.Cells["ProductId"].Value);
-            var productDeleted = _productManager.Delete(product);
-            MessageBox.Show(productDeleted.Message, AuthMessages.InformationMessage, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            IResult productDeleted = _productManager.Delete(product);
+            ResultControllers.ResultIsSucces(productDeleted);
+            if (!productDeleted.Success)
+            {
+                ResultControllers.ResultIsSucces(productDeleted);
+                return;
+            }
+            FormsMessage.InformationMessage(productDeleted.Message);
+            //MessageBox.Show(productDeleted.Message, AuthMessages.InformationMessage, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             DataGridViewProductList.DataSource = _productManager.GetProductCompactDetails().Data;
-
+            GroupBoxVarOlanMehsulControlClear();
         }
 
         private void DataGridViewProductList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            var productViewDetailByProductId = _productManager.GetProductViewProductIdDetail(
+            IDataResult<ProducViewDetailDto> productViewDetailByProductId = _productManager.GetProductViewProductIdDetail(
                      Convert.ToInt32(DataGridViewProductList.CurrentRow.Cells["ProductId"].Value.ToString())
                 );
             textBoxVarOlanBarkodNo.Text = DataGridViewProductList.CurrentRow.Cells["BarcodeNomresi"].Value.ToString();
@@ -132,17 +160,68 @@ namespace WindowsForm
             }
 
             string productName = textBoxAxtar.Text.ToString();
-            var productGetDetailsByName = _productManager.GetByPrdouctNameCompactDetails(productName);
+            IDataResult<List<ProductCompactDetailDto>> productGetDetailsByName = _productManager.GetByPrdouctNameCompactDetails(productName);
             if (productGetDetailsByName.Success)
             {
                 DataGridViewProductList.DataSource = productGetDetailsByName.Data;
             }
             else
             {
-                MessageBox.Show(ProductMessages.ProductNotFound, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                FormsMessage.ErrorMessage(productGetDetailsByName.Message);
+              //  MessageBox.Show(ProductMessages.ProductNotFound, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
+        private void ButtonVarOlanElaveEt_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Product product = _productManager.GetByProductBarodeNumber(Convert.ToInt32(textBoxVarOlanBarkodNo.Text)).Data;
+                if (textBoxVarOlanMiqdar.Text != "")
+                {
+                    product.UnitsInStock += Convert.ToInt32(textBoxVarOlanMiqdar.Text);
+                }
+
+                if (textBoxVarOlanAlisQiymet.Text != "")
+                {
+                    product.PurchasePrice = Convert.ToDecimal(textBoxVarOlanAlisQiymet.Text);
+                }
+                if (textBoxVarOlanSatisQiymet.Text != "")
+                {
+                    product.UnitPrice = Convert.ToDecimal(textBoxVarOlanSatisQiymet.Text);
+                }
+
+                ProductValidator validationRules = new ProductValidator();
+                ValidationResult results = validationRules.Validate(product);
+                if (!results.IsValid)
+                {
+                    foreach (ValidationFailure validationFailure in results.Errors)
+                    {
+                        FormsMessage.ErrorMessage(validationFailure.ErrorMessage);
+                        return;
+                    }
+
+                }
+
+                IResult result = _productManager.Update(product);
+                ResultControllers.ResultIsSucces(result);
+                if (!result.Success)
+                {
+                    ResultControllers.ResultIsSucces(result);
+                    return;
+                }
+                // MessageBox.Show(result.Message, AuthMessages.InformationMessage, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                FormsMessage.InformationMessage(result.Message);
+                GroupBoxVarOlanMehsulControlClear();
+            }
+            catch (Exception)
+            {
+                FormsMessage.ErrorMessage(AuthMessages.ErrorMessage);
+                return;
+            }
+           
+
+        }
 
 
 
@@ -176,6 +255,7 @@ namespace WindowsForm
                 {
                     control.Text = "";
                 }
+                LabelMiqdarVB.Text = "#";
 
             }
         }
@@ -230,6 +310,24 @@ namespace WindowsForm
             ComboBoxFormProductAddTedarikci.ValueMember = "Id";
         }
 
-        
+        private void ProductValidation(Product product)
+        {
+            ProductValidator validationRules = new ProductValidator();
+            ValidationResult results = validationRules.Validate(product);
+            if (!results.IsValid)
+            {
+                foreach (ValidationFailure validationFailure in results.Errors)
+                {
+                    FormsMessage.ErrorMessage(validationFailure.ErrorMessage);
+                    return;
+                }
+                return;
+
+            }
+
+        }
+
+       
+
     }
 }

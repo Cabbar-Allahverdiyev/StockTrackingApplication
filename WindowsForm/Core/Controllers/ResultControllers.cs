@@ -4,19 +4,19 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
+using WindowsForm.Core.Constants.Messages;
 
 namespace WindowsForm.Core.Controllers
 {
-    public  class ResultControllers
+    public static class ResultControllers
     {
-        public  void ResultIsSucces(IResult result)
+        public static void ResultIsSucces(IResult result)
         {
             if (!result.Success)
             {
-                MessageBox.Show(result.Message, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                FormsMessage.ErrorMessage(result.Message);
                 return;
             }
-            MessageBox.Show(result.Message, AuthMessages.InformationMessage, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
     }

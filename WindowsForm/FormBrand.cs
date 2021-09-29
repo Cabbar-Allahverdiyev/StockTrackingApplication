@@ -1,6 +1,7 @@
 ﻿using Business.Concrete;
 using Business.Constants.Messages;
 using Business.ValidationRules.FluentValidation;
+using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using FluentValidation.Results;
@@ -11,6 +12,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using WindowsForm.Core.Constants.Messages;
 
 namespace WindowsForm
 {
@@ -32,40 +34,50 @@ namespace WindowsForm
 
         private void ButtonFormBrandElaveEt_Click(object sender, EventArgs e)
         {
-            Brand brand = new Brand();
-            brand.BrandName = TextBoxFormBrandMarkaAdi.Text;
-
-            BrandValidator validationRules = new BrandValidator();
-            ValidationResult results = validationRules.Validate(brand);
-
-            if (results.IsValid == false)
+            try
             {
-                foreach (ValidationFailure failure in results.Errors)
+                Brand brand = new Brand();
+                brand.BrandName = TextBoxFormBrandMarkaAdi.Text;
+
+                BrandValidator validationRules = new BrandValidator();
+                ValidationResult results = validationRules.Validate(brand);
+
+                if (results.IsValid == false)
                 {
-                    MessageBox.Show(failure.ErrorMessage);
+                    foreach (ValidationFailure failure in results.Errors)
+                    {
+                        FormsMessage.ErrorMessage(failure.ErrorMessage);
+                    }
+                    return;
                 }
+
+                IResult brandAdd = _brandManager.Add(brand);
+                if (brandAdd.Success)
+                {
+                    FormsMessage.InformationMessage(brandAdd.Message);
+                    DataGridViewFormBrand.DataSource = _brandManager.GetAll().Data;
+                }
+                else
+                {
+                    FormsMessage.ErrorMessage(BrandMessages.BrandNotAdded);
+                    return;
+                }
+
+                foreach (Control control in this.Controls)
+                {
+                    if (control is TextBox)
+                    {
+                        control.Text = "";
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
+                FormsMessage.ErrorMessage(AuthMessages.ErrorMessage);
                 return;
             }
-
-            var brandAdd=_brandManager.Add(brand);
-            if (brandAdd.Success)
-            {
-                MessageBox.Show(BrandMessages.BrandAdded, AuthMessages.InformationMessage, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DataGridViewFormBrand.DataSource = _brandManager.GetAll().Data;
-            }
-            else
-            {
-                MessageBox.Show(BrandMessages.BrandNotAdded, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                return;
-            }
-
-            foreach (Control control in this.Controls)
-            {
-                if (control is TextBox)
-                {
-                    control.Text = "";
-                }
-            }
+           
 
 
         }
