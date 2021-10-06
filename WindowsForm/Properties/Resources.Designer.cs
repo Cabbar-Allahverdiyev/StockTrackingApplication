@@ -63,9 +63,59 @@ namespace WindowsForm.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Bitmap cropped_Refresh_icon {
+        internal static System.Drawing.Bitmap _8425500031544610482_32 {
             get {
-                object obj = ResourceManager.GetObject("cropped-Refresh_icon", resourceCulture);
+                object obj = ResourceManager.GetObject("8425500031544610482-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap _8425500031544610482_48 {
+            get {
+                object obj = ResourceManager.GetObject("8425500031544610482-48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_delete_16 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-delete-16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_synchronize_16 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-synchronize-16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_synchronize_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-synchronize-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_synchronize_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-synchronize-50", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -1,8 +1,10 @@
 ﻿using Business.Abstract;
+using Business.Concrete;
 using Business.Constants.Messages;
 using Business.ValidationRules.FluentValidation;
 using Core.Entities.Concrete;
 using Core.Utilities.Results;
+using DataAccess.Concrete.EntityFramework;
 using Entities.DTOs;
 using FluentValidation.Results;
 using System;
@@ -18,12 +20,12 @@ namespace WindowsForm
 {
     public partial class FormUserListed : Form
     {
-        IUserService _userService;
+        UserManager _userService = new UserManager(new EfUserDal());
         
-        public FormUserListed(IUserService userService)
+        public FormUserListed()
         {
             InitializeComponent();
-            _userService = userService;
+            
         }
 
 
@@ -86,27 +88,37 @@ namespace WindowsForm
 
         private void ButtonFormUserListedSil_Click(object sender, EventArgs e)
         {
-            User user = new User();
-            user.Id = Convert.ToInt32(DataGridViewUserListed.CurrentRow.Cells["UserId"].Value);
-            IResult userDeleted = _userService.Delete(user);
-            if (userDeleted.Success)
+            try
             {
-                FormsMessage.InformationMessage(userDeleted.Message);
-                DataGridViewUserListed.DataSource = _userService.GetUserDetails().Data;
+                User user = new User();
+                user.Id = Convert.ToInt32(DataGridViewUserListed.CurrentRow.Cells["UserId"].Value);
+                IResult userDeleted = _userService.Delete(user);
+                if (userDeleted.Success)
+                {
+                    FormsMessage.InformationMessage(userDeleted.Message);
+                    DataGridViewUserListed.DataSource = _userService.GetUserDetails().Data;
+                }
+                else
+                {
+                    FormsMessage.ErrorMessage(userDeleted.Message);
+                    return;
+                }
             }
-            else
+            catch (Exception)
             {
-                FormsMessage.ErrorMessage(userDeleted.Message);
+
+                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {AuthMessages.ErrorMessage}");
                 return;
             }
+            
         }
 
         private void TextBoxFormUserListedAxtar_TextChanged(object sender, EventArgs e)
         {
             //Mutleq tekmillesdir
-            if (TextBoxFormUserListedAxtar.Text.Length==0)
+            if (TextBoxFormUserListedAxtar.Text=="")
             {
-                DataGridViewUserListed.DataSource = _userService.GetUserDetails();
+                DataGridViewUserListed.DataSource = _userService.GetUserDetails().Data;
                 return;
             }
             
@@ -114,12 +126,13 @@ namespace WindowsForm
             var userGetDetails = _userService.GetUserDetailsByUserName(userName);
             if (userGetDetails.Success )
             {
-               //Bura nezer et
+                //Bura nezer et
                 //if (userGetDetails.Data==null)
                 //{
                 //    DataGridViewUserListed.DataSource = _userService.GetUserDetails();
                 //    return;
                 //}
+               
                 DataGridViewUserListed.DataSource = userGetDetails.Data;
             }
             else

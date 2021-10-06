@@ -50,6 +50,7 @@ namespace WindowsForm
             // 
             // ButtonSupplierFormElaveEt
             // 
+            this.ButtonSupplierFormElaveEt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonSupplierFormElaveEt.Location = new System.Drawing.Point(157, 245);
             this.ButtonSupplierFormElaveEt.Name = "ButtonSupplierFormElaveEt";
             this.ButtonSupplierFormElaveEt.Size = new System.Drawing.Size(85, 31);
@@ -78,6 +79,9 @@ namespace WindowsForm
             // 
             this.DataGridViewSupplierForm.AllowUserToAddRows = false;
             this.DataGridViewSupplierForm.AllowUserToDeleteRows = false;
+            this.DataGridViewSupplierForm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DataGridViewSupplierForm.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DataGridViewSupplierForm.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.DataGridViewSupplierForm.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;

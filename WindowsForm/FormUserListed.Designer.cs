@@ -52,6 +52,9 @@ namespace WindowsForm
             // 
             this.DataGridViewUserListed.AllowUserToAddRows = false;
             this.DataGridViewUserListed.AllowUserToDeleteRows = false;
+            this.DataGridViewUserListed.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DataGridViewUserListed.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DataGridViewUserListed.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.DataGridViewUserListed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -66,6 +69,7 @@ namespace WindowsForm
             // 
             // ButtonFormUserListedGuncelle
             // 
+            this.ButtonFormUserListedGuncelle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonFormUserListedGuncelle.Location = new System.Drawing.Point(132, 222);
             this.ButtonFormUserListedGuncelle.Name = "ButtonFormUserListedGuncelle";
             this.ButtonFormUserListedGuncelle.Size = new System.Drawing.Size(75, 23);
@@ -156,6 +160,8 @@ namespace WindowsForm
             // 
             // ButtonFormUserListedSil
             // 
+            this.ButtonFormUserListedSil.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ButtonFormUserListedSil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonFormUserListedSil.Location = new System.Drawing.Point(920, 44);
             this.ButtonFormUserListedSil.Name = "ButtonFormUserListedSil";
             this.ButtonFormUserListedSil.Size = new System.Drawing.Size(75, 23);
@@ -166,6 +172,7 @@ namespace WindowsForm
             // 
             // TextBoxFormUserListedAxtar
             // 
+            this.TextBoxFormUserListedAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TextBoxFormUserListedAxtar.Location = new System.Drawing.Point(741, 15);
             this.TextBoxFormUserListedAxtar.Name = "TextBoxFormUserListedAxtar";
             this.TextBoxFormUserListedAxtar.Size = new System.Drawing.Size(173, 23);
@@ -174,6 +181,7 @@ namespace WindowsForm
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(698, 18);
             this.label5.Name = "label5";
@@ -183,6 +191,8 @@ namespace WindowsForm
             // 
             // ButtonAxtar
             // 
+            this.ButtonAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ButtonAxtar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonAxtar.Location = new System.Drawing.Point(920, 15);
             this.ButtonAxtar.Name = "ButtonAxtar";
             this.ButtonAxtar.Size = new System.Drawing.Size(75, 23);

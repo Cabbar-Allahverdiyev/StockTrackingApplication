@@ -167,6 +167,7 @@ namespace WindowsForm
             // 
             // ButtonFormProductAddYeniMehsulElaveEt
             // 
+            this.ButtonFormProductAddYeniMehsulElaveEt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonFormProductAddYeniMehsulElaveEt.Location = new System.Drawing.Point(207, 312);
             this.ButtonFormProductAddYeniMehsulElaveEt.Name = "ButtonFormProductAddYeniMehsulElaveEt";
             this.ButtonFormProductAddYeniMehsulElaveEt.Size = new System.Drawing.Size(75, 23);
@@ -335,6 +336,7 @@ namespace WindowsForm
             // 
             // ButtonVarOlanElaveEt
             // 
+            this.ButtonVarOlanElaveEt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonVarOlanElaveEt.Location = new System.Drawing.Point(175, 225);
             this.ButtonVarOlanElaveEt.Name = "ButtonVarOlanElaveEt";
             this.ButtonVarOlanElaveEt.Size = new System.Drawing.Size(84, 23);
@@ -446,6 +448,9 @@ namespace WindowsForm
             // 
             this.DataGridViewProductList.AllowUserToAddRows = false;
             this.DataGridViewProductList.AllowUserToDeleteRows = false;
+            this.DataGridViewProductList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DataGridViewProductList.BackgroundColor = System.Drawing.SystemColors.Control;
             this.DataGridViewProductList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridViewProductList.Location = new System.Drawing.Point(632, 41);
@@ -453,14 +458,15 @@ namespace WindowsForm
             this.DataGridViewProductList.ReadOnly = true;
             this.DataGridViewProductList.RowTemplate.Height = 25;
             this.DataGridViewProductList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridViewProductList.Size = new System.Drawing.Size(452, 393);
+            this.DataGridViewProductList.Size = new System.Drawing.Size(336, 402);
             this.DataGridViewProductList.TabIndex = 2;
             this.DataGridViewProductList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewProductList_CellDoubleClick);
             // 
             // label18
             // 
+            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(906, 15);
+            this.label18.Location = new System.Drawing.Point(790, 15);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(37, 15);
             this.label18.TabIndex = 3;
@@ -468,7 +474,8 @@ namespace WindowsForm
             // 
             // textBoxAxtar
             // 
-            this.textBoxAxtar.Location = new System.Drawing.Point(949, 12);
+            this.textBoxAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxAxtar.Location = new System.Drawing.Point(833, 12);
             this.textBoxAxtar.Name = "textBoxAxtar";
             this.textBoxAxtar.Size = new System.Drawing.Size(135, 23);
             this.textBoxAxtar.TabIndex = 4;
@@ -476,7 +483,8 @@ namespace WindowsForm
             // 
             // buttonYeniMehsulSil
             // 
-            this.buttonYeniMehsulSil.Location = new System.Drawing.Point(1009, 440);
+            this.buttonYeniMehsulSil.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonYeniMehsulSil.Location = new System.Drawing.Point(893, 449);
             this.buttonYeniMehsulSil.Name = "buttonYeniMehsulSil";
             this.buttonYeniMehsulSil.Size = new System.Drawing.Size(75, 23);
             this.buttonYeniMehsulSil.TabIndex = 21;
@@ -489,7 +497,7 @@ namespace WindowsForm
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1096, 467);
+            this.ClientSize = new System.Drawing.Size(980, 476);
             this.Controls.Add(this.buttonYeniMehsulSil);
             this.Controls.Add(this.textBoxAxtar);
             this.Controls.Add(this.label18);
@@ -498,7 +506,7 @@ namespace WindowsForm
             this.Controls.Add(this.GroupBoxFormProductAddYeniMehsul);
             this.Name = "FormProductAdd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "v";
+            this.Text = "Product Add Form";
             this.Load += new System.EventHandler(this.FormProductAdd_Load);
             this.GroupBoxFormProductAddYeniMehsul.ResumeLayout(false);
             this.GroupBoxFormProductAddYeniMehsul.PerformLayout();

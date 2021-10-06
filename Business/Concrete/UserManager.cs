@@ -30,11 +30,11 @@ namespace Business.Concrete
         [CacheRemoveAspect("IUserService.Get")]
         public IResult Add(User user)
         {
-            IResult result = BusinessRules.Run(IsThereFirstNameAndLastNameAvailable(user.FirstName,user.LastName)
+            IResult result = BusinessRules.Run(IsThereFirstNameAndLastNameAvailable(user.FirstName, user.LastName)
                                                 , IsEmailExists(user.Email));
-            if (result!=null)
+            if (result != null)
             {
-               return new  ErrorDataResult<User>(result.Message);
+                return new ErrorDataResult<User>(result.Message);
             }
             _userDal.Add(user);
             return new SuccessResult(UserMessages.UserAdded);
@@ -58,7 +58,12 @@ namespace Business.Concrete
         [CacheAspect]
         public IDataResult<List<User>> GetAll()
         {
-            return new SuccessDataResult<List<User>>(_userDal.GetAll(), UserMessages.UserGetAll);
+            List<User> get = _userDal.GetAll();
+            if (get is null)
+            {
+                return new ErrorDataResult<List<User>>(UserMessages.UserNotFound);
+            }
+            return new SuccessDataResult<List<User>>(get, UserMessages.UserGetAll);
         }
 
 
@@ -66,12 +71,22 @@ namespace Business.Concrete
         [CacheAspect]
         public IDataResult<List<UserDto>> GetUserDetails()
         {
-            return new SuccessDataResult<List<UserDto>>(_userDal.GetUserDetails(), UserMessages.UserDetailsListed);
+            List<UserDto> get = _userDal.GetUserDetails();
+            if (get is null)
+            {
+                return new ErrorDataResult<List<UserDto>>(UserMessages.UserNotFound);
+            }
+            return new SuccessDataResult<List<UserDto>>(get, UserMessages.UserDetailsListed);
         }
 
         public IDataResult<List<UserDto>> GetUserDetailsByUserName(string userName)
         {
-            return new SuccessDataResult<List<UserDto>>(_userDal.GetUserDetails(u=>u.FirstName==userName), UserMessages.UserDetailsByNameListed);
+            List<UserDto> get = _userDal.GetUserDetails(u => u.FirstName == userName);
+            if (get is null)
+            {
+                return new ErrorDataResult<List<UserDto>>(UserMessages.UserNotFound);
+            }
+            return new SuccessDataResult<List<UserDto>>(get, UserMessages.UserDetailsByNameListed);
         }
 
         [CacheAspect]
@@ -128,8 +143,8 @@ namespace Business.Concrete
             IResult result = BusinessRules.Run(PasswordRepeatCompatibilityWithPassword(password, passwordRepeat)
                                                , IsPasswordNull(password)
                                                , PasswordCannotBeLessThanSixCharacters(password)
-                                               , IsThereFirstNameAndLastNameAvailable(userForRegisterDto.FirstName,userForRegisterDto.LastName)
-                                               ,IsEmailExists(userForRegisterDto.Email)
+                                               , IsThereFirstNameAndLastNameAvailable(userForRegisterDto.FirstName, userForRegisterDto.LastName)
+                                               , IsEmailExists(userForRegisterDto.Email)
                                                );
 
             if (result != null)
@@ -195,7 +210,7 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-        private IResult IsThereFirstNameAndLastNameAvailable(string firstName,string lastName)
+        private IResult IsThereFirstNameAndLastNameAvailable(string firstName, string lastName)
         {
             List<User> userGetAll = _userDal.GetAll();
             foreach (User user in userGetAll)

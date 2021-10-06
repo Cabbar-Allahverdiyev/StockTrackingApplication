@@ -62,6 +62,9 @@ namespace WindowsForm
             // 
             this.dataGridViewFormPrdouctList.AllowUserToAddRows = false;
             this.dataGridViewFormPrdouctList.AllowUserToDeleteRows = false;
+            this.dataGridViewFormPrdouctList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewFormPrdouctList.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridViewFormPrdouctList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewFormPrdouctList.Location = new System.Drawing.Point(294, 50);
@@ -273,6 +276,7 @@ namespace WindowsForm
             // 
             // buttonSil
             // 
+            this.buttonSil.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonSil.Location = new System.Drawing.Point(1168, 50);
             this.buttonSil.Name = "buttonSil";
             this.buttonSil.Size = new System.Drawing.Size(65, 25);
@@ -283,6 +287,7 @@ namespace WindowsForm
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(973, 16);
             this.label1.Name = "label1";
@@ -292,6 +297,7 @@ namespace WindowsForm
             // 
             // textBoxAxtar
             // 
+            this.textBoxAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxAxtar.Location = new System.Drawing.Point(1017, 13);
             this.textBoxAxtar.Name = "textBoxAxtar";
             this.textBoxAxtar.Size = new System.Drawing.Size(145, 23);

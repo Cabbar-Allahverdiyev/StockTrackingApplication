@@ -26,7 +26,8 @@ namespace WindowsForm
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SalesForm());
+            //Application.Run(new SalesForm());
+            Application.Run(new Dashboard());
             
 
             //new SalesForm(new FormUserAdd(new AuthManager(new UserManager(new EfUserDal()), new JwtHelper())))

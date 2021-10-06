@@ -66,6 +66,9 @@ namespace WindowsForm
             // 
             this.DataGridViewFormBrand.AllowUserToAddRows = false;
             this.DataGridViewFormBrand.AllowUserToDeleteRows = false;
+            this.DataGridViewFormBrand.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DataGridViewFormBrand.BackgroundColor = System.Drawing.SystemColors.Control;
             this.DataGridViewFormBrand.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridViewFormBrand.Location = new System.Drawing.Point(300, 29);
@@ -73,7 +76,7 @@ namespace WindowsForm
             this.DataGridViewFormBrand.ReadOnly = true;
             this.DataGridViewFormBrand.RowTemplate.Height = 25;
             this.DataGridViewFormBrand.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridViewFormBrand.Size = new System.Drawing.Size(418, 322);
+            this.DataGridViewFormBrand.Size = new System.Drawing.Size(368, 324);
             this.DataGridViewFormBrand.TabIndex = 3;
             // 
             // FormBrand
@@ -81,7 +84,7 @@ namespace WindowsForm
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(776, 398);
+            this.ClientSize = new System.Drawing.Size(726, 400);
             this.Controls.Add(this.DataGridViewFormBrand);
             this.Controls.Add(this.ButtonFormBrandElaveEt);
             this.Controls.Add(this.label1);
