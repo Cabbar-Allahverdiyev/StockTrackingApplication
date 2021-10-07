@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
@@ -19,7 +20,17 @@ namespace WindowsForm
         {
             InitializeComponent();
             random = new Random();
+            buttonCloseChildForm.Visible = false;
+            this.Text = string.Empty;
+            this.ControlBox = false;
+            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
         }
+
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
@@ -66,6 +77,7 @@ namespace WindowsForm
                     panelLogo.BackColor = ThemeColor.ChangeColorBrightness(color, -0.3);
                     ThemeColor.PrimaryColor = color;
                     ThemeColor.SecondaryColor = ThemeColor.ChangeColorBrightness(color, -0.3);
+                    buttonCloseChildForm.Visible = true;
 
                 }
             }
@@ -146,6 +158,51 @@ namespace WindowsForm
             OpenChildForm(new SupplierForm(), sender);
         }
 
+        private void buttonCloseChildForm_Click(object sender, EventArgs e)
+        {
+            if (activateForm!= null)
+            {
+                activateForm.Close();
+            }
+            Reset();
+        }
 
+        private void Reset()
+        {
+            DisableButton();
+            labelTitle.Text = "Home";
+            panelTitleBar.BackColor = Color.FromArgb(0,150,136);
+            panelLogo.BackColor = Color.FromArgb(76, 80, 77);
+            currentButton = null;
+            buttonCloseChildForm.Visible = false;
+        }
+
+        private void panelTitleBar_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle,0x112,0xf012,0);
+        }
+
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void buttonMaximize_Click(object sender, EventArgs e)
+        {
+            if (WindowState==FormWindowState.Normal)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void buttonMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
 }
