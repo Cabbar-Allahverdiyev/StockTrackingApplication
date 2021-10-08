@@ -22,22 +22,19 @@ namespace WindowsForm
 {
     public partial class SalesForm : Form
     {
-        ProductManager _productManager = new ProductManager(new EfProductDal());
-        CartManager _cartManager = new CartManager(new EfCartDal());
-        SaleWinFormManager _saleWinFormManager = new SaleWinFormManager(new EfSaleWinFormDal());
-        ResultControllersMessageList resultControllersMessageList = new ResultControllersMessageList();
+       
 
-        FormUserAdd _formUserAdd = new FormUserAdd(new UserManager(new EfUserDal()));
-        FormUserListed _formUserListed = new FormUserListed();
-        FormProductAdd _formProductAdd = new FormProductAdd();
-        FormBrand _formBrand = new FormBrand();
-        FormCategory _formCategory = new FormCategory();
-        SupplierForm _supplierForm = new SupplierForm();
-        FormProductList _formProductList = new FormProductList();
-        FormSalesList _formSalesList = new FormSalesList();
+        //FormUserAdd _formUserAdd = new FormUserAdd(new UserManager(new EfUserDal()));
+        //FormUserListed _formUserListed = new FormUserListed();
+        //FormProductAdd _formProductAdd = new FormProductAdd();
+        //FormBrand _formBrand = new FormBrand();
+        //FormCategory _formCategory = new FormCategory();
+        //SupplierForm _supplierForm = new SupplierForm();
+        //FormProductList _formProductList = new FormProductList();
+        //FormSalesList _formSalesList = new FormSalesList();
 
 
-        bool isBarcodeNumberExists = false;
+      
 
 
 
@@ -47,6 +44,13 @@ namespace WindowsForm
             TotalPriceLabelWrite();
         }
 
+        ProductManager _productManager = new ProductManager(new EfProductDal());
+        CartManager _cartManager = new CartManager(new EfCartDal());
+        SaleWinFormManager _saleWinFormManager = new SaleWinFormManager(new EfSaleWinFormDal());
+        ResultControllersMessageList resultControllersMessageList = new ResultControllersMessageList();
+
+        bool isBarcodeNumberExists = false;
+
         private void SalesForm_Load(object sender, EventArgs e)
         {
             ProductListRefesh();
@@ -54,45 +58,45 @@ namespace WindowsForm
             GroupBoxMehsulControlClear();
         }
 
-        private void ButtonSalesFormIstifadeciElaveEtmek_Click(object sender, EventArgs e)
-        {
-            _formUserAdd.ShowDialog();
-        }
+        //private void ButtonSalesFormIstifadeciElaveEtmek_Click(object sender, EventArgs e)
+        //{
+        //    _formUserAdd.ShowDialog();
+        //}
 
-        private void ButtonSalesFormIstifadecileriSirala_Click(object sender, EventArgs e)
-        {
-            _formUserListed.ShowDialog();
-        }
+        //private void ButtonSalesFormIstifadecileriSirala_Click(object sender, EventArgs e)
+        //{
+        //    _formUserListed.ShowDialog();
+        //}
 
-        private void ButtonSalesFormMehsulElaveEtmek_Click(object sender, EventArgs e)
-        {
-            _formProductAdd.ShowDialog();
-        }
+        //private void ButtonSalesFormMehsulElaveEtmek_Click(object sender, EventArgs e)
+        //{
+        //    _formProductAdd.ShowDialog();
+        //}
 
-        private void ButtonSalesFormMarka_Click(object sender, EventArgs e)
-        {
-            _formBrand.ShowDialog();
-        }
+        //private void ButtonSalesFormMarka_Click(object sender, EventArgs e)
+        //{
+        //    _formBrand.ShowDialog();
+        //}
 
-        private void ButtonFormKateqoriya_Click(object sender, EventArgs e)
-        {
-            _formCategory.ShowDialog();
-        }
+        //private void ButtonFormKateqoriya_Click(object sender, EventArgs e)
+        //{
+        //    _formCategory.ShowDialog();
+        //}
 
-        private void ButtonSalesFormTedarukculer_Click(object sender, EventArgs e)
-        {
-            _supplierForm.ShowDialog();
-        }
+        //private void ButtonSalesFormTedarukculer_Click(object sender, EventArgs e)
+        //{
+        //    _supplierForm.ShowDialog();
+        //}
 
-        private void ButtonSalesFormMehsullariSirala_Click(object sender, EventArgs e)
-        {
-            _formProductList.ShowDialog();
-        }
+        //private void ButtonSalesFormMehsullariSirala_Click(object sender, EventArgs e)
+        //{
+        //    _formProductList.ShowDialog();
+        //}
 
-        private void ButtonSalesFormSatislariSirala_Click(object sender, EventArgs e)
-        {
-            _formSalesList.ShowDialog();
-        }
+        //private void ButtonSalesFormSatislariSirala_Click(object sender, EventArgs e)
+        //{
+        //    _formSalesList.ShowDialog();
+        //}
 
         private void ButtonSalesFormYenile_Click(object sender, EventArgs e)
         {
@@ -475,6 +479,6 @@ namespace WindowsForm
             }
         }
 
-
+       
     }
 }

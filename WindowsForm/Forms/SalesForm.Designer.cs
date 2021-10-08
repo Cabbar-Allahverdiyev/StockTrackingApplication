@@ -29,21 +29,11 @@ namespace WindowsForm
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SalesForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SalesForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.ButtonX = new System.Windows.Forms.Label();
-            this.ButtonSalesFormTedarukculer = new System.Windows.Forms.Button();
-            this.ButtonFormKateqoriya = new System.Windows.Forms.Button();
-            this.ButtonSalesFormMarka = new System.Windows.Forms.Button();
-            this.ButtonSalesFormSatislariSirala = new System.Windows.Forms.Button();
-            this.ButtonSalesFormMehsullariSirala = new System.Windows.Forms.Button();
-            this.ButtonSalesFormMehsulElaveEtmek = new System.Windows.Forms.Button();
-            this.ButtonSalesFormIstifadecileriSirala = new System.Windows.Forms.Button();
-            this.ButtonSalesFormIstifadeciElaveEtmek = new System.Windows.Forms.Button();
             this.dataGridViewProductList = new System.Windows.Forms.DataGridView();
             this.ButtonSalesFormSil = new System.Windows.Forms.Button();
             this.ButonSalesFormSatisIptal = new System.Windows.Forms.Button();
@@ -77,126 +67,19 @@ namespace WindowsForm
             this.ButtonSalesFormYenile = new System.Windows.Forms.Button();
             this.dataGridViewCartList = new System.Windows.Forms.DataGridView();
             this.buttonTemizle = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductList)).BeginInit();
             this.groupBoxMusteri.SuspendLayout();
             this.groupBoxMehsul.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCartList)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.ButtonX);
-            this.panel1.Controls.Add(this.ButtonSalesFormTedarukculer);
-            this.panel1.Controls.Add(this.ButtonFormKateqoriya);
-            this.panel1.Controls.Add(this.ButtonSalesFormMarka);
-            this.panel1.Controls.Add(this.ButtonSalesFormSatislariSirala);
-            this.panel1.Controls.Add(this.ButtonSalesFormMehsullariSirala);
-            this.panel1.Controls.Add(this.ButtonSalesFormMehsulElaveEtmek);
-            this.panel1.Controls.Add(this.ButtonSalesFormIstifadecileriSirala);
-            this.panel1.Controls.Add(this.ButtonSalesFormIstifadeciElaveEtmek);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1378, 70);
-            this.panel1.TabIndex = 0;
-            // 
-            // ButtonX
-            // 
-            this.ButtonX.AutoSize = true;
-            this.ButtonX.Font = new System.Drawing.Font("Segoe UI Symbol", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ButtonX.Image = ((System.Drawing.Image)(resources.GetObject("ButtonX.Image")));
-            this.ButtonX.Location = new System.Drawing.Point(1352, 0);
-            this.ButtonX.Name = "ButtonX";
-            this.ButtonX.Size = new System.Drawing.Size(14, 21);
-            this.ButtonX.TabIndex = 8;
-            this.ButtonX.Text = " ";
-            this.ButtonX.Click += new System.EventHandler(this.ButtonX_Click);
-            // 
-            // ButtonSalesFormTedarukculer
-            // 
-            this.ButtonSalesFormTedarukculer.Location = new System.Drawing.Point(858, 12);
-            this.ButtonSalesFormTedarukculer.Name = "ButtonSalesFormTedarukculer";
-            this.ButtonSalesFormTedarukculer.Size = new System.Drawing.Size(92, 43);
-            this.ButtonSalesFormTedarukculer.TabIndex = 7;
-            this.ButtonSalesFormTedarukculer.Text = "Tedarukculer";
-            this.ButtonSalesFormTedarukculer.UseVisualStyleBackColor = true;
-            this.ButtonSalesFormTedarukculer.Click += new System.EventHandler(this.ButtonSalesFormTedarukculer_Click);
-            // 
-            // ButtonFormKateqoriya
-            // 
-            this.ButtonFormKateqoriya.Location = new System.Drawing.Point(744, 12);
-            this.ButtonFormKateqoriya.Name = "ButtonFormKateqoriya";
-            this.ButtonFormKateqoriya.Size = new System.Drawing.Size(92, 43);
-            this.ButtonFormKateqoriya.TabIndex = 6;
-            this.ButtonFormKateqoriya.Text = "Kateqoriya";
-            this.ButtonFormKateqoriya.UseVisualStyleBackColor = true;
-            this.ButtonFormKateqoriya.Click += new System.EventHandler(this.ButtonFormKateqoriya_Click);
-            // 
-            // ButtonSalesFormMarka
-            // 
-            this.ButtonSalesFormMarka.Location = new System.Drawing.Point(623, 12);
-            this.ButtonSalesFormMarka.Name = "ButtonSalesFormMarka";
-            this.ButtonSalesFormMarka.Size = new System.Drawing.Size(92, 43);
-            this.ButtonSalesFormMarka.TabIndex = 5;
-            this.ButtonSalesFormMarka.Text = "Marka";
-            this.ButtonSalesFormMarka.UseVisualStyleBackColor = true;
-            this.ButtonSalesFormMarka.Click += new System.EventHandler(this.ButtonSalesFormMarka_Click);
-            // 
-            // ButtonSalesFormSatislariSirala
-            // 
-            this.ButtonSalesFormSatislariSirala.Location = new System.Drawing.Point(512, 12);
-            this.ButtonSalesFormSatislariSirala.Name = "ButtonSalesFormSatislariSirala";
-            this.ButtonSalesFormSatislariSirala.Size = new System.Drawing.Size(92, 43);
-            this.ButtonSalesFormSatislariSirala.TabIndex = 4;
-            this.ButtonSalesFormSatislariSirala.Text = "Satislari sirala";
-            this.ButtonSalesFormSatislariSirala.UseVisualStyleBackColor = true;
-            this.ButtonSalesFormSatislariSirala.Click += new System.EventHandler(this.ButtonSalesFormSatislariSirala_Click);
-            // 
-            // ButtonSalesFormMehsullariSirala
-            // 
-            this.ButtonSalesFormMehsullariSirala.Location = new System.Drawing.Point(387, 12);
-            this.ButtonSalesFormMehsullariSirala.Name = "ButtonSalesFormMehsullariSirala";
-            this.ButtonSalesFormMehsullariSirala.Size = new System.Drawing.Size(92, 43);
-            this.ButtonSalesFormMehsullariSirala.TabIndex = 3;
-            this.ButtonSalesFormMehsullariSirala.Text = "Mehsullari sirala";
-            this.ButtonSalesFormMehsullariSirala.UseVisualStyleBackColor = true;
-            this.ButtonSalesFormMehsullariSirala.Click += new System.EventHandler(this.ButtonSalesFormMehsullariSirala_Click);
-            // 
-            // ButtonSalesFormMehsulElaveEtmek
-            // 
-            this.ButtonSalesFormMehsulElaveEtmek.Location = new System.Drawing.Point(262, 12);
-            this.ButtonSalesFormMehsulElaveEtmek.Name = "ButtonSalesFormMehsulElaveEtmek";
-            this.ButtonSalesFormMehsulElaveEtmek.Size = new System.Drawing.Size(92, 43);
-            this.ButtonSalesFormMehsulElaveEtmek.TabIndex = 2;
-            this.ButtonSalesFormMehsulElaveEtmek.Text = "Mehsul elave etmek";
-            this.ButtonSalesFormMehsulElaveEtmek.UseVisualStyleBackColor = true;
-            this.ButtonSalesFormMehsulElaveEtmek.Click += new System.EventHandler(this.ButtonSalesFormMehsulElaveEtmek_Click);
-            // 
-            // ButtonSalesFormIstifadecileriSirala
-            // 
-            this.ButtonSalesFormIstifadecileriSirala.Location = new System.Drawing.Point(137, 12);
-            this.ButtonSalesFormIstifadecileriSirala.Name = "ButtonSalesFormIstifadecileriSirala";
-            this.ButtonSalesFormIstifadecileriSirala.Size = new System.Drawing.Size(92, 43);
-            this.ButtonSalesFormIstifadecileriSirala.TabIndex = 1;
-            this.ButtonSalesFormIstifadecileriSirala.Text = "Istifadecileri Sirala";
-            this.ButtonSalesFormIstifadecileriSirala.UseVisualStyleBackColor = true;
-            this.ButtonSalesFormIstifadecileriSirala.Click += new System.EventHandler(this.ButtonSalesFormIstifadecileriSirala_Click);
-            // 
-            // ButtonSalesFormIstifadeciElaveEtmek
-            // 
-            this.ButtonSalesFormIstifadeciElaveEtmek.Location = new System.Drawing.Point(12, 12);
-            this.ButtonSalesFormIstifadeciElaveEtmek.Name = "ButtonSalesFormIstifadeciElaveEtmek";
-            this.ButtonSalesFormIstifadeciElaveEtmek.Size = new System.Drawing.Size(92, 43);
-            this.ButtonSalesFormIstifadeciElaveEtmek.TabIndex = 0;
-            this.ButtonSalesFormIstifadeciElaveEtmek.Text = "Istifadeci elave etmek ";
-            this.ButtonSalesFormIstifadeciElaveEtmek.UseVisualStyleBackColor = true;
-            this.ButtonSalesFormIstifadeciElaveEtmek.Click += new System.EventHandler(this.ButtonSalesFormIstifadeciElaveEtmek_Click);
-            // 
             // dataGridViewProductList
             // 
             this.dataGridViewProductList.AllowUserToAddRows = false;
             this.dataGridViewProductList.AllowUserToDeleteRows = false;
+            this.dataGridViewProductList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewProductList.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -215,12 +98,12 @@ namespace WindowsForm
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewProductList.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewProductList.Location = new System.Drawing.Point(262, 86);
+            this.dataGridViewProductList.Location = new System.Drawing.Point(263, 25);
             this.dataGridViewProductList.Name = "dataGridViewProductList";
             this.dataGridViewProductList.ReadOnly = true;
             this.dataGridViewProductList.RowTemplate.Height = 25;
             this.dataGridViewProductList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewProductList.Size = new System.Drawing.Size(1010, 426);
+            this.dataGridViewProductList.Size = new System.Drawing.Size(806, 287);
             this.dataGridViewProductList.TabIndex = 1;
             this.dataGridViewProductList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewSalesForm_CellDoubleClick);
             // 
@@ -236,7 +119,8 @@ namespace WindowsForm
             // 
             // ButonSalesFormSatisIptal
             // 
-            this.ButonSalesFormSatisIptal.Location = new System.Drawing.Point(1283, 115);
+            this.ButonSalesFormSatisIptal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ButonSalesFormSatisIptal.Location = new System.Drawing.Point(1080, 54);
             this.ButonSalesFormSatisIptal.Name = "ButonSalesFormSatisIptal";
             this.ButonSalesFormSatisIptal.Size = new System.Drawing.Size(75, 23);
             this.ButonSalesFormSatisIptal.TabIndex = 3;
@@ -252,7 +136,7 @@ namespace WindowsForm
             this.groupBoxMusteri.Controls.Add(this.label4);
             this.groupBoxMusteri.Controls.Add(this.label3);
             this.groupBoxMusteri.Controls.Add(this.label2);
-            this.groupBoxMusteri.Location = new System.Drawing.Point(12, 86);
+            this.groupBoxMusteri.Location = new System.Drawing.Point(13, 25);
             this.groupBoxMusteri.Name = "groupBoxMusteri";
             this.groupBoxMusteri.Size = new System.Drawing.Size(244, 130);
             this.groupBoxMusteri.TabIndex = 8;
@@ -326,7 +210,7 @@ namespace WindowsForm
             this.groupBoxMehsul.Controls.Add(this.label6);
             this.groupBoxMehsul.Controls.Add(this.label5);
             this.groupBoxMehsul.Controls.Add(this.label7);
-            this.groupBoxMehsul.Location = new System.Drawing.Point(12, 264);
+            this.groupBoxMehsul.Location = new System.Drawing.Point(13, 203);
             this.groupBoxMehsul.Name = "groupBoxMehsul";
             this.groupBoxMehsul.Size = new System.Drawing.Size(244, 318);
             this.groupBoxMehsul.TabIndex = 9;
@@ -470,7 +354,8 @@ namespace WindowsForm
             // 
             // ButtonSalesFormSatisEtmek
             // 
-            this.ButtonSalesFormSatisEtmek.Location = new System.Drawing.Point(1278, 676);
+            this.ButtonSalesFormSatisEtmek.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ButtonSalesFormSatisEtmek.Location = new System.Drawing.Point(1075, 476);
             this.ButtonSalesFormSatisEtmek.Name = "ButtonSalesFormSatisEtmek";
             this.ButtonSalesFormSatisEtmek.Size = new System.Drawing.Size(80, 45);
             this.ButtonSalesFormSatisEtmek.TabIndex = 10;
@@ -480,9 +365,10 @@ namespace WindowsForm
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(917, 724);
+            this.label1.Location = new System.Drawing.Point(714, 524);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(120, 25);
             this.label1.TabIndex = 12;
@@ -490,10 +376,11 @@ namespace WindowsForm
             // 
             // LabelSalesFormUmuniCem_qiymet
             // 
+            this.LabelSalesFormUmuniCem_qiymet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.LabelSalesFormUmuniCem_qiymet.AutoSize = true;
             this.LabelSalesFormUmuniCem_qiymet.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LabelSalesFormUmuniCem_qiymet.ForeColor = System.Drawing.Color.Red;
-            this.LabelSalesFormUmuniCem_qiymet.Location = new System.Drawing.Point(1043, 724);
+            this.LabelSalesFormUmuniCem_qiymet.Location = new System.Drawing.Point(840, 524);
             this.LabelSalesFormUmuniCem_qiymet.Name = "LabelSalesFormUmuniCem_qiymet";
             this.LabelSalesFormUmuniCem_qiymet.Size = new System.Drawing.Size(23, 25);
             this.LabelSalesFormUmuniCem_qiymet.TabIndex = 13;
@@ -501,11 +388,12 @@ namespace WindowsForm
             // 
             // ButtonSalesFormYenile
             // 
+            this.ButtonSalesFormYenile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ButtonSalesFormYenile.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ButtonSalesFormYenile.FlatAppearance.BorderSize = 0;
             this.ButtonSalesFormYenile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonSalesFormYenile.Image = ((System.Drawing.Image)(resources.GetObject("ButtonSalesFormYenile.Image")));
-            this.ButtonSalesFormYenile.Location = new System.Drawing.Point(1303, 150);
+            this.ButtonSalesFormYenile.Location = new System.Drawing.Point(1099, 150);
             this.ButtonSalesFormYenile.Name = "ButtonSalesFormYenile";
             this.ButtonSalesFormYenile.Size = new System.Drawing.Size(55, 45);
             this.ButtonSalesFormYenile.TabIndex = 14;
@@ -516,6 +404,9 @@ namespace WindowsForm
             // 
             this.dataGridViewCartList.AllowUserToAddRows = false;
             this.dataGridViewCartList.AllowUserToDeleteRows = false;
+            this.dataGridViewCartList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewCartList.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -534,18 +425,18 @@ namespace WindowsForm
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewCartList.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewCartList.Location = new System.Drawing.Point(262, 518);
+            this.dataGridViewCartList.Location = new System.Drawing.Point(263, 457);
             this.dataGridViewCartList.Name = "dataGridViewCartList";
             this.dataGridViewCartList.ReadOnly = true;
             this.dataGridViewCartList.RowTemplate.Height = 25;
             this.dataGridViewCartList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewCartList.Size = new System.Drawing.Size(1010, 203);
+            this.dataGridViewCartList.Size = new System.Drawing.Size(806, 64);
             this.dataGridViewCartList.TabIndex = 15;
             this.dataGridViewCartList.DoubleClick += new System.EventHandler(this.dataGridViewCartList_DoubleClick);
             // 
             // buttonTemizle
             // 
-            this.buttonTemizle.Location = new System.Drawing.Point(179, 589);
+            this.buttonTemizle.Location = new System.Drawing.Point(180, 528);
             this.buttonTemizle.Name = "buttonTemizle";
             this.buttonTemizle.Size = new System.Drawing.Size(70, 26);
             this.buttonTemizle.TabIndex = 16;
@@ -558,8 +449,8 @@ namespace WindowsForm
             this.AcceptButton = this.ButtonSalesFormElaveEt;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1378, 780);
+            this.BackColor = System.Drawing.Color.DimGray;
+            this.ClientSize = new System.Drawing.Size(1174, 641);
             this.Controls.Add(this.buttonTemizle);
             this.Controls.Add(this.dataGridViewCartList);
             this.Controls.Add(this.ButtonSalesFormYenile);
@@ -570,15 +461,10 @@ namespace WindowsForm
             this.Controls.Add(this.groupBoxMusteri);
             this.Controls.Add(this.ButonSalesFormSatisIptal);
             this.Controls.Add(this.dataGridViewProductList);
-            this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SalesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sales Form";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.SalesForm_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductList)).EndInit();
             this.groupBoxMusteri.ResumeLayout(false);
             this.groupBoxMusteri.PerformLayout();
@@ -591,13 +477,6 @@ namespace WindowsForm
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button ButtonSalesFormSatislariSirala;
-        private System.Windows.Forms.Button ButtonSalesFormMehsullariSirala;
-        private System.Windows.Forms.Button ButtonSalesFormMehsulElaveEtmek;
-        private System.Windows.Forms.Button ButtonSalesFormIstifadecileriSirala;
-        private System.Windows.Forms.Button ButtonSalesFormIstifadeciElaveEtmek;
         private System.Windows.Forms.DataGridView dataGridViewProductList;
         private System.Windows.Forms.Button ButtonSalesFormSil;
         private System.Windows.Forms.Button ButonSalesFormSatisIptal;
@@ -619,15 +498,11 @@ namespace WindowsForm
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button ButtonFormKateqoriya;
-        private System.Windows.Forms.Button ButtonSalesFormMarka;
-        private System.Windows.Forms.Button ButtonSalesFormTedarukculer;
         private System.Windows.Forms.Button ButtonSalesFormElaveEt;
         private System.Windows.Forms.Button ButtonSalesFormSatisEtmek;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label LabelSalesFormUmuniCem_qiymet;
         private System.Windows.Forms.Button ButtonSalesFormYenile;
-        private System.Windows.Forms.Label ButtonX;
         private System.Windows.Forms.DataGridView dataGridViewCartList;
         private System.Windows.Forms.TextBox textBoxMaxQiymet;
         private System.Windows.Forms.Label label10;

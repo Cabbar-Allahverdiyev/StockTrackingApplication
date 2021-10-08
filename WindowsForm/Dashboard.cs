@@ -11,6 +11,8 @@ namespace WindowsForm
 {
     public partial class Dashboard : Form
     {
+       //// private int borderSize = 2;
+        //--------------------------->
         private Button currentButton;
         private Random random;
         private int tempIndex;
@@ -18,12 +20,19 @@ namespace WindowsForm
 
         public Dashboard()
         {
+            
+            //==================>
             InitializeComponent();
+            //=====================>
+            ////this.Padding = new Padding(borderSize);
+            ////this.BackColor = Color.FromArgb(98,102,244);
+            //----------------------->
             random = new Random();
             buttonCloseChildForm.Visible = false;
             this.Text = string.Empty;
             this.ControlBox = false;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+            
         }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -36,16 +45,21 @@ namespace WindowsForm
         {
             //panelLogo.BackColor= Color.FromArgb(51,51,76);
             //panelMenu.BackColor= Color.FromArgb(152, 158, 161);
+         
 
-
-            //panelMenu.BackColor= Color.FromArgb(152, 158, 161);
-            panelMenu.BackColor = Color.FromArgb(152, 161, 155);
+            //panelMenu.BackColor= Color.FromArgb(152, 161,155);
+            panelMenu.BackColor = Color.FromArgb(98,102,244);
+            panelDesktopPane.BackColor = Color.FromArgb(245,245,254);
             // panelLogo.BackColor= Color.FromArgb(192,196,198);
             //91,96,93
             //113,124,116
             //106,112,108
-            panelLogo.BackColor = Color.FromArgb(76, 80, 77);
-            panelTitleBar.BackColor = Color.FromArgb(0, 150, 136);
+            //panelLogo.BackColor = Color.FromArgb(76, 80, 77);
+            //panelTitleBar.BackColor = Color.FromArgb(0, 150, 136);         
+            
+            panelLogo.BackColor = Color.FromArgb(98, 102, 244);
+           
+           // OpenChildForm(new SalesForm(), sender);
             DisableButton();
         }
 
@@ -90,7 +104,8 @@ namespace WindowsForm
                 if (previousBtn.GetType() == typeof(Button))
                 {
                     //bura yeiden bax
-                    previousBtn.BackColor = Color.FromArgb(152, 161, 155);
+                    previousBtn.BackColor = Color.FromArgb(98, 102, 244);
+                    //previousBtn.BackColor = Color.FromArgb(152, 161, 155);
                     // previousBtn.BackColor = Color.FromArgb(152, 158, 161);
                     previousBtn.ForeColor = Color.Gainsboro;
                     previousBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -125,7 +140,8 @@ namespace WindowsForm
         private void buttonProducts_Click(object sender, EventArgs e)
         {
             // ActivateButton(sender);
-            OpenChildForm(new FormProductList(), sender);
+            //OpenChildForm(new FormProductList(), sender);
+            OpenChildForm(new SalesForm(), sender);
         }
 
         private void buttonSales_Click(object sender, EventArgs e)
@@ -204,5 +220,7 @@ namespace WindowsForm
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+       
     }
 }

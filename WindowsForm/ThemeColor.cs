@@ -12,7 +12,7 @@ namespace WindowsForm
 
         public static List<string> colorList = new List<string>() { "#3F51B5",
                                                                       "#009688",
-                                                                      "#FF5722",
+                                                                      "#FF5722", //narinci
                                                                       "#607D8B",
                                                                       "#FF9800",
                                                                       "#9C27B0",
