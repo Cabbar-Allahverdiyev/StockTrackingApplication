@@ -15,22 +15,23 @@ namespace WindowsForm.Forms
     public partial class Dashboard : Form
     {
         private int borderSize = 2;
+        private Form activateForm;
+        //private Button currentButton;
+        private Size formSize;
+
         public Dashboard()
         {
             InitializeComponent();
             this.Padding = new Padding();
             CollapseMenu();
-
             this.BackColor = Color.FromArgb(98, 102, 244);
-            this.panelDesktopPane.BackColor = Color.FromArgb(245, 245, 254);
-            panelMenu.BackColor= Color.FromArgb(98, 102, 244);
-            panelLogo.BackColor= Color.FromArgb(98, 102, 244);
 
-            myDropdownMenu2.PrimaryColor = Color.SeaGreen;
-            myDropdownMenu2.MenuItemTextColor = Color.SeaGreen;
 
-            myDropdownMenu1.IsMainMenu = true;
-            myDropdownMenu2.IsMainMenu = true;
+            //myDropdownMenu2.PrimaryColor = Color.SeaGreen;
+            //myDropdownMenu2.MenuItemTextColor = Color.SeaGreen;
+
+            //myDropdownMenu1.IsMainMenu = true;
+            //myDropdownMenu2.IsMainMenu = true;
 
             //myDropdownMenu2.PrimaryColor = Color.OrangeRed;
             //myDropdownMenu2.MenuItemTextColor = Color.OrangeRed;
@@ -44,12 +45,12 @@ namespace WindowsForm.Forms
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
 
-        private void labelTitle_Click(object sender, EventArgs e)
+        private void Dashboard_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void Dashboard_Load(object sender, EventArgs e)
+        private void labelTitle_Click(object sender, EventArgs e)
         {
 
         }
@@ -124,21 +125,21 @@ namespace WindowsForm.Forms
             {
                 return;
             }
-            ////Keep form size when it is minimized and restored. Since the form is resized because it takes into account the size of the title bar and borders.
-            //if (m.Msg == WM_SYSCOMMAND)
-            //{
-            //    /// <see cref="https://docs.microsoft.com/en-us/windows/win32/menurc/wm-syscommand"/>
-            //    /// Quote:
-            //    /// In WM_SYSCOMMAND messages, the four low - order bits of the wParam parameter 
-            //    /// are used internally by the system.To obtain the correct result when testing 
-            //    /// the value of wParam, an application must combine the value 0xFFF0 with the 
-            //    /// wParam value by using the bitwise AND operator.
-            //    int wParam = (m.WParam.ToInt32() & 0xFFF0);
-            //    if (wParam == SC_MINIMIZE)  //Before
-            //        formSize = this.ClientSize;
-            //    if (wParam == SC_RESTORE)// Restored form(Before)
-            //        this.Size = formSize;
-            //}
+            //Keep form size when it is minimized and restored. Since the form is resized because it takes into account the size of the title bar and borders.
+            if (m.Msg == WM_SYSCOMMAND)
+            {
+                /// <see cref="https://docs.microsoft.com/en-us/windows/win32/menurc/wm-syscommand"/>
+                /// Quote:
+                /// In WM_SYSCOMMAND messages, the four low - order bits of the wParam parameter 
+                /// are used internally by the system.To obtain the correct result when testing 
+                /// the value of wParam, an application must combine the value 0xFFF0 with the 
+                /// wParam value by using the bitwise AND operator.
+                int wParam = (m.WParam.ToInt32() & 0xFFF0);
+                if (wParam == SC_MINIMIZE)  //Before
+                    formSize = this.ClientSize;
+                if (wParam == SC_RESTORE)// Restored form(Before)
+                    this.Size = formSize;
+            }
 
             base.WndProc(ref m);
         }
@@ -174,7 +175,7 @@ namespace WindowsForm.Forms
                     //previousBtn.BackColor = Color.FromArgb(152, 161, 155);
                     // previousBtn.BackColor = Color.FromArgb(152, 158, 161);
                     previousBtn.ForeColor = Color.Gainsboro;
-                    previousBtn.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+                    previousBtn.Font = new Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
                 }
             }
         }
@@ -217,10 +218,10 @@ namespace WindowsForm.Forms
         private void buttonProducts_Click(object sender, EventArgs e)
         {
             //myDropdownMenu1.Show(buttonProducts, buttonProducts.Width, 0);
-            Open_DropdownMenu(myDropdownMenu1,sender);
+            Open_DropdownMenu(myDropdownMenu1, sender);
         }
 
-       
+
         private void buttonSales_Click(object sender, EventArgs e)
         {
             // myDropdownMenu2.Show(buttonSales, myDropdownMenu2.Width - buttonProducts.Width, buttonSales.Height);
@@ -234,7 +235,7 @@ namespace WindowsForm.Forms
 
         private void CollapseMenu()
         {
-            if (this.panelMenu.Width>200) //Collapse Menu
+            if (this.panelMenu.Width > 200) //Collapse Menu
             {
                 panelMenu.Width = 100;
                 pictureBoxLogo.Visible = false;
@@ -253,20 +254,20 @@ namespace WindowsForm.Forms
                 buttonMenu.Dock = DockStyle.None;
                 foreach (Button menuButton in panelMenu.Controls.OfType<Button>())
                 {
-                    menuButton.Text ="  "+ menuButton.Tag.ToString();
+                    menuButton.Text = "  " + menuButton.Tag.ToString();
                     menuButton.ImageAlign = ContentAlignment.MiddleLeft;
-                    menuButton.Padding = new Padding(10,0,0,0);
+                    menuButton.Padding = new Padding(10, 0, 0, 0);
                 }
             }
-            
+
         }
 
-        private void Open_DropdownMenu(MyDropdownMenu dropdownMenu,object sender)
+        private void Open_DropdownMenu(MyDropdownMenu dropdownMenu, object sender)
         {
             Control control = (Control)sender;
-            dropdownMenu.VisibleChanged += new EventHandler((sender2,ev)
-                =>DropdownMenu_VisibleChanged(sender2,ev,control));
-            dropdownMenu.Show(control,control.Width,0);
+            dropdownMenu.VisibleChanged += new EventHandler((sender2, ev)
+                => DropdownMenu_VisibleChanged(sender2, ev, control));
+            dropdownMenu.Show(control, control.Width, 0);
         }
 
         private void Open_DropdownMenu2(MyDropdownMenu dropdownMenu, object sender)
@@ -283,11 +284,71 @@ namespace WindowsForm.Forms
             if (!DesignMode)
             {
                 if (dropdownMenu.Visible)
-                    ctrl.BackColor = Color.FromArgb(72, 52, 182);
+                    ctrl.BackColor = Color.FromArgb(159, 161, 224);
                 else ctrl.BackColor = Color.FromArgb(98, 102, 244);
+
+                //if (dropdownMenu.Visible)
+                //    ctrl.BackColor = Color.FromArgb(72, 52, 182);
+                //else ctrl.BackColor = Color.FromArgb(98, 102, 244);
                 //ctrl.BackColor = Color.FromArgb(72, 52, 182);
                 //else ctrl.BackColor = Color.FromArgb(24, 24, 36);
             }
+        }
+
+        private void kateqoriyalariSiralaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormCategory(), sender);
+        }
+
+        private void OpenChildForm(Form childForm, object btnSender)
+        {
+            if (activateForm != null)
+            {
+                activateForm.Close();
+            }
+            activateForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            this.panelDesktopPane.Controls.Add(childForm);
+            this.panelDesktopPane.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+            labelTitle.Text = childForm.Text;
+        }
+
+        //private void ActivateButton(object btnSender)
+        //{
+        //    if (btnSender != null)
+        //    {
+        //        if (currentButton.Equals((MyDropdownMenu)btnSender))
+        //        {
+        //            DisableButton();
+        //            //Color color = SelectThemeColor();
+        //            currentButton = (Button)btnSender;
+        //            //currentButton.BackColor = color;
+        //           // currentButton.ForeColor = Color.White;
+        //           // currentButton.Font = new System.Drawing.Font("Segoe UI", 11.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+        //            //panelTitleBar.BackColor = color;
+        //           // panelLogo.BackColor = ThemeColor.ChangeColorBrightness(color, -0.3);
+        //            //ThemeColor.PrimaryColor = color;
+        //            //ThemeColor.SecondaryColor = ThemeColor.ChangeColorBrightness(color, -0.3);
+        //            buttonCloseChildForm.Visible = true;
+
+        //        }
+        //    }
+        //}
+
+
+
+        private void buttonCategories_Click(object sender, EventArgs e)
+        {
+            Open_DropdownMenu(myDropdownMenu3, sender);
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

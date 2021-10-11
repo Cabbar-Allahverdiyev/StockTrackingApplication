@@ -24,8 +24,13 @@ namespace Business.Concrete
         [CacheRemoveAspect("IBarcodeNumberService.Get")]
         public IResult Add(Brand brand)
         {
-            _brandDal.Add(brand);
-            return new SuccessResult(BrandMessages.BrandAdded);
+            IResult result = GetAllByName(brand.BrandName);
+            if (result.Success)
+            {
+                _brandDal.Add(brand);
+                return new SuccessResult(BrandMessages.BrandAdded);
+            }
+            return new ErrorResult(BrandMessages.BrandNotAdded);
         }
 
         [CacheRemoveAspect("IBarcodeNumberService.Get")]
@@ -47,6 +52,17 @@ namespace Business.Concrete
         public IDataResult<List<Brand>> GetAll()
         {
             List<Brand> get = _brandDal.GetAll();
+            return new SuccessDataResult<List<Brand>>(get,BrandMessages.BrandGetAll);
+        }
+        
+        [CacheAspect]
+        public IDataResult<List<Brand>> GetAllByName(string brandName)
+        {
+            List<Brand> get = _brandDal.GetAll(b=>b.BrandName==brandName);
+            if (get == null)
+            {
+                return new ErrorDataResult<List<Brand>>(BrandMessages.BrandNotFound);
+            }
             return new SuccessDataResult<List<Brand>>(get,BrandMessages.BrandGetAll);
         }
     }

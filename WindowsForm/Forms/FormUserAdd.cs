@@ -40,13 +40,13 @@ namespace WindowsForm
             UserForRegisterDto userForRegisterDto = new UserForRegisterDto();
             string passwordRepeat;
 
-            userForRegisterDto.FirstName = TextBoxFormUserAddAd.Text;
-            userForRegisterDto.LastName = TextBoxFormUserAddSoyad.Text;
-            userForRegisterDto.Email = TextBoxFormUserAddEmail.Text;
+            userForRegisterDto.FirstName = TextBoxAd.Text;
+            userForRegisterDto.LastName = TextBoxSoyad.Text;
+            userForRegisterDto.Email = TextBoxEmail.Text;
             userForRegisterDto.Address = TextBoxFormUserAddAddress.Text;
-            userForRegisterDto.PhoneNumber = TextBoxFormUserAddPhoneNumber.Text;
-            userForRegisterDto.Password = TextBoxFormUserAddSifre.Text;
-            passwordRepeat = TextBoxFormUserAddSifreTekrari.Text;
+            userForRegisterDto.PhoneNumber = TextBoxPhoneNumber.Text;
+            userForRegisterDto.Password = TextBoxSifre.Text;
+            passwordRepeat = TextBoxSifreTekrari.Text;
 
             user.FirstName = userForRegisterDto.FirstName;
             user.LastName = userForRegisterDto.LastName;

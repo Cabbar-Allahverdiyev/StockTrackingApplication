@@ -30,7 +30,6 @@ namespace WindowsForm
         private void InitializeComponent()
         {
             this.DataGridViewUserListed = new System.Windows.Forms.DataGridView();
-            this.ButtonFormUserListedGuncelle = new System.Windows.Forms.Button();
             this.TextBoxFormUserListedAddress = new System.Windows.Forms.TextBox();
             this.TextBoxFormUserListedPhoneNumber = new System.Windows.Forms.TextBox();
             this.TextBoxFormUserListedEmail = new System.Windows.Forms.TextBox();
@@ -41,7 +40,6 @@ namespace WindowsForm
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.ButtonFormUserListedSil = new System.Windows.Forms.Button();
             this.TextBoxFormUserListedAxtar = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.ButtonAxtar = new System.Windows.Forms.Button();
@@ -56,27 +54,16 @@ namespace WindowsForm
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DataGridViewUserListed.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.DataGridViewUserListed.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.DataGridViewUserListed.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.DataGridViewUserListed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridViewUserListed.Location = new System.Drawing.Point(213, 41);
+            this.DataGridViewUserListed.Location = new System.Drawing.Point(213, 44);
             this.DataGridViewUserListed.Name = "DataGridViewUserListed";
             this.DataGridViewUserListed.ReadOnly = true;
             this.DataGridViewUserListed.RowTemplate.Height = 25;
             this.DataGridViewUserListed.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridViewUserListed.Size = new System.Drawing.Size(701, 425);
+            this.DataGridViewUserListed.Size = new System.Drawing.Size(782, 422);
             this.DataGridViewUserListed.TabIndex = 0;
             this.DataGridViewUserListed.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewUserListed_CellDoubleClick);
-            // 
-            // ButtonFormUserListedGuncelle
-            // 
-            this.ButtonFormUserListedGuncelle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonFormUserListedGuncelle.Location = new System.Drawing.Point(132, 222);
-            this.ButtonFormUserListedGuncelle.Name = "ButtonFormUserListedGuncelle";
-            this.ButtonFormUserListedGuncelle.Size = new System.Drawing.Size(75, 23);
-            this.ButtonFormUserListedGuncelle.TabIndex = 29;
-            this.ButtonFormUserListedGuncelle.Text = "Yenile";
-            this.ButtonFormUserListedGuncelle.UseVisualStyleBackColor = true;
-            this.ButtonFormUserListedGuncelle.Click += new System.EventHandler(this.ButtonFormUserListedGuncelle_Click);
             // 
             // TextBoxFormUserListedAddress
             // 
@@ -158,18 +145,6 @@ namespace WindowsForm
             this.label1.TabIndex = 15;
             this.label1.Text = "Ad";
             // 
-            // ButtonFormUserListedSil
-            // 
-            this.ButtonFormUserListedSil.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ButtonFormUserListedSil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonFormUserListedSil.Location = new System.Drawing.Point(920, 44);
-            this.ButtonFormUserListedSil.Name = "ButtonFormUserListedSil";
-            this.ButtonFormUserListedSil.Size = new System.Drawing.Size(75, 23);
-            this.ButtonFormUserListedSil.TabIndex = 30;
-            this.ButtonFormUserListedSil.Text = "Sil";
-            this.ButtonFormUserListedSil.UseVisualStyleBackColor = true;
-            this.ButtonFormUserListedSil.Click += new System.EventHandler(this.ButtonFormUserListedSil_Click);
-            // 
             // TextBoxFormUserListedAxtar
             // 
             this.TextBoxFormUserListedAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -205,13 +180,11 @@ namespace WindowsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(1012, 513);
             this.Controls.Add(this.ButtonAxtar);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.TextBoxFormUserListedAxtar);
-            this.Controls.Add(this.ButtonFormUserListedSil);
-            this.Controls.Add(this.ButtonFormUserListedGuncelle);
             this.Controls.Add(this.TextBoxFormUserListedAddress);
             this.Controls.Add(this.TextBoxFormUserListedPhoneNumber);
             this.Controls.Add(this.TextBoxFormUserListedEmail);
@@ -236,7 +209,6 @@ namespace WindowsForm
         #endregion
 
         private System.Windows.Forms.DataGridView DataGridViewUserListed;
-        private System.Windows.Forms.Button ButtonFormUserListedGuncelle;
         private System.Windows.Forms.TextBox TextBoxFormUserListedAddress;
         private System.Windows.Forms.TextBox TextBoxFormUserListedPhoneNumber;
         private System.Windows.Forms.TextBox TextBoxFormUserListedEmail;
@@ -247,7 +219,6 @@ namespace WindowsForm
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button ButtonFormUserListedSil;
         private System.Windows.Forms.TextBox TextBoxFormUserListedAxtar;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button ButtonAxtar;

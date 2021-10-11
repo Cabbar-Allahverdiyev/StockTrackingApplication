@@ -21,11 +21,11 @@ namespace WindowsForm
     public partial class FormUserListed : Form
     {
         UserManager _userService = new UserManager(new EfUserDal());
-        
+
         public FormUserListed()
         {
             InitializeComponent();
-            
+
         }
 
 
@@ -48,83 +48,18 @@ namespace WindowsForm
             TextBoxFormUserListedAddress.Text = DataGridViewUserListed.CurrentRow.Cells["Address"].Value.ToString();
         }
 
-        private void ButtonFormUserListedGuncelle_Click(object sender, EventArgs e)
-        {
-            User user = new User();
-            user.Id = Convert.ToInt32(DataGridViewUserListed.CurrentRow.Cells["UserId"].Value);
-            user.FirstName = TextBoxFormUserListedAd.Text;
-            user.LastName = TextBoxFormUserListedSoyad.Text;
-            user.Email = TextBoxFormUserListedEmail.Text;
-            user.PhoneNumber = TextBoxFormUserListedPhoneNumber.Text;
-            user.Address = TextBoxFormUserListedAddress.Text;
-
-            UserValidator validationRules = new UserValidator();
-            ValidationResult results = validationRules.Validate(user);
-
-            if (results.IsValid == false)
-            {
-                foreach (ValidationFailure failure in results.Errors)
-                {
-                    FormsMessage.ErrorMessage(failure.ErrorMessage);
-                    return;
-                }
-               
-            }
-
-            var userUpdated = _userService.Update(user);
-
-            if (userUpdated.Success)
-            {
-                FormsMessage.InformationMessage(userUpdated.Message);
-                DataGridViewUserListed.DataSource = _userService.GetUserDetails().Data;
-            }
-            else
-            {
-                FormsMessage.ErrorMessage(UserMessages.UserIsNotUpdating);
-                return;
-            }
-
-        }
-
-        private void ButtonFormUserListedSil_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                User user = new User();
-                user.Id = Convert.ToInt32(DataGridViewUserListed.CurrentRow.Cells["UserId"].Value);
-                IResult userDeleted = _userService.Delete(user);
-                if (userDeleted.Success)
-                {
-                    FormsMessage.InformationMessage(userDeleted.Message);
-                    DataGridViewUserListed.DataSource = _userService.GetUserDetails().Data;
-                }
-                else
-                {
-                    FormsMessage.ErrorMessage(userDeleted.Message);
-                    return;
-                }
-            }
-            catch (Exception)
-            {
-
-                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {AuthMessages.ErrorMessage}");
-                return;
-            }
-            
-        }
-
         private void TextBoxFormUserListedAxtar_TextChanged(object sender, EventArgs e)
         {
             //Mutleq tekmillesdir
-            if (TextBoxFormUserListedAxtar.Text=="")
+            if (TextBoxFormUserListedAxtar.Text == "")
             {
                 DataGridViewUserListed.DataSource = _userService.GetUserDetails().Data;
                 return;
             }
-            
+
             string userName = TextBoxFormUserListedAxtar.Text;
             var userGetDetails = _userService.GetUserDetailsByUserName(userName);
-            if (userGetDetails.Success )
+            if (userGetDetails.Success)
             {
                 //Bura nezer et
                 //if (userGetDetails.Data==null)
@@ -132,7 +67,7 @@ namespace WindowsForm
                 //    DataGridViewUserListed.DataSource = _userService.GetUserDetails();
                 //    return;
                 //}
-               
+
                 DataGridViewUserListed.DataSource = userGetDetails.Data;
             }
             else

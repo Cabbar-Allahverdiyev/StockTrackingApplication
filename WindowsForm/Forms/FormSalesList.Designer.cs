@@ -37,22 +37,25 @@ namespace WindowsForm
             // 
             this.dataGridViewSaleList.AllowUserToAddRows = false;
             this.dataGridViewSaleList.AllowUserToDeleteRows = false;
-            this.dataGridViewSaleList.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dataGridViewSaleList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewSaleList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.dataGridViewSaleList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSaleList.Location = new System.Drawing.Point(255, 38);
             this.dataGridViewSaleList.Name = "dataGridViewSaleList";
             this.dataGridViewSaleList.ReadOnly = true;
             this.dataGridViewSaleList.RowTemplate.Height = 25;
             this.dataGridViewSaleList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSaleList.Size = new System.Drawing.Size(793, 475);
+            this.dataGridViewSaleList.Size = new System.Drawing.Size(813, 320);
             this.dataGridViewSaleList.TabIndex = 16;
             // 
             // FormSalesList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1060, 525);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
+            this.ClientSize = new System.Drawing.Size(1067, 356);
             this.Controls.Add(this.dataGridViewSaleList);
             this.Name = "FormSalesList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

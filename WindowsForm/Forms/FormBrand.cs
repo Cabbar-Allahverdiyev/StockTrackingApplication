@@ -29,7 +29,7 @@ namespace WindowsForm
         private void FormBrand_Load(object sender, EventArgs e)
         {
             var get = _brandManager.GetAll();
-            DataGridViewFormBrand.DataSource = get.Data;
+            dataGridViewBrandsListed.DataSource = get.Data;
         }
 
         private void ButtonFormBrandElaveEt_Click(object sender, EventArgs e)
@@ -55,7 +55,7 @@ namespace WindowsForm
                 if (brandAdd.Success)
                 {
                     FormsMessage.InformationMessage(brandAdd.Message);
-                    DataGridViewFormBrand.DataSource = _brandManager.GetAll().Data;
+                    dataGridViewBrandsListed.DataSource = _brandManager.GetAll().Data;
                 }
                 else
                 {

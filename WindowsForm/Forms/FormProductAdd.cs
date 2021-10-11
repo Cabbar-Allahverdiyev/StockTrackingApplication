@@ -30,23 +30,15 @@ namespace WindowsForm
         BrandManager _brandManager = new BrandManager(new EfBrandDal());
         SupplierManager _supplierManager = new SupplierManager(new EfSupplierDal());
 
-        
+
 
         private void FormProductAdd_Load(object sender, EventArgs e)
         {
-
             DataGridViewProductList.DataSource = _productManager.GetProductCompactDetails().Data;
-
             CategoryGetComboBoxYeni();
-            CategoryGetComboBoxVarOlan();
-
-            BrandGetComboBoxVarOlan();
             BrandGetComboBoxYeni();
-
             SupplierGetComboBox();
-            GroupBoxVarOlanMehsulControlClear();
             GroupBoxYeniMehsulControlClear();
-
         }
 
         private void ButtonFormProductAddYeniMehsulElaveEt_Click(object sender, EventArgs e)
@@ -101,34 +93,7 @@ namespace WindowsForm
                 FormsMessage.ErrorMessage(AuthMessages.ErrorMessage);
                 return;
             }
-           
-        }
 
-      
-        private void buttonYeniMehsulSil_Click(object sender, EventArgs e)
-        {
-
-
-            if (DataGridViewProductList.CurrentRow == null)
-            {
-                FormsMessage.ErrorMessage(ProductMessages.ProductNotSelected);
-                return;
-            }
-
-            Product product = new Product();
-            product.Id = Convert.ToInt32(DataGridViewProductList.CurrentRow.Cells["ProductId"].Value);
-            IResult productDeleted = _productManager.Delete(product);
-            ResultControllers.ResultIsSucces(productDeleted);
-            if (!productDeleted.Success)
-            {
-                ResultControllers.ResultIsSucces(productDeleted);
-                return;
-            }
-            FormsMessage.InformationMessage(productDeleted.Message);
-            //MessageBox.Show(productDeleted.Message, AuthMessages.InformationMessage, MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            DataGridViewProductList.DataSource = _productManager.GetProductCompactDetails().Data;
-            GroupBoxVarOlanMehsulControlClear();
         }
 
         private void DataGridViewProductList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -137,24 +102,13 @@ namespace WindowsForm
             IDataResult<ProducViewDetailDto> productViewDetailByProductId = _productManager.GetProductViewProductIdDetail(
                      Convert.ToInt32(DataGridViewProductList.CurrentRow.Cells["ProductId"].Value.ToString())
                 );
-            textBoxVarOlanBarkodNo.Text = DataGridViewProductList.CurrentRow.Cells["BarcodeNomresi"].Value.ToString();
-            textBoxVarOlanMehsulAdi.Text = DataGridViewProductList.CurrentRow.Cells["MehsulAdi"].Value.ToString();
-            comboBoxVarOlanKateqoriya.Text = productViewDetailByProductId.Data.Kateqoriya;
-            comboBoxVarOlanMarka.Text = productViewDetailByProductId.Data.Marka;
-            LabelMiqdarVB.Text = productViewDetailByProductId.Data.StokdakiVahid.ToString();
 
         }
-
-
-
-
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
             if (textBoxAxtar.Text == "")
             {
-                LabelMiqdarVB.Text = "";
-                GroupBoxVarOlanMehsulControlClear();
                 DataGridViewProductList.DataSource = _productManager.GetProductCompactDetails().Data;
                 return;
             }
@@ -168,59 +122,8 @@ namespace WindowsForm
             else
             {
                 FormsMessage.ErrorMessage(productGetDetailsByName.Message);
-              //  MessageBox.Show(ProductMessages.ProductNotFound, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //  MessageBox.Show(ProductMessages.ProductNotFound, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        }
-
-        private void ButtonVarOlanElaveEt_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Product product = _productManager.GetByProductBarodeNumber(Convert.ToInt32(textBoxVarOlanBarkodNo.Text)).Data;
-                if (textBoxVarOlanMiqdar.Text != "")
-                {
-                    product.UnitsInStock += Convert.ToInt32(textBoxVarOlanMiqdar.Text);
-                }
-
-                if (textBoxVarOlanAlisQiymet.Text != "")
-                {
-                    product.PurchasePrice = Convert.ToDecimal(textBoxVarOlanAlisQiymet.Text);
-                }
-                if (textBoxVarOlanSatisQiymet.Text != "")
-                {
-                    product.UnitPrice = Convert.ToDecimal(textBoxVarOlanSatisQiymet.Text);
-                }
-
-                ProductValidator validationRules = new ProductValidator();
-                ValidationResult results = validationRules.Validate(product);
-                if (!results.IsValid)
-                {
-                    foreach (ValidationFailure validationFailure in results.Errors)
-                    {
-                        FormsMessage.ErrorMessage(validationFailure.ErrorMessage);
-                        return;
-                    }
-
-                }
-
-                IResult result = _productManager.Update(product);
-                ResultControllers.ResultIsSucces(result);
-                if (!result.Success)
-                {
-                    ResultControllers.ResultIsSucces(result);
-                    return;
-                }
-                // MessageBox.Show(result.Message, AuthMessages.InformationMessage, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                FormsMessage.InformationMessage(result.Message);
-                GroupBoxVarOlanMehsulControlClear();
-            }
-            catch (Exception)
-            {
-                FormsMessage.ErrorMessage(AuthMessages.ErrorMessage);
-                return;
-            }
-           
-
         }
 
 
@@ -243,36 +146,45 @@ namespace WindowsForm
             }
         }
 
-        private void GroupBoxVarOlanMehsulControlClear()
-        {
-            foreach (Control control in GroupBoxFormProductAddVarOlanMehsul.Controls)
-            {
-                if (control is TextBox)
-                {
-                    control.Text = "";
-                }
-                if (control is ComboBox)
-                {
-                    control.Text = "";
-                }
-                LabelMiqdarVB.Text = "#";
+        //private void GroupBoxVarOlanMehsulControlClear()
+        //{
+        //    foreach (Control control in GroupBoxFormProductAddVarOlanMehsul.Controls)
+        //    {
+        //        if (control is TextBox)
+        //        {
+        //            control.Text = "";
+        //        }
+        //        if (control is ComboBox)
+        //        {
+        //            control.Text = "";
+        //        }
+        //        LabelMiqdarVB.Text = "#";
 
-            }
-        }
-
-
-
-        private void CategoryGetComboBoxVarOlan()
-        {
-
-            var categoryGetAll = _categoryManager.GetAll();
-
-            comboBoxVarOlanKateqoriya.DataSource = categoryGetAll.Data;
-            comboBoxVarOlanKateqoriya.DisplayMember = "CategoryName";
-            comboBoxVarOlanKateqoriya.ValueMember = "Id";
+        //    }
+        //}
 
 
-        }
+
+        //private void CategoryGetComboBoxVarOlan()
+        //{
+
+        //    var categoryGetAll = _categoryManager.GetAll();
+
+        //    comboBoxVarOlanKateqoriya.DataSource = categoryGetAll.Data;
+        //    comboBoxVarOlanKateqoriya.DisplayMember = "CategoryName";
+        //    comboBoxVarOlanKateqoriya.ValueMember = "Id";
+
+
+        //}
+        //private void BrandGetComboBoxVarOlan()
+        //{
+        //    var brandGetAll = _brandManager.GetAll();
+
+        //    comboBoxVarOlanMarka.DataSource = brandGetAll.Data;
+        //    comboBoxVarOlanMarka.DisplayMember = "BrandName";
+        //    comboBoxVarOlanMarka.ValueMember = "Id";
+
+        //}
 
         private void CategoryGetComboBoxYeni()
         {
@@ -283,15 +195,7 @@ namespace WindowsForm
             ComboBoxFormProductAddKategoriya.ValueMember = "Id";
         }
 
-        private void BrandGetComboBoxVarOlan()
-        {
-            var brandGetAll = _brandManager.GetAll();
 
-            comboBoxVarOlanMarka.DataSource = brandGetAll.Data;
-            comboBoxVarOlanMarka.DisplayMember = "BrandName";
-            comboBoxVarOlanMarka.ValueMember = "Id";
-
-        }
 
         private void BrandGetComboBoxYeni()
         {
@@ -327,7 +231,7 @@ namespace WindowsForm
 
         }
 
-       
+
 
     }
 }

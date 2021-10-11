@@ -10,14 +10,16 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Business.ValidationRules.FluentValidation;
+using FluentValidation.Results;
 using Business.Constants.Messages;
 using WindowsForm.Core.Constants.Messages;
 
-namespace WindowsForm
+namespace WindowsForm.Forms
 {
-    public partial class FormProductList : Form
+    public partial class ProductUpdateForm : Form
     {
-        public FormProductList()
+        public ProductUpdateForm()
         {
             InitializeComponent();
         }
@@ -29,7 +31,7 @@ namespace WindowsForm
         BrandManager _brandManager = new BrandManager(new EfBrandDal());
         SupplierManager _supplierManager = new SupplierManager(new EfSupplierDal());
 
-        private void FormProductList_Load(object sender, EventArgs e)
+        private void ProductUpdateForm_Load(object sender, EventArgs e)
         {
             IDataResult<List<ProductViewDashboardDetailDto>> getProductDashboard = _productManager.GetAllProductViewDasgboardDetails();
             dataGridViewFormPrdouctList.DataSource = getProductDashboard.Data;
@@ -38,6 +40,68 @@ namespace WindowsForm
             CategoryGetComboBoxVarOlan();
             SupplierGetComboBox();
             GroupBoxVarOlanMehsulControlClear();
+        }
+
+
+        private void ButtonVarOlanYenile_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                int newUnitInStock = 0;
+                if (textBoxVarOlanStokaElaveEdilecekMiqdar.Text != "")
+                {
+                    newUnitInStock = Convert.ToInt32(textBoxVarOlanStokaElaveEdilecekMiqdar.Text);
+                }
+                else
+                {
+                    newUnitInStock = 0;
+                }
+
+                product.BarcodeNumber = Convert.ToInt32(textBoxVarOlanBarkodNo.Text);
+                product.CategoryId = Convert.ToInt32(comboBoxVarOlanKateqoriya.SelectedValue);
+                product.BrandId = Convert.ToInt32(comboBoxVarOlanMarka.SelectedValue);
+                product.SupplierId = Convert.ToInt32(comboBoxVarOlanTedarikci.SelectedValue);
+                product.ProductName = textBoxVarOlanMehsulAdi.Text;
+                product.UnitsInStock += newUnitInStock;
+                if (textBoxVarOlanAlisQiymet.Text != "")
+                {
+                    product.PurchasePrice = Convert.ToDecimal(textBoxVarOlanAlisQiymet.Text);
+                }
+                if (textBoxVarOlanSatisQiymet.Text != "")
+                {
+                    product.UnitPrice = Convert.ToDecimal(textBoxVarOlanSatisQiymet.Text);
+                }
+                product.Description = TextBoxVarOlanAciqlama.Text;
+
+                ProductValidator validationRules = new ProductValidator();
+                ValidationResult results = validationRules.Validate(product);
+                if (!results.IsValid)
+                {
+                    foreach (ValidationFailure validationFailure in results.Errors)
+                    {
+                        FormsMessage.ErrorMessage(validationFailure.ErrorMessage);
+                        return;
+                    }
+
+                }
+
+                IResult productUpdated = _productManager.Update(product);
+
+                if (!productUpdated.Success)
+                {
+                    FormsMessage.ErrorMessage(productUpdated.Message);
+                    return;
+                }
+                FormsMessage.InformationMessage(productUpdated.Message);
+                GroupBoxVarOlanMehsulControlClear();
+                dataGridViewFormPrdouctList.DataSource = _productManager.GetAllProductViewDasgboardDetails().Data;
+            }
+            catch (Exception)
+            {
+                FormsMessage.ErrorMessage(AuthMessages.ErrorMessage);
+                return;
+            }
         }
 
         private void dataGridViewFormPrdouctList_DoubleClick(object sender, EventArgs e)
@@ -60,21 +124,24 @@ namespace WindowsForm
             textBoxVarOlanMehsulAdi.Text = productViewDetailByProductId.Data.MehsulAdi;
             TextBoxVarOlanAciqlama.Text = productViewDetailByProductId.Data.Aciqlama;
             LabelMiqdarVB.Text = productViewDetailByProductId.Data.StokdakiVahid.ToString();
-
-
-
-
         }
+
+
+
 
         //elave metodlar------------------->
         //CategoryGetComboBoxVarOlan(),CategoryGetComboBoxVarOlan(),SupplierGetComboBox(),GroupBoxVarOlanMehsulControlClear()
         //Genericlestir mutleq
         private void CategoryGetComboBoxVarOlan()
         {
+
             var categoryGetAll = _categoryManager.GetAll();
+
             comboBoxVarOlanKateqoriya.DataSource = categoryGetAll.Data;
             comboBoxVarOlanKateqoriya.DisplayMember = "CategoryName";
             comboBoxVarOlanKateqoriya.ValueMember = "Id";
+
+
         }
 
 
@@ -82,9 +149,11 @@ namespace WindowsForm
         private void BrandGetComboBoxVarOlan()
         {
             var brandGetAll = _brandManager.GetAll();
+
             comboBoxVarOlanMarka.DataSource = brandGetAll.Data;
             comboBoxVarOlanMarka.DisplayMember = "BrandName";
             comboBoxVarOlanMarka.ValueMember = "Id";
+
         }
 
 
@@ -98,8 +167,24 @@ namespace WindowsForm
         }
 
 
+        private void GroupBoxVarOlanMehsulControlClear()
+        {
+            foreach (Control control in GroupBoxVarOlanMehsul.Controls)
+            {
+                if (control is TextBox)
+                {
+                    control.Text = "";
+                }
+                if (control is ComboBox)
+                {
+                    control.Text = "";
+                }
 
-       
+                LabelMiqdarVB.Text = "";
+
+
+            }
+        }
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
@@ -124,24 +209,6 @@ namespace WindowsForm
         }
 
 
-        private void GroupBoxVarOlanMehsulControlClear()
-        {
-            foreach (Control control in GroupBoxVarOlanMehsul.Controls)
-            {
-                if (control is TextBox)
-                {
-                    control.Text = "";
-                }
-                if (control is ComboBox)
-                {
-                    control.Text = "";
-                }
-
-                LabelMiqdarVB.Text = "";
-
-
-            }
-        }
-
     }
 }
+
