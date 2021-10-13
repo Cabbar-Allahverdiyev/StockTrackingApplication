@@ -13,7 +13,7 @@ using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
 
-namespace WindowsForm
+namespace WindowsForm.Forms
 {
     public partial class SupplierForm : Form
     {

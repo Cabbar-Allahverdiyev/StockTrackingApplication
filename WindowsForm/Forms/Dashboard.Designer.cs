@@ -528,15 +528,6 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.Button buttonMaximized;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.PictureBox pictureBoxLogo;
-        private MyControls.MyDropdownMenu myDropdownMenu1;
-        private System.Windows.Forms.ToolStripMenuItem mehsullariSiralaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mehsulElaveEtToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mehsullariYenileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mehsullariSilToolStripMenuItem;
-        private MyControls.MyDropdownMenu myDropdownMenu2;
-        private System.Windows.Forms.ToolStripMenuItem butunSatislarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem enCoxSatilanlarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem azSatilanlarToolStripMenuItem;
         private MyControls.MyDropdownMenu myDropdownMenu3;
         private System.Windows.Forms.ToolStripMenuItem kateqoriyalariSiralaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem elaveEtToolStripMenuItem;

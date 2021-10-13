@@ -17,7 +17,7 @@ using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers;
 
 
-namespace WindowsForm
+namespace WindowsForm.Forms
 {
     public partial class FormProductAdd : Form
     {

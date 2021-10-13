@@ -1,5 +1,5 @@
 ﻿
-namespace WindowsForm
+namespace WindowsForm.Forms
 {
     partial class SupplierForm
     {

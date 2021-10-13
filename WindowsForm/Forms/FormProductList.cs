@@ -13,7 +13,7 @@ using System.Windows.Forms;
 using Business.Constants.Messages;
 using WindowsForm.Core.Constants.Messages;
 
-namespace WindowsForm
+namespace WindowsForm.Forms
 {
     public partial class FormProductList : Form
     {

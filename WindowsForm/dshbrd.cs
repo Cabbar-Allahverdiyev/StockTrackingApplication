@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace WindowsForm
 {
-    public partial class Dashboard : Form
+    public partial class dshbrd : Form
     {
        //// private int borderSize = 2;
         //--------------------------->
@@ -18,7 +18,7 @@ namespace WindowsForm
         private int tempIndex;
         private Form activateForm;
 
-        public Dashboard()
+        public dshbrd()
         {
             
             //==================>
@@ -141,17 +141,17 @@ namespace WindowsForm
         {
             // ActivateButton(sender);
             //OpenChildForm(new FormProductList(), sender);
-            OpenChildForm(new SalesForm(), sender);
+            OpenChildForm(new Forms.SalesForm(), sender);
         }
 
         private void buttonSales_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormSalesList(), sender);
+            OpenChildForm(new Forms.FormSalesList(), sender);
         }
 
         private void buttonScan_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormProductAdd(), sender);
+            OpenChildForm(new Forms.FormProductAdd(), sender);
         }
 
         private void buttonStatistic_Click(object sender, EventArgs e)
@@ -161,17 +161,17 @@ namespace WindowsForm
 
         private void buttonCategories_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormCategory(), sender);
+            OpenChildForm(new Forms.FormCategory(), sender);
         }
 
         private void buttonUsers_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormUserListed(), sender);
+            OpenChildForm(new Forms.FormUserListed(), sender);
         }
 
         private void buttonSuppliers_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new SupplierForm(), sender);
+            OpenChildForm(new Forms.SupplierForm(), sender);
         }
 
         private void buttonCloseChildForm_Click(object sender, EventArgs e)

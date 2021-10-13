@@ -218,14 +218,14 @@ namespace WindowsForm.Forms
         private void buttonProducts_Click(object sender, EventArgs e)
         {
             //myDropdownMenu1.Show(buttonProducts, buttonProducts.Width, 0);
-            Open_DropdownMenu(myDropdownMenu1, sender);
+            
         }
 
 
         private void buttonSales_Click(object sender, EventArgs e)
         {
             // myDropdownMenu2.Show(buttonSales, myDropdownMenu2.Width - buttonProducts.Width, buttonSales.Height);
-            Open_DropdownMenu(myDropdownMenu2, sender);
+           
         }
 
         private void buttonMenu_Click(object sender, EventArgs e)

@@ -8,7 +8,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace WindowsForm
+namespace WindowsForm.Forms
 {
     public partial class FormSalesList : Form
     {
