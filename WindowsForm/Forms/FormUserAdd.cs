@@ -4,6 +4,7 @@ using Business.Constants.Messages;
 using Business.ValidationRules.FluentValidation;
 using Core.Entities.Concrete;
 using Core.Utilities.Security.JWT;
+using DataAccess.Concrete.EntityFramework;
 using Entities.DTOs;
 using FluentValidation.Results;
 using Microsoft.Extensions.Configuration;
@@ -22,15 +23,15 @@ namespace WindowsForm.Forms
     public partial class FormUserAdd : Form
     {
 
-        IUserService _userService;
+        UserManager _userService = new UserManager(new EfUserDal());
         //BindingList<string> errors = new BindingList<string>();
         //  IAuthService authService = new AuthManager(new UserManager(new EfUserDal()),new JwtHelper());
 
-        public FormUserAdd(IUserService userService)
+        public FormUserAdd()
         {
             InitializeComponent();
 
-            _userService = userService;
+           
 
         }
 

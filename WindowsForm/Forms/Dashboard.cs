@@ -209,29 +209,151 @@ namespace WindowsForm.Forms
 
 
 
-        //------------------------------------->
+        //Menu Items button------------------------------------->
+        private void buttonMenu_Click(object sender, EventArgs e)
+        {
+            CollapseMenu();
+        }
+
         private void buttonHome_Click(object sender, EventArgs e)
         {
-
+            OpenChildForm(new SalesForm(), sender);
         }
 
         private void buttonProducts_Click(object sender, EventArgs e)
         {
-            //myDropdownMenu1.Show(buttonProducts, buttonProducts.Width, 0);
+            Open_DropdownMenu(myDMProduct, sender);
+           // myDMProduct.Show(buttonProducts, buttonProducts.Width, 0);
             
         }
 
 
         private void buttonSales_Click(object sender, EventArgs e)
         {
-            // myDropdownMenu2.Show(buttonSales, myDropdownMenu2.Width - buttonProducts.Width, buttonSales.Height);
+            Open_DropdownMenu(myDMSales, sender);
+            // myDMSales.Show(buttonSales, myDMSales.Width - buttonProducts.Width, buttonSales.Height);
+
            
         }
 
-        private void buttonMenu_Click(object sender, EventArgs e)
+        private void buttonCategories_Click(object sender, EventArgs e)
         {
-            CollapseMenu();
+            Open_DropdownMenu(myDMCategory, sender);
         }
+
+        private void buttonScan_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void buttonStatistic_Click(object sender, EventArgs e)
+        {
+            Open_DropdownMenu(myDMStatistic, sender);
+        }
+
+        private void buttonUsers_Click(object sender, EventArgs e)
+        {
+            Open_DropdownMenu(myDMUser, sender);
+        }
+
+        private void buttonSuppliers_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //Dropdown menu---------------------------------->
+        //Product--------------------------------------->
+        private void məhsulSilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new ProductDeleteForm(), sender);
+        }
+
+        private void məhsullarıSıralaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormProductList(), sender);
+        }
+
+        private void məhsulYeniləToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new ProductUpdateForm(), sender);
+        }
+
+        private void məhsulƏlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormProductAdd(), sender);
+        }
+
+        private void markalarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormBrand(), sender);
+        }
+
+        //Sales-------------------------------------------->
+        private void satislariSiralaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormSalesList(), sender);
+        }
+
+        //Istifadeci--------------------------------------------->
+        private void istifadəçiləriSıralaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormUserListed(), sender);
+        }
+
+        private void istifadəçiƏlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormUserAdd(), sender);
+        }
+
+        private void istifadəçiləriYeniləToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new UserUpdateForm(), sender);
+        }
+
+        private void istifadəçiSilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new UserDeleteForm(), sender);
+        }
+
+        //Categories------------------------------------------>
+
+        private void kateqoriyalariSiralaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormCategory(), sender);
+        }
+
+
+        //Scan------------------------------------------------->
+
+
+        //Statistic--------------------------------------------->
+        private void günlükToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //OpenChildForm(new(), sender);
+        }
+
+        private void həftəlikToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           // OpenChildForm(new(), sender);
+        }
+
+        private void aylıqToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           // OpenChildForm(new(), sender);
+        }
+
+        private void illikToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           // OpenChildForm(new(), sender);
+        }
+
+
+
 
         private void CollapseMenu()
         {
@@ -295,10 +417,7 @@ namespace WindowsForm.Forms
             }
         }
 
-        private void kateqoriyalariSiralaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new FormCategory(), sender);
-        }
+      
 
         private void OpenChildForm(Form childForm, object btnSender)
         {
@@ -316,6 +435,13 @@ namespace WindowsForm.Forms
             childForm.Show();
             labelTitle.Text = childForm.Text;
         }
+
+      
+
+
+
+
+
 
         //private void ActivateButton(object btnSender)
         //{
@@ -341,14 +467,8 @@ namespace WindowsForm.Forms
 
 
 
-        private void buttonCategories_Click(object sender, EventArgs e)
-        {
-            Open_DropdownMenu(myDropdownMenu3, sender);
-        }
 
-        private void btnExit_Click(object sender, EventArgs e)
-        {
 
-        }
+
     }
 }
