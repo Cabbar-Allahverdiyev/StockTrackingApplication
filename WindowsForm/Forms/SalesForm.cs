@@ -178,7 +178,7 @@ namespace WindowsForm.Forms
             textBoxMaxQiymet.Text = dataGridViewProductList.CurrentRow.Cells["Qiymet"].Value.ToString();
         }
 
-        private void ButtonSalesFormElaveEt_Click(object sender, EventArgs e)
+        private void buttoElaveEt_Click(object sender, EventArgs e)
         {
             try
             {
@@ -247,6 +247,7 @@ namespace WindowsForm.Forms
 
         }
 
+    
         private void ButtonSalesFormSatisEtmek_Click(object sender, EventArgs e)
         {
             try

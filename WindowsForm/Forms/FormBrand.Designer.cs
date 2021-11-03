@@ -29,6 +29,7 @@ namespace WindowsForm.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBrand));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TextBoxFormBrandMarkaAdi = new System.Windows.Forms.TextBox();
@@ -42,28 +43,33 @@ namespace WindowsForm.Forms
             // 
             // TextBoxFormBrandMarkaAdi
             // 
-            this.TextBoxFormBrandMarkaAdi.Location = new System.Drawing.Point(82, 32);
+            this.TextBoxFormBrandMarkaAdi.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TextBoxFormBrandMarkaAdi.Location = new System.Drawing.Point(91, 32);
             this.TextBoxFormBrandMarkaAdi.Name = "TextBoxFormBrandMarkaAdi";
-            this.TextBoxFormBrandMarkaAdi.Size = new System.Drawing.Size(173, 23);
+            this.TextBoxFormBrandMarkaAdi.Size = new System.Drawing.Size(164, 22);
             this.TextBoxFormBrandMarkaAdi.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(12, 35);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 15);
+            this.label1.Size = new System.Drawing.Size(73, 14);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Marka Adi:";
+            this.label1.Text = "Marka adı:";
             // 
             // ButtonFormBrandElaveEt
             // 
             this.ButtonFormBrandElaveEt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonFormBrandElaveEt.Location = new System.Drawing.Point(180, 61);
+            this.ButtonFormBrandElaveEt.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ButtonFormBrandElaveEt.Image = ((System.Drawing.Image)(resources.GetObject("ButtonFormBrandElaveEt.Image")));
+            this.ButtonFormBrandElaveEt.Location = new System.Drawing.Point(170, 60);
             this.ButtonFormBrandElaveEt.Name = "ButtonFormBrandElaveEt";
-            this.ButtonFormBrandElaveEt.Size = new System.Drawing.Size(75, 23);
+            this.ButtonFormBrandElaveEt.Size = new System.Drawing.Size(85, 23);
             this.ButtonFormBrandElaveEt.TabIndex = 2;
-            this.ButtonFormBrandElaveEt.Text = "Elave Et";
+            this.ButtonFormBrandElaveEt.Text = "Əlavə et";
+            this.ButtonFormBrandElaveEt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.ButtonFormBrandElaveEt.UseVisualStyleBackColor = true;
             this.ButtonFormBrandElaveEt.Click += new System.EventHandler(this.ButtonFormBrandElaveEt_Click);
             // 
@@ -104,17 +110,19 @@ namespace WindowsForm.Forms
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(632, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 15);
+            this.label2.Size = new System.Drawing.Size(45, 14);
             this.label2.TabIndex = 5;
             this.label2.Text = "Axtar:";
             // 
             // textBoxAxtar
             // 
+            this.textBoxAxtar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxAxtar.Location = new System.Drawing.Point(675, 6);
             this.textBoxAxtar.Name = "textBoxAxtar";
-            this.textBoxAxtar.Size = new System.Drawing.Size(173, 23);
+            this.textBoxAxtar.Size = new System.Drawing.Size(173, 22);
             this.textBoxAxtar.TabIndex = 4;
             // 
             // FormBrand

@@ -29,6 +29,7 @@ namespace WindowsForm.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormProductAdd));
             this.GroupBoxFormProductAddYeniMehsul = new System.Windows.Forms.GroupBox();
             this.pictureBoxProductImage = new System.Windows.Forms.PictureBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -85,17 +86,17 @@ namespace WindowsForm.Forms
             this.GroupBoxFormProductAddYeniMehsul.Controls.Add(this.TextBoxFormProductAddMiqdar);
             this.GroupBoxFormProductAddYeniMehsul.Controls.Add(this.TextBoxFormProductAddBarkodNo);
             this.GroupBoxFormProductAddYeniMehsul.Dock = System.Windows.Forms.DockStyle.Left;
+            this.GroupBoxFormProductAddYeniMehsul.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.GroupBoxFormProductAddYeniMehsul.Location = new System.Drawing.Point(0, 0);
             this.GroupBoxFormProductAddYeniMehsul.Name = "GroupBoxFormProductAddYeniMehsul";
             this.GroupBoxFormProductAddYeniMehsul.Size = new System.Drawing.Size(288, 476);
             this.GroupBoxFormProductAddYeniMehsul.TabIndex = 0;
             this.GroupBoxFormProductAddYeniMehsul.TabStop = false;
-            this.GroupBoxFormProductAddYeniMehsul.Text = "Yeni mehsul";
             // 
             // pictureBoxProductImage
             // 
             this.pictureBoxProductImage.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureBoxProductImage.Location = new System.Drawing.Point(3, 19);
+            this.pictureBoxProductImage.Location = new System.Drawing.Point(3, 18);
             this.pictureBoxProductImage.Name = "pictureBoxProductImage";
             this.pictureBoxProductImage.Size = new System.Drawing.Size(282, 122);
             this.pictureBoxProductImage.TabIndex = 20;
@@ -106,15 +107,15 @@ namespace WindowsForm.Forms
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(6, 411);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(60, 15);
+            this.label17.Size = new System.Drawing.Size(67, 14);
             this.label17.TabIndex = 19;
-            this.label17.Text = "Aciqlama:";
+            this.label17.Text = "Açiqlama:";
             // 
             // TextBoxFormProductAddAciqlama
             // 
             this.TextBoxFormProductAddAciqlama.Location = new System.Drawing.Point(126, 408);
             this.TextBoxFormProductAddAciqlama.Name = "TextBoxFormProductAddAciqlama";
-            this.TextBoxFormProductAddAciqlama.Size = new System.Drawing.Size(156, 23);
+            this.TextBoxFormProductAddAciqlama.Size = new System.Drawing.Size(156, 22);
             this.TextBoxFormProductAddAciqlama.TabIndex = 18;
             // 
             // label16
@@ -122,15 +123,15 @@ namespace WindowsForm.Forms
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(6, 382);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(59, 15);
+            this.label16.Size = new System.Drawing.Size(67, 14);
             this.label16.TabIndex = 17;
-            this.label16.Text = "Kemiyyet:";
+            this.label16.Text = "Kəmiyyət:";
             // 
             // TextBoxFormProductAddKemiyyet
             // 
             this.TextBoxFormProductAddKemiyyet.Location = new System.Drawing.Point(126, 379);
             this.TextBoxFormProductAddKemiyyet.Name = "TextBoxFormProductAddKemiyyet";
-            this.TextBoxFormProductAddKemiyyet.Size = new System.Drawing.Size(156, 23);
+            this.TextBoxFormProductAddKemiyyet.Size = new System.Drawing.Size(156, 22);
             this.TextBoxFormProductAddKemiyyet.TabIndex = 16;
             // 
             // label15
@@ -138,16 +139,16 @@ namespace WindowsForm.Forms
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(6, 237);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(58, 15);
+            this.label15.Size = new System.Drawing.Size(67, 14);
             this.label15.TabIndex = 15;
-            this.label15.Text = "Tedarikci:";
+            this.label15.Text = "Tedarikçi:";
             // 
             // ComboBoxFormProductAddTedarikci
             // 
             this.ComboBoxFormProductAddTedarikci.FormattingEnabled = true;
             this.ComboBoxFormProductAddTedarikci.Location = new System.Drawing.Point(126, 234);
             this.ComboBoxFormProductAddTedarikci.Name = "ComboBoxFormProductAddTedarikci";
-            this.ComboBoxFormProductAddTedarikci.Size = new System.Drawing.Size(156, 23);
+            this.ComboBoxFormProductAddTedarikci.Size = new System.Drawing.Size(156, 22);
             this.ComboBoxFormProductAddTedarikci.TabIndex = 14;
             // 
             // label14
@@ -155,18 +156,20 @@ namespace WindowsForm.Forms
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(6, 353);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(77, 15);
+            this.label14.Size = new System.Drawing.Size(91, 14);
             this.label14.TabIndex = 13;
-            this.label14.Text = "Satis qiymeti:";
+            this.label14.Text = "Satiş qiyməti:";
             // 
             // ButtonFormProductAddYeniMehsulElaveEt
             // 
             this.ButtonFormProductAddYeniMehsulElaveEt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonFormProductAddYeniMehsulElaveEt.Location = new System.Drawing.Point(207, 437);
+            this.ButtonFormProductAddYeniMehsulElaveEt.Image = ((System.Drawing.Image)(resources.GetObject("ButtonFormProductAddYeniMehsulElaveEt.Image")));
+            this.ButtonFormProductAddYeniMehsulElaveEt.Location = new System.Drawing.Point(197, 436);
             this.ButtonFormProductAddYeniMehsulElaveEt.Name = "ButtonFormProductAddYeniMehsulElaveEt";
-            this.ButtonFormProductAddYeniMehsulElaveEt.Size = new System.Drawing.Size(75, 23);
+            this.ButtonFormProductAddYeniMehsulElaveEt.Size = new System.Drawing.Size(85, 23);
             this.ButtonFormProductAddYeniMehsulElaveEt.TabIndex = 2;
-            this.ButtonFormProductAddYeniMehsulElaveEt.Text = "Elave Et";
+            this.ButtonFormProductAddYeniMehsulElaveEt.Text = "Əlavə et";
+            this.ButtonFormProductAddYeniMehsulElaveEt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.ButtonFormProductAddYeniMehsulElaveEt.UseVisualStyleBackColor = true;
             this.ButtonFormProductAddYeniMehsulElaveEt.Click += new System.EventHandler(this.ButtonFormProductAddYeniMehsulElaveEt_Click);
             // 
@@ -175,7 +178,7 @@ namespace WindowsForm.Forms
             this.TextBoxFormProductAddMehsulAdi.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.TextBoxFormProductAddMehsulAdi.Location = new System.Drawing.Point(126, 263);
             this.TextBoxFormProductAddMehsulAdi.Name = "TextBoxFormProductAddMehsulAdi";
-            this.TextBoxFormProductAddMehsulAdi.Size = new System.Drawing.Size(156, 23);
+            this.TextBoxFormProductAddMehsulAdi.Size = new System.Drawing.Size(156, 22);
             this.TextBoxFormProductAddMehsulAdi.TabIndex = 1;
             // 
             // label6
@@ -183,16 +186,16 @@ namespace WindowsForm.Forms
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(6, 324);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(72, 15);
+            this.label6.Size = new System.Drawing.Size(81, 14);
             this.label6.TabIndex = 12;
-            this.label6.Text = "Alis qiymeti:";
+            this.label6.Text = "Aliş qiyməti:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(6, 295);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(48, 15);
+            this.label5.Size = new System.Drawing.Size(54, 14);
             this.label5.TabIndex = 11;
             this.label5.Text = "Miqdar:";
             // 
@@ -201,16 +204,16 @@ namespace WindowsForm.Forms
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(6, 266);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 15);
+            this.label4.Size = new System.Drawing.Size(78, 14);
             this.label4.TabIndex = 10;
-            this.label4.Text = "Mehsul adi:";
+            this.label4.Text = "Məhsul adı:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(6, 208);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 15);
+            this.label3.Size = new System.Drawing.Size(50, 14);
             this.label3.TabIndex = 9;
             this.label3.Text = "Marka:";
             // 
@@ -219,7 +222,7 @@ namespace WindowsForm.Forms
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 179);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 15);
+            this.label2.Size = new System.Drawing.Size(80, 14);
             this.label2.TabIndex = 8;
             this.label2.Text = "Kategoriya:";
             // 
@@ -228,7 +231,7 @@ namespace WindowsForm.Forms
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 150);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 15);
+            this.label1.Size = new System.Drawing.Size(73, 14);
             this.label1.TabIndex = 7;
             this.label1.Text = "BarkodNo:";
             // 
@@ -237,7 +240,7 @@ namespace WindowsForm.Forms
             this.ComboBoxFormProductAddKategoriya.FormattingEnabled = true;
             this.ComboBoxFormProductAddKategoriya.Location = new System.Drawing.Point(126, 176);
             this.ComboBoxFormProductAddKategoriya.Name = "ComboBoxFormProductAddKategoriya";
-            this.ComboBoxFormProductAddKategoriya.Size = new System.Drawing.Size(156, 23);
+            this.ComboBoxFormProductAddKategoriya.Size = new System.Drawing.Size(156, 22);
             this.ComboBoxFormProductAddKategoriya.TabIndex = 6;
             // 
             // ComboBoxFormProductAddMarka
@@ -245,35 +248,35 @@ namespace WindowsForm.Forms
             this.ComboBoxFormProductAddMarka.FormattingEnabled = true;
             this.ComboBoxFormProductAddMarka.Location = new System.Drawing.Point(126, 205);
             this.ComboBoxFormProductAddMarka.Name = "ComboBoxFormProductAddMarka";
-            this.ComboBoxFormProductAddMarka.Size = new System.Drawing.Size(156, 23);
+            this.ComboBoxFormProductAddMarka.Size = new System.Drawing.Size(156, 22);
             this.ComboBoxFormProductAddMarka.TabIndex = 5;
             // 
             // TextBoxFormProductAddSatisQiymet
             // 
             this.TextBoxFormProductAddSatisQiymet.Location = new System.Drawing.Point(126, 350);
             this.TextBoxFormProductAddSatisQiymet.Name = "TextBoxFormProductAddSatisQiymet";
-            this.TextBoxFormProductAddSatisQiymet.Size = new System.Drawing.Size(156, 23);
+            this.TextBoxFormProductAddSatisQiymet.Size = new System.Drawing.Size(156, 22);
             this.TextBoxFormProductAddSatisQiymet.TabIndex = 4;
             // 
             // TextBoxFormProductAddAlisQiymet
             // 
             this.TextBoxFormProductAddAlisQiymet.Location = new System.Drawing.Point(126, 321);
             this.TextBoxFormProductAddAlisQiymet.Name = "TextBoxFormProductAddAlisQiymet";
-            this.TextBoxFormProductAddAlisQiymet.Size = new System.Drawing.Size(156, 23);
+            this.TextBoxFormProductAddAlisQiymet.Size = new System.Drawing.Size(156, 22);
             this.TextBoxFormProductAddAlisQiymet.TabIndex = 3;
             // 
             // TextBoxFormProductAddMiqdar
             // 
             this.TextBoxFormProductAddMiqdar.Location = new System.Drawing.Point(126, 292);
             this.TextBoxFormProductAddMiqdar.Name = "TextBoxFormProductAddMiqdar";
-            this.TextBoxFormProductAddMiqdar.Size = new System.Drawing.Size(156, 23);
+            this.TextBoxFormProductAddMiqdar.Size = new System.Drawing.Size(156, 22);
             this.TextBoxFormProductAddMiqdar.TabIndex = 2;
             // 
             // TextBoxFormProductAddBarkodNo
             // 
             this.TextBoxFormProductAddBarkodNo.Location = new System.Drawing.Point(126, 147);
             this.TextBoxFormProductAddBarkodNo.Name = "TextBoxFormProductAddBarkodNo";
-            this.TextBoxFormProductAddBarkodNo.Size = new System.Drawing.Size(156, 23);
+            this.TextBoxFormProductAddBarkodNo.Size = new System.Drawing.Size(156, 22);
             this.TextBoxFormProductAddBarkodNo.TabIndex = 0;
             // 
             // DataGridViewProductList
@@ -298,18 +301,20 @@ namespace WindowsForm.Forms
             // 
             this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label18.Location = new System.Drawing.Point(790, 15);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(37, 15);
+            this.label18.Size = new System.Drawing.Size(45, 14);
             this.label18.TabIndex = 3;
             this.label18.Text = "Axtar:";
             // 
             // textBoxAxtar
             // 
             this.textBoxAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxAxtar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxAxtar.Location = new System.Drawing.Point(833, 12);
             this.textBoxAxtar.Name = "textBoxAxtar";
-            this.textBoxAxtar.Size = new System.Drawing.Size(135, 23);
+            this.textBoxAxtar.Size = new System.Drawing.Size(135, 22);
             this.textBoxAxtar.TabIndex = 4;
             this.textBoxAxtar.TextChanged += new System.EventHandler(this.textBoxAxtar_TextChanged);
             // 

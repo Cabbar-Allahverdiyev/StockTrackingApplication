@@ -58,6 +58,57 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="ButtonSalesFormSil.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAGYktHRAD/AP8A/6C9p5MAAAC+SURBVDhPxZKxCkFRHIdPSlkMnsFkMDKbPYisyuoZ7Bh4AaMw
+        8gAGxWZUJmVU4vvf3713cM+5ScpXX/+vU+d0zu26X/GMPWHVFr5liAOlm2FLGc2pMp8OjpTRpgv245kc
+        lksbF8oI22xPs5lQwns8M9RxrwzeoIE7ZZYKXpXBb9DFidLPDctKL7bZDglyxJoyQxEPaM8Issbkv3j3
+        gXMsYJAx9pTf0cQz+m5gfsQKl8oU31qQLW6UKb61v+PcC+/uMJV3kabmAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="ButonSalesFormSatisIptal.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAGYktHRAD/AP8A/6C9p5MAAAFXSURBVDhPY6Aq+BYQZfbfIYEDysUA9x0cON7o25pBuajgS0B0
+        wWef8P+fPEMPvnII5YEKw8FjS0vO14b2u1/q2vx/oWFeARWGAJDNUM3/P7oF/f/g5L/nsWUoJ1Qaqtlu
+        D1izpsX/56qm/58rGZhCpRkYQM7+6Bm6B6zZ2f//ewff/29tvYGGWHJi0/xU0XDPfQUHVK/+B9oIshmk
+        +Z2t1/+3lm7/35g67cGm+bGMJdx1KADk7Pe2Xrshmp3/vzK0/4+m+eALcT1uqHLsAORkoObdZGkGAZTQ
+        hmq+LGtwYZOowc79otoYsYMCcGneKGrwZa+Y8f9DYiYHcRqCTTPI2ZtFDbeCNYubwPCeY+iBCEphuEIb
+        pBikCckAsCH7kaMRlDyxaYZKM2Az5ICEKSIhgcALTcsCmLOxhTbUkN0gzQfFjVGTMgyAkidGCkMCIGdj
+        2EwZYGAAAP4tBWQxeoonAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="buttonTemizle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAGYktHRAD/AP8A/6C9p5MAAADSSURBVDhPzZI5CgJBEEULFMQLuIV6DQPxEF5EjVzuIiZibOQ5
+        ROYKGmlsoP+VNA6z0SbigwdT3XQt3WO/YCrvci+bLHzDQp5lX27lUUYnmctEdj0yq8mNjEoSKnc8+kAS
+        OmGcUjj8lBOP8jDO7f2ZJ1Tm8EWOZJq2ZH/mUYYwc88js6Ekydgjs5Y8ybVHGXiqopnp4CrpiP2lLIR3
+        ZrYiOMydlB4GbpXb5ZbT0FFl5UBDHuRO1lkQYeaVRxHwc/CT0MlARlXOQhLGeUjmrvIvMHsBbV0u4Oj1
+        32wAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="buttoElaveEt.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAGYktHRAD/AP8A/6C9p5MAAADlSURBVDhPxZJbDgExFIbnweUFK3BZh2A5iO2IxApcViBiLW4J
+        9sAT/9dO05lOx5v4ki89FedMe06TXzCSW/mQL3mXGzmQX6nIpTzJsWzLarpO5FkuJP+LQvJONsyuCL/v
+        JUUKcOyjLEt2NOVFFq7DnTl2yDtds0zl2oYeGsZdQ2IFupLG5qDbNRsaSAx11OXThh5O0LFhjmyioydv
+        NvQwZ0YVEiswkysbeoaS+dPlb7TkVfbNLoD5MueyIiQf5NzsIvDCKMKcGRU9obF0nWPzZZJLX6KDR8Kc
+        aRTTYeXO0WP/myT5AMPKLioFh2ztAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="ButtonSalesFormSatisEtmek.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAGYktHRAD/AP8A/6C9p5MAAAD6SURBVDhPzdA/TgJBGIbxkYoOC2xoPQSVhQY7hMRECxJrbaAz
+        MaHBI1BoCCRoZeGfgsJGL+A9vIjPM5nZKNmoVPAmP1hmv/fbDWFjsoVDnPyTs3aKeHCDsuEyt2ihyDMe
+        V2QnpolPlA39xo7d8IAq6vD1jmD2MMEYcZB04IyzduzGbR684AIuOIXlfRzA/6cL7znjrB278cOt5/5I
+        WaCCD/iHeW0px1k7PxYo5yl9X8Jl5vuCPF8s8NXm8EnGsx1YukcDeakzd2ijWGAGeMcUu3jFFYZ4S2cz
+        ONOHiV0Pz5BfK+thhOt0vXzfjg8L2zjG8sBf7NSw1oTwBY9iSpoe+hN8AAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="ButtonSalesFormYenile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8

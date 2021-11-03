@@ -174,7 +174,8 @@ namespace WindowsForm.Forms
                     previousBtn.BackColor = Color.FromArgb(98, 102, 244);
                     //previousBtn.BackColor = Color.FromArgb(152, 161, 155);
                     // previousBtn.BackColor = Color.FromArgb(152, 158, 161);
-                    previousBtn.ForeColor = Color.Gainsboro;
+                   // previousBtn.ForeColor = Color.Gainsboro;
+                    previousBtn.ForeColor = Color.White;
                     previousBtn.Font = new Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
                 }
             }
@@ -203,9 +204,6 @@ namespace WindowsForm.Forms
         {
             this.WindowState = FormWindowState.Minimized;
         }
-
-
-
 
 
 

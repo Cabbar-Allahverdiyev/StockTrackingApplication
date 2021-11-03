@@ -29,79 +29,87 @@ namespace WindowsForm.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.DataGridViewFormCategory = new System.Windows.Forms.DataGridView();
-            this.TextBoxFormCategoryKategoriya = new System.Windows.Forms.TextBox();
             this.ButtonFormCategoryElaveEt = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridViewFormCategory)).BeginInit();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.buttonError = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // DataGridViewFormCategory
-            // 
-            this.DataGridViewFormCategory.AllowUserToAddRows = false;
-            this.DataGridViewFormCategory.AllowUserToDeleteRows = false;
-            this.DataGridViewFormCategory.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DataGridViewFormCategory.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.DataGridViewFormCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridViewFormCategory.Location = new System.Drawing.Point(352, 69);
-            this.DataGridViewFormCategory.Name = "DataGridViewFormCategory";
-            this.DataGridViewFormCategory.ReadOnly = true;
-            this.DataGridViewFormCategory.RowTemplate.Height = 25;
-            this.DataGridViewFormCategory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridViewFormCategory.Size = new System.Drawing.Size(393, 313);
-            this.DataGridViewFormCategory.TabIndex = 7;
-            // 
-            // TextBoxFormCategoryKategoriya
-            // 
-            this.TextBoxFormCategoryKategoriya.Location = new System.Drawing.Point(142, 69);
-            this.TextBoxFormCategoryKategoriya.Name = "TextBoxFormCategoryKategoriya";
-            this.TextBoxFormCategoryKategoriya.Size = new System.Drawing.Size(180, 23);
-            this.TextBoxFormCategoryKategoriya.TabIndex = 6;
             // 
             // ButtonFormCategoryElaveEt
             // 
+            this.ButtonFormCategoryElaveEt.BackColor = System.Drawing.Color.SeaGreen;
+            this.ButtonFormCategoryElaveEt.FlatAppearance.BorderSize = 0;
             this.ButtonFormCategoryElaveEt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonFormCategoryElaveEt.Location = new System.Drawing.Point(247, 98);
+            this.ButtonFormCategoryElaveEt.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ButtonFormCategoryElaveEt.Location = new System.Drawing.Point(64, 51);
             this.ButtonFormCategoryElaveEt.Name = "ButtonFormCategoryElaveEt";
-            this.ButtonFormCategoryElaveEt.Size = new System.Drawing.Size(75, 23);
+            this.ButtonFormCategoryElaveEt.Size = new System.Drawing.Size(86, 28);
             this.ButtonFormCategoryElaveEt.TabIndex = 5;
-            this.ButtonFormCategoryElaveEt.Text = "Elave Et";
-            this.ButtonFormCategoryElaveEt.UseVisualStyleBackColor = true;
+            this.ButtonFormCategoryElaveEt.Text = "Success";
+            this.ButtonFormCategoryElaveEt.UseVisualStyleBackColor = false;
+            this.ButtonFormCategoryElaveEt.Click += new System.EventHandler(this.ButtonFormCategoryElaveEt_Click);
             // 
-            // label1
+            // button1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(55, 72);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 15);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Kateqoriya:";
+            this.button1.BackColor = System.Drawing.Color.DarkOrange;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(64, 153);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(86, 28);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Elave Et";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.RoyalBlue;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(64, 119);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(86, 28);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "Information";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // buttonError
+            // 
+            this.buttonError.BackColor = System.Drawing.Color.DarkRed;
+            this.buttonError.FlatAppearance.BorderSize = 0;
+            this.buttonError.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonError.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonError.Location = new System.Drawing.Point(64, 85);
+            this.buttonError.Name = "buttonError";
+            this.buttonError.Size = new System.Drawing.Size(86, 28);
+            this.buttonError.TabIndex = 8;
+            this.buttonError.Text = "Xəta";
+            this.buttonError.UseVisualStyleBackColor = false;
+            this.buttonError.Click += new System.EventHandler(this.buttonError_Click);
             // 
             // FormNese
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.DataGridViewFormCategory);
-            this.Controls.Add(this.TextBoxFormCategoryKategoriya);
+            this.ClientSize = new System.Drawing.Size(914, 420);
+            this.Controls.Add(this.buttonError);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.ButtonFormCategoryElaveEt);
-            this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "FormNese";
             this.Text = "FormNese";
             this.Load += new System.EventHandler(this.FormNese_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridViewFormCategory)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView DataGridViewFormCategory;
-        private System.Windows.Forms.TextBox TextBoxFormCategoryKategoriya;
         private System.Windows.Forms.Button ButtonFormCategoryElaveEt;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonError;
     }
 }

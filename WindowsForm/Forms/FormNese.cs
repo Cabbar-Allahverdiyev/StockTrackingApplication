@@ -18,7 +18,7 @@ namespace WindowsForm.Forms
 
         private void FormNese_Load(object sender, EventArgs e)
         {
-            LoadTheme();
+            //LoadTheme();
         }
 
         private void LoadTheme()
@@ -37,9 +37,32 @@ namespace WindowsForm.Forms
 
                 }
             }
-            label1.ForeColor = ThemeColor.SecondaryColor;
+           // label1.ForeColor = ThemeColor.SecondaryColor;
         }
 
-        
+        public void Alert(string message,AlertForm.EnumType type)
+        {
+            AlertForm form = new AlertForm();
+            form.ShowAlert(message,type);
+        }
+        private void ButtonFormCategoryElaveEt_Click(object sender, EventArgs e)
+        {
+            this.Alert("Uğurlu əməliyyat",AlertForm.EnumType.Success);
+        }
+
+        private void buttonError_Click(object sender, EventArgs e)
+        {
+            this.Alert("Xəta baş verdi", AlertForm.EnumType.Error);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Alert("Məlumat", AlertForm.EnumType.Info);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Alert("Diqqət təlükə", AlertForm.EnumType.Warning);
+        }
     }
 }

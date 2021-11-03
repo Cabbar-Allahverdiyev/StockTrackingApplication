@@ -143,5 +143,11 @@ namespace WindowsForm.Forms
             }
         }
 
+        private void GroupBoxVarOlanMehsul_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }

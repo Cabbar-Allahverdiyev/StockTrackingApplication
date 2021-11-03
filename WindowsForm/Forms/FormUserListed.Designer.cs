@@ -67,90 +67,101 @@ namespace WindowsForm.Forms
             // 
             // TextBoxFormUserListedAddress
             // 
+            this.TextBoxFormUserListedAddress.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TextBoxFormUserListedAddress.Location = new System.Drawing.Point(105, 193);
             this.TextBoxFormUserListedAddress.Name = "TextBoxFormUserListedAddress";
-            this.TextBoxFormUserListedAddress.Size = new System.Drawing.Size(102, 23);
+            this.TextBoxFormUserListedAddress.Size = new System.Drawing.Size(102, 22);
             this.TextBoxFormUserListedAddress.TabIndex = 28;
             // 
             // TextBoxFormUserListedPhoneNumber
             // 
+            this.TextBoxFormUserListedPhoneNumber.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TextBoxFormUserListedPhoneNumber.Location = new System.Drawing.Point(105, 155);
             this.TextBoxFormUserListedPhoneNumber.Name = "TextBoxFormUserListedPhoneNumber";
-            this.TextBoxFormUserListedPhoneNumber.Size = new System.Drawing.Size(102, 23);
+            this.TextBoxFormUserListedPhoneNumber.Size = new System.Drawing.Size(102, 22);
             this.TextBoxFormUserListedPhoneNumber.TabIndex = 25;
             // 
             // TextBoxFormUserListedEmail
             // 
+            this.TextBoxFormUserListedEmail.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TextBoxFormUserListedEmail.Location = new System.Drawing.Point(105, 117);
             this.TextBoxFormUserListedEmail.Name = "TextBoxFormUserListedEmail";
-            this.TextBoxFormUserListedEmail.Size = new System.Drawing.Size(102, 23);
+            this.TextBoxFormUserListedEmail.Size = new System.Drawing.Size(102, 22);
             this.TextBoxFormUserListedEmail.TabIndex = 24;
             // 
             // TextBoxFormUserListedSoyad
             // 
+            this.TextBoxFormUserListedSoyad.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TextBoxFormUserListedSoyad.Location = new System.Drawing.Point(105, 79);
             this.TextBoxFormUserListedSoyad.Name = "TextBoxFormUserListedSoyad";
-            this.TextBoxFormUserListedSoyad.Size = new System.Drawing.Size(102, 23);
+            this.TextBoxFormUserListedSoyad.Size = new System.Drawing.Size(102, 22);
             this.TextBoxFormUserListedSoyad.TabIndex = 23;
             // 
             // TextBoxFormUserListedAd
             // 
+            this.TextBoxFormUserListedAd.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TextBoxFormUserListedAd.Location = new System.Drawing.Point(105, 41);
             this.TextBoxFormUserListedAd.Name = "TextBoxFormUserListedAd";
-            this.TextBoxFormUserListedAd.Size = new System.Drawing.Size(102, 23);
+            this.TextBoxFormUserListedAd.Size = new System.Drawing.Size(102, 22);
             this.TextBoxFormUserListedAd.TabIndex = 22;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label7.Location = new System.Drawing.Point(7, 196);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(49, 15);
+            this.label7.Size = new System.Drawing.Size(43, 14);
             this.label7.TabIndex = 21;
-            this.label7.Text = "Address";
+            this.label7.Text = "Adres";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.Location = new System.Drawing.Point(7, 158);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 15);
+            this.label4.Size = new System.Drawing.Size(53, 14);
             this.label4.TabIndex = 18;
-            this.label4.Text = "Phone number";
+            this.label4.Text = "Telefon";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.Location = new System.Drawing.Point(7, 120);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(36, 15);
+            this.label3.Size = new System.Drawing.Size(40, 14);
             this.label3.TabIndex = 17;
             this.label3.Text = "Email";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(4, 82);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 15);
+            this.label2.Size = new System.Drawing.Size(46, 14);
             this.label2.TabIndex = 16;
             this.label2.Text = "Soyad";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(7, 44);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(22, 15);
+            this.label1.Size = new System.Drawing.Size(23, 14);
             this.label1.TabIndex = 15;
             this.label1.Text = "Ad";
             // 
             // TextBoxFormUserListedAxtar
             // 
             this.TextBoxFormUserListedAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TextBoxFormUserListedAxtar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TextBoxFormUserListedAxtar.Location = new System.Drawing.Point(741, 15);
             this.TextBoxFormUserListedAxtar.Name = "TextBoxFormUserListedAxtar";
-            this.TextBoxFormUserListedAxtar.Size = new System.Drawing.Size(173, 23);
+            this.TextBoxFormUserListedAxtar.Size = new System.Drawing.Size(173, 22);
             this.TextBoxFormUserListedAxtar.TabIndex = 31;
             this.TextBoxFormUserListedAxtar.TextChanged += new System.EventHandler(this.TextBoxFormUserListedAxtar_TextChanged);
             // 
@@ -158,9 +169,10 @@ namespace WindowsForm.Forms
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label5.Location = new System.Drawing.Point(698, 18);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(37, 15);
+            this.label5.Size = new System.Drawing.Size(45, 14);
             this.label5.TabIndex = 32;
             this.label5.Text = "Axtar:";
             // 
@@ -168,6 +180,7 @@ namespace WindowsForm.Forms
             // 
             this.ButtonAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ButtonAxtar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonAxtar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ButtonAxtar.Location = new System.Drawing.Point(920, 15);
             this.ButtonAxtar.Name = "ButtonAxtar";
             this.ButtonAxtar.Size = new System.Drawing.Size(75, 23);
