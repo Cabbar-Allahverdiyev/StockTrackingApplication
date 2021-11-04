@@ -126,7 +126,7 @@ namespace WindowsForm.Forms
             this.groupBoxMusteri.Controls.Add(this.label4);
             this.groupBoxMusteri.Controls.Add(this.label3);
             this.groupBoxMusteri.Controls.Add(this.label2);
-            this.groupBoxMusteri.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBoxMusteri.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBoxMusteri.Location = new System.Drawing.Point(13, 25);
             this.groupBoxMusteri.Name = "groupBoxMusteri";
             this.groupBoxMusteri.Size = new System.Drawing.Size(244, 130);
@@ -160,7 +160,7 @@ namespace WindowsForm.Forms
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(6, 103);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 14);
+            this.label4.Size = new System.Drawing.Size(51, 17);
             this.label4.TabIndex = 2;
             this.label4.Text = "Telefon";
             // 
@@ -169,7 +169,7 @@ namespace WindowsForm.Forms
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(6, 64);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 14);
+            this.label3.Size = new System.Drawing.Size(45, 17);
             this.label3.TabIndex = 1;
             this.label3.Text = "Soyad";
             // 
@@ -178,7 +178,7 @@ namespace WindowsForm.Forms
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 25);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(23, 14);
+            this.label2.Size = new System.Drawing.Size(25, 17);
             this.label2.TabIndex = 0;
             this.label2.Text = "Ad";
             // 

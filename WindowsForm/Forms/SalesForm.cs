@@ -22,22 +22,6 @@ namespace WindowsForm.Forms
 {
     public partial class SalesForm : Form
     {
-       
-
-        //FormUserAdd _formUserAdd = new FormUserAdd(new UserManager(new EfUserDal()));
-        //FormUserListed _formUserListed = new FormUserListed();
-        //FormProductAdd _formProductAdd = new FormProductAdd();
-        //FormBrand _formBrand = new FormBrand();
-        //FormCategory _formCategory = new FormCategory();
-        //SupplierForm _supplierForm = new SupplierForm();
-        //FormProductList _formProductList = new FormProductList();
-        //FormSalesList _formSalesList = new FormSalesList();
-
-
-      
-
-
-
         public SalesForm()
         {
             InitializeComponent();
@@ -51,6 +35,7 @@ namespace WindowsForm.Forms
 
         bool isBarcodeNumberExists = false;
 
+
         private void SalesForm_Load(object sender, EventArgs e)
         {
             ProductListRefesh();
@@ -58,45 +43,7 @@ namespace WindowsForm.Forms
             GroupBoxMehsulControlClear();
         }
 
-        //private void ButtonSalesFormIstifadeciElaveEtmek_Click(object sender, EventArgs e)
-        //{
-        //    _formUserAdd.ShowDialog();
-        //}
 
-        //private void ButtonSalesFormIstifadecileriSirala_Click(object sender, EventArgs e)
-        //{
-        //    _formUserListed.ShowDialog();
-        //}
-
-        //private void ButtonSalesFormMehsulElaveEtmek_Click(object sender, EventArgs e)
-        //{
-        //    _formProductAdd.ShowDialog();
-        //}
-
-        //private void ButtonSalesFormMarka_Click(object sender, EventArgs e)
-        //{
-        //    _formBrand.ShowDialog();
-        //}
-
-        //private void ButtonFormKateqoriya_Click(object sender, EventArgs e)
-        //{
-        //    _formCategory.ShowDialog();
-        //}
-
-        //private void ButtonSalesFormTedarukculer_Click(object sender, EventArgs e)
-        //{
-        //    _supplierForm.ShowDialog();
-        //}
-
-        //private void ButtonSalesFormMehsullariSirala_Click(object sender, EventArgs e)
-        //{
-        //    _formProductList.ShowDialog();
-        //}
-
-        //private void ButtonSalesFormSatislariSirala_Click(object sender, EventArgs e)
-        //{
-        //    _formSalesList.ShowDialog();
-        //}
 
         private void ButtonSalesFormYenile_Click(object sender, EventArgs e)
         {
@@ -112,48 +59,64 @@ namespace WindowsForm.Forms
 
         private void ButtonSalesFormSil_Click(object sender, EventArgs e)
         {
+
             try
             {
                 Cart cart = new Cart();
                 CartAddDto cartAddDto = _cartManager.GetCartAddDetailByBarcodeNumber(int.Parse(textBoxBarkodNo.Text)).Data;
-                cart.Id = cartAddDto.CartId;
 
-                if (cartAddDto.Quantity <= 1 || textBoxMiqdar.Text == "" || cartAddDto.Quantity <= Convert.ToInt32(textBoxMiqdar.Text))
+                if (cartAddDto!=null)
                 {
-                    IResult result = _cartManager.Delete(cart);
-                    if (!result.Success)
+                    cart.Id = cartAddDto.CartId;
+                    if (cartAddDto.Quantity <= 1 || textBoxMiqdar.Text == "" || cartAddDto.Quantity <= Convert.ToInt32(textBoxMiqdar.Text))
                     {
-                        ResultControllers.ResultIsSucces(result);
-                        return;
-                    }
+                        IResult result = _cartManager.Delete(cart);
+                        if (!result.Success)
+                        {
+                            ResultControllers.ResultIsSucces(result);
+                            return;
+                        }
 
-                }
-                else
-                {
-                    cart.ProductId = int.Parse(textBoxProductId.Text);
-                    cart.UserId = cartAddDto.UserId;
-                    cart.Quantity = cartAddDto.Quantity - Convert.ToInt32(textBoxMiqdar.Text);
-                    cart.SoldPrice = cartAddDto.SoldPrice;
-                    CalculateTotalPrice(cart.Quantity, cart.SoldPrice);
-                    cart.TotalPrice = Convert.ToDecimal(textBoxCem.Text);
-                    //  CartValidation(cart);
-                    IResult result = _cartManager.Update(cart);
-                    if (!result.Success)
+                    }
+                    else
                     {
-                        ResultControllers.ResultIsSucces(result);
-                        return;
-                    }
+                        cart.ProductId = int.Parse(textBoxProductId.Text);
+                        cart.UserId = cartAddDto.UserId;
+                        cart.Quantity = cartAddDto.Quantity - Convert.ToInt32(textBoxMiqdar.Text);
+                        cart.SoldPrice = cartAddDto.SoldPrice;
+                        CalculateTotalPrice(cart.Quantity, cart.SoldPrice);
+                        cart.TotalPrice = Convert.ToDecimal(textBoxCem.Text);
+                        //  CartValidation(cart);
+                        IResult result = _cartManager.Update(cart);
+                        if (!result.Success)
+                        {
+                            ResultControllers.ResultIsSucces(result);
+                            return;
+                        }
 
+                    }
                 }
+               
                 GroupBoxMehsulControlClear();
                 TotalPriceLabelWrite();
                 CartListRefesh();
             }
-            catch (Exception)
+            catch (ArgumentNullException)
             {
                 FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {AuthMessages.ErrorMessage}");
                 return;
             }
+            catch (FormatException)
+            {
+                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {AuthMessages.ErrorMessage}");
+                return;
+            }
+            catch (NullReferenceException)
+            {
+                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {AuthMessages.ErrorMessage}");
+                return;
+            }
+
 
         }
 
@@ -247,7 +210,7 @@ namespace WindowsForm.Forms
 
         }
 
-    
+
         private void ButtonSalesFormSatisEtmek_Click(object sender, EventArgs e)
         {
             try
@@ -480,6 +443,6 @@ namespace WindowsForm.Forms
             }
         }
 
-       
+
     }
 }

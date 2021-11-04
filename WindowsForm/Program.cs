@@ -28,8 +28,8 @@ namespace WindowsForm
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new SalesForm());
             //Application.Run(new Dashboard());
-            //Application.Run(new Forms.Dashboard());
-            Application.Run(new Forms.FormNese());
+            Application.Run(new Forms.Dashboard());
+            //Application.Run(new Forms.FormNese());
             
 
             //new SalesForm(new FormUserAdd(new AuthManager(new UserManager(new EfUserDal()), new JwtHelper())))

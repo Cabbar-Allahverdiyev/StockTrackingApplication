@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
+using WindowsForm.Forms;
 
 namespace WindowsForm.Core.Controllers
 {
@@ -14,10 +15,17 @@ namespace WindowsForm.Core.Controllers
         {
             if (!result.Success)
             {
-                FormsMessage.ErrorMessage(result.Message);
+                Alert(result.Message, AlertForm.EnumType.Error);
+               // FormsMessage.ErrorMessage(result.Message);
                 return;
             }
 
+        }
+
+        public static void Alert(string message,AlertForm.EnumType type)
+        {
+            AlertForm form = new AlertForm();
+            form.ShowAlert(message, type);
         }
     }
 }

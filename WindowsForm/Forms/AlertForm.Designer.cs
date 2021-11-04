@@ -50,7 +50,7 @@ namespace WindowsForm.Forms
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::WindowsForm.Properties.Resources.succces_dark;
+            this.pictureBox1.Image = global::WindowsForm.Properties.Resources.errorCloud_light;
             this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(45, 45);
@@ -65,7 +65,7 @@ namespace WindowsForm.Forms
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::WindowsForm.Properties.Resources.cancel;
+            this.pictureBox2.Image = global::WindowsForm.Properties.Resources.cancel_light;
             this.pictureBox2.Location = new System.Drawing.Point(266, 24);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(25, 25);

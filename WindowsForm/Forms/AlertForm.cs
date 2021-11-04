@@ -109,19 +109,19 @@ namespace WindowsForm.Forms
             switch (type)
             {
                 case EnumType.Success:
-                    this.pictureBox1.Image = Resources.success;
+                    this.pictureBox1.Image = Resources.succes_ios7_ligt;
                     this.BackColor = Color.SeaGreen;
                     break;
                 case EnumType.Error:
-                    this.pictureBox1.Image = Resources.error;
+                    this.pictureBox1.Image = Resources.errorCloud_light;
                     this.BackColor = Color.DarkRed;
                     break;
                 case EnumType.Info:
-                    this.pictureBox1.Image = Resources.info;
+                    this.pictureBox1.Image = Resources.info_light_normal;
                     this.BackColor = Color.RoyalBlue;
                     break;
                 case EnumType.Warning:
-                    this.pictureBox1.Image = Resources.warning;
+                    this.pictureBox1.Image = Resources.warning_light;
                     this.BackColor = Color.DarkOrange;
                     break;
 
