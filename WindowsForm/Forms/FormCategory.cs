@@ -13,6 +13,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
+using WindowsForm.Core.Controllers.ValidatorControllers;
 
 namespace WindowsForm.Forms
 {
@@ -24,6 +25,7 @@ namespace WindowsForm.Forms
         }
 
         CategoryManager _categoryManager = new CategoryManager(new EfCategoryDal());
+        CategoryValidationTool validationTool = new CategoryValidationTool();
        
 
         private void FormCategory_Load(object sender, EventArgs e)
@@ -37,29 +39,21 @@ namespace WindowsForm.Forms
             Category category = new Category();
             category.CategoryName = TextBoxFormCategoryKategoriya.Text;
 
-            CategoryValidator validationRules = new CategoryValidator();
-            ValidationResult results = validationRules.Validate(category);
-
-            if (results.IsValid == false)
+            if (!validationTool.IsValid(category))
             {
-                foreach (ValidationFailure failure in results.Errors)
-                {
-                    FormsMessage.ErrorMessage(failure.ErrorMessage);
-                    return;
-                }
-               
+                return;
             }
 
             IResult categoryAdd = _categoryManager.Add(category);
             if (categoryAdd.Success)
             {
-                FormsMessage.InformationMessage(categoryAdd.Message);
+                FormsMessage.SuccessMessage(categoryAdd.Message);
                 DataGridViewFormCategory.DataSource = _categoryManager.GetAll().Data;
 
             }
             else
             {
-                FormsMessage.ErrorMessage(CategoryMessages.CategoryNotAdded);
+                FormsMessage.WarningMessage(CategoryMessages.CategoryNotAdded);
 
             }
 
@@ -73,9 +67,6 @@ namespace WindowsForm.Forms
 
         }
 
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        {
-
-        }
+       
     }
 }

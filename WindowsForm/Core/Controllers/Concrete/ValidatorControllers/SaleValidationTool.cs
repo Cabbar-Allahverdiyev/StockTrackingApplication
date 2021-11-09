@@ -10,9 +10,9 @@ namespace WindowsForm.Core.Controllers.ValidatorControllers
 {
     public class SaleValidationTool
     {
-        public bool IsValid(Sale sale)
+        public bool IsValid(SaleWinForm sale)
         {
-            SaleValidator validationRules = new SaleValidator();
+            SaleWinFormValidator validationRules = new SaleWinFormValidator();
             ValidationResult results = validationRules.Validate(sale);
 
             if (results.IsValid == false)

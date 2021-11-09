@@ -17,6 +17,7 @@ using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.Concrete;
 using WindowsForm.Core.Controllers;
+using WindowsForm.Core.Controllers.ValidatorControllers;
 
 namespace WindowsForm.Forms
 {
@@ -31,7 +32,8 @@ namespace WindowsForm.Forms
         ProductManager _productManager = new ProductManager(new EfProductDal());
         CartManager _cartManager = new CartManager(new EfCartDal());
         SaleWinFormManager _saleWinFormManager = new SaleWinFormManager(new EfSaleWinFormDal());
-        ResultControllersMessageList resultControllersMessageList = new ResultControllersMessageList();
+        CartValidationTool cartValidationTool = new CartValidationTool();
+        SaleValidationTool saleValidationTool = new SaleValidationTool();
 
         bool isBarcodeNumberExists = false;
 
@@ -158,19 +160,11 @@ namespace WindowsForm.Forms
                 cart.Quantity = int.Parse(textBoxMiqdar.Text);
                 cart.TotalPrice = decimal.Parse(textBoxCem.Text);
                 cart.UserId = 2;
-
-                CartValidator validationRules = new CartValidator();
-                ValidationResult results = validationRules.Validate(cart);
-                if (!results.IsValid)
+                if (!cartValidationTool.IsValid(cart))
                 {
-                    foreach (ValidationFailure validationFailure in results.Errors)
-                    {
-                        FormsMessage.ErrorMessage(validationFailure.ErrorMessage);
-                        return;
-                    }
+                    return;
                 }
-                // CartValidation(cart);
-
+               
                 IsBarcodeNumberExists();
                 if (isBarcodeNumberExists == true)
                 {
@@ -185,7 +179,7 @@ namespace WindowsForm.Forms
                         FormsMessage.WarningMessage(cartUpdated.Message);
                         return;
                     }
-                    FormsMessage.InformationMessage(cartUpdated.Message);
+                    FormsMessage.SuccessMessage(cartUpdated.Message);
                 }
                 else
                 {
@@ -195,6 +189,7 @@ namespace WindowsForm.Forms
                         FormsMessage.WarningMessage(cartAdded.Message);
                         return;
                     }
+                    FormsMessage.SuccessMessage(cartAdded.Message);
                 }
 
                 CartListRefesh();
@@ -235,17 +230,11 @@ namespace WindowsForm.Forms
                         saleWinForm.SoldPrice = cart.SoldPrice;
                         saleWinForm.Quantity = cart.Quantity;
 
-                        SaleWinFormValidator validationRules = new SaleWinFormValidator();
-                        ValidationResult results = validationRules.Validate(saleWinForm);
-                        if (!results.IsValid)
+                        if (!saleValidationTool.IsValid(saleWinForm))
                         {
-                            foreach (ValidationFailure validationFailure in results.Errors)
-                            {
-                                FormsMessage.ErrorMessage(validationFailure.ErrorMessage);
-                                return;
-                            }
+                            return;
                         }
-                        //SaleWinFormValidation(saleWinForm);
+                       
                         saleWinFormAdded = _saleWinFormManager.Add(saleWinForm);
                         productUpdated = _productManager.Update(product);
                         if (!saleWinFormAdded.Success||!productUpdated.Success)
@@ -262,7 +251,7 @@ namespace WindowsForm.Forms
                         resultMessage += $"// {message} {newResultMessage}//       ";
 
                     }
-                    FormsMessage.InformationMessage(resultMessage);
+                    FormsMessage.SuccessMessage(resultMessage);
 
 
                     //GroupBoxIstifadeciControlClear();
@@ -368,33 +357,6 @@ namespace WindowsForm.Forms
             return;
         }
 
-        private void CartValidation(Cart cart)
-        {
-            CartValidator validationRules = new CartValidator();
-            ValidationResult results = validationRules.Validate(cart);
-            if (!results.IsValid)
-            {
-                foreach (ValidationFailure validationFailure in results.Errors)
-                {
-                    FormsMessage.ErrorMessage(validationFailure.ErrorMessage);
-                    return;
-                }
-            }
-        }
-
-        private void SaleWinFormValidation(SaleWinForm saleWinForm)
-        {
-            SaleWinFormValidator validationRules = new SaleWinFormValidator();
-            ValidationResult results = validationRules.Validate(saleWinForm);
-            if (!results.IsValid)
-            {
-                foreach (ValidationFailure validationFailure in results.Errors)
-                {
-                    MessageBox.Show(validationFailure.ErrorMessage, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-            }
-        }
 
         private void RemoveCart()
         {

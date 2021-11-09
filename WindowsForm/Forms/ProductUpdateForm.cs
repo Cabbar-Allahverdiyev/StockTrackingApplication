@@ -14,6 +14,7 @@ using Business.ValidationRules.FluentValidation;
 using FluentValidation.Results;
 using Business.Constants.Messages;
 using WindowsForm.Core.Constants.Messages;
+using WindowsForm.Core.Controllers.ValidatorControllers;
 
 namespace WindowsForm.Forms
 {
@@ -25,7 +26,7 @@ namespace WindowsForm.Forms
         }
         ProductManager _productManager = new ProductManager(new EfProductDal());
         Product product = new Product();
-
+        ProductValidationTool validationTool = new ProductValidationTool();
 
         CategoryManager _categoryManager = new CategoryManager(new EfCategoryDal());
         BrandManager _brandManager = new BrandManager(new EfBrandDal());
@@ -74,32 +75,26 @@ namespace WindowsForm.Forms
                 }
                 product.Description = TextBoxVarOlanAciqlama.Text;
 
-                ProductValidator validationRules = new ProductValidator();
-                ValidationResult results = validationRules.Validate(product);
-                if (!results.IsValid)
+                if (!validationTool.IsValid(product))
                 {
-                    foreach (ValidationFailure validationFailure in results.Errors)
-                    {
-                        FormsMessage.ErrorMessage(validationFailure.ErrorMessage);
-                        return;
-                    }
-
+                    return;
                 }
+
 
                 IResult productUpdated = _productManager.Update(product);
 
                 if (!productUpdated.Success)
                 {
-                    FormsMessage.ErrorMessage(productUpdated.Message);
+                    FormsMessage.WarningMessage(productUpdated.Message);
                     return;
                 }
-                FormsMessage.InformationMessage(productUpdated.Message);
+                FormsMessage.SuccessMessage(productUpdated.Message);
                 GroupBoxVarOlanMehsulControlClear();
                 dataGridViewFormPrdouctList.DataSource = _productManager.GetAllProductViewDasgboardDetails().Data;
             }
             catch (Exception)
             {
-                FormsMessage.ErrorMessage(AuthMessages.ErrorMessage);
+                FormsMessage.ErrorMessage($"{ButtonMessages.UpdateError} {AuthMessages.ErrorMessage} ");
                 return;
             }
         }
@@ -204,7 +199,7 @@ namespace WindowsForm.Forms
             }
             else
             {
-                FormsMessage.ErrorMessage(ProductMessages.ProductNotFound);
+                FormsMessage.ErrorMessage(productGetDetailsByName.Message);
             }
         }
 

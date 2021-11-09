@@ -26,9 +26,7 @@ namespace WindowsForm.Forms
 
         UserManager _userService = new UserManager(new EfUserDal());
         UserValidationTool validationTool = new UserValidationTool();
-        //BindingList<string> errors = new BindingList<string>();
-        //  IAuthService authService = new AuthManager(new UserManager(new EfUserDal()),new JwtHelper());
-
+        
         public FormUserAdd()
         {
             InitializeComponent();
@@ -62,7 +60,7 @@ namespace WindowsForm.Forms
             var userRegister = _userService.Register(userForRegisterDto, userForRegisterDto.Password, passwordRepeat);
             if (!userRegister.Success)
             {
-                FormsMessage.ErrorMessage(userRegister.Message);
+                FormsMessage.WarningMessage(userRegister.Message);
                 return;
             }
             FormsMessage.SuccessMessage(userRegister.Message);

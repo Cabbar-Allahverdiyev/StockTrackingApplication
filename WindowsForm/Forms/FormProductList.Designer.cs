@@ -105,7 +105,6 @@ namespace WindowsForm.Forms
             this.GroupBoxVarOlanMehsul.Size = new System.Drawing.Size(265, 520);
             this.GroupBoxVarOlanMehsul.TabIndex = 2;
             this.GroupBoxVarOlanMehsul.TabStop = false;
-            this.GroupBoxVarOlanMehsul.Enter += new System.EventHandler(this.GroupBoxVarOlanMehsul_Enter);
             // 
             // pictureBoxProductImage
             // 

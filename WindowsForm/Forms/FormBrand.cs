@@ -13,6 +13,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
+using WindowsForm.Core.Controllers.Concrete.ValidatorControllers;
 
 namespace WindowsForm.Forms
 {
@@ -24,7 +25,7 @@ namespace WindowsForm.Forms
         }
 
         BrandManager _brandManager = new BrandManager(new EfBrandDal());
-       
+        BrandValidationTool validationTool = new BrandValidationTool();
 
         private void FormBrand_Load(object sender, EventArgs e)
         {
@@ -39,27 +40,21 @@ namespace WindowsForm.Forms
                 Brand brand = new Brand();
                 brand.BrandName = TextBoxFormBrandMarkaAdi.Text;
 
-                BrandValidator validationRules = new BrandValidator();
-                ValidationResult results = validationRules.Validate(brand);
-
-                if (results.IsValid == false)
+                if (!validationTool.IsValid(brand))
                 {
-                    foreach (ValidationFailure failure in results.Errors)
-                    {
-                        FormsMessage.ErrorMessage(failure.ErrorMessage);
-                    }
                     return;
                 }
+               
 
                 IResult brandAdd = _brandManager.Add(brand);
                 if (brandAdd.Success)
                 {
-                    FormsMessage.InformationMessage(brandAdd.Message);
+                    FormsMessage.SuccessMessage(brandAdd.Message);
                     dataGridViewBrandsListed.DataSource = _brandManager.GetAll().Data;
                 }
                 else
                 {
-                    FormsMessage.ErrorMessage(BrandMessages.BrandNotAdded);
+                    FormsMessage.WarningMessage(BrandMessages.BrandNotAdded);
                     return;
                 }
 

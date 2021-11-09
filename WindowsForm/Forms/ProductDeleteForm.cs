@@ -55,7 +55,7 @@ namespace WindowsForm.Forms
                     FormsMessage.ErrorMessage(productDeleted.Message);
                     return;
                 }
-                FormsMessage.InformationMessage(productDeleted.Message);
+                FormsMessage.SuccessMessage(productDeleted.Message);
                 dataGridViewProductList.DataSource = _productManager.GetProductCompactDetails().Data;
                 GroupBoxVarOlanMehsulControlClear();
             }
@@ -68,23 +68,32 @@ namespace WindowsForm.Forms
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            if (textBoxAxtar.Text == "")
+            try
             {
-                LabelMiqdarVB.Text = "";
-                GroupBoxVarOlanMehsulControlClear();
-                dataGridViewProductList.DataSource = _productManager.GetAllProductViewDasgboardDetails().Data;
-                return;
-            }
 
-            int barcodeNumber = Convert.ToInt32(textBoxAxtar.Text);
-            IDataResult<List<ProductViewDashboardDetailDto>> productGetDetailsByName = _productManager.GetProductViewDasgboardDetailByBarcodeNumber(barcodeNumber);
-            if (productGetDetailsByName.Success)
-            {
-                dataGridViewProductList.DataSource = productGetDetailsByName.Data;
+                if (textBoxAxtar.Text == "")
+                {
+                    LabelMiqdarVB.Text = "";
+                    GroupBoxVarOlanMehsulControlClear();
+                    dataGridViewProductList.DataSource = _productManager.GetAllProductViewDasgboardDetails().Data;
+                    return;
+                }
+
+                int barcodeNumber = Convert.ToInt32(textBoxAxtar.Text);
+                IDataResult<List<ProductViewDashboardDetailDto>> productGetDetailsByName = _productManager.GetProductViewDasgboardDetailByBarcodeNumber(barcodeNumber);
+                if (productGetDetailsByName.Success)
+                {
+                    dataGridViewProductList.DataSource = productGetDetailsByName.Data;
+                }
+                else
+                {
+                    FormsMessage.ErrorMessage(ProductMessages.ProductNotFound);
+                }
             }
-            else
+            catch (Exception)
             {
-                FormsMessage.ErrorMessage(ProductMessages.ProductNotFound);
+                FormsMessage.ErrorMessage(AuthMessages.ErrorMessage);
+                return;
             }
         }
 

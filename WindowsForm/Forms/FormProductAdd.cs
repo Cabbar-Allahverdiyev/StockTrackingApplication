@@ -15,7 +15,7 @@ using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers;
-
+using WindowsForm.Core.Controllers.ValidatorControllers;
 
 namespace WindowsForm.Forms
 {
@@ -29,6 +29,7 @@ namespace WindowsForm.Forms
         CategoryManager _categoryManager = new CategoryManager(new EfCategoryDal());
         BrandManager _brandManager = new BrandManager(new EfBrandDal());
         SupplierManager _supplierManager = new SupplierManager(new EfSupplierDal());
+        ProductValidationTool validationTool = new ProductValidationTool();
 
 
 
@@ -58,32 +59,21 @@ namespace WindowsForm.Forms
                 product.QuantityPerUnit = TextBoxFormProductAddKemiyyet.Text;
                 product.Description = TextBoxFormProductAddAciqlama.Text;
 
-
-                // ProductValidation(product);
-
-                ProductValidator validationRules = new ProductValidator();
-                ValidationResult results = validationRules.Validate(product);
-                if (!results.IsValid)
+                if (!validationTool.IsValid(product))
                 {
-                    foreach (ValidationFailure validationFailure in results.Errors)
-                    {
-                        FormsMessage.ErrorMessage(validationFailure.ErrorMessage);
-                        return;
-                    }
-
+                    return;
                 }
 
                 IResult productAdd = _productManager.Add(product);
                 if (!productAdd.Success)
                 {
-                    FormsMessage.ErrorMessage(productAdd.Message);
+                    FormsMessage.WarningMessage(productAdd.Message);
                     return;
                 }
 
-                FormsMessage.InformationMessage(productAdd.Message);
-
                 GroupBoxYeniMehsulControlClear();
                 DataGridViewProductList.DataSource = _productManager.GetProductCompactDetails().Data;
+                FormsMessage.SuccessMessage(productAdd.Message);
 
 
             }
@@ -122,7 +112,6 @@ namespace WindowsForm.Forms
             else
             {
                 FormsMessage.ErrorMessage(productGetDetailsByName.Message);
-                //  MessageBox.Show(ProductMessages.ProductNotFound, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -145,46 +134,6 @@ namespace WindowsForm.Forms
 
             }
         }
-
-        //private void GroupBoxVarOlanMehsulControlClear()
-        //{
-        //    foreach (Control control in GroupBoxFormProductAddVarOlanMehsul.Controls)
-        //    {
-        //        if (control is TextBox)
-        //        {
-        //            control.Text = "";
-        //        }
-        //        if (control is ComboBox)
-        //        {
-        //            control.Text = "";
-        //        }
-        //        LabelMiqdarVB.Text = "#";
-
-        //    }
-        //}
-
-
-
-        //private void CategoryGetComboBoxVarOlan()
-        //{
-
-        //    var categoryGetAll = _categoryManager.GetAll();
-
-        //    comboBoxVarOlanKateqoriya.DataSource = categoryGetAll.Data;
-        //    comboBoxVarOlanKateqoriya.DisplayMember = "CategoryName";
-        //    comboBoxVarOlanKateqoriya.ValueMember = "Id";
-
-
-        //}
-        //private void BrandGetComboBoxVarOlan()
-        //{
-        //    var brandGetAll = _brandManager.GetAll();
-
-        //    comboBoxVarOlanMarka.DataSource = brandGetAll.Data;
-        //    comboBoxVarOlanMarka.DisplayMember = "BrandName";
-        //    comboBoxVarOlanMarka.ValueMember = "Id";
-
-        //}
 
         private void CategoryGetComboBoxYeni()
         {
@@ -214,22 +163,7 @@ namespace WindowsForm.Forms
             ComboBoxFormProductAddTedarikci.ValueMember = "Id";
         }
 
-        private void ProductValidation(Product product)
-        {
-            ProductValidator validationRules = new ProductValidator();
-            ValidationResult results = validationRules.Validate(product);
-            if (!results.IsValid)
-            {
-                foreach (ValidationFailure validationFailure in results.Errors)
-                {
-                    FormsMessage.ErrorMessage(validationFailure.ErrorMessage);
-                    return;
-                }
-                return;
-
-            }
-
-        }
+       
 
 
 

@@ -12,12 +12,14 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
+using WindowsForm.Core.Controllers.ValidatorControllers;
 
 namespace WindowsForm.Forms
 {
     public partial class SupplierForm : Form
     {
         SupplierManager _suplierManager = new SupplierManager(new EfSupplierDal());
+        SupplierValidationTool validationTool = new SupplierValidationTool();
         public SupplierForm()
         {
             InitializeComponent();
@@ -25,7 +27,7 @@ namespace WindowsForm.Forms
 
         private void SupplierForm_Load(object sender, EventArgs e)
         {
-            
+
             var supplierGetAll = _suplierManager.GetAll();
 
             DataGridViewSupplierForm.DataSource = supplierGetAll.Data;
@@ -33,7 +35,7 @@ namespace WindowsForm.Forms
 
         private void ButtonSupplierFormElaveEt_Click(object sender, EventArgs e)
         {
-           
+
 
             Supplier supplier = new Supplier();
             supplier.CompanyName = TextBoxSupplierFormSirketAdi.Text;
@@ -44,25 +46,18 @@ namespace WindowsForm.Forms
             supplier.Phone = TextBoxSupplierFormTelefon.Text;
             supplier.WhenWillCome = TextBoxSupplierFormNeZamanGelir.Text;
 
-            SupplierValidator validationRules = new SupplierValidator();
-            ValidationResult results = validationRules.Validate(supplier);
-            if (!results.IsValid)
+            if (!validationTool.IsValid(supplier))
             {
-                foreach (ValidationFailure failure in results.Errors)
-                {
-                    FormsMessage.ErrorMessage(failure.ErrorMessage);
-                    return;
-                }
-                
-            }
-
-           var supplierAdd= _suplierManager.Add(supplier);
-            if (!supplierAdd.Success)
-            {
-                FormsMessage.ErrorMessage(supplierAdd.Message);
                 return;
             }
-            FormsMessage.InformationMessage(supplierAdd.Message);
+
+            var supplierAdd = _suplierManager.Add(supplier);
+            if (!supplierAdd.Success)
+            {
+                FormsMessage.WarningMessage(supplierAdd.Message);
+                return;
+            }
+            FormsMessage.SuccessMessage(supplierAdd.Message);
             DataGridViewSupplierForm.DataSource = _suplierManager.GetAll().Data;
 
             foreach (Control control in this.Controls)
@@ -76,6 +71,6 @@ namespace WindowsForm.Forms
 
         }
 
-        
+
     }
 }
