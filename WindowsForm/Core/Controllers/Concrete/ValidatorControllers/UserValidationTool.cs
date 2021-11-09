@@ -10,9 +10,9 @@ using WindowsForm.Core.Controllers.Abstract;
 
 namespace WindowsForm.Core.Controllers.ValidatorControllers
 {
-    public  static class UserValidationTool
+    public   class UserValidationTool
     {
-        public static bool IsValid(User user)
+        public  bool IsValid(User user)
         {
             UserValidator validationRules = new UserValidator();
             ValidationResult results = validationRules.Validate(user);

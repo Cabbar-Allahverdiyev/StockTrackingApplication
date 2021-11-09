@@ -8,9 +8,9 @@ using WindowsForm.Core.Constants.Messages;
 
 namespace WindowsForm.Core.Controllers.Concrete.ValidatorControllers
 {
-   public static class BrandValidationTool
+   public  class BrandValidationTool
     {
-        public static bool IsValid(Brand brand)
+        public  bool IsValid(Brand brand)
         {
             BrandValidator validationRules = new BrandValidator();
             ValidationResult results = validationRules.Validate(brand);

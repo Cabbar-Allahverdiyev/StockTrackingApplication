@@ -19,6 +19,7 @@ namespace WindowsForm.Forms
     public partial class UserUpdateForm : Form
     {
         UserManager _userManager = new UserManager(new EfUserDal());
+        UserValidationTool validationTool = new UserValidationTool();
 
         public UserUpdateForm()
         {
@@ -38,7 +39,7 @@ namespace WindowsForm.Forms
                 user.PhoneNumber = TextBoxFormUserListedPhoneNumber.Text;
                 user.Address = TextBoxFormUserListedAddress.Text;
 
-                if (!UserValidationTool.IsValid(user))
+                if (!validationTool.IsValid(user))
                 {
                     return;
                 }

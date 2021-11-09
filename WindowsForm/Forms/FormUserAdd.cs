@@ -25,15 +25,13 @@ namespace WindowsForm.Forms
     {
 
         UserManager _userService = new UserManager(new EfUserDal());
+        UserValidationTool validationTool = new UserValidationTool();
         //BindingList<string> errors = new BindingList<string>();
         //  IAuthService authService = new AuthManager(new UserManager(new EfUserDal()),new JwtHelper());
 
         public FormUserAdd()
         {
             InitializeComponent();
-
-
-
         }
 
         private void ButtonFormUserAddEalveEt_Click(object sender, EventArgs e)
@@ -56,8 +54,8 @@ namespace WindowsForm.Forms
             user.Address = userForRegisterDto.Address;
             user.PhoneNumber = userForRegisterDto.PhoneNumber;
 
-            
-            if (!UserValidationTool.IsValid(user))
+
+            if (!validationTool.IsValid(user))
             {
                 return;
             }
