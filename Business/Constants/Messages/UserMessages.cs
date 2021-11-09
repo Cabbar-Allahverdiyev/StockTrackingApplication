@@ -30,5 +30,6 @@ namespace Business.Constants.Messages
         //BusinesRules------------->
         public static string FirstNameAndLastNameAvailable="Bu adda və soyadda istifadəçi mövcuddur, eyni ad və soyadda iki istifadəçi ola bilməz";
         public static string EmailAvailable="Bu emailda artıq istifadəçi mövcuddur, zəhmət olmasa başqa email sınayın";
+        public static string PhoneNumberFormatIsNotSuitable="Telefon nömrəsi formata uyğun deyil (məsələn : 0554926939)";
     }
 }

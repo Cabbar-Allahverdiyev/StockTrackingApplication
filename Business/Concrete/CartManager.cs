@@ -1,6 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Constants.Messages;
-using Business.ValidationRules;
+using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Business;

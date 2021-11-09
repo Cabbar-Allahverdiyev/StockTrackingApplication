@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace WindowsForm.Core.Controllers
+namespace WindowsForm.Core.Controllers.Concrete
 {
     public class ResultControllersMessageList
     {

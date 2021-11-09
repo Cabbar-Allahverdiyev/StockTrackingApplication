@@ -19,7 +19,7 @@ namespace Business.Constants.Messages
         public static string passwordAndPasswordRepeatNotEquals="Şifrə ilə şifrə təkrarı eyni deyil";
         public static string PasswordNull= "Şifrə boşdur, zəhmət olmasa şifrə yazın";
 
-        public static string PasswordLessThanSixCharacters= "Şifrə altı simvoldan azdır";
+        public static string PasswordIsLessThanFourCharacters = "Şifrə 4 simvoldan azdır";
 
 
         public static string ErrorMessage = "Xəta";

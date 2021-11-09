@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Business.Constants.Messages;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -50,14 +51,14 @@ namespace WindowsForm.Forms
                 case EnumAction.start:
                     timer1.Interval = 1;
                     this.Opacity += 0.1;
-                    if (this.x<this.Location.X)
+                    if (this.x < this.Location.X)
                     {
                         this.Left--;
 
                     }
                     else
                     {
-                        if (this.Opacity==1.0)
+                        if (this.Opacity == 1.0)
                         {
                             action = EnumAction.wait;
                         }
@@ -68,13 +69,13 @@ namespace WindowsForm.Forms
                     this.Opacity -= 0.1;
 
                     this.Left -= 3;
-                    if (base.Opacity==0.0)
+                    if (base.Opacity == 0.0)
                     {
-                        base.Close(); 
+                        base.Close();
                     }
 
                     break;
-                   
+
             }
         }
 
@@ -84,20 +85,28 @@ namespace WindowsForm.Forms
             action = EnumAction.close;
         }
 
-        public void ShowAlert(string message,EnumType type)
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
-            this.Opacity=0.0;
+            this.timer1.Interval=20000;
+            MessageBox.Show(labelMessage.Text, AuthMessages.InformationMessage, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
+
+        }
+
+        public void ShowAlert(string message, EnumType type)
+        {
+            this.Opacity = 0.0;
             this.StartPosition = FormStartPosition.Manual;
             string fname;
             for (int i = 1; i < 10; i++)
             {
                 fname = "alert" + i.ToString();
                 AlertForm form = (AlertForm)Application.OpenForms[fname];
-                if (form==null)
+                if (form == null)
                 {
                     this.Name = fname;
                     this.x = Screen.PrimaryScreen.WorkingArea.Width - this.Width + 15;
-                    this.y = Screen.PrimaryScreen.WorkingArea.Height - this.Height * i-5*i;
+                    this.y = Screen.PrimaryScreen.WorkingArea.Height - this.Height * i - 5 * i;
                     this.Location = new Point(this.x, this.y);
                     break;
                 }
@@ -133,6 +142,7 @@ namespace WindowsForm.Forms
             this.timer1.Interval = 1;
             timer1.Start();
         }
+
 
     }
 }

@@ -13,6 +13,7 @@ using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Business.Concrete
 {
@@ -31,7 +32,8 @@ namespace Business.Concrete
         public IResult Add(User user)
         {
             IResult result = BusinessRules.Run(IsThereFirstNameAndLastNameAvailable(user.FirstName, user.LastName)
-                                                , IsEmailExists(user.Email));
+                                                , IsEmailExists(user.Email)
+                                                , PhoneNumberFormatControl(user.PhoneNumber));
             if (result != null)
             {
                 return new ErrorDataResult<User>(result.Message);
@@ -44,6 +46,15 @@ namespace Business.Concrete
         [CacheRemoveAspect("IUserService.Get")]
         public IResult Update(User user)
         {
+            IResult result = BusinessRules.Run(IsThereFirstNameAndLastNameAvailableForUserUpdate(user)
+                                               , IsEmailExistsForUserUpdate(user), PhoneNumberFormatControl(user.PhoneNumber)
+                                               );
+
+            if (result != null)
+            {
+                return new ErrorDataResult<User>(result.Message);
+            }
+
             _userDal.Update(user);
             return new SuccessResult(UserMessages.UserUpdated);
         }
@@ -142,7 +153,7 @@ namespace Business.Concrete
         {
             IResult result = BusinessRules.Run(PasswordRepeatCompatibilityWithPassword(password, passwordRepeat)
                                                , IsPasswordNull(password)
-                                               , PasswordCannotBeLessThanSixCharacters(password)
+                                               , IsThePasswordGreaterThanFourCharacters(password)
                                                , IsThereFirstNameAndLastNameAvailable(userForRegisterDto.FirstName, userForRegisterDto.LastName)
                                                , IsEmailExists(userForRegisterDto.Email)
                                                );
@@ -167,19 +178,13 @@ namespace Business.Concrete
                 Status = true
             };
 
-            Add(user);
+           IResult userAdded= Add(user);
+            if (!userAdded.Success)
+            {
+                return new ErrorDataResult<User>(userAdded.Message);
+            }
             return new SuccessDataResult<User>(user, AuthMessages.UserRegistered);
         }
-
-
-
-
-
-
-
-
-
-
 
 
         //elave metodlar
@@ -200,24 +205,26 @@ namespace Business.Concrete
             }
             return new SuccessResult();
         }
-
-        private IResult PasswordCannotBeLessThanSixCharacters(string password)
+        private IResult IsThePasswordGreaterThanFourCharacters(string password)
         {
-            if (password.Length >= 6)
+            if (password.Length < 4)
             {
-                return new ErrorResult(AuthMessages.PasswordLessThanSixCharacters);
+                return new ErrorResult(AuthMessages.PasswordIsLessThanFourCharacters);
             }
             return new SuccessResult();
         }
+
+
 
         private IResult IsThereFirstNameAndLastNameAvailable(string firstName, string lastName)
         {
             List<User> userGetAll = _userDal.GetAll();
             foreach (User user in userGetAll)
             {
-                if (user.FirstName.Equals(firstName))
+
+                if (user.FirstName.ToLower().Equals(firstName.ToLower()))
                 {
-                    if (user.LastName.Equals(lastName))
+                    if (user.LastName.ToLower().Equals(lastName.ToLower()))
                     {
                         return new ErrorResult(UserMessages.FirstNameAndLastNameAvailable);
                     }
@@ -225,12 +232,42 @@ namespace Business.Concrete
             }
             return new SuccessResult();
         }
+
+        private IResult IsThereFirstNameAndLastNameAvailableForUserUpdate(User user)
+        {
+            List<User> userGetAll = _userDal.GetAll();
+            foreach (User item in userGetAll)
+            {
+                if (item.FirstName.ToLower().Equals(user.FirstName.ToLower()) && item.LastName.ToLower().Equals(user.LastName.ToLower()))
+                {
+                    if (item.Id != user.Id)
+                    {
+                        return new ErrorResult(UserMessages.FirstNameAndLastNameAvailable);
+                    }
+
+                }
+            }
+            return new SuccessResult();
+        }
+
         private IResult IsEmailExists(string email)
         {
             List<User> userGetAll = _userDal.GetAll();
             foreach (User user in userGetAll)
             {
-                if (user.Email.Equals(email))
+                if (user.Email.ToLower().Equals(email.ToLower()))
+                {
+                    return new ErrorResult(UserMessages.EmailAvailable);
+                }
+            }
+            return new SuccessResult();
+        }
+        private IResult IsEmailExistsForUserUpdate(User user)
+        {
+            List<User> userGetAll = _userDal.GetAll();
+            foreach (User item in userGetAll)
+            {
+                if (item.Email.ToLower().Equals(user.Email.ToLower()) && item.Id != user.Id)
                 {
                     return new ErrorResult(UserMessages.EmailAvailable);
                 }
@@ -238,6 +275,17 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
+        private IResult PhoneNumberFormatControl(string phoneNumber)
+        {
+            string format = @"^(0(\d{9}))$";
+            Match Eslesme = Regex.Match(phoneNumber, format, RegexOptions.IgnoreCase);
+            if (Eslesme.Success)
+            {
+                return new SuccessResult();
+            }
+            return new ErrorResult(UserMessages.PhoneNumberFormatIsNotSuitable);
+            
+        }
 
 
     }

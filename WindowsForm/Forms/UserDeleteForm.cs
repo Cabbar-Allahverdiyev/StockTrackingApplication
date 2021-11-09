@@ -20,6 +20,11 @@ namespace WindowsForm.Forms
         public UserDeleteForm()
         {
             InitializeComponent();
+          
+        }
+        private void UserDeleteForm_Load(object sender, EventArgs e)
+        {
+            dataGridViewUserListed.DataSource = _userManager.GetUserDetails().Data;
         }
 
         private void ButtonFormUserListedSil_Click(object sender, EventArgs e)
@@ -33,7 +38,7 @@ namespace WindowsForm.Forms
                 IResult userDeleted = _userManager.Delete(user);
                 if (userDeleted.Success)
                 {
-                    FormsMessage.InformationMessage(userDeleted.Message);
+                    FormsMessage.SuccessMessage(userDeleted.Message);
                     dataGridViewUserListed.DataSource = _userManager.GetUserDetails().Data;
                 }
                 else
@@ -90,5 +95,7 @@ namespace WindowsForm.Forms
             }
 
         }
+
+      
     }
 }

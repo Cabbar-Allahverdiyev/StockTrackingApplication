@@ -17,6 +17,7 @@ using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers;
+using WindowsForm.Core.Controllers.ValidatorControllers;
 
 namespace WindowsForm.Forms
 {
@@ -31,7 +32,7 @@ namespace WindowsForm.Forms
         {
             InitializeComponent();
 
-           
+
 
         }
 
@@ -55,30 +56,18 @@ namespace WindowsForm.Forms
             user.Address = userForRegisterDto.Address;
             user.PhoneNumber = userForRegisterDto.PhoneNumber;
 
-
-            UserValidator validationRules = new UserValidator();
-            ValidationResult results = validationRules.Validate(user);
-
-            if (results.IsValid == false)
+            
+            if (!UserValidationTool.IsValid(user))
             {
-                foreach (ValidationFailure failure in results.Errors)
-                {
-                    FormsMessage.ErrorMessage(failure.ErrorMessage);
-                    return;
-                }
-                
-            }
-
-            var userRegister = _userService.Register(userForRegisterDto, userForRegisterDto.Password, passwordRepeat);
-
-
-            //var result = _authService.CreateAccessToken(registerResult.Data);
-            if (!userRegister.Success)
-            {
-                ResultControllers.ResultIsSucces(userRegister);
                 return;
             }
-            FormsMessage.InformationMessage(userRegister.Message);       
+            var userRegister = _userService.Register(userForRegisterDto, userForRegisterDto.Password, passwordRepeat);
+            if (!userRegister.Success)
+            {
+                FormsMessage.ErrorMessage(userRegister.Message);
+                return;
+            }
+            FormsMessage.SuccessMessage(userRegister.Message);
 
             foreach (Control control in this.Controls)
             {

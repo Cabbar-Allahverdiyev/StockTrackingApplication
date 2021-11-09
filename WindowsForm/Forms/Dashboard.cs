@@ -434,7 +434,9 @@ namespace WindowsForm.Forms
             labelTitle.Text = childForm.Text;
         }
 
-      
+        
+
+
 
 
 

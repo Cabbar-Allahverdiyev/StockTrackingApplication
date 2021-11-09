@@ -52,7 +52,7 @@ namespace WindowsForm.Forms
                IResult productDeleted= _productManager.Delete(product);
                 if (!productDeleted.Success)
                 {
-                    ResultControllers.ResultIsSucces(productDeleted);
+                    FormsMessage.ErrorMessage(productDeleted.Message);
                     return;
                 }
                 FormsMessage.InformationMessage(productDeleted.Message);

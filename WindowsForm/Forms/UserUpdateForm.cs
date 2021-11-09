@@ -12,6 +12,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
+using WindowsForm.Core.Controllers.ValidatorControllers;
 
 namespace WindowsForm.Forms
 {
@@ -22,6 +23,7 @@ namespace WindowsForm.Forms
         public UserUpdateForm()
         {
             InitializeComponent();
+            dataGridViewUserListed.DataSource = _userManager.GetUserDetails().Data;
         }
 
         private void ButtonFormUserListedGuncelle_Click(object sender, EventArgs e)
@@ -36,29 +38,22 @@ namespace WindowsForm.Forms
                 user.PhoneNumber = TextBoxFormUserListedPhoneNumber.Text;
                 user.Address = TextBoxFormUserListedAddress.Text;
 
-                UserValidator validationRules = new UserValidator();
-                ValidationResult results = validationRules.Validate(user);
-
-                if (results.IsValid == false)
+                if (!UserValidationTool.IsValid(user))
                 {
-                    foreach (ValidationFailure failure in results.Errors)
-                    {
-                        FormsMessage.ErrorMessage(failure.ErrorMessage);
-                        return;
-                    }
-
+                    return;
                 }
+               
 
                 var userUpdated = _userManager.Update(user);
 
                 if (userUpdated.Success)
                 {
-                    FormsMessage.InformationMessage(userUpdated.Message);
+                    FormsMessage.SuccessMessage(userUpdated.Message);
                     dataGridViewUserListed.DataSource = _userManager.GetUserDetails().Data;
                 }
                 else
                 {
-                    FormsMessage.ErrorMessage(UserMessages.UserIsNotUpdating);
+                    FormsMessage.WarningMessage(userUpdated.Message);
                     return;
                 }
             }
@@ -107,6 +102,11 @@ namespace WindowsForm.Forms
                 FormsMessage.ErrorMessage(UserMessages.UserNotFound);
                 return;
             }
+        }
+
+        private void UserUpdateForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

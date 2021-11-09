@@ -23,8 +23,16 @@ namespace WindowsForm.Core.Constants.Messages
         {
             Alert(resultMessage, AlertForm.EnumType.Error);
             //MessageBox.Show(resultMessage, AuthMessages.ErrorMessage, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        
         }
-
+        public static void SuccessMessage(string resultMessage)
+        {
+            Alert(resultMessage, AlertForm.EnumType.Success);
+        }
+        public static void WarningMessage(string resultMessage)
+        {
+            Alert(resultMessage, AlertForm.EnumType.Warning);
+        }
 
 
     }

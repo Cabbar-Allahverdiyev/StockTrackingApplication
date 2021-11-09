@@ -46,7 +46,6 @@ namespace WindowsForm.Forms
             this.buttonMinimized = new System.Windows.Forms.Button();
             this.buttonMaximized = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.buttonCloseChildForm = new System.Windows.Forms.Button();
             this.buttonProducts = new System.Windows.Forms.Button();
             this.buttonHome = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
@@ -97,18 +96,18 @@ namespace WindowsForm.Forms
             this.buttonExit.Image = ((System.Drawing.Image)(resources.GetObject("buttonExit.Image")));
             this.buttonExit.Location = new System.Drawing.Point(1323, 0);
             this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Size = new System.Drawing.Size(35, 20);
+            this.buttonExit.Size = new System.Drawing.Size(35, 23);
             this.buttonExit.TabIndex = 2;
             this.buttonExit.UseVisualStyleBackColor = false;
             // 
             // labelTitle
             // 
             this.labelTitle.AutoSize = true;
-            this.labelTitle.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelTitle.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelTitle.ForeColor = System.Drawing.Color.Black;
-            this.labelTitle.Location = new System.Drawing.Point(50, 15);
+            this.labelTitle.Location = new System.Drawing.Point(6, 16);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(119, 25);
+            this.labelTitle.Size = new System.Drawing.Size(120, 23);
             this.labelTitle.TabIndex = 0;
             this.labelTitle.Text = "Dashboard";
             this.labelTitle.Click += new System.EventHandler(this.labelTitle_Click);
@@ -119,13 +118,13 @@ namespace WindowsForm.Forms
             this.btnExit.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnExit.FlatAppearance.BorderSize = 0;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnExit.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnExit.ForeColor = System.Drawing.Color.White;
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
-            this.btnExit.Location = new System.Drawing.Point(0, 552);
+            this.btnExit.Location = new System.Drawing.Point(0, 626);
             this.btnExit.Name = "btnExit";
             this.btnExit.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnExit.Size = new System.Drawing.Size(180, 60);
+            this.btnExit.Size = new System.Drawing.Size(180, 68);
             this.btnExit.TabIndex = 15;
             this.btnExit.Tag = "Exit";
             this.btnExit.Text = "   Çıxış";
@@ -140,13 +139,13 @@ namespace WindowsForm.Forms
             this.buttonSuppliers.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonSuppliers.FlatAppearance.BorderSize = 0;
             this.buttonSuppliers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSuppliers.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonSuppliers.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonSuppliers.ForeColor = System.Drawing.Color.White;
             this.buttonSuppliers.Image = ((System.Drawing.Image)(resources.GetObject("buttonSuppliers.Image")));
-            this.buttonSuppliers.Location = new System.Drawing.Point(0, 480);
+            this.buttonSuppliers.Location = new System.Drawing.Point(0, 544);
             this.buttonSuppliers.Name = "buttonSuppliers";
             this.buttonSuppliers.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.buttonSuppliers.Size = new System.Drawing.Size(180, 60);
+            this.buttonSuppliers.Size = new System.Drawing.Size(180, 68);
             this.buttonSuppliers.TabIndex = 14;
             this.buttonSuppliers.Tag = "Suppliers";
             this.buttonSuppliers.Text = "   Tədarikçilər";
@@ -161,13 +160,13 @@ namespace WindowsForm.Forms
             this.buttonUsers.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonUsers.FlatAppearance.BorderSize = 0;
             this.buttonUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonUsers.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonUsers.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonUsers.ForeColor = System.Drawing.Color.White;
             this.buttonUsers.Image = ((System.Drawing.Image)(resources.GetObject("buttonUsers.Image")));
-            this.buttonUsers.Location = new System.Drawing.Point(0, 420);
+            this.buttonUsers.Location = new System.Drawing.Point(0, 476);
             this.buttonUsers.Name = "buttonUsers";
             this.buttonUsers.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.buttonUsers.Size = new System.Drawing.Size(180, 60);
+            this.buttonUsers.Size = new System.Drawing.Size(180, 68);
             this.buttonUsers.TabIndex = 13;
             this.buttonUsers.Tag = "Users";
             this.buttonUsers.Text = "   İstifadəçilər";
@@ -182,13 +181,13 @@ namespace WindowsForm.Forms
             this.buttonCategories.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonCategories.FlatAppearance.BorderSize = 0;
             this.buttonCategories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCategories.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonCategories.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonCategories.ForeColor = System.Drawing.Color.White;
             this.buttonCategories.Image = ((System.Drawing.Image)(resources.GetObject("buttonCategories.Image")));
-            this.buttonCategories.Location = new System.Drawing.Point(0, 360);
+            this.buttonCategories.Location = new System.Drawing.Point(0, 408);
             this.buttonCategories.Name = "buttonCategories";
             this.buttonCategories.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.buttonCategories.Size = new System.Drawing.Size(180, 60);
+            this.buttonCategories.Size = new System.Drawing.Size(180, 68);
             this.buttonCategories.TabIndex = 12;
             this.buttonCategories.Tag = "Categories";
             this.buttonCategories.Text = "   Categories";
@@ -203,13 +202,13 @@ namespace WindowsForm.Forms
             this.buttonStatistic.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonStatistic.FlatAppearance.BorderSize = 0;
             this.buttonStatistic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonStatistic.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonStatistic.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonStatistic.ForeColor = System.Drawing.Color.White;
             this.buttonStatistic.Image = ((System.Drawing.Image)(resources.GetObject("buttonStatistic.Image")));
-            this.buttonStatistic.Location = new System.Drawing.Point(0, 300);
+            this.buttonStatistic.Location = new System.Drawing.Point(0, 340);
             this.buttonStatistic.Name = "buttonStatistic";
             this.buttonStatistic.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.buttonStatistic.Size = new System.Drawing.Size(180, 60);
+            this.buttonStatistic.Size = new System.Drawing.Size(180, 68);
             this.buttonStatistic.TabIndex = 11;
             this.buttonStatistic.Tag = "Statistic";
             this.buttonStatistic.Text = "   Statistika";
@@ -224,13 +223,13 @@ namespace WindowsForm.Forms
             this.buttonScan.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonScan.FlatAppearance.BorderSize = 0;
             this.buttonScan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonScan.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonScan.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonScan.ForeColor = System.Drawing.Color.White;
             this.buttonScan.Image = ((System.Drawing.Image)(resources.GetObject("buttonScan.Image")));
-            this.buttonScan.Location = new System.Drawing.Point(0, 240);
+            this.buttonScan.Location = new System.Drawing.Point(0, 272);
             this.buttonScan.Name = "buttonScan";
             this.buttonScan.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.buttonScan.Size = new System.Drawing.Size(180, 60);
+            this.buttonScan.Size = new System.Drawing.Size(180, 68);
             this.buttonScan.TabIndex = 10;
             this.buttonScan.Tag = "Scan";
             this.buttonScan.Text = "   Scan";
@@ -245,13 +244,13 @@ namespace WindowsForm.Forms
             this.buttonSales.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonSales.FlatAppearance.BorderSize = 0;
             this.buttonSales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSales.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonSales.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonSales.ForeColor = System.Drawing.Color.White;
             this.buttonSales.Image = ((System.Drawing.Image)(resources.GetObject("buttonSales.Image")));
-            this.buttonSales.Location = new System.Drawing.Point(0, 180);
+            this.buttonSales.Location = new System.Drawing.Point(0, 204);
             this.buttonSales.Name = "buttonSales";
             this.buttonSales.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.buttonSales.Size = new System.Drawing.Size(180, 60);
+            this.buttonSales.Size = new System.Drawing.Size(180, 68);
             this.buttonSales.TabIndex = 9;
             this.buttonSales.Tag = "Sales";
             this.buttonSales.Text = "   Satışlar";
@@ -271,7 +270,7 @@ namespace WindowsForm.Forms
             this.button5.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button5.Location = new System.Drawing.Point(1268, 0);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(27, 20);
+            this.button5.Size = new System.Drawing.Size(27, 23);
             this.button5.TabIndex = 4;
             this.button5.UseVisualStyleBackColor = false;
             // 
@@ -284,7 +283,7 @@ namespace WindowsForm.Forms
             this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
             this.button4.Location = new System.Drawing.Point(1292, 0);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(35, 20);
+            this.button4.Size = new System.Drawing.Size(35, 23);
             this.button4.TabIndex = 3;
             this.button4.UseVisualStyleBackColor = false;
             // 
@@ -297,13 +296,12 @@ namespace WindowsForm.Forms
             this.panelTitleBar.Controls.Add(this.button5);
             this.panelTitleBar.Controls.Add(this.button4);
             this.panelTitleBar.Controls.Add(this.buttonExit);
-            this.panelTitleBar.Controls.Add(this.buttonCloseChildForm);
             this.panelTitleBar.Controls.Add(this.labelTitle);
             this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTitleBar.ForeColor = System.Drawing.Color.Black;
             this.panelTitleBar.Location = new System.Drawing.Point(180, 0);
             this.panelTitleBar.Name = "panelTitleBar";
-            this.panelTitleBar.Size = new System.Drawing.Size(754, 60);
+            this.panelTitleBar.Size = new System.Drawing.Size(754, 68);
             this.panelTitleBar.TabIndex = 4;
             this.panelTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDown);
             // 
@@ -318,7 +316,7 @@ namespace WindowsForm.Forms
             this.buttonMinimized.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonMinimized.Location = new System.Drawing.Point(664, 0);
             this.buttonMinimized.Name = "buttonMinimized";
-            this.buttonMinimized.Size = new System.Drawing.Size(27, 20);
+            this.buttonMinimized.Size = new System.Drawing.Size(27, 23);
             this.buttonMinimized.TabIndex = 7;
             this.buttonMinimized.UseVisualStyleBackColor = false;
             this.buttonMinimized.Click += new System.EventHandler(this.buttonMinimized_Click);
@@ -332,7 +330,7 @@ namespace WindowsForm.Forms
             this.buttonMaximized.Image = ((System.Drawing.Image)(resources.GetObject("buttonMaximized.Image")));
             this.buttonMaximized.Location = new System.Drawing.Point(688, 0);
             this.buttonMaximized.Name = "buttonMaximized";
-            this.buttonMaximized.Size = new System.Drawing.Size(35, 20);
+            this.buttonMaximized.Size = new System.Drawing.Size(35, 23);
             this.buttonMaximized.TabIndex = 6;
             this.buttonMaximized.UseVisualStyleBackColor = false;
             this.buttonMaximized.Click += new System.EventHandler(this.buttonMaximized_Click);
@@ -346,22 +344,10 @@ namespace WindowsForm.Forms
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
             this.btnClose.Location = new System.Drawing.Point(719, 0);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(35, 20);
+            this.btnClose.Size = new System.Drawing.Size(35, 23);
             this.btnClose.TabIndex = 5;
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // buttonCloseChildForm
-            // 
-            this.buttonCloseChildForm.Dock = System.Windows.Forms.DockStyle.Left;
-            this.buttonCloseChildForm.FlatAppearance.BorderSize = 0;
-            this.buttonCloseChildForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCloseChildForm.Image = ((System.Drawing.Image)(resources.GetObject("buttonCloseChildForm.Image")));
-            this.buttonCloseChildForm.Location = new System.Drawing.Point(0, 0);
-            this.buttonCloseChildForm.Name = "buttonCloseChildForm";
-            this.buttonCloseChildForm.Size = new System.Drawing.Size(44, 60);
-            this.buttonCloseChildForm.TabIndex = 1;
-            this.buttonCloseChildForm.UseVisualStyleBackColor = true;
             // 
             // buttonProducts
             // 
@@ -369,13 +355,13 @@ namespace WindowsForm.Forms
             this.buttonProducts.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonProducts.FlatAppearance.BorderSize = 0;
             this.buttonProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonProducts.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonProducts.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonProducts.ForeColor = System.Drawing.Color.White;
             this.buttonProducts.Image = ((System.Drawing.Image)(resources.GetObject("buttonProducts.Image")));
-            this.buttonProducts.Location = new System.Drawing.Point(0, 120);
+            this.buttonProducts.Location = new System.Drawing.Point(0, 136);
             this.buttonProducts.Name = "buttonProducts";
             this.buttonProducts.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.buttonProducts.Size = new System.Drawing.Size(180, 60);
+            this.buttonProducts.Size = new System.Drawing.Size(180, 68);
             this.buttonProducts.TabIndex = 8;
             this.buttonProducts.Tag = "Products";
             this.buttonProducts.Text = "   Məhsullar";
@@ -390,13 +376,13 @@ namespace WindowsForm.Forms
             this.buttonHome.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonHome.FlatAppearance.BorderSize = 0;
             this.buttonHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonHome.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonHome.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonHome.ForeColor = System.Drawing.Color.White;
             this.buttonHome.Image = ((System.Drawing.Image)(resources.GetObject("buttonHome.Image")));
-            this.buttonHome.Location = new System.Drawing.Point(0, 60);
+            this.buttonHome.Location = new System.Drawing.Point(0, 68);
             this.buttonHome.Name = "buttonHome";
             this.buttonHome.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.buttonHome.Size = new System.Drawing.Size(180, 60);
+            this.buttonHome.Size = new System.Drawing.Size(180, 68);
             this.buttonHome.TabIndex = 1;
             this.buttonHome.Tag = "Home";
             this.buttonHome.Text = "   Əsas sahifə";
@@ -413,7 +399,7 @@ namespace WindowsForm.Forms
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
             this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(180, 60);
+            this.panelLogo.Size = new System.Drawing.Size(180, 68);
             this.panelLogo.TabIndex = 0;
             // 
             // buttonMenu
@@ -424,16 +410,16 @@ namespace WindowsForm.Forms
             this.buttonMenu.IconColor = System.Drawing.Color.White;
             this.buttonMenu.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.buttonMenu.IconSize = 32;
-            this.buttonMenu.Location = new System.Drawing.Point(134, 10);
+            this.buttonMenu.Location = new System.Drawing.Point(134, 11);
             this.buttonMenu.Name = "buttonMenu";
-            this.buttonMenu.Size = new System.Drawing.Size(40, 40);
+            this.buttonMenu.Size = new System.Drawing.Size(40, 45);
             this.buttonMenu.TabIndex = 1;
             this.buttonMenu.UseVisualStyleBackColor = true;
             this.buttonMenu.Click += new System.EventHandler(this.buttonMenu_Click);
             // 
             // pictureBoxLogo
             // 
-            this.pictureBoxLogo.Location = new System.Drawing.Point(3, 4);
+            this.pictureBoxLogo.Location = new System.Drawing.Point(3, 5);
             this.pictureBoxLogo.Name = "pictureBoxLogo";
             this.pictureBoxLogo.Size = new System.Drawing.Size(100, 50);
             this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -456,7 +442,7 @@ namespace WindowsForm.Forms
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(180, 612);
+            this.panelMenu.Size = new System.Drawing.Size(180, 694);
             this.panelMenu.TabIndex = 3;
             // 
             // myDMCategory
@@ -502,9 +488,9 @@ namespace WindowsForm.Forms
             // 
             this.panelDesktopPane.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.panelDesktopPane.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDesktopPane.Location = new System.Drawing.Point(180, 60);
+            this.panelDesktopPane.Location = new System.Drawing.Point(180, 68);
             this.panelDesktopPane.Name = "panelDesktopPane";
-            this.panelDesktopPane.Size = new System.Drawing.Size(754, 552);
+            this.panelDesktopPane.Size = new System.Drawing.Size(754, 626);
             this.panelDesktopPane.TabIndex = 5;
             // 
             // myDMProduct
@@ -661,13 +647,14 @@ namespace WindowsForm.Forms
             // 
             // Dashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(934, 612);
+            this.ClientSize = new System.Drawing.Size(934, 694);
             this.Controls.Add(this.panelDesktopPane);
             this.Controls.Add(this.panelTitleBar);
             this.Controls.Add(this.panelMenu);
-            this.MinimumSize = new System.Drawing.Size(900, 400);
+            this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.MinimumSize = new System.Drawing.Size(900, 448);
             this.Name = "Dashboard";
             this.Text = "Dashboard";
             this.Load += new System.EventHandler(this.Dashboard_Load);
@@ -701,7 +688,6 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Panel panelTitleBar;
-        private System.Windows.Forms.Button buttonCloseChildForm;
         private System.Windows.Forms.Button buttonProducts;
         private System.Windows.Forms.Button buttonHome;
         private System.Windows.Forms.Panel panelLogo;

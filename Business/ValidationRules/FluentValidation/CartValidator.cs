@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Business.ValidationRules
+namespace Business.ValidationRules.FluentValidation
 {
     public class CartValidator : AbstractValidator<Cart>, IEntityValidator
     {

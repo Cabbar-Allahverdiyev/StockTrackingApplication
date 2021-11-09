@@ -1,5 +1,4 @@
-﻿using Business.Abstract;
-using Business.Concrete;
+﻿using Business.Concrete;
 using Business.Constants.Messages;
 using Business.ValidationRules;
 using Business.ValidationRules.FluentValidation;
@@ -16,6 +15,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
+using WindowsForm.Core.Controllers.Concrete;
 using WindowsForm.Core.Controllers;
 
 namespace WindowsForm.Forms
@@ -73,7 +73,7 @@ namespace WindowsForm.Forms
                         IResult result = _cartManager.Delete(cart);
                         if (!result.Success)
                         {
-                            ResultControllers.ResultIsSucces(result);
+                            FormsMessage.ErrorMessage(result.Message);
                             return;
                         }
 
@@ -86,11 +86,11 @@ namespace WindowsForm.Forms
                         cart.SoldPrice = cartAddDto.SoldPrice;
                         CalculateTotalPrice(cart.Quantity, cart.SoldPrice);
                         cart.TotalPrice = Convert.ToDecimal(textBoxCem.Text);
-                        //  CartValidation(cart);
+                       //  CartValidation(cart);
                         IResult result = _cartManager.Update(cart);
                         if (!result.Success)
                         {
-                            ResultControllers.ResultIsSucces(result);
+                            FormsMessage.WarningMessage(result.Message);
                             return;
                         }
 
@@ -182,7 +182,7 @@ namespace WindowsForm.Forms
                     cartUpdated = _cartManager.Update(cart);
                     if (!cartUpdated.Success)
                     {
-                        ResultControllers.ResultIsSucces(cartUpdated);
+                        FormsMessage.WarningMessage(cartUpdated.Message);
                         return;
                     }
                     FormsMessage.InformationMessage(cartUpdated.Message);
@@ -192,7 +192,7 @@ namespace WindowsForm.Forms
                     cartAdded = _cartManager.Add(cart);
                     if (!cartAdded.Success)
                     {
-                        ResultControllers.ResultIsSucces(cartAdded);
+                        FormsMessage.WarningMessage(cartAdded.Message);
                         return;
                     }
                 }
@@ -248,8 +248,13 @@ namespace WindowsForm.Forms
                         //SaleWinFormValidation(saleWinForm);
                         saleWinFormAdded = _saleWinFormManager.Add(saleWinForm);
                         productUpdated = _productManager.Update(product);
-                        messages.Add(product.ProductName + resultControllersMessageList.ResultIsSuccesMessage(saleWinFormAdded));
-                        messages.Add(product.ProductName + resultControllersMessageList.ResultIsSuccesMessage(productUpdated));
+                        if (!saleWinFormAdded.Success||!productUpdated.Success)
+                        {
+                            messages.Add(product.BarcodeNumber+product.ProductName+saleWinFormAdded.Message + " & " + productUpdated.Message);
+                           
+                        }
+                        messages.Add(product.ProductName + saleWinFormAdded.Message +" & "+productUpdated.Message);
+     
 
                     }
                     foreach (string message in messages)

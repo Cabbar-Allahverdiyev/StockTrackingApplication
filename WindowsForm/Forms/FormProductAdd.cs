@@ -76,7 +76,7 @@ namespace WindowsForm.Forms
                 IResult productAdd = _productManager.Add(product);
                 if (!productAdd.Success)
                 {
-                    ResultControllers.ResultIsSucces(productAdd);
+                    FormsMessage.ErrorMessage(productAdd.Message);
                     return;
                 }
 

@@ -63,7 +63,7 @@ namespace WindowsForm.Forms
             this.dataGridViewUserListed.ReadOnly = true;
             this.dataGridViewUserListed.RowTemplate.Height = 25;
             this.dataGridViewUserListed.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewUserListed.Size = new System.Drawing.Size(342, 368);
+            this.dataGridViewUserListed.Size = new System.Drawing.Size(342, 359);
             this.dataGridViewUserListed.TabIndex = 1;
             this.dataGridViewUserListed.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUserListed_CellDoubleClick);
             // 
@@ -225,6 +225,7 @@ namespace WindowsForm.Forms
             this.MinimumSize = new System.Drawing.Size(650, 450);
             this.Name = "UserDeleteForm";
             this.Text = "UserDeleteForm";
+            this.Load += new System.EventHandler(this.UserDeleteForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUserListed)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

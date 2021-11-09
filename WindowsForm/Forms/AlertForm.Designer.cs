@@ -57,6 +57,7 @@ namespace WindowsForm.Forms
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // timer1
             // 
@@ -66,7 +67,7 @@ namespace WindowsForm.Forms
             // pictureBox2
             // 
             this.pictureBox2.Image = global::WindowsForm.Properties.Resources.cancel_light;
-            this.pictureBox2.Location = new System.Drawing.Point(266, 24);
+            this.pictureBox2.Location = new System.Drawing.Point(343, 20);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(25, 25);
             this.pictureBox2.TabIndex = 3;
@@ -77,7 +78,7 @@ namespace WindowsForm.Forms
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Highlight;
-            this.ClientSize = new System.Drawing.Size(303, 76);
+            this.ClientSize = new System.Drawing.Size(380, 75);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.labelMessage);
@@ -85,6 +86,7 @@ namespace WindowsForm.Forms
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AlertForm";
             this.Text = "AlertForm";
+            this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
