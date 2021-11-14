@@ -3,6 +3,7 @@ using Business.Constants.Messages;
 using Core.Entities.Concrete;
 using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +12,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
+using WindowsForm.Utilities.Search.Concrete.UserSearch;
 
 namespace WindowsForm.Forms
 {
@@ -68,31 +70,10 @@ namespace WindowsForm.Forms
 
         private void TextBoxFormUserListedAxtar_TextChanged(object sender, EventArgs e)
         {
-            //Mutleq tekmillesdir
-            if (TextBoxFormUserListedAxtar.Text == "")
-            {
-                dataGridViewUserListed.DataSource = _userManager.GetUserDetails().Data;
-                return;
-            }
-
-            string userName = TextBoxFormUserListedAxtar.Text;
-            var userGetDetails = _userManager.GetUserDetailsByUserName(userName);
-            if (userGetDetails.Success)
-            {
-                //Bura nezer et
-                //if (userGetDetails.Data==null)
-                //{
-                //    DataGridViewUserListed.DataSource = _userService.GetUserDetails();
-                //    return;
-                //}
-
-                dataGridViewUserListed.DataSource = userGetDetails.Data;
-            }
-            else
-            {
-                FormsMessage.ErrorMessage(UserMessages.UserNotFound);
-                return;
-            }
+            List<UserDto> data = _userManager.GetUserDetails().Data;
+            List<UserDto> oldData = _userManager.GetUserDetails().Data;
+            UserDtoSearch search = new UserDtoSearch();
+            search.Search(data, oldData, textBoxAxtar.Text, dataGridViewUserListed);
 
         }
 

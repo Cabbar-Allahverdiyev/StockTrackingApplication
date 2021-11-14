@@ -15,6 +15,7 @@ using FluentValidation.Results;
 using Business.Constants.Messages;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.ValidatorControllers;
+using WindowsForm.Utilities.Search.Concrete.ProductSearch;
 
 namespace WindowsForm.Forms
 {
@@ -35,7 +36,7 @@ namespace WindowsForm.Forms
         private void ProductUpdateForm_Load(object sender, EventArgs e)
         {
             IDataResult<List<ProductViewDashboardDetailDto>> getProductDashboard = _productManager.GetAllProductViewDasgboardDetails();
-            dataGridViewFormPrdouctList.DataSource = getProductDashboard.Data;
+            dataGridViewPrdouctList.DataSource = getProductDashboard.Data;
 
             BrandGetComboBoxVarOlan();
             CategoryGetComboBoxVarOlan();
@@ -43,6 +44,14 @@ namespace WindowsForm.Forms
             GroupBoxVarOlanMehsulControlClear();
         }
 
+        private void textBoxAxtar_TextChanged(object sender, EventArgs e)
+        {
+            List<ProductViewDashboardDetailDto> data = _productManager.GetAllProductViewDasgboardDetails().Data;
+            List<ProductViewDashboardDetailDto> oldData = _productManager.GetAllProductViewDasgboardDetails().Data;
+            ProductViewDashboardDetailsSearch search = new ProductViewDashboardDetailsSearch();
+            search.Search(data, oldData, textBoxAxtar.Text, dataGridViewPrdouctList);
+
+        }
 
         private void ButtonVarOlanYenile_Click(object sender, EventArgs e)
         {
@@ -90,7 +99,7 @@ namespace WindowsForm.Forms
                 }
                 FormsMessage.SuccessMessage(productUpdated.Message);
                 GroupBoxVarOlanMehsulControlClear();
-                dataGridViewFormPrdouctList.DataSource = _productManager.GetAllProductViewDasgboardDetails().Data;
+                dataGridViewPrdouctList.DataSource = _productManager.GetAllProductViewDasgboardDetails().Data;
             }
             catch (Exception)
             {
@@ -102,15 +111,15 @@ namespace WindowsForm.Forms
         private void dataGridViewFormPrdouctList_DoubleClick(object sender, EventArgs e)
         {
             var productViewDetailByProductId = _productManager.GetProductViewProductIdDetail(
-                    Convert.ToInt32(dataGridViewFormPrdouctList.CurrentRow.Cells["ProductId"].Value.ToString())
+                    Convert.ToInt32(dataGridViewPrdouctList.CurrentRow.Cells["ProductId"].Value.ToString())
                );
 
             product.Id = productViewDetailByProductId.Data.ProductId;
             product.UnitsInStock = productViewDetailByProductId.Data.StokdakiVahid;
             product.QuantityPerUnit = productViewDetailByProductId.Data.Kemiyyet;
 
-            textBoxVarOlanBarkodNo.Text = dataGridViewFormPrdouctList.CurrentRow.Cells["BarcodeNomresi"].Value.ToString();
-            textBoxVarOlanMehsulAdi.Text = dataGridViewFormPrdouctList.CurrentRow.Cells["MehsulAdi"].Value.ToString();
+            textBoxVarOlanBarkodNo.Text = dataGridViewPrdouctList.CurrentRow.Cells["BarcodeNomresi"].Value.ToString();
+            textBoxVarOlanMehsulAdi.Text = dataGridViewPrdouctList.CurrentRow.Cells["MehsulAdi"].Value.ToString();
             textBoxVarOlanAlisQiymet.Text = productViewDetailByProductId.Data.AlisQiymeti.ToString();
             textBoxVarOlanSatisQiymet.Text = productViewDetailByProductId.Data.Qiymet.ToString();
             comboBoxVarOlanKateqoriya.Text = productViewDetailByProductId.Data.Kateqoriya;
@@ -181,27 +190,7 @@ namespace WindowsForm.Forms
             }
         }
 
-        private void textBoxAxtar_TextChanged(object sender, EventArgs e)
-        {
-            if (textBoxAxtar.Text == "")
-            {
-                LabelMiqdarVB.Text = "";
-                GroupBoxVarOlanMehsulControlClear();
-                dataGridViewFormPrdouctList.DataSource = _productManager.GetAllProductViewDasgboardDetails().Data;
-                return;
-            }
-
-            int barcodeNumber = Convert.ToInt32(textBoxAxtar.Text);
-            IDataResult<List<ProductViewDashboardDetailDto>> productGetDetailsByName = _productManager.GetProductViewDasgboardDetailByBarcodeNumber(barcodeNumber);
-            if (productGetDetailsByName.Success)
-            {
-                dataGridViewFormPrdouctList.DataSource = productGetDetailsByName.Data;
-            }
-            else
-            {
-                FormsMessage.ErrorMessage(productGetDetailsByName.Message);
-            }
-        }
+       
 
 
     }

@@ -3,6 +3,7 @@ using Business.Constants.Messages;
 using Business.ValidationRules.FluentValidation;
 using Core.Entities.Concrete;
 using DataAccess.Concrete.EntityFramework;
+using Entities.DTOs;
 using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.ValidatorControllers;
+using WindowsForm.Utilities.Search.Concrete.UserSearch;
 
 namespace WindowsForm.Forms
 {
@@ -25,6 +27,20 @@ namespace WindowsForm.Forms
         {
             InitializeComponent();
             dataGridViewUserListed.DataSource = _userManager.GetUserDetails().Data;
+        }
+
+      
+        private void UserUpdateForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TextBoxFormUserListedAxtar_TextChanged(object sender, EventArgs e)
+        {
+            List<UserDto> data = _userManager.GetUserDetails().Data;
+            List<UserDto> oldData = _userManager.GetUserDetails().Data;
+            UserDtoSearch search = new UserDtoSearch();
+            search.Search(data, oldData, textBoxAxtar.Text, dataGridViewUserListed);
         }
 
         private void ButtonFormUserListedGuncelle_Click(object sender, EventArgs e)
@@ -77,37 +93,6 @@ namespace WindowsForm.Forms
             TextBoxFormUserListedAddress.Text = dataGridViewUserListed.CurrentRow.Cells["Address"].Value.ToString();
         }
 
-        private void TextBoxFormUserListedAxtar_TextChanged(object sender, EventArgs e)
-        {
-            if (TextBoxFormUserListedAxtar.Text == "")
-            {
-                dataGridViewUserListed.DataSource = _userManager.GetUserDetails().Data;
-                return;
-            }
-
-            string userName = TextBoxFormUserListedAxtar.Text;
-            var userGetDetails = _userManager.GetUserDetailsByUserName(userName);
-            if (userGetDetails.Success)
-            {
-                //Bura nezer et
-                //if (userGetDetails.Data==null)
-                //{
-                //    DataGridViewUserListed.DataSource = _userService.GetUserDetails();
-                //    return;
-                //}
-
-                dataGridViewUserListed.DataSource = userGetDetails.Data;
-            }
-            else
-            {
-                FormsMessage.ErrorMessage(UserMessages.UserNotFound);
-                return;
-            }
-        }
-
-        private void UserUpdateForm_Load(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 }

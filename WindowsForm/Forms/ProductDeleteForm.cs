@@ -10,10 +10,9 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using FluentValidation.Results;
 using Business.Constants.Messages;
 using WindowsForm.Core.Constants.Messages;
-using WindowsForm.Core.Controllers;
+using WindowsForm.Utilities.Search.Concrete.ProductSearch;
 
 namespace WindowsForm.Forms
 {
@@ -49,7 +48,7 @@ namespace WindowsForm.Forms
             {
                 Product result = _productManager.GetByProductBarodeNumber(int.Parse(textBoxVarOlanBarkodNo.Text)).Data;
                 product.Id = result.Id;
-               IResult productDeleted= _productManager.Delete(product);
+                IResult productDeleted = _productManager.Delete(product);
                 if (!productDeleted.Success)
                 {
                     FormsMessage.ErrorMessage(productDeleted.Message);
@@ -68,33 +67,11 @@ namespace WindowsForm.Forms
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
+            List<ProductViewDashboardDetailDto> data = _productManager.GetAllProductViewDasgboardDetails().Data;
+            List<ProductViewDashboardDetailDto> oldData = _productManager.GetAllProductViewDasgboardDetails().Data;
+            ProductViewDashboardDetailsSearch search = new ProductViewDashboardDetailsSearch();
+            search.Search(data,oldData,textBoxAxtar.Text,dataGridViewProductList);
 
-                if (textBoxAxtar.Text == "")
-                {
-                    LabelMiqdarVB.Text = "";
-                    GroupBoxVarOlanMehsulControlClear();
-                    dataGridViewProductList.DataSource = _productManager.GetAllProductViewDasgboardDetails().Data;
-                    return;
-                }
-
-                int barcodeNumber = Convert.ToInt32(textBoxAxtar.Text);
-                IDataResult<List<ProductViewDashboardDetailDto>> productGetDetailsByName = _productManager.GetProductViewDasgboardDetailByBarcodeNumber(barcodeNumber);
-                if (productGetDetailsByName.Success)
-                {
-                    dataGridViewProductList.DataSource = productGetDetailsByName.Data;
-                }
-                else
-                {
-                    FormsMessage.ErrorMessage(ProductMessages.ProductNotFound);
-                }
-            }
-            catch (Exception)
-            {
-                FormsMessage.ErrorMessage(AuthMessages.ErrorMessage);
-                return;
-            }
         }
 
         private void dataGridViewFormPrdouctList_DoubleClick(object sender, EventArgs e)
@@ -182,6 +159,9 @@ namespace WindowsForm.Forms
             }
         }
 
-       
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

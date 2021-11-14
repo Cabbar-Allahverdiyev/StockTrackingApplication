@@ -41,9 +41,8 @@ namespace WindowsForm.Forms
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewUserListed = new System.Windows.Forms.DataGridView();
-            this.ButtonAxtar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.TextBoxFormUserListedAxtar = new System.Windows.Forms.TextBox();
+            this.textBoxAxtar = new System.Windows.Forms.TextBox();
             this.textBoxUserId = new System.Windows.Forms.TextBox();
             this.textBoxYeniSİfre = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -165,47 +164,35 @@ namespace WindowsForm.Forms
             this.dataGridViewUserListed.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewUserListed.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridViewUserListed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewUserListed.Location = new System.Drawing.Point(333, 46);
+            this.dataGridViewUserListed.Location = new System.Drawing.Point(333, 40);
             this.dataGridViewUserListed.Name = "dataGridViewUserListed";
             this.dataGridViewUserListed.ReadOnly = true;
             this.dataGridViewUserListed.RowTemplate.Height = 25;
             this.dataGridViewUserListed.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewUserListed.Size = new System.Drawing.Size(366, 407);
+            this.dataGridViewUserListed.Size = new System.Drawing.Size(366, 415);
             this.dataGridViewUserListed.TabIndex = 41;
             this.dataGridViewUserListed.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewUserListed_CellDoubleClick);
-            // 
-            // ButtonAxtar
-            // 
-            this.ButtonAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ButtonAxtar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonAxtar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ButtonAxtar.Location = new System.Drawing.Point(624, 14);
-            this.ButtonAxtar.Name = "ButtonAxtar";
-            this.ButtonAxtar.Size = new System.Drawing.Size(75, 26);
-            this.ButtonAxtar.TabIndex = 44;
-            this.ButtonAxtar.Text = "Axtar";
-            this.ButtonAxtar.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(396, 19);
+            this.label5.Location = new System.Drawing.Point(477, 15);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(43, 17);
             this.label5.TabIndex = 43;
             this.label5.Text = "Axtar:";
             // 
-            // TextBoxFormUserListedAxtar
+            // textBoxAxtar
             // 
-            this.TextBoxFormUserListedAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.TextBoxFormUserListedAxtar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TextBoxFormUserListedAxtar.Location = new System.Drawing.Point(445, 14);
-            this.TextBoxFormUserListedAxtar.Name = "TextBoxFormUserListedAxtar";
-            this.TextBoxFormUserListedAxtar.Size = new System.Drawing.Size(173, 22);
-            this.TextBoxFormUserListedAxtar.TabIndex = 42;
-            this.TextBoxFormUserListedAxtar.TextChanged += new System.EventHandler(this.TextBoxFormUserListedAxtar_TextChanged);
+            this.textBoxAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxAxtar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxAxtar.Location = new System.Drawing.Point(526, 12);
+            this.textBoxAxtar.Name = "textBoxAxtar";
+            this.textBoxAxtar.Size = new System.Drawing.Size(173, 22);
+            this.textBoxAxtar.TabIndex = 42;
+            this.textBoxAxtar.TextChanged += new System.EventHandler(this.TextBoxFormUserListedAxtar_TextChanged);
             // 
             // textBoxUserId
             // 
@@ -264,9 +251,8 @@ namespace WindowsForm.Forms
             this.Controls.Add(this.textBoxYeniSİfre);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBoxUserId);
-            this.Controls.Add(this.ButtonAxtar);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.TextBoxFormUserListedAxtar);
+            this.Controls.Add(this.textBoxAxtar);
             this.Controls.Add(this.dataGridViewUserListed);
             this.Controls.Add(this.ButtonFormUserListedGuncelle);
             this.Controls.Add(this.TextBoxFormUserListedAddress);
@@ -304,9 +290,8 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridViewUserListed;
-        private System.Windows.Forms.Button ButtonAxtar;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox TextBoxFormUserListedAxtar;
+        private System.Windows.Forms.TextBox textBoxAxtar;
         private System.Windows.Forms.TextBox textBoxUserId;
         private System.Windows.Forms.TextBox textBoxYeniSİfre;
         private System.Windows.Forms.Label label6;

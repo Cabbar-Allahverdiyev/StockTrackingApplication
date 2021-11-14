@@ -13,6 +13,7 @@ using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.ValidatorControllers;
+using WindowsForm.Utilities.Search.Concrete.SupplierSearch;
 
 namespace WindowsForm.Forms
 {
@@ -30,7 +31,7 @@ namespace WindowsForm.Forms
 
             var supplierGetAll = _suplierManager.GetAll();
 
-            DataGridViewSupplierForm.DataSource = supplierGetAll.Data;
+            dataGridViewSupplierListed.DataSource = supplierGetAll.Data;
         }
 
         private void ButtonSupplierFormElaveEt_Click(object sender, EventArgs e)
@@ -58,7 +59,7 @@ namespace WindowsForm.Forms
                 return;
             }
             FormsMessage.SuccessMessage(supplierAdd.Message);
-            DataGridViewSupplierForm.DataSource = _suplierManager.GetAll().Data;
+            dataGridViewSupplierListed.DataSource = _suplierManager.GetAll().Data;
 
             foreach (Control control in this.Controls)
             {
@@ -71,6 +72,14 @@ namespace WindowsForm.Forms
 
         }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            List<Supplier> data = _suplierManager.GetAll().Data;
+            List<Supplier> oldData = _suplierManager.GetAll().Data;
+            SupplierSearch supplierSearch = new SupplierSearch();
+            supplierSearch.Search(data, oldData, textBoxAxtar.Text, dataGridViewSupplierListed);
 
+
+        }
     }
 }
