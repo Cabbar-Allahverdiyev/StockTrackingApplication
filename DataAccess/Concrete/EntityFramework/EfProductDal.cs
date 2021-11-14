@@ -14,7 +14,7 @@ namespace DataAccess.Concrete.EntityFramework
                                , IProductDal
     {
 
-        public List<ProducViewDetailDto> GetProductViewDetails(Expression<Func<ProducViewDetailDto, bool>> filter = null)
+        public List<ProductViewDetailDto> GetProductViewDetails(Expression<Func<ProductViewDetailDto, bool>> filter = null)
         {
             using (StockTrackingProjectContext context = new StockTrackingProjectContext())
             {
@@ -22,7 +22,7 @@ namespace DataAccess.Concrete.EntityFramework
                              join c in context.Categories on p.CategoryId equals c.Id
                              join b in context.Brands on p.BrandId equals b.Id
                              join s in context.Suppliers on p.SupplierId equals s.Id
-                             select new ProducViewDetailDto
+                             select new ProductViewDetailDto
                              {
                                  ProductId = p.Id,
                                  Kateqoriya = c.CategoryName,
@@ -111,7 +111,7 @@ namespace DataAccess.Concrete.EntityFramework
 
             }
         }
-        public ProducViewDetailDto GetProductIdProductViewDetail(int productId)
+        public ProductViewDetailDto GetProductIdProductViewDetail(int productId)
         {
             using (StockTrackingProjectContext context = new StockTrackingProjectContext())
             {
@@ -119,7 +119,7 @@ namespace DataAccess.Concrete.EntityFramework
                              join c in context.Categories on p.CategoryId equals c.Id
                              join b in context.Brands on p.BrandId equals b.Id
                              join s in context.Suppliers on p.SupplierId equals s.Id
-                             select new ProducViewDetailDto
+                             select new ProductViewDetailDto
                              {
                                  ProductId = p.Id,
                                  Kateqoriya = c.CategoryName,

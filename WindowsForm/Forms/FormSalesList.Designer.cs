@@ -47,7 +47,7 @@ namespace WindowsForm.Forms
             this.dataGridViewSaleList.ReadOnly = true;
             this.dataGridViewSaleList.RowTemplate.Height = 25;
             this.dataGridViewSaleList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSaleList.Size = new System.Drawing.Size(813, 320);
+            this.dataGridViewSaleList.Size = new System.Drawing.Size(800, 306);
             this.dataGridViewSaleList.TabIndex = 16;
             // 
             // FormSalesList

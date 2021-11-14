@@ -1,11 +1,9 @@
 ﻿using Business.Concrete;
 using Business.Constants.Messages;
-using Business.ValidationRules.FluentValidation;
 using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using Entities.DTOs;
-using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,8 +12,8 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
-using WindowsForm.Core.Controllers;
 using WindowsForm.Core.Controllers.ValidatorControllers;
+using WindowsForm.Utilities.Search.Concrete.ProductSearch;
 
 namespace WindowsForm.Forms
 {
@@ -35,7 +33,7 @@ namespace WindowsForm.Forms
 
         private void FormProductAdd_Load(object sender, EventArgs e)
         {
-            DataGridViewProductList.DataSource = _productManager.GetProductCompactDetails().Data;
+            dataGridViewProductList.DataSource = _productManager.GetProductCompactDetails().Data;
             CategoryGetComboBoxYeni();
             BrandGetComboBoxYeni();
             SupplierGetComboBox();
@@ -72,7 +70,7 @@ namespace WindowsForm.Forms
                 }
 
                 GroupBoxYeniMehsulControlClear();
-                DataGridViewProductList.DataSource = _productManager.GetProductCompactDetails().Data;
+                dataGridViewProductList.DataSource = _productManager.GetProductCompactDetails().Data;
                 FormsMessage.SuccessMessage(productAdd.Message);
 
 
@@ -89,30 +87,18 @@ namespace WindowsForm.Forms
         private void DataGridViewProductList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            IDataResult<ProducViewDetailDto> productViewDetailByProductId = _productManager.GetProductViewProductIdDetail(
-                     Convert.ToInt32(DataGridViewProductList.CurrentRow.Cells["ProductId"].Value.ToString())
+            IDataResult<ProductViewDetailDto> productViewDetailByProductId = _productManager.GetProductViewProductIdDetail(
+                     Convert.ToInt32(dataGridViewProductList.CurrentRow.Cells["ProductId"].Value.ToString())
                 );
 
         }
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            if (textBoxAxtar.Text == "")
-            {
-                DataGridViewProductList.DataSource = _productManager.GetProductCompactDetails().Data;
-                return;
-            }
-
-            string productName = textBoxAxtar.Text.ToString();
-            IDataResult<List<ProductCompactDetailDto>> productGetDetailsByName = _productManager.GetByPrdouctNameCompactDetails(productName);
-            if (productGetDetailsByName.Success)
-            {
-                DataGridViewProductList.DataSource = productGetDetailsByName.Data;
-            }
-            else
-            {
-                FormsMessage.ErrorMessage(productGetDetailsByName.Message);
-            }
+            List<ProductViewDetailDto> data = _productManager.GetProductViewDetails().Data;
+            List<ProductViewDetailDto> oldData = _productManager.GetProductViewDetails().Data;
+            ProductViewDetailSearch search = new ProductViewDetailSearch();
+            search.Search(data, oldData, textBoxAxtar.Text, dataGridViewProductList);
         }
 
 

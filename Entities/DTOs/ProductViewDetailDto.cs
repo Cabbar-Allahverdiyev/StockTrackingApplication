@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Entities.DTOs
 {
-    public class ProducViewDetailDto:IDto
+    public class ProductViewDetailDto:IDto
     {
         public int ProductId { get; set; }
         public string Kateqoriya { get; set; }

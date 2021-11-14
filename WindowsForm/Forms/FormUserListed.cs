@@ -1,12 +1,7 @@
-﻿using Business.Abstract;
-using Business.Concrete;
+﻿using Business.Concrete;
 using Business.Constants.Messages;
-using Business.ValidationRules.FluentValidation;
-using Core.Entities.Concrete;
-using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
 using Entities.DTOs;
-using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +10,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
+using WindowsForm.Utilities.Search.Concrete.UserSearch;
 
 namespace WindowsForm.Forms
 {
@@ -34,69 +30,28 @@ namespace WindowsForm.Forms
         {
             var getUserDetails = _userService.GetUserDetails();
 
-            DataGridViewUserListed.DataSource = getUserDetails.Data;
+            dataGridViewUserListed.DataSource = getUserDetails.Data;
 
 
         }
 
         private void DataGridViewUserListed_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            TextBoxFormUserListedAd.Text = DataGridViewUserListed.CurrentRow.Cells["FirstName"].Value.ToString();
-            TextBoxFormUserListedSoyad.Text = DataGridViewUserListed.CurrentRow.Cells["LastName"].Value.ToString();
-            TextBoxFormUserListedEmail.Text = DataGridViewUserListed.CurrentRow.Cells["Email"].Value.ToString();
-            TextBoxFormUserListedPhoneNumber.Text = DataGridViewUserListed.CurrentRow.Cells["PhoneNumber"].Value.ToString();
-            TextBoxFormUserListedAddress.Text = DataGridViewUserListed.CurrentRow.Cells["Address"].Value.ToString();
+            TextBoxFormUserListedAd.Text = dataGridViewUserListed.CurrentRow.Cells["FirstName"].Value.ToString();
+            TextBoxFormUserListedSoyad.Text = dataGridViewUserListed.CurrentRow.Cells["LastName"].Value.ToString();
+            TextBoxFormUserListedEmail.Text = dataGridViewUserListed.CurrentRow.Cells["Email"].Value.ToString();
+            TextBoxFormUserListedPhoneNumber.Text = dataGridViewUserListed.CurrentRow.Cells["PhoneNumber"].Value.ToString();
+            TextBoxFormUserListedAddress.Text = dataGridViewUserListed.CurrentRow.Cells["Address"].Value.ToString();
         }
 
         private void TextBoxFormUserListedAxtar_TextChanged(object sender, EventArgs e)
         {
-            //Mutleq tekmillesdir
-            if (TextBoxFormUserListedAxtar.Text == "")
-            {
-                DataGridViewUserListed.DataSource = _userService.GetUserDetails().Data;
-                return;
-            }
-
-            string userName = TextBoxFormUserListedAxtar.Text;
-            var userGetDetails = _userService.GetUserDetailsByUserName(userName);
-            if (userGetDetails.Success)
-            {
-                //Bura nezer et
-                //if (userGetDetails.Data==null)
-                //{
-                //    DataGridViewUserListed.DataSource = _userService.GetUserDetails();
-                //    return;
-                //}
-
-                DataGridViewUserListed.DataSource = userGetDetails.Data;
-            }
-            else
-            {
-                FormsMessage.ErrorMessage(UserMessages.UserNotFound);
-                return;
-            }
-
+            List<UserDto> data = _userService.GetUserDetails().Data;
+            List<UserDto> oldData = _userService.GetUserDetails().Data;
+            UserDtoSearch search = new UserDtoSearch();
+            search.Search(data,oldData,textBoxFormUserListedAxtar.Text,dataGridViewUserListed);
         }
 
-        private void ButtonAxtar_Click(object sender, EventArgs e)
-        {
-            // TextBoxFormUserListedAxtar_TextChanged(sender,e);
 
-            //if (TextBoxFormUserListedAxtar.Text.Length == 0)
-            //{
-            //    return;
-            //}
-            //int userId = Convert.ToInt32(TextBoxFormUserListedAxtar.Text);
-            //var userGetDetail = _userService.GetUserDetailsByUserId(userId);
-
-            //if (userGetDetail.Success)
-            //{
-            //    DataGridViewUserListed.DataSource = userGetDetail.Data;
-            //}
-            //else
-            //{
-            //    MessageBox.Show(UserMessages.UserNotFound, "window title", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //}
-        }
     }
 }

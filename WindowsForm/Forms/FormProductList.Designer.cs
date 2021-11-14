@@ -53,7 +53,6 @@ namespace WindowsForm.Forms
             this.label13 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxAxtar = new System.Windows.Forms.TextBox();
-            this.buttonAxtar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFormPrdouctList)).BeginInit();
             this.GroupBoxVarOlanMehsul.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProductImage)).BeginInit();
@@ -304,23 +303,12 @@ namespace WindowsForm.Forms
             this.textBoxAxtar.TabIndex = 6;
             this.textBoxAxtar.TextChanged += new System.EventHandler(this.textBoxAxtar_TextChanged);
             // 
-            // buttonAxtar
-            // 
-            this.buttonAxtar.Location = new System.Drawing.Point(594, 12);
-            this.buttonAxtar.Name = "buttonAxtar";
-            this.buttonAxtar.Size = new System.Drawing.Size(75, 23);
-            this.buttonAxtar.TabIndex = 7;
-            this.buttonAxtar.Text = "button1";
-            this.buttonAxtar.UseVisualStyleBackColor = true;
-            this.buttonAxtar.Click += new System.EventHandler(this.buttonAxtar_Click);
-            // 
             // FormProductList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(878, 520);
-            this.Controls.Add(this.buttonAxtar);
             this.Controls.Add(this.textBoxAxtar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.GroupBoxVarOlanMehsul);
@@ -364,6 +352,5 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textBoxVarOlanMehsulAdi;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button buttonAxtar;
     }
 }

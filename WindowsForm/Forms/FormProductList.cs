@@ -12,7 +12,6 @@ using System.Text;
 using System.Windows.Forms;
 using Business.Constants.Messages;
 using WindowsForm.Core.Constants.Messages;
-using WindowsForm.Utilities.Search;
 using WindowsForm.Utilities.Search.Concrete.ProductSearch;
 
 namespace WindowsForm.Forms
@@ -42,17 +41,7 @@ namespace WindowsForm.Forms
             GroupBoxVarOlanMehsulControlClear();
         }
 
-        private void buttonAxtar_Click(object sender, EventArgs e)
-        {
-            //ChangeTheColorOfTheSoughtValue(2);
-            ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
-            List<ProductViewDashboardDetailDto> data = _productManager.GetAllProductViewDasgboardDetails().Data;
-            List<ProductViewDashboardDetailDto> oldData = _productManager.GetAllProductViewDasgboardDetails().Data;
-            detailsSearch.Search(data, oldData, textBoxAxtar.Text, dataGridViewFormPrdouctList);
-
-
-           
-        }
+        
 
         private void dataGridViewFormPrdouctList_DoubleClick(object sender, EventArgs e)
         {

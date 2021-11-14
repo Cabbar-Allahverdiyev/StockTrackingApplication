@@ -92,14 +92,14 @@ namespace Business.Concrete
 
         //DTOs------------------------------------>
         [CacheAspect]
-        public IDataResult<List<ProducViewDetailDto>> GetProductViewDetails()
+        public IDataResult<List<ProductViewDetailDto>> GetProductViewDetails()
         {
-            List<ProducViewDetailDto> get = _productDal.GetProductViewDetails();
+            List<ProductViewDetailDto> get = _productDal.GetProductViewDetails();
             if (get == null)
             {
-                return new ErrorDataResult<List<ProducViewDetailDto>>(ProductMessages.ProductNotFound);
+                return new ErrorDataResult<List<ProductViewDetailDto>>(ProductMessages.ProductNotFound);
             }
-            return new SuccessDataResult<List<ProducViewDetailDto>>(get, ProductMessages.ProductGetAll);
+            return new SuccessDataResult<List<ProductViewDetailDto>>(get, ProductMessages.ProductGetAll);
         }
 
         [CacheAspect]
@@ -157,14 +157,14 @@ namespace Business.Concrete
             return new SuccessDataResult<ProductCompactDetailDto>(get, ProductMessages.ProductFound);
         }
 
-        public IDataResult<ProducViewDetailDto> GetProductViewProductIdDetail(int productId)
+        public IDataResult<ProductViewDetailDto> GetProductViewProductIdDetail(int productId)
         {
-            ProducViewDetailDto get = _productDal.GetProductIdProductViewDetail(productId);
+            ProductViewDetailDto get = _productDal.GetProductIdProductViewDetail(productId);
             if (get == null)
             {
-                return new ErrorDataResult<ProducViewDetailDto>(ProductMessages.ProductNotFound);
+                return new ErrorDataResult<ProductViewDetailDto>(ProductMessages.ProductNotFound);
             }
-            return new SuccessDataResult<ProducViewDetailDto>(get, ProductMessages.ProductFound);
+            return new SuccessDataResult<ProductViewDetailDto>(get, ProductMessages.ProductFound);
         }
 
 

@@ -1,5 +1,5 @@
 ﻿using Business.Constants.Messages;
-using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,28 +7,28 @@ using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Utilities.Search.Abstract;
 
-namespace WindowsForm.Utilities.Search.Concrete.CategorySearch
+namespace WindowsForm.Utilities.Search.Concrete.UserSearch
 {
-    public class CategorySearch : IWinFormsSearch
+    public class UserDtoSearch : IWinFormsSearch
     {
-        
-        public void Search(List<Category> data, List<Category> oldData, string searchText, DataGridView dataGridView)
+
+        public void Search(List<UserDto> data, List<UserDto> oldData, string searchText, DataGridView dataGridView)
         {
 
-            List<Category> newList = new List<Category>();
-            List<Category> oldList = oldData;
-            List<Category> list = data;
+            List<UserDto> newList = new List<UserDto>();
+            List<UserDto> oldList = oldData;
+            List<UserDto> list = data;
             searchText = searchText.ToLower();
             for (int i = 0; i < list.Count; i++)
             {
-                list[i].CategoryName = list[i].CategoryName.ToLower();
+                list[i].FirstName = list[i].FirstName.ToLower();
             }
 
-            foreach (var item in list)
+            foreach (var product in list)
             {
-                if (item.CategoryName.Contains(searchText))
+                if (product.LastName.Contains(searchText))
                 {
-                    newList.Add(item);
+                    newList.Add(product);
                 }
             }
 
@@ -36,7 +36,7 @@ namespace WindowsForm.Utilities.Search.Concrete.CategorySearch
             {
                 if (newList.Count == 0)
                 {
-                    FormsMessage.ErrorMessage(CategoryMessages.CategoryNotFound);
+                    FormsMessage.ErrorMessage(UserMessages.UserNotFound);
                     return;
                 }
                 dataGridView.DataSource = newList;
