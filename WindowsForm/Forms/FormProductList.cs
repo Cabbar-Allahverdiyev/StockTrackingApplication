@@ -12,8 +12,8 @@ using System.Text;
 using System.Windows.Forms;
 using Business.Constants.Messages;
 using WindowsForm.Core.Constants.Messages;
-using WindowsForm.Utilities.Filter;
-using WindowsForm.Utilities.Filter.Concrete.ProductSearch;
+using WindowsForm.Utilities.Search;
+using WindowsForm.Utilities.Search.Concrete.ProductSearch;
 
 namespace WindowsForm.Forms
 {

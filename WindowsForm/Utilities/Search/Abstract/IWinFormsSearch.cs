@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WindowsForm.Utilities.Filter.Abstract
+namespace WindowsForm.Utilities.Search.Abstract
 {
     public interface IWinFormsSearch
     {

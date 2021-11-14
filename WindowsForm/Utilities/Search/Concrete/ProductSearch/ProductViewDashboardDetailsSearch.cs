@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
-using WindowsForm.Utilities.Filter.Abstract;
+using WindowsForm.Utilities.Search.Abstract;
 
-namespace WindowsForm.Utilities.Filter.Concrete.ProductSearch
+namespace WindowsForm.Utilities.Search.Concrete.ProductSearch
 {
     public class ProductViewDashboardDetailsSearch : IWinFormsSearch
     {

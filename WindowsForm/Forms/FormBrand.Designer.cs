@@ -98,12 +98,12 @@ namespace WindowsForm.Forms
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewBrandsListed.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewBrandsListed.Location = new System.Drawing.Point(321, 35);
+            this.dataGridViewBrandsListed.Location = new System.Drawing.Point(321, 40);
             this.dataGridViewBrandsListed.Name = "dataGridViewBrandsListed";
             this.dataGridViewBrandsListed.ReadOnly = true;
             this.dataGridViewBrandsListed.RowTemplate.Height = 25;
             this.dataGridViewBrandsListed.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewBrandsListed.Size = new System.Drawing.Size(527, 368);
+            this.dataGridViewBrandsListed.Size = new System.Drawing.Size(517, 343);
             this.dataGridViewBrandsListed.TabIndex = 3;
             // 
             // label2
@@ -111,7 +111,7 @@ namespace WindowsForm.Forms
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(632, 9);
+            this.label2.Location = new System.Drawing.Point(614, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 14);
             this.label2.TabIndex = 5;
@@ -120,10 +120,11 @@ namespace WindowsForm.Forms
             // textBoxAxtar
             // 
             this.textBoxAxtar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxAxtar.Location = new System.Drawing.Point(675, 6);
+            this.textBoxAxtar.Location = new System.Drawing.Point(665, 12);
             this.textBoxAxtar.Name = "textBoxAxtar";
             this.textBoxAxtar.Size = new System.Drawing.Size(173, 22);
             this.textBoxAxtar.TabIndex = 4;
+            this.textBoxAxtar.TextChanged += new System.EventHandler(this.textBoxAxtar_TextChanged);
             // 
             // FormBrand
             // 
