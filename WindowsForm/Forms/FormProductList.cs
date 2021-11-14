@@ -12,6 +12,8 @@ using System.Text;
 using System.Windows.Forms;
 using Business.Constants.Messages;
 using WindowsForm.Core.Constants.Messages;
+using WindowsForm.Utilities.Filter;
+using WindowsForm.Utilities.Filter.Concrete.ProductSearch;
 
 namespace WindowsForm.Forms
 {
@@ -38,6 +40,18 @@ namespace WindowsForm.Forms
             CategoryGetComboBoxVarOlan();
             SupplierGetComboBox();
             GroupBoxVarOlanMehsulControlClear();
+        }
+
+        private void buttonAxtar_Click(object sender, EventArgs e)
+        {
+            //ChangeTheColorOfTheSoughtValue(2);
+            ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
+            List<ProductViewDashboardDetailDto> data = _productManager.GetAllProductViewDasgboardDetails().Data;
+            List<ProductViewDashboardDetailDto> oldData = _productManager.GetAllProductViewDasgboardDetails().Data;
+            detailsSearch.Search(data, oldData, textBoxAxtar.Text, dataGridViewFormPrdouctList);
+
+
+           
         }
 
         private void dataGridViewFormPrdouctList_DoubleClick(object sender, EventArgs e)
@@ -103,24 +117,11 @@ namespace WindowsForm.Forms
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            //if (textBoxAxtar.Text == "")
-            //{
-            //    LabelMiqdarVB.Text = "";
-            //    GroupBoxVarOlanMehsulControlClear();
-            //    dataGridViewFormPrdouctList.DataSource = _productManager.GetAllProductViewDasgboardDetails().Data;
-            //    return;
-            //}
+            ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
+            List<ProductViewDashboardDetailDto> data = _productManager.GetAllProductViewDasgboardDetails().Data;
+            List<ProductViewDashboardDetailDto> oldData = _productManager.GetAllProductViewDasgboardDetails().Data;
+            detailsSearch.Search(data, oldData, textBoxAxtar.Text, dataGridViewFormPrdouctList);
 
-            //int barcodeNumber = Convert.ToInt32(textBoxAxtar.Text);
-            //IDataResult<List<ProductViewDashboardDetailDto>> productGetDetailsByName = _productManager.GetProductViewDasgboardDetailByBarcodeNumber(barcodeNumber);
-            //if (productGetDetailsByName.Success)
-            //{
-            //    dataGridViewFormPrdouctList.DataSource = productGetDetailsByName.Data;
-            //}
-            //else
-            //{
-            //    FormsMessage.ErrorMessage(ProductMessages.ProductNotFound);
-            //}
         }
 
 
@@ -143,47 +144,9 @@ namespace WindowsForm.Forms
             }
         }
 
-        private void buttonAxtar_Click(object sender, EventArgs e)
-        {
-            //ChangeTheColorOfTheSoughtValue(2);
+       
 
-
-            Filter(textBoxAxtar.Text);
-        }
-
-        private void Filter(string searchText)
-        {
-
-            List<ProductViewDashboardDetailDto> newProductList = new List<ProductViewDashboardDetailDto>();
-            List<ProductViewDashboardDetailDto> oldProductList = _productManager.GetAllProductViewDasgboardDetails().Data;
-            List<ProductViewDashboardDetailDto> productList = _productManager.GetAllProductViewDasgboardDetails().Data;
-            searchText = searchText.ToLower();
-            for (int i = 0; i < productList.Count; i++)
-            {
-                productList[i].MehsulAdi = productList[i].MehsulAdi.ToLower();
-            }
-
-            foreach (var product in productList)
-            {
-                if (product.MehsulAdi.Contains(searchText))
-                {
-                    newProductList.Add(product);
-                }
-            }
-
-            if (textBoxAxtar.Text != "")
-            {
-                if (newProductList.Count == 0)
-                {
-                    FormsMessage.ErrorMessage(ProductMessages.ProductNotFound);
-                    return;
-                }
-                dataGridViewFormPrdouctList.DataSource = newProductList;
-                return;
-            }
-
-            dataGridViewFormPrdouctList.DataSource = oldProductList;
-        }
+       
 
 
         private void ChangeTheColorOfTheSoughtValue(int columnIndex)
