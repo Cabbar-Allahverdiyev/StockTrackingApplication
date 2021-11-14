@@ -1,10 +1,8 @@
 ﻿using Business.Concrete;
 using Business.Constants.Messages;
-using Business.ValidationRules.FluentValidation;
 using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
-using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +12,8 @@ using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.ValidatorControllers;
+using WindowsForm.Utilities.Search.Concrete.BrandSearch;
+using WindowsForm.Utilities.Search.Concrete.CategorySearch;
 
 namespace WindowsForm.Forms
 {
@@ -67,6 +67,12 @@ namespace WindowsForm.Forms
 
         }
 
-       
+        private void textBoxAxtar_TextChanged(object sender, EventArgs e)
+        {
+            CategorySearch search = new CategorySearch();
+            List<Category> data = _categoryManager.GetAll().Data;
+            List<Category> oldData = _categoryManager.GetAll().Data;
+            search.Search(data,oldData,textBoxAxtar.Text, DataGridViewFormCategory);
+        }
     }
 }

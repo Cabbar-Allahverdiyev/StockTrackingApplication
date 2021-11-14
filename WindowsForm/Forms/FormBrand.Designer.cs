@@ -30,8 +30,6 @@ namespace WindowsForm.Forms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBrand));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TextBoxFormBrandMarkaAdi = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.ButtonFormBrandElaveEt = new System.Windows.Forms.Button();
@@ -43,8 +41,8 @@ namespace WindowsForm.Forms
             // 
             // TextBoxFormBrandMarkaAdi
             // 
-            this.TextBoxFormBrandMarkaAdi.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TextBoxFormBrandMarkaAdi.Location = new System.Drawing.Point(91, 32);
+            this.TextBoxFormBrandMarkaAdi.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TextBoxFormBrandMarkaAdi.Location = new System.Drawing.Point(91, 45);
             this.TextBoxFormBrandMarkaAdi.Name = "TextBoxFormBrandMarkaAdi";
             this.TextBoxFormBrandMarkaAdi.Size = new System.Drawing.Size(164, 22);
             this.TextBoxFormBrandMarkaAdi.TabIndex = 0;
@@ -52,21 +50,21 @@ namespace WindowsForm.Forms
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(12, 35);
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(12, 49);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 14);
+            this.label1.Size = new System.Drawing.Size(70, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "Marka adı:";
             // 
             // ButtonFormBrandElaveEt
             // 
             this.ButtonFormBrandElaveEt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonFormBrandElaveEt.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ButtonFormBrandElaveEt.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ButtonFormBrandElaveEt.Image = ((System.Drawing.Image)(resources.GetObject("ButtonFormBrandElaveEt.Image")));
-            this.ButtonFormBrandElaveEt.Location = new System.Drawing.Point(170, 60);
+            this.ButtonFormBrandElaveEt.Location = new System.Drawing.Point(170, 77);
             this.ButtonFormBrandElaveEt.Name = "ButtonFormBrandElaveEt";
-            this.ButtonFormBrandElaveEt.Size = new System.Drawing.Size(85, 23);
+            this.ButtonFormBrandElaveEt.Size = new System.Drawing.Size(85, 26);
             this.ButtonFormBrandElaveEt.TabIndex = 2;
             this.ButtonFormBrandElaveEt.Text = "Əlavə et";
             this.ButtonFormBrandElaveEt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -81,46 +79,31 @@ namespace WindowsForm.Forms
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewBrandsListed.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewBrandsListed.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewBrandsListed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewBrandsListed.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewBrandsListed.Location = new System.Drawing.Point(321, 40);
+            this.dataGridViewBrandsListed.Location = new System.Drawing.Point(321, 45);
             this.dataGridViewBrandsListed.Name = "dataGridViewBrandsListed";
             this.dataGridViewBrandsListed.ReadOnly = true;
             this.dataGridViewBrandsListed.RowTemplate.Height = 25;
             this.dataGridViewBrandsListed.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewBrandsListed.Size = new System.Drawing.Size(517, 343);
+            this.dataGridViewBrandsListed.Size = new System.Drawing.Size(517, 389);
             this.dataGridViewBrandsListed.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(614, 15);
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(614, 17);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 14);
+            this.label2.Size = new System.Drawing.Size(43, 17);
             this.label2.TabIndex = 5;
             this.label2.Text = "Axtar:";
             // 
             // textBoxAxtar
             // 
-            this.textBoxAxtar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxAxtar.Location = new System.Drawing.Point(665, 12);
+            this.textBoxAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxAxtar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxAxtar.Location = new System.Drawing.Point(665, 14);
             this.textBoxAxtar.Name = "textBoxAxtar";
             this.textBoxAxtar.Size = new System.Drawing.Size(173, 22);
             this.textBoxAxtar.TabIndex = 4;
@@ -128,16 +111,17 @@ namespace WindowsForm.Forms
             // 
             // FormBrand
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
-            this.ClientSize = new System.Drawing.Size(850, 395);
+            this.ClientSize = new System.Drawing.Size(850, 448);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxAxtar);
             this.Controls.Add(this.dataGridViewBrandsListed);
             this.Controls.Add(this.ButtonFormBrandElaveEt);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TextBoxFormBrandMarkaAdi);
+            this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "FormBrand";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form Brand";
