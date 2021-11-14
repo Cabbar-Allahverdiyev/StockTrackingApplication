@@ -26,7 +26,7 @@ namespace WindowsForm.Utilities.Search.Concrete.UserSearch
 
             foreach (var product in list)
             {
-                if (product.LastName.Contains(searchText))
+                if (product.FirstName.Contains(searchText))
                 {
                     newList.Add(product);
                 }

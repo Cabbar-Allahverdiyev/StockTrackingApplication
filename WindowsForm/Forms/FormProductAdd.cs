@@ -95,6 +95,8 @@ namespace WindowsForm.Forms
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
+            //var data = _productManager.GetProductCompactDetails().Data;
+            //var oldData = _productManager.GetProductCompactDetails().Data;
             List<ProductViewDetailDto> data = _productManager.GetProductViewDetails().Data;
             List<ProductViewDetailDto> oldData = _productManager.GetProductViewDetails().Data;
             ProductViewDetailSearch search = new ProductViewDetailSearch();
