@@ -99,28 +99,28 @@ namespace WindowsForm.Forms
 
 
 
-       
+
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            if (textBoxAxtar.Text == "")
-            {
-                LabelMiqdarVB.Text = "";
-                GroupBoxVarOlanMehsulControlClear();
-                dataGridViewFormPrdouctList.DataSource = _productManager.GetAllProductViewDasgboardDetails().Data;
-                return;
-            }
+            //if (textBoxAxtar.Text == "")
+            //{
+            //    LabelMiqdarVB.Text = "";
+            //    GroupBoxVarOlanMehsulControlClear();
+            //    dataGridViewFormPrdouctList.DataSource = _productManager.GetAllProductViewDasgboardDetails().Data;
+            //    return;
+            //}
 
-            int barcodeNumber = Convert.ToInt32(textBoxAxtar.Text);
-            IDataResult<List<ProductViewDashboardDetailDto>> productGetDetailsByName = _productManager.GetProductViewDasgboardDetailByBarcodeNumber(barcodeNumber);
-            if (productGetDetailsByName.Success)
-            {
-                dataGridViewFormPrdouctList.DataSource = productGetDetailsByName.Data;
-            }
-            else
-            {
-                FormsMessage.ErrorMessage(ProductMessages.ProductNotFound);
-            }
+            //int barcodeNumber = Convert.ToInt32(textBoxAxtar.Text);
+            //IDataResult<List<ProductViewDashboardDetailDto>> productGetDetailsByName = _productManager.GetProductViewDasgboardDetailByBarcodeNumber(barcodeNumber);
+            //if (productGetDetailsByName.Success)
+            //{
+            //    dataGridViewFormPrdouctList.DataSource = productGetDetailsByName.Data;
+            //}
+            //else
+            //{
+            //    FormsMessage.ErrorMessage(ProductMessages.ProductNotFound);
+            //}
         }
 
 
@@ -143,8 +143,77 @@ namespace WindowsForm.Forms
             }
         }
 
-       
+        private void buttonAxtar_Click(object sender, EventArgs e)
+        {
+            //ChangeTheColorOfTheSoughtValue(2);
 
-       
+
+            Filter(textBoxAxtar.Text);
+        }
+
+        private void Filter(string searchText)
+        {
+
+            List<ProductViewDashboardDetailDto> newProductList = new List<ProductViewDashboardDetailDto>();
+            List<ProductViewDashboardDetailDto> oldProductList = _productManager.GetAllProductViewDasgboardDetails().Data;
+            List<ProductViewDashboardDetailDto> productList = _productManager.GetAllProductViewDasgboardDetails().Data;
+            searchText = searchText.ToLower();
+            for (int i = 0; i < productList.Count; i++)
+            {
+                productList[i].MehsulAdi = productList[i].MehsulAdi.ToLower();
+            }
+
+            foreach (var product in productList)
+            {
+                if (product.MehsulAdi.Contains(searchText))
+                {
+                    newProductList.Add(product);
+                }
+            }
+
+            if (textBoxAxtar.Text != "")
+            {
+                if (newProductList.Count == 0)
+                {
+                    FormsMessage.ErrorMessage(ProductMessages.ProductNotFound);
+                    return;
+                }
+                dataGridViewFormPrdouctList.DataSource = newProductList;
+                return;
+            }
+
+            dataGridViewFormPrdouctList.DataSource = oldProductList;
+        }
+
+
+        private void ChangeTheColorOfTheSoughtValue(int columnIndex)
+        {
+            string searchValue = textBoxAxtar.Text;
+            DataGridViewCell cell = GetCellWhereTextExistsInGridView(textBoxAxtar.Text, dataGridViewFormPrdouctList, columnIndex);
+            if (cell != null)
+            {
+                cell.Style = new DataGridViewCellStyle { ForeColor = Color.Red };
+            }
+            else
+            {
+                FormsMessage.ErrorMessage(ProductMessages.ProductNotFound);
+            }
+        }
+
+        private DataGridViewCell GetCellWhereTextExistsInGridView(string searchText, DataGridView dataGridView, int columnIndex)
+        {
+            DataGridViewCell cellWhereTextIsMet = null;
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                if (row.Cells[columnIndex].Value != null && searchText == row.Cells[columnIndex].Value.ToString())
+                {
+                    cellWhereTextIsMet = row.Cells[columnIndex];
+                    break;
+                }
+            }
+            return cellWhereTextIsMet;
+        }
+
+
     }
 }
