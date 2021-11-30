@@ -76,6 +76,9 @@ namespace WindowsForm.Forms
             this.həftəlikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aylıqToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.illikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.myDMScan = new WindowsForm.MyControls.MyDropdownMenu(this.components);
+            this.kameraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lazerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelTitleBar.SuspendLayout();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
@@ -85,6 +88,7 @@ namespace WindowsForm.Forms
             this.myDMSales.SuspendLayout();
             this.myDMUser.SuspendLayout();
             this.myDMStatistic.SuspendLayout();
+            this.myDMScan.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonExit
@@ -645,6 +649,31 @@ namespace WindowsForm.Forms
             this.illikToolStripMenuItem.Text = "İllik";
             this.illikToolStripMenuItem.Click += new System.EventHandler(this.illikToolStripMenuItem_Click);
             // 
+            // myDMScan
+            // 
+            this.myDMScan.IsMainMenu = false;
+            this.myDMScan.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.kameraToolStripMenuItem,
+            this.lazerToolStripMenuItem});
+            this.myDMScan.MenuItemHeight = 25;
+            this.myDMScan.MenuItemTextColor = System.Drawing.Color.DimGray;
+            this.myDMScan.Name = "myDMScan";
+            this.myDMScan.PrimaryColor = System.Drawing.Color.MediumSlateBlue;
+            this.myDMScan.Size = new System.Drawing.Size(181, 70);
+            // 
+            // kameraToolStripMenuItem
+            // 
+            this.kameraToolStripMenuItem.Name = "kameraToolStripMenuItem";
+            this.kameraToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.kameraToolStripMenuItem.Text = "Kamera";
+            this.kameraToolStripMenuItem.Click += new System.EventHandler(this.kameraToolStripMenuItem_Click);
+            // 
+            // lazerToolStripMenuItem
+            // 
+            this.lazerToolStripMenuItem.Name = "lazerToolStripMenuItem";
+            this.lazerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.lazerToolStripMenuItem.Text = "Lazer";
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -670,6 +699,7 @@ namespace WindowsForm.Forms
             this.myDMSales.ResumeLayout(false);
             this.myDMUser.ResumeLayout(false);
             this.myDMStatistic.ResumeLayout(false);
+            this.myDMScan.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -721,5 +751,8 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.ToolStripMenuItem həftəlikToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aylıqToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem illikToolStripMenuItem;
+        private MyControls.MyDropdownMenu myDMScan;
+        private System.Windows.Forms.ToolStripMenuItem kameraToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lazerToolStripMenuItem;
     }
 }

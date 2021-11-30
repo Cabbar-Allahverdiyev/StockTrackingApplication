@@ -241,7 +241,7 @@ namespace WindowsForm.Forms
 
         private void buttonScan_Click(object sender, EventArgs e)
         {
-            
+            Open_DropdownMenu(myDMScan,sender);
         }
 
         private void buttonStatistic_Click(object sender, EventArgs e)
@@ -328,6 +328,11 @@ namespace WindowsForm.Forms
 
         //Scan------------------------------------------------->
 
+        private void kameraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new CameraBarcodeScanner(), sender);
+        }
+
 
         //Statistic--------------------------------------------->
         private void günlükToolStripMenuItem_Click(object sender, EventArgs e)
@@ -349,6 +354,8 @@ namespace WindowsForm.Forms
         {
            // OpenChildForm(new(), sender);
         }
+
+
 
 
 
@@ -415,7 +422,9 @@ namespace WindowsForm.Forms
             }
         }
 
-      
+       
+
+
 
         private void OpenChildForm(Form childForm, object btnSender)
         {
@@ -434,7 +443,8 @@ namespace WindowsForm.Forms
             labelTitle.Text = childForm.Text;
         }
 
-        
+       
+
 
 
 
