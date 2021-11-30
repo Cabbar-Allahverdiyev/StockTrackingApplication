@@ -53,7 +53,7 @@ namespace WindowsForm.Forms
 
             }
             pictureBox.Image = bitmap;
-        }
+        } 
 
         private void CameraBarcodeScanner_FormClosing(object sender, FormClosingEventArgs e)
         {
