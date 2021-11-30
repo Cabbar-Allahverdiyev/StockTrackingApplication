@@ -49,7 +49,7 @@ namespace WindowsForm.Forms
                 textBoxBarcode.Invoke(new MethodInvoker(delegate ()
                 {
                     textBoxBarcode.Text = result.ToString();
-                }));
+                })); 
 
             }
             pictureBox.Image = bitmap;
