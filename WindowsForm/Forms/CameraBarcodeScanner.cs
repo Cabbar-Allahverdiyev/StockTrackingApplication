@@ -44,7 +44,7 @@ namespace WindowsForm.Forms
             Bitmap bitmap = (Bitmap)eventArgs.Frame.Clone();
             BarcodeReader reader = new BarcodeReader();
             var result = reader.Decode(bitmap);  
-            if (result != null)
+            if (result != null) 
             {
                 textBoxBarcode.Invoke(new MethodInvoker(delegate ()
                 {   
