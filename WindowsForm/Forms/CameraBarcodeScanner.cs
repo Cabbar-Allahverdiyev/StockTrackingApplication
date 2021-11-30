@@ -47,7 +47,7 @@ namespace WindowsForm.Forms
             if (result != null)
             {
                 textBoxBarcode.Invoke(new MethodInvoker(delegate ()
-                { 
+                {  
                     textBoxBarcode.Text = result.ToString();
                 })); 
 
