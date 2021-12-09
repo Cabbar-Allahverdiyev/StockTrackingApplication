@@ -67,7 +67,7 @@ namespace WindowsForm.Forms
                 Cart cart = new Cart();
                 CartAddDto cartAddDto = _cartManager.GetCartAddDetailByBarcodeNumber(int.Parse(textBoxBarkodNo.Text)).Data;
 
-                if (cartAddDto!=null)
+                if (cartAddDto != null)
                 {
                     cart.Id = cartAddDto.CartId;
                     if (cartAddDto.Quantity <= 1 || textBoxMiqdar.Text == "" || cartAddDto.Quantity <= Convert.ToInt32(textBoxMiqdar.Text))
@@ -88,7 +88,7 @@ namespace WindowsForm.Forms
                         cart.SoldPrice = cartAddDto.SoldPrice;
                         CalculateTotalPrice(cart.Quantity, cart.SoldPrice);
                         cart.TotalPrice = Convert.ToDecimal(textBoxCem.Text);
-                       //  CartValidation(cart);
+                        //  CartValidation(cart);
                         IResult result = _cartManager.Update(cart);
                         if (!result.Success)
                         {
@@ -98,7 +98,7 @@ namespace WindowsForm.Forms
 
                     }
                 }
-               
+
                 GroupBoxMehsulControlClear();
                 TotalPriceLabelWrite();
                 CartListRefesh();
@@ -141,6 +141,7 @@ namespace WindowsForm.Forms
             textBoxBarkodNo.Text = dataGridViewProductList.CurrentRow.Cells["BarcodeNomresi"].Value.ToString();
             textBoxMehsulAdi.Text = dataGridViewProductList.CurrentRow.Cells["MehsulAdi"].Value.ToString();
             textBoxMaxQiymet.Text = dataGridViewProductList.CurrentRow.Cells["Qiymet"].Value.ToString();
+            CemWrite();
         }
 
         private void buttoElaveEt_Click(object sender, EventArgs e)
@@ -156,7 +157,7 @@ namespace WindowsForm.Forms
                     return;
                 }
                 cart.ProductId = int.Parse(textBoxProductId.Text);
-                cart.SoldPrice = decimal.Parse(textBoxQiymet.Text);
+                cart.SoldPrice = textBoxQiymet.Text == "" ? decimal.Parse(textBoxMaxQiymet.Text) : decimal.Parse(textBoxQiymet.Text);
                 cart.Quantity = int.Parse(textBoxMiqdar.Text);
                 cart.TotalPrice = decimal.Parse(textBoxCem.Text);
                 cart.UserId = 2;
@@ -164,14 +165,14 @@ namespace WindowsForm.Forms
                 {
                     return;
                 }
-               
+
                 IsBarcodeNumberExists();
                 if (isBarcodeNumberExists == true)
                 {
                     CartAddDto cartAddDto = _cartManager.GetCartAddDetailByBarcodeNumber(int.Parse(textBoxBarkodNo.Text)).Data;
                     cart.Id = cartAddDto.CartId;
-                    cart.Quantity = cartAddDto.Quantity + int.Parse(textBoxMiqdar.Text);
-                    cart.SoldPrice = decimal.Parse(textBoxQiymet.Text);
+                    cart.Quantity =  int.Parse(textBoxMiqdar.Text);
+                    cart.SoldPrice = decimal.Parse(textBoxQiymet.Text == "" ? textBoxMaxQiymet.Text : textBoxMaxQiymet.Text);
                     cart.TotalPrice = cart.SoldPrice * cart.Quantity;
                     cartUpdated = _cartManager.Update(cart);
                     if (!cartUpdated.Success)
@@ -223,7 +224,7 @@ namespace WindowsForm.Forms
                     {
 
                         Product product = _productManager.GetByProductId(cart.ProductId).Data;
-                        product.UnitsOnOrder += cart.Quantity;
+                        product.UnitsInStock -= cart.Quantity;
                         saleWinForm.Id = 0;
                         saleWinForm.ProductId = cart.ProductId;
                         saleWinForm.UserId = cart.UserId;
@@ -234,16 +235,16 @@ namespace WindowsForm.Forms
                         {
                             return;
                         }
-                       
+
                         saleWinFormAdded = _saleWinFormManager.Add(saleWinForm);
                         productUpdated = _productManager.Update(product);
-                        if (!saleWinFormAdded.Success||!productUpdated.Success)
+                        if (!saleWinFormAdded.Success || !productUpdated.Success)
                         {
-                            messages.Add(product.BarcodeNumber+product.ProductName+saleWinFormAdded.Message + " & " + productUpdated.Message);
-                           
+                            messages.Add(product.BarcodeNumber + product.ProductName + saleWinFormAdded.Message + " & " + productUpdated.Message);
+
                         }
-                        messages.Add(product.ProductName + saleWinFormAdded.Message +" & "+productUpdated.Message);
-     
+                        messages.Add(product.ProductName + saleWinFormAdded.Message + " & " + productUpdated.Message);
+
 
                     }
                     foreach (string message in messages)
@@ -401,7 +402,7 @@ namespace WindowsForm.Forms
         {
             try
             {
-                CalculateTotalPrice(int.Parse(textBoxMiqdar.Text), decimal.Parse(textBoxQiymet.Text));
+                CalculateTotalPrice(int.Parse(textBoxMiqdar.Text), decimal.Parse(textBoxQiymet.Text == "" ? textBoxMaxQiymet.Text : textBoxQiymet.Text));
             }
             catch (Exception)
             {
