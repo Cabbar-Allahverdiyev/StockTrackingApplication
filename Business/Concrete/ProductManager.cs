@@ -78,9 +78,9 @@ namespace Business.Concrete
         }
 
         [CacheAspect]
-        public IDataResult<Product> GetByProductBarodeNumber(int barodeNumber)
+        public IDataResult<Product> GetByProductBarcodeNumber(string barodeNumber)
         {
-            Product get = _productDal.Get(p => p.BarcodeNumber == barodeNumber);
+            Product get = _productDal.Get(p => p.BarcodeNumber.Equals( barodeNumber));
             if (get == null)
             {
                 return new ErrorDataResult<Product>(ProductMessages.ProductNotFound);
@@ -103,7 +103,7 @@ namespace Business.Concrete
         }
 
         [CacheAspect]
-        public IDataResult<List<ProductViewDashboardDetailDto>> GetAllProductViewDasgboardDetails()
+        public IDataResult<List<ProductViewDashboardDetailDto>> GetAllProductViewDasboardDetails()
         {
             List<ProductViewDashboardDetailDto> get = _productDal.GetProductViewDashboardDetails();
             if (get == null)
@@ -113,7 +113,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<ProductViewDashboardDetailDto>>(get, ProductMessages.ProductGetAll);
         }
 
-        public IDataResult<List<ProductViewDashboardDetailDto>> GetProductViewDasgboardDetailByBarcodeNumber(int barcodeNumber)
+        public IDataResult<List<ProductViewDashboardDetailDto>> GetProductViewDasboardDetailByBarcodeNumber(string barcodeNumber)
         {
             List<ProductViewDashboardDetailDto> get = _productDal.GetProductViewDashboardDetails(p => p.BarcodeNomresi.Equals(barcodeNumber));
             if (get == null)
@@ -169,12 +169,12 @@ namespace Business.Concrete
 
 
         //Elave Metodlar------------------------->
-        private IResult IsBarcodeNumberExists(int barcodeNumber)
+        private IResult IsBarcodeNumberExists(string barcodeNumber)
         {
             List<Product> getAll = _productDal.GetAll();
             foreach (Product product in getAll)
             {
-                if (product.BarcodeNumber == barcodeNumber)
+                if (product.BarcodeNumber.Equals(barcodeNumber))
                 {
                     return new ErrorResult(ProductMessages.BarcodeNumberAvailable);
                 }
@@ -195,6 +195,6 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-      
+
     }
 }

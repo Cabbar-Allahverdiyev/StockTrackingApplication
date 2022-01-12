@@ -35,7 +35,7 @@ namespace WindowsForm.Forms
 
         private void ProductUpdateForm_Load(object sender, EventArgs e)
         {
-            IDataResult<List<ProductViewDashboardDetailDto>> getProductDashboard = _productManager.GetAllProductViewDasgboardDetails();
+            IDataResult<List<ProductViewDashboardDetailDto>> getProductDashboard = _productManager.GetAllProductViewDasboardDetails();
             dataGridViewPrdouctList.DataSource = getProductDashboard.Data;
 
             BrandGetComboBoxVarOlan();
@@ -46,8 +46,8 @@ namespace WindowsForm.Forms
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            List<ProductViewDashboardDetailDto> data = _productManager.GetAllProductViewDasgboardDetails().Data;
-            List<ProductViewDashboardDetailDto> oldData = _productManager.GetAllProductViewDasgboardDetails().Data;
+            List<ProductViewDashboardDetailDto> data = _productManager.GetAllProductViewDasboardDetails().Data;
+            List<ProductViewDashboardDetailDto> oldData = _productManager.GetAllProductViewDasboardDetails().Data;
             ProductViewDashboardDetailsSearch search = new ProductViewDashboardDetailsSearch();
             search.Search(data, oldData, textBoxAxtar.Text, dataGridViewPrdouctList);
 
@@ -68,7 +68,7 @@ namespace WindowsForm.Forms
                     newUnitInStock = 0;
                 }
 
-                product.BarcodeNumber = Convert.ToInt32(textBoxVarOlanBarkodNo.Text);
+                product.BarcodeNumber = textBoxVarOlanBarkodNo.Text;
                 product.CategoryId = Convert.ToInt32(comboBoxVarOlanKateqoriya.SelectedValue);
                 product.BrandId = Convert.ToInt32(comboBoxVarOlanMarka.SelectedValue);
                 product.SupplierId = Convert.ToInt32(comboBoxVarOlanTedarikci.SelectedValue);
@@ -99,7 +99,7 @@ namespace WindowsForm.Forms
                 }
                 FormsMessage.SuccessMessage(productUpdated.Message);
                 GroupBoxVarOlanMehsulControlClear();
-                dataGridViewPrdouctList.DataSource = _productManager.GetAllProductViewDasgboardDetails().Data;
+                dataGridViewPrdouctList.DataSource = _productManager.GetAllProductViewDasboardDetails().Data;
             }
             catch (Exception)
             {

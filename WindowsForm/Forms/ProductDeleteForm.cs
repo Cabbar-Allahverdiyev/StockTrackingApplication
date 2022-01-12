@@ -33,7 +33,7 @@ namespace WindowsForm.Forms
 
         private void ProductDeleteForm_Load(object sender, EventArgs e)
         {
-            IDataResult<List<ProductViewDashboardDetailDto>> getProductDashboard = _productManager.GetAllProductViewDasgboardDetails();
+            IDataResult<List<ProductViewDashboardDetailDto>> getProductDashboard = _productManager.GetAllProductViewDasboardDetails();
             dataGridViewProductList.DataSource = getProductDashboard.Data;
 
             BrandGetComboBoxVarOlan();
@@ -46,7 +46,7 @@ namespace WindowsForm.Forms
         {
             try
             {
-                Product result = _productManager.GetByProductBarodeNumber(int.Parse(textBoxVarOlanBarkodNo.Text)).Data;
+                Product result = _productManager.GetByProductBarcodeNumber(textBoxVarOlanBarkodNo.Text).Data;
                 product.Id = result.Id;
                 IResult productDeleted = _productManager.Delete(product);
                 if (!productDeleted.Success)
@@ -67,8 +67,8 @@ namespace WindowsForm.Forms
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            List<ProductViewDashboardDetailDto> data = _productManager.GetAllProductViewDasgboardDetails().Data;
-            List<ProductViewDashboardDetailDto> oldData = _productManager.GetAllProductViewDasgboardDetails().Data;
+            List<ProductViewDashboardDetailDto> data = _productManager.GetAllProductViewDasboardDetails().Data;
+            List<ProductViewDashboardDetailDto> oldData = _productManager.GetAllProductViewDasboardDetails().Data;
             ProductViewDashboardDetailsSearch search = new ProductViewDashboardDetailsSearch();
             search.Search(data,oldData,textBoxAxtar.Text,dataGridViewProductList);
 

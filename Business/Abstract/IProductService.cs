@@ -14,10 +14,10 @@ namespace Business.Abstract
         IResult Update(Product product);
         IResult Delete(Product product);
         IDataResult<Product> GetByProductId(int productId);
-        IDataResult<Product> GetByProductBarodeNumber(int barcodeNumber);
+        IDataResult<Product> GetByProductBarcodeNumber(string barcodeNumber);
         IDataResult<List<ProductViewDetailDto>> GetProductViewDetails();
-        IDataResult<List<ProductViewDashboardDetailDto>> GetAllProductViewDasgboardDetails();
-        IDataResult<List<ProductViewDashboardDetailDto>> GetProductViewDasgboardDetailByBarcodeNumber(int barcodeNumber);
+        IDataResult<List<ProductViewDashboardDetailDto>> GetAllProductViewDasboardDetails();
+        IDataResult<List<ProductViewDashboardDetailDto>> GetProductViewDasboardDetailByBarcodeNumber(string barcodeNumber);
         IDataResult<List<ProductCompactDetailDto>> GetProductCompactDetails();
         IDataResult<List<ProductCompactDetailDto>> GetByPrdouctNameCompactDetails(string productName);
         IDataResult<ProductViewDetailDto> GetProductViewProductIdDetail(int productId);

@@ -32,7 +32,7 @@ namespace WindowsForm.Forms
 
         private void FormProductList_Load(object sender, EventArgs e)
         {
-            IDataResult<List<ProductViewDashboardDetailDto>> getProductDashboard = _productManager.GetAllProductViewDasgboardDetails();
+            IDataResult<List<ProductViewDashboardDetailDto>> getProductDashboard = _productManager.GetAllProductViewDasboardDetails();
             dataGridViewFormPrdouctList.DataSource = getProductDashboard.Data;
 
             BrandGetComboBoxVarOlan();
@@ -107,8 +107,8 @@ namespace WindowsForm.Forms
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
             ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
-            List<ProductViewDashboardDetailDto> data = _productManager.GetAllProductViewDasgboardDetails().Data;
-            List<ProductViewDashboardDetailDto> oldData = _productManager.GetAllProductViewDasgboardDetails().Data;
+            List<ProductViewDashboardDetailDto> data = _productManager.GetAllProductViewDasboardDetails().Data;
+            List<ProductViewDashboardDetailDto> oldData = _productManager.GetAllProductViewDasboardDetails().Data;
             detailsSearch.Search(data, oldData, textBoxAxtar.Text, dataGridViewFormPrdouctList);
 
         }

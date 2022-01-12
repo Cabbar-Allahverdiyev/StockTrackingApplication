@@ -8,7 +8,7 @@ namespace Entities.DTOs
     public class ProductViewDashboardDetailDto: IDto
     {
         public int ProductId { get; set; }
-        public int BarcodeNomresi { get; set; }
+        public string BarcodeNomresi { get; set; }
         public string Kateqoriya { get; set; }
         public string Marka { get; set; }
         public string MehsulAdi { get; set; }

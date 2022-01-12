@@ -9,7 +9,7 @@ namespace Entities.DTOs
     {
         public int CartId { get; set; }
         public int ProductId { get; set; }
-        public int BarcodeNumber { get; set; }
+        public string BarcodeNumber { get; set; }
         public int UserId { get; set; }
         public decimal SoldPrice { get; set; }
         public int Quantity { get; set; }

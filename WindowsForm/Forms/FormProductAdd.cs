@@ -45,7 +45,7 @@ namespace WindowsForm.Forms
             try
             {
                 Product product = new Product();
-                product.BarcodeNumber = Convert.ToInt32(TextBoxFormProductAddBarkodNo.Text);
+                product.BarcodeNumber =TextBoxFormProductAddBarkodNo.Text;
                 product.BrandId = Convert.ToInt32(ComboBoxFormProductAddMarka.SelectedValue);
                 product.CategoryId = Convert.ToInt32(ComboBoxFormProductAddKategoriya.SelectedValue);
                 product.SupplierId = Convert.ToInt32(ComboBoxFormProductAddTedarikci.SelectedValue);

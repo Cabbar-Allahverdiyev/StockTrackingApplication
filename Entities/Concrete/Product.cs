@@ -17,7 +17,7 @@ namespace Entities.Concrete
         public decimal PurchasePrice { get; set; }
         public decimal UnitPrice { get; set; }
         public string ProductName { get; set; }
-        public int BarcodeNumber { get; set; }
+        public string BarcodeNumber { get; set; }
         public string QuantityPerUnit { get; set; }
         public string Description { get; set; }
         public DateTime LastModifiedDate { get; set; }

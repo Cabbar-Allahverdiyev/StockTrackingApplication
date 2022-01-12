@@ -21,7 +21,7 @@ namespace DataAccess.Concrete.EntityFramework
             using (StockTrackingProjectContext context = new StockTrackingProjectContext())
             {
                 var result = from c in context.Carts
-                             join p in context.Products.Where(product => product.BarcodeNumber == barcodeNumber) on c.ProductId equals p.Id
+                             join p in context.Products.Where(product => product.BarcodeNumber .Equals( barcodeNumber)) on c.ProductId equals p.Id
                              select new CartAddDto
                              {
                                  CartId = c.Id,

@@ -378,7 +378,7 @@ namespace WindowsForm.Forms
 
         private void ProductListRefesh()
         {
-            dataGridViewProductList.DataSource = _productManager.GetAllProductViewDasgboardDetails().Data;
+            dataGridViewProductList.DataSource = _productManager.GetAllProductViewDasboardDetails().Data;
         }
 
 
