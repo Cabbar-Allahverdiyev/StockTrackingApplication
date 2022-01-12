@@ -148,14 +148,16 @@ namespace WindowsForm.Forms
         {
             try
             {
-                Cart cart = new Cart();
-                IResult cartUpdated;
-                IResult cartAdded;
+                
                 if (textBoxProductId.Text == "")
                 {
                     FormsMessage.ErrorMessage(ProductMessages.SureFillInFields);
                     return;
                 }
+                Cart cart = new Cart();
+                IResult cartUpdated;
+                IResult cartAdded;
+
                 cart.ProductId = int.Parse(textBoxProductId.Text);
                 cart.SoldPrice = textBoxQiymet.Text == "" ? decimal.Parse(textBoxMaxQiymet.Text) : decimal.Parse(textBoxQiymet.Text);
                 cart.Quantity = int.Parse(textBoxMiqdar.Text);
@@ -172,7 +174,7 @@ namespace WindowsForm.Forms
                     CartAddDto cartAddDto = _cartManager.GetCartAddDetailByBarcodeNumber(int.Parse(textBoxBarkodNo.Text)).Data;
                     cart.Id = cartAddDto.CartId;
                     cart.Quantity =  int.Parse(textBoxMiqdar.Text);
-                    cart.SoldPrice = decimal.Parse(textBoxQiymet.Text == "" ? textBoxMaxQiymet.Text : textBoxMaxQiymet.Text);
+                    cart.SoldPrice = decimal.Parse(textBoxQiymet.Text == "" ? textBoxMaxQiymet.Text : textBoxQiymet.Text);
                     cart.TotalPrice = cart.SoldPrice * cart.Quantity;
                     cartUpdated = _cartManager.Update(cart);
                     if (!cartUpdated.Success)

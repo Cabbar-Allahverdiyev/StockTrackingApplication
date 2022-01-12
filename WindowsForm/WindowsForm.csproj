@@ -37,4 +37,10 @@
     <Folder Include="Wwwroot\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="USB-Barcode-Scanner">
+      <HintPath>..\..\USBBarcodeScanner\USB-Barcode-Scanner.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
