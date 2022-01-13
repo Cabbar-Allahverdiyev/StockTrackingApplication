@@ -115,8 +115,8 @@ namespace Business.Concrete
 
         public IDataResult<List<ProductViewDashboardDetailDto>> GetProductViewDasboardDetailByBarcodeNumber(string barcodeNumber)
         {
-            List<ProductViewDashboardDetailDto> get = _productDal.GetProductViewDashboardDetails(p => p.BarcodeNomresi.Equals(barcodeNumber));
-            if (get == null)
+            List<ProductViewDashboardDetailDto> get = _productDal.GetProductViewDashboardDetails(p => p.BarcodeNomresi==barcodeNumber);
+            if (get.Count == 0)
             {
                 return new ErrorDataResult<List<ProductViewDashboardDetailDto>>(ProductMessages.ProductNotFound);
             }

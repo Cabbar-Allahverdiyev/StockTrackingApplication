@@ -35,6 +35,7 @@ namespace WindowsForm.Forms
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridViewFormPrdouctList = new System.Windows.Forms.DataGridView();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFormPrdouctList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,11 +97,20 @@ namespace WindowsForm.Forms
             this.dataGridViewFormPrdouctList.Size = new System.Drawing.Size(578, 262);
             this.dataGridViewFormPrdouctList.TabIndex = 6;
             // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(153, 34);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(155, 23);
+            this.textBox4.TabIndex = 7;
+            this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox4_KeyPress);
+            // 
             // USBBarcodeScannerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.dataGridViewFormPrdouctList);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox3);
@@ -123,5 +133,6 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridViewFormPrdouctList;
+        private System.Windows.Forms.TextBox textBox4;
     }
 }

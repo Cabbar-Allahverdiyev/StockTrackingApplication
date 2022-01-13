@@ -21,8 +21,8 @@ namespace WindowsForm.Forms
             InitializeComponent();
             BarcodeScanner barcodeScanner = new BarcodeScanner(textBox1);
             barcodeScanner.BarcodeScanned += BarcodeScanner_BarcodeScanned;
-           // dataGridViewFormPrdouctList.DataSource = productManager.GetAll().Data;
-            //
+            dataGridViewFormPrdouctList.DataSource = productManager.GetAll().Data;
+
 
         }
         ProductManager productManager = new ProductManager(new EfProductDal());
@@ -36,16 +36,16 @@ namespace WindowsForm.Forms
         {
             //dataGridViewFormPrdouctList.DataSource = null;
             string brcode = textBox1.Text;
-            if (brcode.Length==13)
+            if (brcode.Length >= 13)
             {
                 IDataResult<List<ProductViewDashboardDetailDto>> data = productManager.GetProductViewDasboardDetailByBarcodeNumber(brcode);
                 if (data.Success == false)
                 {
                     textBox3.Text = textBox1.Text;
-                    
+                    return;
                 }
                 dataGridViewFormPrdouctList.DataSource = data.Data;
-               
+
             }
 
         }
@@ -65,5 +65,15 @@ namespace WindowsForm.Forms
             dataGridViewFormPrdouctList.DataSource = data.Data;
 
         }
+
+        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        //public IDataResult<ProductViewDashboardDetailDto> GetProductByBarcodeNumber(string barcodeNumber)
+        //{
+
+        //} 
     }
 }
