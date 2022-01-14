@@ -21,6 +21,7 @@ namespace WindowsForm.Forms
     {
         SupplierManager _suplierManager = new SupplierManager(new EfSupplierDal());
         SupplierValidationTool validationTool = new SupplierValidationTool();
+        SupplierSearch search = new SupplierSearch();
         public SupplierForm()
         {
             InitializeComponent();
@@ -74,12 +75,7 @@ namespace WindowsForm.Forms
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            List<Supplier> data = _suplierManager.GetAll().Data;
-            List<Supplier> oldData = _suplierManager.GetAll().Data;
-            SupplierSearch supplierSearch = new SupplierSearch();
-            supplierSearch.Search(data, oldData, textBoxAxtar.Text, dataGridViewSupplierListed);
-
-
+            search.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewSupplierListed);
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using Business.Constants.Messages;
+﻿using Business.Concrete;
+using Business.Constants.Messages;
+using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -11,6 +13,16 @@ namespace WindowsForm.Utilities.Search.Concrete.BrandSearch
 {
     public class BrandSearch : IWinFormsSearch
     {
+        BrandManager _brandManager = new BrandManager(new EfBrandDal());
+
+        public void GetDataWriteGridView(string seachText, DataGridView dataGridView)
+        {
+           
+            List<Brand> data = _brandManager.GetAll().Data;
+            List<Brand> oldData = _brandManager.GetAll().Data;
+            Search(data, oldData, seachText, dataGridView);
+        }
+
         public void Search(List<Brand> data, List<Brand> oldData, string searchText, DataGridView dataGridView)
         {
 

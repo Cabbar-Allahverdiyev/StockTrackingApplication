@@ -28,6 +28,7 @@ namespace WindowsForm.Forms
         ProductManager _productManager = new ProductManager(new EfProductDal());
         Product product = new Product();
         ProductValidationTool validationTool = new ProductValidationTool();
+        ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
 
         CategoryManager _categoryManager = new CategoryManager(new EfCategoryDal());
         BrandManager _brandManager = new BrandManager(new EfBrandDal());
@@ -46,11 +47,7 @@ namespace WindowsForm.Forms
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            List<ProductViewDashboardDetailDto> data = _productManager.GetAllProductViewDasboardDetails().Data;
-            List<ProductViewDashboardDetailDto> oldData = _productManager.GetAllProductViewDasboardDetails().Data;
-            ProductViewDashboardDetailsSearch search = new ProductViewDashboardDetailsSearch();
-            search.Search(data, oldData, textBoxAxtar.Text, dataGridViewPrdouctList);
-
+            detailsSearch.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewPrdouctList);
         }
 
         private void ButtonVarOlanYenile_Click(object sender, EventArgs e)
@@ -131,33 +128,23 @@ namespace WindowsForm.Forms
         }
 
 
-
-
         //elave metodlar------------------->
         //CategoryGetComboBoxVarOlan(),CategoryGetComboBoxVarOlan(),SupplierGetComboBox(),GroupBoxVarOlanMehsulControlClear()
         //Genericlestir mutleq
         private void CategoryGetComboBoxVarOlan()
         {
-
             var categoryGetAll = _categoryManager.GetAll();
-
             comboBoxVarOlanKateqoriya.DataSource = categoryGetAll.Data;
             comboBoxVarOlanKateqoriya.DisplayMember = "CategoryName";
             comboBoxVarOlanKateqoriya.ValueMember = "Id";
-
-
         }
-
-
 
         private void BrandGetComboBoxVarOlan()
         {
             var brandGetAll = _brandManager.GetAll();
-
             comboBoxVarOlanMarka.DataSource = brandGetAll.Data;
             comboBoxVarOlanMarka.DisplayMember = "BrandName";
             comboBoxVarOlanMarka.ValueMember = "Id";
-
         }
 
 
@@ -183,16 +170,9 @@ namespace WindowsForm.Forms
                 {
                     control.Text = "";
                 }
-
                 LabelMiqdarVB.Text = "";
-
-
             }
         }
-
-       
-
-
     }
 }
 

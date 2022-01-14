@@ -17,7 +17,7 @@ namespace WindowsForm.Forms
     public partial class FormUserListed : Form
     {
         UserManager _userService = new UserManager(new EfUserDal());
-
+        UserDtoSearch detailSearch = new UserDtoSearch();
         public FormUserListed()
         {
             InitializeComponent();
@@ -46,10 +46,7 @@ namespace WindowsForm.Forms
 
         private void TextBoxFormUserListedAxtar_TextChanged(object sender, EventArgs e)
         {
-            List<UserDto> data = _userService.GetUserDetails().Data;
-            List<UserDto> oldData = _userService.GetUserDetails().Data;
-            UserDtoSearch search = new UserDtoSearch();
-            search.Search(data,oldData,textBoxFormUserListedAxtar.Text,dataGridViewUserListed);
+            detailSearch.GetDataWriteGridView(textBoxFormUserListedAxtar.Text, dataGridViewUserListed);
         }
 
 

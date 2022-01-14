@@ -26,7 +26,7 @@ namespace WindowsForm.Forms
 
         CategoryManager _categoryManager = new CategoryManager(new EfCategoryDal());
         CategoryValidationTool validationTool = new CategoryValidationTool();
-       
+        CategorySearch search = new CategorySearch();
 
         private void FormCategory_Load(object sender, EventArgs e)
         {
@@ -49,7 +49,6 @@ namespace WindowsForm.Forms
             {
                 FormsMessage.SuccessMessage(categoryAdd.Message);
                 DataGridViewFormCategory.DataSource = _categoryManager.GetAll().Data;
-
             }
             else
             {
@@ -69,10 +68,7 @@ namespace WindowsForm.Forms
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            CategorySearch search = new CategorySearch();
-            List<Category> data = _categoryManager.GetAll().Data;
-            List<Category> oldData = _categoryManager.GetAll().Data;
-            search.Search(data,oldData,textBoxAxtar.Text, DataGridViewFormCategory);
+            search.GetDataWriteGridView(textBoxAxtar.Text, DataGridViewFormCategory);
         }
     }
 }

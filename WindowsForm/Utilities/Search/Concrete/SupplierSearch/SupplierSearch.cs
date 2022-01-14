@@ -1,4 +1,6 @@
-﻿using Business.Constants.Messages;
+﻿using Business.Concrete;
+using Business.Constants.Messages;
+using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -11,9 +13,17 @@ namespace WindowsForm.Utilities.Search.Concrete.SupplierSearch
 {
     public class SupplierSearch : IWinFormsSearch
     {
+        SupplierManager _supplierManager = new SupplierManager(new EfSupplierDal());
+
+        public void GetDataWriteGridView(string seachText, DataGridView dataGridView)
+        {
+            List<Supplier> data = _supplierManager.GetAll().Data;
+            List<Supplier> oldData = _supplierManager.GetAll().Data;
+            Search(data, oldData, seachText, dataGridView);
+        }
+
         public void Search(List<Supplier> data, List<Supplier> oldData, string searchText, DataGridView dataGridView)
         {
-
             List<Supplier> newList = new List<Supplier>();
             List<Supplier> oldList = oldData;
             List<Supplier> list = data;

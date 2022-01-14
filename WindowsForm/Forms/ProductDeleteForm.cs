@@ -25,6 +25,7 @@ namespace WindowsForm.Forms
         BrandManager _brandManager = new BrandManager(new EfBrandDal());
         SupplierManager _supplierManager = new SupplierManager(new EfSupplierDal());
 
+        ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
         public ProductDeleteForm()
         {
             InitializeComponent();
@@ -67,11 +68,7 @@ namespace WindowsForm.Forms
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            List<ProductViewDashboardDetailDto> data = _productManager.GetAllProductViewDasboardDetails().Data;
-            List<ProductViewDashboardDetailDto> oldData = _productManager.GetAllProductViewDasboardDetails().Data;
-            ProductViewDashboardDetailsSearch search = new ProductViewDashboardDetailsSearch();
-            search.Search(data,oldData,textBoxAxtar.Text,dataGridViewProductList);
-
+            detailsSearch.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewProductList);
         }
 
         private void dataGridViewFormPrdouctList_DoubleClick(object sender, EventArgs e)

@@ -1,4 +1,6 @@
-﻿using Business.Constants.Messages;
+﻿using Business.Concrete;
+using Business.Constants.Messages;
+using DataAccess.Concrete.EntityFramework;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
@@ -11,6 +13,17 @@ namespace WindowsForm.Utilities.Search.Concrete.ProductSearch
 {
     public class ProductViewDashboardDetailsSearch : IWinFormsSearch
     {
+        ProductManager _productManager = new ProductManager(new EfProductDal());
+       
+
+        public void GetDataWriteGridView(string seachText,DataGridView dataGridView)
+        {
+            
+            List<ProductViewDashboardDetailDto> data = _productManager.GetAllProductViewDasboardDetails().Data;
+            List<ProductViewDashboardDetailDto> oldData = _productManager.GetAllProductViewDasboardDetails().Data;
+            Search(data, oldData, seachText, dataGridView);
+        }
+
         public void Search(List<ProductViewDashboardDetailDto> data, List<ProductViewDashboardDetailDto> oldData, string searchText, DataGridView dataGridView)
         {
 

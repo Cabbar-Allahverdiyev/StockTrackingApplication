@@ -10,7 +10,6 @@ namespace Entities.DTOs
         public int SaleId { get; set; }
         public int ProductId { get; set; }
         public string MehsulAdi { get; set; }
-        public int UserId { get; set; }
         public string Istifadeci { get; set; }
         public decimal SatilanQiymet { get; set; }
         public int Miqdar { get; set; }

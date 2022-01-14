@@ -20,7 +20,7 @@ using WindowsForm.Core.Controllers;
 using WindowsForm.Core.Controllers.ValidatorControllers;
 using USB_Barcode_Scanner;
 using WindowsForm.Utilities.BarcodeScanner;
-
+using WindowsForm.Utilities.Search.Concrete.ProductSearch;
 
 namespace WindowsForm.Forms
 {
@@ -47,6 +47,7 @@ namespace WindowsForm.Forms
         SaleWinFormManager _saleWinFormManager = new SaleWinFormManager(new EfSaleWinFormDal());
         CartValidationTool cartValidationTool = new CartValidationTool();
         SaleValidationTool saleValidationTool = new SaleValidationTool();
+        ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
 
 
         //private void BarcodeScanner_BarcodeScanned(object sender, BarcodeScannerEventArgs e)
@@ -312,6 +313,12 @@ namespace WindowsForm.Forms
 
         }
 
+        private void textBoxAxtar_TextChanged(object sender, EventArgs e)
+        {
+            
+            detailsSearch.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewProductList);
+        }
+
         private void textBoxBarkodNo_TextChanged(object sender, EventArgs e)
         {
             string barcodeNumber = textBoxBarkodNo.Text;
@@ -456,6 +463,6 @@ namespace WindowsForm.Forms
             }
         }
 
-
+        
     }
 }

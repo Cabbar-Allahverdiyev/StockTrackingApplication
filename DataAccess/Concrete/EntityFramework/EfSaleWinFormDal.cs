@@ -24,13 +24,13 @@ namespace DataAccess.Concrete.EntityFramework
                              {
                                  SaleId = s.Id,
                                  ProductId = s.ProductId,
-                                 MehsulAdi=p.ProductName,
-                                 UserId=s.UserId,
-                                 Istifadeci=$"{u.FirstName} {u.LastName}",
-                                 SatilanQiymet=s.SoldPrice,
-                                 Miqdar=s.Quantity,
-                                 Cem=s.SoldPrice*s.Quantity
-                                 
+                                 MehsulAdi = p.ProductName,
+                                 Istifadeci = $"{u.FirstName} {u.LastName}",
+                                 SatilanQiymet = s.SoldPrice,
+                                 Miqdar = s.Quantity,
+                                 Cem = s.SoldPrice * s.Quantity,
+                                 Tarix = s.SellDate
+
                              };
 
                 return filter == null ? result.ToList() : result.Where(filter).ToList();
@@ -40,4 +40,3 @@ namespace DataAccess.Concrete.EntityFramework
     }
 }
 
-   

@@ -97,7 +97,7 @@ namespace WindowsForm.Forms
             this.ButtonSalesFormSil.Image = ((System.Drawing.Image)(resources.GetObject("ButtonSalesFormSil.Image")));
             this.ButtonSalesFormSil.Location = new System.Drawing.Point(150, 410);
             this.ButtonSalesFormSil.Name = "ButtonSalesFormSil";
-            this.ButtonSalesFormSil.Size = new System.Drawing.Size(88, 22);
+            this.ButtonSalesFormSil.Size = new System.Drawing.Size(88, 23);
             this.ButtonSalesFormSil.TabIndex = 2;
             this.ButtonSalesFormSil.Text = "Sil";
             this.ButtonSalesFormSil.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -467,6 +467,7 @@ namespace WindowsForm.Forms
             this.textBoxAxtar.Name = "textBoxAxtar";
             this.textBoxAxtar.Size = new System.Drawing.Size(138, 22);
             this.textBoxAxtar.TabIndex = 18;
+            this.textBoxAxtar.TextChanged += new System.EventHandler(this.textBoxAxtar_TextChanged);
             // 
             // SalesForm
             // 

@@ -27,6 +27,7 @@ namespace WindowsForm.Forms
 
         BrandManager _brandManager = new BrandManager(new EfBrandDal());
         BrandValidationTool validationTool = new BrandValidationTool();
+        BrandSearch brandSearch = new BrandSearch();
 
         private void FormBrand_Load(object sender, EventArgs e)
         {
@@ -45,7 +46,7 @@ namespace WindowsForm.Forms
                 {
                     return;
                 }
-               
+
 
                 IResult brandAdd = _brandManager.Add(brand);
                 if (brandAdd.Success)
@@ -73,17 +74,14 @@ namespace WindowsForm.Forms
                 FormsMessage.ErrorMessage(AuthMessages.ErrorMessage);
                 return;
             }
-           
+
 
 
         }
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            BrandSearch brandSearch = new BrandSearch();
-            List<Brand> data = _brandManager.GetAll().Data;
-            List<Brand> oldData = _brandManager.GetAll().Data;
-            brandSearch.Search(data, oldData, textBoxAxtar.Text, dataGridViewBrandsListed);
+            brandSearch.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewBrandsListed);
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using Business.Constants.Messages;
+﻿using Business.Concrete;
+using Business.Constants.Messages;
+using DataAccess.Concrete.EntityFramework;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
@@ -11,6 +13,15 @@ namespace WindowsForm.Utilities.Search.Concrete.UserSearch
 {
     public class UserDtoSearch : IWinFormsSearch
     {
+        UserManager _userManager = new UserManager(new EfUserDal());
+
+        public void GetDataWriteGridView(string seachText, DataGridView dataGridView)
+        {
+            List<UserDto> data = _userManager.GetUserDetails().Data;
+            List<UserDto> oldData = _userManager.GetUserDetails().Data;
+            Search(data, oldData, seachText, dataGridView);
+        }
+
 
         public void Search(List<UserDto> data, List<UserDto> oldData, string searchText, DataGridView dataGridView)
         {

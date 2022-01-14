@@ -29,6 +29,7 @@ namespace WindowsForm.Forms
         CategoryManager _categoryManager = new CategoryManager(new EfCategoryDal());
         BrandManager _brandManager = new BrandManager(new EfBrandDal());
         SupplierManager _supplierManager = new SupplierManager(new EfSupplierDal());
+        ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
 
         private void FormProductList_Load(object sender, EventArgs e)
         {
@@ -41,7 +42,7 @@ namespace WindowsForm.Forms
             GroupBoxVarOlanMehsulControlClear();
         }
 
-        
+
 
         private void dataGridViewFormPrdouctList_DoubleClick(object sender, EventArgs e)
         {
@@ -106,11 +107,7 @@ namespace WindowsForm.Forms
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
-            List<ProductViewDashboardDetailDto> data = _productManager.GetAllProductViewDasboardDetails().Data;
-            List<ProductViewDashboardDetailDto> oldData = _productManager.GetAllProductViewDasboardDetails().Data;
-            detailsSearch.Search(data, oldData, textBoxAxtar.Text, dataGridViewFormPrdouctList);
-
+            detailsSearch.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewFormPrdouctList);
         }
 
 
@@ -126,17 +123,9 @@ namespace WindowsForm.Forms
                 {
                     control.Text = "";
                 }
-
                 LabelMiqdarVB.Text = "";
-
-
             }
         }
-
-       
-
-       
-
 
         private void ChangeTheColorOfTheSoughtValue(int columnIndex)
         {
@@ -165,7 +154,5 @@ namespace WindowsForm.Forms
             }
             return cellWhereTextIsMet;
         }
-
-
     }
 }

@@ -29,7 +29,7 @@ namespace WindowsForm.Forms
         SupplierManager _supplierManager = new SupplierManager(new EfSupplierDal());
         ProductValidationTool validationTool = new ProductValidationTool();
 
-
+        ProductViewDetailSearch detailSearch = new ProductViewDetailSearch();
 
         private void FormProductAdd_Load(object sender, EventArgs e)
         {
@@ -45,7 +45,7 @@ namespace WindowsForm.Forms
             try
             {
                 Product product = new Product();
-                product.BarcodeNumber =TextBoxFormProductAddBarkodNo.Text;
+                product.BarcodeNumber = TextBoxFormProductAddBarkodNo.Text;
                 product.BrandId = Convert.ToInt32(ComboBoxFormProductAddMarka.SelectedValue);
                 product.CategoryId = Convert.ToInt32(ComboBoxFormProductAddKategoriya.SelectedValue);
                 product.SupplierId = Convert.ToInt32(ComboBoxFormProductAddTedarikci.SelectedValue);
@@ -58,9 +58,7 @@ namespace WindowsForm.Forms
                 product.Description = TextBoxFormProductAddAciqlama.Text;
 
                 if (!validationTool.IsValid(product))
-                {
-                    return;
-                }
+                { return; }
 
                 IResult productAdd = _productManager.Add(product);
                 if (!productAdd.Success)
@@ -72,12 +70,9 @@ namespace WindowsForm.Forms
                 GroupBoxYeniMehsulControlClear();
                 dataGridViewProductList.DataSource = _productManager.GetProductCompactDetails().Data;
                 FormsMessage.SuccessMessage(productAdd.Message);
-
-
             }
             catch (Exception)
             {
-
                 FormsMessage.ErrorMessage(AuthMessages.ErrorMessage);
                 return;
             }
@@ -95,12 +90,7 @@ namespace WindowsForm.Forms
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            //var data = _productManager.GetProductCompactDetails().Data;
-            //var oldData = _productManager.GetProductCompactDetails().Data;
-            List<ProductViewDetailDto> data = _productManager.GetProductViewDetails().Data;
-            List<ProductViewDetailDto> oldData = _productManager.GetProductViewDetails().Data;
-            ProductViewDetailSearch search = new ProductViewDetailSearch();
-            search.Search(data, oldData, textBoxAxtar.Text, dataGridViewProductList);
+            detailSearch.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewProductList);
         }
 
 
@@ -126,7 +116,6 @@ namespace WindowsForm.Forms
         private void CategoryGetComboBoxYeni()
         {
             var categoryGetAll = _categoryManager.GetAll();
-
             ComboBoxFormProductAddKategoriya.DataSource = categoryGetAll.Data;
             ComboBoxFormProductAddKategoriya.DisplayMember = "CategoryName";
             ComboBoxFormProductAddKategoriya.ValueMember = "Id";
@@ -150,10 +139,5 @@ namespace WindowsForm.Forms
             ComboBoxFormProductAddTedarikci.DisplayMember = "CompanyName";
             ComboBoxFormProductAddTedarikci.ValueMember = "Id";
         }
-
-       
-
-
-
     }
 }
