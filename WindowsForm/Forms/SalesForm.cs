@@ -18,6 +18,9 @@ using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.Concrete;
 using WindowsForm.Core.Controllers;
 using WindowsForm.Core.Controllers.ValidatorControllers;
+using USB_Barcode_Scanner;
+using WindowsForm.Utilities.BarcodeScanner;
+
 
 namespace WindowsForm.Forms
 {
@@ -27,6 +30,16 @@ namespace WindowsForm.Forms
         {
             InitializeComponent();
             TotalPriceLabelWrite();
+
+            BarcodeScanner barcodeScanner = new BarcodeScanner(textBoxBarkodNo);
+            barcodeScanner.BarcodeScanned += BarcodeScanner_BarcodeScanned;
+        }
+
+        private void SalesForm_Load(object sender, EventArgs e)
+        {
+            ProductListRefesh();
+            CartListRefesh();
+            GroupBoxMehsulControlClear();
         }
 
         ProductManager _productManager = new ProductManager(new EfProductDal());
@@ -35,15 +48,22 @@ namespace WindowsForm.Forms
         CartValidationTool cartValidationTool = new CartValidationTool();
         SaleValidationTool saleValidationTool = new SaleValidationTool();
 
+
+        //private void BarcodeScanner_BarcodeScanned(object sender, BarcodeScannerEventArgs e)
+        //{
+        //    USBBarcodeScannerExtension barcodeScannerExtension = new USBBarcodeScannerExtension();
+        //    barcodeScannerExtension.BarcodeScanner_BarcodeScanned(sender, e, textBoxBarkodNo);
+        //}
+
+        private void BarcodeScanner_BarcodeScanned(object sender, BarcodeScannerEventArgs e)
+        {
+            textBoxBarkodNo.Text = e.Barcode;
+        }
+
         bool isBarcodeNumberExists = false;
 
 
-        private void SalesForm_Load(object sender, EventArgs e)
-        {
-            ProductListRefesh();
-            CartListRefesh();
-            GroupBoxMehsulControlClear();
-        }
+
 
 
 
@@ -148,7 +168,7 @@ namespace WindowsForm.Forms
         {
             try
             {
-                
+
                 if (textBoxProductId.Text == "")
                 {
                     FormsMessage.ErrorMessage(ProductMessages.SureFillInFields);
@@ -171,9 +191,9 @@ namespace WindowsForm.Forms
                 IsBarcodeNumberExists();
                 if (isBarcodeNumberExists == true)
                 {
-                    CartAddDto cartAddDto = _cartManager.GetCartAddDetailByBarcodeNumber(int.Parse(textBoxBarkodNo.Text)).Data;
+                    CartAddDto cartAddDto = _cartManager.GetCartAddDetailByProductId(int.Parse(textBoxProductId.Text)).Data;
                     cart.Id = cartAddDto.CartId;
-                    cart.Quantity =  int.Parse(textBoxMiqdar.Text);
+                    cart.Quantity = textBoxMiqdar.Text.Equals("1")?cartAddDto.Quantity+int.Parse(textBoxMiqdar.Text): int.Parse(textBoxMiqdar.Text);
                     cart.SoldPrice = decimal.Parse(textBoxQiymet.Text == "" ? textBoxMaxQiymet.Text : textBoxQiymet.Text);
                     cart.TotalPrice = cart.SoldPrice * cart.Quantity;
                     cartUpdated = _cartManager.Update(cart);
@@ -189,7 +209,7 @@ namespace WindowsForm.Forms
                     cartAdded = _cartManager.Add(cart);
                     if (!cartAdded.Success)
                     {
-                        FormsMessage.WarningMessage(cartAdded.Message);
+                        FormsMessage.WarningMessage(CartMessages.ProductAdded);
                         return;
                     }
                     FormsMessage.SuccessMessage(cartAdded.Message);
@@ -251,7 +271,7 @@ namespace WindowsForm.Forms
                     }
                     foreach (string message in messages)
                     {
-                        resultMessage += $"// {message} {newResultMessage}//       ";
+                        resultMessage += $" {message} {newResultMessage}/n ";
 
                     }
                     FormsMessage.SuccessMessage(resultMessage);
@@ -291,6 +311,28 @@ namespace WindowsForm.Forms
 
 
         }
+
+        private void textBoxBarkodNo_TextChanged(object sender, EventArgs e)
+        {
+            string barcodeNumber = textBoxBarkodNo.Text;
+            if (barcodeNumber.Length >= 13)
+            {
+                IDataResult<Product> result = _productManager.GetByProductBarcodeNumber(barcodeNumber);
+                if (result.Success == false)
+                {
+                    FormsMessage.WarningMessage(result.Message);
+                    return;
+                }
+                GroupBoxMehsulControlClear();
+                textBoxProductId.Text = result.Data.Id.ToString();
+                textBoxMehsulAdi.Text = result.Data.ProductName;
+                textBoxMaxQiymet.Text = result.Data.UnitPrice.ToString();
+                CemWrite();
+            }
+
+        }
+
+       
 
         private void dataGridViewCartList_DoubleClick(object sender, EventArgs e)
         {
@@ -350,7 +392,8 @@ namespace WindowsForm.Forms
 
         private void IsBarcodeNumberExists()
         {
-            IDataResult<CartAddDto> result = _cartManager.GetCartAddDetailByBarcodeNumber(Convert.ToInt32(textBoxBarkodNo.Text));
+            IDataResult<CartAddDto> result = _cartManager.GetCartAddDetailByProductId(int.Parse(textBoxProductId.Text));
+           // IDataResult<CartAddDto> result = _cartManager.GetCartAddDetailByBarcodeNumber(Convert.ToInt32(textBoxBarkodNo.Text));
             if (result.Success)
             {
                 isBarcodeNumberExists = true;

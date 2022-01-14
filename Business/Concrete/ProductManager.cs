@@ -80,7 +80,7 @@ namespace Business.Concrete
         [CacheAspect]
         public IDataResult<Product> GetByProductBarcodeNumber(string barodeNumber)
         {
-            Product get = _productDal.Get(p => p.BarcodeNumber.Equals( barodeNumber));
+            Product get = _productDal.Get(p => p.BarcodeNumber== barodeNumber);
             if (get == null)
             {
                 return new ErrorDataResult<Product>(ProductMessages.ProductNotFound);

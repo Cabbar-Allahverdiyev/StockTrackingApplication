@@ -318,10 +318,12 @@ namespace WindowsForm.Forms
             this.buttonMinimized.ForeColor = System.Drawing.Color.Black;
             this.buttonMinimized.Image = ((System.Drawing.Image)(resources.GetObject("buttonMinimized.Image")));
             this.buttonMinimized.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonMinimized.Location = new System.Drawing.Point(664, 0);
+            this.buttonMinimized.Location = new System.Drawing.Point(666, 0);
             this.buttonMinimized.Name = "buttonMinimized";
             this.buttonMinimized.Size = new System.Drawing.Size(27, 23);
             this.buttonMinimized.TabIndex = 7;
+            this.buttonMinimized.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonMinimized.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.buttonMinimized.UseVisualStyleBackColor = false;
             this.buttonMinimized.Click += new System.EventHandler(this.buttonMinimized_Click);
             // 
@@ -352,6 +354,8 @@ namespace WindowsForm.Forms
             this.btnClose.TabIndex = 5;
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnClose.MouseLeave += new System.EventHandler(this.btnClose_MouseLeave);
+            this.btnClose.MouseHover += new System.EventHandler(this.btnClose_MouseHover);
             // 
             // buttonProducts
             // 
@@ -659,19 +663,19 @@ namespace WindowsForm.Forms
             this.myDMScan.MenuItemTextColor = System.Drawing.Color.DimGray;
             this.myDMScan.Name = "myDMScan";
             this.myDMScan.PrimaryColor = System.Drawing.Color.MediumSlateBlue;
-            this.myDMScan.Size = new System.Drawing.Size(181, 70);
+            this.myDMScan.Size = new System.Drawing.Size(115, 48);
             // 
             // kameraToolStripMenuItem
             // 
             this.kameraToolStripMenuItem.Name = "kameraToolStripMenuItem";
-            this.kameraToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.kameraToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.kameraToolStripMenuItem.Text = "Kamera";
             this.kameraToolStripMenuItem.Click += new System.EventHandler(this.kameraToolStripMenuItem_Click);
             // 
             // lazerToolStripMenuItem
             // 
             this.lazerToolStripMenuItem.Name = "lazerToolStripMenuItem";
-            this.lazerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.lazerToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.lazerToolStripMenuItem.Text = "Lazer";
             // 
             // Dashboard

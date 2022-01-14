@@ -133,6 +133,16 @@ namespace WindowsForm.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_search_16px_1 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_search_16px_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_synchronize_16 {
             get {
                 object obj = ResourceManager.GetObject("icons8-synchronize-16", resourceCulture);

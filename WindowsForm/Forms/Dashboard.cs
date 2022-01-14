@@ -26,7 +26,6 @@ namespace WindowsForm.Forms
             CollapseMenu();
             this.BackColor = Color.FromArgb(98, 102, 244);
 
-
             //myDropdownMenu2.PrimaryColor = Color.SeaGreen;
             //myDropdownMenu2.MenuItemTextColor = Color.SeaGreen;
 
@@ -38,6 +37,8 @@ namespace WindowsForm.Forms
             DisableButton();
             //WM_NCCALCSIZE
         }
+
+       
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -174,7 +175,7 @@ namespace WindowsForm.Forms
                     previousBtn.BackColor = Color.FromArgb(98, 102, 244);
                     //previousBtn.BackColor = Color.FromArgb(152, 161, 155);
                     // previousBtn.BackColor = Color.FromArgb(152, 158, 161);
-                   // previousBtn.ForeColor = Color.Gainsboro;
+                    // previousBtn.ForeColor = Color.Gainsboro;
                     previousBtn.ForeColor = Color.White;
                     previousBtn.Font = new Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
                 }
@@ -205,7 +206,15 @@ namespace WindowsForm.Forms
             this.WindowState = FormWindowState.Minimized;
         }
 
+        private void btnClose_MouseHover(object sender, EventArgs e)
+        {
+            btnClose.BackColor = Color.FromArgb(204, 0, 0);
+        }
 
+        private void btnClose_MouseLeave(object sender, EventArgs e)
+        {
+            btnClose.BackColor = Color.White;
+        }
 
         //Menu Items button------------------------------------->
         private void buttonMenu_Click(object sender, EventArgs e)
@@ -221,8 +230,8 @@ namespace WindowsForm.Forms
         private void buttonProducts_Click(object sender, EventArgs e)
         {
             Open_DropdownMenu(myDMProduct, sender);
-           // myDMProduct.Show(buttonProducts, buttonProducts.Width, 0);
-            
+            // myDMProduct.Show(buttonProducts, buttonProducts.Width, 0);
+
         }
 
 
@@ -231,7 +240,7 @@ namespace WindowsForm.Forms
             Open_DropdownMenu(myDMSales, sender);
             // myDMSales.Show(buttonSales, myDMSales.Width - buttonProducts.Width, buttonSales.Height);
 
-           
+
         }
 
         private void buttonCategories_Click(object sender, EventArgs e)
@@ -241,7 +250,7 @@ namespace WindowsForm.Forms
 
         private void buttonScan_Click(object sender, EventArgs e)
         {
-            Open_DropdownMenu(myDMScan,sender);
+            Open_DropdownMenu(myDMScan, sender);
         }
 
         private void buttonStatistic_Click(object sender, EventArgs e)
@@ -342,17 +351,17 @@ namespace WindowsForm.Forms
 
         private void həftəlikToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           // OpenChildForm(new(), sender);
+            // OpenChildForm(new(), sender);
         }
 
         private void aylıqToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           // OpenChildForm(new(), sender);
+            // OpenChildForm(new(), sender);
         }
 
         private void illikToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           // OpenChildForm(new(), sender);
+            // OpenChildForm(new(), sender);
         }
 
 
@@ -422,7 +431,7 @@ namespace WindowsForm.Forms
             }
         }
 
-       
+
 
 
 
@@ -443,7 +452,11 @@ namespace WindowsForm.Forms
             labelTitle.Text = childForm.Text;
         }
 
-       
+
+
+
+
+
 
 
 
