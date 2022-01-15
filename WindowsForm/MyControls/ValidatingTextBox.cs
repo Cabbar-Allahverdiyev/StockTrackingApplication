@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Text;
 using System.Windows.Forms;
 
@@ -77,9 +76,4 @@ namespace WindowsForm.MyControls
         }
     }
 
-    public class TextValidatingEventArgs : CancelEventArgs
-    {
-        public TextValidatingEventArgs(string newText) => NewText = newText;
-        public string NewText { get; }
-    }
 }

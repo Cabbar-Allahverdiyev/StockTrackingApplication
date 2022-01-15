@@ -14,6 +14,7 @@ using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.Concrete.ValidatorControllers;
+using WindowsForm.MyControls;
 using WindowsForm.Utilities.Search.Concrete.BrandSearch;
 
 namespace WindowsForm.Forms
@@ -23,6 +24,8 @@ namespace WindowsForm.Forms
         public FormBrand()
         {
             InitializeComponent();
+            MyControl myControl = new MyControl();
+            myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
         }
 
         BrandManager _brandManager = new BrandManager(new EfBrandDal());

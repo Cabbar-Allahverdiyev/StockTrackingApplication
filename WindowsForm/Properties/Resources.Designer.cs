@@ -143,6 +143,16 @@ namespace WindowsForm.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
+        internal static System.Drawing.Bitmap exitWhite {
+            get {
+                object obj = ResourceManager.GetObject("exitWhite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_delete_16 {
             get {
                 object obj = ResourceManager.GetObject("icons8-delete-16", resourceCulture);
@@ -206,6 +216,16 @@ namespace WindowsForm.Properties {
         internal static System.Drawing.Bitmap info_light_normal {
             get {
                 object obj = ResourceManager.GetObject("info_light_normal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap searchBlack {
+            get {
+                object obj = ResourceManager.GetObject("searchBlack", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -34,6 +34,10 @@ namespace WindowsForm.MyControls
             textBoxPhoneNumber.PlaceholderText = "məsələn : Yevlax";
         }
 
+        public void WritePlaceholdersForTextBoxSearch(TextBox textBoxPhoneNumber)
+        {
+            textBoxPhoneNumber.PlaceholderText = "Axtar";
+        }
         public static void MakeTextBoxNumberBox(KeyPressEventArgs keyPressEventArgs)
         {
             if (!char.IsControl(keyPressEventArgs.KeyChar) && !char.IsDigit(keyPressEventArgs.KeyChar))

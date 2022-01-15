@@ -66,8 +66,10 @@ namespace WindowsForm.Forms
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::WindowsForm.Properties.Resources.cancel_light;
-            this.pictureBox2.Location = new System.Drawing.Point(343, 20);
+            this.pictureBox2.ErrorImage = global::WindowsForm.Properties.Resources.exitWhite;
+            this.pictureBox2.Image = global::WindowsForm.Properties.Resources.exitWhite;
+            this.pictureBox2.InitialImage = global::WindowsForm.Properties.Resources.exitWhite;
+            this.pictureBox2.Location = new System.Drawing.Point(343, 3);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(25, 25);
             this.pictureBox2.TabIndex = 3;

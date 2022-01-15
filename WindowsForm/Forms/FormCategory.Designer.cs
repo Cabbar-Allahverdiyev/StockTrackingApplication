@@ -30,7 +30,6 @@ namespace WindowsForm.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCategory));
             this.label1 = new System.Windows.Forms.Label();
             this.ButtonFormCategoryElaveEt = new System.Windows.Forms.Button();
             this.TextBoxFormCategoryKategoriya = new System.Windows.Forms.TextBox();
@@ -44,7 +43,7 @@ namespace WindowsForm.Forms
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(27, 49);
+            this.label1.Location = new System.Drawing.Point(31, 48);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(76, 17);
             this.label1.TabIndex = 0;
@@ -54,7 +53,7 @@ namespace WindowsForm.Forms
             // 
             this.ButtonFormCategoryElaveEt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonFormCategoryElaveEt.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ButtonFormCategoryElaveEt.Image = ((System.Drawing.Image)(resources.GetObject("ButtonFormCategoryElaveEt.Image")));
+            this.ButtonFormCategoryElaveEt.Image = global::WindowsForm.Properties.Resources.elaveEtBlack;
             this.ButtonFormCategoryElaveEt.Location = new System.Drawing.Point(194, 77);
             this.ButtonFormCategoryElaveEt.Name = "ButtonFormCategoryElaveEt";
             this.ButtonFormCategoryElaveEt.Size = new System.Drawing.Size(85, 26);
@@ -104,11 +103,12 @@ namespace WindowsForm.Forms
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(473, 17);
+            this.label2.Image = global::WindowsForm.Properties.Resources.searchBlack;
+            this.label2.Location = new System.Drawing.Point(501, 17);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 17);
+            this.label2.Size = new System.Drawing.Size(17, 17);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Axtar:";
+            this.label2.Text = "   ";
             // 
             // FormCategory
             // 

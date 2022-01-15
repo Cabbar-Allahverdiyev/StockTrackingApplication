@@ -13,6 +13,7 @@ using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.ValidatorControllers;
+using WindowsForm.MyControls;
 using WindowsForm.Utilities.Search.Concrete.ProductSearch;
 
 namespace WindowsForm.Forms
@@ -22,6 +23,8 @@ namespace WindowsForm.Forms
         public FormProductAdd()
         {
             InitializeComponent();
+            MyControl myControl = new MyControl();
+            myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
         }
         ProductManager _productManager = new ProductManager(new EfProductDal());
         CategoryManager _categoryManager = new CategoryManager(new EfCategoryDal());

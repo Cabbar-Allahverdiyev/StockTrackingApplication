@@ -43,8 +43,8 @@ namespace WindowsForm.Forms
             this.textBoxSifreTekrari = new System.Windows.Forms.TextBox();
             this.textBoxAdres = new System.Windows.Forms.TextBox();
             this.buttonEalveEt = new System.Windows.Forms.Button();
-            this.int32TxtTelefonNomresi = new WindowsForm.MyControls.Int32TextBox();
             this.buttonTemizle = new System.Windows.Forms.Button();
+            this.textBoxTelefonNomresi = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -179,13 +179,6 @@ namespace WindowsForm.Forms
             this.buttonEalveEt.UseVisualStyleBackColor = true;
             this.buttonEalveEt.Click += new System.EventHandler(this.ButtonFormUserAddEalveEt_Click);
             // 
-            // int32TxtTelefonNomresi
-            // 
-            this.int32TxtTelefonNomresi.Location = new System.Drawing.Point(119, 156);
-            this.int32TxtTelefonNomresi.Name = "int32TxtTelefonNomresi";
-            this.int32TxtTelefonNomresi.Size = new System.Drawing.Size(194, 22);
-            this.int32TxtTelefonNomresi.TabIndex = 16;
-            // 
             // buttonTemizle
             // 
             this.buttonTemizle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -200,14 +193,22 @@ namespace WindowsForm.Forms
             this.buttonTemizle.UseVisualStyleBackColor = true;
             this.buttonTemizle.Click += new System.EventHandler(this.buttonTemizle_Click);
             // 
+            // textBoxTelefonNomresi
+            // 
+            this.textBoxTelefonNomresi.Location = new System.Drawing.Point(119, 156);
+            this.textBoxTelefonNomresi.Name = "textBoxTelefonNomresi";
+            this.textBoxTelefonNomresi.Size = new System.Drawing.Size(194, 22);
+            this.textBoxTelefonNomresi.TabIndex = 18;
+            this.textBoxTelefonNomresi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxTelefonNomresi_KeyPress_1);
+            // 
             // FormUserAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
-            this.ClientSize = new System.Drawing.Size(346, 386);
+            this.ClientSize = new System.Drawing.Size(346, 493);
+            this.Controls.Add(this.textBoxTelefonNomresi);
             this.Controls.Add(this.buttonTemizle);
-            this.Controls.Add(this.int32TxtTelefonNomresi);
             this.Controls.Add(this.buttonEalveEt);
             this.Controls.Add(this.textBoxAdres);
             this.Controls.Add(this.textBoxSifreTekrari);
@@ -247,7 +248,7 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.TextBox textBoxAdres;
         private System.Windows.Forms.Button buttonEalveEt;
         private MyControls.ValidatingTextBox validatingTextBox1;
-        private MyControls.Int32TextBox int32TxtTelefonNomresi;
         private System.Windows.Forms.Button buttonTemizle;
+        private System.Windows.Forms.TextBox textBoxTelefonNomresi;
     }
 }
