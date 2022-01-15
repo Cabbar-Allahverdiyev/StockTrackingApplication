@@ -24,6 +24,7 @@ namespace WindowsForm.Forms
         public ProductUpdateForm()
         {
             InitializeComponent();
+           
         }
         ProductManager _productManager = new ProductManager(new EfProductDal());
         Product product = new Product();

@@ -23,7 +23,7 @@ namespace Business.Concrete
         public UserManager(IUserDal userDal)
         {
             _userDal = userDal;
-        }
+        } 
 
         //CRUD
 
@@ -48,6 +48,7 @@ namespace Business.Concrete
         {
             IResult result = BusinessRules.Run(IsThereFirstNameAndLastNameAvailableForUserUpdate(user)
                                                , IsEmailExistsForUserUpdate(user), PhoneNumberFormatControl(user.PhoneNumber)
+                                               , IsPhoneNumberExistsForUserUpdate(user)
                                                );
 
             if (result != null)
@@ -156,6 +157,7 @@ namespace Business.Concrete
                                                , IsThePasswordGreaterThanFourCharacters(password)
                                                , IsThereFirstNameAndLastNameAvailable(userForRegisterDto.FirstName, userForRegisterDto.LastName)
                                                , IsEmailExists(userForRegisterDto.Email)
+                                               , IsPhoneNumberExists(userForRegisterDto.PhoneNumber)
                                                );
 
             if (result != null)
@@ -178,7 +180,7 @@ namespace Business.Concrete
                 Status = true
             };
 
-           IResult userAdded= Add(user);
+            IResult userAdded = Add(user);
             if (!userAdded.Success)
             {
                 return new ErrorDataResult<User>(userAdded.Message);
@@ -262,6 +264,7 @@ namespace Business.Concrete
             }
             return new SuccessResult();
         }
+
         private IResult IsEmailExistsForUserUpdate(User user)
         {
             List<User> userGetAll = _userDal.GetAll();
@@ -284,9 +287,33 @@ namespace Business.Concrete
                 return new SuccessResult();
             }
             return new ErrorResult(UserMessages.PhoneNumberFormatIsNotSuitable);
-            
         }
 
+        private IResult IsPhoneNumberExists(string phoneNumber)
+        {
+            List<User> userGetAll = _userDal.GetAll();
+            foreach (User item in userGetAll)
+            {
+                if (item.PhoneNumber.ToLower().Equals(phoneNumber.ToLower()) )
+                {
+                    return new ErrorResult(UserMessages.PhoneNumberAvailable);
+                }
+            }
+            return new SuccessResult();
+        }
+
+        private IResult IsPhoneNumberExistsForUserUpdate(User user)
+        {
+            List<User> userGetAll = _userDal.GetAll();
+            foreach (User item in userGetAll)
+            {
+                if (item.PhoneNumber.ToLower().Equals(user.PhoneNumber.ToLower()) && item.Id != user.Id)
+                {
+                    return new ErrorResult(UserMessages.PhoneNumberAvailable);
+                }
+            }
+            return new SuccessResult();
+        }
 
     }
 }

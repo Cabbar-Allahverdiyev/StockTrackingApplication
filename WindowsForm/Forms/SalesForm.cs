@@ -21,6 +21,7 @@ using WindowsForm.Core.Controllers.ValidatorControllers;
 using USB_Barcode_Scanner;
 using WindowsForm.Utilities.BarcodeScanner;
 using WindowsForm.Utilities.Search.Concrete.ProductSearch;
+using DataAccess.Concrete.EfInMemory;
 
 namespace WindowsForm.Forms
 {
@@ -194,7 +195,7 @@ namespace WindowsForm.Forms
                 {
                     CartAddDto cartAddDto = _cartManager.GetCartAddDetailByProductId(int.Parse(textBoxProductId.Text)).Data;
                     cart.Id = cartAddDto.CartId;
-                    cart.Quantity = textBoxMiqdar.Text.Equals("1")?cartAddDto.Quantity+int.Parse(textBoxMiqdar.Text): int.Parse(textBoxMiqdar.Text);
+                    cart.Quantity = textBoxMiqdar.Text.Equals("1") ? cartAddDto.Quantity + int.Parse(textBoxMiqdar.Text) : int.Parse(textBoxMiqdar.Text);
                     cart.SoldPrice = decimal.Parse(textBoxQiymet.Text == "" ? textBoxMaxQiymet.Text : textBoxQiymet.Text);
                     cart.TotalPrice = cart.SoldPrice * cart.Quantity;
                     cartUpdated = _cartManager.Update(cart);
@@ -210,10 +211,10 @@ namespace WindowsForm.Forms
                     cartAdded = _cartManager.Add(cart);
                     if (!cartAdded.Success)
                     {
-                        FormsMessage.WarningMessage(CartMessages.ProductAdded);
+                        FormsMessage.WarningMessage(cartAdded.Message);
                         return;
                     }
-                    FormsMessage.SuccessMessage(cartAdded.Message);
+                    FormsMessage.SuccessMessage(CartMessages.ProductAdded);
                 }
 
                 CartListRefesh();
@@ -272,8 +273,7 @@ namespace WindowsForm.Forms
                     }
                     foreach (string message in messages)
                     {
-                        resultMessage += $" {message} {newResultMessage}/n ";
-
+                        resultMessage += $" {message} {newResultMessage} /n ";
                     }
                     FormsMessage.SuccessMessage(resultMessage);
 
@@ -315,7 +315,7 @@ namespace WindowsForm.Forms
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            
+
             detailsSearch.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewProductList);
         }
 
@@ -339,7 +339,7 @@ namespace WindowsForm.Forms
 
         }
 
-       
+
 
         private void dataGridViewCartList_DoubleClick(object sender, EventArgs e)
         {
@@ -400,7 +400,7 @@ namespace WindowsForm.Forms
         private void IsBarcodeNumberExists()
         {
             IDataResult<CartAddDto> result = _cartManager.GetCartAddDetailByProductId(int.Parse(textBoxProductId.Text));
-           // IDataResult<CartAddDto> result = _cartManager.GetCartAddDetailByBarcodeNumber(Convert.ToInt32(textBoxBarkodNo.Text));
+            // IDataResult<CartAddDto> result = _cartManager.GetCartAddDetailByBarcodeNumber(Convert.ToInt32(textBoxBarkodNo.Text));
             if (result.Success)
             {
                 isBarcodeNumberExists = true;
@@ -463,6 +463,6 @@ namespace WindowsForm.Forms
             }
         }
 
-        
+
     }
 }

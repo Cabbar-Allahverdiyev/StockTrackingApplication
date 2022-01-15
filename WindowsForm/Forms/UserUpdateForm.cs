@@ -1,10 +1,8 @@
 ﻿using Business.Concrete;
 using Business.Constants.Messages;
-using Business.ValidationRules.FluentValidation;
 using Core.Entities.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using Entities.DTOs;
-using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +12,7 @@ using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.ValidatorControllers;
+using WindowsForm.MyControls;
 using WindowsForm.Utilities.Search.Concrete.UserSearch;
 
 namespace WindowsForm.Forms
@@ -26,6 +25,8 @@ namespace WindowsForm.Forms
         public UserUpdateForm()
         {
             InitializeComponent();
+            MyControl myControl = new MyControl();
+            myControl.MakeAsteriskPasswordCharacterAndMaxLengthFourTen(textBoxYeniSİfre,textBoxSifreTexrari);
             dataGridViewUserListed.DataSource = _userManager.GetUserDetails().Data;
         }
 

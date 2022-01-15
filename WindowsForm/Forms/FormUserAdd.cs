@@ -18,6 +18,7 @@ using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers;
 using WindowsForm.Core.Controllers.ValidatorControllers;
+using WindowsForm.MyControls;
 
 namespace WindowsForm.Forms
 {
@@ -26,10 +27,15 @@ namespace WindowsForm.Forms
 
         UserManager _userService = new UserManager(new EfUserDal());
         UserValidationTool validationTool = new UserValidationTool();
-        
+
         public FormUserAdd()
         {
             InitializeComponent();
+            MyControl myControl = new MyControl();
+            myControl.MakeAsteriskPasswordCharacterAndMaxLengthFourTen(textBoxSifre, textBoxSifreTekrari);
+            myControl.WritePlaceholdersForTextBoxPhoneNumberAndMaxLengthTen(textBoxTelefonNomresi);
+            myControl.WritePlaceholdersForTextBoxEmail(textBoxEmail);
+            myControl.WritePlaceholdersForTextBoxAddress(textBoxAdres);
         }
 
         private void ButtonFormUserAddEalveEt_Click(object sender, EventArgs e)
@@ -38,19 +44,20 @@ namespace WindowsForm.Forms
             UserForRegisterDto userForRegisterDto = new UserForRegisterDto();
             string passwordRepeat;
 
-            userForRegisterDto.FirstName = TextBoxAd.Text;
-            userForRegisterDto.LastName = TextBoxSoyad.Text;
-            userForRegisterDto.Email = TextBoxEmail.Text;
-            userForRegisterDto.Address = TextBoxFormUserAddAddress.Text;
-            userForRegisterDto.PhoneNumber = TextBoxPhoneNumber.Text;
-            userForRegisterDto.Password = TextBoxSifre.Text;
-            passwordRepeat = TextBoxSifreTekrari.Text;
+            userForRegisterDto.FirstName = textBoxAd.Text;
+            userForRegisterDto.LastName = textBoxSoyad.Text;
+            userForRegisterDto.Email = textBoxEmail.Text;
+            userForRegisterDto.Address = textBoxAdres.Text;
+            userForRegisterDto.PhoneNumber = textBoxTelefonNomresi.Text;
+            userForRegisterDto.Password = textBoxSifre.Text;
+            passwordRepeat = textBoxSifreTekrari.Text;
 
             user.FirstName = userForRegisterDto.FirstName;
             user.LastName = userForRegisterDto.LastName;
             user.Email = userForRegisterDto.Email;
             user.Address = userForRegisterDto.Address;
             user.PhoneNumber = userForRegisterDto.PhoneNumber;
+
 
 
             if (!validationTool.IsValid(user))
@@ -75,6 +82,9 @@ namespace WindowsForm.Forms
 
         }
 
-
+        private void textBoxTelefonNomresi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MyControl.MakeTextBoxNumberBox( e);
+        }
     }
 }

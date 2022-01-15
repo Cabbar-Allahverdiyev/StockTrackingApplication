@@ -46,7 +46,7 @@ namespace WindowsForm.Forms
             this.textBoxUserId = new System.Windows.Forms.TextBox();
             this.textBoxYeniSİfre = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxSifreTexrari = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUserListed)).BeginInit();
             this.SuspendLayout();
@@ -222,14 +222,14 @@ namespace WindowsForm.Forms
             this.label6.TabIndex = 46;
             this.label6.Text = "Yeni şifrə:";
             // 
-            // textBox1
+            // textBoxSifreTexrari
             // 
-            this.textBox1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(119, 230);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(114, 22);
-            this.textBox1.TabIndex = 49;
-            this.textBox1.Text = "Işləmir";
+            this.textBoxSifreTexrari.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxSifreTexrari.Location = new System.Drawing.Point(119, 230);
+            this.textBoxSifreTexrari.Name = "textBoxSifreTexrari";
+            this.textBoxSifreTexrari.Size = new System.Drawing.Size(114, 22);
+            this.textBoxSifreTexrari.TabIndex = 49;
+            this.textBoxSifreTexrari.Text = "Işləmir";
             // 
             // label8
             // 
@@ -246,7 +246,7 @@ namespace WindowsForm.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(711, 467);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxSifreTexrari);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.textBoxYeniSİfre);
             this.Controls.Add(this.label6);
@@ -295,7 +295,7 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.TextBox textBoxUserId;
         private System.Windows.Forms.TextBox textBoxYeniSİfre;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxSifreTexrari;
         private System.Windows.Forms.Label label8;
     }
 }

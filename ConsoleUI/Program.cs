@@ -11,6 +11,8 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
+
+            Console.WriteLine("She said, \"You deserve a treat!\" ");
             // UserManager userManager = new UserManager(new EfUserDal());
             // ProductManager productManager = new ProductManager(new EfProductDal());
             //SupplierManager supplierManager = new SupplierManager(new EfSupplierDal());
