@@ -40,9 +40,8 @@ namespace WindowsForm.MyControls
             {
                 keyPressEventArgs.Handled = true;
             }
-            
         }
-        
+
         public static void MakeTextBoxDecimalBox(object sender, KeyPressEventArgs keyPressEventArgs)
         {
             if (!char.IsControl(keyPressEventArgs.KeyChar) && !char.IsDigit(keyPressEventArgs.KeyChar) && (keyPressEventArgs.KeyChar != '.'))

@@ -12,7 +12,9 @@ namespace Business.ValidationRules.FluentValidation
         public SupplierValidator()
         {
             RuleFor(s=>s.CompanyName).NotEmpty();
+            RuleFor(s=>s.CompanyName).MinimumLength(2);
             RuleFor(s=>s.ContactName).NotEmpty();
+            RuleFor(s=>s.ContactName).MinimumLength(4);
            
         }
     }

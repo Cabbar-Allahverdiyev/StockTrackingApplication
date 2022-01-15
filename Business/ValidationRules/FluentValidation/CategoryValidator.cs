@@ -12,6 +12,7 @@ namespace Business.ValidationRules.FluentValidation
         public CategoryValidator()
         {
             RuleFor(c => c.CategoryName).NotEmpty();
+            RuleFor(c => c.CategoryName).MinimumLength(2);
         }
     }
 }
