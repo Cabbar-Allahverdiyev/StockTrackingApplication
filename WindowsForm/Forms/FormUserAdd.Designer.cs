@@ -29,7 +29,6 @@ namespace WindowsForm.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUserAdd));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -40,13 +39,12 @@ namespace WindowsForm.Forms
             this.textBoxAd = new System.Windows.Forms.TextBox();
             this.textBoxSoyad = new System.Windows.Forms.TextBox();
             this.textBoxEmail = new System.Windows.Forms.TextBox();
-            this.textBoxTelefonNomresi = new System.Windows.Forms.TextBox();
             this.textBoxSifre = new System.Windows.Forms.TextBox();
             this.textBoxSifreTekrari = new System.Windows.Forms.TextBox();
             this.textBoxAdres = new System.Windows.Forms.TextBox();
             this.buttonEalveEt = new System.Windows.Forms.Button();
-            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
-            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
+            this.int32TxtTelefonNomresi = new WindowsForm.MyControls.Int32TextBox();
+            this.buttonTemizle = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -143,15 +141,6 @@ namespace WindowsForm.Forms
             this.textBoxEmail.Size = new System.Drawing.Size(194, 22);
             this.textBoxEmail.TabIndex = 9;
             // 
-            // textBoxTelefonNomresi
-            // 
-            this.textBoxTelefonNomresi.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxTelefonNomresi.Location = new System.Drawing.Point(119, 156);
-            this.textBoxTelefonNomresi.Name = "textBoxTelefonNomresi";
-            this.textBoxTelefonNomresi.Size = new System.Drawing.Size(194, 22);
-            this.textBoxTelefonNomresi.TabIndex = 10;
-            this.textBoxTelefonNomresi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxTelefonNomresi_KeyPress);
-            // 
             // textBoxSifre
             // 
             this.textBoxSifre.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -180,7 +169,7 @@ namespace WindowsForm.Forms
             // 
             this.buttonEalveEt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEalveEt.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonEalveEt.Image = ((System.Drawing.Image)(resources.GetObject("buttonEalveEt.Image")));
+            this.buttonEalveEt.Image = global::WindowsForm.Properties.Resources.elaveEtBlack;
             this.buttonEalveEt.Location = new System.Drawing.Point(228, 317);
             this.buttonEalveEt.Name = "buttonEalveEt";
             this.buttonEalveEt.Size = new System.Drawing.Size(85, 26);
@@ -190,22 +179,39 @@ namespace WindowsForm.Forms
             this.buttonEalveEt.UseVisualStyleBackColor = true;
             this.buttonEalveEt.Click += new System.EventHandler(this.ButtonFormUserAddEalveEt_Click);
             // 
-            // fileSystemWatcher1
+            // int32TxtTelefonNomresi
             // 
-            this.fileSystemWatcher1.EnableRaisingEvents = true;
-            this.fileSystemWatcher1.SynchronizingObject = this;
+            this.int32TxtTelefonNomresi.Location = new System.Drawing.Point(119, 156);
+            this.int32TxtTelefonNomresi.Name = "int32TxtTelefonNomresi";
+            this.int32TxtTelefonNomresi.Size = new System.Drawing.Size(194, 22);
+            this.int32TxtTelefonNomresi.TabIndex = 16;
+            // 
+            // buttonTemizle
+            // 
+            this.buttonTemizle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTemizle.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonTemizle.Image = global::WindowsForm.Properties.Resources.TemizleBlack;
+            this.buttonTemizle.Location = new System.Drawing.Point(119, 317);
+            this.buttonTemizle.Name = "buttonTemizle";
+            this.buttonTemizle.Size = new System.Drawing.Size(85, 26);
+            this.buttonTemizle.TabIndex = 17;
+            this.buttonTemizle.Text = "Təmizlə";
+            this.buttonTemizle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonTemizle.UseVisualStyleBackColor = true;
+            this.buttonTemizle.Click += new System.EventHandler(this.buttonTemizle_Click);
             // 
             // FormUserAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
-            this.ClientSize = new System.Drawing.Size(328, 370);
+            this.ClientSize = new System.Drawing.Size(346, 386);
+            this.Controls.Add(this.buttonTemizle);
+            this.Controls.Add(this.int32TxtTelefonNomresi);
             this.Controls.Add(this.buttonEalveEt);
             this.Controls.Add(this.textBoxAdres);
             this.Controls.Add(this.textBoxSifreTekrari);
             this.Controls.Add(this.textBoxSifre);
-            this.Controls.Add(this.textBoxTelefonNomresi);
             this.Controls.Add(this.textBoxEmail);
             this.Controls.Add(this.textBoxSoyad);
             this.Controls.Add(this.textBoxAd);
@@ -219,7 +225,6 @@ namespace WindowsForm.Forms
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "FormUserAdd";
             this.Text = "İstifadəçi əlavə etmək səhifəsi";
-            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -237,12 +242,12 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.TextBox textBoxAd;
         private System.Windows.Forms.TextBox textBoxSoyad;
         private System.Windows.Forms.TextBox textBoxEmail;
-        private System.Windows.Forms.TextBox textBoxTelefonNomresi;
         private System.Windows.Forms.TextBox textBoxSifre;
         private System.Windows.Forms.TextBox textBoxSifreTekrari;
         private System.Windows.Forms.TextBox textBoxAdres;
         private System.Windows.Forms.Button buttonEalveEt;
-        private System.IO.FileSystemWatcher fileSystemWatcher1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private MyControls.ValidatingTextBox validatingTextBox1;
+        private MyControls.Int32TextBox int32TxtTelefonNomresi;
+        private System.Windows.Forms.Button buttonTemizle;
     }
 }

@@ -33,7 +33,8 @@ namespace WindowsForm.Forms
             InitializeComponent();
             MyControl myControl = new MyControl();
             myControl.MakeAsteriskPasswordCharacterAndMaxLengthFourTen(textBoxSifre, textBoxSifreTekrari);
-            myControl.WritePlaceholdersForTextBoxPhoneNumberAndMaxLengthTen(textBoxTelefonNomresi);
+            myControl.WritePlaceholdersForTextBoxPhoneNumberAndMaxLengthTen(int32TxtTelefonNomresi);
+           // myControl.WritePlaceholdersForTextBoxPhoneNumberAndMaxLengthTen(textBoxTelefonNomresi);
             myControl.WritePlaceholdersForTextBoxEmail(textBoxEmail);
             myControl.WritePlaceholdersForTextBoxAddress(textBoxAdres);
         }
@@ -48,7 +49,8 @@ namespace WindowsForm.Forms
             userForRegisterDto.LastName = textBoxSoyad.Text;
             userForRegisterDto.Email = textBoxEmail.Text;
             userForRegisterDto.Address = textBoxAdres.Text;
-            userForRegisterDto.PhoneNumber = textBoxTelefonNomresi.Text;
+            userForRegisterDto.PhoneNumber = int32TxtTelefonNomresi.Text;
+            //userForRegisterDto.PhoneNumber = textBoxTelefonNomresi.Text;
             userForRegisterDto.Password = textBoxSifre.Text;
             passwordRepeat = textBoxSifreTekrari.Text;
 
@@ -84,7 +86,18 @@ namespace WindowsForm.Forms
 
         private void textBoxTelefonNomresi_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MyControl.MakeTextBoxNumberBox( e);
+            MyControl.MakeTextBoxNumberBox(e);
+        }
+
+        private void buttonTemizle_Click(object sender, EventArgs e)
+        {
+            foreach (Control control in this.Controls)
+            {
+                if (control is TextBox)
+                {
+                    control.Text = "";
+                }
+            }
         }
     }
 }

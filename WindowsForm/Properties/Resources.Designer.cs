@@ -103,6 +103,26 @@ namespace WindowsForm.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
+        internal static System.Drawing.Bitmap elaveEt {
+            get {
+                object obj = ResourceManager.GetObject("elaveEt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap elaveEtBlack {
+            get {
+                object obj = ResourceManager.GetObject("elaveEtBlack", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
         internal static System.Drawing.Bitmap error {
             get {
                 object obj = ResourceManager.GetObject("error", resourceCulture);
@@ -236,6 +256,16 @@ namespace WindowsForm.Properties {
         internal static System.Drawing.Bitmap success_light_italik {
             get {
                 object obj = ResourceManager.GetObject("success_light_italik", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap TemizleBlack {
+            get {
+                object obj = ResourceManager.GetObject("TemizleBlack", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
