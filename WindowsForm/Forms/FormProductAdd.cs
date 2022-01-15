@@ -25,6 +25,9 @@ namespace WindowsForm.Forms
             InitializeComponent();
             MyControl myControl = new MyControl();
             myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
+            myControl.WritePlaceholdersForTextBoxBarcodeNo(textBoxBarkodNo);
+            myControl.WritePlaceholdersForTextBoxQuantityPerUnit(textBoxKemiyyet);
+
         }
         ProductManager _productManager = new ProductManager(new EfProductDal());
         CategoryManager _categoryManager = new CategoryManager(new EfCategoryDal());
@@ -48,17 +51,19 @@ namespace WindowsForm.Forms
             try
             {
                 Product product = new Product();
-                product.BarcodeNumber = TextBoxFormProductAddBarkodNo.Text;
-                product.BrandId = Convert.ToInt32(ComboBoxFormProductAddMarka.SelectedValue);
-                product.CategoryId = Convert.ToInt32(ComboBoxFormProductAddKategoriya.SelectedValue);
-                product.SupplierId = Convert.ToInt32(ComboBoxFormProductAddTedarikci.SelectedValue);
+                product.BarcodeNumber = textBoxBarkodNo.Text;
+                product.BrandId = Convert.ToInt32(comboBoxMarka.SelectedValue);
+                product.CategoryId = Convert.ToInt32(comboBoxKategoriya.SelectedValue);
+                product.SupplierId = Convert.ToInt32(comboBoxTedarikci.SelectedValue);
 
-                product.ProductName = TextBoxFormProductAddMehsulAdi.Text;
-                product.UnitsInStock = Convert.ToInt32(TextBoxFormProductAddMiqdar.Text);
-                product.PurchasePrice = Convert.ToDecimal(TextBoxFormProductAddAlisQiymet.Text);
-                product.UnitPrice = Convert.ToDecimal(TextBoxFormProductAddSatisQiymet.Text);
-                product.QuantityPerUnit = TextBoxFormProductAddKemiyyet.Text;
-                product.Description = TextBoxFormProductAddAciqlama.Text;
+                product.ProductName = textBoxMehsulAdi.Text;
+
+                product.UnitsInStock = Convert.ToInt32(textBoxMiqdar.Text);
+                product.PurchasePrice = Convert.ToDecimal(textBoxAlisQiymet.Text);
+                product.UnitPrice = Convert.ToDecimal(textBoxSatisQiymet.Text);
+
+                product.QuantityPerUnit = textBoxKemiyyet.Text;
+                product.Description = textBoxAciqlama.Text;
 
                 if (!validationTool.IsValid(product))
                 { return; }
@@ -119,9 +124,9 @@ namespace WindowsForm.Forms
         private void CategoryGetComboBoxYeni()
         {
             var categoryGetAll = _categoryManager.GetAll();
-            ComboBoxFormProductAddKategoriya.DataSource = categoryGetAll.Data;
-            ComboBoxFormProductAddKategoriya.DisplayMember = "CategoryName";
-            ComboBoxFormProductAddKategoriya.ValueMember = "Id";
+            comboBoxKategoriya.DataSource = categoryGetAll.Data;
+            comboBoxKategoriya.DisplayMember = "CategoryName";
+            comboBoxKategoriya.ValueMember = "Id";
         }
 
 
@@ -130,17 +135,32 @@ namespace WindowsForm.Forms
         {
             var brandGetAll = _brandManager.GetAll();
 
-            ComboBoxFormProductAddMarka.DataSource = brandGetAll.Data;
-            ComboBoxFormProductAddMarka.DisplayMember = "BrandName";
-            ComboBoxFormProductAddMarka.ValueMember = "Id";
+            comboBoxMarka.DataSource = brandGetAll.Data;
+            comboBoxMarka.DisplayMember = "BrandName";
+            comboBoxMarka.ValueMember = "Id";
         }
 
         private void SupplierGetComboBox()
         {
             var supplierGetAll = _supplierManager.GetAll();
-            ComboBoxFormProductAddTedarikci.DataSource = supplierGetAll.Data;
-            ComboBoxFormProductAddTedarikci.DisplayMember = "CompanyName";
-            ComboBoxFormProductAddTedarikci.ValueMember = "Id";
+            comboBoxTedarikci.DataSource = supplierGetAll.Data;
+            comboBoxTedarikci.DisplayMember = "CompanyName";
+            comboBoxTedarikci.ValueMember = "Id";
+        }
+
+        private void textBoxMiqdar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MyControl.MakeTextBoxNumberBox(e);
+        }
+
+        private void textBoxAlisQiymet_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MyControl.MakeTextBoxDecimalBox(sender, e);
+        }
+
+        private void textBoxSatisQiymet_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MyControl.MakeTextBoxDecimalBox(sender, e);
         }
     }
 }

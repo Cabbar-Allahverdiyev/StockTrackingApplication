@@ -17,6 +17,7 @@ namespace WindowsForm.MyControls
             }
         }
 
+        string meselen = "məsələn :";
         public void WritePlaceholdersForTextBoxPhoneNumberAndMaxLengthTen(TextBox textBoxPhoneNumber)
         {
             textBoxPhoneNumber.PlaceholderText = "məsələn : 0554926939";
@@ -26,18 +27,34 @@ namespace WindowsForm.MyControls
 
         public void WritePlaceholdersForTextBoxEmail(TextBox textBoxEmail)
         {
-            textBoxEmail.PlaceholderText = "məsələn : cabbar@cabbar.com";
+            textBoxEmail.PlaceholderText = $"{meselen} cabbar@cabbar.com";
+            textBoxEmail.MaxLength = 40;
         }
 
-        public void WritePlaceholdersForTextBoxAddress(TextBox textBoxPhoneNumber)
+        public void WritePlaceholdersForTextBoxAddress(TextBox textBoxAddress)
         {
-            textBoxPhoneNumber.PlaceholderText = "məsələn : Yevlax";
+            textBoxAddress.PlaceholderText = $"{meselen} Yevlax";
+            textBoxAddress.MaxLength = 40;
         }
 
         public void WritePlaceholdersForTextBoxSearch(TextBox textBoxPhoneNumber)
         {
             textBoxPhoneNumber.PlaceholderText = "Axtar";
+            textBoxPhoneNumber.MaxLength = 14;
         }
+
+        public void WritePlaceholdersForTextBoxBarcodeNo(TextBox textBoxBarcodeNumber)
+        {
+            textBoxBarcodeNumber.PlaceholderText = "13 rəqəmdən az olmamalıdır !";
+            textBoxBarcodeNumber.MaxLength = 30;
+        }
+
+        public void WritePlaceholdersForTextBoxQuantityPerUnit(TextBox textBoxQuantityPerUnit)
+        {
+            textBoxQuantityPerUnit.PlaceholderText = $"{meselen} 1 qutu , 1x və.s";
+            textBoxQuantityPerUnit.MaxLength = 20;
+        }
+
         public static void MakeTextBoxNumberBox(KeyPressEventArgs keyPressEventArgs)
         {
             if (!char.IsControl(keyPressEventArgs.KeyChar) && !char.IsDigit(keyPressEventArgs.KeyChar))
@@ -48,30 +65,18 @@ namespace WindowsForm.MyControls
 
         public static void MakeTextBoxDecimalBox(object sender, KeyPressEventArgs keyPressEventArgs)
         {
-            if (!char.IsControl(keyPressEventArgs.KeyChar) && !char.IsDigit(keyPressEventArgs.KeyChar) && (keyPressEventArgs.KeyChar != '.'))
+            if (!char.IsControl(keyPressEventArgs.KeyChar) && !char.IsDigit(keyPressEventArgs.KeyChar) && (keyPressEventArgs.KeyChar != ','))
             {
                 keyPressEventArgs.Handled = true;
             }
 
             // only allow one decimal point
-            if ((keyPressEventArgs.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            if ((keyPressEventArgs.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
             {
                 keyPressEventArgs.Handled = true;
             }
         }
 
-        private void textBoxTelefonNomresi_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
 
-            // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
-        }
     }
 }
