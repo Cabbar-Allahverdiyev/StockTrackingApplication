@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using Business.Constants.Messages;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Utilities.Search.Concrete.ProductSearch;
+using WindowsForm.MyControls;
 
 namespace WindowsForm.Forms
 {
@@ -29,7 +30,8 @@ namespace WindowsForm.Forms
         public ProductDeleteForm()
         {
             InitializeComponent();
-
+            MyControl myControl = new MyControl();
+            myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
         }
 
         private void ProductDeleteForm_Load(object sender, EventArgs e)

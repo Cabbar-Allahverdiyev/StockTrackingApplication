@@ -102,7 +102,7 @@ namespace WindowsForm.Forms
             this.GroupBoxVarOlanMehsul.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.GroupBoxVarOlanMehsul.Location = new System.Drawing.Point(0, 0);
             this.GroupBoxVarOlanMehsul.Name = "GroupBoxVarOlanMehsul";
-            this.GroupBoxVarOlanMehsul.Size = new System.Drawing.Size(265, 520);
+            this.GroupBoxVarOlanMehsul.Size = new System.Drawing.Size(273, 520);
             this.GroupBoxVarOlanMehsul.TabIndex = 2;
             this.GroupBoxVarOlanMehsul.TabStop = false;
             // 
@@ -111,14 +111,14 @@ namespace WindowsForm.Forms
             this.pictureBoxProductImage.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBoxProductImage.Location = new System.Drawing.Point(3, 18);
             this.pictureBoxProductImage.Name = "pictureBoxProductImage";
-            this.pictureBoxProductImage.Size = new System.Drawing.Size(259, 169);
+            this.pictureBoxProductImage.Size = new System.Drawing.Size(267, 169);
             this.pictureBoxProductImage.TabIndex = 28;
             this.pictureBoxProductImage.TabStop = false;
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(6, 429);
+            this.label17.Location = new System.Drawing.Point(37, 429);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(67, 14);
             this.label17.TabIndex = 27;
@@ -127,15 +127,15 @@ namespace WindowsForm.Forms
             // TextBoxVarOlanAciqlama
             // 
             this.TextBoxVarOlanAciqlama.Enabled = false;
-            this.TextBoxVarOlanAciqlama.Location = new System.Drawing.Point(96, 426);
+            this.TextBoxVarOlanAciqlama.Location = new System.Drawing.Point(110, 426);
             this.TextBoxVarOlanAciqlama.Name = "TextBoxVarOlanAciqlama";
-            this.TextBoxVarOlanAciqlama.Size = new System.Drawing.Size(164, 22);
+            this.TextBoxVarOlanAciqlama.Size = new System.Drawing.Size(150, 22);
             this.TextBoxVarOlanAciqlama.TabIndex = 26;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 284);
+            this.label15.Location = new System.Drawing.Point(37, 284);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(67, 14);
             this.label15.TabIndex = 25;
@@ -145,27 +145,27 @@ namespace WindowsForm.Forms
             // 
             this.comboBoxVarOlanTedarikci.Enabled = false;
             this.comboBoxVarOlanTedarikci.FormattingEnabled = true;
-            this.comboBoxVarOlanTedarikci.Location = new System.Drawing.Point(96, 281);
+            this.comboBoxVarOlanTedarikci.Location = new System.Drawing.Point(110, 281);
             this.comboBoxVarOlanTedarikci.Name = "comboBoxVarOlanTedarikci";
-            this.comboBoxVarOlanTedarikci.Size = new System.Drawing.Size(162, 22);
+            this.comboBoxVarOlanTedarikci.Size = new System.Drawing.Size(148, 22);
             this.comboBoxVarOlanTedarikci.TabIndex = 24;
             // 
             // comboBoxVarOlanMarka
             // 
             this.comboBoxVarOlanMarka.Enabled = false;
             this.comboBoxVarOlanMarka.FormattingEnabled = true;
-            this.comboBoxVarOlanMarka.Location = new System.Drawing.Point(96, 252);
+            this.comboBoxVarOlanMarka.Location = new System.Drawing.Point(110, 252);
             this.comboBoxVarOlanMarka.Name = "comboBoxVarOlanMarka";
-            this.comboBoxVarOlanMarka.Size = new System.Drawing.Size(162, 22);
+            this.comboBoxVarOlanMarka.Size = new System.Drawing.Size(148, 22);
             this.comboBoxVarOlanMarka.TabIndex = 23;
             // 
             // comboBoxVarOlanKateqoriya
             // 
             this.comboBoxVarOlanKateqoriya.Enabled = false;
             this.comboBoxVarOlanKateqoriya.FormattingEnabled = true;
-            this.comboBoxVarOlanKateqoriya.Location = new System.Drawing.Point(96, 223);
+            this.comboBoxVarOlanKateqoriya.Location = new System.Drawing.Point(110, 223);
             this.comboBoxVarOlanKateqoriya.Name = "comboBoxVarOlanKateqoriya";
-            this.comboBoxVarOlanKateqoriya.Size = new System.Drawing.Size(162, 22);
+            this.comboBoxVarOlanKateqoriya.Size = new System.Drawing.Size(148, 22);
             this.comboBoxVarOlanKateqoriya.TabIndex = 22;
             // 
             // LabelMiqdarVB
@@ -182,7 +182,7 @@ namespace WindowsForm.Forms
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 400);
+            this.label7.Location = new System.Drawing.Point(12, 400);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(92, 14);
             this.label7.TabIndex = 20;
@@ -191,15 +191,15 @@ namespace WindowsForm.Forms
             // textBoxVarOlanSatisQiymet
             // 
             this.textBoxVarOlanSatisQiymet.Enabled = false;
-            this.textBoxVarOlanSatisQiymet.Location = new System.Drawing.Point(96, 397);
+            this.textBoxVarOlanSatisQiymet.Location = new System.Drawing.Point(110, 397);
             this.textBoxVarOlanSatisQiymet.Name = "textBoxVarOlanSatisQiymet";
-            this.textBoxVarOlanSatisQiymet.Size = new System.Drawing.Size(164, 22);
+            this.textBoxVarOlanSatisQiymet.Size = new System.Drawing.Size(150, 22);
             this.textBoxVarOlanSatisQiymet.TabIndex = 15;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 371);
+            this.label8.Location = new System.Drawing.Point(22, 371);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(82, 14);
             this.label8.TabIndex = 19;
@@ -208,15 +208,15 @@ namespace WindowsForm.Forms
             // textBoxVarOlanAlisQiymet
             // 
             this.textBoxVarOlanAlisQiymet.Enabled = false;
-            this.textBoxVarOlanAlisQiymet.Location = new System.Drawing.Point(96, 368);
+            this.textBoxVarOlanAlisQiymet.Location = new System.Drawing.Point(110, 368);
             this.textBoxVarOlanAlisQiymet.Name = "textBoxVarOlanAlisQiymet";
-            this.textBoxVarOlanAlisQiymet.Size = new System.Drawing.Size(164, 22);
+            this.textBoxVarOlanAlisQiymet.Size = new System.Drawing.Size(150, 22);
             this.textBoxVarOlanAlisQiymet.TabIndex = 7;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 342);
+            this.label9.Location = new System.Drawing.Point(50, 342);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(54, 14);
             this.label9.TabIndex = 18;
@@ -225,7 +225,7 @@ namespace WindowsForm.Forms
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 313);
+            this.label10.Location = new System.Drawing.Point(25, 313);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(79, 14);
             this.label10.TabIndex = 17;
@@ -234,15 +234,15 @@ namespace WindowsForm.Forms
             // textBoxVarOlanStokaElaveEdilecekMiqdar
             // 
             this.textBoxVarOlanStokaElaveEdilecekMiqdar.Enabled = false;
-            this.textBoxVarOlanStokaElaveEdilecekMiqdar.Location = new System.Drawing.Point(96, 339);
+            this.textBoxVarOlanStokaElaveEdilecekMiqdar.Location = new System.Drawing.Point(110, 339);
             this.textBoxVarOlanStokaElaveEdilecekMiqdar.Name = "textBoxVarOlanStokaElaveEdilecekMiqdar";
-            this.textBoxVarOlanStokaElaveEdilecekMiqdar.Size = new System.Drawing.Size(164, 22);
+            this.textBoxVarOlanStokaElaveEdilecekMiqdar.Size = new System.Drawing.Size(150, 22);
             this.textBoxVarOlanStokaElaveEdilecekMiqdar.TabIndex = 6;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 255);
+            this.label11.Location = new System.Drawing.Point(54, 255);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(50, 14);
             this.label11.TabIndex = 16;
@@ -251,15 +251,15 @@ namespace WindowsForm.Forms
             // textBoxVarOlanBarkodNo
             // 
             this.textBoxVarOlanBarkodNo.Enabled = false;
-            this.textBoxVarOlanBarkodNo.Location = new System.Drawing.Point(96, 194);
+            this.textBoxVarOlanBarkodNo.Location = new System.Drawing.Point(110, 194);
             this.textBoxVarOlanBarkodNo.Name = "textBoxVarOlanBarkodNo";
-            this.textBoxVarOlanBarkodNo.Size = new System.Drawing.Size(164, 22);
+            this.textBoxVarOlanBarkodNo.Size = new System.Drawing.Size(150, 22);
             this.textBoxVarOlanBarkodNo.TabIndex = 2;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 226);
+            this.label12.Location = new System.Drawing.Point(24, 226);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(80, 14);
             this.label12.TabIndex = 15;
@@ -268,15 +268,15 @@ namespace WindowsForm.Forms
             // textBoxVarOlanMehsulAdi
             // 
             this.textBoxVarOlanMehsulAdi.Enabled = false;
-            this.textBoxVarOlanMehsulAdi.Location = new System.Drawing.Point(96, 310);
+            this.textBoxVarOlanMehsulAdi.Location = new System.Drawing.Point(110, 310);
             this.textBoxVarOlanMehsulAdi.Name = "textBoxVarOlanMehsulAdi";
-            this.textBoxVarOlanMehsulAdi.Size = new System.Drawing.Size(164, 22);
+            this.textBoxVarOlanMehsulAdi.Size = new System.Drawing.Size(150, 22);
             this.textBoxVarOlanMehsulAdi.TabIndex = 5;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 197);
+            this.label13.Location = new System.Drawing.Point(31, 197);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(73, 14);
             this.label13.TabIndex = 14;
@@ -287,11 +287,12 @@ namespace WindowsForm.Forms
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(675, 19);
+            this.label1.Image = global::WindowsForm.Properties.Resources.searchBlack;
+            this.label1.Location = new System.Drawing.Point(694, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 14);
+            this.label1.Size = new System.Drawing.Size(19, 14);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Axtar:";
+            this.label1.Text = "   ";
             // 
             // textBoxAxtar
             // 

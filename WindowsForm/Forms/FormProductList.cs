@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using Business.Constants.Messages;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Utilities.Search.Concrete.ProductSearch;
+using WindowsForm.MyControls;
 
 namespace WindowsForm.Forms
 {
@@ -21,6 +22,8 @@ namespace WindowsForm.Forms
         public FormProductList()
         {
             InitializeComponent();
+            MyControl myControl = new MyControl();
+            myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
         }
         ProductManager _productManager = new ProductManager(new EfProductDal());
         Product product = new Product();

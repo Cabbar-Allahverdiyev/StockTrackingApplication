@@ -104,11 +104,12 @@ namespace WindowsForm.Forms
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(592, 17);
+            this.label1.Image = global::WindowsForm.Properties.Resources.searchBlack;
+            this.label1.Location = new System.Drawing.Point(620, 17);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 17);
+            this.label1.Size = new System.Drawing.Size(17, 17);
             this.label1.TabIndex = 7;
-            this.label1.Text = "Axtar:";
+            this.label1.Text = "   ";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // GroupBoxVarOlanMehsul
