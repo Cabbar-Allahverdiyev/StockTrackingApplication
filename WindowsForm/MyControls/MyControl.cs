@@ -37,10 +37,16 @@ namespace WindowsForm.MyControls
             textBoxAddress.MaxLength = 40;
         }
 
-        public void WritePlaceholdersForTextBoxSearch(TextBox textBoxPhoneNumber)
+        public void WritePlaceholdersForTextBoxSearch(TextBox textBoxSearch)
         {
-            textBoxPhoneNumber.PlaceholderText = "Axtar";
-            textBoxPhoneNumber.MaxLength = 14;
+            textBoxSearch.PlaceholderText = "Axtar";
+            textBoxSearch.MaxLength = 20;
+        }
+
+        public void WritePlaceholdersForTextBoxSearchByProductName(TextBox textBoxBarcodeNumber)
+        {
+            textBoxBarcodeNumber.PlaceholderText = "Axtar : Barcode nömrəsi";
+            textBoxBarcodeNumber.MaxLength = 30;
         }
 
         public void WritePlaceholdersForTextBoxBarcodeNo(TextBox textBoxBarcodeNumber)
@@ -70,7 +76,6 @@ namespace WindowsForm.MyControls
                 keyPressEventArgs.Handled = true;
             }
 
-            // only allow one decimal point
             if ((keyPressEventArgs.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
             {
                 keyPressEventArgs.Handled = true;

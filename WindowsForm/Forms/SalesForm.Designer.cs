@@ -252,7 +252,7 @@ namespace WindowsForm.Forms
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(57, 148);
+            this.label11.Location = new System.Drawing.Point(51, 148);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(43, 17);
             this.label11.TabIndex = 17;
@@ -280,11 +280,12 @@ namespace WindowsForm.Forms
             this.textBoxMaxQiymet.Name = "textBoxMaxQiymet";
             this.textBoxMaxQiymet.Size = new System.Drawing.Size(138, 22);
             this.textBoxMaxQiymet.TabIndex = 13;
+            this.textBoxMaxQiymet.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxMaxQiymet_KeyPress);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 262);
+            this.label10.Location = new System.Drawing.Point(15, 262);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(79, 17);
             this.label10.TabIndex = 12;
@@ -305,6 +306,7 @@ namespace WindowsForm.Forms
             this.textBoxQiymet.Size = new System.Drawing.Size(138, 22);
             this.textBoxQiymet.TabIndex = 8;
             this.textBoxQiymet.TextChanged += new System.EventHandler(this.textBoxQiymet_TextChanged);
+            this.textBoxQiymet.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxQiymet_KeyPress);
             // 
             // textBoxMehsulAdi
             // 
@@ -321,6 +323,7 @@ namespace WindowsForm.Forms
             this.textBoxMiqdar.Size = new System.Drawing.Size(138, 22);
             this.textBoxMiqdar.TabIndex = 7;
             this.textBoxMiqdar.TextChanged += new System.EventHandler(this.textBoxMiqdar_TextChanged);
+            this.textBoxMiqdar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxMiqdar_KeyPress);
             // 
             // textBoxBarkodNo
             // 
@@ -329,11 +332,12 @@ namespace WindowsForm.Forms
             this.textBoxBarkodNo.Size = new System.Drawing.Size(138, 22);
             this.textBoxBarkodNo.TabIndex = 5;
             this.textBoxBarkodNo.TextChanged += new System.EventHandler(this.textBoxBarkodNo_TextChanged);
+            this.textBoxBarkodNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxBarkodNo_KeyPress);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 355);
+            this.label9.Location = new System.Drawing.Point(56, 355);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(38, 17);
             this.label9.TabIndex = 4;
@@ -342,7 +346,7 @@ namespace WindowsForm.Forms
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 295);
+            this.label8.Location = new System.Drawing.Point(41, 295);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(53, 17);
             this.label8.TabIndex = 3;
@@ -351,7 +355,7 @@ namespace WindowsForm.Forms
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 232);
+            this.label6.Location = new System.Drawing.Point(21, 232);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(73, 17);
             this.label6.TabIndex = 1;
@@ -360,7 +364,7 @@ namespace WindowsForm.Forms
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 202);
+            this.label5.Location = new System.Drawing.Point(25, 205);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(69, 17);
             this.label5.TabIndex = 0;
@@ -369,7 +373,7 @@ namespace WindowsForm.Forms
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 326);
+            this.label7.Location = new System.Drawing.Point(41, 326);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(53, 17);
             this.label7.TabIndex = 2;
@@ -452,7 +456,7 @@ namespace WindowsForm.Forms
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label12.Image = global::WindowsForm.Properties.Resources.icons8_search_16px_1;
+            this.label12.Image = global::WindowsForm.Properties.Resources.searchBlack;
             this.label12.Location = new System.Drawing.Point(902, 11);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(23, 17);

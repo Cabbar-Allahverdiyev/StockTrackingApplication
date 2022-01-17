@@ -22,18 +22,27 @@ using USB_Barcode_Scanner;
 using WindowsForm.Utilities.BarcodeScanner;
 using WindowsForm.Utilities.Search.Concrete.ProductSearch;
 using DataAccess.Concrete.EfInMemory;
+using WindowsForm.MyControls;
 
 namespace WindowsForm.Forms
 {
     public partial class SalesForm : Form
     {
+        int staticUserId = 2;
+
         public SalesForm()
         {
             InitializeComponent();
             TotalPriceLabelWrite();
 
+            MyControl myControl = new MyControl();
+            myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
+            myControl.WritePlaceholdersForTextBoxSearchByProductName(textBoxAxtarBarcodeNumber);
+
             BarcodeScanner barcodeScanner = new BarcodeScanner(textBoxBarkodNo);
             barcodeScanner.BarcodeScanned += BarcodeScanner_BarcodeScanned;
+
+
         }
 
         private void SalesForm_Load(object sender, EventArgs e)
@@ -49,21 +58,6 @@ namespace WindowsForm.Forms
         CartValidationTool cartValidationTool = new CartValidationTool();
         SaleValidationTool saleValidationTool = new SaleValidationTool();
         ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
-
-
-        //private void BarcodeScanner_BarcodeScanned(object sender, BarcodeScannerEventArgs e)
-        //{
-        //    USBBarcodeScannerExtension barcodeScannerExtension = new USBBarcodeScannerExtension();
-        //    barcodeScannerExtension.BarcodeScanner_BarcodeScanned(sender, e, textBoxBarkodNo);
-        //}
-
-        private void BarcodeScanner_BarcodeScanned(object sender, BarcodeScannerEventArgs e)
-        {
-            textBoxBarkodNo.Text = e.Barcode;
-        }
-
-        bool isBarcodeNumberExists = false;
-
 
 
 
@@ -156,20 +150,14 @@ namespace WindowsForm.Forms
 
         }
 
-        private void DataGridViewSalesForm_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            GroupBoxMehsulControlClear();
-            textBoxProductId.Text = dataGridViewProductList.CurrentRow.Cells["ProductId"].Value.ToString();
-            textBoxBarkodNo.Text = dataGridViewProductList.CurrentRow.Cells["BarcodeNomresi"].Value.ToString();
-            textBoxMehsulAdi.Text = dataGridViewProductList.CurrentRow.Cells["MehsulAdi"].Value.ToString();
-            textBoxMaxQiymet.Text = dataGridViewProductList.CurrentRow.Cells["Qiymet"].Value.ToString();
-            CemWrite();
-        }
+
 
         private void buttoElaveEt_Click(object sender, EventArgs e)
         {
+
             try
             {
+                bool isBarcodeNumberExists = false;
 
                 if (textBoxProductId.Text == "")
                 {
@@ -184,13 +172,13 @@ namespace WindowsForm.Forms
                 cart.SoldPrice = textBoxQiymet.Text == "" ? decimal.Parse(textBoxMaxQiymet.Text) : decimal.Parse(textBoxQiymet.Text);
                 cart.Quantity = int.Parse(textBoxMiqdar.Text);
                 cart.TotalPrice = decimal.Parse(textBoxCem.Text);
-                cart.UserId = 2;
+                cart.UserId = staticUserId;
                 if (!cartValidationTool.IsValid(cart))
                 {
                     return;
                 }
 
-                IsBarcodeNumberExists();
+                IsBarcodeNumberExists(int.Parse(textBoxProductId.Text), out isBarcodeNumberExists);
                 if (isBarcodeNumberExists == true)
                 {
                     CartAddDto cartAddDto = _cartManager.GetCartAddDetailByProductId(int.Parse(textBoxProductId.Text)).Data;
@@ -229,7 +217,11 @@ namespace WindowsForm.Forms
             }
 
         }
+        private void buttonTemizle_Click(object sender, EventArgs e)
+        {
+            GroupBoxMehsulControlClear();
 
+        }
 
         private void ButtonSalesFormSatisEtmek_Click(object sender, EventArgs e)
         {
@@ -300,6 +292,7 @@ namespace WindowsForm.Forms
 
         }
 
+        //Text Changed -------------------->
         private void textBoxMiqdar_TextChanged(object sender, EventArgs e)
         {
             CemWrite();
@@ -321,24 +314,71 @@ namespace WindowsForm.Forms
 
         private void textBoxBarkodNo_TextChanged(object sender, EventArgs e)
         {
+
             string barcodeNumber = textBoxBarkodNo.Text;
             if (barcodeNumber.Length >= 13)
             {
-                IDataResult<Product> result = _productManager.GetByProductBarcodeNumber(barcodeNumber);
-                if (result.Success == false)
-                {
-                    FormsMessage.WarningMessage(result.Message);
-                    return;
-                }
-                GroupBoxMehsulControlClear();
-                textBoxProductId.Text = result.Data.Id.ToString();
-                textBoxMehsulAdi.Text = result.Data.ProductName;
-                textBoxMaxQiymet.Text = result.Data.UnitPrice.ToString();
-                CemWrite();
+                //bool isbarcodeExists = false;
+                //IResult cartAdded;
+                //IResult cartUpdated;
+
+                //IDataResult<Product> result = _productManager.GetByProductBarcodeNumber(barcodeNumber);
+                //if (result.Success == false)
+                //{
+                //    FormsMessage.WarningMessage(result.Message);
+                //    return;
+                //}
+                //// GroupBoxMehsulControlClear();
+                //Cart cart = new Cart();
+                //cart.ProductId = result.Data.Id;
+                //cart.UserId = staticUserId; //sonra dinamiklesdir
+                //cart.Quantity = 1;
+                //cart.SoldPrice = result.Data.UnitPrice;
+                //cart.TotalPrice = cart.Quantity * cart.SoldPrice;
+
+                //if (!cartValidationTool.IsValid(cart))
+                //{
+                //    return;
+                //}
+
+
+
+                //IsBarcodeNumberExists(cart.ProductId, out isbarcodeExists);
+                //if (isbarcodeExists == true)
+                //{
+                //    Cart getCart = _cartManager.GetByProductId(cart.ProductId).Data;
+                //    cart.Id = getCart.Id;
+                //    cart.Quantity = getCart.Quantity + 1;
+                //    cart.TotalPrice = cart.SoldPrice * cart.Quantity;
+                //    cartUpdated = _cartManager.Update(cart);
+                //    if (!cartUpdated.Success)
+                //    {
+                //        FormsMessage.WarningMessage(cartUpdated.Message);
+                //        return;
+                //    }
+                //    // FormsMessage.SuccessMessage(cartUpdated.Message);
+                //}
+                //else
+                //{
+
+                //    cartAdded = _cartManager.Add(cart);
+                //    if (!cartAdded.Success)
+                //    {
+                //        FormsMessage.WarningMessage(cartAdded.Message);
+                //        return;
+                //    }
+                //    //FormsMessage.SuccessMessage(CartMessages.ProductAdded);
+                //}
+                //GroupBoxMehsulControlClear();
+                //CartListRefesh();
+
+                //TotalPriceLabelWrite();
+                
             }
 
         }
 
+        //Double Click----------------------------------->
 
 
         private void dataGridViewCartList_DoubleClick(object sender, EventArgs e)
@@ -357,16 +397,110 @@ namespace WindowsForm.Forms
             textBoxCem.Text = dataGridViewCartList.CurrentRow.Cells["Cem"].Value.ToString();
         }
 
-        private void buttonTemizle_Click(object sender, EventArgs e)
+        private void DataGridViewSalesForm_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             GroupBoxMehsulControlClear();
-
+            textBoxProductId.Text = dataGridViewProductList.CurrentRow.Cells["ProductId"].Value.ToString();
+            textBoxBarkodNo.Text = dataGridViewProductList.CurrentRow.Cells["BarcodeNomresi"].Value.ToString();
+            textBoxMehsulAdi.Text = dataGridViewProductList.CurrentRow.Cells["MehsulAdi"].Value.ToString();
+            textBoxMaxQiymet.Text = dataGridViewProductList.CurrentRow.Cells["Qiymet"].Value.ToString();
+            CemWrite();
         }
 
 
 
+        //Key Press--------------------------------------->
+        private void textBoxBarkodNo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MyControl.MakeTextBoxNumberBox(e);
+
+            string barcodeNumber = textBoxBarkodNo.Text;
+            if (barcodeNumber.Length == 13)
+            {
+                bool isbarcodeExists = false;
+                IResult cartAdded;
+                IResult cartUpdated;
+
+                IDataResult<Product> result = _productManager.GetByProductBarcodeNumber(barcodeNumber);
+                if (result.Success == false)
+                {
+                    FormsMessage.WarningMessage(result.Message);
+                    GroupBoxMehsulControlClear(); //bura yeniden bax
+                    return;
+                }
+                // GroupBoxMehsulControlClear();
+                Cart cart = new Cart();
+                cart.ProductId = result.Data.Id;
+                cart.UserId = staticUserId; //sonra dinamiklesdir
+                cart.Quantity = 1;
+                cart.SoldPrice = result.Data.UnitPrice;
+                cart.TotalPrice = cart.Quantity * cart.SoldPrice;
+
+                if (!cartValidationTool.IsValid(cart))
+                {
+                    return;
+                }
+
+
+
+                IsBarcodeNumberExists(cart.ProductId, out isbarcodeExists);
+                if (isbarcodeExists == true)
+                {
+                    Cart getCart = _cartManager.GetByProductId(cart.ProductId).Data;
+                    cart.Id = getCart.Id;
+                    cart.Quantity = getCart.Quantity + 1;
+                    cart.TotalPrice = cart.SoldPrice * cart.Quantity;
+                    cartUpdated = _cartManager.Update(cart);
+                    if (!cartUpdated.Success)
+                    {
+                        FormsMessage.WarningMessage(cartUpdated.Message);
+                        return;
+                    }
+                    // FormsMessage.SuccessMessage(cartUpdated.Message);
+                }
+                else
+                {
+
+                    cartAdded = _cartManager.Add(cart);
+                    if (!cartAdded.Success)
+                    {
+                        FormsMessage.WarningMessage(cartAdded.Message);
+                        return;
+                    }
+                    //FormsMessage.SuccessMessage(CartMessages.ProductAdded);
+                }
+                GroupBoxMehsulControlClear();
+                CartListRefesh();
+
+                TotalPriceLabelWrite();
+
+            }
+        }
+
+        private void textBoxMaxQiymet_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MyControl.MakeTextBoxDecimalBox(sender, e);
+        }
+
+        private void textBoxQiymet_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MyControl.MakeTextBoxDecimalBox(sender, e);
+        }
+
+        private void textBoxMiqdar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MyControl.MakeTextBoxNumberBox(e);
+        }
+
+
 
         //Elave metodlar--------------------------->
+
+        private void BarcodeScanner_BarcodeScanned(object sender, BarcodeScannerEventArgs e)
+        {
+            textBoxBarkodNo.Text = e.Barcode;
+        }
+
         private void CalculateTotalPrice(int quantity, decimal price)
         {
             if (quantity <= 0 || price <= 0)
@@ -397,9 +531,9 @@ namespace WindowsForm.Forms
             textBoxMiqdar.Text = "1";
         }
 
-        private void IsBarcodeNumberExists()
+        private void IsBarcodeNumberExists(int productId, out bool isBarcodeNumberExists)
         {
-            IDataResult<CartAddDto> result = _cartManager.GetCartAddDetailByProductId(int.Parse(textBoxProductId.Text));
+            IDataResult<CartAddDto> result = _cartManager.GetCartAddDetailByProductId(productId);
             // IDataResult<CartAddDto> result = _cartManager.GetCartAddDetailByBarcodeNumber(Convert.ToInt32(textBoxBarkodNo.Text));
             if (result.Success)
             {
@@ -423,7 +557,7 @@ namespace WindowsForm.Forms
 
         private void CartListRefesh()
         {
-            dataGridViewCartList.DataSource = _cartManager.GetAllCartViewDetailsByUserId(2).Data;
+            dataGridViewCartList.DataSource = _cartManager.GetAllCartViewDetailsByUserId(staticUserId).Data;
         }
 
         private void ProductListRefesh()
