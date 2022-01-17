@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -20,7 +21,10 @@ namespace Business.Constants.Messages
         public static string GetAll = "Səbət sıralandi";
         public static string Found = "Səbət tapıldı";
         public static string NotFound = "Belə bir Səbət yoxdur";
+
+        public static string QuantityMustBeGreaterThanZero = "Miqdar '0' dan böyük olamlıdır";
         public static string ProductNotFound = "Səbətdə belə bir məhsul yoxdur";
-       
+        public static string ProductFound = "Məhsula uyğun səbət tapıldı";
+
     }
 }

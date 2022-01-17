@@ -64,6 +64,18 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Cart>>(get,CartMessages.GetAll);
         }
 
+        // Get By----------------------------->
+
+        public IDataResult<Cart> GetByProductId(int productId)
+        {
+            Cart get = _cartDal.Get(c => c.ProductId == productId);
+            if (get == null)
+            {
+                return new ErrorDataResult<Cart>(CartMessages.NotFound);
+            }
+            return new SuccessDataResult<Cart>(get, CartMessages.GetAll);
+        }
+
         //Dtos------------------>
         public IDataResult<CartAddDto> GetCartAddDetailByBarcodeNumber(int barcodeNumber)
         {
@@ -125,5 +137,7 @@ namespace Business.Concrete
             }
             return new SuccessDataResult<List<Cart>>(carts,CartMessages.Found);
         }
+
+        
     }
 }
