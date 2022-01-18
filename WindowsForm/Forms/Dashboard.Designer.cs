@@ -318,9 +318,9 @@ namespace WindowsForm.Forms
             this.buttonMinimized.ForeColor = System.Drawing.Color.Black;
             this.buttonMinimized.Image = ((System.Drawing.Image)(resources.GetObject("buttonMinimized.Image")));
             this.buttonMinimized.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonMinimized.Location = new System.Drawing.Point(666, 0);
+            this.buttonMinimized.Location = new System.Drawing.Point(649, 0);
             this.buttonMinimized.Name = "buttonMinimized";
-            this.buttonMinimized.Size = new System.Drawing.Size(27, 23);
+            this.buttonMinimized.Size = new System.Drawing.Size(35, 23);
             this.buttonMinimized.TabIndex = 7;
             this.buttonMinimized.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonMinimized.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
@@ -334,7 +334,7 @@ namespace WindowsForm.Forms
             this.buttonMaximized.FlatAppearance.BorderSize = 0;
             this.buttonMaximized.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMaximized.Image = ((System.Drawing.Image)(resources.GetObject("buttonMaximized.Image")));
-            this.buttonMaximized.Location = new System.Drawing.Point(688, 0);
+            this.buttonMaximized.Location = new System.Drawing.Point(684, 0);
             this.buttonMaximized.Name = "buttonMaximized";
             this.buttonMaximized.Size = new System.Drawing.Size(35, 23);
             this.buttonMaximized.TabIndex = 6;

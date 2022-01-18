@@ -12,6 +12,7 @@ namespace Business.ValidationRules.FluentValidation
         public SaleValidator()
         {
             RuleFor(s=>s.ProductId).NotEmpty();
+            RuleFor(s=>s.SoldPrice).NotEmpty();
             RuleFor(s=>s.Quantity).NotEmpty();
           
         }

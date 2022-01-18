@@ -247,7 +247,6 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.TextBox textBoxSifreTekrari;
         private System.Windows.Forms.TextBox textBoxAdres;
         private System.Windows.Forms.Button buttonEalveEt;
-        private MyControls.ValidatingTextBox validatingTextBox1;
         private System.Windows.Forms.Button buttonTemizle;
         private System.Windows.Forms.TextBox textBoxTelefonNomresi;
     }

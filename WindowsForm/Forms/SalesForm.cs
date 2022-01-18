@@ -256,10 +256,10 @@ namespace WindowsForm.Forms
                         productUpdated = _productManager.Update(product);
                         if (!saleWinFormAdded.Success || !productUpdated.Success)
                         {
-                            messages.Add(product.BarcodeNumber + product.ProductName + saleWinFormAdded.Message + " & " + productUpdated.Message);
+                            messages.Add(product.BarcodeNumber +" - "+ product.ProductName + " : " + saleWinFormAdded.Message + " & " + productUpdated.Message);
 
                         }
-                        messages.Add(product.ProductName + saleWinFormAdded.Message + " & " + productUpdated.Message);
+                        messages.Add(product.ProductName +" : "+ saleWinFormAdded.Message + " & " + productUpdated.Message);
 
 
                     }
@@ -312,71 +312,7 @@ namespace WindowsForm.Forms
             detailsSearch.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewProductList);
         }
 
-        private void textBoxBarkodNo_TextChanged(object sender, EventArgs e)
-        {
-
-            string barcodeNumber = textBoxBarkodNo.Text;
-            if (barcodeNumber.Length >= 13)
-            {
-                //bool isbarcodeExists = false;
-                //IResult cartAdded;
-                //IResult cartUpdated;
-
-                //IDataResult<Product> result = _productManager.GetByProductBarcodeNumber(barcodeNumber);
-                //if (result.Success == false)
-                //{
-                //    FormsMessage.WarningMessage(result.Message);
-                //    return;
-                //}
-                //// GroupBoxMehsulControlClear();
-                //Cart cart = new Cart();
-                //cart.ProductId = result.Data.Id;
-                //cart.UserId = staticUserId; //sonra dinamiklesdir
-                //cart.Quantity = 1;
-                //cart.SoldPrice = result.Data.UnitPrice;
-                //cart.TotalPrice = cart.Quantity * cart.SoldPrice;
-
-                //if (!cartValidationTool.IsValid(cart))
-                //{
-                //    return;
-                //}
-
-
-
-                //IsBarcodeNumberExists(cart.ProductId, out isbarcodeExists);
-                //if (isbarcodeExists == true)
-                //{
-                //    Cart getCart = _cartManager.GetByProductId(cart.ProductId).Data;
-                //    cart.Id = getCart.Id;
-                //    cart.Quantity = getCart.Quantity + 1;
-                //    cart.TotalPrice = cart.SoldPrice * cart.Quantity;
-                //    cartUpdated = _cartManager.Update(cart);
-                //    if (!cartUpdated.Success)
-                //    {
-                //        FormsMessage.WarningMessage(cartUpdated.Message);
-                //        return;
-                //    }
-                //    // FormsMessage.SuccessMessage(cartUpdated.Message);
-                //}
-                //else
-                //{
-
-                //    cartAdded = _cartManager.Add(cart);
-                //    if (!cartAdded.Success)
-                //    {
-                //        FormsMessage.WarningMessage(cartAdded.Message);
-                //        return;
-                //    }
-                //    //FormsMessage.SuccessMessage(CartMessages.ProductAdded);
-                //}
-                //GroupBoxMehsulControlClear();
-                //CartListRefesh();
-
-                //TotalPriceLabelWrite();
-                
-            }
-
-        }
+       
 
         //Double Click----------------------------------->
 
@@ -415,7 +351,7 @@ namespace WindowsForm.Forms
             MyControl.MakeTextBoxNumberBox(e);
 
             string barcodeNumber = textBoxBarkodNo.Text;
-            if (barcodeNumber.Length == 13)
+            if (barcodeNumber.Length >= 13)
             {
                 bool isbarcodeExists = false;
                 IResult cartAdded;
@@ -476,6 +412,7 @@ namespace WindowsForm.Forms
 
             }
         }
+        
 
         private void textBoxMaxQiymet_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -548,7 +485,7 @@ namespace WindowsForm.Forms
         private void RemoveCart()
         {
             Cart cart = new Cart();
-            cart.UserId = 2;    //Mutleq Dinamiklesdir
+            cart.UserId = staticUserId;    //Mutleq Dinamiklesdir
             _cartManager.ByUserIdAllRemove(cart.UserId);
 
 

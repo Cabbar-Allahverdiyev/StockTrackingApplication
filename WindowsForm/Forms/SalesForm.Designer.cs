@@ -331,7 +331,6 @@ namespace WindowsForm.Forms
             this.textBoxBarkodNo.Name = "textBoxBarkodNo";
             this.textBoxBarkodNo.Size = new System.Drawing.Size(138, 22);
             this.textBoxBarkodNo.TabIndex = 5;
-            this.textBoxBarkodNo.TextChanged += new System.EventHandler(this.textBoxBarkodNo_TextChanged);
             this.textBoxBarkodNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxBarkodNo_KeyPress);
             // 
             // label9
