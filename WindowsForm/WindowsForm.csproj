@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.1.0" />
     <PackageReference Include="FontAwesome.Sharp" Version="5.15.3" />
+    <PackageReference Include="MessagingToolkit.Barcode" Version="1.7.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.12" />
     <PackageReference Include="ZXing.Net" Version="0.16.6" />
   </ItemGroup>

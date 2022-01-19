@@ -1,7 +1,4 @@
-﻿using Business.Concrete;
-using Business.Constants.Messages;
-using Core.Utilities.Results;
-using DataAccess.Concrete.EntityFramework;
+﻿using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using Entities.DTOs;
 using System;
@@ -12,6 +9,9 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using USB_Barcode_Scanner;
+using MessagingToolkit.Barcode;
+using WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate;
+using Core.Utilities.Results;
 
 namespace WindowsForm.Forms
 {
@@ -22,56 +22,129 @@ namespace WindowsForm.Forms
             InitializeComponent();
             BarcodeScanner barcodeScanner = new BarcodeScanner(textBox1);
             barcodeScanner.BarcodeScanned += BarcodeScanner_BarcodeScanned;
-            dataGridViewFormPrdouctList.DataSource = productManager.GetAll().Data;
 
 
         }
-        ProductManager productManager = new ProductManager(new EfProductDal());
+        //ProductManager productManager = new ProductManager(new EfProductDal());
+        BarcodeEncoder generator;
+        BarcodeDecoder scanner;
+        SaveFileDialog saveDialog;
+        OpenFileDialog openDialog;
+        BarcodeGenerator barcodeGenerator = new BarcodeGenerator();
 
         private void BarcodeScanner_BarcodeScanned(object sender, BarcodeScannerEventArgs e)
         {
             textBox1.Text = e.Barcode;
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void buttonScan_Click(object sender, EventArgs e)
         {
-            //dataGridViewFormPrdouctList.DataSource = null;
-            string brcode = textBox1.Text;
-            if (brcode.Length >= 13)
+            IDataResult<string> result=barcodeGenerator.InmemoryScanItAndConvertString(pictureBox1);
+            if (!result.Success)
             {
-                IDataResult<List<ProductViewDashboardDetailDto>> data = productManager.GetProductViewDasboardDetailByBarcodeNumber(brcode);
-                if (data.Success == false)
-                {
-                    textBox3.Text = textBox1.Text;
-                    return;
-                }
-                dataGridViewFormPrdouctList.DataSource = data.Data;
-
-            }
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            textBox3.Text = "";
-            string brcode = textBox1.Text;
-            textBox3.Text = brcode.Length.ToString();
-
-            IDataResult<Product> data = productManager.GetByProductBarcodeNumber(brcode);
-            if (data.Success == false)
-            {
-                textBox3.Text = textBox1.Text;
+                MessageBox.Show(result.Message);
                 return;
             }
-            dataGridViewFormPrdouctList.DataSource = data.Data;
-
+            textBox1.Text = result.Data;
+            //scanner = new BarcodeDecoder();
+            //if (pictureBox1.IsMirrored==true)
+            //{
+            //    MessagingToolkit.Barcode.Result result = scanner.Decode(new Bitmap(pictureBox1.Image));
+            //    MessageBox.Show(result.Text);
+            //}
+            //MessageBox.Show("deyer bos");
         }
 
-        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
+        private void buttonGenerate_Click(object sender, EventArgs e)
         {
-            
+            IDataResult<Image> result = barcodeGenerator.GenerateBarcode(textBox1.Text);
+            if (!result.Success)
+            {
+                MessageBox.Show(result.Message);
+                return;
+            }
+            pictureBox1.Image = result.Data;
+            //generator = new BarcodeEncoder();
+            //generator.IncludeLabel = true;
+            //generator.CustomLabel = textBox1.Text;
+            //if (textBox1.Text != "")
+            //{
+            //    pictureBox1.Image = new Bitmap(generator.Encode(BarcodeFormat.Code39, textBox1.Text));
+            //}
         }
 
-       
+        private void buttonQrCode_Click(object sender, EventArgs e)
+        {
+            IDataResult<Image> result = barcodeGenerator.GenerateQRCode(textBox1.Text);
+            if (!result.Success)
+            {
+                MessageBox.Show(result.Message);
+                return;
+            }
+            pictureBox1.Image = result.Data;
+
+
+            //generator = new BarcodeEncoder();
+            //generator.IncludeLabel = true;
+            //generator.CustomLabel = textBox1.Text;
+            //if (textBox1.Text != "")
+            //{
+            //    pictureBox1.Image = new Bitmap(generator.Encode(BarcodeFormat.QRCode, textBox1.Text));
+            //}
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            IResult result = barcodeGenerator.Save(pictureBox1);
+            if (!result.Success)
+            {
+                MessageBox.Show(result.Message);
+               
+            }
+
+
+
+            //saveDialog = new SaveFileDialog();
+            //saveDialog.Filter = "PNG File|*.png";
+            //if (saveDialog.ShowDialog() == DialogResult.OK)
+            //{
+            //    pictureBox1.Image.Save(saveDialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
+            //}
+        }
+
+        private void buttonLoad_Click(object sender, EventArgs e)
+        {
+            IResult result = barcodeGenerator.Load(pictureBox1);
+            if (!result.Success)
+            {
+                MessageBox.Show(result.Message);
+
+            }
+
+
+            //openDialog = new OpenFileDialog();
+            //openDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            //if (openDialog.ShowDialog() == DialogResult.OK)
+            //{
+            //    pictureBox1.Load(openDialog.FileName);
+            //}
+        }
+
+        private void buttonRandom_Click(object sender, EventArgs e)
+        {
+            IDataResult<string> result = barcodeGenerator.RandomBarcodeNumberGenerator();
+            if (!result.Success)
+            {
+                MessageBox.Show(result.Message);
+                return;
+            }
+            textBox1.Text = result.Data;
+
+            //Random random = new Random();
+            //String randomText = random.Next(0, 999999).ToString("D13"); //eger sistemde varsa yeniden yarat
+            //textBox1.Text = randomText;
+        }
+
+
     }
 }
