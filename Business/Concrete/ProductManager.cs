@@ -52,7 +52,7 @@ namespace Business.Concrete
         [CacheRemoveAspect("IProductService.Get")]
         public IResult Update(Product product)
         {
-            product.LastModifiedDate = DateTime.Now;
+            //product.LastModifiedDate = DateTime.Now;
             _productDal.Update(product);
             return new SuccessResult(ProductMessages.ProductUpdated);
         }

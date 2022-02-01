@@ -13,23 +13,23 @@ namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate
     {
         BarcodeEncoder generator;
         BarcodeDecoder scanner;
-        SaveFileDialog saveDialog;
+
         OpenFileDialog openDialog;
 
-        public IDataResult<Image> GenerateBarcode( string text)
+        public IDataResult<Image> GenerateBarcode(string text)
         {
             generator = new BarcodeEncoder();
             generator.IncludeLabel = true;
             generator.CustomLabel = text;
             if (text != "")
             {
-               Image result = new Bitmap(generator.Encode(BarcodeFormat.Code39, text));
+                Image result = new Bitmap(generator.Encode(BarcodeFormat.QRCode, text));
                 return new SuccessDataResult<Image>(result, BarcodeNumberMessages.BarcodeNumberGenerated);
             }
             return new ErrorDataResult<Image>(BarcodeNumberMessages.QRCodeNotGenerated);
         }
 
-        public IDataResult<Image> GenerateQRCode( string text)
+        public IDataResult<Image> GenerateQRCode(string text)
         {
             generator = new BarcodeEncoder();
             generator.IncludeLabel = true;
@@ -37,7 +37,7 @@ namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate
             if (text != "")
             {
                 //pictureBox.Image = 
-                    Image result=new Bitmap(generator.Encode(BarcodeFormat.QRCode, text));
+                Image result = new Bitmap(generator.Encode(BarcodeFormat.QRCode, text));
                 return new SuccessDataResult<Image>(result, BarcodeNumberMessages.QRCodeGenerated);
             }
             return new ErrorDataResult<Image>(BarcodeNumberMessages.QRCodeNotGenerated);
@@ -47,9 +47,9 @@ namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate
         public IDataResult<string> InmemoryScanItAndConvertString(PictureBox barcodePicture)
         {
             scanner = new BarcodeDecoder();
-            if (barcodePicture.IsMirrored == false)
+            if (barcodePicture.Image == null)
             {
-                new ErrorDataResult<string>(BarcodeNumberMessages.ScanFailed);
+                return new ErrorDataResult<string>(BarcodeNumberMessages.ScanFailed);
             }
             MessagingToolkit.Barcode.Result result = scanner.Decode(new Bitmap(barcodePicture.Image));
             return new SuccessDataResult<string>(result.Text, BarcodeNumberMessages.Scanned);
@@ -57,15 +57,22 @@ namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate
 
         public IResult Save(PictureBox barcodePicture)
         {
-            saveDialog = new SaveFileDialog();
-            saveDialog.Filter = "PNG File|*.png";
-            if (saveDialog.ShowDialog() == DialogResult.OK)
+            if (barcodePicture.Image == null)
             {
-                
-                barcodePicture.Image.Save(saveDialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
-                return new SuccessResult();
+                return new ErrorResult(BarcodeNumberMessages.SaveFailed); //sekil yoxdu
             }
-            return new ErrorResult(BarcodeNumberMessages.SaveFailed);
+            using (SaveFileDialog saveDialog = new SaveFileDialog())
+            {
+                saveDialog.Filter = "PNG|*.png"; //burada 'File' sozu silinib eger lazim olsa Png nin yanina sadece File yaz 
+                if (saveDialog.ShowDialog() == DialogResult.OK)
+                {
+                    barcodePicture.Image.Save(saveDialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
+                    return new SuccessResult();
+                }
+                return new ErrorResult(BarcodeNumberMessages.SaveFailed); 
+
+            }
+
         }
 
         public IResult Load(PictureBox barcodePicture)
@@ -83,9 +90,9 @@ namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate
         public IDataResult<string> RandomBarcodeNumberGenerator()
         {
             Random random = new Random();
-            //string randomText = random.Next(0, 999999).ToString()+ random.Next(0, 999999).ToString(); //eger sistemde varsa yeniden yarat
-            string randomText = random.Next(0, 999999).ToString("D13"); //eger sistemde varsa yeniden yarat
-            return new SuccessDataResult<string>( randomText,BarcodeNumberMessages.RandomBarcodeNumberGenerated);
+            string randomText = "476" + "0776" + random.Next(0, 99999).ToString()+"0"; //eger sistemde varsa yeniden yarat
+            //string randomText = random.Next(0, 999999).ToString("D13"); //eger sistemde varsa yeniden yarat
+            return new SuccessDataResult<string>(randomText, BarcodeNumberMessages.RandomBarcodeNumberGenerated);
         }
     }
 }

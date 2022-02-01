@@ -1,0 +1,99 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using MessagingToolkit.Barcode;
+using System.Windows.Forms;
+using System.Drawing;
+
+
+namespace WindowsFormAppDotNet.Utilities.BarcodeGenerate
+{
+    public class BarcodeGenerator
+    {
+        BarcodeEncoder generator;
+        BarcodeDecoder scanner;
+
+        OpenFileDialog openDialog;
+
+        public Image GenerateBarcode(string text)
+        {
+            generator = new BarcodeEncoder();
+            generator.IncludeLabel = true;
+            generator.CustomLabel = text;
+            if (text != "")
+            {
+                Image result = new Bitmap(generator.Encode(BarcodeFormat.EAN13,text));
+                //Image result = new Bitmap(generator.Encode(BarcodeFormat.EAN13, text));
+                return result;
+            }
+            return null;
+            
+        }
+
+        //public IDataResult<Image> GenerateQRCode(string text)
+        //{
+        //    generator = new BarcodeEncoder();
+        //    generator.IncludeLabel = true;
+        //    generator.CustomLabel = text;
+        //    if (text != "")
+        //    {
+        //        //pictureBox.Image = 
+        //        Image result = new Bitmap(generator.Encode(BarcodeFormat.QRCode, text));
+        //        return new SuccessDataResult<Image>(result, BarcodeNumberMessages.QRCodeGenerated);
+        //    }
+        //    return new ErrorDataResult<Image>(BarcodeNumberMessages.QRCodeNotGenerated);
+        //}
+
+
+        //public IDataResult<string> InmemoryScanItAndConvertString(PictureBox barcodePicture)
+        //{
+        //    scanner = new BarcodeDecoder();
+        //    if (barcodePicture.IsMirrored == false)
+        //    {
+        //        new ErrorDataResult<string>(BarcodeNumberMessages.ScanFailed);
+        //    }
+        //    MessagingToolkit.Barcode.Result result = scanner.Decode(new Bitmap(barcodePicture.Image));
+        //    return new SuccessDataResult<string>(result.Text, BarcodeNumberMessages.Scanned);
+        //}
+
+        //public IResult Save(PictureBox barcodePicture)
+        //{
+        //    if (barcodePicture.Image == null)
+        //    {
+        //        return new ErrorResult(BarcodeNumberMessages.SaveFailed); //sekil yoxdu
+        //    }
+        //    using (SaveFileDialog saveDialog = new SaveFileDialog())
+        //    {
+        //        saveDialog.Filter = "PNG|*.png"; //burada 'File' sozu silinib eger lazim olsa Png nin yanina sadece File yaz 
+        //        if (saveDialog.ShowDialog() == DialogResult.OK)
+        //        {
+        //            barcodePicture.Image.Save(saveDialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
+        //            return new SuccessResult();
+        //        }
+        //        return new ErrorResult(BarcodeNumberMessages.SaveFailed); 
+
+        //    }
+
+        //}
+
+        //public IResult Load(PictureBox barcodePicture)
+        //{
+        //    openDialog = new OpenFileDialog();
+        //    openDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+        //    if (openDialog.ShowDialog() == DialogResult.OK)
+        //    {
+        //        barcodePicture.Load(openDialog.FileName);
+        //        return new SuccessResult();
+        //    }
+        //    return new ErrorResult(BarcodeNumberMessages.LoadFailed);
+        //}
+
+        public string RandomBarcodeNumberGenerator()
+        {
+            Random random = new Random();
+            string randomText = "479" + "0776" + random.Next(0, 99999).ToString()+"0"; //eger sistemde varsa yeniden yarat
+            //string randomText = random.Next(0, 999999).ToString("D13"); //eger sistemde varsa yeniden yarat
+            return randomText;
+        }
+    }
+}
