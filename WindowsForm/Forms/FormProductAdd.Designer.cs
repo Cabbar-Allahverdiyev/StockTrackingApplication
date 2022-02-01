@@ -30,6 +30,7 @@ namespace WindowsForm.Forms
         private void InitializeComponent()
         {
             this.GroupBoxFormProductAddYeniMehsul = new System.Windows.Forms.GroupBox();
+            this.buttonTemizle = new System.Windows.Forms.Button();
             this.pictureBoxProductImage = new System.Windows.Forms.PictureBox();
             this.label17 = new System.Windows.Forms.Label();
             this.textBoxAciqlama = new System.Windows.Forms.TextBox();
@@ -38,7 +39,7 @@ namespace WindowsForm.Forms
             this.label15 = new System.Windows.Forms.Label();
             this.comboBoxTedarikci = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.ButtonFormProductAddYeniMehsulElaveEt = new System.Windows.Forms.Button();
+            this.buttonElaveEt = new System.Windows.Forms.Button();
             this.textBoxMehsulAdi = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -55,7 +56,6 @@ namespace WindowsForm.Forms
             this.dataGridViewProductList = new System.Windows.Forms.DataGridView();
             this.label18 = new System.Windows.Forms.Label();
             this.textBoxAxtar = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.GroupBoxFormProductAddYeniMehsul.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProductImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductList)).BeginInit();
@@ -63,7 +63,7 @@ namespace WindowsForm.Forms
             // 
             // GroupBoxFormProductAddYeniMehsul
             // 
-            this.GroupBoxFormProductAddYeniMehsul.Controls.Add(this.button1);
+            this.GroupBoxFormProductAddYeniMehsul.Controls.Add(this.buttonTemizle);
             this.GroupBoxFormProductAddYeniMehsul.Controls.Add(this.pictureBoxProductImage);
             this.GroupBoxFormProductAddYeniMehsul.Controls.Add(this.label17);
             this.GroupBoxFormProductAddYeniMehsul.Controls.Add(this.textBoxAciqlama);
@@ -72,7 +72,7 @@ namespace WindowsForm.Forms
             this.GroupBoxFormProductAddYeniMehsul.Controls.Add(this.label15);
             this.GroupBoxFormProductAddYeniMehsul.Controls.Add(this.comboBoxTedarikci);
             this.GroupBoxFormProductAddYeniMehsul.Controls.Add(this.label14);
-            this.GroupBoxFormProductAddYeniMehsul.Controls.Add(this.ButtonFormProductAddYeniMehsulElaveEt);
+            this.GroupBoxFormProductAddYeniMehsul.Controls.Add(this.buttonElaveEt);
             this.GroupBoxFormProductAddYeniMehsul.Controls.Add(this.textBoxMehsulAdi);
             this.GroupBoxFormProductAddYeniMehsul.Controls.Add(this.label6);
             this.GroupBoxFormProductAddYeniMehsul.Controls.Add(this.label5);
@@ -93,6 +93,19 @@ namespace WindowsForm.Forms
             this.GroupBoxFormProductAddYeniMehsul.Size = new System.Drawing.Size(288, 539);
             this.GroupBoxFormProductAddYeniMehsul.TabIndex = 0;
             this.GroupBoxFormProductAddYeniMehsul.TabStop = false;
+            // 
+            // buttonTemizle
+            // 
+            this.buttonTemizle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTemizle.Image = global::WindowsForm.Properties.Resources.TemizleBlack;
+            this.buttonTemizle.Location = new System.Drawing.Point(97, 501);
+            this.buttonTemizle.Name = "buttonTemizle";
+            this.buttonTemizle.Size = new System.Drawing.Size(85, 26);
+            this.buttonTemizle.TabIndex = 24;
+            this.buttonTemizle.Text = "Təmizlə";
+            this.buttonTemizle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonTemizle.UseVisualStyleBackColor = true;
+            this.buttonTemizle.Click += new System.EventHandler(this.buttonTemizle_Click);
             // 
             // pictureBoxProductImage
             // 
@@ -161,18 +174,18 @@ namespace WindowsForm.Forms
             this.label14.TabIndex = 13;
             this.label14.Text = "Satiş qiyməti:";
             // 
-            // ButtonFormProductAddYeniMehsulElaveEt
+            // buttonElaveEt
             // 
-            this.ButtonFormProductAddYeniMehsulElaveEt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonFormProductAddYeniMehsulElaveEt.Image = global::WindowsForm.Properties.Resources.elaveEtBlack;
-            this.ButtonFormProductAddYeniMehsulElaveEt.Location = new System.Drawing.Point(188, 501);
-            this.ButtonFormProductAddYeniMehsulElaveEt.Name = "ButtonFormProductAddYeniMehsulElaveEt";
-            this.ButtonFormProductAddYeniMehsulElaveEt.Size = new System.Drawing.Size(85, 26);
-            this.ButtonFormProductAddYeniMehsulElaveEt.TabIndex = 11;
-            this.ButtonFormProductAddYeniMehsulElaveEt.Text = "Əlavə et";
-            this.ButtonFormProductAddYeniMehsulElaveEt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ButtonFormProductAddYeniMehsulElaveEt.UseVisualStyleBackColor = true;
-            this.ButtonFormProductAddYeniMehsulElaveEt.Click += new System.EventHandler(this.ButtonFormProductAddYeniMehsulElaveEt_Click);
+            this.buttonElaveEt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonElaveEt.Image = global::WindowsForm.Properties.Resources.elaveEtBlack;
+            this.buttonElaveEt.Location = new System.Drawing.Point(188, 501);
+            this.buttonElaveEt.Name = "buttonElaveEt";
+            this.buttonElaveEt.Size = new System.Drawing.Size(85, 26);
+            this.buttonElaveEt.TabIndex = 11;
+            this.buttonElaveEt.Text = "Əlavə et";
+            this.buttonElaveEt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonElaveEt.UseVisualStyleBackColor = true;
+            this.buttonElaveEt.Click += new System.EventHandler(this.ButtonFormProductAddYeniMehsulElaveEt_Click);
             // 
             // textBoxMehsulAdi
             // 
@@ -323,18 +336,6 @@ namespace WindowsForm.Forms
             this.textBoxAxtar.TabIndex = 26;
             this.textBoxAxtar.TextChanged += new System.EventHandler(this.textBoxAxtar_TextChanged);
             // 
-            // button1
-            // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = global::WindowsForm.Properties.Resources.TemizleBlack;
-            this.button1.Location = new System.Drawing.Point(97, 501);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(85, 26);
-            this.button1.TabIndex = 24;
-            this.button1.Text = "Təmizlə";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // FormProductAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -363,7 +364,7 @@ namespace WindowsForm.Forms
 
         private System.Windows.Forms.GroupBox GroupBoxFormProductAddYeniMehsul;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button ButtonFormProductAddYeniMehsulElaveEt;
+        private System.Windows.Forms.Button buttonElaveEt;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -387,6 +388,6 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox textBoxAxtar;
         private System.Windows.Forms.PictureBox pictureBoxProductImage;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonTemizle;
     }
 }

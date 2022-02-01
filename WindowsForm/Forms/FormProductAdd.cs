@@ -12,6 +12,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
+using WindowsForm.Core.Controllers.Concrete;
 using WindowsForm.Core.Controllers.ValidatorControllers;
 using WindowsForm.MyControls;
 using WindowsForm.Utilities.Search.Concrete.ProductSearch;
@@ -43,8 +44,11 @@ namespace WindowsForm.Forms
             CategoryGetComboBoxYeni();
             BrandGetComboBoxYeni();
             SupplierGetComboBox();
-            GroupBoxYeniMehsulControlClear();
+            TextBoxController.ClearAllTextBoxesAndCmboBoxesByGroupBox(GroupBoxFormProductAddYeniMehsul);
+            //GroupBoxYeniMehsulControlClear();
         }
+
+        //Click---------------------------------------->
 
         private void ButtonFormProductAddYeniMehsulElaveEt_Click(object sender, EventArgs e)
         {
@@ -75,7 +79,8 @@ namespace WindowsForm.Forms
                     return;
                 }
 
-                GroupBoxYeniMehsulControlClear();
+                TextBoxController.ClearAllTextBoxesAndCmboBoxesByGroupBox(GroupBoxFormProductAddYeniMehsul);
+                //GroupBoxYeniMehsulControlClear();
                 dataGridViewProductList.DataSource = _productManager.GetProductCompactDetails().Data;
                 FormsMessage.SuccessMessage(productAdd.Message);
             }
@@ -87,6 +92,12 @@ namespace WindowsForm.Forms
 
         }
 
+        private void buttonTemizle_Click(object sender, EventArgs e)
+        {
+            TextBoxController.ClearAllTextBoxesAndCmboBoxesByGroupBox(GroupBoxFormProductAddYeniMehsul);
+        }
+
+        //Cell Double Click----------------------------------------->
         private void DataGridViewProductList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -96,30 +107,31 @@ namespace WindowsForm.Forms
 
         }
 
+        //Text Changed --------------------------------->
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
             detailSearch.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewProductList);
         }
 
+        //Key Press---------------------------------------->
+        private void textBoxMiqdar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MyControl.MakeTextBoxNumberBox(e);
+        }
+
+        private void textBoxAlisQiymet_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MyControl.MakeTextBoxDecimalBox(sender, e);
+        }
+
+        private void textBoxSatisQiymet_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MyControl.MakeTextBoxDecimalBox(sender, e);
+        }
+
 
 
         //Elave Metodlar---------------------->
-
-        private void GroupBoxYeniMehsulControlClear()
-        {
-            foreach (Control control in GroupBoxFormProductAddYeniMehsul.Controls)
-            {
-                if (control is TextBox)
-                {
-                    control.Text = "";
-                }
-                if (control is ComboBox)
-                {
-                    control.Text = "";
-                }
-
-            }
-        }
 
         private void CategoryGetComboBoxYeni()
         {
@@ -148,19 +160,8 @@ namespace WindowsForm.Forms
             comboBoxTedarikci.ValueMember = "Id";
         }
 
-        private void textBoxMiqdar_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            MyControl.MakeTextBoxNumberBox(e);
-        }
+       
 
-        private void textBoxAlisQiymet_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            MyControl.MakeTextBoxDecimalBox(sender, e);
-        }
-
-        private void textBoxSatisQiymet_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            MyControl.MakeTextBoxDecimalBox(sender, e);
-        }
+       
     }
 }

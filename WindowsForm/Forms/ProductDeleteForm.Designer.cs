@@ -29,7 +29,6 @@ namespace WindowsForm.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductDeleteForm));
             this.dataGridViewProductList = new System.Windows.Forms.DataGridView();
             this.buttonSil = new System.Windows.Forms.Button();
             this.textBoxAxtar = new System.Windows.Forms.TextBox();
@@ -54,6 +53,7 @@ namespace WindowsForm.Forms
             this.label12 = new System.Windows.Forms.Label();
             this.textBoxVarOlanMehsulAdi = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.buttonTemizle = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductList)).BeginInit();
             this.GroupBoxVarOlanMehsul.SuspendLayout();
             this.SuspendLayout();
@@ -79,7 +79,7 @@ namespace WindowsForm.Forms
             // buttonSil
             // 
             this.buttonSil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSil.Image = ((System.Drawing.Image)(resources.GetObject("buttonSil.Image")));
+            this.buttonSil.Image = global::WindowsForm.Properties.Resources.icons8_trash_16;
             this.buttonSil.Location = new System.Drawing.Point(175, 320);
             this.buttonSil.Name = "buttonSil";
             this.buttonSil.Size = new System.Drawing.Size(85, 26);
@@ -110,10 +110,10 @@ namespace WindowsForm.Forms
             this.label1.Size = new System.Drawing.Size(17, 17);
             this.label1.TabIndex = 7;
             this.label1.Text = "   ";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // GroupBoxVarOlanMehsul
             // 
+            this.GroupBoxVarOlanMehsul.Controls.Add(this.buttonTemizle);
             this.GroupBoxVarOlanMehsul.Controls.Add(this.label17);
             this.GroupBoxVarOlanMehsul.Controls.Add(this.TextBoxVarOlanAciqlama);
             this.GroupBoxVarOlanMehsul.Controls.Add(this.label15);
@@ -308,6 +308,19 @@ namespace WindowsForm.Forms
             this.label13.TabIndex = 14;
             this.label13.Text = "BarkodNo:";
             // 
+            // buttonTemizle
+            // 
+            this.buttonTemizle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTemizle.Image = global::WindowsForm.Properties.Resources.TemizleBlack;
+            this.buttonTemizle.Location = new System.Drawing.Point(84, 320);
+            this.buttonTemizle.Name = "buttonTemizle";
+            this.buttonTemizle.Size = new System.Drawing.Size(85, 26);
+            this.buttonTemizle.TabIndex = 28;
+            this.buttonTemizle.Text = " Təmizlə";
+            this.buttonTemizle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonTemizle.UseVisualStyleBackColor = true;
+            this.buttonTemizle.Click += new System.EventHandler(this.buttonTemizle_Click);
+            // 
             // ProductDeleteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -356,5 +369,6 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textBoxVarOlanMehsulAdi;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button buttonTemizle;
     }
 }

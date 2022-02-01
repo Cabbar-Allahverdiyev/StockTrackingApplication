@@ -9,9 +9,9 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using USB_Barcode_Scanner;
-using MessagingToolkit.Barcode;
 using WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate;
 using Core.Utilities.Results;
+using Business.Concrete;
 
 namespace WindowsForm.Forms
 {
@@ -26,10 +26,10 @@ namespace WindowsForm.Forms
 
         }
         //ProductManager productManager = new ProductManager(new EfProductDal());
-        BarcodeEncoder generator;
-        BarcodeDecoder scanner;
-        SaveFileDialog saveDialog;
-        OpenFileDialog openDialog;
+        //BarcodeEncoder generator;
+        //BarcodeDecoder scanner;
+        //SaveFileDialog saveDialog;
+        //OpenFileDialog openDialog;
         BarcodeGenerator barcodeGenerator = new BarcodeGenerator();
 
         private void BarcodeScanner_BarcodeScanned(object sender, BarcodeScannerEventArgs e)
@@ -39,7 +39,7 @@ namespace WindowsForm.Forms
 
         private void buttonScan_Click(object sender, EventArgs e)
         {
-            IDataResult<string> result=barcodeGenerator.InmemoryScanItAndConvertString(pictureBox1);
+            IDataResult<string> result = barcodeGenerator.InmemoryScanItAndConvertString(pictureBox1);
             if (!result.Success)
             {
                 MessageBox.Show(result.Message);
@@ -99,17 +99,17 @@ namespace WindowsForm.Forms
             if (!result.Success)
             {
                 MessageBox.Show(result.Message);
-               
+
             }
 
 
 
-            //saveDialog = new SaveFileDialog();
-            //saveDialog.Filter = "PNG File|*.png";
-            //if (saveDialog.ShowDialog() == DialogResult.OK)
-            //{
-            //    pictureBox1.Image.Save(saveDialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
-            //}
+            ////saveDialog = new SaveFileDialog();
+            ////saveDialog.Filter = "PNG File|*.png";
+            ////if (saveDialog.ShowDialog() == DialogResult.OK)
+            ////{
+            ////    pictureBox1.Image.Save(saveDialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
+            ////}
         }
 
         private void buttonLoad_Click(object sender, EventArgs e)
@@ -122,12 +122,12 @@ namespace WindowsForm.Forms
             }
 
 
-            //openDialog = new OpenFileDialog();
-            //openDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            //if (openDialog.ShowDialog() == DialogResult.OK)
-            //{
-            //    pictureBox1.Load(openDialog.FileName);
-            //}
+            ////openDialog = new OpenFileDialog();
+            ////openDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            ////if (openDialog.ShowDialog() == DialogResult.OK)
+            ////{
+            ////    pictureBox1.Load(openDialog.FileName);
+            ////}
         }
 
         private void buttonRandom_Click(object sender, EventArgs e)
@@ -145,6 +145,9 @@ namespace WindowsForm.Forms
             //textBox1.Text = randomText;
         }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }

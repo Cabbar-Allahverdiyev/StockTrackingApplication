@@ -12,7 +12,9 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
+using WindowsForm.Core.Controllers.Concrete;
 using WindowsForm.Core.Controllers.ValidatorControllers;
+using WindowsForm.MyControls;
 using WindowsForm.Utilities.Search.Concrete.SupplierSearch;
 
 namespace WindowsForm.Forms
@@ -25,28 +27,39 @@ namespace WindowsForm.Forms
         public SupplierForm()
         {
             InitializeComponent();
+            MyControl myControl = new MyControl();
+            myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
+            myControl.WritePlaceholdersForTextBoxAddress(textBoxAdres);
+            myControl.WritePlaceholdersForTextBoxEmail(textBoxEmail);
+            myControl.WritePlaceholdersForTextBoxPhoneNumberAndMaxLengthTen(textBoxTelefon);
+
         }
 
         private void SupplierForm_Load(object sender, EventArgs e)
         {
-
             var supplierGetAll = _suplierManager.GetAll();
-
             dataGridViewSupplierListed.DataSource = supplierGetAll.Data;
         }
+        //Click ------------------------->
 
-        private void ButtonSupplierFormElaveEt_Click(object sender, EventArgs e)
+        private void buttonTemizle_Click(object sender, EventArgs e)
+        {
+            TextBoxController.ClearAllTextBoxesByGroupBox(groupBox1);
+        }
+
+
+
+        private void buttonElaveEt_Click(object sender, EventArgs e)
         {
 
-
             Supplier supplier = new Supplier();
-            supplier.CompanyName = TextBoxSupplierFormSirketAdi.Text;
-            supplier.ContactName = TextBoxSupplierFormAd.Text;
-            supplier.City = TextBoxSupplierFormSeher.Text;
-            supplier.Address = TextBoxSupplierFormAdres.Text;
-            supplier.Email = TextBoxSupplierFormEmail.Text;
-            supplier.Phone = TextBoxSupplierFormTelefon.Text;
-            supplier.WhenWillCome = TextBoxSupplierFormNeZamanGelir.Text;
+            supplier.CompanyName = textBoxSirketAdi.Text;
+            supplier.ContactName = textBoxAd.Text;
+            supplier.City = textBoxSeher.Text;
+            supplier.Address = textBoxAdres.Text;
+            supplier.Email = textBoxEmail.Text;
+            supplier.Phone = textBoxTelefon.Text;
+            supplier.WhenWillCome = textBoxNeZamanGelir.Text;
 
             if (!validationTool.IsValid(supplier))
             {
@@ -69,13 +82,15 @@ namespace WindowsForm.Forms
                     control.Text = "";
                 }
             }
-
-
         }
+
+        //Text Changed ------------------------->
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             search.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewSupplierListed);
         }
+
+
     }
 }

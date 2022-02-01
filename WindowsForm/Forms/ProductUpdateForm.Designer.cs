@@ -31,25 +31,26 @@ namespace WindowsForm.Forms
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductUpdateForm));
             this.GroupBoxVarOlanMehsul = new System.Windows.Forms.GroupBox();
+            this.buttonTemizle = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
-            this.TextBoxVarOlanAciqlama = new System.Windows.Forms.TextBox();
+            this.TextBoxAciqlama = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.comboBoxVarOlanTedarikci = new System.Windows.Forms.ComboBox();
-            this.comboBoxVarOlanMarka = new System.Windows.Forms.ComboBox();
-            this.comboBoxVarOlanKateqoriya = new System.Windows.Forms.ComboBox();
+            this.comboBoxTedarikci = new System.Windows.Forms.ComboBox();
+            this.comboBoxMarka = new System.Windows.Forms.ComboBox();
+            this.comboBoxKateqoriya = new System.Windows.Forms.ComboBox();
             this.LabelMiqdarVB = new System.Windows.Forms.Label();
-            this.ButtonVarOlanYenile = new System.Windows.Forms.Button();
+            this.buttonYenile = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBoxVarOlanSatisQiymet = new System.Windows.Forms.TextBox();
+            this.textBoxSatisQiymet = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBoxVarOlanAlisQiymet = new System.Windows.Forms.TextBox();
+            this.textBoxAlisQiymet = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBoxVarOlanStokaElaveEdilecekMiqdar = new System.Windows.Forms.TextBox();
+            this.textBoxStokaElaveEdilecekMiqdar = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBoxVarOlanBarkodNo = new System.Windows.Forms.TextBox();
+            this.textBoxBarkodNo = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBoxVarOlanMehsulAdi = new System.Windows.Forms.TextBox();
+            this.textBoxMehsulAdi = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.dataGridViewPrdouctList = new System.Windows.Forms.DataGridView();
             this.textBoxAxtar = new System.Windows.Forms.TextBox();
@@ -60,82 +61,96 @@ namespace WindowsForm.Forms
             // 
             // GroupBoxVarOlanMehsul
             // 
+            this.GroupBoxVarOlanMehsul.Controls.Add(this.buttonTemizle);
             this.GroupBoxVarOlanMehsul.Controls.Add(this.label17);
-            this.GroupBoxVarOlanMehsul.Controls.Add(this.TextBoxVarOlanAciqlama);
+            this.GroupBoxVarOlanMehsul.Controls.Add(this.TextBoxAciqlama);
             this.GroupBoxVarOlanMehsul.Controls.Add(this.label15);
-            this.GroupBoxVarOlanMehsul.Controls.Add(this.comboBoxVarOlanTedarikci);
-            this.GroupBoxVarOlanMehsul.Controls.Add(this.comboBoxVarOlanMarka);
-            this.GroupBoxVarOlanMehsul.Controls.Add(this.comboBoxVarOlanKateqoriya);
+            this.GroupBoxVarOlanMehsul.Controls.Add(this.comboBoxTedarikci);
+            this.GroupBoxVarOlanMehsul.Controls.Add(this.comboBoxMarka);
+            this.GroupBoxVarOlanMehsul.Controls.Add(this.comboBoxKateqoriya);
             this.GroupBoxVarOlanMehsul.Controls.Add(this.LabelMiqdarVB);
-            this.GroupBoxVarOlanMehsul.Controls.Add(this.ButtonVarOlanYenile);
+            this.GroupBoxVarOlanMehsul.Controls.Add(this.buttonYenile);
             this.GroupBoxVarOlanMehsul.Controls.Add(this.label7);
-            this.GroupBoxVarOlanMehsul.Controls.Add(this.textBoxVarOlanSatisQiymet);
+            this.GroupBoxVarOlanMehsul.Controls.Add(this.textBoxSatisQiymet);
             this.GroupBoxVarOlanMehsul.Controls.Add(this.label8);
-            this.GroupBoxVarOlanMehsul.Controls.Add(this.textBoxVarOlanAlisQiymet);
+            this.GroupBoxVarOlanMehsul.Controls.Add(this.textBoxAlisQiymet);
             this.GroupBoxVarOlanMehsul.Controls.Add(this.label9);
             this.GroupBoxVarOlanMehsul.Controls.Add(this.label10);
-            this.GroupBoxVarOlanMehsul.Controls.Add(this.textBoxVarOlanStokaElaveEdilecekMiqdar);
+            this.GroupBoxVarOlanMehsul.Controls.Add(this.textBoxStokaElaveEdilecekMiqdar);
             this.GroupBoxVarOlanMehsul.Controls.Add(this.label11);
-            this.GroupBoxVarOlanMehsul.Controls.Add(this.textBoxVarOlanBarkodNo);
+            this.GroupBoxVarOlanMehsul.Controls.Add(this.textBoxBarkodNo);
             this.GroupBoxVarOlanMehsul.Controls.Add(this.label12);
-            this.GroupBoxVarOlanMehsul.Controls.Add(this.textBoxVarOlanMehsulAdi);
+            this.GroupBoxVarOlanMehsul.Controls.Add(this.textBoxMehsulAdi);
             this.GroupBoxVarOlanMehsul.Controls.Add(this.label13);
             this.GroupBoxVarOlanMehsul.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.GroupBoxVarOlanMehsul.Location = new System.Drawing.Point(21, 45);
             this.GroupBoxVarOlanMehsul.Name = "GroupBoxVarOlanMehsul";
-            this.GroupBoxVarOlanMehsul.Size = new System.Drawing.Size(265, 410);
+            this.GroupBoxVarOlanMehsul.Size = new System.Drawing.Size(281, 410);
             this.GroupBoxVarOlanMehsul.TabIndex = 3;
             this.GroupBoxVarOlanMehsul.TabStop = false;
             this.GroupBoxVarOlanMehsul.Text = "Var olan məhsul";
             // 
+            // buttonTemizle
+            // 
+            this.buttonTemizle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTemizle.Image = global::WindowsForm.Properties.Resources.TemizleBlack;
+            this.buttonTemizle.Location = new System.Drawing.Point(96, 316);
+            this.buttonTemizle.Name = "buttonTemizle";
+            this.buttonTemizle.Size = new System.Drawing.Size(85, 25);
+            this.buttonTemizle.TabIndex = 29;
+            this.buttonTemizle.Text = " Təmizlə";
+            this.buttonTemizle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonTemizle.UseVisualStyleBackColor = true;
+            this.buttonTemizle.Click += new System.EventHandler(this.buttonTemizle_Click);
+            // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(6, 291);
+            this.label17.Location = new System.Drawing.Point(21, 291);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(69, 17);
             this.label17.TabIndex = 27;
             this.label17.Text = "Açıqlama:";
             // 
-            // TextBoxVarOlanAciqlama
+            // TextBoxAciqlama
             // 
-            this.TextBoxVarOlanAciqlama.Location = new System.Drawing.Point(96, 288);
-            this.TextBoxVarOlanAciqlama.Name = "TextBoxVarOlanAciqlama";
-            this.TextBoxVarOlanAciqlama.Size = new System.Drawing.Size(164, 22);
-            this.TextBoxVarOlanAciqlama.TabIndex = 26;
+            this.TextBoxAciqlama.Location = new System.Drawing.Point(96, 288);
+            this.TextBoxAciqlama.Name = "TextBoxAciqlama";
+            this.TextBoxAciqlama.Size = new System.Drawing.Size(179, 22);
+            this.TextBoxAciqlama.TabIndex = 26;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 127);
+            this.label15.Location = new System.Drawing.Point(26, 127);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(64, 17);
             this.label15.TabIndex = 25;
             this.label15.Text = "Tedarikçi:";
             // 
-            // comboBoxVarOlanTedarikci
+            // comboBoxTedarikci
             // 
-            this.comboBoxVarOlanTedarikci.FormattingEnabled = true;
-            this.comboBoxVarOlanTedarikci.Location = new System.Drawing.Point(96, 124);
-            this.comboBoxVarOlanTedarikci.Name = "comboBoxVarOlanTedarikci";
-            this.comboBoxVarOlanTedarikci.Size = new System.Drawing.Size(162, 25);
-            this.comboBoxVarOlanTedarikci.TabIndex = 24;
+            this.comboBoxTedarikci.FormattingEnabled = true;
+            this.comboBoxTedarikci.Location = new System.Drawing.Point(96, 124);
+            this.comboBoxTedarikci.Name = "comboBoxTedarikci";
+            this.comboBoxTedarikci.Size = new System.Drawing.Size(177, 25);
+            this.comboBoxTedarikci.TabIndex = 24;
             // 
-            // comboBoxVarOlanMarka
+            // comboBoxMarka
             // 
-            this.comboBoxVarOlanMarka.FormattingEnabled = true;
-            this.comboBoxVarOlanMarka.Location = new System.Drawing.Point(96, 91);
-            this.comboBoxVarOlanMarka.Name = "comboBoxVarOlanMarka";
-            this.comboBoxVarOlanMarka.Size = new System.Drawing.Size(162, 25);
-            this.comboBoxVarOlanMarka.TabIndex = 23;
+            this.comboBoxMarka.FormattingEnabled = true;
+            this.comboBoxMarka.Location = new System.Drawing.Point(96, 91);
+            this.comboBoxMarka.Name = "comboBoxMarka";
+            this.comboBoxMarka.Size = new System.Drawing.Size(177, 25);
+            this.comboBoxMarka.TabIndex = 23;
             // 
-            // comboBoxVarOlanKateqoriya
+            // comboBoxKateqoriya
             // 
-            this.comboBoxVarOlanKateqoriya.FormattingEnabled = true;
-            this.comboBoxVarOlanKateqoriya.Location = new System.Drawing.Point(96, 58);
-            this.comboBoxVarOlanKateqoriya.Name = "comboBoxVarOlanKateqoriya";
-            this.comboBoxVarOlanKateqoriya.Size = new System.Drawing.Size(162, 25);
-            this.comboBoxVarOlanKateqoriya.TabIndex = 22;
+            this.comboBoxKateqoriya.FormattingEnabled = true;
+            this.comboBoxKateqoriya.Location = new System.Drawing.Point(96, 58);
+            this.comboBoxKateqoriya.Name = "comboBoxKateqoriya";
+            this.comboBoxKateqoriya.Size = new System.Drawing.Size(177, 25);
+            this.comboBoxKateqoriya.TabIndex = 22;
             // 
             // LabelMiqdarVB
             // 
@@ -148,113 +163,116 @@ namespace WindowsForm.Forms
             this.LabelMiqdarVB.TabIndex = 21;
             this.LabelMiqdarVB.Text = "#";
             // 
-            // ButtonVarOlanYenile
+            // buttonYenile
             // 
-            this.ButtonVarOlanYenile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonVarOlanYenile.Image = ((System.Drawing.Image)(resources.GetObject("ButtonVarOlanYenile.Image")));
-            this.ButtonVarOlanYenile.Location = new System.Drawing.Point(174, 321);
-            this.ButtonVarOlanYenile.Name = "ButtonVarOlanYenile";
-            this.ButtonVarOlanYenile.Size = new System.Drawing.Size(85, 26);
-            this.ButtonVarOlanYenile.TabIndex = 3;
-            this.ButtonVarOlanYenile.Text = "Yenilə";
-            this.ButtonVarOlanYenile.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ButtonVarOlanYenile.UseVisualStyleBackColor = true;
-            this.ButtonVarOlanYenile.Click += new System.EventHandler(this.ButtonVarOlanYenile_Click);
+            this.buttonYenile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonYenile.Image = ((System.Drawing.Image)(resources.GetObject("buttonYenile.Image")));
+            this.buttonYenile.Location = new System.Drawing.Point(190, 316);
+            this.buttonYenile.Name = "buttonYenile";
+            this.buttonYenile.Size = new System.Drawing.Size(85, 25);
+            this.buttonYenile.TabIndex = 3;
+            this.buttonYenile.Text = "Yenilə";
+            this.buttonYenile.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonYenile.UseVisualStyleBackColor = true;
+            this.buttonYenile.Click += new System.EventHandler(this.ButtonVarOlanYenile_Click);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 258);
+            this.label7.Location = new System.Drawing.Point(5, 258);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(85, 17);
             this.label7.TabIndex = 20;
             this.label7.Text = "Satiş qiyməti:";
             // 
-            // textBoxVarOlanSatisQiymet
+            // textBoxSatisQiymet
             // 
-            this.textBoxVarOlanSatisQiymet.Location = new System.Drawing.Point(96, 255);
-            this.textBoxVarOlanSatisQiymet.Name = "textBoxVarOlanSatisQiymet";
-            this.textBoxVarOlanSatisQiymet.Size = new System.Drawing.Size(164, 22);
-            this.textBoxVarOlanSatisQiymet.TabIndex = 15;
+            this.textBoxSatisQiymet.Location = new System.Drawing.Point(96, 255);
+            this.textBoxSatisQiymet.Name = "textBoxSatisQiymet";
+            this.textBoxSatisQiymet.Size = new System.Drawing.Size(179, 22);
+            this.textBoxSatisQiymet.TabIndex = 15;
+            this.textBoxSatisQiymet.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSatisQiymet_KeyPress);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 226);
+            this.label8.Location = new System.Drawing.Point(13, 226);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(77, 17);
             this.label8.TabIndex = 19;
             this.label8.Text = "Aliş qiyməti:";
             // 
-            // textBoxVarOlanAlisQiymet
+            // textBoxAlisQiymet
             // 
-            this.textBoxVarOlanAlisQiymet.Location = new System.Drawing.Point(96, 222);
-            this.textBoxVarOlanAlisQiymet.Name = "textBoxVarOlanAlisQiymet";
-            this.textBoxVarOlanAlisQiymet.Size = new System.Drawing.Size(164, 22);
-            this.textBoxVarOlanAlisQiymet.TabIndex = 7;
+            this.textBoxAlisQiymet.Location = new System.Drawing.Point(96, 222);
+            this.textBoxAlisQiymet.Name = "textBoxAlisQiymet";
+            this.textBoxAlisQiymet.Size = new System.Drawing.Size(179, 22);
+            this.textBoxAlisQiymet.TabIndex = 7;
+            this.textBoxAlisQiymet.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAlisQiymet_KeyPress);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 193);
+            this.label9.Location = new System.Drawing.Point(0, 192);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(53, 17);
+            this.label9.Size = new System.Drawing.Size(91, 17);
             this.label9.TabIndex = 18;
-            this.label9.Text = "Miqdar:";
+            this.label9.Text = "Əlavə miqdar:";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 160);
+            this.label10.Location = new System.Drawing.Point(17, 160);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(73, 17);
             this.label10.TabIndex = 17;
             this.label10.Text = "Məhsul adı:";
             // 
-            // textBoxVarOlanStokaElaveEdilecekMiqdar
+            // textBoxStokaElaveEdilecekMiqdar
             // 
-            this.textBoxVarOlanStokaElaveEdilecekMiqdar.Location = new System.Drawing.Point(96, 189);
-            this.textBoxVarOlanStokaElaveEdilecekMiqdar.Name = "textBoxVarOlanStokaElaveEdilecekMiqdar";
-            this.textBoxVarOlanStokaElaveEdilecekMiqdar.Size = new System.Drawing.Size(164, 22);
-            this.textBoxVarOlanStokaElaveEdilecekMiqdar.TabIndex = 6;
+            this.textBoxStokaElaveEdilecekMiqdar.Location = new System.Drawing.Point(96, 189);
+            this.textBoxStokaElaveEdilecekMiqdar.Name = "textBoxStokaElaveEdilecekMiqdar";
+            this.textBoxStokaElaveEdilecekMiqdar.Size = new System.Drawing.Size(179, 22);
+            this.textBoxStokaElaveEdilecekMiqdar.TabIndex = 6;
+            this.textBoxStokaElaveEdilecekMiqdar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxStokaElaveEdilecekMiqdar_KeyPress);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 94);
+            this.label11.Location = new System.Drawing.Point(42, 94);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(48, 17);
             this.label11.TabIndex = 16;
             this.label11.Text = "Marka:";
             // 
-            // textBoxVarOlanBarkodNo
+            // textBoxBarkodNo
             // 
-            this.textBoxVarOlanBarkodNo.Enabled = false;
-            this.textBoxVarOlanBarkodNo.Location = new System.Drawing.Point(96, 25);
-            this.textBoxVarOlanBarkodNo.Name = "textBoxVarOlanBarkodNo";
-            this.textBoxVarOlanBarkodNo.Size = new System.Drawing.Size(164, 22);
-            this.textBoxVarOlanBarkodNo.TabIndex = 2;
+            this.textBoxBarkodNo.Enabled = false;
+            this.textBoxBarkodNo.Location = new System.Drawing.Point(96, 25);
+            this.textBoxBarkodNo.Name = "textBoxBarkodNo";
+            this.textBoxBarkodNo.Size = new System.Drawing.Size(179, 22);
+            this.textBoxBarkodNo.TabIndex = 2;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 61);
+            this.label12.Location = new System.Drawing.Point(14, 61);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(76, 17);
             this.label12.TabIndex = 15;
             this.label12.Text = "Kategoriya:";
             // 
-            // textBoxVarOlanMehsulAdi
+            // textBoxMehsulAdi
             // 
-            this.textBoxVarOlanMehsulAdi.Location = new System.Drawing.Point(96, 156);
-            this.textBoxVarOlanMehsulAdi.Name = "textBoxVarOlanMehsulAdi";
-            this.textBoxVarOlanMehsulAdi.Size = new System.Drawing.Size(164, 22);
-            this.textBoxVarOlanMehsulAdi.TabIndex = 5;
+            this.textBoxMehsulAdi.Location = new System.Drawing.Point(96, 156);
+            this.textBoxMehsulAdi.Name = "textBoxMehsulAdi";
+            this.textBoxMehsulAdi.Size = new System.Drawing.Size(179, 22);
+            this.textBoxMehsulAdi.TabIndex = 5;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 28);
+            this.label13.Location = new System.Drawing.Point(21, 28);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(69, 17);
             this.label13.TabIndex = 14;
@@ -293,11 +311,12 @@ namespace WindowsForm.Forms
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(725, 17);
+            this.label1.Image = global::WindowsForm.Properties.Resources.searchBlack;
+            this.label1.Location = new System.Drawing.Point(753, 17);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 17);
+            this.label1.Size = new System.Drawing.Size(17, 17);
             this.label1.TabIndex = 7;
-            this.label1.Text = "Axtar:";
+            this.label1.Text = "   ";
             // 
             // ProductUpdateForm
             // 
@@ -325,27 +344,28 @@ namespace WindowsForm.Forms
 
         private System.Windows.Forms.GroupBox GroupBoxVarOlanMehsul;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox TextBoxVarOlanAciqlama;
+        private System.Windows.Forms.TextBox TextBoxAciqlama;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.ComboBox comboBoxVarOlanTedarikci;
-        private System.Windows.Forms.ComboBox comboBoxVarOlanMarka;
-        private System.Windows.Forms.ComboBox comboBoxVarOlanKateqoriya;
+        private System.Windows.Forms.ComboBox comboBoxTedarikci;
+        private System.Windows.Forms.ComboBox comboBoxMarka;
+        private System.Windows.Forms.ComboBox comboBoxKateqoriya;
         private System.Windows.Forms.Label LabelMiqdarVB;
-        private System.Windows.Forms.Button ButtonVarOlanYenile;
+        private System.Windows.Forms.Button buttonYenile;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBoxVarOlanSatisQiymet;
+        private System.Windows.Forms.TextBox textBoxSatisQiymet;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBoxVarOlanAlisQiymet;
+        private System.Windows.Forms.TextBox textBoxAlisQiymet;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBoxVarOlanStokaElaveEdilecekMiqdar;
+        private System.Windows.Forms.TextBox textBoxStokaElaveEdilecekMiqdar;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBoxVarOlanBarkodNo;
+        private System.Windows.Forms.TextBox textBoxBarkodNo;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBoxVarOlanMehsulAdi;
+        private System.Windows.Forms.TextBox textBoxMehsulAdi;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DataGridView dataGridViewPrdouctList;
         private System.Windows.Forms.TextBox textBoxAxtar;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonTemizle;
     }
 }

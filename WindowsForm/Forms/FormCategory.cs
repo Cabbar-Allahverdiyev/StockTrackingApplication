@@ -11,6 +11,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
+using WindowsForm.Core.Controllers.Concrete;
 using WindowsForm.Core.Controllers.ValidatorControllers;
 using WindowsForm.MyControls;
 using WindowsForm.Utilities.Search.Concrete.BrandSearch;
@@ -61,10 +62,11 @@ namespace WindowsForm.Forms
 
             foreach (Control control in this.Controls)
             {
-                if (control is TextBox && categoryAdd.Success)
+                if (categoryAdd.Success)
                 {
-                    control.Text = "";
+                    TextBoxController.ClearAllTextBoxes(control);
                 }
+                
             }
 
         }

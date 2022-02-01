@@ -441,12 +441,12 @@ namespace WindowsForm.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewCartList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.dataGridViewCartList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewCartList.Location = new System.Drawing.Point(263, 438);
+            this.dataGridViewCartList.Location = new System.Drawing.Point(263, 381);
             this.dataGridViewCartList.Name = "dataGridViewCartList";
             this.dataGridViewCartList.ReadOnly = true;
             this.dataGridViewCartList.RowTemplate.Height = 25;
             this.dataGridViewCartList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewCartList.Size = new System.Drawing.Size(806, 141);
+            this.dataGridViewCartList.Size = new System.Drawing.Size(806, 198);
             this.dataGridViewCartList.TabIndex = 15;
             this.dataGridViewCartList.DoubleClick += new System.EventHandler(this.dataGridViewCartList_DoubleClick);
             // 

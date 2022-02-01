@@ -17,6 +17,7 @@ using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers;
+using WindowsForm.Core.Controllers.Concrete;
 using WindowsForm.Core.Controllers.ValidatorControllers;
 using WindowsForm.MyControls;
 
@@ -38,6 +39,7 @@ namespace WindowsForm.Forms
             myControl.WritePlaceholdersForTextBoxAddress(textBoxAdres);
         }
 
+        //Click------------------------------->
         private void ButtonFormUserAddEalveEt_Click(object sender, EventArgs e)
         {
             User user = new User();
@@ -88,16 +90,16 @@ namespace WindowsForm.Forms
         {
             foreach (Control control in this.Controls)
             {
-                if (control is TextBox)
-                {
-                    control.Text = "";
-                }
+                TextBoxController.ClearAllTextBoxes(control);
             }
         }
 
+        //Key Press -------------------------------->
         private void textBoxTelefonNomresi_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             MyControl.MakeTextBoxNumberBox(e);
         }
+
+        
     }
 }

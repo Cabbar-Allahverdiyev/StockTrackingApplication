@@ -12,6 +12,8 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
+using WindowsForm.Core.Controllers.Concrete;
+using WindowsForm.MyControls;
 using WindowsForm.Utilities.Search.Concrete.UserSearch;
 
 namespace WindowsForm.Forms
@@ -22,14 +24,20 @@ namespace WindowsForm.Forms
         public UserDeleteForm()
         {
             InitializeComponent();
-          
+            MyControl myControl = new MyControl();
+            myControl.WritePlaceholdersForTextBoxAddress(textBoxAdres);
+            myControl.WritePlaceholdersForTextBoxPhoneNumberAndMaxLengthTen(textBoxTelefon);
+            myControl.WritePlaceholdersForTextBoxEmail(textBoxEmail);
+            myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
         }
         private void UserDeleteForm_Load(object sender, EventArgs e)
         {
             dataGridViewUserListed.DataSource = _userManager.GetUserDetails().Data;
         }
 
-        private void ButtonFormUserListedSil_Click(object sender, EventArgs e)
+        //Click ---------------------->
+
+        private void buttonSil_Click(object sender, EventArgs e)
         {
             try
             {
@@ -42,6 +50,7 @@ namespace WindowsForm.Forms
                 {
                     FormsMessage.SuccessMessage(userDeleted.Message);
                     dataGridViewUserListed.DataSource = _userManager.GetUserDetails().Data;
+                    TextBoxController.ClearAllTextBoxesByGroupBox(groupBox1);
                 }
                 else
                 {
@@ -49,24 +58,32 @@ namespace WindowsForm.Forms
                     return;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {AuthMessages.ErrorMessage}");
+                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {AuthMessages.ErrorMessage} | {ex.Message}");
                 return;
             }
-
         }
+
+        private void buttonTemizle_Click(object sender, EventArgs e)
+        {
+            TextBoxController.ClearAllTextBoxesByGroupBox(groupBox1);
+        }
+
+        //Cell Doble Click---------------------->
 
         private void dataGridViewUserListed_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             textBoxUserId.Text = dataGridViewUserListed.CurrentRow.Cells["UserId"].Value.ToString();
-            TextBoxFormUserListedAd.Text = dataGridViewUserListed.CurrentRow.Cells["FirstName"].Value.ToString();
-            TextBoxFormUserListedSoyad.Text = dataGridViewUserListed.CurrentRow.Cells["LastName"].Value.ToString();
-            TextBoxFormUserListedEmail.Text = dataGridViewUserListed.CurrentRow.Cells["Email"].Value.ToString();
-            TextBoxFormUserListedPhoneNumber.Text = dataGridViewUserListed.CurrentRow.Cells["PhoneNumber"].Value.ToString();
-            TextBoxFormUserListedAddress.Text = dataGridViewUserListed.CurrentRow.Cells["Address"].Value.ToString();
+            textBoxAd.Text = dataGridViewUserListed.CurrentRow.Cells["FirstName"].Value.ToString();
+            textBoxSoyad.Text = dataGridViewUserListed.CurrentRow.Cells["LastName"].Value.ToString();
+            textBoxEmail.Text = dataGridViewUserListed.CurrentRow.Cells["Email"].Value.ToString();
+            textBoxTelefon.Text = dataGridViewUserListed.CurrentRow.Cells["PhoneNumber"].Value.ToString();
+            textBoxAdres.Text = dataGridViewUserListed.CurrentRow.Cells["Address"].Value.ToString();
         }
+
+        //Text Changed---------------------->
 
         private void TextBoxFormUserListedAxtar_TextChanged(object sender, EventArgs e)
         {
@@ -77,6 +94,6 @@ namespace WindowsForm.Forms
 
         }
 
-      
+
     }
 }

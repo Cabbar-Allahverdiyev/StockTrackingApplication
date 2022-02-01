@@ -14,6 +14,7 @@ using Business.Constants.Messages;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Utilities.Search.Concrete.ProductSearch;
 using WindowsForm.MyControls;
+using WindowsForm.Core.Controllers.Concrete;
 
 namespace WindowsForm.Forms
 {
@@ -45,6 +46,7 @@ namespace WindowsForm.Forms
             GroupBoxVarOlanMehsulControlClear();
         }
 
+        //Click---------------------------->
         private void buttonSil_Click(object sender, EventArgs e)
         {
             try
@@ -68,11 +70,12 @@ namespace WindowsForm.Forms
             }
         }
 
-        private void textBoxAxtar_TextChanged(object sender, EventArgs e)
+        private void buttonTemizle_Click(object sender, EventArgs e)
         {
-            detailsSearch.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewProductList);
+            GroupBoxVarOlanMehsulControlClear();
         }
 
+        //Double Click ------------------------------------>
         private void dataGridViewFormPrdouctList_DoubleClick(object sender, EventArgs e)
         {
             var productViewDetailByProductId = _productManager.GetProductViewProductIdDetail(
@@ -95,6 +98,14 @@ namespace WindowsForm.Forms
             LabelMiqdarVB.Text = productViewDetailByProductId.Data.StokdakiVahid.ToString();
 
         }
+
+        //Text changed -------------------------------->
+        private void textBoxAxtar_TextChanged(object sender, EventArgs e)
+        {
+            detailsSearch.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewProductList);
+        }
+
+
 
 
 
@@ -141,26 +152,12 @@ namespace WindowsForm.Forms
 
         private void GroupBoxVarOlanMehsulControlClear()
         {
-            foreach (Control control in GroupBoxVarOlanMehsul.Controls)
-            {
-                if (control is TextBox)
-                {
-                    control.Text = "";
-                }
-                if (control is ComboBox)
-                {
-                    control.Text = "";
-                }
-
-                LabelMiqdarVB.Text = "";
-
-
-            }
+            TextBoxController.ClearAllTextBoxesAndCmboBoxesByGroupBox(GroupBoxVarOlanMehsul);
+            LabelMiqdarVB.Text = "";
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
 
-        }
+
+
     }
 }

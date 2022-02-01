@@ -13,6 +13,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
+using WindowsForm.Core.Controllers.Concrete;
 using WindowsForm.Core.Controllers.Concrete.ValidatorControllers;
 using WindowsForm.MyControls;
 using WindowsForm.Utilities.Search.Concrete.BrandSearch;
@@ -65,10 +66,7 @@ namespace WindowsForm.Forms
 
                 foreach (Control control in this.Controls)
                 {
-                    if (control is TextBox)
-                    {
-                        control.Text = "";
-                    }
+                    TextBoxController.ClearAllTextBoxes(control);
                 }
 
             }

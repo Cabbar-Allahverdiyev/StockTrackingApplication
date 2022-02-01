@@ -209,10 +209,10 @@ namespace WindowsForm.Forms
                 TotalPriceLabelWrite();
                 GroupBoxMehsulControlClear();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                FormsMessage.ErrorMessage($"{ButtonMessages.ElaveEtError} {AuthMessages.ErrorMessage}");
+                FormsMessage.ErrorMessage($"{ButtonMessages.ElaveEtError} {AuthMessages.ErrorMessage} / {ex.Message}");
                 return;
             }
 
@@ -246,7 +246,7 @@ namespace WindowsForm.Forms
                         saleWinForm.UserId = cart.UserId;
                         saleWinForm.SoldPrice = cart.SoldPrice;
                         saleWinForm.Quantity = cart.Quantity;
-
+                        saleWinForm.TotalPrice = saleWinForm.SoldPrice * saleWinForm.Quantity;
                         if (!saleValidationTool.IsValid(saleWinForm))
                         {
                             return;
@@ -256,16 +256,16 @@ namespace WindowsForm.Forms
                         productUpdated = _productManager.Update(product);
                         if (!saleWinFormAdded.Success || !productUpdated.Success)
                         {
-                            messages.Add(product.BarcodeNumber +" - "+ product.ProductName + " : " + saleWinFormAdded.Message + " & " + productUpdated.Message);
+                            messages.Add(product.BarcodeNumber + " - " + product.ProductName + " : " + saleWinFormAdded.Message + " & " + productUpdated.Message);
 
                         }
-                        messages.Add(product.ProductName +" : "+ saleWinFormAdded.Message + " & " + productUpdated.Message);
+                        messages.Add(product.ProductName + " : " + saleWinFormAdded.Message + " & " + productUpdated.Message);
 
 
                     }
                     foreach (string message in messages)
                     {
-                        resultMessage += $" {message} {newResultMessage} /n ";
+                        resultMessage += $" {message} {newResultMessage} |";
                     }
                     FormsMessage.SuccessMessage(resultMessage);
 
@@ -283,10 +283,10 @@ namespace WindowsForm.Forms
                 GroupBoxMehsulControlClear();
                 TotalPriceLabelWrite();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                FormsMessage.ErrorMessage($"{ButtonMessages.SatisEtmekError} {AuthMessages.ErrorMessage}");
+                FormsMessage.ErrorMessage($"{ButtonMessages.SatisEtmekError} {AuthMessages.ErrorMessage} /{ex.Message}");
                 return;
             }
 
@@ -312,7 +312,7 @@ namespace WindowsForm.Forms
             detailsSearch.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewProductList);
         }
 
-       
+
 
         //Double Click----------------------------------->
 
@@ -412,7 +412,7 @@ namespace WindowsForm.Forms
 
             }
         }
-        
+
 
         private void textBoxMaxQiymet_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -457,14 +457,7 @@ namespace WindowsForm.Forms
 
         private void GroupBoxMehsulControlClear()
         {
-            foreach (Control control in groupBoxMehsul.Controls)
-            {
-                if (control is TextBox)
-                {
-                    control.Text = "";
-                }
-
-            }
+            TextBoxController.ClearAllTextBoxesByGroupBox(groupBoxMehsul);
             textBoxMiqdar.Text = "1";
         }
 
