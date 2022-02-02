@@ -49,7 +49,7 @@ namespace Business.Concrete
         public IDataResult<List<SaleWinForm>> GetAll()
         {
             List<SaleWinForm> get = _saleWinFormDal.GetAll();
-            if (get is null)
+            if (get == null)
             {
                 return new ErrorDataResult<List<SaleWinForm>>(SaleMessages.NotFound);
             }
@@ -57,15 +57,48 @@ namespace Business.Concrete
         }
 
 
-        //Metodlar----------------------->
+        //DTOs----------------------->
         public IDataResult<List<SaleWinFormDto>> GetAllSaleWinFormDtoDetails()
         {
             List<SaleWinFormDto> get = _saleWinFormDal.GetAllWinFormDtoDetails();
-            if (get is null)
+            if (get == null)
             {
                 return new ErrorDataResult<List<SaleWinFormDto>>(SaleMessages.NotFound);
             }
-            return new SuccessDataResult<List<SaleWinFormDto>>(get,SaleMessages.Found);
+            return new SuccessDataResult<List<SaleWinFormDto>>(get, SaleMessages.Found);
         }
+
+        public IDataResult<List<SaleWinFormDto>> GetAllSaleWinFormDetailsSalesForDay(int day)
+        {
+            List<SaleWinFormDto> get = _saleWinFormDal.GetAllWinFormDtoDetails(s=>s.Tarix.Day==day);
+            if (get == null)
+            {
+                return new ErrorDataResult<List<SaleWinFormDto>>(SaleMessages.NotFound);
+            }
+            return new SuccessDataResult<List<SaleWinFormDto>>(get, SaleMessages.Found);
+        }
+
+        public IDataResult<List<SaleWinFormDto>> GetAllSalewinFormDetailsSalesForMonth(int month)
+        {
+            List<SaleWinFormDto> get = _saleWinFormDal.GetAllWinFormDtoDetails(s => s.Tarix.Month == month);
+            if (get == null)
+            {
+                return new ErrorDataResult<List<SaleWinFormDto>>(SaleMessages.NotFound);
+            }
+            return new SuccessDataResult<List<SaleWinFormDto>>(get, SaleMessages.Found);
+        }
+
+        public IDataResult<List<SaleWinFormDto>> GetAllSaleWinFormDetailsSalesForYear(int year)
+        {
+            List<SaleWinFormDto> get = _saleWinFormDal.GetAllWinFormDtoDetails(s => s.Tarix.Year == year);
+            if (get == null)
+            {
+                return new ErrorDataResult<List<SaleWinFormDto>>(SaleMessages.NotFound);
+            }
+            return new SuccessDataResult<List<SaleWinFormDto>>(get, SaleMessages.Found);
+        } 
+      
+
+
     }
 }

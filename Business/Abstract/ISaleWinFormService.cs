@@ -13,6 +13,12 @@ namespace Business.Abstract
         IResult Add(SaleWinForm saleWinForm);
         IResult Update(SaleWinForm saleWinForm);
         IResult Delete(SaleWinForm saleWinForm);
+
+        //SaleWinFormDto
         IDataResult<List<SaleWinFormDto>> GetAllSaleWinFormDtoDetails();
+        IDataResult<List<SaleWinFormDto>> GetAllSaleWinFormDetailsSalesForDay(int day);
+        IDataResult<List<SaleWinFormDto>> GetAllSalewinFormDetailsSalesForMonth(int month);
+        IDataResult<List<SaleWinFormDto>> GetAllSaleWinFormDetailsSalesForYear(int year);
+
     }
 }

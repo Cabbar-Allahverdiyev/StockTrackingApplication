@@ -125,6 +125,7 @@ namespace WindowsForm.Forms
                     Convert.ToInt32(dataGridViewPrdouctList.CurrentRow.Cells["ProductId"].Value.ToString())
                );
 
+            textBoxStokaElaveEdilecekMiqdar.Text = "";
             product.Id = productViewDetailByProductId.Data.ProductId;
             product.UnitsInStock = productViewDetailByProductId.Data.StokdakiVahid;
             product.QuantityPerUnit = productViewDetailByProductId.Data.Kemiyyet;
