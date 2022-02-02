@@ -45,7 +45,7 @@ namespace WindowsForm.MyControls
 
         public void WritePlaceholdersForTextBoxSearchByProductName(TextBox textBoxBarcodeNumber)
         {
-            textBoxBarcodeNumber.PlaceholderText = "Axtar : Barcode nömrəsi";
+            textBoxBarcodeNumber.PlaceholderText = "Axtar : Məhsul adı";
             textBoxBarcodeNumber.MaxLength = 30;
         }
 
@@ -82,6 +82,12 @@ namespace WindowsForm.MyControls
             }
         }
 
+        public  void WriteProductPropertiesInComboBox(ComboBox comboBox)
+        {
+            comboBox.Items.Add("Barkod");
+            comboBox.Items.Add("Məhsul");
+
+        }
 
     }
 }

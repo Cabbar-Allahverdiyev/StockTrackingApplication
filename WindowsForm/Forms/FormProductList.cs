@@ -19,26 +19,28 @@ namespace WindowsForm.Forms
 {
     public partial class FormProductList : Form
     {
-        public FormProductList()
-        {
-            InitializeComponent();
-            MyControl myControl = new MyControl();
-            myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
-        }
         ProductManager _productManager = new ProductManager(new EfProductDal());
         Product product = new Product();
-
 
         CategoryManager _categoryManager = new CategoryManager(new EfCategoryDal());
         BrandManager _brandManager = new BrandManager(new EfBrandDal());
         SupplierManager _supplierManager = new SupplierManager(new EfSupplierDal());
         ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
+        MyControl myControl = new MyControl();
+
+        public FormProductList()
+        {
+            InitializeComponent();
+            myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
+        }
+
 
         private void FormProductList_Load(object sender, EventArgs e)
         {
             IDataResult<List<ProductViewDashboardDetailDto>> getProductDashboard = _productManager.GetAllProductViewDasboardDetails();
             dataGridViewFormPrdouctList.DataSource = getProductDashboard.Data;
 
+            myControl.WriteProductPropertiesInComboBox(comboBoxProperty);
             BrandGetComboBoxVarOlan();
             CategoryGetComboBoxVarOlan();
             SupplierGetComboBox();
@@ -105,12 +107,11 @@ namespace WindowsForm.Forms
         }
 
 
-
-
-
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            detailsSearch.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewFormPrdouctList);
+            detailsSearch.SearchBySelectedValueOfComboBoxAndWriteToDataGridView(textBoxAxtar
+                ,dataGridViewFormPrdouctList,comboBoxProperty);
+            //detailsSearch.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewFormPrdouctList);
         }
 
 

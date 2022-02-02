@@ -53,6 +53,7 @@ namespace WindowsForm.Forms
             this.label13 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxAxtar = new System.Windows.Forms.TextBox();
+            this.comboBoxProperty = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFormPrdouctList)).BeginInit();
             this.GroupBoxVarOlanMehsul.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProductImage)).BeginInit();
@@ -137,7 +138,7 @@ namespace WindowsForm.Forms
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(37, 284);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(67, 14);
+            this.label15.Size = new System.Drawing.Size(66, 14);
             this.label15.TabIndex = 25;
             this.label15.Text = "Tedarikci:";
             // 
@@ -304,12 +305,22 @@ namespace WindowsForm.Forms
             this.textBoxAxtar.TabIndex = 6;
             this.textBoxAxtar.TextChanged += new System.EventHandler(this.textBoxAxtar_TextChanged);
             // 
+            // comboBoxProperty
+            // 
+            this.comboBoxProperty.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxProperty.FormattingEnabled = true;
+            this.comboBoxProperty.Location = new System.Drawing.Point(618, 15);
+            this.comboBoxProperty.Name = "comboBoxProperty";
+            this.comboBoxProperty.Size = new System.Drawing.Size(70, 23);
+            this.comboBoxProperty.TabIndex = 7;
+            // 
             // FormProductList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(878, 520);
+            this.Controls.Add(this.comboBoxProperty);
             this.Controls.Add(this.textBoxAxtar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.GroupBoxVarOlanMehsul);
@@ -353,5 +364,6 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textBoxVarOlanMehsulAdi;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ComboBox comboBoxProperty;
     }
 }

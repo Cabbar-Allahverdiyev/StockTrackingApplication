@@ -690,6 +690,7 @@ namespace WindowsForm.Forms
             this.MinimumSize = new System.Drawing.Size(900, 448);
             this.Name = "Dashboard";
             this.Text = "Dashboard";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Dashboard_Load);
             this.Resize += new System.EventHandler(this.Dashboard_Resize);
             this.panelTitleBar.ResumeLayout(false);

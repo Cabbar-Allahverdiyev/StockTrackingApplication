@@ -34,6 +34,7 @@ namespace WindowsForm.Forms
             this.textBoxAxtar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.GroupBoxVarOlanMehsul = new System.Windows.Forms.GroupBox();
+            this.buttonTemizle = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.TextBoxVarOlanAciqlama = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -53,7 +54,7 @@ namespace WindowsForm.Forms
             this.label12 = new System.Windows.Forms.Label();
             this.textBoxVarOlanMehsulAdi = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.buttonTemizle = new System.Windows.Forms.Button();
+            this.comboBoxProperty = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductList)).BeginInit();
             this.GroupBoxVarOlanMehsul.SuspendLayout();
             this.SuspendLayout();
@@ -93,7 +94,7 @@ namespace WindowsForm.Forms
             // 
             this.textBoxAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxAxtar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxAxtar.Location = new System.Drawing.Point(643, 14);
+            this.textBoxAxtar.Location = new System.Drawing.Point(643, 17);
             this.textBoxAxtar.Name = "textBoxAxtar";
             this.textBoxAxtar.Size = new System.Drawing.Size(145, 22);
             this.textBoxAxtar.TabIndex = 8;
@@ -105,7 +106,7 @@ namespace WindowsForm.Forms
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Image = global::WindowsForm.Properties.Resources.searchBlack;
-            this.label1.Location = new System.Drawing.Point(620, 17);
+            this.label1.Location = new System.Drawing.Point(620, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(17, 17);
             this.label1.TabIndex = 7;
@@ -141,6 +142,19 @@ namespace WindowsForm.Forms
             this.GroupBoxVarOlanMehsul.TabIndex = 9;
             this.GroupBoxVarOlanMehsul.TabStop = false;
             this.GroupBoxVarOlanMehsul.Text = "Var olan mehsul";
+            // 
+            // buttonTemizle
+            // 
+            this.buttonTemizle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTemizle.Image = global::WindowsForm.Properties.Resources.TemizleBlack;
+            this.buttonTemizle.Location = new System.Drawing.Point(84, 320);
+            this.buttonTemizle.Name = "buttonTemizle";
+            this.buttonTemizle.Size = new System.Drawing.Size(85, 26);
+            this.buttonTemizle.TabIndex = 28;
+            this.buttonTemizle.Text = " Təmizlə";
+            this.buttonTemizle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonTemizle.UseVisualStyleBackColor = true;
+            this.buttonTemizle.Click += new System.EventHandler(this.buttonTemizle_Click);
             // 
             // label17
             // 
@@ -308,18 +322,14 @@ namespace WindowsForm.Forms
             this.label13.TabIndex = 14;
             this.label13.Text = "BarkodNo:";
             // 
-            // buttonTemizle
+            // comboBoxProperty
             // 
-            this.buttonTemizle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonTemizle.Image = global::WindowsForm.Properties.Resources.TemizleBlack;
-            this.buttonTemizle.Location = new System.Drawing.Point(84, 320);
-            this.buttonTemizle.Name = "buttonTemizle";
-            this.buttonTemizle.Size = new System.Drawing.Size(85, 26);
-            this.buttonTemizle.TabIndex = 28;
-            this.buttonTemizle.Text = " Təmizlə";
-            this.buttonTemizle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonTemizle.UseVisualStyleBackColor = true;
-            this.buttonTemizle.Click += new System.EventHandler(this.buttonTemizle_Click);
+            this.comboBoxProperty.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxProperty.FormattingEnabled = true;
+            this.comboBoxProperty.Location = new System.Drawing.Point(544, 14);
+            this.comboBoxProperty.Name = "comboBoxProperty";
+            this.comboBoxProperty.Size = new System.Drawing.Size(70, 25);
+            this.comboBoxProperty.TabIndex = 10;
             // 
             // ProductDeleteForm
             // 
@@ -327,6 +337,7 @@ namespace WindowsForm.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(800, 510);
+            this.Controls.Add(this.comboBoxProperty);
             this.Controls.Add(this.GroupBoxVarOlanMehsul);
             this.Controls.Add(this.textBoxAxtar);
             this.Controls.Add(this.label1);
@@ -370,5 +381,6 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.TextBox textBoxVarOlanMehsulAdi;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button buttonTemizle;
+        private System.Windows.Forms.ComboBox comboBoxProperty;
     }
 }

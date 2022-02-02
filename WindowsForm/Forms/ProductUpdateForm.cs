@@ -23,15 +23,6 @@ namespace WindowsForm.Forms
 {
     public partial class ProductUpdateForm : Form
     {
-        public ProductUpdateForm()
-        {
-            InitializeComponent();
-            MyControl myControl = new MyControl();
-            myControl.WritePlaceholdersForTextBoxSearchByProductName(textBoxAxtar);
-            myControl.WritePlaceholdersForTextBoxBarcodeNo(textBoxBarkodNo);
-           
-
-        }
         ProductManager _productManager = new ProductManager(new EfProductDal());
         Product product = new Product();
         ProductValidationTool validationTool = new ProductValidationTool();
@@ -41,14 +32,27 @@ namespace WindowsForm.Forms
         BrandManager _brandManager = new BrandManager(new EfBrandDal());
         SupplierManager _supplierManager = new SupplierManager(new EfSupplierDal());
 
+        MyControl myControl = new MyControl();
+
+        public ProductUpdateForm()
+        {
+            InitializeComponent();
+            
+            myControl.WritePlaceholdersForTextBoxSearchByProductName(textBoxAxtar);
+            myControl.WritePlaceholdersForTextBoxBarcodeNo(textBoxBarkodNo);
+
+
+        }
+       
         private void ProductUpdateForm_Load(object sender, EventArgs e)
         {
             IDataResult<List<ProductViewDashboardDetailDto>> getProductDashboard = _productManager.GetAllProductViewDasboardDetails();
             dataGridViewPrdouctList.DataSource = getProductDashboard.Data;
 
-            BrandGetComboBoxVarOlan();
-            CategoryGetComboBoxVarOlan();
-            SupplierGetComboBox();
+            WriteBrandsInComboBox();
+            WriteCategoryInComboBox();
+            WriteSuppliersInComboBox();
+            myControl.WriteProductPropertiesInComboBox(comboBoxProperty);
             GroupBoxVarOlanMehsulControlClear();
         }
 
@@ -141,8 +145,12 @@ namespace WindowsForm.Forms
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            detailsSearch.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewPrdouctList);
+            detailsSearch.SearchBySelectedValueOfComboBoxAndWriteToDataGridView(textBoxAxtar
+                , dataGridViewPrdouctList, comboBoxProperty);
         }
+
+
+
 
         //Key Press------------------->
         private void textBoxStokaElaveEdilecekMiqdar_KeyPress(object sender, KeyPressEventArgs e)
@@ -163,14 +171,10 @@ namespace WindowsForm.Forms
 
 
 
-
-
-
-
         //elave metodlar------------------->
         //CategoryGetComboBoxVarOlan(),CategoryGetComboBoxVarOlan(),SupplierGetComboBox(),GroupBoxVarOlanMehsulControlClear()
         //Genericlestir mutleq
-        private void CategoryGetComboBoxVarOlan()
+        private void WriteCategoryInComboBox()
         {
             var categoryGetAll = _categoryManager.GetAll();
             comboBoxKateqoriya.DataSource = categoryGetAll.Data;
@@ -178,7 +182,7 @@ namespace WindowsForm.Forms
             comboBoxKateqoriya.ValueMember = "Id";
         }
 
-        private void BrandGetComboBoxVarOlan()
+        private void WriteBrandsInComboBox()
         {
             var brandGetAll = _brandManager.GetAll();
             comboBoxMarka.DataSource = brandGetAll.Data;
@@ -188,7 +192,7 @@ namespace WindowsForm.Forms
 
 
 
-        private void SupplierGetComboBox()
+        private void WriteSuppliersInComboBox()
         {
             var supplierGetAll = _supplierManager.GetAll();
             comboBoxTedarikci.DataSource = supplierGetAll.Data;
@@ -197,13 +201,15 @@ namespace WindowsForm.Forms
         }
 
 
+
+
         private void GroupBoxVarOlanMehsulControlClear()
         {
             TextBoxController.ClearAllTextBoxesAndCmboBoxesByGroupBox(GroupBoxVarOlanMehsul);
             LabelMiqdarVB.Text = "";
         }
 
-       
+
     }
 }
 

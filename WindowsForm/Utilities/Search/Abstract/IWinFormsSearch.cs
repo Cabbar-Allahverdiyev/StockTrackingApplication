@@ -7,6 +7,7 @@ namespace WindowsForm.Utilities.Search.Abstract
 {
     public interface IWinFormsSearch
     {
-       void GetDataWriteGridView(string seachText, DataGridView dataGridView);
+        void GetDataWriteGridView(string seachText, DataGridView dataGridView);
+        void SearchBySelectedValueOfComboBoxAndWriteToDataGridView(TextBox textBox, DataGridView dataGridView, ComboBox comboBox);
     }
 }

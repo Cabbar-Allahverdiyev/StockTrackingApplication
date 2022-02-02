@@ -56,5 +56,10 @@ namespace WindowsForm.Utilities.Search.Concrete.BrandSearch
 
             dataGridView.DataSource = oldList;
         }
+
+        public void SearchBySelectedValueOfComboBoxAndWriteToDataGridView(TextBox textBox, DataGridView dataGridView, ComboBox comboBox)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

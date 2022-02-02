@@ -55,6 +55,7 @@ namespace WindowsForm.Forms
             this.dataGridViewPrdouctList = new System.Windows.Forms.DataGridView();
             this.textBoxAxtar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.comboBoxProperty = new System.Windows.Forms.ComboBox();
             this.GroupBoxVarOlanMehsul.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPrdouctList)).BeginInit();
             this.SuspendLayout();
@@ -318,12 +319,22 @@ namespace WindowsForm.Forms
             this.label1.TabIndex = 7;
             this.label1.Text = "   ";
             // 
+            // comboBoxProperty
+            // 
+            this.comboBoxProperty.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxProperty.FormattingEnabled = true;
+            this.comboBoxProperty.Location = new System.Drawing.Point(680, 12);
+            this.comboBoxProperty.Name = "comboBoxProperty";
+            this.comboBoxProperty.Size = new System.Drawing.Size(67, 25);
+            this.comboBoxProperty.TabIndex = 9;
+            // 
             // ProductUpdateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(933, 544);
+            this.Controls.Add(this.comboBoxProperty);
             this.Controls.Add(this.textBoxAxtar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridViewPrdouctList);
@@ -367,5 +378,6 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.TextBox textBoxAxtar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonTemizle;
+        private System.Windows.Forms.ComboBox comboBoxProperty;
     }
 }

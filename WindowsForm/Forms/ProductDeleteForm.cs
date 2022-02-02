@@ -28,10 +28,12 @@ namespace WindowsForm.Forms
         SupplierManager _supplierManager = new SupplierManager(new EfSupplierDal());
 
         ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
+        MyControl myControl = new MyControl();
+
         public ProductDeleteForm()
         {
             InitializeComponent();
-            MyControl myControl = new MyControl();
+
             myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
         }
 
@@ -40,6 +42,7 @@ namespace WindowsForm.Forms
             IDataResult<List<ProductViewDashboardDetailDto>> getProductDashboard = _productManager.GetAllProductViewDasboardDetails();
             dataGridViewProductList.DataSource = getProductDashboard.Data;
 
+            myControl.WriteProductPropertiesInComboBox(comboBoxProperty);
             BrandGetComboBoxVarOlan();
             CategoryGetComboBoxVarOlan();
             SupplierGetComboBox();
@@ -102,14 +105,9 @@ namespace WindowsForm.Forms
         //Text changed -------------------------------->
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            detailsSearch.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewProductList);
+            detailsSearch.SearchBySelectedValueOfComboBoxAndWriteToDataGridView(textBoxAxtar, dataGridViewProductList, comboBoxProperty);
+           // detailsSearch.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewProductList);
         }
-
-
-
-
-
-
 
 
         //elave metodlar------------------->
@@ -117,14 +115,10 @@ namespace WindowsForm.Forms
         //Genericlestir mutleq
         private void CategoryGetComboBoxVarOlan()
         {
-
             var categoryGetAll = _categoryManager.GetAll();
-
             comboBoxVarOlanKateqoriya.DataSource = categoryGetAll.Data;
             comboBoxVarOlanKateqoriya.DisplayMember = "CategoryName";
             comboBoxVarOlanKateqoriya.ValueMember = "Id";
-
-
         }
 
 
@@ -136,7 +130,6 @@ namespace WindowsForm.Forms
             comboBoxVarOlanMarka.DataSource = brandGetAll.Data;
             comboBoxVarOlanMarka.DisplayMember = "BrandName";
             comboBoxVarOlanMarka.ValueMember = "Id";
-
         }
 
 
