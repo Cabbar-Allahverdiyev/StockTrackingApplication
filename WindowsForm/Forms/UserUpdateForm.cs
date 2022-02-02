@@ -11,6 +11,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
+using WindowsForm.Core.Controllers.Concrete;
 using WindowsForm.Core.Controllers.ValidatorControllers;
 using WindowsForm.MyControls;
 using WindowsForm.Utilities.Search.Concrete.UserSearch;
@@ -27,6 +28,9 @@ namespace WindowsForm.Forms
             InitializeComponent();
             MyControl myControl = new MyControl();
             myControl.MakeAsteriskPasswordCharacterAndMaxLengthFourTen(textBoxYeniSİfre,textBoxSifreTexrari);
+            myControl.WritePlaceholdersForTextBoxEmail(textBoxEmail);
+            myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
+            myControl.WritePlaceholdersForTextBoxAddress(textBoxAdres);
             dataGridViewUserListed.DataSource = _userManager.GetUserDetails().Data;
         }
 
@@ -50,11 +54,11 @@ namespace WindowsForm.Forms
             {
                 User user = new User();
                 user.Id = int.Parse(textBoxUserId.Text); ;
-                user.FirstName = TextBoxFormUserListedAd.Text;
-                user.LastName = TextBoxFormUserListedSoyad.Text;
-                user.Email = TextBoxFormUserListedEmail.Text;
-                user.PhoneNumber = TextBoxFormUserListedPhoneNumber.Text;
-                user.Address = TextBoxFormUserListedAddress.Text;
+                user.FirstName = textBoxdAd.Text;
+                user.LastName = textBoxSoyad.Text;
+                user.Email = textBoxEmail.Text;
+                user.PhoneNumber = textBoxTelefon.Text;
+                user.Address = textBoxAdres.Text;
 
                 if (!validationTool.IsValid(user))
                 {
@@ -68,6 +72,7 @@ namespace WindowsForm.Forms
                 {
                     FormsMessage.SuccessMessage(userUpdated.Message);
                     dataGridViewUserListed.DataSource = _userManager.GetUserDetails().Data;
+                    TextBoxController.ClearAllTextBoxesByGroupBox(groupBox1);
                 }
                 else
                 {
@@ -87,13 +92,13 @@ namespace WindowsForm.Forms
         private void DataGridViewUserListed_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             textBoxUserId.Text = dataGridViewUserListed.CurrentRow.Cells["UserId"].Value.ToString();
-            TextBoxFormUserListedAd.Text = dataGridViewUserListed.CurrentRow.Cells["FirstName"].Value.ToString();
-            TextBoxFormUserListedSoyad.Text = dataGridViewUserListed.CurrentRow.Cells["LastName"].Value.ToString();
-            TextBoxFormUserListedEmail.Text = dataGridViewUserListed.CurrentRow.Cells["Email"].Value.ToString();
-            TextBoxFormUserListedPhoneNumber.Text = dataGridViewUserListed.CurrentRow.Cells["PhoneNumber"].Value.ToString();
-            TextBoxFormUserListedAddress.Text = dataGridViewUserListed.CurrentRow.Cells["Address"].Value.ToString();
+            textBoxdAd.Text = dataGridViewUserListed.CurrentRow.Cells["FirstName"].Value.ToString();
+            textBoxSoyad.Text = dataGridViewUserListed.CurrentRow.Cells["LastName"].Value.ToString();
+            textBoxEmail.Text = dataGridViewUserListed.CurrentRow.Cells["Email"].Value.ToString();
+            textBoxTelefon.Text = dataGridViewUserListed.CurrentRow.Cells["PhoneNumber"].Value.ToString();
+            textBoxAdres.Text = dataGridViewUserListed.CurrentRow.Cells["Address"].Value.ToString();
         }
 
-       
+        
     }
 }
