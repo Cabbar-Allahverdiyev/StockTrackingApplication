@@ -11,5 +11,6 @@ namespace DataAccess.Abstract
     public interface ISaleWinFormDal : IEntityRepository<SaleWinForm>
     {
         List<SaleWinFormDto> GetAllWinFormDtoDetails(Expression<Func<SaleWinFormDto, bool>> filter = null);
+        List<SaleWinFormDto> GetAllWinFormDtoDetailsByDayAndMonthAndYear(int day, int month, int year);
     }
 }

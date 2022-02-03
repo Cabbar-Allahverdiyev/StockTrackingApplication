@@ -31,27 +31,35 @@ namespace WindowsForm.Forms
             dataGridViewSaleList.DataSource = _saleWinFormManager.GetAllSaleWinFormDtoDetails().Data;
         }
 
-        //sil burdan sonrani----------------------->
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonAxtar_Click(object sender, EventArgs e)
         {
-            dataGridViewSaleList.DataSource = _saleWinFormManager.GetAllSaleWinFormDetailsSalesForDay(int.Parse(comboBoxDays.SelectedItem.ToString())).Data;
+            int selectedDayItem = comboBoxDays.SelectedItem != null ? int.Parse(comboBoxDays.SelectedItem.ToString())
+               : DateTime.Now.Day;
+
+            int selectedMonthItem = comboBoxMonths.SelectedItem != null ? int.Parse(comboBoxMonths.SelectedItem.ToString())
+               : DateTime.Now.Month;
+
+            int selectedYearItem = comboBoxYears.SelectedItem != null ? int.Parse(comboBoxYears.SelectedItem.ToString())
+               : DateTime.Now.Year;
+
+            if (comboBoxDays.SelectedItem == null && comboBoxMonths != null && comboBoxYears == null)
+            {
+
+            }
+
+            var data = _saleWinFormManager
+                    .GetAllSaleWinFormDetailsSalesForDayAndMonthAndYear(selectedDayItem, selectedMonthItem, selectedYearItem).Data;
+            dataGridViewSaleList.DataSource = data;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void pictureBoxRefresh_Click(object sender, EventArgs e)
         {
-            dataGridViewSaleList.DataSource = _saleWinFormManager.GetAllSalewinFormDetailsSalesForMonth(int.Parse(comboBoxMonths.SelectedItem.ToString())).Data;
+            SaleListRefesh();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void buttonTemizle_Click(object sender, EventArgs e)
         {
-            dataGridViewSaleList.DataSource = _saleWinFormManager.GetAllSaleWinFormDetailsSalesForYear(int.Parse(comboBoxYears.SelectedItem.ToString())).Data;
+            ComboBoxController.ClearAllComboBoxByGroupBox(groupBox1);
         }
-
-        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-       
     }
 }

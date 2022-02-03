@@ -10,6 +10,7 @@ using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace Business.Concrete
 {
@@ -80,7 +81,8 @@ namespace Business.Concrete
 
         public IDataResult<List<SaleWinFormDto>> GetAllSalewinFormDetailsSalesForMonth(int month)
         {
-            List<SaleWinFormDto> get = _saleWinFormDal.GetAllWinFormDtoDetails(s => s.Tarix.Month == month);
+            int year=1;
+            List<SaleWinFormDto> get = _saleWinFormDal.GetAllWinFormDtoDetails(s => s.Tarix.Month == month).Where(s=>s.Tarix.Year==year);
             if (get == null)
             {
                 return new ErrorDataResult<List<SaleWinFormDto>>(SaleMessages.NotFound);
@@ -97,6 +99,18 @@ namespace Business.Concrete
             }
             return new SuccessDataResult<List<SaleWinFormDto>>(get, SaleMessages.Found);
         } 
+        
+        public IDataResult<List<SaleWinFormDto>> GetAllSaleWinFormDetailsSalesForDayAndMonthAndYear(int day,int month,int year)
+        {
+            List<SaleWinFormDto> get = _saleWinFormDal.GetAllWinFormDtoDetailsByDayAndMonthAndYear(day, month, year);
+            if (get == null)
+            {
+                return new ErrorDataResult<List<SaleWinFormDto>>(SaleMessages.NotFound);
+            }
+            return new SuccessDataResult<List<SaleWinFormDto>>(get, SaleMessages.Found);
+        } 
+
+
       
 
 

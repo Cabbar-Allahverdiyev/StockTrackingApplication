@@ -21,7 +21,7 @@ namespace WindowsForm.Core.Controllers.Concrete
             foreach (Control control in groupBox.Controls)
             {
                 ClearAllTextBoxes(control);
-                ClearAllComboBoxes(control);
+                ComboBoxController.ClearAllComboBoxes(control);
             }
         }
 
@@ -34,12 +34,6 @@ namespace WindowsForm.Core.Controllers.Concrete
             }
         }
 
-        public static void ClearAllComboBoxes(Control control)
-        {
-            if (control is ComboBox)
-            {
-                control.Text = "";
-            }
-        }
+       
     }
 }

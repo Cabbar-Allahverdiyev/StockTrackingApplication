@@ -233,9 +233,39 @@ namespace WindowsForm.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
+        internal static System.Drawing.Bitmap refreshBlack_16px_ {
+            get {
+                object obj = ResourceManager.GetObject("refreshBlack_16px_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
         internal static System.Drawing.Bitmap searchBlack {
             get {
                 object obj = ResourceManager.GetObject("searchBlack", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap searchFerqli_16px {
+            get {
+                object obj = ResourceManager.GetObject("searchFerqli_16px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap searchFerqliBlack_16px {
+            get {
+                object obj = ResourceManager.GetObject("searchFerqliBlack_16px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
