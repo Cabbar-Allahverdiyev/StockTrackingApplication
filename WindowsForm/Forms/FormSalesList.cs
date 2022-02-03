@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using WindowsForm.Core.Controllers.Concrete;
 
 namespace WindowsForm.Forms
 {
@@ -20,9 +21,9 @@ namespace WindowsForm.Forms
 
         private void FormSalesList_Load(object sender, EventArgs e)
         {
-            WriteDaysInComboBox();
-            WriteMonthsInComboBox();
-            WriteYearsInComboBox();
+            ComboBoxController.WriteDaysInComboBox(comboBoxDays);
+            ComboBoxController.WriteMonthsInComboBox(comboBoxMonths);
+            ComboBoxController.WriteYearsInComboBox(comboBoxYears);
             SaleListRefesh();
         }
         private void SaleListRefesh()
@@ -51,28 +52,6 @@ namespace WindowsForm.Forms
 
         }
 
-        private void WriteDaysInComboBox()
-        {
-            for (int i = 1; i < 32; i++)
-            {
-                comboBoxDays.Items.Add(i);
-            }
-            
-        }
-        private void WriteMonthsInComboBox()
-        {
-            for (int i = 1; i < 13; i++)
-            {
-                comboBoxMonths.Items.Add(i);
-            }
-        }
-        private void WriteYearsInComboBox()
-        {
-            List<int> years = new List<int>() { 2021, 2022, 2023, 2024 };
-            foreach (int year in years)
-            {
-                comboBoxYears.Items.Add(year);
-            }
-        }
+       
     }
 }
