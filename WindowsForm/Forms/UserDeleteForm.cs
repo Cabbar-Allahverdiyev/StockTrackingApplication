@@ -32,7 +32,7 @@ namespace WindowsForm.Forms
         }
         private void UserDeleteForm_Load(object sender, EventArgs e)
         {
-            dataGridViewUserListed.DataSource = _userManager.GetUserDetails().Data;
+            UserRefresh();
         }
 
         //Click ---------------------->
@@ -49,7 +49,7 @@ namespace WindowsForm.Forms
                 if (userDeleted.Success)
                 {
                     FormsMessage.SuccessMessage(userDeleted.Message);
-                    dataGridViewUserListed.DataSource = _userManager.GetUserDetails().Data;
+                    UserRefresh();
                     TextBoxController.ClearAllTextBoxesByGroupBox(groupBox1);
                 }
                 else
@@ -69,6 +69,11 @@ namespace WindowsForm.Forms
         private void buttonTemizle_Click(object sender, EventArgs e)
         {
             TextBoxController.ClearAllTextBoxesByGroupBox(groupBox1);
+        }
+
+        private void pictureBoxRefresh_Click(object sender, EventArgs e)
+        {
+            UserRefresh();
         }
 
         //Cell Doble Click---------------------->
@@ -94,6 +99,11 @@ namespace WindowsForm.Forms
 
         }
 
-
+        //Elave Metodlar------------------------------->
+        private void UserRefresh()
+        {
+            dataGridViewUserListed.DataSource = _userManager.GetUserDetails().Data;
+        }
+        
     }
 }

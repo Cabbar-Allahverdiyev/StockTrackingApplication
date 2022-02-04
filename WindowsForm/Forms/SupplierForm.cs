@@ -37,9 +37,11 @@ namespace WindowsForm.Forms
 
         private void SupplierForm_Load(object sender, EventArgs e)
         {
-            var supplierGetAll = _suplierManager.GetAll();
-            dataGridViewSupplierListed.DataSource = supplierGetAll.Data;
+            SupplierRefresh();
         }
+
+
+
         //Click ------------------------->
 
         private void buttonTemizle_Click(object sender, EventArgs e)
@@ -47,7 +49,10 @@ namespace WindowsForm.Forms
             TextBoxController.ClearAllTextBoxesByGroupBox(groupBox1);
         }
 
-
+        private void pictureBoxRefresh_Click(object sender, EventArgs e)
+        {
+            SupplierRefresh();
+        }
 
         private void buttonElaveEt_Click(object sender, EventArgs e)
         {
@@ -73,7 +78,7 @@ namespace WindowsForm.Forms
                 return;
             }
             FormsMessage.SuccessMessage(supplierAdd.Message);
-            dataGridViewSupplierListed.DataSource = _suplierManager.GetAll().Data;
+            SupplierRefresh();
 
             foreach (Control control in this.Controls)
             {
@@ -91,6 +96,9 @@ namespace WindowsForm.Forms
             search.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewSupplierListed);
         }
 
-
+        private void SupplierRefresh()
+        {
+            dataGridViewSupplierListed.DataSource = _suplierManager.GetAll().Data;
+        }
     }
 }

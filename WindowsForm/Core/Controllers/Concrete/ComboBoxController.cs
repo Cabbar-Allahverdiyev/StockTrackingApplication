@@ -41,10 +41,9 @@ namespace WindowsForm.Core.Controllers.Concrete
         }
         public static void WriteYearsInComboBox(ComboBox comboBox)
         {
-            List<int> years = new List<int>() { 2021, 2022, 2023, 2024 };
-            foreach (int year in years)
+            for (int i = 2021; i < 2031; i++)
             {
-                comboBox.Items.Add(year);
+                comboBox.Items.Add(i);
             }
         }
     }

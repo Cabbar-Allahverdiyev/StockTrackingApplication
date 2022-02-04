@@ -29,7 +29,6 @@ namespace WindowsForm.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.ButtonSupplierFormElaveEt = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxSirketAdi = new System.Windows.Forms.TextBox();
             this.dataGridViewSupplierListed = new System.Windows.Forms.DataGridView();
@@ -46,24 +45,15 @@ namespace WindowsForm.Forms
             this.textBoxTelefon = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxAxtar = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.buttonTemizle = new System.Windows.Forms.Button();
             this.buttonElaveEt = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSupplierListed)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).BeginInit();
             this.SuspendLayout();
-            // 
-            // ButtonSupplierFormElaveEt
-            // 
-            this.ButtonSupplierFormElaveEt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonSupplierFormElaveEt.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ButtonSupplierFormElaveEt.Location = new System.Drawing.Point(124, 382);
-            this.ButtonSupplierFormElaveEt.Name = "ButtonSupplierFormElaveEt";
-            this.ButtonSupplierFormElaveEt.Size = new System.Drawing.Size(104, 80);
-            this.ButtonSupplierFormElaveEt.TabIndex = 0;
-            this.ButtonSupplierFormElaveEt.Text = "ElaveEt";
-            this.ButtonSupplierFormElaveEt.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -80,7 +70,7 @@ namespace WindowsForm.Forms
             this.textBoxSirketAdi.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxSirketAdi.Location = new System.Drawing.Point(112, 21);
             this.textBoxSirketAdi.Name = "textBoxSirketAdi";
-            this.textBoxSirketAdi.Size = new System.Drawing.Size(157, 22);
+            this.textBoxSirketAdi.Size = new System.Drawing.Size(177, 22);
             this.textBoxSirketAdi.TabIndex = 2;
             // 
             // dataGridViewSupplierListed
@@ -93,11 +83,11 @@ namespace WindowsForm.Forms
             this.dataGridViewSupplierListed.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewSupplierListed.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.dataGridViewSupplierListed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewSupplierListed.Location = new System.Drawing.Point(296, 46);
+            this.dataGridViewSupplierListed.Location = new System.Drawing.Point(313, 40);
             this.dataGridViewSupplierListed.Name = "dataGridViewSupplierListed";
             this.dataGridViewSupplierListed.ReadOnly = true;
             this.dataGridViewSupplierListed.RowTemplate.Height = 25;
-            this.dataGridViewSupplierListed.Size = new System.Drawing.Size(740, 551);
+            this.dataGridViewSupplierListed.Size = new System.Drawing.Size(723, 557);
             this.dataGridViewSupplierListed.TabIndex = 3;
             // 
             // textBoxAd
@@ -105,7 +95,7 @@ namespace WindowsForm.Forms
             this.textBoxAd.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxAd.Location = new System.Drawing.Point(112, 54);
             this.textBoxAd.Name = "textBoxAd";
-            this.textBoxAd.Size = new System.Drawing.Size(157, 22);
+            this.textBoxAd.Size = new System.Drawing.Size(177, 22);
             this.textBoxAd.TabIndex = 5;
             // 
             // label2
@@ -123,7 +113,7 @@ namespace WindowsForm.Forms
             this.textBoxNeZamanGelir.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxNeZamanGelir.Location = new System.Drawing.Point(112, 86);
             this.textBoxNeZamanGelir.Name = "textBoxNeZamanGelir";
-            this.textBoxNeZamanGelir.Size = new System.Drawing.Size(157, 22);
+            this.textBoxNeZamanGelir.Size = new System.Drawing.Size(177, 22);
             this.textBoxNeZamanGelir.TabIndex = 7;
             // 
             // label3
@@ -141,7 +131,7 @@ namespace WindowsForm.Forms
             this.textBoxSeher.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxSeher.Location = new System.Drawing.Point(112, 119);
             this.textBoxSeher.Name = "textBoxSeher";
-            this.textBoxSeher.Size = new System.Drawing.Size(157, 22);
+            this.textBoxSeher.Size = new System.Drawing.Size(177, 22);
             this.textBoxSeher.TabIndex = 9;
             // 
             // label4
@@ -159,7 +149,7 @@ namespace WindowsForm.Forms
             this.textBoxAdres.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxAdres.Location = new System.Drawing.Point(112, 152);
             this.textBoxAdres.Name = "textBoxAdres";
-            this.textBoxAdres.Size = new System.Drawing.Size(157, 22);
+            this.textBoxAdres.Size = new System.Drawing.Size(177, 22);
             this.textBoxAdres.TabIndex = 11;
             // 
             // label5
@@ -177,7 +167,7 @@ namespace WindowsForm.Forms
             this.textBoxEmail.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxEmail.Location = new System.Drawing.Point(112, 185);
             this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(157, 22);
+            this.textBoxEmail.Size = new System.Drawing.Size(177, 22);
             this.textBoxEmail.TabIndex = 13;
             // 
             // label6
@@ -195,7 +185,7 @@ namespace WindowsForm.Forms
             this.textBoxTelefon.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxTelefon.Location = new System.Drawing.Point(112, 218);
             this.textBoxTelefon.Name = "textBoxTelefon";
-            this.textBoxTelefon.Size = new System.Drawing.Size(157, 22);
+            this.textBoxTelefon.Size = new System.Drawing.Size(177, 22);
             this.textBoxTelefon.TabIndex = 15;
             // 
             // label7
@@ -211,28 +201,17 @@ namespace WindowsForm.Forms
             // textBoxAxtar
             // 
             this.textBoxAxtar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxAxtar.Location = new System.Drawing.Point(893, 14);
+            this.textBoxAxtar.Location = new System.Drawing.Point(862, 12);
             this.textBoxAxtar.Name = "textBoxAxtar";
             this.textBoxAxtar.Size = new System.Drawing.Size(143, 22);
             this.textBoxAxtar.TabIndex = 17;
             this.textBoxAxtar.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Image = global::WindowsForm.Properties.Resources.searchBlack;
-            this.label8.Location = new System.Drawing.Point(870, 17);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(17, 17);
-            this.label8.TabIndex = 16;
-            this.label8.Text = "   ";
-            // 
             // buttonTemizle
             // 
             this.buttonTemizle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTemizle.Image = global::WindowsForm.Properties.Resources.TemizleBlack;
-            this.buttonTemizle.Location = new System.Drawing.Point(93, 246);
+            this.buttonTemizle.Location = new System.Drawing.Point(113, 246);
             this.buttonTemizle.Name = "buttonTemizle";
             this.buttonTemizle.Size = new System.Drawing.Size(85, 26);
             this.buttonTemizle.TabIndex = 26;
@@ -245,7 +224,7 @@ namespace WindowsForm.Forms
             // 
             this.buttonElaveEt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonElaveEt.Image = global::WindowsForm.Properties.Resources.elaveEtBlack;
-            this.buttonElaveEt.Location = new System.Drawing.Point(184, 246);
+            this.buttonElaveEt.Location = new System.Drawing.Point(204, 246);
             this.buttonElaveEt.Name = "buttonElaveEt";
             this.buttonElaveEt.Size = new System.Drawing.Size(85, 26);
             this.buttonElaveEt.TabIndex = 25;
@@ -272,11 +251,37 @@ namespace WindowsForm.Forms
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.textBoxAdres);
-            this.groupBox1.Location = new System.Drawing.Point(12, 46);
+            this.groupBox1.Location = new System.Drawing.Point(12, 40);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(275, 282);
+            this.groupBox1.Size = new System.Drawing.Size(295, 282);
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
+            // 
+            // pictureBoxRefresh
+            // 
+            this.pictureBoxRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBoxRefresh.ErrorImage = global::WindowsForm.Properties.Resources.exitWhite;
+            this.pictureBoxRefresh.Image = global::WindowsForm.Properties.Resources.refreshBlack_16px_;
+            this.pictureBoxRefresh.InitialImage = global::WindowsForm.Properties.Resources.exitWhite;
+            this.pictureBoxRefresh.Location = new System.Drawing.Point(1011, 12);
+            this.pictureBoxRefresh.Name = "pictureBoxRefresh";
+            this.pictureBoxRefresh.Size = new System.Drawing.Size(25, 25);
+            this.pictureBoxRefresh.TabIndex = 34;
+            this.pictureBoxRefresh.TabStop = false;
+            this.pictureBoxRefresh.Click += new System.EventHandler(this.pictureBoxRefresh_Click);
+            // 
+            // label12
+            // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label12.Image = global::WindowsForm.Properties.Resources.searchFerqliBlack_16px;
+            this.label12.Location = new System.Drawing.Point(833, 15);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(23, 17);
+            this.label12.TabIndex = 35;
+            this.label12.Text = "     ";
             // 
             // SupplierForm
             // 
@@ -284,27 +289,26 @@ namespace WindowsForm.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(1048, 635);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.pictureBoxRefresh);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.textBoxAxtar);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.dataGridViewSupplierListed);
-            this.Controls.Add(this.ButtonSupplierFormElaveEt);
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "SupplierForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Supplier Form";
+            this.Text = "Tədarikçi əlavə etmə səhifəsi";
             this.Load += new System.EventHandler(this.SupplierForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSupplierListed)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button ButtonSupplierFormElaveEt;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxSirketAdi;
         private System.Windows.Forms.DataGridView dataGridViewSupplierListed;
@@ -321,9 +325,10 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.TextBox textBoxTelefon;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBoxAxtar;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button buttonTemizle;
         private System.Windows.Forms.Button buttonElaveEt;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.PictureBox pictureBoxRefresh;
+        private System.Windows.Forms.Label label12;
     }
 }

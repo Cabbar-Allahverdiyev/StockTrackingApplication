@@ -111,9 +111,9 @@ namespace WindowsForm.Forms
             this.labelTitle.ForeColor = System.Drawing.Color.Black;
             this.labelTitle.Location = new System.Drawing.Point(6, 16);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(120, 23);
+            this.labelTitle.Size = new System.Drawing.Size(108, 23);
             this.labelTitle.TabIndex = 0;
-            this.labelTitle.Text = "Dashboard";
+            this.labelTitle.Text = "Əsas Səhifə";
             this.labelTitle.Click += new System.EventHandler(this.labelTitle_Click);
             // 
             // btnExit
@@ -689,7 +689,7 @@ namespace WindowsForm.Forms
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.MinimumSize = new System.Drawing.Size(900, 448);
             this.Name = "Dashboard";
-            this.Text = "Dashboard";
+            this.Text = "Əsas Səhifə";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Dashboard_Load);
             this.Resize += new System.EventHandler(this.Dashboard_Resize);

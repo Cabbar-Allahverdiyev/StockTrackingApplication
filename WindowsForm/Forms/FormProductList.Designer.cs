@@ -51,12 +51,14 @@ namespace WindowsForm.Forms
             this.label12 = new System.Windows.Forms.Label();
             this.textBoxVarOlanMehsulAdi = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.textBoxAxtar = new System.Windows.Forms.TextBox();
             this.comboBoxProperty = new System.Windows.Forms.ComboBox();
+            this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFormPrdouctList)).BeginInit();
             this.GroupBoxVarOlanMehsul.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProductImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewFormPrdouctList
@@ -283,23 +285,11 @@ namespace WindowsForm.Forms
             this.label13.TabIndex = 14;
             this.label13.Text = "BarkodNo:";
             // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Image = global::WindowsForm.Properties.Resources.searchBlack;
-            this.label1.Location = new System.Drawing.Point(694, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(19, 14);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "   ";
-            // 
             // textBoxAxtar
             // 
             this.textBoxAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxAxtar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxAxtar.Location = new System.Drawing.Point(719, 16);
+            this.textBoxAxtar.Location = new System.Drawing.Point(611, 13);
             this.textBoxAxtar.Name = "textBoxAxtar";
             this.textBoxAxtar.Size = new System.Drawing.Size(145, 22);
             this.textBoxAxtar.TabIndex = 6;
@@ -309,10 +299,36 @@ namespace WindowsForm.Forms
             // 
             this.comboBoxProperty.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxProperty.FormattingEnabled = true;
-            this.comboBoxProperty.Location = new System.Drawing.Point(618, 15);
+            this.comboBoxProperty.Location = new System.Drawing.Point(762, 13);
             this.comboBoxProperty.Name = "comboBoxProperty";
             this.comboBoxProperty.Size = new System.Drawing.Size(70, 23);
             this.comboBoxProperty.TabIndex = 7;
+            // 
+            // pictureBoxRefresh
+            // 
+            this.pictureBoxRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBoxRefresh.ErrorImage = global::WindowsForm.Properties.Resources.exitWhite;
+            this.pictureBoxRefresh.Image = global::WindowsForm.Properties.Resources.refreshBlack_16px_;
+            this.pictureBoxRefresh.InitialImage = global::WindowsForm.Properties.Resources.exitWhite;
+            this.pictureBoxRefresh.Location = new System.Drawing.Point(838, 13);
+            this.pictureBoxRefresh.Name = "pictureBoxRefresh";
+            this.pictureBoxRefresh.Size = new System.Drawing.Size(25, 25);
+            this.pictureBoxRefresh.TabIndex = 32;
+            this.pictureBoxRefresh.TabStop = false;
+            this.pictureBoxRefresh.Click += new System.EventHandler(this.pictureBoxRefresh_Click);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Image = global::WindowsForm.Properties.Resources.searchFerqliBlack_16px;
+            this.label1.Location = new System.Drawing.Point(582, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(23, 17);
+            this.label1.TabIndex = 34;
+            this.label1.Text = "     ";
             // 
             // FormProductList
             // 
@@ -320,19 +336,21 @@ namespace WindowsForm.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(878, 520);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.pictureBoxRefresh);
             this.Controls.Add(this.comboBoxProperty);
             this.Controls.Add(this.textBoxAxtar);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.GroupBoxVarOlanMehsul);
             this.Controls.Add(this.dataGridViewFormPrdouctList);
             this.Name = "FormProductList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Produc tList";
+            this.Text = "Məhsul sıralama səhifəsi";
             this.Load += new System.EventHandler(this.FormProductList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFormPrdouctList)).EndInit();
             this.GroupBoxVarOlanMehsul.ResumeLayout(false);
             this.GroupBoxVarOlanMehsul.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProductImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -343,7 +361,6 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.DataGridView dataGridViewFormPrdouctList;
         private System.Windows.Forms.GroupBox GroupBoxVarOlanMehsul;
         private System.Windows.Forms.Label LabelMiqdarVB;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxAxtar;
         private System.Windows.Forms.PictureBox pictureBoxProductImage;
         private System.Windows.Forms.Label label17;
@@ -365,5 +382,7 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.TextBox textBoxVarOlanMehsulAdi;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox comboBoxProperty;
+        private System.Windows.Forms.PictureBox pictureBoxRefresh;
+        private System.Windows.Forms.Label label1;
     }
 }

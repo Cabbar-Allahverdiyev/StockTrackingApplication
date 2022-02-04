@@ -46,8 +46,10 @@ namespace WindowsForm.Forms
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonTemizle = new System.Windows.Forms.Button();
             this.buttonSil = new System.Windows.Forms.Button();
+            this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUserListed)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewUserListed
@@ -60,12 +62,12 @@ namespace WindowsForm.Forms
             this.dataGridViewUserListed.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewUserListed.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridViewUserListed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewUserListed.Location = new System.Drawing.Point(403, 46);
+            this.dataGridViewUserListed.Location = new System.Drawing.Point(403, 40);
             this.dataGridViewUserListed.Name = "dataGridViewUserListed";
             this.dataGridViewUserListed.ReadOnly = true;
             this.dataGridViewUserListed.RowTemplate.Height = 25;
             this.dataGridViewUserListed.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewUserListed.Size = new System.Drawing.Size(486, 407);
+            this.dataGridViewUserListed.Size = new System.Drawing.Size(486, 413);
             this.dataGridViewUserListed.TabIndex = 1;
             this.dataGridViewUserListed.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUserListed_CellDoubleClick);
             // 
@@ -169,8 +171,8 @@ namespace WindowsForm.Forms
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Image = global::WindowsForm.Properties.Resources.searchBlack;
-            this.label5.Location = new System.Drawing.Point(693, 17);
+            this.label5.Image = global::WindowsForm.Properties.Resources.searchFerqliBlack_16px;
+            this.label5.Location = new System.Drawing.Point(662, 15);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(17, 17);
             this.label5.TabIndex = 42;
@@ -180,7 +182,7 @@ namespace WindowsForm.Forms
             // 
             this.textBoxAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxAxtar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxAxtar.Location = new System.Drawing.Point(716, 14);
+            this.textBoxAxtar.Location = new System.Drawing.Point(685, 12);
             this.textBoxAxtar.Name = "textBoxAxtar";
             this.textBoxAxtar.Size = new System.Drawing.Size(173, 22);
             this.textBoxAxtar.TabIndex = 41;
@@ -210,9 +212,9 @@ namespace WindowsForm.Forms
             this.groupBox1.Controls.Add(this.textBoxTelefon);
             this.groupBox1.Controls.Add(this.textBoxSoyad);
             this.groupBox1.Controls.Add(this.textBoxEmail);
-            this.groupBox1.Location = new System.Drawing.Point(12, 46);
+            this.groupBox1.Location = new System.Drawing.Point(12, 40);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(264, 330);
+            this.groupBox1.Size = new System.Drawing.Size(264, 239);
             this.groupBox1.TabIndex = 45;
             this.groupBox1.TabStop = false;
             // 
@@ -244,11 +246,26 @@ namespace WindowsForm.Forms
             this.buttonSil.UseVisualStyleBackColor = true;
             this.buttonSil.Click += new System.EventHandler(this.buttonSil_Click);
             // 
+            // pictureBoxRefresh
+            // 
+            this.pictureBoxRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBoxRefresh.ErrorImage = global::WindowsForm.Properties.Resources.exitWhite;
+            this.pictureBoxRefresh.Image = global::WindowsForm.Properties.Resources.refreshBlack_16px_;
+            this.pictureBoxRefresh.InitialImage = global::WindowsForm.Properties.Resources.exitWhite;
+            this.pictureBoxRefresh.Location = new System.Drawing.Point(864, 12);
+            this.pictureBoxRefresh.Name = "pictureBoxRefresh";
+            this.pictureBoxRefresh.Size = new System.Drawing.Size(25, 25);
+            this.pictureBoxRefresh.TabIndex = 46;
+            this.pictureBoxRefresh.TabStop = false;
+            this.pictureBoxRefresh.Click += new System.EventHandler(this.pictureBoxRefresh_Click);
+            // 
             // UserDeleteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(901, 467);
+            this.Controls.Add(this.pictureBoxRefresh);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBoxAxtar);
@@ -256,11 +273,12 @@ namespace WindowsForm.Forms
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.MinimumSize = new System.Drawing.Size(650, 505);
             this.Name = "UserDeleteForm";
-            this.Text = "UserDeleteForm";
+            this.Text = "İstifadəçi silmə səhifəsi";
             this.Load += new System.EventHandler(this.UserDeleteForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUserListed)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -285,5 +303,6 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button buttonTemizle;
         private System.Windows.Forms.Button buttonSil;
+        private System.Windows.Forms.PictureBox pictureBoxRefresh;
     }
 }

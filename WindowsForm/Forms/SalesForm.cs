@@ -65,8 +65,7 @@ namespace WindowsForm.Forms
 
         private void ButtonSalesFormYenile_Click(object sender, EventArgs e)
         {
-            ProductListRefesh();
-            CartListRefesh();
+            
         }
 
         private void ButtonX_Click(object sender, EventArgs e)
@@ -290,6 +289,12 @@ namespace WindowsForm.Forms
                 return;
             }
 
+        }
+
+        private void pictureBoxRefresh_Click(object sender, EventArgs e)
+        {
+            ProductListRefesh();
+            CartListRefesh();
         }
 
         //Text Changed -------------------->
@@ -527,6 +532,6 @@ namespace WindowsForm.Forms
             }
         }
 
-
+        
     }
 }

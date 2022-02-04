@@ -35,8 +35,7 @@ namespace WindowsForm.Forms
 
         private void FormBrand_Load(object sender, EventArgs e)
         {
-            var get = _brandManager.GetAll();
-            dataGridViewBrandsListed.DataSource = get.Data;
+            BrandRefresh();
         }
 
         private void ButtonFormBrandElaveEt_Click(object sender, EventArgs e)
@@ -56,7 +55,7 @@ namespace WindowsForm.Forms
                 if (brandAdd.Success)
                 {
                     FormsMessage.SuccessMessage(brandAdd.Message);
-                    dataGridViewBrandsListed.DataSource = _brandManager.GetAll().Data;
+                    BrandRefresh();
                 }
                 else
                 {
@@ -83,6 +82,16 @@ namespace WindowsForm.Forms
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
             brandSearch.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewBrandsListed);
+        }
+
+        private void pictureBoxRefresh_Click(object sender, EventArgs e)
+        {
+            BrandRefresh();
+        }
+
+        private void BrandRefresh()
+        {
+            dataGridViewBrandsListed.DataSource = _brandManager.GetAll().Data;
         }
     }
 }

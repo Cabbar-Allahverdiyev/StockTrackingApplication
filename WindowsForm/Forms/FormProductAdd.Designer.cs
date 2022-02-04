@@ -54,11 +54,13 @@ namespace WindowsForm.Forms
             this.textBoxMiqdar = new System.Windows.Forms.TextBox();
             this.textBoxBarkodNo = new System.Windows.Forms.TextBox();
             this.dataGridViewProductList = new System.Windows.Forms.DataGridView();
-            this.label18 = new System.Windows.Forms.Label();
             this.textBoxAxtar = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
             this.GroupBoxFormProductAddYeniMehsul.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProductImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).BeginInit();
             this.SuspendLayout();
             // 
             // GroupBoxFormProductAddYeniMehsul
@@ -90,7 +92,7 @@ namespace WindowsForm.Forms
             this.GroupBoxFormProductAddYeniMehsul.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.GroupBoxFormProductAddYeniMehsul.Location = new System.Drawing.Point(0, 0);
             this.GroupBoxFormProductAddYeniMehsul.Name = "GroupBoxFormProductAddYeniMehsul";
-            this.GroupBoxFormProductAddYeniMehsul.Size = new System.Drawing.Size(288, 539);
+            this.GroupBoxFormProductAddYeniMehsul.Size = new System.Drawing.Size(288, 619);
             this.GroupBoxFormProductAddYeniMehsul.TabIndex = 0;
             this.GroupBoxFormProductAddYeniMehsul.TabStop = false;
             // 
@@ -310,51 +312,67 @@ namespace WindowsForm.Forms
             this.dataGridViewProductList.ReadOnly = true;
             this.dataGridViewProductList.RowTemplate.Height = 25;
             this.dataGridViewProductList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewProductList.Size = new System.Drawing.Size(624, 462);
+            this.dataGridViewProductList.Size = new System.Drawing.Size(624, 542);
             this.dataGridViewProductList.TabIndex = 24;
             this.dataGridViewProductList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewProductList_CellDoubleClick);
-            // 
-            // label18
-            // 
-            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label18.Image = global::WindowsForm.Properties.Resources.searchBlack;
-            this.label18.Location = new System.Drawing.Point(810, 15);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(17, 17);
-            this.label18.TabIndex = 25;
-            this.label18.Text = "   ";
             // 
             // textBoxAxtar
             // 
             this.textBoxAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxAxtar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxAxtar.Location = new System.Drawing.Point(833, 12);
+            this.textBoxAxtar.Location = new System.Drawing.Point(802, 12);
             this.textBoxAxtar.Name = "textBoxAxtar";
             this.textBoxAxtar.Size = new System.Drawing.Size(135, 22);
             this.textBoxAxtar.TabIndex = 26;
             this.textBoxAxtar.TextChanged += new System.EventHandler(this.textBoxAxtar_TextChanged);
+            // 
+            // label12
+            // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label12.Image = global::WindowsForm.Properties.Resources.searchFerqliBlack_16px;
+            this.label12.Location = new System.Drawing.Point(773, 15);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(23, 17);
+            this.label12.TabIndex = 34;
+            this.label12.Text = "     ";
+            // 
+            // pictureBoxRefresh
+            // 
+            this.pictureBoxRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBoxRefresh.ErrorImage = global::WindowsForm.Properties.Resources.exitWhite;
+            this.pictureBoxRefresh.Image = global::WindowsForm.Properties.Resources.refreshBlack_16px_;
+            this.pictureBoxRefresh.InitialImage = global::WindowsForm.Properties.Resources.exitWhite;
+            this.pictureBoxRefresh.Location = new System.Drawing.Point(943, 12);
+            this.pictureBoxRefresh.Name = "pictureBoxRefresh";
+            this.pictureBoxRefresh.Size = new System.Drawing.Size(25, 25);
+            this.pictureBoxRefresh.TabIndex = 35;
+            this.pictureBoxRefresh.TabStop = false;
+            this.pictureBoxRefresh.Click += new System.EventHandler(this.pictureBoxRefresh_Click);
             // 
             // FormProductAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
-            this.ClientSize = new System.Drawing.Size(980, 539);
+            this.ClientSize = new System.Drawing.Size(980, 619);
+            this.Controls.Add(this.pictureBoxRefresh);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.textBoxAxtar);
-            this.Controls.Add(this.label18);
             this.Controls.Add(this.dataGridViewProductList);
             this.Controls.Add(this.GroupBoxFormProductAddYeniMehsul);
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "FormProductAdd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Product Add Form";
+            this.Text = "Məhsul əlavə etmə səhifəsi";
             this.Load += new System.EventHandler(this.FormProductAdd_Load);
             this.GroupBoxFormProductAddYeniMehsul.ResumeLayout(false);
             this.GroupBoxFormProductAddYeniMehsul.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProductImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -385,9 +403,10 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox textBoxKemiyyet;
         private System.Windows.Forms.DataGridView dataGridViewProductList;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox textBoxAxtar;
         private System.Windows.Forms.PictureBox pictureBoxProductImage;
         private System.Windows.Forms.Button buttonTemizle;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.PictureBox pictureBoxRefresh;
     }
 }

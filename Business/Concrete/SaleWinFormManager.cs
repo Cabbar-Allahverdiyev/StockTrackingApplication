@@ -82,7 +82,7 @@ namespace Business.Concrete
         public IDataResult<List<SaleWinFormDto>> GetAllSalewinFormDetailsSalesForMonth(int month)
         {
             int year=1;
-            List<SaleWinFormDto> get = _saleWinFormDal.GetAllWinFormDtoDetails(s => s.Tarix.Month == month).Where(s=>s.Tarix.Year==year);
+            List<SaleWinFormDto> get = _saleWinFormDal.GetAllWinFormDtoDetails(s=>s.Tarix.Month == month);
             if (get == null)
             {
                 return new ErrorDataResult<List<SaleWinFormDto>>(SaleMessages.NotFound);
@@ -108,11 +108,16 @@ namespace Business.Concrete
                 return new ErrorDataResult<List<SaleWinFormDto>>(SaleMessages.NotFound);
             }
             return new SuccessDataResult<List<SaleWinFormDto>>(get, SaleMessages.Found);
-        } 
+        }
 
-
-      
-
-
+        public IDataResult<List<SaleWinFormDto>> GetAllSaleWinFormDetailsSalesForMonthAndYear(int month, int year)
+        {
+            List<SaleWinFormDto> get = _saleWinFormDal.GetAllWinFormDtoDetailsByMonthAndYear( month, year);
+            if (get == null)
+            {
+                return new ErrorDataResult<List<SaleWinFormDto>>(SaleMessages.NotFound);
+            }
+            return new SuccessDataResult<List<SaleWinFormDto>>(get, SaleMessages.Found);
+        }
     }
 }

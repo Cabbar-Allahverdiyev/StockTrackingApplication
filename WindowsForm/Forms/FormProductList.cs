@@ -37,9 +37,7 @@ namespace WindowsForm.Forms
 
         private void FormProductList_Load(object sender, EventArgs e)
         {
-            IDataResult<List<ProductViewDashboardDetailDto>> getProductDashboard = _productManager.GetAllProductViewDasboardDetails();
-            dataGridViewFormPrdouctList.DataSource = getProductDashboard.Data;
-
+            ProductRefresh();
             myControl.WriteProductPropertiesInComboBox(comboBoxProperty);
             BrandGetComboBoxVarOlan();
             CategoryGetComboBoxVarOlan();
@@ -69,10 +67,6 @@ namespace WindowsForm.Forms
             textBoxVarOlanMehsulAdi.Text = productViewDetailByProductId.Data.MehsulAdi;
             TextBoxVarOlanAciqlama.Text = productViewDetailByProductId.Data.Aciqlama;
             LabelMiqdarVB.Text = productViewDetailByProductId.Data.StokdakiVahid.ToString();
-
-
-
-
         }
 
         //elave metodlar------------------->
@@ -110,7 +104,7 @@ namespace WindowsForm.Forms
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
             detailsSearch.SearchBySelectedValueOfComboBoxAndWriteToDataGridView(textBoxAxtar
-                ,dataGridViewFormPrdouctList,comboBoxProperty);
+                , dataGridViewFormPrdouctList, comboBoxProperty);
             //detailsSearch.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewFormPrdouctList);
         }
 
@@ -157,6 +151,16 @@ namespace WindowsForm.Forms
                 }
             }
             return cellWhereTextIsMet;
+        }
+
+        private void pictureBoxRefresh_Click(object sender, EventArgs e)
+        {
+            ProductRefresh();
+        }
+
+        private void ProductRefresh()
+        {
+            dataGridViewFormPrdouctList.DataSource = _productManager.GetAllProductViewDasboardDetails().Data;
         }
     }
 }

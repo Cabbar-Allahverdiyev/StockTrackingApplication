@@ -35,7 +35,7 @@ namespace WindowsForm.Utilities.Search.Concrete.UserSearch
                 list[i].FirstName = list[i].FirstName.ToLower();
             }
 
-            foreach (var product in list)
+           foreach (var product in list)
             {
                 if (product.FirstName.Contains(searchText))
                 {
@@ -47,7 +47,7 @@ namespace WindowsForm.Utilities.Search.Concrete.UserSearch
             {
                 if (newList.Count == 0)
                 {
-                    FormsMessage.ErrorMessage(UserMessages.UserNotFound);
+                   // FormsMessage.ErrorMessage(UserMessages.UserNotFound);
                     return;
                 }
                 dataGridView.DataSource = newList;

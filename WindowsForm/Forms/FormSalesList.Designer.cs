@@ -36,6 +36,7 @@ namespace WindowsForm.Forms
             this.comboBoxMonths = new System.Windows.Forms.ComboBox();
             this.comboBoxYears = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.labelTotal = new System.Windows.Forms.Label();
             this.buttonTemizle = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -104,6 +105,7 @@ namespace WindowsForm.Forms
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.labelTotal);
             this.groupBox1.Controls.Add(this.buttonTemizle);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
@@ -118,6 +120,17 @@ namespace WindowsForm.Forms
             this.groupBox1.Size = new System.Drawing.Size(248, 187);
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
+            // 
+            // labelTotal
+            // 
+            this.labelTotal.AutoSize = true;
+            this.labelTotal.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelTotal.ForeColor = System.Drawing.Color.Red;
+            this.labelTotal.Location = new System.Drawing.Point(185, 163);
+            this.labelTotal.Name = "labelTotal";
+            this.labelTotal.Size = new System.Drawing.Size(22, 21);
+            this.labelTotal.TabIndex = 34;
+            this.labelTotal.Text = "#";
             // 
             // buttonTemizle
             // 
@@ -179,7 +192,7 @@ namespace WindowsForm.Forms
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label12.Image = global::WindowsForm.Properties.Resources.searchBlack;
+            this.label12.Image = global::WindowsForm.Properties.Resources.searchFerqliBlack_16px;
             this.label12.Location = new System.Drawing.Point(702, 18);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(23, 17);
@@ -209,7 +222,7 @@ namespace WindowsForm.Forms
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "FormSalesList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Sales List";
+            this.Text = "Satışları sıralamaq səhifəsi";
             this.Load += new System.EventHandler(this.FormSalesList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSaleList)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -235,5 +248,6 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.PictureBox pictureBoxRefresh;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textBoxAxtar;
+        private System.Windows.Forms.Label labelTotal;
     }
 }

@@ -28,9 +28,15 @@ namespace WindowsForm.Forms
 
         private void FormUserListed_Load(object sender, EventArgs e)
         {
-            var getUserDetails = _userService.GetUserDetails();
-            dataGridViewUserListed.DataSource = getUserDetails.Data;
+            UserRefresh();
         }
+
+        private void pictureBoxRefresh_Click(object sender, EventArgs e)
+        {
+            UserRefresh();
+        }
+
+       
 
         private void DataGridViewUserListed_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -44,6 +50,12 @@ namespace WindowsForm.Forms
         private void TextBoxFormUserListedAxtar_TextChanged(object sender, EventArgs e)
         {
             detailSearch.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewUserListed);
+        }
+
+        //Elave Metodlar ----------------------->
+        private void UserRefresh()
+        {
+            dataGridViewUserListed.DataSource = _userService.GetUserDetails().Data;
         }
 
 

@@ -31,7 +31,7 @@ namespace WindowsForm.Forms
             myControl.WritePlaceholdersForTextBoxEmail(textBoxEmail);
             myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
             myControl.WritePlaceholdersForTextBoxAddress(textBoxAdres);
-            dataGridViewUserListed.DataSource = _userManager.GetUserDetails().Data;
+            UserRefresh();
         }
 
       
@@ -71,7 +71,7 @@ namespace WindowsForm.Forms
                 if (userUpdated.Success)
                 {
                     FormsMessage.SuccessMessage(userUpdated.Message);
-                    dataGridViewUserListed.DataSource = _userManager.GetUserDetails().Data;
+                    UserRefresh();
                     TextBoxController.ClearAllTextBoxesByGroupBox(groupBox1);
                 }
                 else
@@ -89,6 +89,16 @@ namespace WindowsForm.Forms
           
         }
 
+        private void pictureBoxRefresh_Click(object sender, EventArgs e)
+        {
+            UserRefresh();
+        }
+
+        private void buttonTemizle_Click(object sender, EventArgs e)
+        {
+            TextBoxController.ClearAllTextBoxesByGroupBox(groupBox1);
+        }
+
         private void DataGridViewUserListed_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             textBoxUserId.Text = dataGridViewUserListed.CurrentRow.Cells["UserId"].Value.ToString();
@@ -97,6 +107,11 @@ namespace WindowsForm.Forms
             textBoxEmail.Text = dataGridViewUserListed.CurrentRow.Cells["Email"].Value.ToString();
             textBoxTelefon.Text = dataGridViewUserListed.CurrentRow.Cells["PhoneNumber"].Value.ToString();
             textBoxAdres.Text = dataGridViewUserListed.CurrentRow.Cells["Address"].Value.ToString();
+        }
+
+        private void UserRefresh()
+        {
+            dataGridViewUserListed.DataSource = _userManager.GetUserDetails().Data;
         }
 
         

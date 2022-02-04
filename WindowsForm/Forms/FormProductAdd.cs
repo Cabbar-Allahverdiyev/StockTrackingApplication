@@ -40,7 +40,7 @@ namespace WindowsForm.Forms
 
         private void FormProductAdd_Load(object sender, EventArgs e)
         {
-            dataGridViewProductList.DataSource = _productManager.GetProductCompactDetails().Data;
+            ProductRefresh();            
             CategoryGetComboBoxYeni();
             BrandGetComboBoxYeni();
             SupplierGetComboBox();
@@ -81,7 +81,7 @@ namespace WindowsForm.Forms
 
                 TextBoxController.ClearAllTextBoxesAndCmboBoxesByGroupBox(GroupBoxFormProductAddYeniMehsul);
                 //GroupBoxYeniMehsulControlClear();
-                dataGridViewProductList.DataSource = _productManager.GetProductCompactDetails().Data;
+                ProductRefresh();
                 FormsMessage.SuccessMessage(productAdd.Message);
             }
             catch (Exception)
@@ -160,8 +160,14 @@ namespace WindowsForm.Forms
             comboBoxTedarikci.ValueMember = "Id";
         }
 
-       
+        private void pictureBoxRefresh_Click(object sender, EventArgs e)
+        {
+            ProductRefresh();
+        }
 
-       
+        private void ProductRefresh()
+        {
+            dataGridViewProductList.DataSource = _productManager.GetAllProductViewDasboardDetails().Data;
+        }
     }
 }

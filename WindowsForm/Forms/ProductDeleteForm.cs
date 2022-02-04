@@ -39,9 +39,7 @@ namespace WindowsForm.Forms
 
         private void ProductDeleteForm_Load(object sender, EventArgs e)
         {
-            IDataResult<List<ProductViewDashboardDetailDto>> getProductDashboard = _productManager.GetAllProductViewDasboardDetails();
-            dataGridViewProductList.DataSource = getProductDashboard.Data;
-
+            ProductRefresh();
             myControl.WriteProductPropertiesInComboBox(comboBoxProperty);
             BrandGetComboBoxVarOlan();
             CategoryGetComboBoxVarOlan();
@@ -63,7 +61,7 @@ namespace WindowsForm.Forms
                     return;
                 }
                 FormsMessage.SuccessMessage(productDeleted.Message);
-                dataGridViewProductList.DataSource = _productManager.GetProductCompactDetails().Data;
+                ProductRefresh();
                 GroupBoxVarOlanMehsulControlClear();
             }
             catch (Exception)
@@ -106,7 +104,6 @@ namespace WindowsForm.Forms
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
             detailsSearch.SearchBySelectedValueOfComboBoxAndWriteToDataGridView(textBoxAxtar, dataGridViewProductList, comboBoxProperty);
-           // detailsSearch.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewProductList);
         }
 
 
@@ -149,8 +146,15 @@ namespace WindowsForm.Forms
             LabelMiqdarVB.Text = "";
         }
 
+        private void pictureBoxRefresh_Click(object sender, EventArgs e)
+        {
+            ProductRefresh();
+        }
 
-
-
+        private void ProductRefresh()
+        {
+            IDataResult<List<ProductViewDashboardDetailDto>> getProductDashboard = _productManager.GetAllProductViewDasboardDetails();
+            dataGridViewProductList.DataSource = getProductDashboard.Data;
+        }
     }
 }

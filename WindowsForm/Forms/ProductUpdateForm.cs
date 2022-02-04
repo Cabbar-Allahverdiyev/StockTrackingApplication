@@ -37,18 +37,16 @@ namespace WindowsForm.Forms
         public ProductUpdateForm()
         {
             InitializeComponent();
-            
+
             myControl.WritePlaceholdersForTextBoxSearchByProductName(textBoxAxtar);
             myControl.WritePlaceholdersForTextBoxBarcodeNo(textBoxBarkodNo);
 
 
         }
-       
+
         private void ProductUpdateForm_Load(object sender, EventArgs e)
         {
-            IDataResult<List<ProductViewDashboardDetailDto>> getProductDashboard = _productManager.GetAllProductViewDasboardDetails();
-            dataGridViewPrdouctList.DataSource = getProductDashboard.Data;
-
+            ProductRefresh();
             WriteBrandsInComboBox();
             WriteCategoryInComboBox();
             WriteSuppliersInComboBox();
@@ -57,6 +55,13 @@ namespace WindowsForm.Forms
         }
 
         //Click---------------->
+        private void pictureBoxRefresh_Click(object sender, EventArgs e)
+        {
+            ProductRefresh();
+        }
+
+
+
         private void ButtonVarOlanYenile_Click(object sender, EventArgs e)
         {
 
@@ -104,7 +109,7 @@ namespace WindowsForm.Forms
                 }
                 FormsMessage.SuccessMessage(productUpdated.Message);
                 GroupBoxVarOlanMehsulControlClear();
-                dataGridViewPrdouctList.DataSource = _productManager.GetAllProductViewDasboardDetails().Data;
+                ProductRefresh();
             }
             catch (Exception)
             {
@@ -202,14 +207,16 @@ namespace WindowsForm.Forms
         }
 
 
-
-
         private void GroupBoxVarOlanMehsulControlClear()
         {
             TextBoxController.ClearAllTextBoxesAndCmboBoxesByGroupBox(GroupBoxVarOlanMehsul);
             LabelMiqdarVB.Text = "";
         }
 
+        private void ProductRefresh()
+        {
+            dataGridViewPrdouctList.DataSource = _productManager.GetAllProductViewDasboardDetails().Data;
+        }
 
     }
 }
