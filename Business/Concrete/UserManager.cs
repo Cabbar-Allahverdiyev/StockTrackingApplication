@@ -23,7 +23,7 @@ namespace Business.Concrete
         public UserManager(IUserDal userDal)
         {
             _userDal = userDal;
-        } 
+        }
 
         //CRUD
 
@@ -188,6 +188,29 @@ namespace Business.Concrete
             return new SuccessDataResult<User>(user, AuthMessages.UserRegistered);
         }
 
+        public IDataResult<User> Login(UserForLoginDto userForLoginDto)
+        {
+            var userToCeck = GetByMail(userForLoginDto.Email).Data;
+            if (userToCeck == null)
+            {
+                return new ErrorDataResult<User>(UserMessages.UserNotFound);
+
+            }
+            if (!HashingHelper.VerifyPasswordHash(userForLoginDto.Password, userToCeck.PasswordHash, userToCeck.PasswordSalt))
+            {
+                return new ErrorDataResult<User>(UserMessages.PasswordError);
+            }
+            return new SuccessDataResult<User>(userToCeck, AuthMessages.SuccessfulLogin);
+        }
+
+        public IResult UserExists(string email)
+        {
+            if (this.GetByMail(email).Data != null)
+            {
+                return new ErrorResult(UserMessages.UserAlreadyExists);
+            }
+            return new SuccessResult();
+        }
 
         //elave metodlar
         private IResult PasswordRepeatCompatibilityWithPassword(string password, string passwordRepeat)
@@ -294,7 +317,7 @@ namespace Business.Concrete
             List<User> userGetAll = _userDal.GetAll();
             foreach (User item in userGetAll)
             {
-                if (item.PhoneNumber.ToLower().Equals(phoneNumber.ToLower()) )
+                if (item.PhoneNumber.ToLower().Equals(phoneNumber.ToLower()))
                 {
                     return new ErrorResult(UserMessages.PhoneNumberAvailable);
                 }
@@ -315,5 +338,6 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
+        
     }
 }

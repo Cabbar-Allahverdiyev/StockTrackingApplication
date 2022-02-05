@@ -17,6 +17,8 @@ namespace Business.Abstract
         IDataResult<List<OperationClaim>> GetClaims(User user);
 
         IDataResult<User> GetByMail(string email);
+        IResult UserExists(string email);
+        
         IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string password,string passwordRepeeat);
 
         //DTOs

@@ -15,7 +15,7 @@ namespace WindowsForm.Forms
 {
     public partial class Dashboard : Form
     {
-        private int borderSize = 2;
+        
         private Form activateForm;
         //private Button currentButton;
         private Size formSize;
@@ -195,9 +195,14 @@ namespace WindowsForm.Forms
             this.WindowState = FormWindowState.Minimized;
         }
 
+        private void btnClose_MouseMove(object sender, MouseEventArgs e)
+        {
+            btnClose.BackColor = Color.FromArgb(253,33,45);
+        }
+
         private void btnClose_MouseHover(object sender, EventArgs e)
         {
-            btnClose.BackColor = Color.FromArgb(204, 0, 0);
+            
         }
 
         private void btnClose_MouseLeave(object sender, EventArgs e)
@@ -440,6 +445,8 @@ namespace WindowsForm.Forms
             childForm.Show();
             labelTitle.Text = childForm.Text;
         }
+
+        
 
 
 

@@ -515,8 +515,7 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.TextBox textBoxMaxQiymet;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBoxProductId;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBoxAxtarBarcodeNumber;
+       // private System.Windows.Forms.TextBox textBoxAxtarBarcodeNumber;
         private System.Windows.Forms.Button buttonTemizle;
         private System.Windows.Forms.Button buttoElaveEt;
         private System.Windows.Forms.PictureBox pictureBox1;

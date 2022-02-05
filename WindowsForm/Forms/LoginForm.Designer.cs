@@ -47,7 +47,7 @@ namespace WindowsForm.Forms
             this.buttonSifreniUnutmusunuz = new System.Windows.Forms.Button();
             this.buttonDaxilOl = new System.Windows.Forms.Button();
             this.panelSifre = new System.Windows.Forms.Panel();
-            this.textBoxSifre = new System.Windows.Forms.TextBox();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.pictureBoxSifre = new System.Windows.Forms.PictureBox();
             this.panelEmail = new System.Windows.Forms.Panel();
             this.textBoxEmail = new System.Windows.Forms.TextBox();
@@ -255,28 +255,34 @@ namespace WindowsForm.Forms
             this.buttonDaxilOl.TabIndex = 4;
             this.buttonDaxilOl.Text = "Daxil ol";
             this.buttonDaxilOl.UseVisualStyleBackColor = false;
+            this.buttonDaxilOl.Click += new System.EventHandler(this.buttonDaxilOl_Click);
             // 
             // panelSifre
             // 
             this.panelSifre.BackColor = System.Drawing.SystemColors.Control;
-            this.panelSifre.Controls.Add(this.textBoxSifre);
+            this.panelSifre.Controls.Add(this.textBoxPassword);
             this.panelSifre.Controls.Add(this.pictureBoxSifre);
             this.panelSifre.Location = new System.Drawing.Point(0, 267);
             this.panelSifre.Name = "panelSifre";
             this.panelSifre.Size = new System.Drawing.Size(470, 51);
             this.panelSifre.TabIndex = 10;
+            this.panelSifre.MouseLeave += new System.EventHandler(this.panelSifre_MouseLeave);
+            this.panelSifre.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelSifre_MouseMove);
             // 
-            // textBoxSifre
+            // textBoxPassword
             // 
-            this.textBoxSifre.BackColor = System.Drawing.SystemColors.Control;
-            this.textBoxSifre.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxSifre.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxSifre.Location = new System.Drawing.Point(55, 15);
-            this.textBoxSifre.Name = "textBoxSifre";
-            this.textBoxSifre.Size = new System.Drawing.Size(370, 20);
-            this.textBoxSifre.TabIndex = 3;
-            this.textBoxSifre.UseSystemPasswordChar = true;
-            this.textBoxSifre.Click += new System.EventHandler(this.textBoxSifre_Click);
+            this.textBoxPassword.BackColor = System.Drawing.SystemColors.Control;
+            this.textBoxPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxPassword.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxPassword.Location = new System.Drawing.Point(55, 15);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.Size = new System.Drawing.Size(370, 20);
+            this.textBoxPassword.TabIndex = 3;
+            this.textBoxPassword.UseSystemPasswordChar = true;
+            this.textBoxPassword.Click += new System.EventHandler(this.textBoxSifre_Click);
+            this.textBoxPassword.TextChanged += new System.EventHandler(this.textBoxSifre_TextChanged);
+            this.textBoxPassword.MouseLeave += new System.EventHandler(this.textBoxSifre_MouseLeave);
+            this.textBoxPassword.MouseMove += new System.Windows.Forms.MouseEventHandler(this.textBoxSifre_MouseMove);
             // 
             // pictureBoxSifre
             // 
@@ -287,6 +293,8 @@ namespace WindowsForm.Forms
             this.pictureBoxSifre.TabIndex = 2;
             this.pictureBoxSifre.TabStop = false;
             this.pictureBoxSifre.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBoxSifre_MouseDown);
+            this.pictureBoxSifre.MouseLeave += new System.EventHandler(this.pictureBoxSifre_MouseLeave);
+            this.pictureBoxSifre.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBoxSifre_MouseMove);
             this.pictureBoxSifre.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBoxSifre_MouseUp);
             // 
             // panelEmail
@@ -298,6 +306,8 @@ namespace WindowsForm.Forms
             this.panelEmail.Name = "panelEmail";
             this.panelEmail.Size = new System.Drawing.Size(470, 51);
             this.panelEmail.TabIndex = 9;
+            this.panelEmail.MouseLeave += new System.EventHandler(this.panelEmail_MouseLeave);
+            this.panelEmail.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelEmail_MouseMove);
             // 
             // textBoxEmail
             // 
@@ -309,6 +319,9 @@ namespace WindowsForm.Forms
             this.textBoxEmail.Size = new System.Drawing.Size(370, 20);
             this.textBoxEmail.TabIndex = 2;
             this.textBoxEmail.Click += new System.EventHandler(this.textBoxEmail_Click);
+            this.textBoxEmail.TextChanged += new System.EventHandler(this.textBoxEmail_TextChanged);
+            this.textBoxEmail.MouseLeave += new System.EventHandler(this.textBoxEmail_MouseLeave);
+            this.textBoxEmail.MouseMove += new System.Windows.Forms.MouseEventHandler(this.textBoxEmail_MouseMove);
             // 
             // pictureBoxEmail
             // 
@@ -318,6 +331,8 @@ namespace WindowsForm.Forms
             this.pictureBoxEmail.Size = new System.Drawing.Size(24, 27);
             this.pictureBoxEmail.TabIndex = 1;
             this.pictureBoxEmail.TabStop = false;
+            this.pictureBoxEmail.MouseLeave += new System.EventHandler(this.pictureBoxEmail_MouseLeave);
+            this.pictureBoxEmail.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBoxEmail_MouseMove);
             // 
             // label6
             // 
@@ -357,6 +372,7 @@ namespace WindowsForm.Forms
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginForm";
@@ -393,7 +409,7 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.TextBox textBoxEmail;
         private System.Windows.Forms.PictureBox pictureBoxEmail;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBoxSifre;
+        private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.Button buttonSifreniUnutmusunuz;
         private System.Windows.Forms.Button buttonDaxilOl;
         private System.Windows.Forms.LinkLabel linkLabel2;
