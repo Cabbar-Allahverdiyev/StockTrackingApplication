@@ -83,6 +83,26 @@ namespace WindowsForm.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
+        internal static System.Drawing.Bitmap bunch_of_keys_blue_24px {
+            get {
+                object obj = ResourceManager.GetObject("bunch_of_keys_blue_24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap bunch_of_keys_blue_padding_24px_1 {
+            get {
+                object obj = ResourceManager.GetObject("bunch_of_keys_blue_padding_24px_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
         internal static System.Drawing.Bitmap cancel {
             get {
                 object obj = ResourceManager.GetObject("cancel", resourceCulture);
@@ -233,6 +253,16 @@ namespace WindowsForm.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
+        internal static System.Drawing.Bitmap new_moon_120px {
+            get {
+                object obj = ResourceManager.GetObject("new_moon_120px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
         internal static System.Drawing.Bitmap refreshBlack_16px_ {
             get {
                 object obj = ResourceManager.GetObject("refreshBlack_16px_", resourceCulture);
@@ -266,6 +296,36 @@ namespace WindowsForm.Properties {
         internal static System.Drawing.Bitmap searchFerqliBlack_16px {
             get {
                 object obj = ResourceManager.GetObject("searchFerqliBlack_16px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap services_black_120px {
+            get {
+                object obj = ResourceManager.GetObject("services_black_120px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap services_caramel_120px {
+            get {
+                object obj = ResourceManager.GetObject("services_caramel_120px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap shortcuts_120px {
+            get {
+                object obj = ResourceManager.GetObject("shortcuts_120px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -326,6 +386,16 @@ namespace WindowsForm.Properties {
         internal static System.Drawing.Bitmap TemizleBlack {
             get {
                 object obj = ResourceManager.GetObject("TemizleBlack", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap user_blue_24px {
+            get {
+                object obj = ResourceManager.GetObject("user_blue_24px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

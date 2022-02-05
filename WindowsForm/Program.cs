@@ -26,7 +26,8 @@ namespace WindowsForm
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Forms.Dashboard());
+            //Application.Run(new Forms.Dashboard());
+            Application.Run(new Forms.LoginForm());
             //Application.Run(new Forms.USBBarcodeScannerForm());
 
         }
