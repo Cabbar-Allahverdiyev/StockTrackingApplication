@@ -35,15 +35,17 @@ namespace WindowsForm.Forms
             this.TextBoxFormCategoryKategoriya = new System.Windows.Forms.TextBox();
             this.DataGridViewFormCategory = new System.Windows.Forms.DataGridView();
             this.textBoxAxtar = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewFormCategory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(31, 48);
+            this.label1.Location = new System.Drawing.Point(6, 43);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(76, 17);
             this.label1.TabIndex = 0;
@@ -54,7 +56,7 @@ namespace WindowsForm.Forms
             this.ButtonFormCategoryElaveEt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonFormCategoryElaveEt.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ButtonFormCategoryElaveEt.Image = global::WindowsForm.Properties.Resources.elaveEtBlack;
-            this.ButtonFormCategoryElaveEt.Location = new System.Drawing.Point(194, 77);
+            this.ButtonFormCategoryElaveEt.Location = new System.Drawing.Point(169, 72);
             this.ButtonFormCategoryElaveEt.Name = "ButtonFormCategoryElaveEt";
             this.ButtonFormCategoryElaveEt.Size = new System.Drawing.Size(85, 26);
             this.ButtonFormCategoryElaveEt.TabIndex = 1;
@@ -66,7 +68,7 @@ namespace WindowsForm.Forms
             // TextBoxFormCategoryKategoriya
             // 
             this.TextBoxFormCategoryKategoriya.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TextBoxFormCategoryKategoriya.Location = new System.Drawing.Point(113, 45);
+            this.TextBoxFormCategoryKategoriya.Location = new System.Drawing.Point(88, 40);
             this.TextBoxFormCategoryKategoriya.Name = "TextBoxFormCategoryKategoriya";
             this.TextBoxFormCategoryKategoriya.Size = new System.Drawing.Size(166, 22);
             this.TextBoxFormCategoryKategoriya.TabIndex = 2;
@@ -80,35 +82,49 @@ namespace WindowsForm.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DataGridViewFormCategory.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.DataGridViewFormCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridViewFormCategory.Location = new System.Drawing.Point(309, 45);
+            this.DataGridViewFormCategory.Location = new System.Drawing.Point(309, 40);
             this.DataGridViewFormCategory.Name = "DataGridViewFormCategory";
             this.DataGridViewFormCategory.ReadOnly = true;
             this.DataGridViewFormCategory.RowTemplate.Height = 25;
             this.DataGridViewFormCategory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridViewFormCategory.Size = new System.Drawing.Size(395, 345);
+            this.DataGridViewFormCategory.Size = new System.Drawing.Size(395, 350);
             this.DataGridViewFormCategory.TabIndex = 3;
             // 
             // textBoxAxtar
             // 
             this.textBoxAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxAxtar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxAxtar.Location = new System.Drawing.Point(524, 14);
+            this.textBoxAxtar.Location = new System.Drawing.Point(496, 12);
             this.textBoxAxtar.Name = "textBoxAxtar";
             this.textBoxAxtar.Size = new System.Drawing.Size(180, 22);
             this.textBoxAxtar.TabIndex = 5;
             this.textBoxAxtar.TextChanged += new System.EventHandler(this.textBoxAxtar_TextChanged);
             // 
-            // label2
+            // pictureBoxRefresh
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Image = global::WindowsForm.Properties.Resources.searchBlack;
-            this.label2.Location = new System.Drawing.Point(501, 17);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(17, 17);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "   ";
+            this.pictureBoxRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBoxRefresh.ErrorImage = global::WindowsForm.Properties.Resources.exitWhite;
+            this.pictureBoxRefresh.Image = global::WindowsForm.Properties.Resources.refreshBlack_16px_;
+            this.pictureBoxRefresh.InitialImage = global::WindowsForm.Properties.Resources.exitWhite;
+            this.pictureBoxRefresh.Location = new System.Drawing.Point(682, 12);
+            this.pictureBoxRefresh.Name = "pictureBoxRefresh";
+            this.pictureBoxRefresh.Size = new System.Drawing.Size(25, 25);
+            this.pictureBoxRefresh.TabIndex = 33;
+            this.pictureBoxRefresh.TabStop = false;
+            this.pictureBoxRefresh.Click += new System.EventHandler(this.pictureBoxRefresh_Click);
+            // 
+            // label12
+            // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label12.Image = global::WindowsForm.Properties.Resources.searchFerqliBlack_16px;
+            this.label12.Location = new System.Drawing.Point(467, 15);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(23, 17);
+            this.label12.TabIndex = 35;
+            this.label12.Text = "     ";
             // 
             // FormCategory
             // 
@@ -116,8 +132,9 @@ namespace WindowsForm.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(716, 403);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.pictureBoxRefresh);
             this.Controls.Add(this.textBoxAxtar);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.DataGridViewFormCategory);
             this.Controls.Add(this.TextBoxFormCategoryKategoriya);
             this.Controls.Add(this.ButtonFormCategoryElaveEt);
@@ -128,6 +145,7 @@ namespace WindowsForm.Forms
             this.Text = "Kateqoriya Səhifəsi";
             this.Load += new System.EventHandler(this.FormCategory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewFormCategory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -140,6 +158,7 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.TextBox TextBoxFormCategoryKategoriya;
         private System.Windows.Forms.DataGridView DataGridViewFormCategory;
         private System.Windows.Forms.TextBox textBoxAxtar;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox pictureBoxRefresh;
+        private System.Windows.Forms.Label label12;
     }
 }

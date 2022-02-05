@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsForm.Core.Controllers.Concrete;
 using WindowsForm.MyControls;
 
 namespace WindowsForm.Forms
@@ -38,7 +39,7 @@ namespace WindowsForm.Forms
             //WM_NCCALCSIZE
         }
 
-       
+
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -147,23 +148,11 @@ namespace WindowsForm.Forms
 
         private void Dashboard_Resize(object sender, EventArgs e)
         {
-            AdjustForm();
+            FormControllers formController = new FormControllers();
+            formController.AdjustForm(this);
         }
 
-        private void AdjustForm()
-        {
-            switch (this.WindowState)
-            {
-                case FormWindowState.Maximized:
-                    this.Padding = new Padding(0, 8, 8, 0);
-                    break;
-                case FormWindowState.Normal:
-                    if (this.Padding.Top != borderSize)
-                        this.Padding = new Padding(borderSize);
-
-                    break;
-            }
-        }
+        
 
         private void DisableButton()
         {

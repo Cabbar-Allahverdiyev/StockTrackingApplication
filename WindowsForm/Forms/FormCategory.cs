@@ -38,6 +38,7 @@ namespace WindowsForm.Forms
             DataGridViewFormCategory.DataSource = getAll.Data;
         }
 
+        //Click-------------------------------------------->
         private void ButtonFormCategoryElaveEt_Click(object sender, EventArgs e)
         {
             Category category = new Category();
@@ -52,7 +53,7 @@ namespace WindowsForm.Forms
             if (categoryAdd.Success)
             {
                 FormsMessage.SuccessMessage(categoryAdd.Message);
-                DataGridViewFormCategory.DataSource = _categoryManager.GetAll().Data;
+                CategoryRefresh();
             }
             else
             {
@@ -66,14 +67,26 @@ namespace WindowsForm.Forms
                 {
                     TextBoxController.ClearAllTextBoxes(control);
                 }
-                
+
             }
 
         }
 
+        private void pictureBoxRefresh_Click(object sender, EventArgs e)
+        {
+            CategoryRefresh();
+        }
+
+        //Text Changed------------------------------>
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
             search.GetDataWriteGridView(textBoxAxtar.Text, DataGridViewFormCategory);
+        }
+
+        //Elave metodlar------->
+        private void CategoryRefresh()
+        {
+            DataGridViewFormCategory.DataSource = _categoryManager.GetAll().Data;
         }
     }
 }
