@@ -193,6 +193,26 @@ namespace WindowsForm.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_shortcuts_128px__2_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8_shortcuts_128px (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_shortcuts_96px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_shortcuts_96px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_synchronize_16 {
             get {
                 object obj = ResourceManager.GetObject("icons8-synchronize-16", resourceCulture);
@@ -326,6 +346,36 @@ namespace WindowsForm.Properties {
         internal static System.Drawing.Bitmap shortcuts_120px {
             get {
                 object obj = ResourceManager.GetObject("shortcuts_120px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap shortcuts_256px {
+            get {
+                object obj = ResourceManager.GetObject("shortcuts_256px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap shortcuts_64px {
+            get {
+                object obj = ResourceManager.GetObject("shortcuts_64px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap shortcuts_64pxkopy {
+            get {
+                object obj = ResourceManager.GetObject("shortcuts_64pxkopy", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

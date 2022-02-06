@@ -11,7 +11,7 @@ namespace DataAccess.Abstract
     public interface ICartDal : IEntityRepository<Cart>
     {
         CartDto GetCartDtoDetailByProductId(int productId);
-        CartAddDto GetCartAddDetailByBarcodeNumber(int barcodeNumber);
+        CartAddDto GetCartAddDetailByBarcodeNumber(string barcodeNumber);
         CartAddDto GetCartAddDetailByProductId(int productId);
         List<CartViewDto> GetAllCartViewDetails(Expression<Func<CartViewDto, bool>> filter = null);
     }

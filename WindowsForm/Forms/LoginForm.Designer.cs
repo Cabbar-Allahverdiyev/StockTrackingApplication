@@ -135,10 +135,10 @@ namespace WindowsForm.Forms
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::WindowsForm.Properties.Resources.shortcuts_120px;
-            this.pictureBox1.Location = new System.Drawing.Point(90, 45);
+            this.pictureBox1.Image = global::WindowsForm.Properties.Resources.shortcuts_256px;
+            this.pictureBox1.Location = new System.Drawing.Point(23, -1);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(120, 136);
+            this.pictureBox1.Size = new System.Drawing.Size(256, 256);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -173,6 +173,7 @@ namespace WindowsForm.Forms
             this.linkLabel2.TabIndex = 16;
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "+994554926939";
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
             // linkLabel1
             // 
@@ -184,6 +185,7 @@ namespace WindowsForm.Forms
             this.linkLabel1.TabIndex = 15;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "cabbar.allahverdiyev@gmail.com";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // label10
             // 
@@ -281,6 +283,8 @@ namespace WindowsForm.Forms
             this.textBoxPassword.UseSystemPasswordChar = true;
             this.textBoxPassword.Click += new System.EventHandler(this.textBoxSifre_Click);
             this.textBoxPassword.TextChanged += new System.EventHandler(this.textBoxSifre_TextChanged);
+            this.textBoxPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxPassword_KeyDown);
+            this.textBoxPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPassword_KeyPress);
             this.textBoxPassword.MouseLeave += new System.EventHandler(this.textBoxSifre_MouseLeave);
             this.textBoxPassword.MouseMove += new System.Windows.Forms.MouseEventHandler(this.textBoxSifre_MouseMove);
             // 
@@ -320,6 +324,7 @@ namespace WindowsForm.Forms
             this.textBoxEmail.TabIndex = 2;
             this.textBoxEmail.Click += new System.EventHandler(this.textBoxEmail_Click);
             this.textBoxEmail.TextChanged += new System.EventHandler(this.textBoxEmail_TextChanged);
+            this.textBoxEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxEmail_KeyDown);
             this.textBoxEmail.MouseLeave += new System.EventHandler(this.textBoxEmail_MouseLeave);
             this.textBoxEmail.MouseMove += new System.Windows.Forms.MouseEventHandler(this.textBoxEmail_MouseMove);
             // 
@@ -376,6 +381,7 @@ namespace WindowsForm.Forms
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginForm";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LoginForm_KeyDown);
             this.Resize += new System.EventHandler(this.LoginForm_Resize);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

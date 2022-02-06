@@ -41,7 +41,7 @@ namespace DataAccess.Concrete.EfInMemory
             }
         }
 
-        public CartAddDto GetCartAddDetailByBarcodeNumber(int barcodeNumber)
+        public CartAddDto GetCartAddDetailByBarcodeNumber(string barcodeNumber)
         {
             throw new NotImplementedException();
         }

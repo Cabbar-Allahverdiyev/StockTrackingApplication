@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
+using WindowsForm.Forms;
 
 namespace WindowsForm.MyControls
 {
@@ -11,9 +12,20 @@ namespace WindowsForm.MyControls
         {
             foreach (TextBox textBox in textBoxesPaswords)
             {
-                textBox.Text = "";
-                textBox.PasswordChar = '*';
+                textBox.UseSystemPasswordChar = true;
+                //textBox.Text = "";
+                //textBox.PasswordChar = '*';
                 textBox.MaxLength = 14;
+            }
+        }
+        public void NotAAsteriks(params TextBox[] textBoxesPaswords)
+        {
+            foreach (TextBox textBox in textBoxesPaswords)
+            {
+                textBox.UseSystemPasswordChar = false;
+                //textBox.Text = "";
+                //textBox.PasswordChar = '*';
+                //textBox.MaxLength = 14;
             }
         }
 
@@ -82,12 +94,27 @@ namespace WindowsForm.MyControls
             }
         }
 
-        public  void WriteProductPropertiesInComboBox(ComboBox comboBox)
+        public void WriteProductPropertiesInComboBox(ComboBox comboBox)
         {
             comboBox.Items.Add("Barkod");
             comboBox.Items.Add("Məhsul");
 
         }
 
+        public void CloseYesNo(Form form)
+        {
+            MessageBoxButtons messageButtons = MessageBoxButtons.YesNo;
+            string title = "Çıxış pəncərəsi";
+            string message = "Bu profildən çıxmaq istəyirsinizmi ?";
+            DialogResult dialogResult = MessageBox.Show(message, title, messageButtons);
+            if (dialogResult == DialogResult.Yes)
+            {
+                LoginForm loginForm = new LoginForm();
+                form.Hide();
+                loginForm.Show();
+                return;
+            }
+        }
+       
     }
 }

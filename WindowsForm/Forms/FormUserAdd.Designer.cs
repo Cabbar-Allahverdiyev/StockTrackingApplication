@@ -96,6 +96,8 @@ namespace WindowsForm.Forms
             this.label5.Size = new System.Drawing.Size(39, 17);
             this.label5.TabIndex = 4;
             this.label5.Text = "Şifrə :";
+            this.label5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label5_MouseDown);
+            this.label5.MouseUp += new System.Windows.Forms.MouseEventHandler(this.label5_MouseUp);
             // 
             // label6
             // 
@@ -106,6 +108,8 @@ namespace WindowsForm.Forms
             this.label6.Size = new System.Drawing.Size(79, 17);
             this.label6.TabIndex = 5;
             this.label6.Text = "Şifrə təkrarı :";
+            this.label6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label6_MouseDown);
+            this.label6.MouseUp += new System.Windows.Forms.MouseEventHandler(this.label6_MouseUp);
             // 
             // label7
             // 
@@ -122,7 +126,7 @@ namespace WindowsForm.Forms
             this.textBoxAd.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxAd.Location = new System.Drawing.Point(94, 34);
             this.textBoxAd.Name = "textBoxAd";
-            this.textBoxAd.Size = new System.Drawing.Size(176, 22);
+            this.textBoxAd.Size = new System.Drawing.Size(223, 22);
             this.textBoxAd.TabIndex = 7;
             // 
             // textBoxSoyad
@@ -130,7 +134,7 @@ namespace WindowsForm.Forms
             this.textBoxSoyad.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxSoyad.Location = new System.Drawing.Point(94, 77);
             this.textBoxSoyad.Name = "textBoxSoyad";
-            this.textBoxSoyad.Size = new System.Drawing.Size(176, 22);
+            this.textBoxSoyad.Size = new System.Drawing.Size(223, 22);
             this.textBoxSoyad.TabIndex = 8;
             // 
             // textBoxEmail
@@ -138,7 +142,7 @@ namespace WindowsForm.Forms
             this.textBoxEmail.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxEmail.Location = new System.Drawing.Point(94, 120);
             this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(176, 22);
+            this.textBoxEmail.Size = new System.Drawing.Size(223, 22);
             this.textBoxEmail.TabIndex = 9;
             // 
             // textBoxSifre
@@ -146,7 +150,7 @@ namespace WindowsForm.Forms
             this.textBoxSifre.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxSifre.Location = new System.Drawing.Point(94, 206);
             this.textBoxSifre.Name = "textBoxSifre";
-            this.textBoxSifre.Size = new System.Drawing.Size(176, 22);
+            this.textBoxSifre.Size = new System.Drawing.Size(223, 22);
             this.textBoxSifre.TabIndex = 11;
             // 
             // textBoxSifreTekrari
@@ -154,7 +158,7 @@ namespace WindowsForm.Forms
             this.textBoxSifreTekrari.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxSifreTekrari.Location = new System.Drawing.Point(94, 250);
             this.textBoxSifreTekrari.Name = "textBoxSifreTekrari";
-            this.textBoxSifreTekrari.Size = new System.Drawing.Size(176, 22);
+            this.textBoxSifreTekrari.Size = new System.Drawing.Size(223, 22);
             this.textBoxSifreTekrari.TabIndex = 12;
             // 
             // textBoxAdres
@@ -162,7 +166,7 @@ namespace WindowsForm.Forms
             this.textBoxAdres.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxAdres.Location = new System.Drawing.Point(94, 293);
             this.textBoxAdres.Name = "textBoxAdres";
-            this.textBoxAdres.Size = new System.Drawing.Size(176, 22);
+            this.textBoxAdres.Size = new System.Drawing.Size(223, 22);
             this.textBoxAdres.TabIndex = 13;
             // 
             // buttonEalveEt
@@ -170,7 +174,7 @@ namespace WindowsForm.Forms
             this.buttonEalveEt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEalveEt.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonEalveEt.Image = global::WindowsForm.Properties.Resources.elaveEtBlack;
-            this.buttonEalveEt.Location = new System.Drawing.Point(185, 324);
+            this.buttonEalveEt.Location = new System.Drawing.Point(232, 321);
             this.buttonEalveEt.Name = "buttonEalveEt";
             this.buttonEalveEt.Size = new System.Drawing.Size(85, 26);
             this.buttonEalveEt.TabIndex = 14;
@@ -184,7 +188,7 @@ namespace WindowsForm.Forms
             this.buttonTemizle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTemizle.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonTemizle.Image = global::WindowsForm.Properties.Resources.TemizleBlack;
-            this.buttonTemizle.Location = new System.Drawing.Point(94, 324);
+            this.buttonTemizle.Location = new System.Drawing.Point(141, 321);
             this.buttonTemizle.Name = "buttonTemizle";
             this.buttonTemizle.Size = new System.Drawing.Size(85, 26);
             this.buttonTemizle.TabIndex = 17;
@@ -197,7 +201,7 @@ namespace WindowsForm.Forms
             // 
             this.textBoxTelefonNomresi.Location = new System.Drawing.Point(94, 163);
             this.textBoxTelefonNomresi.Name = "textBoxTelefonNomresi";
-            this.textBoxTelefonNomresi.Size = new System.Drawing.Size(176, 22);
+            this.textBoxTelefonNomresi.Size = new System.Drawing.Size(223, 22);
             this.textBoxTelefonNomresi.TabIndex = 10;
             this.textBoxTelefonNomresi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxTelefonNomresi_KeyPress_1);
             // 

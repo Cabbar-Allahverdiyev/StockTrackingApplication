@@ -24,14 +24,13 @@ using WindowsForm.Utilities.Search.Concrete.ProductSearch;
 using DataAccess.Concrete.EfInMemory;
 using WindowsForm.MyControls;
 
-namespace WindowsForm.Forms
+namespace WindowsForm.Forms.UserForms
 {
-    public partial class SalesForm : Form
+    public partial class SalesFormForUser : Form
     {
         int staticUserId = LoginForm.UserId;
-       // int staticUserId = 2004;
 
-        public SalesForm()
+        public SalesFormForUser()
         {
             InitializeComponent();
             TotalPriceLabelWrite();
@@ -75,68 +74,7 @@ namespace WindowsForm.Forms
             Application.Exit();
         }
 
-        private void ButtonSalesFormSil_Click(object sender, EventArgs e)
-        {
-
-            try
-            {
-                Cart cart = new Cart();
-                CartAddDto cartAddDto = _cartManager.GetCartAddDetailByBarcodeNumber(textBoxBarkodNo.Text).Data;
-
-                if (cartAddDto != null)
-                {
-                    cart.Id = cartAddDto.CartId;
-                    if (cartAddDto.Quantity <= 1 || textBoxMiqdar.Text == "" || cartAddDto.Quantity <= Convert.ToInt32(textBoxMiqdar.Text))
-                    {
-                        IResult result = _cartManager.Delete(cart);
-                        if (!result.Success)
-                        {
-                            FormsMessage.ErrorMessage(result.Message);
-                            return;
-                        }
-
-                    }
-                    else
-                    {
-                        cart.ProductId = int.Parse(textBoxProductId.Text);
-                        cart.UserId = cartAddDto.UserId;
-                        cart.Quantity = cartAddDto.Quantity - Convert.ToInt32(textBoxMiqdar.Text);
-                        cart.SoldPrice = cartAddDto.SoldPrice;
-                        CalculateTotalPrice(cart.Quantity, cart.SoldPrice);
-                        cart.TotalPrice = Convert.ToDecimal(textBoxCem.Text);
-                        //  CartValidation(cart);
-                        IResult result = _cartManager.Update(cart);
-                        if (!result.Success)
-                        {
-                            FormsMessage.WarningMessage(result.Message);
-                            return;
-                        }
-
-                    }
-                }
-
-                GroupBoxMehsulControlClear();
-                TotalPriceLabelWrite();
-                CartListRefesh();
-            }
-            catch (ArgumentNullException)
-            {
-                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {AuthMessages.ErrorMessage}");
-                return;
-            }
-            catch (FormatException)
-            {
-                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {AuthMessages.ErrorMessage}");
-                return;
-            }
-            catch (NullReferenceException)
-            {
-                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {AuthMessages.ErrorMessage}");
-                return;
-            }
-
-
-        }
+       
 
         private void ButonSalesFormSatisIptal_Click(object sender, EventArgs e)
         {

@@ -77,7 +77,7 @@ namespace Business.Concrete
         }
 
         //Dtos------------------>
-        public IDataResult<CartAddDto> GetCartAddDetailByBarcodeNumber(int barcodeNumber)
+        public IDataResult<CartAddDto> GetCartAddDetailByBarcodeNumber(string barcodeNumber)
         {
             CartAddDto get = _cartDal.GetCartAddDetailByBarcodeNumber(barcodeNumber);
             if (get == null)

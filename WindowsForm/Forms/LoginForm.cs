@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using Business.Constants.Messages;
 using Core.Entities.Concrete;
 using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
@@ -7,17 +8,20 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.Concrete;
+using WindowsForm.Forms.UserForms;
 
 namespace WindowsForm.Forms
 {
     public partial class LoginForm : Form
     {
         UserManager _userManager = new UserManager(new EfUserDal());
+        public static  int UserId;
 
         public LoginForm()
         {
@@ -60,24 +64,27 @@ namespace WindowsForm.Forms
                     FormsMessage.ErrorMessage(userToLogin.Message);
                     return;
                 }
-                FormsMessage.SuccessMessage("Login oldu");
+
+                User user = _userManager.GetByMail(userForLoginDto.Email).Data;
+                UserId = user.Id;
+                if (user.Id == 3002 || user.Id == 2004)
+                {
+                    Dashboard dashboard = new Dashboard();
+                    this.Hide();
+                    dashboard.Show();
+                    return;
+                }
+                UserDashboard userDashboard = new UserDashboard();
+                this.Hide();
+                userDashboard.Show();
+
 
             }
             catch (Exception ex)
             {
 
-                throw;
+                FormsMessage.ErrorMessage($"{ButtonMessages.DaxilOl} {AuthMessages.ErrorMessage} | {ex.Message}"); ;
             }
-
-
-
-
-
-
-
-            //Dashboard dashboard = new Dashboard();
-            //this.Hide();
-            //dashboard.Show();
         }
         //Text Changed------------------------------->
 
@@ -91,8 +98,20 @@ namespace WindowsForm.Forms
             ColorChangeEmail();
         }
 
+        //Key down----------------------->
 
+        private void LoginForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+        }
 
+        private void textBoxEmail_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonDaxilOl.PerformClick();
+            }
+        }
         //Mouse Down ------------------------------->
 
 
@@ -212,8 +231,27 @@ namespace WindowsForm.Forms
             panelEmail.BackColor = SystemColors.Control;
         }
 
+        private void textBoxPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+        }
 
+        private void textBoxPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode==Keys.Enter)
+            {
+                buttonDaxilOl.PerformClick();
+            }
+        }
 
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            //Process.Start("https://cabar.allahverrdiyev@gmail.com");
+            Clipboard.SetText("cabbar.allahverdiyev@gmail.com");
+        }
 
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Clipboard.SetText("+994554926939");
+        }
     }
 }

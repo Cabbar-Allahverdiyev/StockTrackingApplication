@@ -1,7 +1,7 @@
 ﻿
-namespace WindowsForm.Forms
+namespace WindowsForm.Forms.UserForms
 {
-    partial class SalesForm
+    partial class SalesFormForUser
     {
         /// <summary>
         /// Required designer variable.
@@ -29,10 +29,8 @@ namespace WindowsForm.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SalesForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SalesFormForUser));
             this.dataGridViewProductList = new System.Windows.Forms.DataGridView();
-            this.ButtonSalesFormSil = new System.Windows.Forms.Button();
-            this.ButonSalesFormSatisIptal = new System.Windows.Forms.Button();
             this.groupBoxMusteri = new System.Windows.Forms.GroupBox();
             this.TextBoxSalesFormTelefon = new System.Windows.Forms.TextBox();
             this.TextBoxSalesFormSoyad = new System.Windows.Forms.TextBox();
@@ -89,35 +87,6 @@ namespace WindowsForm.Forms
             this.dataGridViewProductList.Size = new System.Drawing.Size(806, 305);
             this.dataGridViewProductList.TabIndex = 1;
             this.dataGridViewProductList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewSalesForm_CellDoubleClick);
-            // 
-            // ButtonSalesFormSil
-            // 
-            this.ButtonSalesFormSil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonSalesFormSil.Image = ((System.Drawing.Image)(resources.GetObject("ButtonSalesFormSil.Image")));
-            this.ButtonSalesFormSil.Location = new System.Drawing.Point(150, 375);
-            this.ButtonSalesFormSil.Name = "ButtonSalesFormSil";
-            this.ButtonSalesFormSil.Size = new System.Drawing.Size(88, 23);
-            this.ButtonSalesFormSil.TabIndex = 2;
-            this.ButtonSalesFormSil.Text = "Sil";
-            this.ButtonSalesFormSil.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ButtonSalesFormSil.UseVisualStyleBackColor = true;
-            this.ButtonSalesFormSil.Click += new System.EventHandler(this.ButtonSalesFormSil_Click);
-            // 
-            // ButonSalesFormSatisIptal
-            // 
-            this.ButonSalesFormSatisIptal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ButonSalesFormSatisIptal.FlatAppearance.BorderSize = 0;
-            this.ButonSalesFormSatisIptal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButonSalesFormSatisIptal.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ButonSalesFormSatisIptal.Image = ((System.Drawing.Image)(resources.GetObject("ButonSalesFormSatisIptal.Image")));
-            this.ButonSalesFormSatisIptal.Location = new System.Drawing.Point(1075, 40);
-            this.ButonSalesFormSatisIptal.Name = "ButonSalesFormSatisIptal";
-            this.ButonSalesFormSatisIptal.Size = new System.Drawing.Size(75, 40);
-            this.ButonSalesFormSatisIptal.TabIndex = 3;
-            this.ButonSalesFormSatisIptal.Text = "Satışın ləğvi";
-            this.ButonSalesFormSatisIptal.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ButonSalesFormSatisIptal.UseVisualStyleBackColor = true;
-            this.ButonSalesFormSatisIptal.Click += new System.EventHandler(this.ButonSalesFormSatisIptal_Click);
             // 
             // groupBoxMusteri
             // 
@@ -195,7 +164,6 @@ namespace WindowsForm.Forms
             this.groupBoxMehsul.Controls.Add(this.textBoxQiymet);
             this.groupBoxMehsul.Controls.Add(this.textBoxMehsulAdi);
             this.groupBoxMehsul.Controls.Add(this.textBoxMiqdar);
-            this.groupBoxMehsul.Controls.Add(this.ButtonSalesFormSil);
             this.groupBoxMehsul.Controls.Add(this.textBoxBarkodNo);
             this.groupBoxMehsul.Controls.Add(this.label9);
             this.groupBoxMehsul.Controls.Add(this.label8);
@@ -452,7 +420,7 @@ namespace WindowsForm.Forms
             this.label12.TabIndex = 34;
             this.label12.Text = "     ";
             // 
-            // SalesForm
+            // SalesFormForUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -467,9 +435,8 @@ namespace WindowsForm.Forms
             this.Controls.Add(this.ButtonSalesFormSatisEtmek);
             this.Controls.Add(this.groupBoxMehsul);
             this.Controls.Add(this.groupBoxMusteri);
-            this.Controls.Add(this.ButonSalesFormSatisIptal);
             this.Controls.Add(this.dataGridViewProductList);
-            this.Name = "SalesForm";
+            this.Name = "SalesFormForUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Satış səhifəsi";
             this.Load += new System.EventHandler(this.SalesForm_Load);
@@ -488,8 +455,6 @@ namespace WindowsForm.Forms
 
         #endregion
         private System.Windows.Forms.DataGridView dataGridViewProductList;
-        private System.Windows.Forms.Button ButtonSalesFormSil;
-        private System.Windows.Forms.Button ButonSalesFormSatisIptal;
         private System.Windows.Forms.GroupBox groupBoxMusteri;
         private System.Windows.Forms.TextBox TextBoxSalesFormTelefon;
         private System.Windows.Forms.TextBox TextBoxSalesFormSoyad;

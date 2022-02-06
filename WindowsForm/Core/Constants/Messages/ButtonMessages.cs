@@ -11,5 +11,7 @@ namespace WindowsForm.Core.Constants.Messages
 
         public static string SatisEtmekError = "'Satis etmek' Butonu";
         public static object UpdateError= "'Yeniləmək' Butonu";
+
+        public static string DaxilOl = "'Daxil ol' Butonu";
     }
 }

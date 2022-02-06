@@ -16,7 +16,7 @@ namespace DataAccess.Concrete.EntityFramework
     {
 
        
-        public CartAddDto GetCartAddDetailByBarcodeNumber(int barcodeNumber)
+        public CartAddDto GetCartAddDetailByBarcodeNumber(string barcodeNumber)
         {
             using (StockTrackingProjectContext context = new StockTrackingProjectContext())
             {

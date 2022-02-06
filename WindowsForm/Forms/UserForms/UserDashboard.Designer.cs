@@ -1,7 +1,7 @@
 ﻿
-namespace WindowsForm.Forms
+namespace WindowsForm.Forms.UserForms
 {
-    partial class Dashboard
+    partial class UserDashboard
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace WindowsForm.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserDashboard));
             this.buttonExit = new System.Windows.Forms.Button();
             this.labelTitle = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
@@ -114,7 +114,6 @@ namespace WindowsForm.Forms
             this.labelTitle.Size = new System.Drawing.Size(108, 23);
             this.labelTitle.TabIndex = 0;
             this.labelTitle.Text = "Əsas Səhifə";
-            this.labelTitle.Click += new System.EventHandler(this.labelTitle_Click);
             // 
             // btnExit
             // 
@@ -355,7 +354,6 @@ namespace WindowsForm.Forms
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             this.btnClose.MouseLeave += new System.EventHandler(this.btnClose_MouseLeave);
-            this.btnClose.MouseHover += new System.EventHandler(this.btnClose_MouseHover);
             this.btnClose.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnClose_MouseMove);
             // 
             // buttonProducts
@@ -410,6 +408,7 @@ namespace WindowsForm.Forms
             this.panelLogo.Name = "panelLogo";
             this.panelLogo.Size = new System.Drawing.Size(180, 68);
             this.panelLogo.TabIndex = 0;
+            this.panelLogo.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLogo_Paint);
             // 
             // buttonMenu
             // 
@@ -429,12 +428,13 @@ namespace WindowsForm.Forms
             // pictureBoxLogo
             // 
             this.pictureBoxLogo.Image = global::WindowsForm.Properties.Resources.icons8_shortcuts_96px;
-            this.pictureBoxLogo.Location = new System.Drawing.Point(28, 4);
+            this.pictureBoxLogo.Location = new System.Drawing.Point(22, 4);
             this.pictureBoxLogo.Name = "pictureBoxLogo";
             this.pictureBoxLogo.Size = new System.Drawing.Size(58, 60);
             this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBoxLogo.TabIndex = 0;
             this.pictureBoxLogo.TabStop = false;
+            this.pictureBoxLogo.Click += new System.EventHandler(this.pictureBoxLogo_Click);
             // 
             // panelMenu
             // 
@@ -679,8 +679,9 @@ namespace WindowsForm.Forms
             this.lazerToolStripMenuItem.Name = "lazerToolStripMenuItem";
             this.lazerToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.lazerToolStripMenuItem.Text = "Lazer";
+            this.lazerToolStripMenuItem.Click += new System.EventHandler(this.lazerToolStripMenuItem_Click);
             // 
-            // Dashboard
+            // UserDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -691,10 +692,9 @@ namespace WindowsForm.Forms
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(900, 448);
-            this.Name = "Dashboard";
+            this.Name = "UserDashboard";
             this.Text = "Əsas Səhifə";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.Dashboard_Load);
             this.Resize += new System.EventHandler(this.Dashboard_Resize);
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();

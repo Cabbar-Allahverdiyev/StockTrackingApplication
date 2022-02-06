@@ -28,11 +28,11 @@ namespace WindowsForm.Forms
 
         UserManager _userService = new UserManager(new EfUserDal());
         UserValidationTool validationTool = new UserValidationTool();
-
+        MyControl myControl = new MyControl();
         public FormUserAdd()
         {
             InitializeComponent();
-            MyControl myControl = new MyControl();
+            
             myControl.MakeAsteriskPasswordCharacterAndMaxLengthFourTen(textBoxSifre, textBoxSifreTekrari);
             myControl.WritePlaceholdersForTextBoxPhoneNumberAndMaxLengthTen(textBoxTelefonNomresi);
             myControl.WritePlaceholdersForTextBoxEmail(textBoxEmail);
@@ -100,6 +100,24 @@ namespace WindowsForm.Forms
             MyControl.MakeTextBoxNumberBox(e);
         }
 
-        
+        private void label5_MouseDown(object sender, MouseEventArgs e)
+        {
+            myControl.NotAAsteriks(textBoxSifre);
+        }
+
+        private void label6_MouseDown(object sender, MouseEventArgs e)
+        {
+            myControl.NotAAsteriks(textBoxSifreTekrari);
+        }
+
+        private void label5_MouseUp(object sender, MouseEventArgs e)
+        {
+            myControl.MakeAsteriskPasswordCharacterAndMaxLengthFourTen(textBoxSifre);
+        }
+
+        private void label6_MouseUp(object sender, MouseEventArgs e)
+        {
+            myControl.MakeAsteriskPasswordCharacterAndMaxLengthFourTen(textBoxSifreTekrari);
+        }
     }
 }

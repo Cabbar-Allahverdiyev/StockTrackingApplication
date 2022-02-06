@@ -11,30 +11,21 @@ using System.Windows.Forms;
 using WindowsForm.Core.Controllers.Concrete;
 using WindowsForm.MyControls;
 
-namespace WindowsForm.Forms
+namespace WindowsForm.Forms.UserForms
 {
-    public partial class Dashboard : Form
+    public partial class UserDashboard : Form
     {
-        MyControl myControl = new MyControl();
-        private Form activateForm;
-        //private Button currentButton;
-        private Size formSize;
 
-        public Dashboard()
+        private Form activateForm;
+        private Size formSize;
+        MyControl myControl = new MyControl();
+
+        public UserDashboard()
         {
             InitializeComponent();
             this.Padding = new Padding();
             CollapseMenu();
             this.BackColor = Color.FromArgb(98, 102, 244);
-
-            //myDropdownMenu2.PrimaryColor = Color.SeaGreen;
-            //myDropdownMenu2.MenuItemTextColor = Color.SeaGreen;
-
-            //myDropdownMenu1.IsMainMenu = true;
-            //myDropdownMenu2.IsMainMenu = true;
-
-            //myDropdownMenu2.PrimaryColor = Color.OrangeRed;
-            //myDropdownMenu2.MenuItemTextColor = Color.OrangeRed;
             DisableButton();
             //WM_NCCALCSIZE
         }
@@ -46,17 +37,7 @@ namespace WindowsForm.Forms
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
-
-        private void Dashboard_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelTitle_Click(object sender, EventArgs e)
-        {
-
-        }
-
+                
         private void panelTitleBar_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
@@ -152,7 +133,7 @@ namespace WindowsForm.Forms
             formController.AdjustForm(this);
         }
 
-        
+
 
         private void DisableButton()
         {
@@ -197,14 +178,10 @@ namespace WindowsForm.Forms
 
         private void btnClose_MouseMove(object sender, MouseEventArgs e)
         {
-            btnClose.BackColor = Color.FromArgb(253,33,45);
+            btnClose.BackColor = Color.FromArgb(253, 33, 45);
         }
 
-        private void btnClose_MouseHover(object sender, EventArgs e)
-        {
-            
-        }
-
+       
         private void btnClose_MouseLeave(object sender, EventArgs e)
         {
             btnClose.BackColor = Color.White;
@@ -218,7 +195,7 @@ namespace WindowsForm.Forms
 
         private void buttonHome_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new SalesForm(), sender);
+            OpenChildForm(new SalesFormForUser(), sender);
         }
 
         private void buttonProducts_Click(object sender, EventArgs e)
@@ -265,15 +242,13 @@ namespace WindowsForm.Forms
         private void btnExit_Click(object sender, EventArgs e)
         {
             myControl.CloseYesNo(this);
-            
-           
         }
 
         //Dropdown menu---------------------------------->
         //Product--------------------------------------->
         private void məhsulSilToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new ProductDeleteForm(), sender);
+           // OpenChildForm(new ProductDeleteForm(), sender);
         }
 
         private void məhsullarıSıralaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -283,12 +258,12 @@ namespace WindowsForm.Forms
 
         private void məhsulYeniləToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new ProductUpdateForm(), sender);
+            //OpenChildForm(new ProductUpdateForm(), sender);
         }
 
         private void məhsulƏlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormProductAdd(), sender);
+            //OpenChildForm(new FormProductAdd(), sender);
         }
 
         private void markalarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -310,17 +285,17 @@ namespace WindowsForm.Forms
 
         private void istifadəçiƏlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormUserAdd(), sender);
+            //OpenChildForm(new FormUserAdd(), sender);
         }
 
         private void istifadəçiləriYeniləToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new UserUpdateForm(), sender);
+            //OpenChildForm(new UserUpdateForm(), sender);
         }
 
         private void istifadəçiSilToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new UserDeleteForm(), sender);
+            //OpenChildForm(new UserDeleteForm(), sender);
         }
 
         //Categories------------------------------------------>
@@ -335,7 +310,12 @@ namespace WindowsForm.Forms
 
         private void kameraToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new CameraBarcodeScanner(), sender);
+            //OpenChildForm(new CameraBarcodeScanner(), sender);
+        }
+
+        private void lazerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new USBBarcodeScannerForm(),sender);
         }
 
 
@@ -364,7 +344,7 @@ namespace WindowsForm.Forms
 
 
 
-
+        //solid prinsiplerine uygu hala sal
         private void CollapseMenu()
         {
             if (this.panelMenu.Width > 200) //Collapse Menu
@@ -448,7 +428,20 @@ namespace WindowsForm.Forms
             labelTitle.Text = childForm.Text;
         }
 
-        
+        private void panelLogo_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBoxLogo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+
+
 
 
 
