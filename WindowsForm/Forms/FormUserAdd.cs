@@ -32,7 +32,7 @@ namespace WindowsForm.Forms
         public FormUserAdd()
         {
             InitializeComponent();
-            
+
             myControl.MakeAsteriskPasswordCharacterAndMaxLengthFourTen(textBoxSifre, textBoxSifreTekrari);
             myControl.WritePlaceholdersForTextBoxPhoneNumberAndMaxLengthTen(textBoxTelefonNomresi);
             myControl.WritePlaceholdersForTextBoxEmail(textBoxEmail);
@@ -42,44 +42,50 @@ namespace WindowsForm.Forms
         //Click------------------------------->
         private void ButtonFormUserAddEalveEt_Click(object sender, EventArgs e)
         {
-            User user = new User();
-            UserForRegisterDto userForRegisterDto = new UserForRegisterDto();
-            string passwordRepeat;
-
-            userForRegisterDto.FirstName = textBoxAd.Text;
-            userForRegisterDto.LastName = textBoxSoyad.Text;
-            userForRegisterDto.Email = textBoxEmail.Text;
-            userForRegisterDto.Address = textBoxAdres.Text;
-            userForRegisterDto.PhoneNumber = textBoxTelefonNomresi.Text;
-            userForRegisterDto.Password = textBoxSifre.Text;
-            passwordRepeat = textBoxSifreTekrari.Text;
-
-            user.FirstName = userForRegisterDto.FirstName;
-            user.LastName = userForRegisterDto.LastName;
-            user.Email = userForRegisterDto.Email;
-            user.Address = userForRegisterDto.Address;
-            user.PhoneNumber = userForRegisterDto.PhoneNumber;
-
-
-
-            if (!validationTool.IsValid(user))
+            try
             {
-                return;
-            }
-            var userRegister = _userService.Register(userForRegisterDto, userForRegisterDto.Password, passwordRepeat);
-            if (!userRegister.Success)
-            {
-                FormsMessage.WarningMessage(userRegister.Message);
-                return;
-            }
-            FormsMessage.SuccessMessage(userRegister.Message);
 
-            foreach (Control control in this.Controls)
-            {
-                if (control is TextBox && userRegister.Success)
+                User user = new User();
+                UserForRegisterDto userForRegisterDto = new UserForRegisterDto();
+                string passwordRepeat;
+
+                userForRegisterDto.FirstName = textBoxAd.Text;
+                userForRegisterDto.LastName = textBoxSoyad.Text;
+                userForRegisterDto.Email = textBoxEmail.Text;
+                userForRegisterDto.Address = textBoxAdres.Text;
+                userForRegisterDto.PhoneNumber = textBoxTelefonNomresi.Text;
+                userForRegisterDto.Password = textBoxSifre.Text;
+                passwordRepeat = textBoxSifreTekrari.Text;
+
+                user.FirstName = userForRegisterDto.FirstName;
+                user.LastName = userForRegisterDto.LastName;
+                user.Email = userForRegisterDto.Email;
+                user.Address = userForRegisterDto.Address;
+                user.PhoneNumber = userForRegisterDto.PhoneNumber;
+
+                if (!validationTool.IsValid(user))
                 {
-                    control.Text = "";
+                    return;
                 }
+                var userRegister = _userService.Register(userForRegisterDto, userForRegisterDto.Password, passwordRepeat);
+                if (!userRegister.Success)
+                {
+                    FormsMessage.WarningMessage(userRegister.Message);
+                    return;
+                }
+                FormsMessage.SuccessMessage(userRegister.Message);
+
+                foreach (Control control in this.Controls)
+                {
+                    if (control is TextBox && userRegister.Success)
+                    {
+                        control.Text = "";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                FormsMessage.ErrorMessage($"{AuthMessages.ErrorMessage} | {ex.Message}");
             }
 
         }

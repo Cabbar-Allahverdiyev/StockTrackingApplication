@@ -80,10 +80,10 @@ namespace WindowsForm.Forms
                     return;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                FormsMessage.ErrorMessage($"{ButtonMessages.UpdateError} {AuthMessages.ErrorMessage}");
+                FormsMessage.ErrorMessage($"{ButtonMessages.UpdateError} {AuthMessages.ErrorMessage} | {ex.Message}");
                 return; 
             }
           

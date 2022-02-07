@@ -79,6 +79,9 @@ namespace WindowsForm.Forms
             this.myDMScan = new WindowsForm.MyControls.MyDropdownMenu(this.components);
             this.kameraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lazerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.myDMSupplier = new WindowsForm.MyControls.MyDropdownMenu(this.components);
+            this.əlavəEtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.yeniləVəSilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelTitleBar.SuspendLayout();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
@@ -89,6 +92,7 @@ namespace WindowsForm.Forms
             this.myDMUser.SuspendLayout();
             this.myDMStatistic.SuspendLayout();
             this.myDMScan.SuspendLayout();
+            this.myDMSupplier.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonExit
@@ -665,7 +669,7 @@ namespace WindowsForm.Forms
             this.myDMScan.MenuItemTextColor = System.Drawing.Color.DimGray;
             this.myDMScan.Name = "myDMScan";
             this.myDMScan.PrimaryColor = System.Drawing.Color.MediumSlateBlue;
-            this.myDMScan.Size = new System.Drawing.Size(115, 48);
+            this.myDMScan.Size = new System.Drawing.Size(181, 70);
             // 
             // kameraToolStripMenuItem
             // 
@@ -677,8 +681,35 @@ namespace WindowsForm.Forms
             // lazerToolStripMenuItem
             // 
             this.lazerToolStripMenuItem.Name = "lazerToolStripMenuItem";
-            this.lazerToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.lazerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.lazerToolStripMenuItem.Text = "Lazer";
+            this.lazerToolStripMenuItem.Click += new System.EventHandler(this.lazerToolStripMenuItem_Click);
+            // 
+            // myDMSupplier
+            // 
+            this.myDMSupplier.IsMainMenu = false;
+            this.myDMSupplier.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.əlavəEtToolStripMenuItem,
+            this.yeniləVəSilToolStripMenuItem});
+            this.myDMSupplier.MenuItemHeight = 25;
+            this.myDMSupplier.MenuItemTextColor = System.Drawing.Color.DimGray;
+            this.myDMSupplier.Name = "myDMSupplier";
+            this.myDMSupplier.PrimaryColor = System.Drawing.Color.MediumSlateBlue;
+            this.myDMSupplier.Size = new System.Drawing.Size(136, 48);
+            // 
+            // əlavəEtToolStripMenuItem
+            // 
+            this.əlavəEtToolStripMenuItem.Name = "əlavəEtToolStripMenuItem";
+            this.əlavəEtToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.əlavəEtToolStripMenuItem.Text = "Əlavə et";
+            this.əlavəEtToolStripMenuItem.Click += new System.EventHandler(this.əlavəEtToolStripMenuItem_Click);
+            // 
+            // yeniləVəSilToolStripMenuItem
+            // 
+            this.yeniləVəSilToolStripMenuItem.Name = "yeniləVəSilToolStripMenuItem";
+            this.yeniləVəSilToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.yeniləVəSilToolStripMenuItem.Text = "Yenilə və Sil";
+            this.yeniləVəSilToolStripMenuItem.Click += new System.EventHandler(this.yeniləVəSilToolStripMenuItem_Click);
             // 
             // Dashboard
             // 
@@ -708,6 +739,7 @@ namespace WindowsForm.Forms
             this.myDMUser.ResumeLayout(false);
             this.myDMStatistic.ResumeLayout(false);
             this.myDMScan.ResumeLayout(false);
+            this.myDMSupplier.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -762,5 +794,8 @@ namespace WindowsForm.Forms
         private MyControls.MyDropdownMenu myDMScan;
         private System.Windows.Forms.ToolStripMenuItem kameraToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lazerToolStripMenuItem;
+        private MyControls.MyDropdownMenu myDMSupplier;
+        private System.Windows.Forms.ToolStripMenuItem əlavəEtToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem yeniləVəSilToolStripMenuItem;
     }
 }

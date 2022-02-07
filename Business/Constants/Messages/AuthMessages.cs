@@ -7,6 +7,7 @@ namespace Business.Constants.Messages
     public static class AuthMessages
     {
         public static string AuthorizationDenied = "Səlahiyyətiniz yoxdur";
+        public static string Alowed = "Icazə verildi";
 
         public static string UserRegistered = "Qeydiyyatdan kecdi";
         public static string RegistirationFailed = "Qeydiyyat uğursuz oldu";

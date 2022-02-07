@@ -79,6 +79,8 @@ namespace WindowsForm.Forms.UserForms
             this.myDMScan = new WindowsForm.MyControls.MyDropdownMenu(this.components);
             this.kameraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lazerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.myDMSupplier = new WindowsForm.MyControls.MyDropdownMenu(this.components);
+            this.elaveEtToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panelTitleBar.SuspendLayout();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
@@ -89,6 +91,7 @@ namespace WindowsForm.Forms.UserForms
             this.myDMUser.SuspendLayout();
             this.myDMStatistic.SuspendLayout();
             this.myDMScan.SuspendLayout();
+            this.myDMSupplier.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonExit
@@ -681,6 +684,24 @@ namespace WindowsForm.Forms.UserForms
             this.lazerToolStripMenuItem.Text = "Lazer";
             this.lazerToolStripMenuItem.Click += new System.EventHandler(this.lazerToolStripMenuItem_Click);
             // 
+            // myDMSupplier
+            // 
+            this.myDMSupplier.IsMainMenu = false;
+            this.myDMSupplier.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.elaveEtToolStripMenuItem1});
+            this.myDMSupplier.MenuItemHeight = 25;
+            this.myDMSupplier.MenuItemTextColor = System.Drawing.Color.DimGray;
+            this.myDMSupplier.Name = "myDMSupplier";
+            this.myDMSupplier.PrimaryColor = System.Drawing.Color.MediumSlateBlue;
+            this.myDMSupplier.Size = new System.Drawing.Size(181, 48);
+            // 
+            // elaveEtToolStripMenuItem1
+            // 
+            this.elaveEtToolStripMenuItem1.Name = "elaveEtToolStripMenuItem1";
+            this.elaveEtToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.elaveEtToolStripMenuItem1.Text = "Elave et";
+            this.elaveEtToolStripMenuItem1.Click += new System.EventHandler(this.elaveEtToolStripMenuItem1_Click);
+            // 
             // UserDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -708,6 +729,7 @@ namespace WindowsForm.Forms.UserForms
             this.myDMUser.ResumeLayout(false);
             this.myDMStatistic.ResumeLayout(false);
             this.myDMScan.ResumeLayout(false);
+            this.myDMSupplier.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -762,5 +784,7 @@ namespace WindowsForm.Forms.UserForms
         private MyControls.MyDropdownMenu myDMScan;
         private System.Windows.Forms.ToolStripMenuItem kameraToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lazerToolStripMenuItem;
+        private MyControls.MyDropdownMenu myDMSupplier;
+        private System.Windows.Forms.ToolStripMenuItem elaveEtToolStripMenuItem1;
     }
 }

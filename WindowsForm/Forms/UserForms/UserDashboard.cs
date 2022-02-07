@@ -236,7 +236,7 @@ namespace WindowsForm.Forms.UserForms
 
         private void buttonSuppliers_Click(object sender, EventArgs e)
         {
-
+            Open_DropdownMenu(myDMSupplier, sender);
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -340,7 +340,11 @@ namespace WindowsForm.Forms.UserForms
             // OpenChildForm(new(), sender);
         }
 
-
+        //Supplier---------------------->
+        private void elaveEtToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new SupplierForm(),sender);
+        }
 
 
 
@@ -437,6 +441,8 @@ namespace WindowsForm.Forms.UserForms
         {
 
         }
+
+        
 
 
 

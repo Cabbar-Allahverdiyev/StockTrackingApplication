@@ -22,15 +22,15 @@ namespace WindowsForm
         [STAThread]
         static void Main()
         {
-
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-           // Application.Run(new Forms.Dashboard());
+            // Application.Run(new Forms.Dashboard());
             //Application.Run(new Forms.UserForms.UserDashboard());
             Application.Run(new Forms.LoginForm());
+            //Application.Run(new Forms.SupplierUpdateForm());
+            //Application.Run(new Forms.UserForms.AdminValidationForm());
             //Application.Run(new Forms.USBBarcodeScannerForm());
-
         }
     }
 }

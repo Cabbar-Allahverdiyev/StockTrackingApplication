@@ -56,36 +56,44 @@ namespace WindowsForm.Forms
 
         private void buttonElaveEt_Click(object sender, EventArgs e)
         {
-
-            Supplier supplier = new Supplier();
-            supplier.CompanyName = textBoxSirketAdi.Text;
-            supplier.ContactName = textBoxAd.Text;
-            supplier.City = textBoxSeher.Text;
-            supplier.Address = textBoxAdres.Text;
-            supplier.Email = textBoxEmail.Text;
-            supplier.Phone = textBoxTelefon.Text;
-            supplier.WhenWillCome = textBoxNeZamanGelir.Text;
-
-            if (!validationTool.IsValid(supplier))
+            try
             {
-                return;
-            }
 
-            var supplierAdd = _suplierManager.Add(supplier);
-            if (!supplierAdd.Success)
-            {
-                FormsMessage.WarningMessage(supplierAdd.Message);
-                return;
-            }
-            FormsMessage.SuccessMessage(supplierAdd.Message);
-            SupplierRefresh();
+                Supplier supplier = new Supplier();
+                supplier.CompanyName = textBoxSirketAdi.Text;
+                supplier.ContactName = textBoxAd.Text;
+                supplier.City = textBoxSeher.Text;
+                supplier.Address = textBoxAdres.Text;
+                supplier.Email = textBoxEmail.Text;
+                supplier.Phone = textBoxTelefon.Text;
+                supplier.WhenWillCome = textBoxNeZamanGelir.Text;
 
-            foreach (Control control in this.Controls)
-            {
-                if (control is TextBox)
+                if (!validationTool.IsValid(supplier))
                 {
-                    control.Text = "";
+                    return;
                 }
+
+                var supplierAdd = _suplierManager.Add(supplier);
+                if (!supplierAdd.Success)
+                {
+                    FormsMessage.WarningMessage(supplierAdd.Message);
+                    return;
+                }
+                FormsMessage.SuccessMessage(supplierAdd.Message);
+                SupplierRefresh();
+
+                foreach (Control control in this.Controls)
+                {
+                    if (control is TextBox)
+                    {
+                        control.Text = "";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                FormsMessage.ErrorMessage($"{AuthMessages.ErrorMessage} | {ex.Message}");
+                return;
             }
         }
 

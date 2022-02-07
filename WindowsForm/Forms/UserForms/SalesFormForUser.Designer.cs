@@ -62,6 +62,7 @@ namespace WindowsForm.Forms.UserForms
             this.textBoxAxtar = new System.Windows.Forms.TextBox();
             this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.ButtonSalesFormSil = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductList)).BeginInit();
             this.groupBoxMusteri.SuspendLayout();
             this.groupBoxMehsul.SuspendLayout();
@@ -154,6 +155,7 @@ namespace WindowsForm.Forms.UserForms
             // 
             // groupBoxMehsul
             // 
+            this.groupBoxMehsul.Controls.Add(this.ButtonSalesFormSil);
             this.groupBoxMehsul.Controls.Add(this.pictureBox1);
             this.groupBoxMehsul.Controls.Add(this.buttonTemizle);
             this.groupBoxMehsul.Controls.Add(this.buttoElaveEt);
@@ -420,6 +422,19 @@ namespace WindowsForm.Forms.UserForms
             this.label12.TabIndex = 34;
             this.label12.Text = "     ";
             // 
+            // ButtonSalesFormSil
+            // 
+            this.ButtonSalesFormSil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonSalesFormSil.Image = ((System.Drawing.Image)(resources.GetObject("ButtonSalesFormSil.Image")));
+            this.ButtonSalesFormSil.Location = new System.Drawing.Point(150, 375);
+            this.ButtonSalesFormSil.Name = "ButtonSalesFormSil";
+            this.ButtonSalesFormSil.Size = new System.Drawing.Size(88, 23);
+            this.ButtonSalesFormSil.TabIndex = 35;
+            this.ButtonSalesFormSil.Text = "Sil";
+            this.ButtonSalesFormSil.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ButtonSalesFormSil.UseVisualStyleBackColor = true;
+            this.ButtonSalesFormSil.Click += new System.EventHandler(this.ButtonSalesFormSil_Click);
+            // 
             // SalesFormForUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -487,5 +502,6 @@ namespace WindowsForm.Forms.UserForms
         private System.Windows.Forms.TextBox textBoxAxtar;
         private System.Windows.Forms.PictureBox pictureBoxRefresh;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button ButtonSalesFormSil;
     }
 }

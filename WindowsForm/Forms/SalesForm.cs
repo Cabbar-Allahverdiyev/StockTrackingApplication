@@ -119,19 +119,24 @@ namespace WindowsForm.Forms
                 TotalPriceLabelWrite();
                 CartListRefesh();
             }
-            catch (ArgumentNullException)
+            catch (ArgumentNullException ex)
             {
-                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {AuthMessages.ErrorMessage}");
+                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {AuthMessages.ErrorMessage} : Hansısa dəyər boşdur zəhmət olmasa bütün dəyərləri yenidən yoxlayın | {ex.Message}");
                 return;
             }
-            catch (FormatException)
+            catch (FormatException ex)
             {
-                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {AuthMessages.ErrorMessage}");
+                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {AuthMessages.ErrorMessage} : Daxil edilən dəyərlərin hansısa yerləşdiyi xnanın formatına uyğun deyil zəhmət olmasa bütün dəyərləri yenidən yoxlayın | {ex.Message}");
                 return;
             }
-            catch (NullReferenceException)
+            catch (NullReferenceException ex)
             {
-                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {AuthMessages.ErrorMessage}");
+                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {AuthMessages.ErrorMessage} | {ex.Message}");
+                return;
+            }
+            catch (Exception ex)
+            {
+                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {AuthMessages.ErrorMessage} | {ex.Message}");
                 return;
             }
 

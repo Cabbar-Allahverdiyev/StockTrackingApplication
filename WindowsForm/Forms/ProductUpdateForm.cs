@@ -37,11 +37,8 @@ namespace WindowsForm.Forms
         public ProductUpdateForm()
         {
             InitializeComponent();
-
             myControl.WritePlaceholdersForTextBoxSearchByProductName(textBoxAxtar);
             myControl.WritePlaceholdersForTextBoxBarcodeNo(textBoxBarkodNo);
-
-
         }
 
         private void ProductUpdateForm_Load(object sender, EventArgs e)
@@ -111,9 +108,9 @@ namespace WindowsForm.Forms
                 GroupBoxVarOlanMehsulControlClear();
                 ProductRefresh();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                FormsMessage.ErrorMessage($"{ButtonMessages.UpdateError} {AuthMessages.ErrorMessage} ");
+                FormsMessage.ErrorMessage($"{ButtonMessages.UpdateError} {AuthMessages.ErrorMessage} | {ex.Message}");
                 return;
             }
         }

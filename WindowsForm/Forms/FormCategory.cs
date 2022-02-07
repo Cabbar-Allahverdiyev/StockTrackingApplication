@@ -41,33 +41,40 @@ namespace WindowsForm.Forms
         //Click-------------------------------------------->
         private void ButtonFormCategoryElaveEt_Click(object sender, EventArgs e)
         {
-            Category category = new Category();
-            category.CategoryName = TextBoxFormCategoryKategoriya.Text;
-
-            if (!validationTool.IsValid(category))
+            try
             {
-                return;
-            }
+                Category category = new Category();
+                category.CategoryName = TextBoxFormCategoryKategoriya.Text;
 
-            IResult categoryAdd = _categoryManager.Add(category);
-            if (categoryAdd.Success)
-            {
-                FormsMessage.SuccessMessage(categoryAdd.Message);
-                CategoryRefresh();
-            }
-            else
-            {
-                FormsMessage.WarningMessage(CategoryMessages.CategoryNotAdded);
-
-            }
-
-            foreach (Control control in this.Controls)
-            {
-                if (categoryAdd.Success)
+                if (!validationTool.IsValid(category))
                 {
-                    TextBoxController.ClearAllTextBoxes(control);
+                    return;
                 }
 
+                IResult categoryAdd = _categoryManager.Add(category);
+                if (categoryAdd.Success)
+                {
+                    FormsMessage.SuccessMessage(categoryAdd.Message);
+                    CategoryRefresh();
+                }
+                else
+                {
+                    FormsMessage.WarningMessage(CategoryMessages.CategoryNotAdded);
+
+                }
+
+                foreach (Control control in this.Controls)
+                {
+                    if (categoryAdd.Success)
+                    {
+                        TextBoxController.ClearAllTextBoxes(control);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                FormsMessage.ErrorMessage($"{AuthMessages.ErrorMessage}| {ex.Message}");
             }
 
         }

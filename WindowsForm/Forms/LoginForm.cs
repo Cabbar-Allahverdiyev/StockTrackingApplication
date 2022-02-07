@@ -10,6 +10,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
@@ -21,13 +22,16 @@ namespace WindowsForm.Forms
     public partial class LoginForm : Form
     {
         UserManager _userManager = new UserManager(new EfUserDal());
-        public static  int UserId;
+        public static int UserId;
 
         public LoginForm()
         {
             InitializeComponent();
             this.BackColor = Color.FromArgb(41, 128, 185);
+
+
         }
+
         //Click------------------------------->
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -49,6 +53,14 @@ namespace WindowsForm.Forms
         {
             try
             {
+                string thisComputerMacAddress = "E8039AB2FF83";
+                if (thisComputerMacAddress!=GetMacAddress())
+                {
+                    
+                    FormsMessage.ErrorMessage("Zəhmət olmasa istehsalçı ilə əlaqə qurun");
+                    FormsMessage.ErrorMessage("Bu kompyuterin icazəsi yoxdur");
+                    return;
+                }
                 if (textBoxEmail.Text == "" || textBoxPassword.Text == "")
                 {
                     FormsMessage.WarningMessage(FormsTextMessages.PasswordOrEmailIsBlank);
@@ -102,7 +114,7 @@ namespace WindowsForm.Forms
 
         private void LoginForm_KeyDown(object sender, KeyEventArgs e)
         {
-            
+
         }
 
         private void textBoxEmail_KeyDown(object sender, KeyEventArgs e)
@@ -237,7 +249,7 @@ namespace WindowsForm.Forms
 
         private void textBoxPassword_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode==Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 buttonDaxilOl.PerformClick();
             }
@@ -252,6 +264,21 @@ namespace WindowsForm.Forms
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Clipboard.SetText("+994554926939");
+        }
+
+        private string GetMacAddress()
+        {
+            NetworkInterface[] nics = NetworkInterface.GetAllNetworkInterfaces();
+            string sMacAddress = string.Empty;
+            foreach (NetworkInterface adapter in nics)
+            {
+                if (sMacAddress == string.Empty)
+                {
+                    sMacAddress = adapter.GetPhysicalAddress().ToString();
+
+                }
+            }
+            return sMacAddress;
         }
     }
 }

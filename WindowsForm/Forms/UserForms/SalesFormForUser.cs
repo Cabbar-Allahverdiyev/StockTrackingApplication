@@ -23,12 +23,14 @@ using WindowsForm.Utilities.BarcodeScanner;
 using WindowsForm.Utilities.Search.Concrete.ProductSearch;
 using DataAccess.Concrete.EfInMemory;
 using WindowsForm.MyControls;
+using System.Threading;
 
 namespace WindowsForm.Forms.UserForms
 {
     public partial class SalesFormForUser : Form
     {
         int staticUserId = LoginForm.UserId;
+        public static bool QrCodeIsSuccess = false;
 
         public SalesFormForUser()
         {
@@ -60,14 +62,6 @@ namespace WindowsForm.Forms.UserForms
         ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
 
 
-
-
-
-        private void ButtonSalesFormYenile_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void ButtonX_Click(object sender, EventArgs e)
         {
             RemoveCart();
@@ -75,21 +69,6 @@ namespace WindowsForm.Forms.UserForms
         }
 
        
-
-        private void ButonSalesFormSatisIptal_Click(object sender, EventArgs e)
-        {
-
-            RemoveCart();
-            CartListRefesh();
-            TotalPriceLabelWrite();
-            GroupBoxMehsulControlClear();
-            FormsMessage.InformationMessage(SaleMessages.SaleCancel);
-
-
-        }
-
-
-
         private void buttoElaveEt_Click(object sender, EventArgs e)
         {
 
@@ -155,6 +134,82 @@ namespace WindowsForm.Forms.UserForms
             }
 
         }
+
+        private void ButtonSalesFormSil_Click(object sender, EventArgs e)
+        {
+            QrCodeIsSuccess = false;
+            AdminValidationForm validationForm = new AdminValidationForm();
+            validationForm.ShowDialog();
+           
+            if (QrCodeIsSuccess == false)
+            {
+                FormsMessage.ErrorMessage(AuthMessages.AuthorizationDenied);
+                return;
+            }
+            try
+            {
+                Cart cart = new Cart();
+                CartAddDto cartAddDto = _cartManager.GetCartAddDetailByBarcodeNumber(textBoxBarkodNo.Text).Data;
+
+                if (cartAddDto != null)
+                {
+                    cart.Id = cartAddDto.CartId;
+                    if (cartAddDto.Quantity <= 1 || textBoxMiqdar.Text == "" || cartAddDto.Quantity <= Convert.ToInt32(textBoxMiqdar.Text))
+                    {
+                        IResult result = _cartManager.Delete(cart);
+                        if (!result.Success)
+                        {
+                            FormsMessage.ErrorMessage(result.Message);
+                            return;
+                        }
+
+                    }
+                    else
+                    {
+                        cart.ProductId = int.Parse(textBoxProductId.Text);
+                        cart.UserId = cartAddDto.UserId;
+                        cart.Quantity = cartAddDto.Quantity - Convert.ToInt32(textBoxMiqdar.Text);
+                        cart.SoldPrice = cartAddDto.SoldPrice;
+                        CalculateTotalPrice(cart.Quantity, cart.SoldPrice);
+                        cart.TotalPrice = Convert.ToDecimal(textBoxCem.Text);
+                        //  CartValidation(cart);
+                        IResult result = _cartManager.Update(cart);
+                        if (!result.Success)
+                        {
+                            FormsMessage.WarningMessage(result.Message);
+                            return;
+                        }
+
+                    }
+                }
+
+                GroupBoxMehsulControlClear();
+                TotalPriceLabelWrite();
+                CartListRefesh();
+            }
+            catch (ArgumentNullException ex)
+            {
+                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {AuthMessages.ErrorMessage} : Hansısa dəyər boşdur zəhmət olmasa bütün dəyərləri yenidən yoxlayın | {ex.Message}");
+                return;
+            }
+            catch (FormatException ex)
+            {
+                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {AuthMessages.ErrorMessage} : Daxil edilən dəyərlərin hansısa yerləşdiyi xnanın formatına uyğun deyil zəhmət olmasa bütün dəyərləri yenidən yoxlayın | {ex.Message}");
+                return;
+            }
+            catch (NullReferenceException ex)
+            {
+                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {AuthMessages.ErrorMessage} | {ex.Message}");
+                return;
+            }
+            catch (Exception ex)
+            {
+                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {AuthMessages.ErrorMessage} | {ex.Message}");
+                return;
+            }
+
+        }
+
         private void buttonTemizle_Click(object sender, EventArgs e)
         {
             GroupBoxMehsulControlClear();
@@ -292,68 +347,76 @@ namespace WindowsForm.Forms.UserForms
         //Key Press--------------------------------------->
         private void textBoxBarkodNo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MyControl.MakeTextBoxNumberBox(e);
-
-            string barcodeNumber = textBoxBarkodNo.Text;
-            if (barcodeNumber.Length >= 13)
+            try
             {
-                bool isbarcodeExists = false;
-                IResult cartAdded;
-                IResult cartUpdated;
+                MyControl.MakeTextBoxNumberBox(e);
 
-                IDataResult<Product> result = _productManager.GetByProductBarcodeNumber(barcodeNumber);
-                if (result.Success == false)
+                string barcodeNumber = textBoxBarkodNo.Text;
+                if (barcodeNumber.Length >= 13)
                 {
-                    FormsMessage.WarningMessage(result.Message);
-                    GroupBoxMehsulControlClear(); //bura yeniden bax
-                    return;
-                }
-                // GroupBoxMehsulControlClear();
-                Cart cart = new Cart();
-                cart.ProductId = result.Data.Id;
-                cart.UserId = staticUserId; //sonra dinamiklesdir
-                cart.Quantity = 1;
-                cart.SoldPrice = result.Data.UnitPrice;
-                cart.TotalPrice = cart.Quantity * cart.SoldPrice;
+                    bool isbarcodeExists = false;
+                    IResult cartAdded;
+                    IResult cartUpdated;
 
-                if (!cartValidationTool.IsValid(cart))
-                {
-                    return;
-                }
-
-
-
-                IsBarcodeNumberExists(cart.ProductId, out isbarcodeExists);
-                if (isbarcodeExists == true)
-                {
-                    Cart getCart = _cartManager.GetByProductId(cart.ProductId).Data;
-                    cart.Id = getCart.Id;
-                    cart.Quantity = getCart.Quantity + 1;
-                    cart.TotalPrice = cart.SoldPrice * cart.Quantity;
-                    cartUpdated = _cartManager.Update(cart);
-                    if (!cartUpdated.Success)
+                    IDataResult<Product> result = _productManager.GetByProductBarcodeNumber(barcodeNumber);
+                    if (result.Success == false)
                     {
-                        FormsMessage.WarningMessage(cartUpdated.Message);
+                        FormsMessage.WarningMessage(result.Message);
+                        GroupBoxMehsulControlClear(); //bura yeniden bax
                         return;
                     }
-                    // FormsMessage.SuccessMessage(cartUpdated.Message);
-                }
-                else
-                {
+                    // GroupBoxMehsulControlClear();
+                    Cart cart = new Cart();
+                    cart.ProductId = result.Data.Id;
+                    cart.UserId = staticUserId; //sonra dinamiklesdir
+                    cart.Quantity = 1;
+                    cart.SoldPrice = result.Data.UnitPrice;
+                    cart.TotalPrice = cart.Quantity * cart.SoldPrice;
 
-                    cartAdded = _cartManager.Add(cart);
-                    if (!cartAdded.Success)
+                    if (!cartValidationTool.IsValid(cart))
                     {
-                        FormsMessage.WarningMessage(cartAdded.Message);
                         return;
                     }
-                    //FormsMessage.SuccessMessage(CartMessages.ProductAdded);
+
+
+
+                    IsBarcodeNumberExists(cart.ProductId, out isbarcodeExists);
+                    if (isbarcodeExists == true)
+                    {
+                        Cart getCart = _cartManager.GetByProductId(cart.ProductId).Data;
+                        cart.Id = getCart.Id;
+                        cart.Quantity = getCart.Quantity + 1;
+                        cart.TotalPrice = cart.SoldPrice * cart.Quantity;
+                        cartUpdated = _cartManager.Update(cart);
+                        if (!cartUpdated.Success)
+                        {
+                            FormsMessage.WarningMessage(cartUpdated.Message);
+                            return;
+                        }
+                        // FormsMessage.SuccessMessage(cartUpdated.Message);
+                    }
+                    else
+                    {
+
+                        cartAdded = _cartManager.Add(cart);
+                        if (!cartAdded.Success)
+                        {
+                            FormsMessage.WarningMessage(cartAdded.Message);
+                            return;
+                        }
+                        //FormsMessage.SuccessMessage(CartMessages.ProductAdded);
+                    }
+                    GroupBoxMehsulControlClear();
+                    CartListRefesh();
+
+                    TotalPriceLabelWrite();
+
                 }
-                GroupBoxMehsulControlClear();
-                CartListRefesh();
-
-                TotalPriceLabelWrite();
-
+            }
+            catch (Exception ex)
+            {
+                FormsMessage.ErrorMessage($"{AuthMessages.ErrorMessage} | {ex.Message}");
+                return;
             }
         }
 
@@ -471,6 +534,6 @@ namespace WindowsForm.Forms.UserForms
             }
         }
 
-        
+
     }
 }

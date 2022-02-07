@@ -64,9 +64,9 @@ namespace WindowsForm.Forms
                 ProductRefresh();
                 GroupBoxVarOlanMehsulControlClear();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                FormsMessage.ErrorMessage(AuthMessages.ErrorMessage);
+                FormsMessage.ErrorMessage($"{AuthMessages.ErrorMessage} | {ex.Message}");
                 return;
             }
         }

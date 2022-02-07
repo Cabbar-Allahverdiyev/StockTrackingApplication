@@ -259,7 +259,7 @@ namespace WindowsForm.Forms
 
         private void buttonSuppliers_Click(object sender, EventArgs e)
         {
-
+            Open_DropdownMenu(myDMSupplier, sender);
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -338,6 +338,11 @@ namespace WindowsForm.Forms
             OpenChildForm(new CameraBarcodeScanner(), sender);
         }
 
+        private void lazerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new USBBarcodeScannerForm(), sender);
+        }
+
 
         //Statistic--------------------------------------------->
         private void günlükToolStripMenuItem_Click(object sender, EventArgs e)
@@ -360,7 +365,16 @@ namespace WindowsForm.Forms
             // OpenChildForm(new(), sender);
         }
 
+        //Supplier--------------------------------->
+        private void əlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new SupplierForm(),sender);
+        }
 
+        private void yeniləVəSilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new SupplierUpdateForm(), sender);
+        }
 
 
 
@@ -449,6 +463,10 @@ namespace WindowsForm.Forms
         }
 
         
+
+
+
+
 
 
 
