@@ -271,6 +271,15 @@ namespace WindowsForm.Forms.UserForms
             OpenChildForm(new FormBrand(), sender);
         }
 
+       
+
+        private void markalarIYeniləVəSilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new CategoryUpdateAndDeleteForm(), sender);
+        }
+
+     
+
         //Sales-------------------------------------------->
         private void satislariSiralaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -302,7 +311,16 @@ namespace WindowsForm.Forms.UserForms
 
         private void kateqoriyalariSiralaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //OpenChildForm(new FormCategory(), sender);
+        }
+
+        private void elaveEtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             OpenChildForm(new FormCategory(), sender);
+        }
+        private void yenileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new CategoryUpdateAndDeleteForm(), sender);
         }
 
 
@@ -432,20 +450,9 @@ namespace WindowsForm.Forms.UserForms
             labelTitle.Text = childForm.Text;
         }
 
-        private void panelLogo_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pictureBoxLogo_Click(object sender, EventArgs e)
-        {
-
-        }
-
         
 
-
-
+        
 
 
 
