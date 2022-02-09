@@ -32,6 +32,7 @@ namespace WindowsForm.Forms
             this.label12 = new System.Windows.Forms.Label();
             this.textBoxSirketAdi = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonSil = new System.Windows.Forms.Button();
             this.textBoxSupplierId = new System.Windows.Forms.TextBox();
             this.buttonTemizle = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -51,7 +52,6 @@ namespace WindowsForm.Forms
             this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
             this.textBoxAxtar = new System.Windows.Forms.TextBox();
             this.dataGridViewSupplierListed = new System.Windows.Forms.DataGridView();
-            this.buttonSil = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSupplierListed)).BeginInit();
@@ -102,6 +102,20 @@ namespace WindowsForm.Forms
             this.groupBox1.Size = new System.Drawing.Size(295, 361);
             this.groupBox1.TabIndex = 38;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // buttonSil
+            // 
+            this.buttonSil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSil.Image = global::WindowsForm.Properties.Resources.icons8_trash_16;
+            this.buttonSil.Location = new System.Drawing.Point(204, 306);
+            this.buttonSil.Name = "buttonSil";
+            this.buttonSil.Size = new System.Drawing.Size(85, 26);
+            this.buttonSil.TabIndex = 29;
+            this.buttonSil.Text = "  Sil";
+            this.buttonSil.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonSil.UseVisualStyleBackColor = true;
+            this.buttonSil.Click += new System.EventHandler(this.buttonSil_Click);
             // 
             // textBoxSupplierId
             // 
@@ -297,19 +311,6 @@ namespace WindowsForm.Forms
             this.dataGridViewSupplierListed.Size = new System.Drawing.Size(691, 454);
             this.dataGridViewSupplierListed.TabIndex = 36;
             this.dataGridViewSupplierListed.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSupplierListed_CellDoubleClick);
-            // 
-            // buttonSil
-            // 
-            this.buttonSil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSil.Image = global::WindowsForm.Properties.Resources.icons8_trash_16;
-            this.buttonSil.Location = new System.Drawing.Point(204, 306);
-            this.buttonSil.Name = "buttonSil";
-            this.buttonSil.Size = new System.Drawing.Size(85, 26);
-            this.buttonSil.TabIndex = 29;
-            this.buttonSil.Text = "  Sil";
-            this.buttonSil.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonSil.UseVisualStyleBackColor = true;
-            this.buttonSil.Click += new System.EventHandler(this.buttonSil_Click);
             // 
             // SupplierUpdateForm
             // 
