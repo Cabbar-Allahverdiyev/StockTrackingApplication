@@ -64,6 +64,7 @@ namespace WindowsForm.Forms
             this.məhsulYeniləToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.məhsulƏlavəEtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.markalarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.markalarıYeniləVəSilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myDMSales = new WindowsForm.MyControls.MyDropdownMenu(this.components);
             this.satislariSiralaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myDMUser = new WindowsForm.MyControls.MyDropdownMenu(this.components);
@@ -471,32 +472,35 @@ namespace WindowsForm.Forms
             this.myDMCategory.MenuItemTextColor = System.Drawing.Color.DimGray;
             this.myDMCategory.Name = "myDropdownMenu3";
             this.myDMCategory.PrimaryColor = System.Drawing.Color.MediumSlateBlue;
-            this.myDMCategory.Size = new System.Drawing.Size(177, 92);
+            this.myDMCategory.Size = new System.Drawing.Size(181, 114);
             // 
             // kateqoriyalariSiralaToolStripMenuItem
             // 
             this.kateqoriyalariSiralaToolStripMenuItem.Name = "kateqoriyalariSiralaToolStripMenuItem";
-            this.kateqoriyalariSiralaToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.kateqoriyalariSiralaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.kateqoriyalariSiralaToolStripMenuItem.Text = "Kateqoriyalari sirala";
             this.kateqoriyalariSiralaToolStripMenuItem.Click += new System.EventHandler(this.kateqoriyalariSiralaToolStripMenuItem_Click);
             // 
             // elaveEtToolStripMenuItem
             // 
             this.elaveEtToolStripMenuItem.Name = "elaveEtToolStripMenuItem";
-            this.elaveEtToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.elaveEtToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.elaveEtToolStripMenuItem.Text = "Elave et";
+            this.elaveEtToolStripMenuItem.Click += new System.EventHandler(this.elaveEtToolStripMenuItem_Click);
             // 
             // yenileToolStripMenuItem
             // 
             this.yenileToolStripMenuItem.Name = "yenileToolStripMenuItem";
-            this.yenileToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
-            this.yenileToolStripMenuItem.Text = "Yenile";
+            this.yenileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.yenileToolStripMenuItem.Text = "Yenilə və sil";
+            this.yenileToolStripMenuItem.Click += new System.EventHandler(this.yenileToolStripMenuItem_Click);
             // 
             // silToolStripMenuItem
             // 
             this.silToolStripMenuItem.Name = "silToolStripMenuItem";
-            this.silToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.silToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.silToolStripMenuItem.Text = "Sil";
+            this.silToolStripMenuItem.Click += new System.EventHandler(this.silToolStripMenuItem_Click);
             // 
             // panelDesktopPane
             // 
@@ -515,47 +519,55 @@ namespace WindowsForm.Forms
             this.məhsulSilToolStripMenuItem,
             this.məhsulYeniləToolStripMenuItem,
             this.məhsulƏlavəEtToolStripMenuItem,
-            this.markalarToolStripMenuItem});
+            this.markalarToolStripMenuItem,
+            this.markalarıYeniləVəSilToolStripMenuItem});
             this.myDMProduct.MenuItemHeight = 25;
             this.myDMProduct.MenuItemTextColor = System.Drawing.Color.DimGray;
             this.myDMProduct.Name = "myDMProduct";
             this.myDMProduct.PrimaryColor = System.Drawing.Color.MediumSlateBlue;
-            this.myDMProduct.Size = new System.Drawing.Size(160, 114);
+            this.myDMProduct.Size = new System.Drawing.Size(187, 136);
             // 
             // məhsullarıSıralaToolStripMenuItem
             // 
             this.məhsullarıSıralaToolStripMenuItem.Name = "məhsullarıSıralaToolStripMenuItem";
-            this.məhsullarıSıralaToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.məhsullarıSıralaToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.məhsullarıSıralaToolStripMenuItem.Text = "Məhsulları sırala";
             this.məhsullarıSıralaToolStripMenuItem.Click += new System.EventHandler(this.məhsullarıSıralaToolStripMenuItem_Click);
             // 
             // məhsulSilToolStripMenuItem
             // 
             this.məhsulSilToolStripMenuItem.Name = "məhsulSilToolStripMenuItem";
-            this.məhsulSilToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.məhsulSilToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.məhsulSilToolStripMenuItem.Text = "Məhsul sil";
             this.məhsulSilToolStripMenuItem.Click += new System.EventHandler(this.məhsulSilToolStripMenuItem_Click);
             // 
             // məhsulYeniləToolStripMenuItem
             // 
             this.məhsulYeniləToolStripMenuItem.Name = "məhsulYeniləToolStripMenuItem";
-            this.məhsulYeniləToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.məhsulYeniləToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.məhsulYeniləToolStripMenuItem.Text = "Məhsul yenilə";
             this.məhsulYeniləToolStripMenuItem.Click += new System.EventHandler(this.məhsulYeniləToolStripMenuItem_Click);
             // 
             // məhsulƏlavəEtToolStripMenuItem
             // 
             this.məhsulƏlavəEtToolStripMenuItem.Name = "məhsulƏlavəEtToolStripMenuItem";
-            this.məhsulƏlavəEtToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.məhsulƏlavəEtToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.məhsulƏlavəEtToolStripMenuItem.Text = "Məhsul əlavə et";
             this.məhsulƏlavəEtToolStripMenuItem.Click += new System.EventHandler(this.məhsulƏlavəEtToolStripMenuItem_Click);
             // 
             // markalarToolStripMenuItem
             // 
             this.markalarToolStripMenuItem.Name = "markalarToolStripMenuItem";
-            this.markalarToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.markalarToolStripMenuItem.Text = "Markalar";
+            this.markalarToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.markalarToolStripMenuItem.Text = "Marka Əlavə et";
             this.markalarToolStripMenuItem.Click += new System.EventHandler(this.markalarToolStripMenuItem_Click);
+            // 
+            // markalarıYeniləVəSilToolStripMenuItem
+            // 
+            this.markalarıYeniləVəSilToolStripMenuItem.Name = "markalarıYeniləVəSilToolStripMenuItem";
+            this.markalarıYeniləVəSilToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.markalarıYeniləVəSilToolStripMenuItem.Text = "Markaları yenilə və sil";
+            this.markalarıYeniləVəSilToolStripMenuItem.Click += new System.EventHandler(this.markalarıYeniləVəSilToolStripMenuItem_Click);
             // 
             // myDMSales
             // 
@@ -669,7 +681,7 @@ namespace WindowsForm.Forms
             this.myDMScan.MenuItemTextColor = System.Drawing.Color.DimGray;
             this.myDMScan.Name = "myDMScan";
             this.myDMScan.PrimaryColor = System.Drawing.Color.MediumSlateBlue;
-            this.myDMScan.Size = new System.Drawing.Size(181, 70);
+            this.myDMScan.Size = new System.Drawing.Size(115, 48);
             // 
             // kameraToolStripMenuItem
             // 
@@ -681,7 +693,7 @@ namespace WindowsForm.Forms
             // lazerToolStripMenuItem
             // 
             this.lazerToolStripMenuItem.Name = "lazerToolStripMenuItem";
-            this.lazerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.lazerToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.lazerToolStripMenuItem.Text = "Lazer";
             this.lazerToolStripMenuItem.Click += new System.EventHandler(this.lazerToolStripMenuItem_Click);
             // 
@@ -700,14 +712,14 @@ namespace WindowsForm.Forms
             // əlavəEtToolStripMenuItem
             // 
             this.əlavəEtToolStripMenuItem.Name = "əlavəEtToolStripMenuItem";
-            this.əlavəEtToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.əlavəEtToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.əlavəEtToolStripMenuItem.Text = "Əlavə et";
             this.əlavəEtToolStripMenuItem.Click += new System.EventHandler(this.əlavəEtToolStripMenuItem_Click);
             // 
             // yeniləVəSilToolStripMenuItem
             // 
             this.yeniləVəSilToolStripMenuItem.Name = "yeniləVəSilToolStripMenuItem";
-            this.yeniləVəSilToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.yeniləVəSilToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.yeniləVəSilToolStripMenuItem.Text = "Yenilə və Sil";
             this.yeniləVəSilToolStripMenuItem.Click += new System.EventHandler(this.yeniləVəSilToolStripMenuItem_Click);
             // 
@@ -797,5 +809,6 @@ namespace WindowsForm.Forms
         private MyControls.MyDropdownMenu myDMSupplier;
         private System.Windows.Forms.ToolStripMenuItem əlavəEtToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem yeniləVəSilToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem markalarıYeniləVəSilToolStripMenuItem;
     }
 }

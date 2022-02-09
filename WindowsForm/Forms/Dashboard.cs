@@ -296,6 +296,11 @@ namespace WindowsForm.Forms
             OpenChildForm(new FormBrand(), sender);
         }
 
+        private void markalarıYeniləVəSilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new BrandUpdateAndDeleteForm(),sender);
+        }
+
         //Sales-------------------------------------------->
         private void satislariSiralaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -328,6 +333,21 @@ namespace WindowsForm.Forms
         private void kateqoriyalariSiralaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenChildForm(new FormCategory(), sender);
+        }
+
+        private void yenileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new CategoryUpdateAndDeleteForm(), sender);
+        }
+
+        private void elaveEtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormCategory(), sender);
+        }
+
+        private void silToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new CategoryUpdateAndDeleteForm(), sender);
         }
 
 
@@ -462,7 +482,15 @@ namespace WindowsForm.Forms
             labelTitle.Text = childForm.Text;
         }
 
-        
+       
+
+
+
+
+
+
+
+
 
 
 

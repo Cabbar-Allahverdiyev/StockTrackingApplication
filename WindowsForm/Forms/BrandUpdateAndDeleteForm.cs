@@ -25,6 +25,7 @@ namespace WindowsForm.Forms
         public BrandUpdateAndDeleteForm()
         {
             InitializeComponent();
+            BrandRefresh();
         }
         //Click-------------------------->
         private void buttonTemizle_Click(object sender, EventArgs e)
@@ -39,7 +40,7 @@ namespace WindowsForm.Forms
                 Brand brand = new Brand();
                 brand.Id = int.Parse(textBoxId.Text);
                 brand.BrandName = textBoxBrand.Text;
-                    
+
                 if (!validationTool.IsValid(brand))
                 {
                     return;
