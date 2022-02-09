@@ -64,6 +64,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  TedarikciSirket = s.CompanyName,
                                  StokdakiVahid = p.UnitsInStock,
                                  Qiymet = p.UnitPrice,
+                                 AlısQiymet = p.PurchasePrice,
                                  MehsulAdi = p.ProductName,
                                  BarcodeNomresi = p.BarcodeNumber,
                                  Kemiyyet = p.QuantityPerUnit,

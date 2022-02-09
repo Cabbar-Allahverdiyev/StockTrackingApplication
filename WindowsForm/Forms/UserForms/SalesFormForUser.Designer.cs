@@ -39,6 +39,7 @@ namespace WindowsForm.Forms.UserForms
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBoxMehsul = new System.Windows.Forms.GroupBox();
+            this.ButtonSalesFormSil = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonTemizle = new System.Windows.Forms.Button();
             this.buttoElaveEt = new System.Windows.Forms.Button();
@@ -62,7 +63,8 @@ namespace WindowsForm.Forms.UserForms
             this.textBoxAxtar = new System.Windows.Forms.TextBox();
             this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.ButtonSalesFormSil = new System.Windows.Forms.Button();
+            this.checkBoxBarkodNo = new System.Windows.Forms.CheckBox();
+            this.buttonBarkodNoAxtar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductList)).BeginInit();
             this.groupBoxMusteri.SuspendLayout();
             this.groupBoxMehsul.SuspendLayout();
@@ -156,6 +158,7 @@ namespace WindowsForm.Forms.UserForms
             // groupBoxMehsul
             // 
             this.groupBoxMehsul.Controls.Add(this.ButtonSalesFormSil);
+            this.groupBoxMehsul.Controls.Add(this.buttonBarkodNoAxtar);
             this.groupBoxMehsul.Controls.Add(this.pictureBox1);
             this.groupBoxMehsul.Controls.Add(this.buttonTemizle);
             this.groupBoxMehsul.Controls.Add(this.buttoElaveEt);
@@ -179,6 +182,19 @@ namespace WindowsForm.Forms.UserForms
             this.groupBoxMehsul.TabIndex = 9;
             this.groupBoxMehsul.TabStop = false;
             this.groupBoxMehsul.Text = "Məhsul";
+            // 
+            // ButtonSalesFormSil
+            // 
+            this.ButtonSalesFormSil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonSalesFormSil.Image = ((System.Drawing.Image)(resources.GetObject("ButtonSalesFormSil.Image")));
+            this.ButtonSalesFormSil.Location = new System.Drawing.Point(150, 375);
+            this.ButtonSalesFormSil.Name = "ButtonSalesFormSil";
+            this.ButtonSalesFormSil.Size = new System.Drawing.Size(88, 23);
+            this.ButtonSalesFormSil.TabIndex = 35;
+            this.ButtonSalesFormSil.Text = "Sil";
+            this.ButtonSalesFormSil.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ButtonSalesFormSil.UseVisualStyleBackColor = true;
+            this.ButtonSalesFormSil.Click += new System.EventHandler(this.ButtonSalesFormSil_Click);
             // 
             // pictureBox1
             // 
@@ -422,18 +438,30 @@ namespace WindowsForm.Forms.UserForms
             this.label12.TabIndex = 34;
             this.label12.Text = "     ";
             // 
-            // ButtonSalesFormSil
+            // checkBoxBarkodNo
             // 
-            this.ButtonSalesFormSil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonSalesFormSil.Image = ((System.Drawing.Image)(resources.GetObject("ButtonSalesFormSil.Image")));
-            this.ButtonSalesFormSil.Location = new System.Drawing.Point(150, 375);
-            this.ButtonSalesFormSil.Name = "ButtonSalesFormSil";
-            this.ButtonSalesFormSil.Size = new System.Drawing.Size(88, 23);
-            this.ButtonSalesFormSil.TabIndex = 35;
-            this.ButtonSalesFormSil.Text = "Sil";
-            this.ButtonSalesFormSil.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ButtonSalesFormSil.UseVisualStyleBackColor = true;
-            this.ButtonSalesFormSil.Click += new System.EventHandler(this.ButtonSalesFormSil_Click);
+            this.checkBoxBarkodNo.AutoSize = true;
+            this.checkBoxBarkodNo.Location = new System.Drawing.Point(263, 346);
+            this.checkBoxBarkodNo.Name = "checkBoxBarkodNo";
+            this.checkBoxBarkodNo.Size = new System.Drawing.Size(81, 19);
+            this.checkBoxBarkodNo.TabIndex = 37;
+            this.checkBoxBarkodNo.Text = "Avtomatik";
+            this.checkBoxBarkodNo.UseVisualStyleBackColor = true;
+            this.checkBoxBarkodNo.CheckedChanged += new System.EventHandler(this.checkBoxBarkodNo_CheckedChanged);
+            // 
+            // buttonBarkodNoAxtar
+            // 
+            this.buttonBarkodNoAxtar.FlatAppearance.BorderSize = 0;
+            this.buttonBarkodNoAxtar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBarkodNoAxtar.Image = global::WindowsForm.Properties.Resources.searchFerqliBlack_16px;
+            this.buttonBarkodNoAxtar.Location = new System.Drawing.Point(6, 169);
+            this.buttonBarkodNoAxtar.Name = "buttonBarkodNoAxtar";
+            this.buttonBarkodNoAxtar.Size = new System.Drawing.Size(18, 18);
+            this.buttonBarkodNoAxtar.TabIndex = 36;
+            this.buttonBarkodNoAxtar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonBarkodNoAxtar.UseVisualStyleBackColor = true;
+            this.buttonBarkodNoAxtar.Visible = false;
+            this.buttonBarkodNoAxtar.Click += new System.EventHandler(this.buttonBarkodNoAxtar_Click);
             // 
             // SalesFormForUser
             // 
@@ -441,6 +469,7 @@ namespace WindowsForm.Forms.UserForms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(1174, 641);
+            this.Controls.Add(this.checkBoxBarkodNo);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.pictureBoxRefresh);
             this.Controls.Add(this.textBoxAxtar);
@@ -503,5 +532,7 @@ namespace WindowsForm.Forms.UserForms
         private System.Windows.Forms.PictureBox pictureBoxRefresh;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button ButtonSalesFormSil;
+        private System.Windows.Forms.Button buttonBarkodNoAxtar;
+        private System.Windows.Forms.CheckBox checkBoxBarkodNo;
     }
 }

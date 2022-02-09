@@ -64,6 +64,8 @@ namespace WindowsForm.Forms
             this.textBoxAxtar = new System.Windows.Forms.TextBox();
             this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.checkBoxBarkodNo = new System.Windows.Forms.CheckBox();
+            this.buttonBarkodNoAxtar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductList)).BeginInit();
             this.groupBoxMusteri.SuspendLayout();
             this.groupBoxMehsul.SuspendLayout();
@@ -185,6 +187,7 @@ namespace WindowsForm.Forms
             // 
             // groupBoxMehsul
             // 
+            this.groupBoxMehsul.Controls.Add(this.buttonBarkodNoAxtar);
             this.groupBoxMehsul.Controls.Add(this.pictureBox1);
             this.groupBoxMehsul.Controls.Add(this.buttonTemizle);
             this.groupBoxMehsul.Controls.Add(this.buttoElaveEt);
@@ -312,6 +315,7 @@ namespace WindowsForm.Forms
             this.textBoxBarkodNo.Name = "textBoxBarkodNo";
             this.textBoxBarkodNo.Size = new System.Drawing.Size(138, 22);
             this.textBoxBarkodNo.TabIndex = 5;
+            this.textBoxBarkodNo.TextChanged += new System.EventHandler(this.textBoxBarkodNo_TextChanged);
             this.textBoxBarkodNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxBarkodNo_KeyPress);
             // 
             // label9
@@ -452,12 +456,38 @@ namespace WindowsForm.Forms
             this.label12.TabIndex = 34;
             this.label12.Text = "     ";
             // 
+            // checkBoxBarkodNo
+            // 
+            this.checkBoxBarkodNo.AutoSize = true;
+            this.checkBoxBarkodNo.Location = new System.Drawing.Point(263, 346);
+            this.checkBoxBarkodNo.Name = "checkBoxBarkodNo";
+            this.checkBoxBarkodNo.Size = new System.Drawing.Size(81, 19);
+            this.checkBoxBarkodNo.TabIndex = 35;
+            this.checkBoxBarkodNo.Text = "Avtomatik";
+            this.checkBoxBarkodNo.UseVisualStyleBackColor = true;
+            this.checkBoxBarkodNo.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // buttonBarkodNoAxtar
+            // 
+            this.buttonBarkodNoAxtar.FlatAppearance.BorderSize = 0;
+            this.buttonBarkodNoAxtar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBarkodNoAxtar.Image = global::WindowsForm.Properties.Resources.searchFerqliBlack_16px;
+            this.buttonBarkodNoAxtar.Location = new System.Drawing.Point(6, 170);
+            this.buttonBarkodNoAxtar.Name = "buttonBarkodNoAxtar";
+            this.buttonBarkodNoAxtar.Size = new System.Drawing.Size(18, 18);
+            this.buttonBarkodNoAxtar.TabIndex = 20;
+            this.buttonBarkodNoAxtar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonBarkodNoAxtar.UseVisualStyleBackColor = true;
+            this.buttonBarkodNoAxtar.Visible = false;
+            this.buttonBarkodNoAxtar.Click += new System.EventHandler(this.buttonBarkodNoAxtar_Click);
+            // 
             // SalesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(1174, 641);
+            this.Controls.Add(this.checkBoxBarkodNo);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.pictureBoxRefresh);
             this.Controls.Add(this.textBoxAxtar);
@@ -522,5 +552,7 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.TextBox textBoxAxtar;
         private System.Windows.Forms.PictureBox pictureBoxRefresh;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.CheckBox checkBoxBarkodNo;
+        private System.Windows.Forms.Button buttonBarkodNoAxtar;
     }
 }

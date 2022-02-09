@@ -1,6 +1,7 @@
 ﻿using Business.Concrete;
 using Business.Constants.Messages;
 using DataAccess.Concrete.EntityFramework;
+using Entities.Concrete;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,8 @@ namespace WindowsForm.Forms
     public partial class FormSalesList : Form
     {
         SaleWinFormManager _saleWinFormManager = new SaleWinFormManager(new EfSaleWinFormDal());
+        ProductManager _productManager = new ProductManager(new EfProductDal());
+
         public FormSalesList()
         {
             InitializeComponent();
@@ -44,6 +47,7 @@ namespace WindowsForm.Forms
                 int selectedYearItem = comboBoxYears.SelectedItem != null ? int.Parse(comboBoxYears.SelectedItem.ToString())
                    : DateTime.Now.Year;
                 decimal saleTotal = 0;
+                decimal IncomeTotal = 0;
 
                 if (comboBoxDays.SelectedItem == null && comboBoxMonths.SelectedItem != null && comboBoxYears.SelectedItem == null)
                 {
@@ -53,11 +57,44 @@ namespace WindowsForm.Forms
                     foreach (SaleWinFormDto item in dataMonth)
                     {
                         saleTotal += item.Cem;
+
+                        Product getProduct=_productManager.GetByProductId(item.ProductId).Data;
+                        for (int i = 1; i < item.Miqdar+1; i++)
+                        {
+                            IncomeTotal += (item.SatilanQiymet - getProduct.PurchasePrice);
+                        }
+                       
                     }
+                   
                     labelTotal.Text = saleTotal.ToString();
+                    labelIncome.Text = IncomeTotal.ToString();
                     dataGridViewSaleList.DataSource = dataMonth;
                     return;
                 }
+
+                if (comboBoxDays.SelectedItem == null && comboBoxMonths.SelectedItem == null && comboBoxYears.SelectedItem != null)
+                {
+                    List<SaleWinFormDto> dataYear = _saleWinFormManager
+                        .GetAllSaleWinFormDetailsSalesForYear( selectedYearItem).Data;
+
+                    foreach (SaleWinFormDto item in dataYear)
+                    {
+                        saleTotal += item.Cem;
+
+                        Product getProduct = _productManager.GetByProductId(item.ProductId).Data;
+                        for (int i = 1; i < item.Miqdar + 1; i++)
+                        {
+                            IncomeTotal += (item.SatilanQiymet - getProduct.PurchasePrice);
+                        }
+
+                    }
+
+                    labelTotal.Text = saleTotal.ToString();
+                    labelIncome.Text = IncomeTotal.ToString();
+                    dataGridViewSaleList.DataSource = dataYear;
+                    return;
+                }
+
 
                 if (comboBoxDays.SelectedItem == null && comboBoxMonths.SelectedItem != null && comboBoxYears.SelectedItem != null)
                 {
@@ -66,8 +103,14 @@ namespace WindowsForm.Forms
                     foreach (SaleWinFormDto item in dataMonth)
                     {
                         saleTotal += item.Cem;
+                        Product getProduct = _productManager.GetByProductId(item.ProductId).Data;
+                        for (int i = 1; i < item.Miqdar+1; i++)
+                        {
+                            IncomeTotal += (item.SatilanQiymet - getProduct.PurchasePrice);
+                        }
                     }
                     labelTotal.Text = saleTotal.ToString();
+                    labelIncome.Text = IncomeTotal.ToString();
                     dataGridViewSaleList.DataSource = dataMonth;
                     return;
                 }
@@ -77,8 +120,14 @@ namespace WindowsForm.Forms
                 foreach (SaleWinFormDto item in data)
                 {
                     saleTotal += item.Cem;
+                    Product getProduct = _productManager.GetByProductId(item.ProductId).Data;
+                    for (int i = 1; i < item.Miqdar+1; i++)
+                    {
+                        IncomeTotal += (item.SatilanQiymet - getProduct.PurchasePrice);
+                    }
                 }
                 labelTotal.Text = saleTotal.ToString();
+                labelIncome.Text = IncomeTotal.ToString();
                 dataGridViewSaleList.DataSource = data;
             }
             catch (Exception ex)

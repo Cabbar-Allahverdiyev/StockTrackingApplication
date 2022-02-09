@@ -44,6 +44,9 @@ namespace WindowsForm.Forms
             this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
             this.label12 = new System.Windows.Forms.Label();
             this.textBoxAxtar = new System.Windows.Forms.TextBox();
+            this.labelIncome = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSaleList)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).BeginInit();
@@ -105,6 +108,9 @@ namespace WindowsForm.Forms
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.labelIncome);
             this.groupBox1.Controls.Add(this.labelTotal);
             this.groupBox1.Controls.Add(this.buttonTemizle);
             this.groupBox1.Controls.Add(this.label3);
@@ -117,7 +123,7 @@ namespace WindowsForm.Forms
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBox1.Location = new System.Drawing.Point(12, 43);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(248, 187);
+            this.groupBox1.Size = new System.Drawing.Size(248, 215);
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
             // 
@@ -126,7 +132,7 @@ namespace WindowsForm.Forms
             this.labelTotal.AutoSize = true;
             this.labelTotal.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelTotal.ForeColor = System.Drawing.Color.Red;
-            this.labelTotal.Location = new System.Drawing.Point(185, 163);
+            this.labelTotal.Location = new System.Drawing.Point(166, 163);
             this.labelTotal.Name = "labelTotal";
             this.labelTotal.Size = new System.Drawing.Size(22, 21);
             this.labelTotal.TabIndex = 34;
@@ -208,6 +214,35 @@ namespace WindowsForm.Forms
             this.textBoxAxtar.Size = new System.Drawing.Size(138, 22);
             this.textBoxAxtar.TabIndex = 32;
             // 
+            // labelIncome
+            // 
+            this.labelIncome.AutoSize = true;
+            this.labelIncome.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelIncome.ForeColor = System.Drawing.Color.Red;
+            this.labelIncome.Location = new System.Drawing.Point(166, 184);
+            this.labelIncome.Name = "labelIncome";
+            this.labelIncome.Size = new System.Drawing.Size(22, 21);
+            this.labelIncome.TabIndex = 35;
+            this.labelIncome.Text = "#";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(119, 188);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 17);
+            this.label4.TabIndex = 36;
+            this.label4.Text = "Gəlir :";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(114, 167);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(46, 17);
+            this.label5.TabIndex = 37;
+            this.label5.Text = "Alver :";
+            // 
             // FormSalesList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -249,5 +284,8 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textBoxAxtar;
         private System.Windows.Forms.Label labelTotal;
+        private System.Windows.Forms.Label labelIncome;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
     }
 }

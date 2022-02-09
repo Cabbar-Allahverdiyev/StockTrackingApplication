@@ -359,67 +359,20 @@ namespace WindowsForm.Forms
         //Key Press--------------------------------------->
         private void textBoxBarkodNo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MyControl.MakeTextBoxNumberBox(e);
+            //MyControl.MakeTextBoxNumberBox(e);
 
+           
+            if (checkBoxBarkodNo.Checked == true) 
+            {
+
+                return;
+            }
             string barcodeNumber = textBoxBarkodNo.Text;
+
+
             if (barcodeNumber.Length >= 13)
             {
-                bool isbarcodeExists = false;
-                IResult cartAdded;
-                IResult cartUpdated;
-
-                IDataResult<Product> result = _productManager.GetByProductBarcodeNumber(barcodeNumber);
-                if (result.Success == false)
-                {
-                    FormsMessage.WarningMessage(result.Message);
-                    GroupBoxMehsulControlClear(); //bura yeniden bax
-                    return;
-                }
-                // GroupBoxMehsulControlClear();
-                Cart cart = new Cart();
-                cart.ProductId = result.Data.Id;
-                cart.UserId = staticUserId; //sonra dinamiklesdir
-                cart.Quantity = 1;
-                cart.SoldPrice = result.Data.UnitPrice;
-                cart.TotalPrice = cart.Quantity * cart.SoldPrice;
-
-                if (!cartValidationTool.IsValid(cart))
-                {
-                    return;
-                }
-
-
-
-                IsBarcodeNumberExists(cart.ProductId, out isbarcodeExists);
-                if (isbarcodeExists == true)
-                {
-                    Cart getCart = _cartManager.GetByProductId(cart.ProductId).Data;
-                    cart.Id = getCart.Id;
-                    cart.Quantity = getCart.Quantity + 1;
-                    cart.TotalPrice = cart.SoldPrice * cart.Quantity;
-                    cartUpdated = _cartManager.Update(cart);
-                    if (!cartUpdated.Success)
-                    {
-                        FormsMessage.WarningMessage(cartUpdated.Message);
-                        return;
-                    }
-                    // FormsMessage.SuccessMessage(cartUpdated.Message);
-                }
-                else
-                {
-
-                    cartAdded = _cartManager.Add(cart);
-                    if (!cartAdded.Success)
-                    {
-                        FormsMessage.WarningMessage(cartAdded.Message);
-                        return;
-                    }
-                    //FormsMessage.SuccessMessage(CartMessages.ProductAdded);
-                }
-                GroupBoxMehsulControlClear();
-                CartListRefesh();
-
-                TotalPriceLabelWrite();
+                FindByBarcodeNumberAndAddToCart(barcodeNumber);
 
             }
         }
@@ -538,6 +491,89 @@ namespace WindowsForm.Forms
             }
         }
 
-        
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxBarkodNo.Checked==false)
+            {
+                checkBoxBarkodNo.Text = "Avtomatik";
+                buttonBarkodNoAxtar.Visible = false;
+            }
+            else
+            {
+                checkBoxBarkodNo.Text = "Manual";
+                buttonBarkodNoAxtar.Visible = true;
+            }
+        }
+
+        private void textBoxBarkodNo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonBarkodNoAxtar_Click(object sender, EventArgs e)
+        {
+            FindByBarcodeNumberAndAddToCart(textBoxBarkodNo.Text);
+        }
+
+        private void FindByBarcodeNumberAndAddToCart(string barcodeNumber)
+        {
+
+            IResult cartAdded;
+            IResult cartUpdated;
+            bool isbarcodeExists = false;
+
+            IDataResult<Product> result = _productManager.GetByProductBarcodeNumber(barcodeNumber);
+            if (result.Success == false)
+            {
+                FormsMessage.WarningMessage(result.Message);
+                GroupBoxMehsulControlClear(); //bura yeniden bax
+                return;
+            }
+            // GroupBoxMehsulControlClear();
+            Cart cart = new Cart();
+            cart.ProductId = result.Data.Id;
+            cart.UserId = staticUserId; //sonra dinamiklesdir
+            cart.Quantity = 1;
+            cart.SoldPrice = result.Data.UnitPrice;
+            cart.TotalPrice = cart.Quantity * cart.SoldPrice;
+
+            if (!cartValidationTool.IsValid(cart))
+            {
+                return;
+            }
+
+
+
+            IsBarcodeNumberExists(cart.ProductId, out isbarcodeExists);
+            if (isbarcodeExists == true)
+            {
+                Cart getCart = _cartManager.GetByProductId(cart.ProductId).Data;
+                cart.Id = getCart.Id;
+                cart.Quantity = getCart.Quantity + 1;
+                cart.TotalPrice = cart.SoldPrice * cart.Quantity;
+                cartUpdated = _cartManager.Update(cart);
+                if (!cartUpdated.Success)
+                {
+                    FormsMessage.WarningMessage(cartUpdated.Message);
+                    return;
+                }
+                // FormsMessage.SuccessMessage(cartUpdated.Message);
+            }
+            else
+            {
+
+                cartAdded = _cartManager.Add(cart);
+                if (!cartAdded.Success)
+                {
+                    FormsMessage.WarningMessage(cartAdded.Message);
+                    return;
+                }
+                //FormsMessage.SuccessMessage(CartMessages.ProductAdded);
+            }
+            GroupBoxMehsulControlClear();
+            CartListRefesh();
+
+            TotalPriceLabelWrite();
+        }
     }
 }
