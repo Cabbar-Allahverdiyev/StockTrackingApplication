@@ -23,6 +23,11 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Sale> Sales { get; set; }
         public DbSet<Cart> Carts { get; set; }
         public DbSet<SaleWinForm> SalesWinForms { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<CustomerBalance> CustomerBalances { get; set; }
+        public DbSet<CustomerPayment> CustomerPayments { get; set; }
+        public DbSet<BonusCard> BonusCards { get; set; }
+        public DbSet<Debt> Debts { get; set; }
 
         public DbSet<BarcodeNumber> BarcodeNumbers { get; set; }
     }
