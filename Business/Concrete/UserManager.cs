@@ -63,9 +63,13 @@ namespace Business.Concrete
         [CacheRemoveAspect("IUserService.Get")]
         public IResult Delete(User user)
         {
-            if (user.Id==1002)
+            if (user.Id==3002)
             {
-               // return new ErrorResult("Bu istifadəçi bu proqramı yaratdığı üçün silinə bilməz!");
+                return new ErrorResult("Bu istifadəçi bu proqramı yaratdığı üçün silinə bilməz!");
+            }
+            if (user.Id==2004)
+            {
+                return new ErrorResult("Bu istifadəçi Admin olduğu üçün silinə bilməz!");
             }
             _userDal.Delete(user);
             return new SuccessResult(UserMessages.UserDeleted);
