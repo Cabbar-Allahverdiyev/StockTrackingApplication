@@ -14,6 +14,7 @@ using Business.Constants.Messages;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Utilities.Search.Concrete.ProductSearch;
 using WindowsForm.MyControls;
+using WindowsForm.Core.Controllers.Concrete;
 
 namespace WindowsForm.Forms
 {
@@ -111,18 +112,20 @@ namespace WindowsForm.Forms
 
         private void GroupBoxVarOlanMehsulControlClear()
         {
-            foreach (Control control in GroupBoxVarOlanMehsul.Controls)
-            {
-                if (control is TextBox)
-                {
-                    control.Text = "";
-                }
-                if (control is ComboBox)
-                {
-                    control.Text = "";
-                }
-                LabelMiqdarVB.Text = "";
-            }
+            TextBoxController.ClearAllTextBoxesAndCmboBoxesByGroupBox(GroupBoxVarOlanMehsul);
+            //foreach (Control control in GroupBoxVarOlanMehsul.Controls)
+            //{
+              
+            //    if (control is TextBox)
+            //    {
+            //        control.Text = "";
+            //    }
+            //    if (control is ComboBox)
+            //    {
+            //        control.Text = "";
+            //    }
+               LabelMiqdarVB.Text = "";
+            //}
         }
 
         private void ChangeTheColorOfTheSoughtValue(int columnIndex)

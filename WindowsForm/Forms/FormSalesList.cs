@@ -12,6 +12,7 @@ using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.Concrete;
+using WindowsForm.Utilities.Search.Concrete.SaleSearch;
 
 namespace WindowsForm.Forms
 {
@@ -30,6 +31,8 @@ namespace WindowsForm.Forms
             ComboBoxController.WriteDaysInComboBox(comboBoxDays);
             ComboBoxController.WriteMonthsInComboBox(comboBoxMonths);
             ComboBoxController.WriteYearsInComboBox(comboBoxYears);
+            comboBoxAxtar.Items.Add("MehsulAdi");
+            comboBoxAxtar.Items.Add("Istifadeci");
             SaleListRefesh();
         }
        
@@ -48,6 +51,7 @@ namespace WindowsForm.Forms
                    : DateTime.Now.Year;
                 decimal saleTotal = 0;
                 decimal IncomeTotal = 0;
+                int staticUseraId = LoginForm.UserId;
 
                 if (comboBoxDays.SelectedItem == null && comboBoxMonths.SelectedItem != null && comboBoxYears.SelectedItem == null)
                 {
@@ -67,7 +71,11 @@ namespace WindowsForm.Forms
                     }
                    
                     labelTotal.Text = saleTotal.ToString();
-                    labelIncome.Text = IncomeTotal.ToString();
+                    if (staticUseraId == 3002 || staticUseraId == 2004)
+                    {
+                        labelIncome.Text = IncomeTotal.ToString();
+                    }
+                        
                     dataGridViewSaleList.DataSource = dataMonth;
                     return;
                 }
@@ -90,7 +98,10 @@ namespace WindowsForm.Forms
                     }
 
                     labelTotal.Text = saleTotal.ToString();
-                    labelIncome.Text = IncomeTotal.ToString();
+                    if (staticUseraId == 3002 || staticUseraId == 2004)
+                    {
+                        labelIncome.Text = IncomeTotal.ToString();
+                    }
                     dataGridViewSaleList.DataSource = dataYear;
                     return;
                 }
@@ -110,7 +121,10 @@ namespace WindowsForm.Forms
                         }
                     }
                     labelTotal.Text = saleTotal.ToString();
-                    labelIncome.Text = IncomeTotal.ToString();
+                    if (staticUseraId == 3002 || staticUseraId == 2004)
+                    {
+                        labelIncome.Text = IncomeTotal.ToString();
+                    }
                     dataGridViewSaleList.DataSource = dataMonth;
                     return;
                 }
@@ -127,7 +141,10 @@ namespace WindowsForm.Forms
                     }
                 }
                 labelTotal.Text = saleTotal.ToString();
-                labelIncome.Text = IncomeTotal.ToString();
+                if (staticUseraId == 3002 || staticUseraId == 2004)
+                {
+                    labelIncome.Text = IncomeTotal.ToString();
+                }
                 dataGridViewSaleList.DataSource = data;
             }
             catch (Exception ex)
@@ -151,6 +168,12 @@ namespace WindowsForm.Forms
         private void SaleListRefesh()
         {
             dataGridViewSaleList.DataSource = _saleWinFormManager.GetAllSaleWinFormDtoDetails().Data;
+        }
+
+        private void textBoxAxtar_TextChanged(object sender, EventArgs e)
+        {
+            SaleWinFormDetailDtoSearch detailSearch = new SaleWinFormDetailDtoSearch();
+            detailSearch.SearchBySelectedValueOfComboBoxAndWriteToDataGridView(textBoxAxtar,dataGridViewSaleList,comboBoxAxtar);
         }
     }
 }
