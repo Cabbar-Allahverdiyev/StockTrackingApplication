@@ -21,7 +21,7 @@ namespace Business.Concrete
         }
         //CRUD
         [ValidationAspect(typeof(BrandValidator))]
-        [CacheRemoveAspect("IBarcodeNumberService.Get")]
+        [CacheRemoveAspect("IBrandService.Get")]
         public IResult Add(Brand brand)
         {
             IResult result = GetAllByName(brand.BrandName);
@@ -33,7 +33,7 @@ namespace Business.Concrete
             return new ErrorResult(BrandMessages.BrandNotAdded);
         }
 
-        [CacheRemoveAspect("IBarcodeNumberService.Get")]
+        [CacheRemoveAspect("IBrandService.Get")]
         public IResult Delete(Brand brand)
         {
             _brandDal.Delete(brand);
@@ -41,7 +41,7 @@ namespace Business.Concrete
         }
 
         [ValidationAspect(typeof(BrandValidator))]
-        [CacheRemoveAspect("IBarcodeNumberService.Get")]
+        [CacheRemoveAspect("IBrandService.Get")]
         public IResult Update(Brand brand)
         {
             _brandDal.Update(brand);

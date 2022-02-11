@@ -312,8 +312,8 @@ namespace Business.Concrete
         private IResult PhoneNumberFormatControl(string phoneNumber)
         {
             string format = @"^(0(\d{9}))$";
-            Match Eslesme = Regex.Match(phoneNumber, format, RegexOptions.IgnoreCase);
-            if (Eslesme.Success)
+            Match match = Regex.Match(phoneNumber, format, RegexOptions.IgnoreCase);
+            if (match.Success)
             {
                 return new SuccessResult();
             }
