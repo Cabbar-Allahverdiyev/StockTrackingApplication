@@ -23,6 +23,8 @@ namespace Business.Constants.Messages
         public static string NotFound = "Belə bir Səbət yoxdur";
 
         public static string QuantityMustBeGreaterThanZero = "Miqdar '0' dan böyük olamlıdır";
+        public static string TotalPriceMustBeGreaterThanZero = "Cəm qiyməti '0' dan böyük olamlıdır";
+        public static string SoldPriceMustBeGreaterThanZero = "Satış qiyməti '0' dan böyük olamlıdır";
         public static string ProductNotFound = "Səbətdə belə bir məhsul yoxdur";
         public static string ProductFound = "Məhsula uyğun səbət tapıldı";
 
