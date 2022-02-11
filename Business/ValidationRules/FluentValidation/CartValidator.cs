@@ -16,28 +16,20 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(c => c.ProductId).GreaterThan(0);
 
             RuleFor(c => c.Quantity).NotEmpty();
-            RuleFor(c => c.Quantity).GreaterThan(0);
-            RuleFor(c => c.Quantity).Must(MustNotBeLessThanZero).WithMessage(CartMessages.QuantityMustBeGreaterThanZero);
+            RuleFor(c => c.Quantity).GreaterThan(0).WithMessage(CartMessages.QuantityMustBeGreaterThanZero);
+            //  RuleFor(c => c.Quantity).Must(MustNotBeLessThanZero).WithMessage(CartMessages.QuantityMustBeGreaterThanZero);
 
             RuleFor(c => c.SoldPrice).NotEmpty();
-            RuleFor(c => c.SoldPrice).GreaterThan(0);
-            RuleFor(c => c.SoldPrice).Must(MustNotBeLessThanZero).WithMessage(CartMessages.QuantityMustBeGreaterThanZero);
+            RuleFor(c => c.SoldPrice).GreaterThan(0).WithMessage(CartMessages.SoldPriceMustBeGreaterThanZero);
+            // RuleFor(c => c.SoldPrice).Must(MustNotBeLessThanZero).WithMessage(CartMessages.SoldPriceMustBeGreaterThanZero);
 
             RuleFor(c => c.TotalPrice).NotEmpty();
-            RuleFor(c => c.TotalPrice).GreaterThan(0);
-            RuleFor(c => c.TotalPrice).Must(MustNotBeLessThanZero).WithMessage(CartMessages.QuantityMustBeGreaterThanZero);
+            RuleFor(c => c.TotalPrice).GreaterThan(0).WithMessage(CartMessages.TotalPriceMustBeGreaterThanZero); 
+            //RuleFor(c => c.TotalPrice).Must(MustNotBeLessThanZero).WithMessage(CartMessages.TotalPriceMustBeGreaterThanZero);
 
 
         }
 
-        private bool MustNotBeLessThanZero(int value)
-        {
-            return value > 0;
-        }
-
-        private bool MustNotBeLessThanZero(decimal value)
-        {
-            return value > 0;
-        }
+       
     }
 }
