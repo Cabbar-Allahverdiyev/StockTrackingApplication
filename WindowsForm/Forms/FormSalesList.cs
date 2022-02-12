@@ -2,7 +2,7 @@
 using Business.Constants.Messages;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
-using Entities.DTOs;
+using Entities.DTOs.SaleWinFormDtos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

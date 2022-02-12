@@ -263,7 +263,7 @@ namespace WindowsForm.Forms.UserForms
 
         private void məhsulƏlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //OpenChildForm(new FormProductAdd(), sender);
+            OpenChildForm(new FormProductAdd(), sender);
         }
 
         private void markalarToolStripMenuItem_Click(object sender, EventArgs e)

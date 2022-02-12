@@ -41,6 +41,7 @@ namespace WindowsForm.Forms
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBoxMehsul = new System.Windows.Forms.GroupBox();
+            this.buttonBarkodNoAxtar = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonTemizle = new System.Windows.Forms.Button();
             this.buttoElaveEt = new System.Windows.Forms.Button();
@@ -65,7 +66,7 @@ namespace WindowsForm.Forms
             this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
             this.label12 = new System.Windows.Forms.Label();
             this.checkBoxBarkodNo = new System.Windows.Forms.CheckBox();
-            this.buttonBarkodNoAxtar = new System.Windows.Forms.Button();
+            this.buttonBorcElaveEt = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductList)).BeginInit();
             this.groupBoxMusteri.SuspendLayout();
             this.groupBoxMehsul.SuspendLayout();
@@ -212,6 +213,20 @@ namespace WindowsForm.Forms
             this.groupBoxMehsul.TabIndex = 9;
             this.groupBoxMehsul.TabStop = false;
             this.groupBoxMehsul.Text = "Məhsul";
+            // 
+            // buttonBarkodNoAxtar
+            // 
+            this.buttonBarkodNoAxtar.FlatAppearance.BorderSize = 0;
+            this.buttonBarkodNoAxtar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBarkodNoAxtar.Image = global::WindowsForm.Properties.Resources.searchFerqliBlack_16px;
+            this.buttonBarkodNoAxtar.Location = new System.Drawing.Point(6, 170);
+            this.buttonBarkodNoAxtar.Name = "buttonBarkodNoAxtar";
+            this.buttonBarkodNoAxtar.Size = new System.Drawing.Size(18, 18);
+            this.buttonBarkodNoAxtar.TabIndex = 20;
+            this.buttonBarkodNoAxtar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonBarkodNoAxtar.UseVisualStyleBackColor = true;
+            this.buttonBarkodNoAxtar.Visible = false;
+            this.buttonBarkodNoAxtar.Click += new System.EventHandler(this.buttonBarkodNoAxtar_Click);
             // 
             // pictureBox1
             // 
@@ -467,19 +482,19 @@ namespace WindowsForm.Forms
             this.checkBoxBarkodNo.UseVisualStyleBackColor = true;
             this.checkBoxBarkodNo.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // buttonBarkodNoAxtar
+            // buttonBorcElaveEt
             // 
-            this.buttonBarkodNoAxtar.FlatAppearance.BorderSize = 0;
-            this.buttonBarkodNoAxtar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBarkodNoAxtar.Image = global::WindowsForm.Properties.Resources.searchFerqliBlack_16px;
-            this.buttonBarkodNoAxtar.Location = new System.Drawing.Point(6, 170);
-            this.buttonBarkodNoAxtar.Name = "buttonBarkodNoAxtar";
-            this.buttonBarkodNoAxtar.Size = new System.Drawing.Size(18, 18);
-            this.buttonBarkodNoAxtar.TabIndex = 20;
-            this.buttonBarkodNoAxtar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonBarkodNoAxtar.UseVisualStyleBackColor = true;
-            this.buttonBarkodNoAxtar.Visible = false;
-            this.buttonBarkodNoAxtar.Click += new System.EventHandler(this.buttonBarkodNoAxtar_Click);
+            this.buttonBorcElaveEt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBorcElaveEt.Image = ((System.Drawing.Image)(resources.GetObject("buttonBorcElaveEt.Image")));
+            this.buttonBorcElaveEt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonBorcElaveEt.Location = new System.Drawing.Point(169, 33);
+            this.buttonBorcElaveEt.Name = "buttonBorcElaveEt";
+            this.buttonBorcElaveEt.Size = new System.Drawing.Size(88, 23);
+            this.buttonBorcElaveEt.TabIndex = 36;
+            this.buttonBorcElaveEt.Text = "Əlavə et";
+            this.buttonBorcElaveEt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonBorcElaveEt.UseVisualStyleBackColor = true;
+            this.buttonBorcElaveEt.Click += new System.EventHandler(this.buttonBorcElaveEt_Click);
             // 
             // SalesForm
             // 
@@ -487,6 +502,7 @@ namespace WindowsForm.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(1174, 641);
+            this.Controls.Add(this.buttonBorcElaveEt);
             this.Controls.Add(this.checkBoxBarkodNo);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.pictureBoxRefresh);
@@ -554,5 +570,6 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.CheckBox checkBoxBarkodNo;
         private System.Windows.Forms.Button buttonBarkodNoAxtar;
+        private System.Windows.Forms.Button buttonBorcElaveEt;
     }
 }

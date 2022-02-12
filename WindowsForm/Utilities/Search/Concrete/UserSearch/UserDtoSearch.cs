@@ -1,7 +1,7 @@
 ﻿using Business.Concrete;
 using Business.Constants.Messages;
 using DataAccess.Concrete.EntityFramework;
-using Entities.DTOs;
+using Entities.DTOs.UserDtos;
 using System;
 using System.Collections.Generic;
 using System.Text;

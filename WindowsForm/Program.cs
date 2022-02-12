@@ -27,10 +27,14 @@ namespace WindowsForm
             Application.SetCompatibleTextRenderingDefault(false);
             // Application.Run(new Forms.Dashboard());
             //Application.Run(new Forms.UserForms.UserDashboard());
-            Application.Run(new Forms.LoginForm());
-            //Application.Run(new Forms.SupplierUpdateForm());
+
+            //Application.Run(new Forms.LoginForm());
+
+            //Application.Run(new Forms.SalesForm());
             //Application.Run(new Forms.UserForms.AdminValidationForm());
-            //Application.Run(new Forms.USBBarcodeScannerForm());
+           // Application.Run(new Forms.CustomerPaymentForm()) ;
+           Application.Run(new Forms.CustomerForm()) ;
+
         }
     }
 }

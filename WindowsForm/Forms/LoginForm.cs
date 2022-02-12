@@ -3,7 +3,7 @@ using Business.Constants.Messages;
 using Core.Entities.Concrete;
 using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
-using Entities.DTOs;
+using Entities.DTOs.UserDtos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

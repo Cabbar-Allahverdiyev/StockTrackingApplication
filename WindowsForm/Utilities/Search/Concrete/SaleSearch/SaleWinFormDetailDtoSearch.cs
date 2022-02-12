@@ -1,6 +1,6 @@
 ﻿using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
-using Entities.DTOs;
+using Entities.DTOs.SaleWinFormDtos;
 using System;
 using System.Collections.Generic;
 using System.Text;

@@ -58,26 +58,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="ButtonSalesFormSil.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAL5JREFUOE/F
-        krEKQVEch09KWQyewWQwMps9iKzK6hnsGHgBozDyAAbFZlQmZVTi+9/fvXdwz7lJyldf/69T53TO7bpf
-        8Yw9YdUWvmWIA6WbYUsZzakynw6OlNGmC/bjmRyWSxsXygjbbE+zmVDCezwz1HGvDN6ggTtllgpelcFv
-        0MWJ0s8Ny0ovttkOCXLEmjJDEQ9ozwiyxuS/ePeBcyxgkDH2lN/RxDP6bmB+xAqXyhTfWpAtbpQpvrW/
-        49wL7+4wlXeRpuYAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="ButonSalesFormSatisIptal.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAVdJREFUOE9j
-        oCr4FhBl9t8hgQPKxQD3HRw43ujbmkG5qOBLQHTBZ5/w/588Qw++cgjlgQrDwWNLS87Xhva7X+ra/H+h
-        YV4BFYYAkM1Qzf8/ugX9/+Dkv+exZSgnVBqq2W4PWLOmxf/nqqb/nysZmEKlGRhAzv7oGboHrNnZ//97
-        B9//b229gYZYcmLT/FTRcM99BQdUr/4H2giyGaT5na3X/7eWbv/fmDrtwab5sYwl3HUoAOTs97ZeuyGa
-        nf+/MrT/j6b54AtxPW6ocuwA5GSg5t1kaQYBlNCGar4sa3Bhk6jBzv2i2hixgwJwad4oavBlr5jx/0Ni
-        JgdxGoJNM8jZm0UNt4I1i5vA8J5j6IEISmG4QhukGKQJyQCwIfuRoxGUPLFphkozYDPkgIQpIiGBwAtN
-        ywKYs7GFNtSQ3SDNB8WNUZMyDICSJ0YKQwIgZ2PYTBlgYAAA/i0FZDF6iicAAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="buttonTemizle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAANJJREFUOE/N
@@ -97,24 +77,13 @@
         YII=
 </value>
   </data>
-  <data name="ButtonSalesFormSatisEtmek.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="ButtonSalesFormSil.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAPpJREFUOE/N
-        0D9OAkEYhvGRig4LbGg9BJWFBjuExEQLEmttoDMxocEjUGgIJGhl4Z+CwkYv4D28iM8zmdko2ahU8CY/
-        WGa/99sNYWOyhUOc/JOzdop4cIOy4TK3aKHIMx5XZCemiU+UDf3Gjt3wgCrq8PWOYPYwwRhxkHTgjLN2
-        7MZtHrzgAi44heV9HMD/pwvvOeOsHbvxw63n/khZoIIP+Id5bSnHWTs/FijnKX1fwmXm+4I8Xyzw1ebw
-        ScazHVi6RwN5qTN3aKNYYAZ4xxS7eMUVhnhLZzM404eJXQ/PkF8r62GE63S9fN+ODwvbOMbywF/s1LDW
-        hPAFj2JKmh76E3wAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="buttonBorcElaveEt.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAOVJREFUOE/F
-        klsOATEUhufB5QUrcFmHYDmI7YjEClxWIGItbgn2wBP/107TmU7Hm/iSLz0V50x7TpNfMJJb+ZAveZcb
-        OZBfqcilPMmxbMtquk7kWS4k/4tC8k42zK4Iv+8lRQpw7KMsS3Y05UUWrsOdOXbIO12zTOXahh4axl1D
-        YgW6ksbmoNs1GxpIDHXU5dOGHk7QsWGObKKjJ2829DBnRhUSKzCTKxt6hpL50+VvtORV9s0ugPky57Ii
-        JB/k3Owi8MIowpwZFT2hsXSdY/NlkktfooNHwpxpFNNh5c7RY/+bJPkAw8ouKgWHbO0AAAAASUVORK5C
-        YII=
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAL5JREFUOE/F
+        krEKQVEch09KWQyewWQwMps9iKzK6hnsGHgBozDyAAbFZlQmZVTi+9/fvXdwz7lJyldf/69T53TO7bpf
+        8Yw9YdUWvmWIA6WbYUsZzakynw6OlNGmC/bjmRyWSxsXygjbbE+zmVDCezwz1HGvDN6ggTtllgpelcFv
+        0MWJ0s8Ny0ovttkOCXLEmjJDEQ9ozwiyxuS/ePeBcyxgkDH2lN/RxDP6bmB+xAqXyhTfWpAtbpQpvrW/
+        49wL7+4wlXeRpuYAAAAASUVORK5CYII=
 </value>
   </data>
 </root>

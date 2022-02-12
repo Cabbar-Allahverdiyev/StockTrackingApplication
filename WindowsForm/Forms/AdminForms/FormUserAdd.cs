@@ -5,7 +5,7 @@ using Business.ValidationRules.FluentValidation;
 using Core.Entities.Concrete;
 using Core.Utilities.Security.JWT;
 using DataAccess.Concrete.EntityFramework;
-using Entities.DTOs;
+using Entities.DTOs.UserDtos;
 using FluentValidation.Results;
 using Microsoft.Extensions.Configuration;
 using System;

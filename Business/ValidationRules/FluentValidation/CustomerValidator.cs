@@ -29,12 +29,12 @@ namespace Business.ValidationRules.FluentValidation
 
             //RuleFor(c => c.Email).NotEmpty();
             RuleFor(c => c.Email).MaximumLength(50);
-            RuleFor(c => c.Email).EmailAddress();
+            //RuleFor(c => c.Email).EmailAddress();
 
             // RuleFor(c => c.Address).NotEmpty();
             RuleFor(c => c.Address).MaximumLength(100);
 
-            RuleFor(c => c.CreatedDate).NotEmpty();
+            //RuleFor(c => c.CreatedDate).NotEmpty();
 
         }
     }

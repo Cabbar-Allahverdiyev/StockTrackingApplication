@@ -5,7 +5,7 @@ using Business.ValidationRules.FluentValidation;
 using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
-using Entities.DTOs;
+using Entities.DTOs.CartDtos;
 using FluentValidation.Results;
 using System;
 using System.Collections.Generic;

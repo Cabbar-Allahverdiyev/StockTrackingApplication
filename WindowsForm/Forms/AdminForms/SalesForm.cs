@@ -5,6 +5,7 @@ using Business.ValidationRules.FluentValidation;
 using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
+using Entities.DTOs.CartDtos;
 using Entities.DTOs;
 using FluentValidation.Results;
 using System;
@@ -574,6 +575,79 @@ namespace WindowsForm.Forms
             CartListRefesh();
 
             TotalPriceLabelWrite();
+        }
+
+        private void buttonBorcElaveEt_Click(object sender, EventArgs e)
+        {
+            //try
+            //{
+                int customerId = 2;
+                DebtManager _debtManager = new DebtManager(new EfDebtDal(),new CustomerBalanceManager(new EfCustomerBalanceDal()));
+                Debt debt = new Debt();
+                //SaleWinForm saleWinForm = new SaleWinForm();
+                IDataResult<List<Cart>> carts = _cartManager.GetAllByUserId(staticUserId);
+                IResult saleWinFormAdded;
+                IResult debtAdded;
+                IResult productUpdated;
+                List<string> messages = new List<string>();
+                string resultMessage = "";
+                string newResultMessage = "";
+                if (carts.Data.Count != 0)
+                {
+                    foreach (Cart cart in carts.Data)
+                    {
+
+                        Product product = _productManager.GetByProductId(cart.ProductId).Data;
+                        product.UnitsInStock -= cart.Quantity;
+                        //debt.Id = 0;
+                        debt.ProductId = cart.ProductId;
+                        debt.CustomerId = customerId;
+                        debt.SoldPrice = cart.SoldPrice;
+                        debt.Quantity = cart.Quantity;
+                        // saleWinForm.TotalPrice = saleWinForm.SoldPrice * saleWinForm.Quantity;
+                        //if (!saleValidationTool.IsValid(saleWinForm))
+                        //{
+                        //    return;
+                        //}
+
+                        //saleWinFormAdded = _saleWinFormManager.Add(saleWinForm);
+                        debtAdded = _debtManager.Add(debt);
+                        productUpdated = _productManager.Update(product);
+                        if (!debtAdded.Success || !productUpdated.Success)
+                        {
+                            messages.Add(product.BarcodeNumber + " - " + product.ProductName + " : " + debtAdded.Message + " & " + productUpdated.Message);
+
+                        }
+                        messages.Add(product.ProductName + " : " + debtAdded.Message + " & " + productUpdated.Message);
+
+
+                    }
+                    foreach (string message in messages)
+                    {
+                        resultMessage += $" {message} {newResultMessage} |";
+                    }
+                    FormsMessage.SuccessMessage(resultMessage);
+
+
+                    //GroupBoxIstifadeciControlClear();
+                }
+                else
+                {
+                    FormsMessage.InformationMessage(CartMessages.ProductNotFound);
+                    return;
+                }
+                RemoveCart();
+                CartListRefesh();
+                ProductListRefesh();
+                GroupBoxMehsulControlClear();
+                TotalPriceLabelWrite();
+           // }
+            //catch (Exception ex)
+            //{
+
+            //    FormsMessage.ErrorMessage($"{ButtonMessages.SatisEtmekError} {AuthMessages.ErrorMessage} /{ex.Message}");
+            //    return;
+            //}
         }
     }
 }

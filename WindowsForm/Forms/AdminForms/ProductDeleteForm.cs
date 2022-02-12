@@ -1,6 +1,6 @@
 ﻿using Business.Concrete;
 using Entities.Concrete;
-using Entities.DTOs;
+using Entities.DTOs.ProductDtos;
 using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
 using System;
