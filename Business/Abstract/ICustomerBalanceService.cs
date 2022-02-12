@@ -13,5 +13,7 @@ namespace Business.Abstract
         IResult Update(CustomerBalance customerBalance);
         IResult Delete(CustomerBalance customerBalance);
         IDataResult<CustomerBalance> GetById(int id);
+
+        IDataResult<CustomerBalance> GetByCustomerId(int customerId);
     }
 }
