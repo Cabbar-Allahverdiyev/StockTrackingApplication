@@ -15,26 +15,64 @@ namespace Business.Concrete
     public class DebtManager : IDebtService
     {
         IDebtDal _debtDal;
-        public DebtManager(IDebtDal debtDal)
+        ICustomerBalanceService _customerBalanceService;
+
+        public DebtManager(IDebtDal debtDal, ICustomerBalanceService customerBalanceService)
         {
             _debtDal = debtDal;
+            _customerBalanceService = customerBalanceService;
         }
+
         //CRUD
         [ValidationAspect(typeof(DebtValidator))]
         [CacheRemoveAspect("IDebtService.Get")]
-        public IResult Add(Debt debt )
+        public IResult Add(Debt debt)
         {
-            IResult result = GetByCustomerId(debt.Id);
+            //IResult result = GetByCustomerId(debt.CustomerId);
+            IDataResult<CustomerBalance> result = _customerBalanceService.GetByCustomerId(debt.CustomerId);
             if (result.Success)
             {
+                result.Data.Debt += (debt.SoldPrice * debt.Quantity);
+                if (result.Data.Balance >= result.Data.Debt)
+                {
+                    result.Data.Balance -= result.Data.Debt;
+                    result.Data.Debt = 0;
+                    //bura nezer yetir gor dogru isleyirmi
+                }
+                else
+                {
+                    result.Data.Debt -= result.Data.Balance;
+                    result.Data.Balance = 0;
+                }
+                // result.Data.DateOfLastLoan = DateTime.Now;
+                IResult customerBalanceUpdated = _customerBalanceService.Update(result.Data);
+                if (!customerBalanceUpdated.Success)
+                {
+                    return new ErrorResult($" {DebtMessages.NotAdded} çünki {customerBalanceUpdated.Message} ");
+                }
+
+                debt.Date = DateTime.Now;
                 _debtDal.Add(debt);
-                return new SuccessResult(DebtMessages.Added);
+                return new SuccessResult($"{DebtMessages.Added} və {result.Message}");
             }
-            return new ErrorResult(DebtMessages.NotAdded);
+
+            CustomerBalance customerBalance = new CustomerBalance();
+            customerBalance.CustomerId = debt.CustomerId;
+            customerBalance.Debt = (debt.Quantity * debt.SoldPrice);
+            customerBalance.Balance = 0;
+            IResult customerBalanceAdded = _customerBalanceService.Add(customerBalance);
+            if (!customerBalanceAdded.Success)
+            {
+                return new ErrorResult($"{DebtMessages.NotAdded} çünki {customerBalanceAdded.Message}");
+            }
+
+            debt.Date = DateTime.Now;
+            _debtDal.Add(debt);
+            return new SuccessResult($"{DebtMessages.Added} və {customerBalanceAdded.Message}");
         }
 
         [CacheRemoveAspect("IDebtService.Get")]
-        public IResult Delete( Debt debt)
+        public IResult Delete(Debt debt)
         {
             _debtDal.Delete(debt);
             return new SuccessResult(DebtMessages.Deleted);
@@ -42,7 +80,7 @@ namespace Business.Concrete
 
         [ValidationAspect(typeof(DebtValidator))]
         [CacheRemoveAspect("IDebtService.Get")]
-        public IResult Update(Debt debt )
+        public IResult Update(Debt debt)
         {
             _debtDal.Update(debt);
             return new SuccessResult(DebtMessages.Updated);
@@ -52,7 +90,7 @@ namespace Business.Concrete
         public IDataResult<List<Debt>> GetAll()
         {
             List<Debt> get = _debtDal.GetAll();
-            return new SuccessDataResult<List<Debt>>(get,DebtMessages .GetAll);
+            return new SuccessDataResult<List<Debt>>(get, DebtMessages.GetAll);
         }
 
         [CacheAspect]
@@ -63,7 +101,7 @@ namespace Business.Concrete
             {
                 return new ErrorDataResult<Debt>(DebtMessages.NotFound);
             }
-            return new SuccessDataResult<Debt>(get, DebtMessages. Found);
+            return new SuccessDataResult<Debt>(get, DebtMessages.Found);
         }
 
 

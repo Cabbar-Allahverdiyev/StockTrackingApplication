@@ -1,14 +1,13 @@
 ﻿using Business.Abstract;
 using Business.Constants.Messages;
 using Business.ValidationRules.FluentValidation;
-using Business.Abstract;
 using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
-using Entities.DTOs;
+using Entities.DTOs.ProductDtos;
 using System;
 using System.Collections.Generic;
 using System.Text;

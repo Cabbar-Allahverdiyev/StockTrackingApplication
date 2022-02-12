@@ -5,7 +5,7 @@ using Core.Utilities.Business;
 using Core.Utilities.Results;
 using Core.Utilities.Security.Hashing;
 using Core.Utilities.Security.JWT;
-using Entities.DTOs;
+using Entities.DTOs.UserDtos;
 using System;
 using System.Collections.Generic;
 using System.Text;

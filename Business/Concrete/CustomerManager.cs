@@ -8,6 +8,7 @@ using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
+using Entities.DTOs.CustomerDtos;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,9 +19,11 @@ namespace Business.Concrete
     {
 
         ICustomerDal _customerDal;
-        public CustomerManager(ICustomerDal customerDal)
+        ICustomerBalanceService _balanceService;
+        public CustomerManager(ICustomerDal customerDal,ICustomerBalanceService balanceService)
         {
             _customerDal = customerDal;
+            _balanceService = balanceService;
         }
         //CRUD
         [ValidationAspect(typeof(CustomerValidator))]
@@ -35,7 +38,16 @@ namespace Business.Concrete
                 return new ErrorDataResult<Customer>(result.Message);
             }
 
+            customer.CreatedDate = DateTime.Now;
+            CustomerBalance customerBalance = new CustomerBalance();
+            customerBalance.Balance = 0;
+            customerBalance.Debt = 0;
+           
             _customerDal.Add(customer);
+
+            IDataResult<Customer> get = GetByPhoneNumber(customer.PhoneNumber);
+            customerBalance.CustomerId = get.Data.Id;
+            _balanceService.Add(customerBalance); 
             return new SuccessResult(CustomerMessages.Added);
         }
 
@@ -82,6 +94,28 @@ namespace Business.Concrete
             return new SuccessDataResult<Customer>(get, BrandMessages.BrandGetAll);
         }
 
+        [CacheAspect]
+        public IDataResult<Customer> GetByPhoneNumber(string phoneNumber)
+        {
+            Customer get = _customerDal.Get(c => c.PhoneNumber .Equals( phoneNumber));
+            if (get == null)
+            {
+                return new ErrorDataResult<Customer>(CustomerMessages.NotFound);
+            }
+            return new SuccessDataResult<Customer>(get, BrandMessages.BrandGetAll);
+        }
+
+        //Dtos---------------------------------------->
+        public IDataResult<List<CustomerDto>> GetCustomerDetails()
+        {
+            List<CustomerDto> get = _customerDal.GetCustomerDetails();
+            //if (get == null)
+            //{
+            //    return new ErrorDataResult<List<CustomerDto>>(CustomerMessages.NotFound);
+            //}
+            return new SuccessDataResult<List<CustomerDto>>(get, BrandMessages.BrandGetAll);
+        }
+
         //Elave-------------------->
         private IResult IsThereFirstNameAndLastNameAvailable(string firstName, string lastName)
         {
@@ -122,7 +156,7 @@ namespace Business.Concrete
             List<Customer> customerGetAll = _customerDal.GetAll();
             foreach (Customer customer in customerGetAll)
             {
-                if (customer.Email.ToLower().Equals(email.ToLower()))
+                if (customer.Email.ToLower().Equals(email.ToLower())&& customer.Email!="")
                 {
                     return new ErrorResult(CustomerMessages.EmailAvailable);
                 }
@@ -179,5 +213,7 @@ namespace Business.Concrete
             }
             return new SuccessResult();
         }
+
+     
     }
 }
