@@ -23,7 +23,8 @@ namespace DataAccess.Concrete.EntityFramework
                              select new CustomerDto
                              {
                                  CustomerId = c.Id,
-                                 FullName = c.FirstName+" " + c.LastName,
+                                 FirstName = c.FirstName,
+                                 LastName = c.LastName,
                                  PhoneNumber = c.PhoneNumber,
                                  Address = c.Address,
                                  Debt = cb.Debt,

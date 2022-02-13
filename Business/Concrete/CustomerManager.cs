@@ -32,6 +32,7 @@ namespace Business.Concrete
         {
             IResult result = BusinessRules.Run(IsThereFirstNameAndLastNameAvailable(customer.FirstName, customer.LastName)
                                                 , IsEmailExists(customer.Email)
+                                                ,IsPhoneNumberExists(customer.PhoneNumber)
                                                 );
             if (result != null)
             {
@@ -91,7 +92,7 @@ namespace Business.Concrete
             {
                 return new ErrorDataResult<Customer>(CustomerMessages.NotFound);
             }
-            return new SuccessDataResult<Customer>(get, BrandMessages.BrandGetAll);
+            return new SuccessDataResult<Customer>(get, CustomerMessages.Found);
         }
 
         [CacheAspect]
@@ -102,7 +103,7 @@ namespace Business.Concrete
             {
                 return new ErrorDataResult<Customer>(CustomerMessages.NotFound);
             }
-            return new SuccessDataResult<Customer>(get, BrandMessages.BrandGetAll);
+            return new SuccessDataResult<Customer>(get, CustomerMessages.Found);
         }
 
         //Dtos---------------------------------------->
@@ -113,7 +114,7 @@ namespace Business.Concrete
             //{
             //    return new ErrorDataResult<List<CustomerDto>>(CustomerMessages.NotFound);
             //}
-            return new SuccessDataResult<List<CustomerDto>>(get, BrandMessages.BrandGetAll);
+            return new SuccessDataResult<List<CustomerDto>>(get, CustomerMessages.GetAll);
         }
 
         //Elave-------------------->

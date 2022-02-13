@@ -28,12 +28,12 @@ namespace WindowsForm
             // Application.Run(new Forms.Dashboard());
             //Application.Run(new Forms.UserForms.UserDashboard());
 
-            //Application.Run(new Forms.LoginForm());
+            Application.Run(new Forms.LoginForm());
 
             //Application.Run(new Forms.SalesForm());
             //Application.Run(new Forms.UserForms.AdminValidationForm());
-           // Application.Run(new Forms.CustomerPaymentForm()) ;
-           Application.Run(new Forms.CustomerForm()) ;
+           //Application.Run(new Forms.CustomerPaymentForm()) ;
+           //Application.Run(new Forms.CustomerForm()) ;
 
         }
     }

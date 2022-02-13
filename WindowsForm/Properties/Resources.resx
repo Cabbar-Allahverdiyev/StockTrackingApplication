@@ -187,14 +187,14 @@
   <data name="info" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\info.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="new_moon_120px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\new_moon_120px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="shortcuts_64pxkopy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\shortcuts_64pxkopy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bunch_of_keys_blue_padding_24px_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bunch_of_keys_blue_padding_24px_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_search_16px_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Wwwroot\Images\Icons\icons8_search_16px_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="success_light_italik" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\success_light_italik.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -205,14 +205,17 @@
   <data name="shortcuts_120px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\shortcuts_120px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8_search_16px_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Wwwroot\Images\Icons\icons8_search_16px_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8_shortcuts_128px (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8_shortcuts_128px (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="error" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\error.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-delete-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-delete-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="choose_page_16px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\choose_page_16px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bunch_of_keys_blue_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bunch_of_keys_blue_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -223,6 +226,9 @@
   <data name="elaveEtBlack" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Wwwroot\Images\Icons\elaveEtBlack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icons8_shortcuts_96px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8_shortcuts_96px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="searchFerqli_16px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\searchFerqli_16px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -232,13 +238,13 @@
   <data name="icons8-synchronize-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-synchronize-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8_shortcuts_128px (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8_shortcuts_128px (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="new_moon_120px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\new_moon_120px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="errorCloud_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\errorCloud_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8_shortcuts_96px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8_shortcuts_96px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="payment_history_16px_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\payment_history_16px_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

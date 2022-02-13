@@ -34,30 +34,30 @@ namespace WindowsForm.Forms
         {
             try
             {
+                CustomerPayment customerPayment = new CustomerPayment();
+                customerPayment.CustomerId = Convert.ToInt32(comboBoxMusteri.SelectedValue);
+                customerPayment.Value = decimal.Parse(textBoxMebleg.Text);
 
+                if (!validationTool.IsValid(customerPayment))
+                {
+                    return;
+                }
+
+                IResult result = _paymentManager.Add(customerPayment);
+                if (!result.Success)
+                {
+                    FormsMessage.ErrorMessage(result.Message);
+                    return;
+                }
+                FormsMessage.SuccessMessage(result.Message);
+                CustomerPaymentRefresh();
             }
             catch (Exception ex)
             {
 
                 throw;
             }
-            CustomerPayment customerPayment = new CustomerPayment();
-            customerPayment.CustomerId = Convert.ToInt32(comboBoxMusteri.SelectedValue);
-            customerPayment.Value = decimal.Parse(textBoxMebleg.Text);
            
-            if (!validationTool.IsValid(customerPayment))
-            {
-                return;
-            }
-
-            IResult result = _paymentManager.Add(customerPayment);
-            if (!result.Success)
-            {
-                FormsMessage.ErrorMessage(result.Message);
-                return;
-            }
-            FormsMessage.SuccessMessage(result.Message);
-            CustomerPaymentRefresh();
         }
 
 

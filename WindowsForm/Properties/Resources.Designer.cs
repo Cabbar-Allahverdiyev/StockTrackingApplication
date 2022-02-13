@@ -123,6 +123,16 @@ namespace WindowsForm.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
+        internal static System.Drawing.Bitmap choose_page_16px {
+            get {
+                object obj = ResourceManager.GetObject("choose_page_16px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
         internal static System.Drawing.Bitmap elaveEt {
             get {
                 object obj = ResourceManager.GetObject("elaveEt", resourceCulture);
@@ -276,6 +286,16 @@ namespace WindowsForm.Properties {
         internal static System.Drawing.Bitmap new_moon_120px {
             get {
                 object obj = ResourceManager.GetObject("new_moon_120px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap payment_history_16px_3 {
+            get {
+                object obj = ResourceManager.GetObject("payment_history_16px_3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

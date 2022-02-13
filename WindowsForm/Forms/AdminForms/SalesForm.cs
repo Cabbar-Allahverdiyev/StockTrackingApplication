@@ -24,13 +24,14 @@ using WindowsForm.Utilities.BarcodeScanner;
 using WindowsForm.Utilities.Search.Concrete.ProductSearch;
 using DataAccess.Concrete.EfInMemory;
 using WindowsForm.MyControls;
+using WindowsForm.Utilities.Helpers.SelectionItem;
 
 namespace WindowsForm.Forms
 {
     public partial class SalesForm : Form
     {
         int staticUserId = LoginForm.UserId;
-       // int staticUserId = 2004;
+        // int staticUserId = 2004;
 
         public SalesForm()
         {
@@ -56,7 +57,9 @@ namespace WindowsForm.Forms
 
         ProductManager _productManager = new ProductManager(new EfProductDal());
         CartManager _cartManager = new CartManager(new EfCartDal());
+        CustomerManager _customerManager = new CustomerManager(new EfCustomerDal(),new CustomerBalanceManager(new  EfCustomerBalanceDal()));
         SaleWinFormManager _saleWinFormManager = new SaleWinFormManager(new EfSaleWinFormDal());
+
         CartValidationTool cartValidationTool = new CartValidationTool();
         SaleValidationTool saleValidationTool = new SaleValidationTool();
         ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
@@ -67,7 +70,7 @@ namespace WindowsForm.Forms
 
         private void ButtonSalesFormYenile_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void ButtonX_Click(object sender, EventArgs e)
@@ -156,7 +159,88 @@ namespace WindowsForm.Forms
 
         }
 
+        private void buttonSec_Click(object sender, EventArgs e)
+        {
+            CustomerListForm customerListForm = new CustomerListForm();
+            customerListForm.ShowDialog();
+            textBoxCustomerId.Text = SelectedCustomerForSalesForm.Id.ToString();
+            IDataResult<Customer> result = _customerManager.GetById(SelectedCustomerForSalesForm.Id);
+            if (!result.Success)
+            {
+                FormsMessage.ErrorMessage(result.Message);
+                return;
+            }
 
+            textBoxAd.Text=result.Data.FirstName;
+            textBoxSoyad.Text=result.Data.LastName;
+            textBoxTelefon.Text=result.Data.PhoneNumber;
+            FormsMessage.SuccessMessage(result.Message);
+
+        }
+
+        private void buttonBorcElaveEt_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int customerId = int.Parse(textBoxCustomerId.Text);
+                DebtManager _debtManager = new DebtManager(new EfDebtDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()));
+                Debt debt = new Debt();
+                IDataResult<List<Cart>> carts = _cartManager.GetAllByUserId(staticUserId);
+                IResult debtAdded;
+                IResult productUpdated;
+                List<string> messages = new List<string>();
+                string resultMessage = "";
+                string newResultMessage = "";
+                if (carts.Data.Count != 0)
+                {
+                    foreach (Cart cart in carts.Data)
+                    {
+
+                        Product product = _productManager.GetByProductId(cart.ProductId).Data;
+                        product.UnitsInStock -= cart.Quantity;
+                        debt.ProductId = cart.ProductId;
+                        debt.CustomerId = customerId;
+                        debt.SoldPrice = cart.SoldPrice;
+                        debt.Quantity = cart.Quantity;
+
+                        debtAdded = _debtManager.Add(debt);
+                        productUpdated = _productManager.Update(product);
+                        if (!debtAdded.Success || !productUpdated.Success)
+                        {
+                            messages.Add(product.BarcodeNumber + " - " + product.ProductName + " : " + debtAdded.Message + " & " + productUpdated.Message);
+
+                        }
+                        messages.Add(product.ProductName + " : " + debtAdded.Message + " & " + productUpdated.Message);
+
+
+                    }
+                    foreach (string message in messages)
+                    {
+                        resultMessage += $" {message} {newResultMessage} |";
+                    }
+                    FormsMessage.SuccessMessage(resultMessage);
+
+
+                    //GroupBoxIstifadeciControlClear();
+                }
+                else
+                {
+                    FormsMessage.InformationMessage(CartMessages.ProductNotFound);
+                    return;
+                }
+                RemoveCart();
+                CartListRefesh();
+                ProductListRefesh();
+                GroupBoxMehsulControlClear();
+                TotalPriceLabelWrite();
+            }
+            catch (Exception ex)
+            {
+
+                FormsMessage.ErrorMessage($"{ButtonMessages.SatisEtmekError} {AuthMessages.ErrorMessage} /{ex.Message}");
+                return;
+            }
+        }
 
         private void buttoElaveEt_Click(object sender, EventArgs e)
         {
@@ -362,8 +446,8 @@ namespace WindowsForm.Forms
         {
             //MyControl.MakeTextBoxNumberBox(e);
 
-           
-            if (checkBoxBarkodNo.Checked == true) 
+
+            if (checkBoxBarkodNo.Checked == true)
             {
 
                 return;
@@ -494,7 +578,7 @@ namespace WindowsForm.Forms
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBoxBarkodNo.Checked==false)
+            if (checkBoxBarkodNo.Checked == false)
             {
                 checkBoxBarkodNo.Text = "Avtomatik";
                 buttonBarkodNoAxtar.Visible = false;
@@ -577,77 +661,8 @@ namespace WindowsForm.Forms
             TotalPriceLabelWrite();
         }
 
-        private void buttonBorcElaveEt_Click(object sender, EventArgs e)
-        {
-            //try
-            //{
-                int customerId = 2;
-                DebtManager _debtManager = new DebtManager(new EfDebtDal(),new CustomerBalanceManager(new EfCustomerBalanceDal()));
-                Debt debt = new Debt();
-                //SaleWinForm saleWinForm = new SaleWinForm();
-                IDataResult<List<Cart>> carts = _cartManager.GetAllByUserId(staticUserId);
-                IResult saleWinFormAdded;
-                IResult debtAdded;
-                IResult productUpdated;
-                List<string> messages = new List<string>();
-                string resultMessage = "";
-                string newResultMessage = "";
-                if (carts.Data.Count != 0)
-                {
-                    foreach (Cart cart in carts.Data)
-                    {
+      
 
-                        Product product = _productManager.GetByProductId(cart.ProductId).Data;
-                        product.UnitsInStock -= cart.Quantity;
-                        //debt.Id = 0;
-                        debt.ProductId = cart.ProductId;
-                        debt.CustomerId = customerId;
-                        debt.SoldPrice = cart.SoldPrice;
-                        debt.Quantity = cart.Quantity;
-                        // saleWinForm.TotalPrice = saleWinForm.SoldPrice * saleWinForm.Quantity;
-                        //if (!saleValidationTool.IsValid(saleWinForm))
-                        //{
-                        //    return;
-                        //}
-
-                        //saleWinFormAdded = _saleWinFormManager.Add(saleWinForm);
-                        debtAdded = _debtManager.Add(debt);
-                        productUpdated = _productManager.Update(product);
-                        if (!debtAdded.Success || !productUpdated.Success)
-                        {
-                            messages.Add(product.BarcodeNumber + " - " + product.ProductName + " : " + debtAdded.Message + " & " + productUpdated.Message);
-
-                        }
-                        messages.Add(product.ProductName + " : " + debtAdded.Message + " & " + productUpdated.Message);
-
-
-                    }
-                    foreach (string message in messages)
-                    {
-                        resultMessage += $" {message} {newResultMessage} |";
-                    }
-                    FormsMessage.SuccessMessage(resultMessage);
-
-
-                    //GroupBoxIstifadeciControlClear();
-                }
-                else
-                {
-                    FormsMessage.InformationMessage(CartMessages.ProductNotFound);
-                    return;
-                }
-                RemoveCart();
-                CartListRefesh();
-                ProductListRefesh();
-                GroupBoxMehsulControlClear();
-                TotalPriceLabelWrite();
-           // }
-            //catch (Exception ex)
-            //{
-
-            //    FormsMessage.ErrorMessage($"{ButtonMessages.SatisEtmekError} {AuthMessages.ErrorMessage} /{ex.Message}");
-            //    return;
-            //}
-        }
+       
     }
 }
