@@ -24,6 +24,7 @@ using WindowsForm.Utilities.Search.Concrete.ProductSearch;
 using DataAccess.Concrete.EfInMemory;
 using WindowsForm.MyControls;
 using System.Threading;
+using WindowsForm.Utilities.Helpers.SelectionItem;
 
 namespace WindowsForm.Forms.UserForms
 {
@@ -57,9 +58,13 @@ namespace WindowsForm.Forms.UserForms
         ProductManager _productManager = new ProductManager(new EfProductDal());
         CartManager _cartManager = new CartManager(new EfCartDal());
         SaleWinFormManager _saleWinFormManager = new SaleWinFormManager(new EfSaleWinFormDal());
+        CustomerManager _customerManager = new CustomerManager(new EfCustomerDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()));
+        DebtManager _debtManager = new DebtManager(new EfDebtDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()));
+
         CartValidationTool cartValidationTool = new CartValidationTool();
         SaleValidationTool saleValidationTool = new SaleValidationTool();
         ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
+
 
 
         private void ButtonX_Click(object sender, EventArgs e)
@@ -208,6 +213,88 @@ namespace WindowsForm.Forms.UserForms
                 return;
             }
 
+        }
+
+        private void buttonBorcElaveEt_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int customerId = int.Parse(textBoxCustomerId.Text);
+
+                Debt debt = new Debt();
+                IDataResult<List<Cart>> carts = _cartManager.GetAllByUserId(staticUserId);
+                IResult debtAdded;
+                IResult productUpdated;
+                List<string> messages = new List<string>();
+                string resultMessage = "";
+                string newResultMessage = "";
+                if (carts.Data.Count != 0)
+                {
+                    foreach (Cart cart in carts.Data)
+                    {
+
+                        Product product = _productManager.GetByProductId(cart.ProductId).Data;
+                        product.UnitsInStock -= cart.Quantity;
+                        debt.ProductId = cart.ProductId;
+                        debt.CustomerId = customerId;
+                        debt.SoldPrice = cart.SoldPrice;
+                        debt.Quantity = cart.Quantity;
+
+                        debtAdded = _debtManager.Add(debt);
+                        productUpdated = _productManager.Update(product);
+                        if (!debtAdded.Success || !productUpdated.Success)
+                        {
+                            messages.Add(product.BarcodeNumber + " - " + product.ProductName + " : " + debtAdded.Message + " & " + productUpdated.Message);
+
+                        }
+                        messages.Add(product.ProductName + " : " + debtAdded.Message + " & " + productUpdated.Message);
+
+
+                    }
+                    foreach (string message in messages)
+                    {
+                        resultMessage += $" {message} {newResultMessage} |";
+                    }
+                    FormsMessage.SuccessMessage(resultMessage);
+
+
+                    //GroupBoxIstifadeciControlClear();
+                }
+                else
+                {
+                    FormsMessage.InformationMessage(CartMessages.ProductNotFound);
+                    return;
+                }
+                RemoveCart();
+                CartListRefesh();
+                ProductListRefesh();
+                GroupBoxMehsulControlClear();
+                TotalPriceLabelWrite();
+            }
+            catch (Exception ex)
+            {
+
+                FormsMessage.ErrorMessage($"{ButtonMessages.SatisEtmekError} {AuthMessages.ErrorMessage} /{ex.Message}");
+                return;
+            }
+        }
+
+        private void buttonSec_Click(object sender, EventArgs e)
+        {
+            CustomerListForm customerListForm = new CustomerListForm();
+            customerListForm.ShowDialog();
+            textBoxCustomerId.Text = SelectedCustomerForSalesForm.Id.ToString();
+            IDataResult<Customer> result = _customerManager.GetById(SelectedCustomerForSalesForm.Id);
+            if (!result.Success)
+            {
+                FormsMessage.ErrorMessage(result.Message);
+                return;
+            }
+
+            textBoxAd.Text = result.Data.FirstName;
+            textBoxSoyad.Text = result.Data.LastName;
+            textBoxTelefon.Text = result.Data.PhoneNumber;
+            FormsMessage.SuccessMessage(result.Message);
         }
 
         private void buttonTemizle_Click(object sender, EventArgs e)
@@ -563,5 +650,7 @@ namespace WindowsForm.Forms.UserForms
         {
             FindByBarcodeNumberAndAddToCart(textBoxBarkodNo.Text);
         }
+
+        
     }
 }

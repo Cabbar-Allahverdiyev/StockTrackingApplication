@@ -157,7 +157,7 @@ namespace Business.Concrete
             return new SuccessDataResult<ProductCompactDetailDto>(get, ProductMessages.ProductFound);
         }
 
-        public IDataResult<ProductViewDetailDto> GetProductViewProductIdDetail(int productId)
+        public IDataResult<ProductViewDetailDto> GetProductViewDetailByProductId(int productId)
         {
             ProductViewDetailDto get = _productDal.GetProductIdProductViewDetail(productId);
             if (get == null)
@@ -196,5 +196,45 @@ namespace Business.Concrete
         }
 
 
+
+        public IDataResult<List<ProductViewDashboardDetailDto>> GetAllProductViewDashboardDetailByTopSelling()
+        {
+            List<ProductViewDashboardDetailDto> get = _productDal.GetAllProductViewDashboardDetailByTopSelling();
+            if (get == null)
+            {
+                return new ErrorDataResult<List<ProductViewDashboardDetailDto>>(ProductMessages.ProductNotFound);
+            }
+            return new SuccessDataResult<List<ProductViewDashboardDetailDto>>(get, ProductMessages.ProductGetAll);
+        }
+
+        public IDataResult<List<ProductViewDashboardDetailDto>> GetAllProductViewDashboardDetailByDecreasingProducts()
+        {
+            List<ProductViewDashboardDetailDto> get = _productDal.GetAllProductViewDashboardDetailByDecreasingProducts();
+            if (get == null)
+            {
+                return new ErrorDataResult<List<ProductViewDashboardDetailDto>>(ProductMessages.ProductNotFound);
+            }
+            return new SuccessDataResult<List<ProductViewDashboardDetailDto>>(get, ProductMessages.ProductGetAll);
+        }
+
+        public IDataResult<List<ProductViewDashboardDetailDto>> GetAllProductViewDashboardDetailByProductsThatNeverSell()
+        {
+            List<ProductViewDashboardDetailDto> get = _productDal.GetAllProductViewDashboardDetailByProductsThatNeverSell();
+            if (get == null)
+            {
+                return new ErrorDataResult<List<ProductViewDashboardDetailDto>>(ProductMessages.ProductNotFound);
+            }
+            return new SuccessDataResult<List<ProductViewDashboardDetailDto>>(get, ProductMessages.ProductGetAll);
+        }
+
+        public IDataResult<List<ProductViewDashboardDetailDto>> GetAllProductViewDashboardDetailByFinishedProducts()
+        {
+            List<ProductViewDashboardDetailDto> get = _productDal.GetAllProductViewDashboardDetailByFinishedProducts();
+            if (get == null)
+            {
+                return new ErrorDataResult<List<ProductViewDashboardDetailDto>>(ProductMessages.ProductNotFound);
+            }
+            return new SuccessDataResult<List<ProductViewDashboardDetailDto>>(get, ProductMessages.ProductGetAll);
+        }
     }
 }

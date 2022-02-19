@@ -20,7 +20,14 @@ namespace Business.Abstract
         IDataResult<List<ProductViewDashboardDetailDto>> GetProductViewDasboardDetailByBarcodeNumber(string barcodeNumber);
         IDataResult<List<ProductCompactDetailDto>> GetProductCompactDetails();
         IDataResult<List<ProductCompactDetailDto>> GetByPrdouctNameCompactDetails(string productName);
-        IDataResult<ProductViewDetailDto> GetProductViewProductIdDetail(int productId);
+        IDataResult<ProductViewDetailDto> GetProductViewDetailByProductId(int productId);
+        IDataResult<List<ProductViewDashboardDetailDto>> GetAllProductViewDashboardDetailByTopSelling();
+        IDataResult<List<ProductViewDashboardDetailDto>> GetAllProductViewDashboardDetailByDecreasingProducts();
+        IDataResult<List<ProductViewDashboardDetailDto>> GetAllProductViewDashboardDetailByProductsThatNeverSell();
+        IDataResult<List<ProductViewDashboardDetailDto>> GetAllProductViewDashboardDetailByFinishedProducts();
+      
+
+
 
     }
 }

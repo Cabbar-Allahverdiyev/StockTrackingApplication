@@ -31,15 +31,9 @@ namespace WindowsForm.Forms.UserForms
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SalesFormForUser));
             this.dataGridViewProductList = new System.Windows.Forms.DataGridView();
-            this.groupBoxMusteri = new System.Windows.Forms.GroupBox();
-            this.TextBoxSalesFormTelefon = new System.Windows.Forms.TextBox();
-            this.TextBoxSalesFormSoyad = new System.Windows.Forms.TextBox();
-            this.TextBoxSalesFormAd = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.groupBoxMehsul = new System.Windows.Forms.GroupBox();
             this.ButtonSalesFormSil = new System.Windows.Forms.Button();
+            this.buttonBarkodNoAxtar = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonTemizle = new System.Windows.Forms.Button();
             this.buttoElaveEt = new System.Windows.Forms.Button();
@@ -64,13 +58,22 @@ namespace WindowsForm.Forms.UserForms
             this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
             this.label12 = new System.Windows.Forms.Label();
             this.checkBoxBarkodNo = new System.Windows.Forms.CheckBox();
-            this.buttonBarkodNoAxtar = new System.Windows.Forms.Button();
+            this.groupBoxMusteri = new System.Windows.Forms.GroupBox();
+            this.textBoxCustomerId = new System.Windows.Forms.TextBox();
+            this.buttonSec = new System.Windows.Forms.Button();
+            this.buttonBorcElaveEt = new System.Windows.Forms.Button();
+            this.textBoxTelefon = new System.Windows.Forms.TextBox();
+            this.textBoxSoyad = new System.Windows.Forms.TextBox();
+            this.textBoxAd = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductList)).BeginInit();
-            this.groupBoxMusteri.SuspendLayout();
             this.groupBoxMehsul.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCartList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).BeginInit();
+            this.groupBoxMusteri.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridViewProductList
@@ -90,70 +93,6 @@ namespace WindowsForm.Forms.UserForms
             this.dataGridViewProductList.Size = new System.Drawing.Size(806, 305);
             this.dataGridViewProductList.TabIndex = 1;
             this.dataGridViewProductList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewSalesForm_CellDoubleClick);
-            // 
-            // groupBoxMusteri
-            // 
-            this.groupBoxMusteri.Controls.Add(this.TextBoxSalesFormTelefon);
-            this.groupBoxMusteri.Controls.Add(this.TextBoxSalesFormSoyad);
-            this.groupBoxMusteri.Controls.Add(this.TextBoxSalesFormAd);
-            this.groupBoxMusteri.Controls.Add(this.label4);
-            this.groupBoxMusteri.Controls.Add(this.label3);
-            this.groupBoxMusteri.Controls.Add(this.label2);
-            this.groupBoxMusteri.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBoxMusteri.Location = new System.Drawing.Point(13, 40);
-            this.groupBoxMusteri.Name = "groupBoxMusteri";
-            this.groupBoxMusteri.Size = new System.Drawing.Size(244, 130);
-            this.groupBoxMusteri.TabIndex = 8;
-            this.groupBoxMusteri.TabStop = false;
-            this.groupBoxMusteri.Text = "Müştəri";
-            // 
-            // TextBoxSalesFormTelefon
-            // 
-            this.TextBoxSalesFormTelefon.Location = new System.Drawing.Point(84, 100);
-            this.TextBoxSalesFormTelefon.Name = "TextBoxSalesFormTelefon";
-            this.TextBoxSalesFormTelefon.Size = new System.Drawing.Size(145, 22);
-            this.TextBoxSalesFormTelefon.TabIndex = 5;
-            // 
-            // TextBoxSalesFormSoyad
-            // 
-            this.TextBoxSalesFormSoyad.Location = new System.Drawing.Point(84, 61);
-            this.TextBoxSalesFormSoyad.Name = "TextBoxSalesFormSoyad";
-            this.TextBoxSalesFormSoyad.Size = new System.Drawing.Size(145, 22);
-            this.TextBoxSalesFormSoyad.TabIndex = 4;
-            // 
-            // TextBoxSalesFormAd
-            // 
-            this.TextBoxSalesFormAd.Location = new System.Drawing.Point(84, 22);
-            this.TextBoxSalesFormAd.Name = "TextBoxSalesFormAd";
-            this.TextBoxSalesFormAd.Size = new System.Drawing.Size(145, 22);
-            this.TextBoxSalesFormAd.TabIndex = 3;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 103);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 17);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Telefon";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 64);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 17);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Soyad";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 25);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(25, 17);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Ad";
             // 
             // groupBoxMehsul
             // 
@@ -176,9 +115,9 @@ namespace WindowsForm.Forms.UserForms
             this.groupBoxMehsul.Controls.Add(this.label5);
             this.groupBoxMehsul.Controls.Add(this.label7);
             this.groupBoxMehsul.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBoxMehsul.Location = new System.Drawing.Point(13, 176);
+            this.groupBoxMehsul.Location = new System.Drawing.Point(13, 202);
             this.groupBoxMehsul.Name = "groupBoxMehsul";
-            this.groupBoxMehsul.Size = new System.Drawing.Size(244, 460);
+            this.groupBoxMehsul.Size = new System.Drawing.Size(244, 434);
             this.groupBoxMehsul.TabIndex = 9;
             this.groupBoxMehsul.TabStop = false;
             this.groupBoxMehsul.Text = "Məhsul";
@@ -187,7 +126,7 @@ namespace WindowsForm.Forms.UserForms
             // 
             this.ButtonSalesFormSil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonSalesFormSil.Image = ((System.Drawing.Image)(resources.GetObject("ButtonSalesFormSil.Image")));
-            this.ButtonSalesFormSil.Location = new System.Drawing.Point(150, 375);
+            this.ButtonSalesFormSil.Location = new System.Drawing.Point(150, 354);
             this.ButtonSalesFormSil.Name = "ButtonSalesFormSil";
             this.ButtonSalesFormSil.Size = new System.Drawing.Size(88, 23);
             this.ButtonSalesFormSil.TabIndex = 35;
@@ -195,6 +134,20 @@ namespace WindowsForm.Forms.UserForms
             this.ButtonSalesFormSil.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.ButtonSalesFormSil.UseVisualStyleBackColor = true;
             this.ButtonSalesFormSil.Click += new System.EventHandler(this.ButtonSalesFormSil_Click);
+            // 
+            // buttonBarkodNoAxtar
+            // 
+            this.buttonBarkodNoAxtar.FlatAppearance.BorderSize = 0;
+            this.buttonBarkodNoAxtar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBarkodNoAxtar.Image = global::WindowsForm.Properties.Resources.searchFerqliBlack_16px;
+            this.buttonBarkodNoAxtar.Location = new System.Drawing.Point(6, 148);
+            this.buttonBarkodNoAxtar.Name = "buttonBarkodNoAxtar";
+            this.buttonBarkodNoAxtar.Size = new System.Drawing.Size(18, 18);
+            this.buttonBarkodNoAxtar.TabIndex = 36;
+            this.buttonBarkodNoAxtar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonBarkodNoAxtar.UseVisualStyleBackColor = true;
+            this.buttonBarkodNoAxtar.Visible = false;
+            this.buttonBarkodNoAxtar.Click += new System.EventHandler(this.buttonBarkodNoAxtar_Click);
             // 
             // pictureBox1
             // 
@@ -209,7 +162,7 @@ namespace WindowsForm.Forms.UserForms
             this.buttonTemizle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTemizle.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonTemizle.Image = ((System.Drawing.Image)(resources.GetObject("buttonTemizle.Image")));
-            this.buttonTemizle.Location = new System.Drawing.Point(57, 346);
+            this.buttonTemizle.Location = new System.Drawing.Point(57, 325);
             this.buttonTemizle.Name = "buttonTemizle";
             this.buttonTemizle.Size = new System.Drawing.Size(88, 23);
             this.buttonTemizle.TabIndex = 16;
@@ -223,7 +176,7 @@ namespace WindowsForm.Forms.UserForms
             this.buttoElaveEt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttoElaveEt.Image = ((System.Drawing.Image)(resources.GetObject("buttoElaveEt.Image")));
             this.buttoElaveEt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttoElaveEt.Location = new System.Drawing.Point(150, 346);
+            this.buttoElaveEt.Location = new System.Drawing.Point(150, 325);
             this.buttoElaveEt.Name = "buttoElaveEt";
             this.buttoElaveEt.Size = new System.Drawing.Size(88, 23);
             this.buttoElaveEt.TabIndex = 18;
@@ -235,7 +188,7 @@ namespace WindowsForm.Forms.UserForms
             // textBoxProductId
             // 
             this.textBoxProductId.Enabled = false;
-            this.textBoxProductId.Location = new System.Drawing.Point(100, 139);
+            this.textBoxProductId.Location = new System.Drawing.Point(100, 118);
             this.textBoxProductId.Name = "textBoxProductId";
             this.textBoxProductId.Size = new System.Drawing.Size(138, 22);
             this.textBoxProductId.TabIndex = 14;
@@ -243,7 +196,7 @@ namespace WindowsForm.Forms.UserForms
             // textBoxMaxQiymet
             // 
             this.textBoxMaxQiymet.Enabled = false;
-            this.textBoxMaxQiymet.Location = new System.Drawing.Point(100, 227);
+            this.textBoxMaxQiymet.Location = new System.Drawing.Point(100, 206);
             this.textBoxMaxQiymet.Name = "textBoxMaxQiymet";
             this.textBoxMaxQiymet.Size = new System.Drawing.Size(138, 22);
             this.textBoxMaxQiymet.TabIndex = 13;
@@ -252,7 +205,7 @@ namespace WindowsForm.Forms.UserForms
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(15, 227);
+            this.label10.Location = new System.Drawing.Point(15, 206);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(79, 17);
             this.label10.TabIndex = 12;
@@ -261,14 +214,14 @@ namespace WindowsForm.Forms.UserForms
             // textBoxCem
             // 
             this.textBoxCem.Enabled = false;
-            this.textBoxCem.Location = new System.Drawing.Point(100, 317);
+            this.textBoxCem.Location = new System.Drawing.Point(100, 296);
             this.textBoxCem.Name = "textBoxCem";
             this.textBoxCem.Size = new System.Drawing.Size(138, 22);
             this.textBoxCem.TabIndex = 9;
             // 
             // textBoxQiymet
             // 
-            this.textBoxQiymet.Location = new System.Drawing.Point(100, 257);
+            this.textBoxQiymet.Location = new System.Drawing.Point(100, 236);
             this.textBoxQiymet.Name = "textBoxQiymet";
             this.textBoxQiymet.Size = new System.Drawing.Size(138, 22);
             this.textBoxQiymet.TabIndex = 8;
@@ -278,14 +231,14 @@ namespace WindowsForm.Forms.UserForms
             // textBoxMehsulAdi
             // 
             this.textBoxMehsulAdi.Enabled = false;
-            this.textBoxMehsulAdi.Location = new System.Drawing.Point(100, 197);
+            this.textBoxMehsulAdi.Location = new System.Drawing.Point(100, 176);
             this.textBoxMehsulAdi.Name = "textBoxMehsulAdi";
             this.textBoxMehsulAdi.Size = new System.Drawing.Size(138, 22);
             this.textBoxMehsulAdi.TabIndex = 6;
             // 
             // textBoxMiqdar
             // 
-            this.textBoxMiqdar.Location = new System.Drawing.Point(100, 287);
+            this.textBoxMiqdar.Location = new System.Drawing.Point(100, 266);
             this.textBoxMiqdar.Name = "textBoxMiqdar";
             this.textBoxMiqdar.Size = new System.Drawing.Size(138, 22);
             this.textBoxMiqdar.TabIndex = 7;
@@ -294,7 +247,7 @@ namespace WindowsForm.Forms.UserForms
             // 
             // textBoxBarkodNo
             // 
-            this.textBoxBarkodNo.Location = new System.Drawing.Point(100, 167);
+            this.textBoxBarkodNo.Location = new System.Drawing.Point(100, 146);
             this.textBoxBarkodNo.Name = "textBoxBarkodNo";
             this.textBoxBarkodNo.Size = new System.Drawing.Size(138, 22);
             this.textBoxBarkodNo.TabIndex = 5;
@@ -303,7 +256,7 @@ namespace WindowsForm.Forms.UserForms
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(56, 320);
+            this.label9.Location = new System.Drawing.Point(56, 299);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(38, 17);
             this.label9.TabIndex = 4;
@@ -312,7 +265,7 @@ namespace WindowsForm.Forms.UserForms
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(41, 260);
+            this.label8.Location = new System.Drawing.Point(41, 239);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(53, 17);
             this.label8.TabIndex = 3;
@@ -321,7 +274,7 @@ namespace WindowsForm.Forms.UserForms
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(21, 197);
+            this.label6.Location = new System.Drawing.Point(21, 176);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(73, 17);
             this.label6.TabIndex = 1;
@@ -330,7 +283,7 @@ namespace WindowsForm.Forms.UserForms
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(25, 170);
+            this.label5.Location = new System.Drawing.Point(25, 149);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(69, 17);
             this.label5.TabIndex = 0;
@@ -339,7 +292,7 @@ namespace WindowsForm.Forms.UserForms
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(41, 291);
+            this.label7.Location = new System.Drawing.Point(41, 270);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(53, 17);
             this.label7.TabIndex = 2;
@@ -441,27 +394,120 @@ namespace WindowsForm.Forms.UserForms
             // checkBoxBarkodNo
             // 
             this.checkBoxBarkodNo.AutoSize = true;
-            this.checkBoxBarkodNo.Location = new System.Drawing.Point(263, 346);
+            this.checkBoxBarkodNo.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxBarkodNo.Location = new System.Drawing.Point(263, 350);
             this.checkBoxBarkodNo.Name = "checkBoxBarkodNo";
-            this.checkBoxBarkodNo.Size = new System.Drawing.Size(81, 19);
+            this.checkBoxBarkodNo.Size = new System.Drawing.Size(90, 21);
             this.checkBoxBarkodNo.TabIndex = 37;
             this.checkBoxBarkodNo.Text = "Avtomatik";
             this.checkBoxBarkodNo.UseVisualStyleBackColor = true;
             this.checkBoxBarkodNo.CheckedChanged += new System.EventHandler(this.checkBoxBarkodNo_CheckedChanged);
             // 
-            // buttonBarkodNoAxtar
+            // groupBoxMusteri
             // 
-            this.buttonBarkodNoAxtar.FlatAppearance.BorderSize = 0;
-            this.buttonBarkodNoAxtar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBarkodNoAxtar.Image = global::WindowsForm.Properties.Resources.searchFerqliBlack_16px;
-            this.buttonBarkodNoAxtar.Location = new System.Drawing.Point(6, 169);
-            this.buttonBarkodNoAxtar.Name = "buttonBarkodNoAxtar";
-            this.buttonBarkodNoAxtar.Size = new System.Drawing.Size(18, 18);
-            this.buttonBarkodNoAxtar.TabIndex = 36;
-            this.buttonBarkodNoAxtar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonBarkodNoAxtar.UseVisualStyleBackColor = true;
-            this.buttonBarkodNoAxtar.Visible = false;
-            this.buttonBarkodNoAxtar.Click += new System.EventHandler(this.buttonBarkodNoAxtar_Click);
+            this.groupBoxMusteri.Controls.Add(this.textBoxCustomerId);
+            this.groupBoxMusteri.Controls.Add(this.buttonSec);
+            this.groupBoxMusteri.Controls.Add(this.buttonBorcElaveEt);
+            this.groupBoxMusteri.Controls.Add(this.textBoxTelefon);
+            this.groupBoxMusteri.Controls.Add(this.textBoxSoyad);
+            this.groupBoxMusteri.Controls.Add(this.textBoxAd);
+            this.groupBoxMusteri.Controls.Add(this.label4);
+            this.groupBoxMusteri.Controls.Add(this.label3);
+            this.groupBoxMusteri.Controls.Add(this.label2);
+            this.groupBoxMusteri.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBoxMusteri.Location = new System.Drawing.Point(12, 32);
+            this.groupBoxMusteri.Name = "groupBoxMusteri";
+            this.groupBoxMusteri.Size = new System.Drawing.Size(244, 166);
+            this.groupBoxMusteri.TabIndex = 38;
+            this.groupBoxMusteri.TabStop = false;
+            this.groupBoxMusteri.Text = "Müştəri";
+            // 
+            // textBoxCustomerId
+            // 
+            this.textBoxCustomerId.Enabled = false;
+            this.textBoxCustomerId.Location = new System.Drawing.Point(78, 21);
+            this.textBoxCustomerId.Name = "textBoxCustomerId";
+            this.textBoxCustomerId.Size = new System.Drawing.Size(160, 22);
+            this.textBoxCustomerId.TabIndex = 39;
+            // 
+            // buttonSec
+            // 
+            this.buttonSec.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSec.Image = global::WindowsForm.Properties.Resources.choose_page_16px;
+            this.buttonSec.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonSec.Location = new System.Drawing.Point(55, 133);
+            this.buttonSec.Name = "buttonSec";
+            this.buttonSec.Size = new System.Drawing.Size(88, 25);
+            this.buttonSec.TabIndex = 38;
+            this.buttonSec.Text = "  Seç";
+            this.buttonSec.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonSec.UseVisualStyleBackColor = true;
+            this.buttonSec.Click += new System.EventHandler(this.buttonSec_Click);
+            // 
+            // buttonBorcElaveEt
+            // 
+            this.buttonBorcElaveEt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBorcElaveEt.Image = global::WindowsForm.Properties.Resources.payment_history_16px_3;
+            this.buttonBorcElaveEt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonBorcElaveEt.Location = new System.Drawing.Point(149, 133);
+            this.buttonBorcElaveEt.Name = "buttonBorcElaveEt";
+            this.buttonBorcElaveEt.Size = new System.Drawing.Size(88, 25);
+            this.buttonBorcElaveEt.TabIndex = 36;
+            this.buttonBorcElaveEt.Text = "  Borc et";
+            this.buttonBorcElaveEt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonBorcElaveEt.UseVisualStyleBackColor = true;
+            this.buttonBorcElaveEt.Click += new System.EventHandler(this.buttonBorcElaveEt_Click);
+            // 
+            // textBoxTelefon
+            // 
+            this.textBoxTelefon.Enabled = false;
+            this.textBoxTelefon.Location = new System.Drawing.Point(77, 105);
+            this.textBoxTelefon.Name = "textBoxTelefon";
+            this.textBoxTelefon.Size = new System.Drawing.Size(160, 22);
+            this.textBoxTelefon.TabIndex = 5;
+            // 
+            // textBoxSoyad
+            // 
+            this.textBoxSoyad.Enabled = false;
+            this.textBoxSoyad.Location = new System.Drawing.Point(77, 77);
+            this.textBoxSoyad.Name = "textBoxSoyad";
+            this.textBoxSoyad.Size = new System.Drawing.Size(160, 22);
+            this.textBoxSoyad.TabIndex = 4;
+            // 
+            // textBoxAd
+            // 
+            this.textBoxAd.Enabled = false;
+            this.textBoxAd.Location = new System.Drawing.Point(77, 49);
+            this.textBoxAd.Name = "textBoxAd";
+            this.textBoxAd.Size = new System.Drawing.Size(160, 22);
+            this.textBoxAd.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(14, 108);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(57, 17);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Telefon :";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(20, 80);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(51, 17);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Soyad :";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(40, 52);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(31, 17);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Ad :";
             // 
             // SalesFormForUser
             // 
@@ -469,6 +515,7 @@ namespace WindowsForm.Forms.UserForms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(1174, 641);
+            this.Controls.Add(this.groupBoxMusteri);
             this.Controls.Add(this.checkBoxBarkodNo);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.pictureBoxRefresh);
@@ -478,20 +525,19 @@ namespace WindowsForm.Forms.UserForms
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ButtonSalesFormSatisEtmek);
             this.Controls.Add(this.groupBoxMehsul);
-            this.Controls.Add(this.groupBoxMusteri);
             this.Controls.Add(this.dataGridViewProductList);
             this.Name = "SalesFormForUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Satış səhifəsi";
             this.Load += new System.EventHandler(this.SalesForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductList)).EndInit();
-            this.groupBoxMusteri.ResumeLayout(false);
-            this.groupBoxMusteri.PerformLayout();
             this.groupBoxMehsul.ResumeLayout(false);
             this.groupBoxMehsul.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCartList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).EndInit();
+            this.groupBoxMusteri.ResumeLayout(false);
+            this.groupBoxMusteri.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -499,13 +545,6 @@ namespace WindowsForm.Forms.UserForms
 
         #endregion
         private System.Windows.Forms.DataGridView dataGridViewProductList;
-        private System.Windows.Forms.GroupBox groupBoxMusteri;
-        private System.Windows.Forms.TextBox TextBoxSalesFormTelefon;
-        private System.Windows.Forms.TextBox TextBoxSalesFormSoyad;
-        private System.Windows.Forms.TextBox TextBoxSalesFormAd;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBoxMehsul;
         private System.Windows.Forms.TextBox textBoxCem;
         private System.Windows.Forms.TextBox textBoxQiymet;
@@ -534,5 +573,15 @@ namespace WindowsForm.Forms.UserForms
         private System.Windows.Forms.Button ButtonSalesFormSil;
         private System.Windows.Forms.Button buttonBarkodNoAxtar;
         private System.Windows.Forms.CheckBox checkBoxBarkodNo;
+        private System.Windows.Forms.GroupBox groupBoxMusteri;
+        private System.Windows.Forms.TextBox textBoxCustomerId;
+        private System.Windows.Forms.Button buttonSec;
+        private System.Windows.Forms.Button buttonBorcElaveEt;
+        private System.Windows.Forms.TextBox textBoxTelefon;
+        private System.Windows.Forms.TextBox textBoxSoyad;
+        private System.Windows.Forms.TextBox textBoxAd;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -59,6 +59,7 @@ namespace WindowsForm.Forms
         CartManager _cartManager = new CartManager(new EfCartDal());
         CustomerManager _customerManager = new CustomerManager(new EfCustomerDal(),new CustomerBalanceManager(new  EfCustomerBalanceDal()));
         SaleWinFormManager _saleWinFormManager = new SaleWinFormManager(new EfSaleWinFormDal());
+        DebtManager _debtManager = new DebtManager(new EfDebtDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()));
 
         CartValidationTool cartValidationTool = new CartValidationTool();
         SaleValidationTool saleValidationTool = new SaleValidationTool();
@@ -183,7 +184,7 @@ namespace WindowsForm.Forms
             try
             {
                 int customerId = int.Parse(textBoxCustomerId.Text);
-                DebtManager _debtManager = new DebtManager(new EfDebtDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()));
+                
                 Debt debt = new Debt();
                 IDataResult<List<Cart>> carts = _cartManager.GetAllByUserId(staticUserId);
                 IResult debtAdded;
