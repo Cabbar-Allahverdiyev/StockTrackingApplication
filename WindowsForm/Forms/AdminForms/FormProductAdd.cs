@@ -101,7 +101,7 @@ namespace WindowsForm.Forms
         private void DataGridViewProductList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            IDataResult<ProductViewDetailDto> productViewDetailByProductId = _productManager.GetProductViewProductIdDetail(
+            IDataResult<ProductViewDetailDto> productViewDetailByProductId = _productManager.GetProductViewDetailByProductId(
                      Convert.ToInt32(dataGridViewProductList.CurrentRow.Cells["ProductId"].Value.ToString())
                 );
 

@@ -48,9 +48,25 @@ namespace WindowsForm.Forms
             this.label12 = new System.Windows.Forms.Label();
             this.textBoxAxtar = new System.Windows.Forms.TextBox();
             this.comboBoxAxtar = new System.Windows.Forms.ComboBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.checkBoxSatisLegvEdilsin = new System.Windows.Forms.CheckBox();
+            this.textBoxTarix = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBoxSatIici = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBoxUmumiDeyer = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBoxMiqdar = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBoxMehsul = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBoxSaleId = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.buttonTetbiqEt = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSaleList)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridViewSaleList
@@ -67,15 +83,16 @@ namespace WindowsForm.Forms
             this.dataGridViewSaleList.ReadOnly = true;
             this.dataGridViewSaleList.RowTemplate.Height = 25;
             this.dataGridViewSaleList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSaleList.Size = new System.Drawing.Size(576, 427);
+            this.dataGridViewSaleList.Size = new System.Drawing.Size(576, 483);
             this.dataGridViewSaleList.TabIndex = 16;
+            this.dataGridViewSaleList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSaleList_CellDoubleClick);
             // 
             // buttonAxtar
             // 
             this.buttonAxtar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAxtar.Image = global::WindowsForm.Properties.Resources.searchFerqliBlack_16px;
             this.buttonAxtar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonAxtar.Location = new System.Drawing.Point(144, 112);
+            this.buttonAxtar.Location = new System.Drawing.Point(167, 118);
             this.buttonAxtar.Name = "buttonAxtar";
             this.buttonAxtar.Size = new System.Drawing.Size(75, 25);
             this.buttonAxtar.TabIndex = 17;
@@ -86,7 +103,7 @@ namespace WindowsForm.Forms
             // comboBoxDays
             // 
             this.comboBoxDays.FormattingEnabled = true;
-            this.comboBoxDays.Location = new System.Drawing.Point(50, 15);
+            this.comboBoxDays.Location = new System.Drawing.Point(73, 21);
             this.comboBoxDays.Name = "comboBoxDays";
             this.comboBoxDays.Size = new System.Drawing.Size(169, 25);
             this.comboBoxDays.TabIndex = 22;
@@ -94,7 +111,7 @@ namespace WindowsForm.Forms
             // comboBoxMonths
             // 
             this.comboBoxMonths.FormattingEnabled = true;
-            this.comboBoxMonths.Location = new System.Drawing.Point(50, 48);
+            this.comboBoxMonths.Location = new System.Drawing.Point(73, 54);
             this.comboBoxMonths.Name = "comboBoxMonths";
             this.comboBoxMonths.Size = new System.Drawing.Size(169, 25);
             this.comboBoxMonths.TabIndex = 24;
@@ -102,7 +119,7 @@ namespace WindowsForm.Forms
             // comboBoxYears
             // 
             this.comboBoxYears.FormattingEnabled = true;
-            this.comboBoxYears.Location = new System.Drawing.Point(50, 81);
+            this.comboBoxYears.Location = new System.Drawing.Point(73, 87);
             this.comboBoxYears.Name = "comboBoxYears";
             this.comboBoxYears.Size = new System.Drawing.Size(169, 25);
             this.comboBoxYears.TabIndex = 26;
@@ -173,7 +190,7 @@ namespace WindowsForm.Forms
             this.buttonTemizle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTemizle.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonTemizle.Image = ((System.Drawing.Image)(resources.GetObject("buttonTemizle.Image")));
-            this.buttonTemizle.Location = new System.Drawing.Point(50, 112);
+            this.buttonTemizle.Location = new System.Drawing.Point(73, 118);
             this.buttonTemizle.Name = "buttonTemizle";
             this.buttonTemizle.Size = new System.Drawing.Size(88, 25);
             this.buttonTemizle.TabIndex = 30;
@@ -185,7 +202,7 @@ namespace WindowsForm.Forms
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(24, 84);
+            this.label3.Location = new System.Drawing.Point(47, 90);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(20, 17);
             this.label3.TabIndex = 29;
@@ -194,7 +211,7 @@ namespace WindowsForm.Forms
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 51);
+            this.label2.Location = new System.Drawing.Point(38, 57);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 17);
             this.label2.TabIndex = 28;
@@ -203,7 +220,7 @@ namespace WindowsForm.Forms
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 18);
+            this.label1.Location = new System.Drawing.Point(29, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 17);
             this.label1.TabIndex = 27;
@@ -255,12 +272,156 @@ namespace WindowsForm.Forms
             this.comboBoxAxtar.Size = new System.Drawing.Size(71, 21);
             this.comboBoxAxtar.TabIndex = 34;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.checkBoxSatisLegvEdilsin);
+            this.groupBox2.Controls.Add(this.textBoxTarix);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.textBoxSatIici);
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.textBoxUmumiDeyer);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.textBoxMiqdar);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.textBoxMehsul);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.textBoxSaleId);
+            this.groupBox2.Controls.Add(this.label13);
+            this.groupBox2.Controls.Add(this.buttonTetbiqEt);
+            this.groupBox2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox2.Location = new System.Drawing.Point(12, 264);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(248, 264);
+            this.groupBox2.TabIndex = 35;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // checkBoxSatisLegvEdilsin
+            // 
+            this.checkBoxSatisLegvEdilsin.AutoSize = true;
+            this.checkBoxSatisLegvEdilsin.Location = new System.Drawing.Point(118, 186);
+            this.checkBoxSatisLegvEdilsin.Name = "checkBoxSatisLegvEdilsin";
+            this.checkBoxSatisLegvEdilsin.Size = new System.Drawing.Size(124, 21);
+            this.checkBoxSatisLegvEdilsin.TabIndex = 36;
+            this.checkBoxSatisLegvEdilsin.Text = "Satış ləğv edilsin";
+            this.checkBoxSatisLegvEdilsin.UseVisualStyleBackColor = true;
+            // 
+            // textBoxTarix
+            // 
+            this.textBoxTarix.Location = new System.Drawing.Point(105, 158);
+            this.textBoxTarix.Name = "textBoxTarix";
+            this.textBoxTarix.Size = new System.Drawing.Size(137, 22);
+            this.textBoxTarix.TabIndex = 39;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(59, 158);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(40, 17);
+            this.label10.TabIndex = 38;
+            this.label10.Text = "Tarix :";
+            // 
+            // textBoxSatIici
+            // 
+            this.textBoxSatIici.Location = new System.Drawing.Point(105, 130);
+            this.textBoxSatIici.Name = "textBoxSatIici";
+            this.textBoxSatIici.Size = new System.Drawing.Size(137, 22);
+            this.textBoxSatIici.TabIndex = 37;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(51, 130);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(48, 17);
+            this.label9.TabIndex = 36;
+            this.label9.Text = "Satıcı :";
+            // 
+            // textBoxUmumiDeyer
+            // 
+            this.textBoxUmumiDeyer.Location = new System.Drawing.Point(105, 102);
+            this.textBoxUmumiDeyer.Name = "textBoxUmumiDeyer";
+            this.textBoxUmumiDeyer.Size = new System.Drawing.Size(137, 22);
+            this.textBoxUmumiDeyer.TabIndex = 37;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 102);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(93, 17);
+            this.label8.TabIndex = 36;
+            this.label8.Text = "Ümumi Dəyəri :";
+            // 
+            // textBoxMiqdar
+            // 
+            this.textBoxMiqdar.Location = new System.Drawing.Point(105, 74);
+            this.textBoxMiqdar.Name = "textBoxMiqdar";
+            this.textBoxMiqdar.Size = new System.Drawing.Size(137, 22);
+            this.textBoxMiqdar.TabIndex = 35;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(43, 74);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(56, 17);
+            this.label7.TabIndex = 34;
+            this.label7.Text = "Miqdar :";
+            // 
+            // textBoxMehsul
+            // 
+            this.textBoxMehsul.Location = new System.Drawing.Point(105, 46);
+            this.textBoxMehsul.Name = "textBoxMehsul";
+            this.textBoxMehsul.Size = new System.Drawing.Size(137, 22);
+            this.textBoxMehsul.TabIndex = 33;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(45, 46);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(54, 17);
+            this.label6.TabIndex = 32;
+            this.label6.Text = "Məhsul :";
+            // 
+            // textBoxSaleId
+            // 
+            this.textBoxSaleId.Location = new System.Drawing.Point(105, 18);
+            this.textBoxSaleId.Name = "textBoxSaleId";
+            this.textBoxSaleId.Size = new System.Drawing.Size(137, 22);
+            this.textBoxSaleId.TabIndex = 31;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(48, 18);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(51, 17);
+            this.label13.TabIndex = 27;
+            this.label13.Text = "SaleId :";
+            // 
+            // buttonTetbiqEt
+            // 
+            this.buttonTetbiqEt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTetbiqEt.Image = global::WindowsForm.Properties.Resources.ok_16px;
+            this.buttonTetbiqEt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonTetbiqEt.Location = new System.Drawing.Point(140, 213);
+            this.buttonTetbiqEt.Name = "buttonTetbiqEt";
+            this.buttonTetbiqEt.Size = new System.Drawing.Size(102, 25);
+            this.buttonTetbiqEt.TabIndex = 17;
+            this.buttonTetbiqEt.Text = "   Tətbiq et";
+            this.buttonTetbiqEt.UseVisualStyleBackColor = true;
+            this.buttonTetbiqEt.Click += new System.EventHandler(this.buttonTetbiqEt_Click);
+            // 
             // FormSalesList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
-            this.ClientSize = new System.Drawing.Size(912, 484);
+            this.ClientSize = new System.Drawing.Size(912, 540);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.comboBoxAxtar);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.textBoxAxtar);
@@ -276,6 +437,8 @@ namespace WindowsForm.Forms
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -301,5 +464,20 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button buttonTemizle;
         private System.Windows.Forms.ComboBox comboBoxAxtar;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox textBoxSaleId;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button buttonTetbiqEt;
+        private System.Windows.Forms.TextBox textBoxUmumiDeyer;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBoxMiqdar;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBoxMehsul;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox checkBoxSatisLegvEdilsin;
+        private System.Windows.Forms.TextBox textBoxTarix;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textBoxSatIici;
+        private System.Windows.Forms.Label label9;
     }
 }

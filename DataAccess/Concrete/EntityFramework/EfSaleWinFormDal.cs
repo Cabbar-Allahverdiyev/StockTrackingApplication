@@ -2,6 +2,7 @@
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs.SaleWinFormDtos;
+using Entities.DTOs.ProductDtos;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -105,68 +106,83 @@ namespace DataAccess.Concrete.EntityFramework
             }
         }
 
-        public List<SaleWinFormDto> GetAllWinFormDtoDetailsByDecreasingProducts(Expression<Func<SaleWinFormDto, bool>> filter = null)
-        {
-            throw new NotImplementedException();
-        }
+        //public List<SaleWinFormDto> GetAllWinFormDtoDetailsByDecreasingProducts(Expression<Func<SaleWinFormDto, bool>> filter = null)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
-        public List<SaleWinFormDto> GetAllWinFormDtoDetailsByFinishedProducts(Expression<Func<SaleWinFormDto, bool>> filter = null)
-        {
-            throw new NotImplementedException();
-        }
+        //public List<SaleWinFormDto> GetAllWinFormDtoDetailsByFinishedProducts(Expression<Func<SaleWinFormDto, bool>> filter = null)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
-        public List<SaleWinFormDto> GetAllWinFormDtoDetailsByProductsThatNeverSell(Expression<Func<SaleWinFormDto, bool>> filter = null)
-        {
-            using (StockTrackingProjectContext context = new StockTrackingProjectContext())
-            {
-                var result = from s in context.SalesWinForms
-                             join p in context.Products on s.ProductId equals p.Id
-                             join u in context.Users on s.UserId equals u.Id
-                             orderby s.SellDate descending
-                             select new SaleWinFormDto
-                             {
-                                 SaleId = s.Id,
-                                 ProductId = s.ProductId,
-                                 MehsulAdi = p.ProductName,
-                                 Istifadeci = $"{u.FirstName} {u.LastName}",
-                                 SatilanQiymet = s.SoldPrice,
-                                 Miqdar = s.Quantity,
-                                 Cem = s.TotalPrice,
-                                 //s.SoldPrice * s.Quantity,
-                                 Tarix = s.SellDate
+        //public List<SaleWinFormDto> GetAllWinFormDtoDetailsByProductsThatNeverSell(Expression<Func<SaleWinFormDto, bool>> filter = null)
+        //{
+        //    using (StockTrackingProjectContext context = new StockTrackingProjectContext())
+        //    {
+        //        var result = from s in context.SalesWinForms
+        //                     join p in context.Products on s.ProductId equals p.Id
+        //                     join u in context.Users on s.UserId equals u.Id
+        //                     orderby s.SellDate descending
+        //                     select new SaleWinFormDto
+        //                     {
+        //                         SaleId = s.Id,
+        //                         ProductId = s.ProductId,
+        //                         MehsulAdi = p.ProductName,
+        //                         Istifadeci = $"{u.FirstName} {u.LastName}",
+        //                         SatilanQiymet = s.SoldPrice,
+        //                         Miqdar = s.Quantity,
+        //                         Cem = s.TotalPrice,
+        //                         //s.SoldPrice * s.Quantity,
+        //                         Tarix = s.SellDate
 
-                             };
+        //                     };
 
-                return filter == null ? result.ToList() : result.Where(filter).ToList();
-            }
-        }
+        //        return filter == null ? result.ToList() : result.Where(filter).ToList();
+        //    }
+        //}
 
-        public List<SaleWinFormDto> GetAllWinFormDtoDetailsByTopSelling(Expression<Func<SaleWinFormDto, bool>> filter = null)
-        {
-            using (StockTrackingProjectContext context = new StockTrackingProjectContext())
-            {
-                var result = (from s in context.SalesWinForms
-                             join p in context.Products on s.ProductId equals p.Id
-                             join u in context.Users on s.UserId equals u.Id
-                           
-                             orderby s.SellDate descending
-                             select new SaleWinFormDto
-                             {
-                                 SaleId = s.Id,
-                                 ProductId = s.ProductId,
-                                 MehsulAdi = p.ProductName,
-                                 Istifadeci = $"{u.FirstName} {u.LastName}",
-                                 SatilanQiymet = s.SoldPrice,
-                                 Miqdar = s.Quantity,
-                                 Cem = s.TotalPrice,
-                                 //s.SoldPrice * s.Quantity,
-                                 Tarix = s.SellDate
+        //public List<SaleWinFormDto> GetAllWinFormDtoDetailsByTopSelling(Expression<Func<SaleWinFormDto, bool>> filter = null)
+        //{
+        //    using (StockTrackingProjectContext context = new StockTrackingProjectContext())
+        //    {
+        //        IQueryable <SaleWinFormDto> result = from s in context.SalesWinForms
+        //                     join p in context.Products on s.ProductId equals p.Id
+        //                     join u in context.Users on s.UserId equals u.Id
 
-                             }).Take(20);
+        //                     select new SaleWinFormDto
+        //                     {
+        //                         SaleId = s.Id,
+        //                         ProductId = s.ProductId,
+        //                         MehsulAdi = p.ProductName,
+        //                         Istifadeci = $"{u.FirstName} {u.LastName}",
+        //                         SatilanQiymet = s.SoldPrice,
+        //                         Miqdar = s.Quantity,
+        //                         Cem = s.TotalPrice,
+        //                         //s.SoldPrice * s.Quantity,
+        //                         Tarix = s.SellDate
 
-                return filter == null ? result.ToList() : result.Where(filter).ToList();
-            }
-        }
+        //                     };
+
+
+        //        return filter == null ? result.ToList() : result.Where(filter).ToList();
+        //    }
+        //}
+
+        //public List<SaleWinFormDto> GetAllWinFormDtoDetailsByTopSellinQuery(Expression<Func<SaleWinFormDto, bool>> filter = null)
+        //{
+        //    using (StockTrackingProjectContext context = new StockTrackingProjectContext())
+        //    {
+        //        IQueryable<SaleWinFormDto> query = (
+        //                       from s in context.SalesWinForms
+        //                       join p in context.Products on s.ProductId equals p.Id
+        //                       group s by p.Id into g
+        //                       select new SaleWinFormDto { MehsulAdi = p.ProductName, Miqdar=g.Count() }
+        //                     );
+
+        //        return query.ToList();
+        //    }
+        //}
     }
 }
 

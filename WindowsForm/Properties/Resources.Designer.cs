@@ -293,6 +293,16 @@ namespace WindowsForm.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
+        internal static System.Drawing.Bitmap ok_16px {
+            get {
+                object obj = ResourceManager.GetObject("ok_16px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
         internal static System.Drawing.Bitmap payment_history_16px_3 {
             get {
                 object obj = ResourceManager.GetObject("payment_history_16px_3", resourceCulture);

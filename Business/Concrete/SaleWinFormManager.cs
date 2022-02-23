@@ -81,7 +81,7 @@ namespace Business.Concrete
 
         public IDataResult<List<SaleWinFormDto>> GetAllSalewinFormDetailsSalesForMonth(int month)
         {
-            int year=1;
+            
             List<SaleWinFormDto> get = _saleWinFormDal.GetAllWinFormDtoDetails(s=>s.Tarix.Month == month);
             if (get == null)
             {

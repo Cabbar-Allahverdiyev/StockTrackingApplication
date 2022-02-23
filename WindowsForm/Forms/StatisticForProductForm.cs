@@ -10,12 +10,14 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
+using Entities.Concrete;
 
 namespace WindowsForm.Forms
 {
     public partial class StatisticForProductForm : Form
     {
         ProductManager _productManager = new ProductManager(new EfProductDal());
+        EfSaleWinFormDal formDal = new EfSaleWinFormDal();
 
         public StatisticForProductForm()
         {
@@ -32,14 +34,11 @@ namespace WindowsForm.Forms
 
         private void buttonEnCoxSatilan_Click(object sender, EventArgs e)
         {
-            IDataResult<List<ProductViewDashboardDetailDto>> result = _productManager.GetAllProductViewDashboardDetailByTopSelling();
-            if (!result.Success)
-            {
-                FormsMessage.ErrorMessage(result.Message);
-                return;
-            }
-            dataGridViewProductList.DataSource = result.Data;
-            FormsMessage.SuccessMessage(result.Message);
+           // IDataResult<List<ProductViewDashboardDetailDto>> result = _productManager.GetAllProductViewDashboardDetailByTopSelling();
+            //List<Product> result = formDal.GetAllWinFormDtoDetailsByTopSellinQuery();
+           
+            //dataGridViewProductList.DataSource = result;
+           
         }
 
         private void pictureBoxRefresh_Click(object sender, EventArgs e)
@@ -49,38 +48,38 @@ namespace WindowsForm.Forms
 
         private void buttonAzalan_Click(object sender, EventArgs e)
         {
-            IDataResult<List<ProductViewDashboardDetailDto>> result = _productManager.GetAllProductViewDashboardDetailByDecreasingProducts();
-            if (!result.Success)
-            {
-                FormsMessage.ErrorMessage(result.Message);
-                return;
-            }
-            dataGridViewProductList.DataSource = result.Data;
-            FormsMessage.SuccessMessage(result.Message);
+            //IDataResult<List<ProductViewDashboardDetailDto>> result = _productManager.GetAllProductViewDashboardDetailByDecreasingProducts();
+            //if (!result.Success)
+            //{
+            //    FormsMessage.ErrorMessage(result.Message);
+            //    return;
+            //}
+            //dataGridViewProductList.DataSource = result.Data;
+            //FormsMessage.SuccessMessage(result.Message);
         }
 
         private void buttonSatilmayan_Click(object sender, EventArgs e)
         {
-            IDataResult<List<ProductViewDashboardDetailDto>> result = _productManager.GetAllProductViewDashboardDetailByProductsThatNeverSell();
-            if (!result.Success)
-            {
-                FormsMessage.ErrorMessage(result.Message);
-                return;
-            }
-            dataGridViewProductList.DataSource = result.Data;
-            FormsMessage.SuccessMessage(result.Message);
+            //IDataResult<List<ProductViewDashboardDetailDto>> result = _productManager.GetAllProductViewDashboardDetailByProductsThatNeverSell();
+            //if (!result.Success)
+            //{
+            //    FormsMessage.ErrorMessage(result.Message);
+            //    return;
+            //}
+            //dataGridViewProductList.DataSource = result.Data;
+            //FormsMessage.SuccessMessage(result.Message);
         }
 
         private void buttonBitenler_Click(object sender, EventArgs e)
         {
-            IDataResult<List<ProductViewDashboardDetailDto>> result = _productManager.GetAllProductViewDashboardDetailByFinishedProducts();
-            if (!result.Success)
-            {
-                FormsMessage.ErrorMessage(result.Message);
-                return;
-            }
-            dataGridViewProductList.DataSource = result.Data;
-            FormsMessage.SuccessMessage(result.Message);
+            //IDataResult<List<ProductViewDashboardDetailDto>> result = _productManager.GetAllProductViewDashboardDetailByFinishedProducts();
+            //if (!result.Success)
+            //{
+            //    FormsMessage.ErrorMessage(result.Message);
+            //    return;
+            //}
+            //dataGridViewProductList.DataSource = result.Data;
+            //FormsMessage.SuccessMessage(result.Message);
         }
 
         private void ProductListRefresh()

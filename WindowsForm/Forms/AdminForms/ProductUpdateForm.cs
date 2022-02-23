@@ -123,7 +123,7 @@ namespace WindowsForm.Forms
 
         private void dataGridViewFormPrdouctList_DoubleClick(object sender, EventArgs e)
         {
-            var productViewDetailByProductId = _productManager.GetProductViewProductIdDetail(
+            var productViewDetailByProductId = _productManager.GetProductViewDetailByProductId(
                     Convert.ToInt32(dataGridViewPrdouctList.CurrentRow.Cells["ProductId"].Value.ToString())
                );
 

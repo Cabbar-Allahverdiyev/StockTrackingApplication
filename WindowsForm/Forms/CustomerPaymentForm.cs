@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using Business.Constants.Messages;
 using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
@@ -55,7 +56,8 @@ namespace WindowsForm.Forms
             catch (Exception ex)
             {
 
-                throw;
+                FormsMessage.ErrorMessage($"{AuthMessages.ErrorMessage} | { ex.Message}");
+                return;
             }
            
         }

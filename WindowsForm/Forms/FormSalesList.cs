@@ -1,8 +1,10 @@
 ﻿using Business.Concrete;
 using Business.Constants.Messages;
+using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using Entities.DTOs.SaleWinFormDtos;
+using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,6 +14,7 @@ using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.Concrete;
+using WindowsForm.Core.Controllers.ValidatorControllers;
 using WindowsForm.Utilities.Search.Concrete.SaleSearch;
 
 namespace WindowsForm.Forms
@@ -20,6 +23,7 @@ namespace WindowsForm.Forms
     {
         SaleWinFormManager _saleWinFormManager = new SaleWinFormManager(new EfSaleWinFormDal());
         ProductManager _productManager = new ProductManager(new EfProductDal());
+        SaleValidationTool saleValidationTool = new SaleValidationTool();
 
         public FormSalesList()
         {
@@ -34,8 +38,9 @@ namespace WindowsForm.Forms
             comboBoxAxtar.Items.Add("MehsulAdi");
             comboBoxAxtar.Items.Add("Istifadeci");
             SaleListRefesh();
+            checkBoxSatisLegvEdilsin.Checked = false;
         }
-       
+
         //Click------------------------------------------->
         private void buttonAxtar_Click(object sender, EventArgs e)
         {
@@ -62,20 +67,20 @@ namespace WindowsForm.Forms
                     {
                         saleTotal += item.Cem;
 
-                        Product getProduct=_productManager.GetByProductId(item.ProductId).Data;
-                        for (int i = 1; i < item.Miqdar+1; i++)
+                        Product getProduct = _productManager.GetByProductId(item.ProductId).Data;
+                        for (int i = 1; i < item.Miqdar + 1; i++)
                         {
                             IncomeTotal += (item.SatilanQiymet - getProduct.PurchasePrice);
                         }
-                       
+
                     }
-                   
+
                     labelTotal.Text = saleTotal.ToString();
                     if (staticUseraId == 3002 || staticUseraId == 2004)
                     {
                         labelIncome.Text = IncomeTotal.ToString();
                     }
-                        
+
                     dataGridViewSaleList.DataSource = dataMonth;
                     return;
                 }
@@ -83,7 +88,7 @@ namespace WindowsForm.Forms
                 if (comboBoxDays.SelectedItem == null && comboBoxMonths.SelectedItem == null && comboBoxYears.SelectedItem != null)
                 {
                     List<SaleWinFormDto> dataYear = _saleWinFormManager
-                        .GetAllSaleWinFormDetailsSalesForYear( selectedYearItem).Data;
+                        .GetAllSaleWinFormDetailsSalesForYear(selectedYearItem).Data;
 
                     foreach (SaleWinFormDto item in dataYear)
                     {
@@ -115,7 +120,7 @@ namespace WindowsForm.Forms
                     {
                         saleTotal += item.Cem;
                         Product getProduct = _productManager.GetByProductId(item.ProductId).Data;
-                        for (int i = 1; i < item.Miqdar+1; i++)
+                        for (int i = 1; i < item.Miqdar + 1; i++)
                         {
                             IncomeTotal += (item.SatilanQiymet - getProduct.PurchasePrice);
                         }
@@ -135,7 +140,7 @@ namespace WindowsForm.Forms
                 {
                     saleTotal += item.Cem;
                     Product getProduct = _productManager.GetByProductId(item.ProductId).Data;
-                    for (int i = 1; i < item.Miqdar+1; i++)
+                    for (int i = 1; i < item.Miqdar + 1; i++)
                     {
                         IncomeTotal += (item.SatilanQiymet - getProduct.PurchasePrice);
                     }
@@ -173,7 +178,67 @@ namespace WindowsForm.Forms
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
             SaleWinFormDetailDtoSearch detailSearch = new SaleWinFormDetailDtoSearch();
-            detailSearch.SearchBySelectedValueOfComboBoxAndWriteToDataGridView(textBoxAxtar,dataGridViewSaleList,comboBoxAxtar);
+            detailSearch.SearchBySelectedValueOfComboBoxAndWriteToDataGridView(textBoxAxtar, dataGridViewSaleList, comboBoxAxtar);
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonTetbiqEt_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                checkBoxSatisLegvEdilsin.Checked = false;
+                SaleWinForm sale = new SaleWinForm();
+                sale.Id = int.Parse(textBoxSaleId.Text);
+                IDataResult<Sale> getSale = _saleWinFormManager.GetById(sale.Id);
+                if (!getSale.Success)
+                {
+                    FormsMessage.ErrorMessage(getSale.Message);
+                    return;
+                }
+                sale = getSale.Data;
+                sale.SaleStatus = checkBoxSatisLegvEdilsin.Checked;
+
+                
+
+                if (!saleValidationTool.IsValid(sale))
+                {
+                    return;
+                }
+
+                IResult updatedSale = _saleWinFormManager.Update(sale);
+                if (!updatedSale.Success)
+                {
+                    FormsMessage.WarningMessage(updatedSale.Message);
+                    return;
+                }
+
+
+
+                FormsMessage.SuccessMessage(updatedSale.Message);
+                FormsMessage.SuccessMessage(SaleMessages.SaleCancel);
+                checkBoxSatisLegvEdilsin.Checked = false;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+        }
+
+        private void dataGridViewSaleList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textBoxSaleId.Text;
+            textBoxMehsul.Text;
+            textBoxMiqdar.Text;
+            textBoxUmumiDeyer.Text;
+            textBoxSatIici.Text;
+            textBoxTarix.Text;
         }
     }
 }
