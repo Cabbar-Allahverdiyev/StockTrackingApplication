@@ -14,6 +14,8 @@ namespace Business.Abstract
         IResult Update(SaleWinForm saleWinForm);
         IResult Delete(SaleWinForm saleWinForm);
 
+        IDataResult<SaleWinForm> GetById(int id);
+
         //SaleWinFormDto
         IDataResult<List<SaleWinFormDto>> GetAllSaleWinFormDtoDetails();
         IDataResult<List<SaleWinFormDto>> GetAllSaleWinFormDetailsSalesForDay(int day);

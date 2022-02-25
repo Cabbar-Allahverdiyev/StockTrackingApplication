@@ -32,8 +32,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  Istifadeci = $"{u.FirstName} {u.LastName}",
                                  SatilanQiymet = s.SoldPrice,
                                  Miqdar = s.Quantity,
-                                 Cem = s.TotalPrice,
-                                 //s.SoldPrice * s.Quantity,
+                                 Cem = s.SoldPrice * s.Quantity,
+                                 SatisinVeziyyeti=s.SaleStatus,
                                  Tarix = s.SellDate
 
                              };
@@ -64,8 +64,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  Istifadeci = $"{u.FirstName} {u.LastName}",
                                  SatilanQiymet = s.SoldPrice,
                                  Miqdar = s.Quantity,
-                                 Cem = s.TotalPrice,
-                                 //s.SoldPrice * s.Quantity,
+                                 Cem = s.SoldPrice * s.Quantity,
+                                 SatisinVeziyyeti = s.SaleStatus,
                                  Tarix = s.SellDate
 
                              };
@@ -96,8 +96,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  Istifadeci = $"{u.FirstName} {u.LastName}",
                                  SatilanQiymet = s.SoldPrice,
                                  Miqdar = s.Quantity,
-                                 Cem = s.TotalPrice,
-                                 //s.SoldPrice * s.Quantity,
+                                 Cem = s.SoldPrice * s.Quantity,
+                                 SatisinVeziyyeti = s.SaleStatus,
                                  Tarix = s.SellDate
 
                              };

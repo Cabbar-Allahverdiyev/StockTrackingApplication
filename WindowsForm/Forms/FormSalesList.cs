@@ -55,7 +55,7 @@ namespace WindowsForm.Forms
                 int selectedYearItem = comboBoxYears.SelectedItem != null ? int.Parse(comboBoxYears.SelectedItem.ToString())
                    : DateTime.Now.Year;
                 decimal saleTotal = 0;
-                decimal IncomeTotal = 0;
+                decimal incomeTotal = 0;
                 int staticUseraId = LoginForm.UserId;
 
                 if (comboBoxDays.SelectedItem == null && comboBoxMonths.SelectedItem != null && comboBoxYears.SelectedItem == null)
@@ -65,12 +65,17 @@ namespace WindowsForm.Forms
 
                     foreach (SaleWinFormDto item in dataMonth)
                     {
-                        saleTotal += item.Cem;
-
-                        Product getProduct = _productManager.GetByProductId(item.ProductId).Data;
-                        for (int i = 1; i < item.Miqdar + 1; i++)
+                        if (item.SatisinVeziyyeti == true)
                         {
-                            IncomeTotal += (item.SatilanQiymet - getProduct.PurchasePrice);
+
+
+                            saleTotal += item.Cem;
+
+                            Product getProduct = _productManager.GetById(item.ProductId).Data;
+                            for (int i = 1; i < item.Miqdar + 1; i++)
+                            {
+                                incomeTotal += (item.SatilanQiymet - getProduct.PurchasePrice);
+                            }
                         }
 
                     }
@@ -78,7 +83,8 @@ namespace WindowsForm.Forms
                     labelTotal.Text = saleTotal.ToString();
                     if (staticUseraId == 3002 || staticUseraId == 2004)
                     {
-                        labelIncome.Text = IncomeTotal.ToString();
+
+                        labelIncome.Text = incomeTotal.ToString();
                     }
 
                     dataGridViewSaleList.DataSource = dataMonth;
@@ -92,20 +98,22 @@ namespace WindowsForm.Forms
 
                     foreach (SaleWinFormDto item in dataYear)
                     {
-                        saleTotal += item.Cem;
-
-                        Product getProduct = _productManager.GetByProductId(item.ProductId).Data;
-                        for (int i = 1; i < item.Miqdar + 1; i++)
+                        if (item.SatisinVeziyyeti == true)
                         {
-                            IncomeTotal += (item.SatilanQiymet - getProduct.PurchasePrice);
-                        }
+                            saleTotal += item.Cem;
 
+                            Product getProduct = _productManager.GetById(item.ProductId).Data;
+                            for (int i = 1; i < item.Miqdar + 1; i++)
+                            {
+                                incomeTotal += (item.SatilanQiymet - getProduct.PurchasePrice);
+                            }
+                        }
                     }
 
                     labelTotal.Text = saleTotal.ToString();
                     if (staticUseraId == 3002 || staticUseraId == 2004)
                     {
-                        labelIncome.Text = IncomeTotal.ToString();
+                        labelIncome.Text = incomeTotal.ToString();
                     }
                     dataGridViewSaleList.DataSource = dataYear;
                     return;
@@ -118,17 +126,20 @@ namespace WindowsForm.Forms
                         .GetAllSaleWinFormDetailsSalesForMonthAndYear(selectedMonthItem, selectedYearItem).Data;
                     foreach (SaleWinFormDto item in dataMonth)
                     {
-                        saleTotal += item.Cem;
-                        Product getProduct = _productManager.GetByProductId(item.ProductId).Data;
-                        for (int i = 1; i < item.Miqdar + 1; i++)
+                        if (item.SatisinVeziyyeti == true)
                         {
-                            IncomeTotal += (item.SatilanQiymet - getProduct.PurchasePrice);
+                            saleTotal += item.Cem;
+                            Product getProduct = _productManager.GetById(item.ProductId).Data;
+                            for (int i = 1; i < item.Miqdar + 1; i++)
+                            {
+                                incomeTotal += (item.SatilanQiymet - getProduct.PurchasePrice);
+                            }
                         }
                     }
                     labelTotal.Text = saleTotal.ToString();
                     if (staticUseraId == 3002 || staticUseraId == 2004)
                     {
-                        labelIncome.Text = IncomeTotal.ToString();
+                        labelIncome.Text = incomeTotal.ToString();
                     }
                     dataGridViewSaleList.DataSource = dataMonth;
                     return;
@@ -138,17 +149,20 @@ namespace WindowsForm.Forms
                         .GetAllSaleWinFormDetailsSalesForDayAndMonthAndYear(selectedDayItem, selectedMonthItem, selectedYearItem).Data;
                 foreach (SaleWinFormDto item in data)
                 {
-                    saleTotal += item.Cem;
-                    Product getProduct = _productManager.GetByProductId(item.ProductId).Data;
-                    for (int i = 1; i < item.Miqdar + 1; i++)
+                    if (item.SatisinVeziyyeti == true)
                     {
-                        IncomeTotal += (item.SatilanQiymet - getProduct.PurchasePrice);
+                        saleTotal += item.Cem;
+                        Product getProduct = _productManager.GetById(item.ProductId).Data;
+                        for (int i = 1; i < item.Miqdar + 1; i++)
+                        {
+                            incomeTotal += (item.SatilanQiymet - getProduct.PurchasePrice);
+                        }
                     }
                 }
                 labelTotal.Text = saleTotal.ToString();
                 if (staticUseraId == 3002 || staticUseraId == 2004)
                 {
-                    labelIncome.Text = IncomeTotal.ToString();
+                    labelIncome.Text = incomeTotal.ToString();
                 }
                 dataGridViewSaleList.DataSource = data;
             }
@@ -190,42 +204,62 @@ namespace WindowsForm.Forms
         {
             try
             {
-                checkBoxSatisLegvEdilsin.Checked = false;
                 SaleWinForm sale = new SaleWinForm();
+                if (textBoxSaleId.Text == "")
+                {
+                    FormsMessage.WarningMessage(FormsTextMessages.PasswordOrEmailIsBlank);
+                    return;
+                }
                 sale.Id = int.Parse(textBoxSaleId.Text);
-                IDataResult<Sale> getSale = _saleWinFormManager.GetById(sale.Id);
+                IDataResult<SaleWinForm> getSale = _saleWinFormManager.GetById(sale.Id);
                 if (!getSale.Success)
                 {
                     FormsMessage.ErrorMessage(getSale.Message);
                     return;
                 }
                 sale = getSale.Data;
-                sale.SaleStatus = checkBoxSatisLegvEdilsin.Checked;
-
-                
+                sale.SaleStatus = false;
 
                 if (!saleValidationTool.IsValid(sale))
                 {
                     return;
                 }
-
-                IResult updatedSale = _saleWinFormManager.Update(sale);
-                if (!updatedSale.Success)
+                IResult updatedSale;
+                if (checkBoxSatisLegvEdilsin.Checked == true)
                 {
-                    FormsMessage.WarningMessage(updatedSale.Message);
-                    return;
+                    updatedSale = _saleWinFormManager.Update(sale);
+
+                    if (!updatedSale.Success)
+                    {
+                        FormsMessage.WarningMessage(updatedSale.Message);
+                        return;
+                    }
+
+                    IDataResult<Product> getProduct = _productManager.GetById(sale.ProductId);
+                    if (!getProduct.Success)
+                    {
+                        FormsMessage.ErrorMessage(getProduct.Message);
+                        return;
+                    }
+                    getProduct.Data.UnitsInStock += sale.Quantity;
+                    IResult productUpdated = _productManager.Update(getProduct.Data);
+                    if (!productUpdated.Success)
+                    {
+                        FormsMessage.ErrorMessage(productUpdated.Message);
+                        return;
+                    }
+
+                    FormsMessage.SuccessMessage(ProductMessages.UnitsInStockIncreased(sale.Quantity));
+                    FormsMessage.SuccessMessage(updatedSale.Message);
+                    FormsMessage.SuccessMessage(SaleMessages.SaleCancel);
+                    checkBoxSatisLegvEdilsin.Checked = false;
                 }
 
-
-
-                FormsMessage.SuccessMessage(updatedSale.Message);
-                FormsMessage.SuccessMessage(SaleMessages.SaleCancel);
-                checkBoxSatisLegvEdilsin.Checked = false;
+                SaleListRefesh();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                FormsMessage.ErrorMessage($"{AuthMessages.ErrorMessage} | {ex.Message}");
             }
 
 
@@ -233,12 +267,13 @@ namespace WindowsForm.Forms
 
         private void dataGridViewSaleList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            textBoxSaleId.Text;
-            textBoxMehsul.Text;
-            textBoxMiqdar.Text;
-            textBoxUmumiDeyer.Text;
-            textBoxSatIici.Text;
-            textBoxTarix.Text;
+            textBoxSaleId.Text = dataGridViewSaleList.CurrentRow.Cells["SaleId"].Value.ToString();
+            textBoxMehsul.Text = dataGridViewSaleList.CurrentRow.Cells["MehsulAdi"].Value.ToString();
+            textBoxMiqdar.Text = dataGridViewSaleList.CurrentRow.Cells["Miqdar"].Value.ToString();
+            textBoxUmumiDeyer.Text = dataGridViewSaleList.CurrentRow.Cells["Cem"].Value.ToString();
+            textBoxSatIici.Text = dataGridViewSaleList.CurrentRow.Cells["Istifadeci"].Value.ToString();
+            textBoxTarix.Text = dataGridViewSaleList.CurrentRow.Cells["Tarix"].Value.ToString();
+            checkBoxSatisLegvEdilsin.Checked = false;
         }
     }
 }

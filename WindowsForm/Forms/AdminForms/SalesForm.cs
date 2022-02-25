@@ -197,7 +197,7 @@ namespace WindowsForm.Forms
                     foreach (Cart cart in carts.Data)
                     {
 
-                        Product product = _productManager.GetByProductId(cart.ProductId).Data;
+                        Product product = _productManager.GetById(cart.ProductId).Data;
                         product.UnitsInStock -= cart.Quantity;
                         debt.ProductId = cart.ProductId;
                         debt.CustomerId = customerId;
@@ -330,14 +330,14 @@ namespace WindowsForm.Forms
                     foreach (Cart cart in carts.Data)
                     {
 
-                        Product product = _productManager.GetByProductId(cart.ProductId).Data;
+                        Product product = _productManager.GetById(cart.ProductId).Data;
                         product.UnitsInStock -= cart.Quantity;
                         saleWinForm.Id = 0;
                         saleWinForm.ProductId = cart.ProductId;
                         saleWinForm.UserId = cart.UserId;
                         saleWinForm.SoldPrice = cart.SoldPrice;
                         saleWinForm.Quantity = cart.Quantity;
-                        saleWinForm.TotalPrice = saleWinForm.SoldPrice * saleWinForm.Quantity;
+                       
                         if (!saleValidationTool.IsValid(saleWinForm))
                         {
                             return;

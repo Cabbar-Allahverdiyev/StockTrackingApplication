@@ -12,7 +12,8 @@ namespace Entities.Concrete
         public int UserId { get; set; }
         public decimal SoldPrice { get; set; }
         public int Quantity { get; set; }
-        public decimal TotalPrice { get; set; }
+        public bool SaleStatus { get; set; }
+        //public decimal TotalPrice { get; set; }
         public DateTime SellDate { get; set; }
     }
 }

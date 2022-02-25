@@ -67,7 +67,7 @@ namespace Business.Concrete
 
         //Metodlar--------------->
         [CacheAspect]
-        public IDataResult<Product> GetByProductId(int productId)
+        public IDataResult<Product> GetById(int productId)
         {
             Product get = _productDal.Get(p => p.Id == productId);
             if (get == null)

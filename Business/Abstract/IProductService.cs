@@ -13,7 +13,7 @@ namespace Business.Abstract
         IResult Add(Product product);
         IResult Update(Product product);
         IResult Delete(Product product);
-        IDataResult<Product> GetByProductId(int productId);
+        IDataResult<Product> GetById(int productId);
         IDataResult<Product> GetByProductBarcodeNumber(string barcodeNumber);
         IDataResult<List<ProductViewDetailDto>> GetProductViewDetails();
         IDataResult<List<ProductViewDashboardDetailDto>> GetAllProductViewDasboardDetails();

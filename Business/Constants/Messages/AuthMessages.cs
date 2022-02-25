@@ -12,7 +12,7 @@ namespace Business.Constants.Messages
         public static string UserRegistered = "Qeydiyyatdan kecdi";
         public static string RegistirationFailed = "Qeydiyyat uğursuz oldu";
         public static string UserNotFound = "Istifadəci tapilmadi";
-        public static string PasswordError = "Şifr xətası";
+        public static string PasswordError = "Şifrə yanlışdır";
         public static string SuccessfulLogin = "Uğurlu giriş";
         public static string UserAlreadyExists = "İstifadəçi mövcuddur";
         public static string AccessTokenCreated = "Token yaradıldı";

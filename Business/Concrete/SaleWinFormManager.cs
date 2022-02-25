@@ -27,6 +27,7 @@ namespace Business.Concrete
         public IResult Add(SaleWinForm saleWinForm)
         {
             saleWinForm.SellDate = DateTime.Now;
+            saleWinForm.SaleStatus = true;
             _saleWinFormDal.Add(saleWinForm);
             return new SuccessResult(SaleMessages.Added);
         }
@@ -34,7 +35,7 @@ namespace Business.Concrete
         [ValidationAspect(typeof(SaleWinFormValidator))]
         public IResult Update(SaleWinForm saleWinForm)
         {
-            saleWinForm.SellDate = DateTime.Now;
+            //saleWinForm.SellDate = DateTime.Now;
             _saleWinFormDal.Update(saleWinForm);
             return new SuccessResult(SaleMessages.Updated);
         }
@@ -50,74 +51,92 @@ namespace Business.Concrete
         public IDataResult<List<SaleWinForm>> GetAll()
         {
             List<SaleWinForm> get = _saleWinFormDal.GetAll();
-            if (get == null)
-            {
-                return new ErrorDataResult<List<SaleWinForm>>(SaleMessages.NotFound);
-            }
+            //if (get == null)
+            //{
+            //    return new ErrorDataResult<List<SaleWinForm>>(SaleMessages.NotFound);
+            //}
             return new SuccessDataResult<List<SaleWinForm>>(get, SaleMessages.Found);
+        }
+
+        public IDataResult<SaleWinForm> GetById(int id)
+        {
+            SaleWinForm get = _saleWinFormDal.Get(s =>  s.Id == id);
+            if (get==null)
+            {
+                return new ErrorDataResult<SaleWinForm>(SaleMessages.NotFound);
+            }
+            return new SuccessDataResult<SaleWinForm>(get,SaleMessages.Found);
         }
 
 
         //DTOs----------------------->
+        [CacheAspect]
         public IDataResult<List<SaleWinFormDto>> GetAllSaleWinFormDtoDetails()
         {
             List<SaleWinFormDto> get = _saleWinFormDal.GetAllWinFormDtoDetails();
-            if (get == null)
-            {
-                return new ErrorDataResult<List<SaleWinFormDto>>(SaleMessages.NotFound);
-            }
+            //if (get == null)
+            //{
+            //    return new ErrorDataResult<List<SaleWinFormDto>>(SaleMessages.NotFound);
+            //}
             return new SuccessDataResult<List<SaleWinFormDto>>(get, SaleMessages.Found);
         }
 
+        [CacheAspect]
         public IDataResult<List<SaleWinFormDto>> GetAllSaleWinFormDetailsSalesForDay(int day)
         {
             List<SaleWinFormDto> get = _saleWinFormDal.GetAllWinFormDtoDetails(s=>s.Tarix.Day==day);
-            if (get == null)
-            {
-                return new ErrorDataResult<List<SaleWinFormDto>>(SaleMessages.NotFound);
-            }
+            //if (get == null)
+            //{
+            //    return new ErrorDataResult<List<SaleWinFormDto>>(SaleMessages.NotFound);
+            //}
             return new SuccessDataResult<List<SaleWinFormDto>>(get, SaleMessages.Found);
         }
 
+        [CacheAspect]
         public IDataResult<List<SaleWinFormDto>> GetAllSalewinFormDetailsSalesForMonth(int month)
         {
             
             List<SaleWinFormDto> get = _saleWinFormDal.GetAllWinFormDtoDetails(s=>s.Tarix.Month == month);
-            if (get == null)
-            {
-                return new ErrorDataResult<List<SaleWinFormDto>>(SaleMessages.NotFound);
-            }
+            //if (get == null)
+            //{
+            //    return new ErrorDataResult<List<SaleWinFormDto>>(SaleMessages.NotFound);
+            //}
             return new SuccessDataResult<List<SaleWinFormDto>>(get, SaleMessages.Found);
         }
 
+        [CacheAspect]
         public IDataResult<List<SaleWinFormDto>> GetAllSaleWinFormDetailsSalesForYear(int year)
         {
             List<SaleWinFormDto> get = _saleWinFormDal.GetAllWinFormDtoDetails(s => s.Tarix.Year == year);
-            if (get == null)
-            {
-                return new ErrorDataResult<List<SaleWinFormDto>>(SaleMessages.NotFound);
-            }
-            return new SuccessDataResult<List<SaleWinFormDto>>(get, SaleMessages.Found);
-        } 
-        
-        public IDataResult<List<SaleWinFormDto>> GetAllSaleWinFormDetailsSalesForDayAndMonthAndYear(int day,int month,int year)
-        {
-            List<SaleWinFormDto> get = _saleWinFormDal.GetAllWinFormDtoDetailsByDayAndMonthAndYear(day, month, year);
-            if (get == null)
-            {
-                return new ErrorDataResult<List<SaleWinFormDto>>(SaleMessages.NotFound);
-            }
+            //if (get == null)
+            //{
+            //    return new ErrorDataResult<List<SaleWinFormDto>>(SaleMessages.NotFound);
+            //}
             return new SuccessDataResult<List<SaleWinFormDto>>(get, SaleMessages.Found);
         }
 
+        [CacheAspect]
+        public IDataResult<List<SaleWinFormDto>> GetAllSaleWinFormDetailsSalesForDayAndMonthAndYear(int day,int month,int year)
+        {
+            List<SaleWinFormDto> get = _saleWinFormDal.GetAllWinFormDtoDetailsByDayAndMonthAndYear(day, month, year);
+            //if (get == null)
+            //{
+            //    return new ErrorDataResult<List<SaleWinFormDto>>(SaleMessages.NotFound);
+            //}
+            return new SuccessDataResult<List<SaleWinFormDto>>(get, SaleMessages.Found);
+        }
+
+        [CacheAspect]
         public IDataResult<List<SaleWinFormDto>> GetAllSaleWinFormDetailsSalesForMonthAndYear(int month, int year)
         {
             List<SaleWinFormDto> get = _saleWinFormDal.GetAllWinFormDtoDetailsByMonthAndYear( month, year);
-            if (get == null)
-            {
-                return new ErrorDataResult<List<SaleWinFormDto>>(SaleMessages.NotFound);
-            }
+            //if (get == null)
+            //{
+            //    return new ErrorDataResult<List<SaleWinFormDto>>(SaleMessages.NotFound);
+            //}
             return new SuccessDataResult<List<SaleWinFormDto>>(get, SaleMessages.Found);
         }
+
+        
     }
 }

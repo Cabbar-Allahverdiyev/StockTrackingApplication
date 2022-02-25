@@ -78,12 +78,12 @@ namespace WindowsForm.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewSaleList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.dataGridViewSaleList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewSaleList.Location = new System.Drawing.Point(324, 43);
+            this.dataGridViewSaleList.Location = new System.Drawing.Point(266, 43);
             this.dataGridViewSaleList.Name = "dataGridViewSaleList";
             this.dataGridViewSaleList.ReadOnly = true;
             this.dataGridViewSaleList.RowTemplate.Height = 25;
             this.dataGridViewSaleList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSaleList.Size = new System.Drawing.Size(576, 483);
+            this.dataGridViewSaleList.Size = new System.Drawing.Size(634, 483);
             this.dataGridViewSaleList.TabIndex = 16;
             this.dataGridViewSaleList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSaleList_CellDoubleClick);
             // 
@@ -298,16 +298,17 @@ namespace WindowsForm.Forms
             // 
             // checkBoxSatisLegvEdilsin
             // 
-            this.checkBoxSatisLegvEdilsin.AutoSize = true;
-            this.checkBoxSatisLegvEdilsin.Location = new System.Drawing.Point(118, 186);
+            this.checkBoxSatisLegvEdilsin.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBoxSatisLegvEdilsin.Location = new System.Drawing.Point(6, 186);
             this.checkBoxSatisLegvEdilsin.Name = "checkBoxSatisLegvEdilsin";
-            this.checkBoxSatisLegvEdilsin.Size = new System.Drawing.Size(124, 21);
+            this.checkBoxSatisLegvEdilsin.Size = new System.Drawing.Size(134, 21);
             this.checkBoxSatisLegvEdilsin.TabIndex = 36;
             this.checkBoxSatisLegvEdilsin.Text = "Satış ləğv edilsin";
             this.checkBoxSatisLegvEdilsin.UseVisualStyleBackColor = true;
             // 
             // textBoxTarix
             // 
+            this.textBoxTarix.Enabled = false;
             this.textBoxTarix.Location = new System.Drawing.Point(105, 158);
             this.textBoxTarix.Name = "textBoxTarix";
             this.textBoxTarix.Size = new System.Drawing.Size(137, 22);
@@ -324,6 +325,7 @@ namespace WindowsForm.Forms
             // 
             // textBoxSatIici
             // 
+            this.textBoxSatIici.Enabled = false;
             this.textBoxSatIici.Location = new System.Drawing.Point(105, 130);
             this.textBoxSatIici.Name = "textBoxSatIici";
             this.textBoxSatIici.Size = new System.Drawing.Size(137, 22);
@@ -340,6 +342,7 @@ namespace WindowsForm.Forms
             // 
             // textBoxUmumiDeyer
             // 
+            this.textBoxUmumiDeyer.Enabled = false;
             this.textBoxUmumiDeyer.Location = new System.Drawing.Point(105, 102);
             this.textBoxUmumiDeyer.Name = "textBoxUmumiDeyer";
             this.textBoxUmumiDeyer.Size = new System.Drawing.Size(137, 22);
@@ -356,6 +359,7 @@ namespace WindowsForm.Forms
             // 
             // textBoxMiqdar
             // 
+            this.textBoxMiqdar.Enabled = false;
             this.textBoxMiqdar.Location = new System.Drawing.Point(105, 74);
             this.textBoxMiqdar.Name = "textBoxMiqdar";
             this.textBoxMiqdar.Size = new System.Drawing.Size(137, 22);
@@ -372,6 +376,7 @@ namespace WindowsForm.Forms
             // 
             // textBoxMehsul
             // 
+            this.textBoxMehsul.Enabled = false;
             this.textBoxMehsul.Location = new System.Drawing.Point(105, 46);
             this.textBoxMehsul.Name = "textBoxMehsul";
             this.textBoxMehsul.Size = new System.Drawing.Size(137, 22);
@@ -388,6 +393,7 @@ namespace WindowsForm.Forms
             // 
             // textBoxSaleId
             // 
+            this.textBoxSaleId.Enabled = false;
             this.textBoxSaleId.Location = new System.Drawing.Point(105, 18);
             this.textBoxSaleId.Name = "textBoxSaleId";
             this.textBoxSaleId.Size = new System.Drawing.Size(137, 22);

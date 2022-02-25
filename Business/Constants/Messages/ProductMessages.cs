@@ -21,5 +21,10 @@ namespace Business.Constants.Messages
         public static string ProductNameAvailable = "Sistemdə bu ad ilə eyni eyni adlı məhsul var, zəhmət olmasa  o məhsulun üzərinə yazın və ya basqa ad sınayın";
         public static string SureFillInFields = "Xanaları mütləq doldurun";
         public static string UnitPriceCannotBeZero = "QiymƏt '0' dan böyük olmalıdır !";
+
+        public static string UnitsInStockIncreased(int quantity)
+        {
+            return $"Uyğun məhsulun bazadakı vahidi {quantity} ədəd artırıldı";
+        }
     }
 }
