@@ -1,7 +1,7 @@
 ﻿
-namespace WindowsForm.Forms
+namespace WindowsForm.Forms.UserForms
 {
-    partial class FormSalesList
+    partial class FormSalesListForUser
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace WindowsForm.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSalesList));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSalesListForUser));
             this.dataGridViewSaleList = new System.Windows.Forms.DataGridView();
             this.buttonAxtar = new System.Windows.Forms.Button();
             this.comboBoxDays = new System.Windows.Forms.ComboBox();
@@ -37,8 +37,6 @@ namespace WindowsForm.Forms
             this.comboBoxYears = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.labelIncome = new System.Windows.Forms.Label();
             this.labelTotal = new System.Windows.Forms.Label();
             this.buttonTemizle = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -127,8 +125,6 @@ namespace WindowsForm.Forms
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.labelIncome);
             this.groupBox1.Controls.Add(this.labelTotal);
             this.groupBox1.Controls.Add(this.buttonTemizle);
             this.groupBox1.Controls.Add(this.label3);
@@ -153,26 +149,6 @@ namespace WindowsForm.Forms
             this.label5.Size = new System.Drawing.Size(46, 17);
             this.label5.TabIndex = 37;
             this.label5.Text = "Alver :";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(119, 188);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 17);
-            this.label4.TabIndex = 36;
-            this.label4.Text = "Gəlir :";
-            // 
-            // labelIncome
-            // 
-            this.labelIncome.AutoSize = true;
-            this.labelIncome.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelIncome.ForeColor = System.Drawing.Color.Red;
-            this.labelIncome.Location = new System.Drawing.Point(166, 184);
-            this.labelIncome.Name = "labelIncome";
-            this.labelIncome.Size = new System.Drawing.Size(22, 21);
-            this.labelIncome.TabIndex = 35;
-            this.labelIncome.Text = "#";
             // 
             // labelTotal
             // 
@@ -294,7 +270,6 @@ namespace WindowsForm.Forms
             this.groupBox2.Size = new System.Drawing.Size(248, 264);
             this.groupBox2.TabIndex = 35;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // checkBoxSatisLegvEdilsin
             // 
@@ -421,7 +396,7 @@ namespace WindowsForm.Forms
             this.buttonTetbiqEt.UseVisualStyleBackColor = true;
             this.buttonTetbiqEt.Click += new System.EventHandler(this.buttonTetbiqEt_Click);
             // 
-            // FormSalesList
+            // FormSalesListForUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -435,7 +410,7 @@ namespace WindowsForm.Forms
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridViewSaleList);
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Name = "FormSalesList";
+            this.Name = "FormSalesListForUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Satışları sıralamaq səhifəsi";
             this.Load += new System.EventHandler(this.FormSalesList_Load);
@@ -465,9 +440,7 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textBoxAxtar;
         private System.Windows.Forms.Label labelTotal;
-        private System.Windows.Forms.Label labelIncome;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button buttonTemizle;
         private System.Windows.Forms.ComboBox comboBoxAxtar;
         private System.Windows.Forms.GroupBox groupBox2;

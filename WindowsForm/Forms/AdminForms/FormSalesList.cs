@@ -81,13 +81,8 @@ namespace WindowsForm.Forms
                     }
 
                     labelTotal.Text = saleTotal.ToString();
-                    if (staticUseraId == 3002 || staticUseraId == 2004)
-                    {
-
-                        labelIncome.Text = incomeTotal.ToString();
-                    }
-
-                    dataGridViewSaleList.DataSource = dataMonth;
+                    labelIncome.Text = incomeTotal.ToString();
+                                        dataGridViewSaleList.DataSource = dataMonth;
                     return;
                 }
 
@@ -111,11 +106,8 @@ namespace WindowsForm.Forms
                     }
 
                     labelTotal.Text = saleTotal.ToString();
-                    if (staticUseraId == 3002 || staticUseraId == 2004)
-                    {
-                        labelIncome.Text = incomeTotal.ToString();
-                    }
-                    dataGridViewSaleList.DataSource = dataYear;
+                                          labelIncome.Text = incomeTotal.ToString();
+                                        dataGridViewSaleList.DataSource = dataYear;
                     return;
                 }
 
@@ -160,44 +152,15 @@ namespace WindowsForm.Forms
                     }
                 }
                 labelTotal.Text = saleTotal.ToString();
-                if (staticUseraId == 3002 || staticUseraId == 2004)
-                {
+               
                     labelIncome.Text = incomeTotal.ToString();
-                }
+                
                 dataGridViewSaleList.DataSource = data;
             }
             catch (Exception ex)
             {
                 FormsMessage.ErrorMessage($"{AuthMessages.ErrorMessage} | {ex.Message}");
             }
-        }
-
-        private void pictureBoxRefresh_Click(object sender, EventArgs e)
-        {
-            SaleListRefesh();
-        }
-
-        private void buttonTemizle_Click(object sender, EventArgs e)
-        {
-            ComboBoxController.ClearAllComboBoxByGroupBox(groupBox1);
-        }
-
-        //Elave Metodlar------------------------>
-
-        private void SaleListRefesh()
-        {
-            dataGridViewSaleList.DataSource = _saleWinFormManager.GetAllSaleWinFormDtoDetails().Data;
-        }
-
-        private void textBoxAxtar_TextChanged(object sender, EventArgs e)
-        {
-            SaleWinFormDetailDtoSearch detailSearch = new SaleWinFormDetailDtoSearch();
-            detailSearch.SearchBySelectedValueOfComboBoxAndWriteToDataGridView(textBoxAxtar, dataGridViewSaleList, comboBoxAxtar);
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
         }
 
         private void buttonTetbiqEt_Click(object sender, EventArgs e)
@@ -207,7 +170,7 @@ namespace WindowsForm.Forms
                 SaleWinForm sale = new SaleWinForm();
                 if (textBoxSaleId.Text == "")
                 {
-                    FormsMessage.WarningMessage(FormsTextMessages.PasswordOrEmailIsBlank);
+                    FormsMessage.WarningMessage(FormsTextMessages.SaleIdBlank);
                     return;
                 }
                 sale.Id = int.Parse(textBoxSaleId.Text);
@@ -265,6 +228,20 @@ namespace WindowsForm.Forms
 
         }
 
+
+
+        private void pictureBoxRefresh_Click(object sender, EventArgs e)
+        {
+            SaleListRefesh();
+        }
+
+        private void buttonTemizle_Click(object sender, EventArgs e)
+        {
+            ComboBoxController.ClearAllComboBoxByGroupBox(groupBox1);
+        }
+
+        //Cell double click ------------------->
+
         private void dataGridViewSaleList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             textBoxSaleId.Text = dataGridViewSaleList.CurrentRow.Cells["SaleId"].Value.ToString();
@@ -275,5 +252,22 @@ namespace WindowsForm.Forms
             textBoxTarix.Text = dataGridViewSaleList.CurrentRow.Cells["Tarix"].Value.ToString();
             checkBoxSatisLegvEdilsin.Checked = false;
         }
+
+        //Elave Metodlar------------------------>
+
+        private void SaleListRefesh()
+        {
+            dataGridViewSaleList.DataSource = _saleWinFormManager.GetAllSaleWinFormDtoDetails().Data;
+        }
+
+        private void textBoxAxtar_TextChanged(object sender, EventArgs e)
+        {
+            SaleWinFormDetailDtoSearch detailSearch = new SaleWinFormDetailDtoSearch();
+            detailSearch.SearchBySelectedValueOfComboBoxAndWriteToDataGridView(textBoxAxtar, dataGridViewSaleList, comboBoxAxtar);
+        }
+
+
+
+
     }
 }

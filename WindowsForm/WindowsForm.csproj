@@ -17,6 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Forms\UserForms\FormSalesListForUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\UserForms\UserDashboard.cs">
       <SubType>Form</SubType>
     </Compile>

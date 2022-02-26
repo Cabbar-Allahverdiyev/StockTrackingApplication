@@ -64,6 +64,7 @@ namespace WindowsForm.Forms.UserForms
             this.məhsulYeniləToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.məhsulƏlavəEtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.markalarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.markalarIYeniləVəSilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myDMSales = new WindowsForm.MyControls.MyDropdownMenu(this.components);
             this.satislariSiralaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myDMUser = new WindowsForm.MyControls.MyDropdownMenu(this.components);
@@ -81,7 +82,6 @@ namespace WindowsForm.Forms.UserForms
             this.lazerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myDMSupplier = new WindowsForm.MyControls.MyDropdownMenu(this.components);
             this.elaveEtToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.markalarIYeniləVəSilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelTitleBar.SuspendLayout();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
@@ -430,7 +430,6 @@ namespace WindowsForm.Forms.UserForms
             // 
             // pictureBoxLogo
             // 
-            this.pictureBoxLogo.Image = global::WindowsForm.Properties.Resources.icons8_shortcuts_96px;
             this.pictureBoxLogo.Location = new System.Drawing.Point(22, 4);
             this.pictureBoxLogo.Name = "pictureBoxLogo";
             this.pictureBoxLogo.Size = new System.Drawing.Size(58, 60);
@@ -518,7 +517,7 @@ namespace WindowsForm.Forms.UserForms
             this.myDMProduct.MenuItemTextColor = System.Drawing.Color.DimGray;
             this.myDMProduct.Name = "myDMProduct";
             this.myDMProduct.PrimaryColor = System.Drawing.Color.MediumSlateBlue;
-            this.myDMProduct.Size = new System.Drawing.Size(187, 158);
+            this.myDMProduct.Size = new System.Drawing.Size(187, 136);
             // 
             // məhsullarıSıralaToolStripMenuItem
             // 
@@ -554,6 +553,13 @@ namespace WindowsForm.Forms.UserForms
             this.markalarToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.markalarToolStripMenuItem.Text = "Markalar";
             this.markalarToolStripMenuItem.Click += new System.EventHandler(this.markalarToolStripMenuItem_Click);
+            // 
+            // markalarIYeniləVəSilToolStripMenuItem
+            // 
+            this.markalarIYeniləVəSilToolStripMenuItem.Name = "markalarIYeniləVəSilToolStripMenuItem";
+            this.markalarIYeniləVəSilToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.markalarIYeniləVəSilToolStripMenuItem.Text = "MarkalarI yenilə və sil";
+            this.markalarIYeniləVəSilToolStripMenuItem.Click += new System.EventHandler(this.markalarIYeniləVəSilToolStripMenuItem_Click);
             // 
             // myDMSales
             // 
@@ -700,13 +706,6 @@ namespace WindowsForm.Forms.UserForms
             this.elaveEtToolStripMenuItem1.Size = new System.Drawing.Size(114, 22);
             this.elaveEtToolStripMenuItem1.Text = "Elave et";
             this.elaveEtToolStripMenuItem1.Click += new System.EventHandler(this.elaveEtToolStripMenuItem1_Click);
-            // 
-            // markalarIYeniləVəSilToolStripMenuItem
-            // 
-            this.markalarIYeniləVəSilToolStripMenuItem.Name = "markalarIYeniləVəSilToolStripMenuItem";
-            this.markalarIYeniləVəSilToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.markalarIYeniləVəSilToolStripMenuItem.Text = "MarkalarI yenilə və sil";
-            this.markalarIYeniləVəSilToolStripMenuItem.Click += new System.EventHandler(this.markalarIYeniləVəSilToolStripMenuItem_Click);
             // 
             // UserDashboard
             // 

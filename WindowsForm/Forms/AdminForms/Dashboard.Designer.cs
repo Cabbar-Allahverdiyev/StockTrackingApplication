@@ -433,7 +433,6 @@ namespace WindowsForm.Forms
             // 
             // pictureBoxLogo
             // 
-            this.pictureBoxLogo.Image = global::WindowsForm.Properties.Resources.icons8_shortcuts_96px;
             this.pictureBoxLogo.Location = new System.Drawing.Point(28, 4);
             this.pictureBoxLogo.Name = "pictureBoxLogo";
             this.pictureBoxLogo.Size = new System.Drawing.Size(58, 60);
@@ -472,33 +471,33 @@ namespace WindowsForm.Forms
             this.myDMCategory.MenuItemTextColor = System.Drawing.Color.DimGray;
             this.myDMCategory.Name = "myDropdownMenu3";
             this.myDMCategory.PrimaryColor = System.Drawing.Color.MediumSlateBlue;
-            this.myDMCategory.Size = new System.Drawing.Size(181, 114);
+            this.myDMCategory.Size = new System.Drawing.Size(177, 92);
             // 
             // kateqoriyalariSiralaToolStripMenuItem
             // 
             this.kateqoriyalariSiralaToolStripMenuItem.Name = "kateqoriyalariSiralaToolStripMenuItem";
-            this.kateqoriyalariSiralaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.kateqoriyalariSiralaToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.kateqoriyalariSiralaToolStripMenuItem.Text = "Kateqoriyalari sirala";
             this.kateqoriyalariSiralaToolStripMenuItem.Click += new System.EventHandler(this.kateqoriyalariSiralaToolStripMenuItem_Click);
             // 
             // elaveEtToolStripMenuItem
             // 
             this.elaveEtToolStripMenuItem.Name = "elaveEtToolStripMenuItem";
-            this.elaveEtToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.elaveEtToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.elaveEtToolStripMenuItem.Text = "Elave et";
             this.elaveEtToolStripMenuItem.Click += new System.EventHandler(this.elaveEtToolStripMenuItem_Click);
             // 
             // yenileToolStripMenuItem
             // 
             this.yenileToolStripMenuItem.Name = "yenileToolStripMenuItem";
-            this.yenileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.yenileToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.yenileToolStripMenuItem.Text = "Yenilə və sil";
             this.yenileToolStripMenuItem.Click += new System.EventHandler(this.yenileToolStripMenuItem_Click);
             // 
             // silToolStripMenuItem
             // 
             this.silToolStripMenuItem.Name = "silToolStripMenuItem";
-            this.silToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.silToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.silToolStripMenuItem.Text = "Sil";
             this.silToolStripMenuItem.Click += new System.EventHandler(this.silToolStripMenuItem_Click);
             // 

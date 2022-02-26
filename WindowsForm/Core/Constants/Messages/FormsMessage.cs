@@ -38,5 +38,10 @@ namespace WindowsForm.Core.Constants.Messages
         {
             throw new NotImplementedException();
         }
+
+        internal static void WarningMessage(object customerPaymentIdBlank)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

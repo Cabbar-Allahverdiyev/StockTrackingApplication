@@ -205,9 +205,9 @@ namespace WindowsForm.Forms
             this.label9.ForeColor = System.Drawing.Color.Silver;
             this.label9.Location = new System.Drawing.Point(39, 528);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(163, 16);
+            this.label9.Size = new System.Drawing.Size(161, 16);
             this.label9.TabIndex = 13;
-            this.label9.Text = "bu ünvana mesajı göndərin :";
+            this.label9.Text = "bu ünvana mesaj göndərin :";
             // 
             // label8
             // 
