@@ -10,10 +10,12 @@ namespace Business.Abstract
     public interface ICustomerPaymentService
     {
         IDataResult<List<CustomerPayment>> GetAll();
-        IResult Add(CustomerPayment customer);
-        IResult Update(CustomerPayment customer);
-        IResult Delete(CustomerPayment customer);
+        IResult Add(CustomerPayment customerPayment);
+        IResult Update(CustomerPayment customerPayment);
+        IResult Delete(CustomerPayment customerPayment);
         IDataResult<CustomerPayment> GetById(int id);
+
+        IResult CancelPayment(CustomerPayment customerPayment);
 
         IDataResult<List<CustomerPaymentDto>> GetCustomerPaymentDetails();
     }

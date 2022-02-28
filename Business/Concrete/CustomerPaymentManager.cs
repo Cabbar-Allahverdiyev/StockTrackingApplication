@@ -50,6 +50,7 @@ namespace Business.Concrete
             getBalance.Data.Balance += customerPayment.Value;
             if (getBalance.Data.Debt>=getBalance.Data.Balance)
             {
+                //burda eger borc balansa beraber olarsa yoxla
                 getBalance.Data.Debt -= getBalance.Data.Balance;
                 getBalance.Data.Balance = 0;
             }
@@ -66,6 +67,8 @@ namespace Business.Concrete
             }
 
             customerPayment.Date = DateTime.Now;
+            customerPayment.PaymentStatus = true;
+           
             _customerPaymentDal.Add(customerPayment);
             return new SuccessResult(CustomerPaymentMessages.Added);
         }
@@ -104,11 +107,60 @@ namespace Business.Concrete
         }
 
 
+        public IResult CancelPayment(CustomerPayment customerPayment)
+        {
+            IDataResult<CustomerBalance> getBalance = _balanceService.GetByCustomerId(customerPayment.CustomerId);
+            if (!getBalance.Success)
+            {
+               return new ErrorResult(getBalance.Message);
+            }
+
+
+            getBalance.Data.Balance -= customerPayment.Value;
+            if (getBalance.Data.Debt >= getBalance.Data.Balance)
+            {
+                if (getBalance.Data.Balance < 0)
+                {
+                    getBalance.Data.Debt += (getBalance.Data.Balance * -1);
+                    getBalance.Data.Balance = 0;
+                }
+                else if (getBalance.Data.Balance == getBalance.Data.Debt)
+                {
+                    getBalance.Data.Debt = 0;
+                    getBalance.Data.Balance = 0;
+                }
+
+                else
+                {
+                   return new  ErrorResult(CustomerPaymentMessages.CancelPaymentUnexpectableError("Business/Concrete/CancelPayment"));
+                }
+               // getBalance.Data.Debt += getBalance.Data.Balance;
+                //getBalance.Data.Balance = 0;
+            }
+            //else
+            //{
+            //    getBalance.Data.Balance -= getBalance.Data.Debt;
+            //    getBalance.Data.Debt = 0;
+            //}
+
+            IResult balanceUpdated = _balanceService.Update(getBalance.Data);
+            if (!balanceUpdated.Success)
+            {
+                return new ErrorResult($"{CustomerPaymentMessages.NotAdded} çünki {balanceUpdated.Message}");
+            }
+
+            customerPayment.Date = DateTime.Now;
+            _customerPaymentDal.Update(customerPayment);
+            return new SuccessResult(CustomerPaymentMessages.CancelPayment);
+        }
+
         //Dtos---------------------------->
         public IDataResult<List<CustomerPaymentDto>> GetCustomerPaymentDetails()
         {
             List<CustomerPaymentDto> get = _customerPaymentDal.GetCustomerPaymentDetails();
             return new SuccessDataResult<List<CustomerPaymentDto>>(get, CustomerPaymentMessages.GetAll);
         }
+
+        
     }
 }

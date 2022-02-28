@@ -120,8 +120,10 @@ namespace WindowsForm.Forms
             
             if (checkBoxOdenisLegvEdilsin.Checked == true)
             {
+                
                 getPayment.Data.PaymentStatus = false;
-                getPayment.Data.CancelPayment = DateTime.Now;
+                getPayment.Data.CancelDate = DateTime.Now;
+                //bax
             }
             IResult updatedPayment = _paymentManager.Update(getPayment.Data);
             if (!updatedPayment.Success)

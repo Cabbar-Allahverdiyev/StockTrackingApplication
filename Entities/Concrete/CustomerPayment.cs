@@ -10,6 +10,7 @@ namespace Entities.Concrete
         public int Id { get; set; }
         public int CustomerId { get; set; }
         public decimal Value { get; set; }
+        public bool PaymentStatus { get; set; }
         public DateTime Date { get; set; }
     }
 }
