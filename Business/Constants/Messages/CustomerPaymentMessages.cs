@@ -16,7 +16,8 @@ namespace Business.Constants.Messages
         public static string Found = "Müştəri ödənişi tapıldı";
         public static string NotFound = "Belə bir Müştəri ödənişi yoxdur";
         public static string ValueMustBeGreaterThanZero = "Ödəniş məbləği '0' dan böyük olamlıdır";
-        public static string CancelPayment = "";
+        public static string CancelPayment = "Ödəniş ləğv edildi";
+        public static string PaymentCanBeCanceledOnce= "Ödəniş daha öncə ləğv edilib";
 
         public static string CancelPaymentUnexpectableError(string path)
         {
