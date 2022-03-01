@@ -61,7 +61,7 @@ namespace WindowsForm.Forms
             catch (Exception ex)
             {
 
-                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {AuthMessages.ErrorMessage} | {ex.Message}");
+                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {BaseMessages.ErrorMessage} | {ex.Message}");
                 return;
             }
         }

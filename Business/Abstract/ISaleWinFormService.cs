@@ -13,6 +13,7 @@ namespace Business.Abstract
         IResult Add(SaleWinForm saleWinForm);
         IResult Update(SaleWinForm saleWinForm);
         IResult Delete(SaleWinForm saleWinForm);
+        IResult CancelSale(SaleWinForm saleWinForm);
 
         IDataResult<SaleWinForm> GetById(int id);
 

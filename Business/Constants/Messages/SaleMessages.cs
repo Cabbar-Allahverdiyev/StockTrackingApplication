@@ -19,5 +19,7 @@ namespace Business.Constants.Messages
 
 
         public static string SaleCancel = "Satış ləğv edildi";
+        public static string SaleCanBeCanceledOnce= "Satış daha öncə ləğv edilib";
+        
     }
 }

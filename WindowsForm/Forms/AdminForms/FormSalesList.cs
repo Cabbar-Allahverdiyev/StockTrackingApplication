@@ -21,7 +21,7 @@ namespace WindowsForm.Forms
 {
     public partial class FormSalesList : Form
     {
-        SaleWinFormManager _saleWinFormManager = new SaleWinFormManager(new EfSaleWinFormDal());
+        SaleWinFormManager _saleWinFormManager = new SaleWinFormManager(new EfSaleWinFormDal(), new ProductManager(new EfProductDal()));
         ProductManager _productManager = new ProductManager(new EfProductDal());
         SaleValidationTool saleValidationTool = new SaleValidationTool();
 
@@ -82,7 +82,7 @@ namespace WindowsForm.Forms
 
                     labelTotal.Text = saleTotal.ToString();
                     labelIncome.Text = incomeTotal.ToString();
-                                        dataGridViewSaleList.DataSource = dataMonth;
+                    dataGridViewSaleList.DataSource = dataMonth;
                     return;
                 }
 
@@ -106,8 +106,8 @@ namespace WindowsForm.Forms
                     }
 
                     labelTotal.Text = saleTotal.ToString();
-                                          labelIncome.Text = incomeTotal.ToString();
-                                        dataGridViewSaleList.DataSource = dataYear;
+                    labelIncome.Text = incomeTotal.ToString();
+                    dataGridViewSaleList.DataSource = dataYear;
                     return;
                 }
 
@@ -152,14 +152,14 @@ namespace WindowsForm.Forms
                     }
                 }
                 labelTotal.Text = saleTotal.ToString();
-               
-                    labelIncome.Text = incomeTotal.ToString();
-                
+
+                labelIncome.Text = incomeTotal.ToString();
+
                 dataGridViewSaleList.DataSource = data;
             }
             catch (Exception ex)
             {
-                FormsMessage.ErrorMessage($"{AuthMessages.ErrorMessage} | {ex.Message}");
+                FormsMessage.ErrorMessage($"{BaseMessages.ErrorMessage} | {ex.Message}");
             }
         }
 
@@ -174,47 +174,18 @@ namespace WindowsForm.Forms
                     return;
                 }
                 sale.Id = int.Parse(textBoxSaleId.Text);
-                IDataResult<SaleWinForm> getSale = _saleWinFormManager.GetById(sale.Id);
-                if (!getSale.Success)
-                {
-                    FormsMessage.ErrorMessage(getSale.Message);
-                    return;
-                }
-                sale = getSale.Data;
-                sale.SaleStatus = false;
 
-                if (!saleValidationTool.IsValid(sale))
-                {
-                    return;
-                }
-                IResult updatedSale;
+                IResult canceledSale;
                 if (checkBoxSatisLegvEdilsin.Checked == true)
                 {
-                    updatedSale = _saleWinFormManager.Update(sale);
-
-                    if (!updatedSale.Success)
+                    canceledSale = _saleWinFormManager.CancelSale(sale);
+                    if (!canceledSale.Success)
                     {
-                        FormsMessage.WarningMessage(updatedSale.Message);
+                        FormsMessage.WarningMessage(canceledSale.Message);
                         return;
                     }
 
-                    IDataResult<Product> getProduct = _productManager.GetById(sale.ProductId);
-                    if (!getProduct.Success)
-                    {
-                        FormsMessage.ErrorMessage(getProduct.Message);
-                        return;
-                    }
-                    getProduct.Data.UnitsInStock += sale.Quantity;
-                    IResult productUpdated = _productManager.Update(getProduct.Data);
-                    if (!productUpdated.Success)
-                    {
-                        FormsMessage.ErrorMessage(productUpdated.Message);
-                        return;
-                    }
-
-                    FormsMessage.SuccessMessage(ProductMessages.UnitsInStockIncreased(sale.Quantity));
-                    FormsMessage.SuccessMessage(updatedSale.Message);
-                    FormsMessage.SuccessMessage(SaleMessages.SaleCancel);
+                    FormsMessage.SuccessMessage(canceledSale.Message);
                     checkBoxSatisLegvEdilsin.Checked = false;
                 }
 
@@ -222,12 +193,9 @@ namespace WindowsForm.Forms
             }
             catch (Exception ex)
             {
-                FormsMessage.ErrorMessage($"{AuthMessages.ErrorMessage} | {ex.Message}");
+                FormsMessage.ErrorMessage($"{BaseMessages.ErrorMessage} | {ex.Message}");
             }
-
-
         }
-
 
 
         private void pictureBoxRefresh_Click(object sender, EventArgs e)

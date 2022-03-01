@@ -33,7 +33,7 @@ namespace WindowsForm
            // Application.Run(new Forms.StatisticForProductForm());
             //Application.Run(new Forms.UserForms.AdminValidationForm());
            //Application.Run(new Forms.CustomerPaymentForm()) ;
-           //Application.Run(new Forms.CustomerForm()) ;
+           
 
         }
     }

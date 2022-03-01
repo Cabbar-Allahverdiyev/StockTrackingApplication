@@ -46,14 +46,16 @@ namespace WindowsForm.Forms
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewList = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewList)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBoxTelefonNomresi
             // 
-            this.textBoxTelefonNomresi.Location = new System.Drawing.Point(88, 160);
+            this.textBoxTelefonNomresi.Location = new System.Drawing.Point(91, 106);
             this.textBoxTelefonNomresi.Name = "textBoxTelefonNomresi";
-            this.textBoxTelefonNomresi.Size = new System.Drawing.Size(223, 23);
+            this.textBoxTelefonNomresi.Size = new System.Drawing.Size(176, 23);
             this.textBoxTelefonNomresi.TabIndex = 28;
             // 
             // buttonTemizle
@@ -61,7 +63,7 @@ namespace WindowsForm.Forms
             this.buttonTemizle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTemizle.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonTemizle.Image = global::WindowsForm.Properties.Resources.TemizleBlack;
-            this.buttonTemizle.Location = new System.Drawing.Point(135, 318);
+            this.buttonTemizle.Location = new System.Drawing.Point(91, 219);
             this.buttonTemizle.Name = "buttonTemizle";
             this.buttonTemizle.Size = new System.Drawing.Size(85, 26);
             this.buttonTemizle.TabIndex = 33;
@@ -74,7 +76,7 @@ namespace WindowsForm.Forms
             this.buttonEalveEt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEalveEt.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonEalveEt.Image = global::WindowsForm.Properties.Resources.elaveEtBlack;
-            this.buttonEalveEt.Location = new System.Drawing.Point(226, 318);
+            this.buttonEalveEt.Location = new System.Drawing.Point(182, 219);
             this.buttonEalveEt.Name = "buttonEalveEt";
             this.buttonEalveEt.Size = new System.Drawing.Size(85, 26);
             this.buttonEalveEt.TabIndex = 32;
@@ -86,56 +88,56 @@ namespace WindowsForm.Forms
             // textBoxAdres
             // 
             this.textBoxAdres.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxAdres.Location = new System.Drawing.Point(88, 290);
+            this.textBoxAdres.Location = new System.Drawing.Point(91, 191);
             this.textBoxAdres.Name = "textBoxAdres";
-            this.textBoxAdres.Size = new System.Drawing.Size(223, 22);
+            this.textBoxAdres.Size = new System.Drawing.Size(176, 22);
             this.textBoxAdres.TabIndex = 31;
             // 
             // textBoxSifreTekrari
             // 
             this.textBoxSifreTekrari.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxSifreTekrari.Location = new System.Drawing.Point(88, 247);
+            this.textBoxSifreTekrari.Location = new System.Drawing.Point(91, 163);
             this.textBoxSifreTekrari.Name = "textBoxSifreTekrari";
-            this.textBoxSifreTekrari.Size = new System.Drawing.Size(223, 22);
+            this.textBoxSifreTekrari.Size = new System.Drawing.Size(176, 22);
             this.textBoxSifreTekrari.TabIndex = 30;
             // 
             // textBoxSifre
             // 
             this.textBoxSifre.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxSifre.Location = new System.Drawing.Point(88, 203);
+            this.textBoxSifre.Location = new System.Drawing.Point(91, 135);
             this.textBoxSifre.Name = "textBoxSifre";
-            this.textBoxSifre.Size = new System.Drawing.Size(223, 22);
+            this.textBoxSifre.Size = new System.Drawing.Size(176, 22);
             this.textBoxSifre.TabIndex = 29;
             // 
             // textBoxEmail
             // 
             this.textBoxEmail.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxEmail.Location = new System.Drawing.Point(88, 117);
+            this.textBoxEmail.Location = new System.Drawing.Point(91, 78);
             this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(223, 22);
+            this.textBoxEmail.Size = new System.Drawing.Size(176, 22);
             this.textBoxEmail.TabIndex = 27;
             // 
             // textBoxSoyad
             // 
             this.textBoxSoyad.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxSoyad.Location = new System.Drawing.Point(88, 74);
+            this.textBoxSoyad.Location = new System.Drawing.Point(91, 50);
             this.textBoxSoyad.Name = "textBoxSoyad";
-            this.textBoxSoyad.Size = new System.Drawing.Size(223, 22);
+            this.textBoxSoyad.Size = new System.Drawing.Size(176, 22);
             this.textBoxSoyad.TabIndex = 26;
             // 
             // textBoxAd
             // 
             this.textBoxAd.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxAd.Location = new System.Drawing.Point(88, 31);
+            this.textBoxAd.Location = new System.Drawing.Point(91, 22);
             this.textBoxAd.Name = "textBoxAd";
-            this.textBoxAd.Size = new System.Drawing.Size(223, 22);
+            this.textBoxAd.Size = new System.Drawing.Size(176, 22);
             this.textBoxAd.TabIndex = 25;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(34, 292);
+            this.label7.Location = new System.Drawing.Point(37, 193);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(48, 17);
             this.label7.TabIndex = 24;
@@ -145,7 +147,7 @@ namespace WindowsForm.Forms
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(3, 249);
+            this.label6.Location = new System.Drawing.Point(6, 165);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(79, 17);
             this.label6.TabIndex = 23;
@@ -155,7 +157,7 @@ namespace WindowsForm.Forms
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(43, 206);
+            this.label5.Location = new System.Drawing.Point(46, 138);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(39, 17);
             this.label5.TabIndex = 22;
@@ -165,7 +167,7 @@ namespace WindowsForm.Forms
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(25, 163);
+            this.label4.Location = new System.Drawing.Point(28, 109);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(57, 17);
             this.label4.TabIndex = 21;
@@ -175,7 +177,7 @@ namespace WindowsForm.Forms
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(37, 120);
+            this.label3.Location = new System.Drawing.Point(40, 81);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 17);
             this.label3.TabIndex = 20;
@@ -185,7 +187,7 @@ namespace WindowsForm.Forms
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(31, 77);
+            this.label2.Location = new System.Drawing.Point(34, 53);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 17);
             this.label2.TabIndex = 19;
@@ -195,7 +197,7 @@ namespace WindowsForm.Forms
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(51, 34);
+            this.label1.Location = new System.Drawing.Point(54, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(31, 17);
             this.label1.TabIndex = 18;
@@ -210,42 +212,52 @@ namespace WindowsForm.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.dataGridViewList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewList.Location = new System.Drawing.Point(317, 31);
+            this.dataGridViewList.Location = new System.Drawing.Point(297, 31);
             this.dataGridViewList.Name = "dataGridViewList";
             this.dataGridViewList.ReadOnly = true;
             this.dataGridViewList.RowTemplate.Height = 25;
             this.dataGridViewList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewList.Size = new System.Drawing.Size(670, 362);
+            this.dataGridViewList.Size = new System.Drawing.Size(690, 362);
             this.dataGridViewList.TabIndex = 34;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.textBoxSoyad);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.textBoxTelefonNomresi);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.buttonTemizle);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.buttonEalveEt);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.textBoxAdres);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.textBoxSifreTekrari);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.textBoxSifre);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.textBoxEmail);
+            this.groupBox1.Controls.Add(this.textBoxAd);
+            this.groupBox1.Location = new System.Drawing.Point(12, 25);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(279, 262);
+            this.groupBox1.TabIndex = 35;
+            this.groupBox1.TabStop = false;
             // 
             // CustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1023, 450);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridViewList);
-            this.Controls.Add(this.textBoxTelefonNomresi);
-            this.Controls.Add(this.buttonTemizle);
-            this.Controls.Add(this.buttonEalveEt);
-            this.Controls.Add(this.textBoxAdres);
-            this.Controls.Add(this.textBoxSifreTekrari);
-            this.Controls.Add(this.textBoxSifre);
-            this.Controls.Add(this.textBoxEmail);
-            this.Controls.Add(this.textBoxSoyad);
-            this.Controls.Add(this.textBoxAd);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Name = "CustomerForm";
             this.Text = "CustomerForm";
             this.Load += new System.EventHandler(this.CustomerForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewList)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -268,5 +280,6 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridViewList;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

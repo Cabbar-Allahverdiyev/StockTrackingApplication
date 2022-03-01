@@ -25,7 +25,7 @@ namespace WindowsForm.Forms.UserForms
             InitializeComponent();
             this.Padding = new Padding();
             CollapseMenu();
-            this.BackColor = Color.FromArgb(98, 102, 244);
+            this.BackColor = Color.FromArgb(41, 128, 185);
             DisableButton();
             //WM_NCCALCSIZE
         }
@@ -37,7 +37,7 @@ namespace WindowsForm.Forms.UserForms
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
-                
+
         private void panelTitleBar_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
@@ -141,11 +141,8 @@ namespace WindowsForm.Forms.UserForms
             {
                 if (previousBtn.GetType() == typeof(Button))
                 {
-                    //bura yeiden bax
-                    previousBtn.BackColor = Color.FromArgb(98, 102, 244);
-                    //previousBtn.BackColor = Color.FromArgb(152, 161, 155);
-                    // previousBtn.BackColor = Color.FromArgb(152, 158, 161);
-                    // previousBtn.ForeColor = Color.Gainsboro;
+
+                    previousBtn.BackColor = Color.FromArgb(41, 128, 185);
                     previousBtn.ForeColor = Color.White;
                     previousBtn.Font = new Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
                 }
@@ -181,7 +178,7 @@ namespace WindowsForm.Forms.UserForms
             btnClose.BackColor = Color.FromArgb(253, 33, 45);
         }
 
-       
+
         private void btnClose_MouseLeave(object sender, EventArgs e)
         {
             btnClose.BackColor = Color.White;
@@ -248,7 +245,7 @@ namespace WindowsForm.Forms.UserForms
         //Product--------------------------------------->
         private void məhsulSilToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           // OpenChildForm(new ProductDeleteForm(), sender);
+            // OpenChildForm(new ProductDeleteForm(), sender);
         }
 
         private void məhsullarıSıralaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -271,14 +268,14 @@ namespace WindowsForm.Forms.UserForms
             OpenChildForm(new FormBrand(), sender);
         }
 
-       
+
 
         private void markalarIYeniləVəSilToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenChildForm(new CategoryUpdateAndDeleteForm(), sender);
         }
 
-     
+
 
         //Sales-------------------------------------------->
         private void satislariSiralaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -333,7 +330,7 @@ namespace WindowsForm.Forms.UserForms
 
         private void lazerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new USBBarcodeScannerForm(),sender);
+            OpenChildForm(new USBBarcodeScannerForm(), sender);
         }
 
 
@@ -361,7 +358,7 @@ namespace WindowsForm.Forms.UserForms
         //Supplier---------------------->
         private void elaveEtToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new SupplierForm(),sender);
+            OpenChildForm(new SupplierForm(), sender);
         }
 
 
@@ -418,14 +415,9 @@ namespace WindowsForm.Forms.UserForms
             if (!DesignMode)
             {
                 if (dropdownMenu.Visible)
-                    ctrl.BackColor = Color.FromArgb(159, 161, 224);
-                else ctrl.BackColor = Color.FromArgb(98, 102, 244);
-
-                //if (dropdownMenu.Visible)
-                //    ctrl.BackColor = Color.FromArgb(72, 52, 182);
-                //else ctrl.BackColor = Color.FromArgb(98, 102, 244);
-                //ctrl.BackColor = Color.FromArgb(72, 52, 182);
-                //else ctrl.BackColor = Color.FromArgb(24, 24, 36);
+                    //ctrl.BackColor = Color.FromArgb(159, 161, 224);
+                    ctrl.BackColor = Color.FromArgb(149,192,220);
+                else ctrl.BackColor = Color.FromArgb(41, 128, 185);
             }
         }
 
@@ -450,9 +442,9 @@ namespace WindowsForm.Forms.UserForms
             labelTitle.Text = childForm.Text;
         }
 
-        
 
-        
+
+
 
 
 

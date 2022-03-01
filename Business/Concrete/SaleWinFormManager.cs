@@ -11,14 +11,17 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using Core.Utilities.Business;
 
 namespace Business.Concrete
 {
     public class SaleWinFormManager : ISaleWinFormService
     {
         ISaleWinFormDal _saleWinFormDal;
-        public SaleWinFormManager(ISaleWinFormDal saleWinFormDal)
+        IProductService _productService;
+        public SaleWinFormManager(ISaleWinFormDal saleWinFormDal, IProductService productService)
         {
+            _productService = productService;
             _saleWinFormDal = saleWinFormDal;
         }
 
@@ -33,11 +36,43 @@ namespace Business.Concrete
         }
 
         [ValidationAspect(typeof(SaleWinFormValidator))]
+        [CacheRemoveAspect("ISaleWinFormService.Get")]
         public IResult Update(SaleWinForm saleWinForm)
         {
             //saleWinForm.SellDate = DateTime.Now;
             _saleWinFormDal.Update(saleWinForm);
             return new SuccessResult(SaleMessages.Updated);
+        }
+
+        [CacheRemoveAspect("ISaleWinFormService.Get")]
+        [ValidationAspect(typeof(SaleWinFormValidator))]
+        public IResult CancelSale(SaleWinForm sale)
+        {
+            IDataResult<SaleWinForm> getSale = GetById(sale.Id);
+            IResult result = BusinessRules.Run(IsTheSaleStatusTrue(getSale.Data.SaleStatus)
+                                               ,IsSuccess(getSale));
+
+            if (result != null)
+            {
+                return new ErrorResult(result.Message);
+            }
+            sale = getSale.Data;
+            sale.SaleStatus = false;
+            IResult updatedSale = Update(sale);
+
+            IDataResult<Product> getProduct = _productService.GetById(getSale.Data.ProductId);
+            if (!getProduct.Success)
+            {
+                return new ErrorResult(getProduct.Message);
+            }
+            getProduct.Data.UnitsInStock += sale.Quantity;
+            IResult productUpdated = _productService.Update(getProduct.Data);
+            if (!productUpdated.Success)
+            {
+                return new ErrorResult(getProduct.Message);
+            }
+            return new SuccessResult(SaleMessages.SaleCancel + BaseMessages.And + ProductMessages.UnitsInStockIncreased(sale.Quantity));
+
         }
 
         [CacheRemoveAspect("ISaleWinFormService.Get")]
@@ -60,12 +95,12 @@ namespace Business.Concrete
 
         public IDataResult<SaleWinForm> GetById(int id)
         {
-            SaleWinForm get = _saleWinFormDal.Get(s =>  s.Id == id);
-            if (get==null)
+            SaleWinForm get = _saleWinFormDal.Get(s => s.Id == id);
+            if (get == null)
             {
                 return new ErrorDataResult<SaleWinForm>(SaleMessages.NotFound);
             }
-            return new SuccessDataResult<SaleWinForm>(get,SaleMessages.Found);
+            return new SuccessDataResult<SaleWinForm>(get, SaleMessages.Found);
         }
 
 
@@ -84,7 +119,7 @@ namespace Business.Concrete
         [CacheAspect]
         public IDataResult<List<SaleWinFormDto>> GetAllSaleWinFormDetailsSalesForDay(int day)
         {
-            List<SaleWinFormDto> get = _saleWinFormDal.GetAllWinFormDtoDetails(s=>s.Tarix.Day==day);
+            List<SaleWinFormDto> get = _saleWinFormDal.GetAllWinFormDtoDetails(s => s.Tarix.Day == day);
             //if (get == null)
             //{
             //    return new ErrorDataResult<List<SaleWinFormDto>>(SaleMessages.NotFound);
@@ -95,8 +130,8 @@ namespace Business.Concrete
         [CacheAspect]
         public IDataResult<List<SaleWinFormDto>> GetAllSalewinFormDetailsSalesForMonth(int month)
         {
-            
-            List<SaleWinFormDto> get = _saleWinFormDal.GetAllWinFormDtoDetails(s=>s.Tarix.Month == month);
+
+            List<SaleWinFormDto> get = _saleWinFormDal.GetAllWinFormDtoDetails(s => s.Tarix.Month == month);
             //if (get == null)
             //{
             //    return new ErrorDataResult<List<SaleWinFormDto>>(SaleMessages.NotFound);
@@ -116,7 +151,7 @@ namespace Business.Concrete
         }
 
         [CacheAspect]
-        public IDataResult<List<SaleWinFormDto>> GetAllSaleWinFormDetailsSalesForDayAndMonthAndYear(int day,int month,int year)
+        public IDataResult<List<SaleWinFormDto>> GetAllSaleWinFormDetailsSalesForDayAndMonthAndYear(int day, int month, int year)
         {
             List<SaleWinFormDto> get = _saleWinFormDal.GetAllWinFormDtoDetailsByDayAndMonthAndYear(day, month, year);
             //if (get == null)
@@ -129,7 +164,7 @@ namespace Business.Concrete
         [CacheAspect]
         public IDataResult<List<SaleWinFormDto>> GetAllSaleWinFormDetailsSalesForMonthAndYear(int month, int year)
         {
-            List<SaleWinFormDto> get = _saleWinFormDal.GetAllWinFormDtoDetailsByMonthAndYear( month, year);
+            List<SaleWinFormDto> get = _saleWinFormDal.GetAllWinFormDtoDetailsByMonthAndYear(month, year);
             //if (get == null)
             //{
             //    return new ErrorDataResult<List<SaleWinFormDto>>(SaleMessages.NotFound);
@@ -137,6 +172,26 @@ namespace Business.Concrete
             return new SuccessDataResult<List<SaleWinFormDto>>(get, SaleMessages.Found);
         }
 
-        
+
+        //Business rules ---------------------->
+        public IResult IsTheSaleStatusTrue(bool saleStatus)
+        {
+            if (saleStatus == false)
+            {
+                return new ErrorResult(SaleMessages.SaleCanBeCanceledOnce);
+            }
+            return new SuccessResult();
+        }
+
+        public IResult IsSuccess(IDataResult<SaleWinForm> getSale)
+        {
+            if (!getSale.Success)
+            {
+                return new ErrorResult(getSale.Message);
+            }
+            return new SuccessResult();
+        }
+
+
     }
 }

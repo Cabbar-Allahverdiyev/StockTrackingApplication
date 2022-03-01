@@ -34,14 +34,6 @@ namespace WindowsForm.Core.Constants.Messages
             Alert(resultMessage, AlertForm.EnumType.Warning);
         }
 
-        internal static void ErrorMessage(object daxilOl)
-        {
-            throw new NotImplementedException();
-        }
-
-        internal static void WarningMessage(object customerPaymentIdBlank)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }

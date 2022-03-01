@@ -25,7 +25,7 @@ namespace WindowsForm.Forms
             InitializeComponent();
             this.Padding = new Padding();
             CollapseMenu();
-            this.BackColor = Color.FromArgb(98, 102, 244);
+            this.BackColor = Color.FromArgb(41, 128, 185);
 
             //myDropdownMenu2.PrimaryColor = Color.SeaGreen;
             //myDropdownMenu2.MenuItemTextColor = Color.SeaGreen;
@@ -152,7 +152,7 @@ namespace WindowsForm.Forms
             formController.AdjustForm(this);
         }
 
-        
+
 
         private void DisableButton()
         {
@@ -161,7 +161,7 @@ namespace WindowsForm.Forms
                 if (previousBtn.GetType() == typeof(Button))
                 {
                     //bura yeiden bax
-                    previousBtn.BackColor = Color.FromArgb(98, 102, 244);
+                    previousBtn.BackColor = Color.FromArgb(41, 128, 185);
                     //previousBtn.BackColor = Color.FromArgb(152, 161, 155);
                     // previousBtn.BackColor = Color.FromArgb(152, 158, 161);
                     // previousBtn.ForeColor = Color.Gainsboro;
@@ -197,12 +197,12 @@ namespace WindowsForm.Forms
 
         private void btnClose_MouseMove(object sender, MouseEventArgs e)
         {
-            btnClose.BackColor = Color.FromArgb(253,33,45);
+            btnClose.BackColor = Color.FromArgb(253, 33, 45);
         }
 
         private void btnClose_MouseHover(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnClose_MouseLeave(object sender, EventArgs e)
@@ -257,16 +257,16 @@ namespace WindowsForm.Forms
             Open_DropdownMenu(myDMUser, sender);
         }
 
-        private void buttonSuppliers_Click(object sender, EventArgs e)
+        private void buttonOther_Click(object sender, EventArgs e)
         {
-            Open_DropdownMenu(myDMSupplier, sender);
+            Open_DropdownMenu(myDMOther, sender);
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
             myControl.CloseYesNo(this);
-            
-           
+
+
         }
 
         //Dropdown menu---------------------------------->
@@ -298,9 +298,19 @@ namespace WindowsForm.Forms
 
         private void markalarıYeniləVəSilToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new BrandUpdateAndDeleteForm(),sender);
+            OpenChildForm(new BrandUpdateAndDeleteForm(), sender);
         }
 
+        private void tedarukculeriElaveEtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new SupplierForm(), sender);
+
+        }
+
+        private void tedarukculeriYenileVeSilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new SupplierUpdateForm(), sender);
+        }
         //Sales-------------------------------------------->
         private void satislariSiralaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -385,15 +395,15 @@ namespace WindowsForm.Forms
             // OpenChildForm(new(), sender);
         }
 
-        //Supplier--------------------------------->
-        private void əlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
+        //Others--------------------------------->
+        private void musterilerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new SupplierForm(),sender);
+            OpenChildForm(new CustomerForm(), sender);
         }
 
-        private void yeniləVəSilToolStripMenuItem_Click(object sender, EventArgs e)
+        private void musteriOdenisleriToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new SupplierUpdateForm(), sender);
+            OpenChildForm(new CustomerPaymentForm(), sender);
         }
 
 
@@ -450,8 +460,9 @@ namespace WindowsForm.Forms
             if (!DesignMode)
             {
                 if (dropdownMenu.Visible)
-                    ctrl.BackColor = Color.FromArgb(159, 161, 224);
-                else ctrl.BackColor = Color.FromArgb(98, 102, 244);
+                    //ctrl.BackColor = Color.FromArgb(159, 161, 224);
+                    ctrl.BackColor = Color.FromArgb(149, 192, 220);
+                else ctrl.BackColor = Color.FromArgb(41, 128, 185);
 
                 //if (dropdownMenu.Visible)
                 //    ctrl.BackColor = Color.FromArgb(72, 52, 182);
@@ -482,7 +493,13 @@ namespace WindowsForm.Forms
             labelTitle.Text = childForm.Text;
         }
 
-       
+
+
+
+
+
+
+
 
 
 

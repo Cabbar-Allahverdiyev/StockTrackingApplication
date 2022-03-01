@@ -83,7 +83,7 @@ namespace WindowsForm.Forms
             catch (Exception ex)
             {
 
-                FormsMessage.ErrorMessage($"{ButtonMessages.UpdateError} {AuthMessages.ErrorMessage} | {ex.Message}");
+                FormsMessage.ErrorMessage($"{ButtonMessages.UpdateError} {BaseMessages.ErrorMessage} | {ex.Message}");
                 return; 
             }
           

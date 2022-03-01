@@ -121,7 +121,7 @@ namespace WindowsForm.Forms.UserForms
             // 
             // btnExit
             // 
-            this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(102)))), ((int)(((byte)(244)))));
+            this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.btnExit.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnExit.FlatAppearance.BorderSize = 0;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -142,7 +142,7 @@ namespace WindowsForm.Forms.UserForms
             // 
             // buttonSuppliers
             // 
-            this.buttonSuppliers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(102)))), ((int)(((byte)(244)))));
+            this.buttonSuppliers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.buttonSuppliers.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonSuppliers.FlatAppearance.BorderSize = 0;
             this.buttonSuppliers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -163,7 +163,7 @@ namespace WindowsForm.Forms.UserForms
             // 
             // buttonUsers
             // 
-            this.buttonUsers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(102)))), ((int)(((byte)(244)))));
+            this.buttonUsers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.buttonUsers.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonUsers.FlatAppearance.BorderSize = 0;
             this.buttonUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -184,7 +184,7 @@ namespace WindowsForm.Forms.UserForms
             // 
             // buttonCategories
             // 
-            this.buttonCategories.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(102)))), ((int)(((byte)(244)))));
+            this.buttonCategories.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.buttonCategories.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonCategories.FlatAppearance.BorderSize = 0;
             this.buttonCategories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -205,7 +205,7 @@ namespace WindowsForm.Forms.UserForms
             // 
             // buttonStatistic
             // 
-            this.buttonStatistic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(102)))), ((int)(((byte)(244)))));
+            this.buttonStatistic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.buttonStatistic.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonStatistic.FlatAppearance.BorderSize = 0;
             this.buttonStatistic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -226,7 +226,7 @@ namespace WindowsForm.Forms.UserForms
             // 
             // buttonScan
             // 
-            this.buttonScan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(102)))), ((int)(((byte)(244)))));
+            this.buttonScan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.buttonScan.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonScan.FlatAppearance.BorderSize = 0;
             this.buttonScan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -247,7 +247,7 @@ namespace WindowsForm.Forms.UserForms
             // 
             // buttonSales
             // 
-            this.buttonSales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(102)))), ((int)(((byte)(244)))));
+            this.buttonSales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.buttonSales.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonSales.FlatAppearance.BorderSize = 0;
             this.buttonSales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -362,7 +362,7 @@ namespace WindowsForm.Forms.UserForms
             // 
             // buttonProducts
             // 
-            this.buttonProducts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(102)))), ((int)(((byte)(244)))));
+            this.buttonProducts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.buttonProducts.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonProducts.FlatAppearance.BorderSize = 0;
             this.buttonProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -383,7 +383,7 @@ namespace WindowsForm.Forms.UserForms
             // 
             // buttonHome
             // 
-            this.buttonHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(102)))), ((int)(((byte)(244)))));
+            this.buttonHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.buttonHome.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonHome.FlatAppearance.BorderSize = 0;
             this.buttonHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -404,7 +404,7 @@ namespace WindowsForm.Forms.UserForms
             // 
             // panelLogo
             // 
-            this.panelLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(102)))), ((int)(((byte)(244)))));
+            this.panelLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.panelLogo.Controls.Add(this.buttonMenu);
             this.panelLogo.Controls.Add(this.pictureBoxLogo);
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
@@ -439,7 +439,7 @@ namespace WindowsForm.Forms.UserForms
             // 
             // panelMenu
             // 
-            this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(102)))), ((int)(((byte)(244)))));
+            this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.panelMenu.Controls.Add(this.btnExit);
             this.panelMenu.Controls.Add(this.buttonSuppliers);
             this.panelMenu.Controls.Add(this.buttonUsers);

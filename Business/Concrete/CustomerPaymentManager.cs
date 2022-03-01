@@ -3,6 +3,7 @@ using Business.Constants.Messages;
 using Business.ValidationRules;
 using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -24,7 +25,7 @@ namespace Business.Concrete
             _customerPaymentDal = customerPaymentDal;
             _balanceService = customerBalanceService;
         }
-        //CRUD
+        //CRUD------------------------>
         [ValidationAspect(typeof(CustomerPaymentValidator))]
         [CacheRemoveAspect("ICustomerPaymentService.Get")]
         public IResult Add(CustomerPayment customerPayment)
@@ -106,15 +107,24 @@ namespace Business.Concrete
             return new SuccessDataResult<CustomerPayment>(get, CustomerPaymentMessages.GetAll);
         }
 
-
+        [ValidationAspect(typeof(CustomerPaymentValidator))]
+        [CacheRemoveAspect("ICustomerPaymentService.Get")]
         public IResult CancelPayment(CustomerPayment customerPayment)
         {
+            IDataResult<CustomerPayment> getPayment = GetById(customerPayment.Id);
+            IResult result = BusinessRules.Run(IsThePaymentStatusTrue(getPayment.Data.PaymentStatus)
+                                               ,IsSuccess(getPayment)
+                                              );
+            if (result != null)
+            {
+                return new ErrorDataResult<Product>(result.Message);
+            }
+            customerPayment.PaymentStatus = false;
             IDataResult<CustomerBalance> getBalance = _balanceService.GetByCustomerId(customerPayment.CustomerId);
             if (!getBalance.Success)
             {
                return new ErrorResult(getBalance.Message);
             }
-
 
             getBalance.Data.Balance -= customerPayment.Value;
             if (getBalance.Data.Debt >= getBalance.Data.Balance)
@@ -146,12 +156,12 @@ namespace Business.Concrete
             IResult balanceUpdated = _balanceService.Update(getBalance.Data);
             if (!balanceUpdated.Success)
             {
-                return new ErrorResult($"{CustomerPaymentMessages.NotAdded} çünki {balanceUpdated.Message}");
+                return new ErrorResult(CustomerPaymentMessages.NotAdded+BaseMessages.Because+balanceUpdated.Message);
             }
 
             customerPayment.Date = DateTime.Now;
             _customerPaymentDal.Update(customerPayment);
-            return new SuccessResult(CustomerPaymentMessages.CancelPayment);
+            return new SuccessResult(CustomerPaymentMessages.CancelPayment+BaseMessages.And+balanceUpdated.Message);
         }
 
         //Dtos---------------------------->
@@ -161,6 +171,26 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CustomerPaymentDto>>(get, CustomerPaymentMessages.GetAll);
         }
 
-        
+
+        //Business Rules------------------------------>
+        public IResult IsThePaymentStatusTrue(bool result)
+        {
+           
+            if (result == false)
+            {
+                return new ErrorResult(CustomerPaymentMessages.PaymentCanBeCanceledOnce);
+            }
+            return new SuccessResult();
+        }
+
+        public IResult IsSuccess(IDataResult<CustomerPayment> data)
+        {
+            if (!data.Success)
+            {
+                return new ErrorResult(data.Message);
+            }
+            return new SuccessResult();
+        }
+
     }
 }

@@ -59,7 +59,7 @@ namespace WindowsForm.Forms
             }
             catch (Exception ex)
             {
-                FormsMessage.ErrorMessage($"{AuthMessages.ErrorMessage} | {ex.Message}");
+                FormsMessage.ErrorMessage($"{BaseMessages.ErrorMessage} | {ex.Message}");
                 return;
             }
         }
@@ -85,7 +85,7 @@ namespace WindowsForm.Forms
             }
             catch (Exception ex)
             {
-                FormsMessage.ErrorMessage($"{AuthMessages.ErrorMessage} | {ex.Message}");
+                FormsMessage.ErrorMessage($"{BaseMessages.ErrorMessage} | {ex.Message}");
                 return;
             }
         }

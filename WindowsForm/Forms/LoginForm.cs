@@ -95,7 +95,7 @@ namespace WindowsForm.Forms
             catch (Exception ex)
             {
 
-                FormsMessage.ErrorMessage($"{ButtonMessages.DaxilOl} {AuthMessages.ErrorMessage} | {ex.Message}"); ;
+                FormsMessage.ErrorMessage($"{ButtonMessages.DaxilOl} {BaseMessages.ErrorMessage} | {ex.Message}"); ;
             }
         }
         //Text Changed------------------------------->

@@ -23,7 +23,6 @@ namespace Business.Constants.Messages
         public static string PasswordIsLessThanFourCharacters = "Şifrə 4 simvoldan azdır";
 
 
-        public static string ErrorMessage = "Xəta";
-        public static string InformationMessage = "Məlumat";
+       
     }
 }

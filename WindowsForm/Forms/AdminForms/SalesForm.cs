@@ -58,7 +58,7 @@ namespace WindowsForm.Forms
         ProductManager _productManager = new ProductManager(new EfProductDal());
         CartManager _cartManager = new CartManager(new EfCartDal());
         CustomerManager _customerManager = new CustomerManager(new EfCustomerDal(),new CustomerBalanceManager(new  EfCustomerBalanceDal()));
-        SaleWinFormManager _saleWinFormManager = new SaleWinFormManager(new EfSaleWinFormDal());
+        SaleWinFormManager _saleWinFormManager = new SaleWinFormManager(new EfSaleWinFormDal(), new ProductManager(new EfProductDal()));
         DebtManager _debtManager = new DebtManager(new EfDebtDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()));
 
         CartValidationTool cartValidationTool = new CartValidationTool();
@@ -126,22 +126,22 @@ namespace WindowsForm.Forms
             }
             catch (ArgumentNullException ex)
             {
-                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {AuthMessages.ErrorMessage} : Hansısa dəyər boşdur zəhmət olmasa bütün dəyərləri yenidən yoxlayın | {ex.Message}");
+                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {BaseMessages.ErrorMessage} : Hansısa dəyər boşdur zəhmət olmasa bütün dəyərləri yenidən yoxlayın | {ex.Message}");
                 return;
             }
             catch (FormatException ex)
             {
-                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {AuthMessages.ErrorMessage} : Daxil edilən dəyərlərin hansısa yerləşdiyi xnanın formatına uyğun deyil zəhmət olmasa bütün dəyərləri yenidən yoxlayın | {ex.Message}");
+                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {BaseMessages.ErrorMessage} : Daxil edilən dəyərlərin hansısa yerləşdiyi xnanın formatına uyğun deyil zəhmət olmasa bütün dəyərləri yenidən yoxlayın | {ex.Message}");
                 return;
             }
             catch (NullReferenceException ex)
             {
-                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {AuthMessages.ErrorMessage} | {ex.Message}");
+                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {BaseMessages.ErrorMessage} | {ex.Message}");
                 return;
             }
             catch (Exception ex)
             {
-                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {AuthMessages.ErrorMessage} | {ex.Message}");
+                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {BaseMessages.ErrorMessage} | {ex.Message}");
                 return;
             }
 
@@ -238,7 +238,7 @@ namespace WindowsForm.Forms
             catch (Exception ex)
             {
 
-                FormsMessage.ErrorMessage($"{ButtonMessages.SatisEtmekError} {AuthMessages.ErrorMessage} /{ex.Message}");
+                FormsMessage.ErrorMessage($"{ButtonMessages.SatisEtmekError} {BaseMessages.ErrorMessage} /{ex.Message}");
                 return;
             }
         }
@@ -303,7 +303,7 @@ namespace WindowsForm.Forms
             catch (Exception ex)
             {
 
-                FormsMessage.ErrorMessage($"{ButtonMessages.ElaveEtError} {AuthMessages.ErrorMessage} / {ex.Message}");
+                FormsMessage.ErrorMessage($"{ButtonMessages.ElaveEtError} {BaseMessages.ErrorMessage} / {ex.Message}");
                 return;
             }
 
@@ -377,7 +377,7 @@ namespace WindowsForm.Forms
             catch (Exception ex)
             {
 
-                FormsMessage.ErrorMessage($"{ButtonMessages.SatisEtmekError} {AuthMessages.ErrorMessage} /{ex.Message}");
+                FormsMessage.ErrorMessage($"{ButtonMessages.SatisEtmekError} {BaseMessages.ErrorMessage} /{ex.Message}");
                 return;
             }
 

@@ -23,7 +23,7 @@ namespace WindowsForm.Forms.UserForms
     {
         public static bool QrCodeIsSuccess = false;
 
-        SaleWinFormManager _saleWinFormManager = new SaleWinFormManager(new EfSaleWinFormDal());
+        SaleWinFormManager _saleWinFormManager = new SaleWinFormManager(new EfSaleWinFormDal(),new ProductManager (new EfProductDal()));
         ProductManager _productManager = new ProductManager(new EfProductDal());
         SaleValidationTool saleValidationTool = new SaleValidationTool();
 
@@ -164,7 +164,7 @@ namespace WindowsForm.Forms.UserForms
             }
             catch (Exception ex)
             {
-                FormsMessage.ErrorMessage($"{AuthMessages.ErrorMessage} | {ex.Message}");
+                FormsMessage.ErrorMessage($"{BaseMessages.ErrorMessage} | {ex.Message}");
             }
         }
 
@@ -236,7 +236,7 @@ namespace WindowsForm.Forms.UserForms
             }
             catch (Exception ex)
             {
-                FormsMessage.ErrorMessage($"{AuthMessages.ErrorMessage} | {ex.Message}");
+                FormsMessage.ErrorMessage($"{BaseMessages.ErrorMessage} | {ex.Message}");
             }
 
 

@@ -24,7 +24,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  CustomerPaymentId = payment.Id,
                                  FullName = c.FirstName + " " + c.LastName,
                                  Value = payment.Value,
-                                 Date = payment.Date
+                                 Date = payment.Date,
+                                 PaymentStatus = payment.PaymentStatus
                              };
                 return filter == null ? result.ToList() : result.Where(filter).ToList();
 
