@@ -12,8 +12,10 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
+using WindowsForm.Core.Controllers.Concrete;
 using WindowsForm.Core.Controllers.Concrete.ValidatorControllers;
 using WindowsForm.MyControls;
+using WindowsForm.Utilities.Helpers.SelectionItem;
 
 namespace WindowsForm.Forms
 {
@@ -26,8 +28,8 @@ namespace WindowsForm.Forms
         public CustomerPaymentForm()
         {
             InitializeComponent();
-            CustomerPaymentRefresh();
-            CustomerGetComboBox();
+            CustomerPaymentListRefresh();
+            //CustomerGetComboBox();
             checkBoxOdenisLegvEdilsin.Checked = false;
         }
 
@@ -37,7 +39,7 @@ namespace WindowsForm.Forms
             try
             {
                 CustomerPayment customerPayment = new CustomerPayment();
-                customerPayment.CustomerId = Convert.ToInt32(comboBoxMusteriInPaymentAdd.SelectedValue);
+                customerPayment.CustomerId = Convert.ToInt32(textBoxCustomerIdInPaymentAdd.Text);
                 customerPayment.Value = decimal.Parse(textBoxMeblegInPaymentAdd.Text);
 
                 if (!validationTool.IsValid(customerPayment))
@@ -52,12 +54,13 @@ namespace WindowsForm.Forms
                     return;
                 }
                 FormsMessage.SuccessMessage(result.Message);
-                CustomerPaymentRefresh();
+                TextBoxController.ClearAllTextBoxesByGroupBox(groupBoxPaymentAdd);
+                CustomerPaymentListRefresh();
             }
             catch (Exception ex)
             {
 
-                FormsMessage.ErrorMessage($"{AuthMessages.ErrorMessage} | { ex.Message}");
+                FormsMessage.ErrorMessage($"{BaseMessages.ErrorMessage} | { ex.Message}");
                 return;
             }
 
@@ -72,19 +75,19 @@ namespace WindowsForm.Forms
 
 
         //Elave metodlar------------------>
-        private void CustomerPaymentRefresh()
+        private void CustomerPaymentListRefresh()
         {
             dataGridViewPaymentList.DataSource = _paymentManager.GetCustomerPaymentDetails().Data;
         }
 
-        private void CustomerGetComboBox()
-        {
-            List<CustomerDto> get = _customerManager.GetCustomerDetails().Data;
-            comboBoxMusteriInPaymentAdd.DataSource = get;
-            comboBoxMusteriInPaymentAdd.DisplayMember = "FullName";
-            comboBoxMusteriInPaymentAdd.ValueMember = "CustomerId";
+        //private void CustomerGetComboBox()
+        //{
+        //    List<CustomerDto> get = _customerManager.GetCustomerDetails().Data;
+        //    comboBoxMusteriInPaymentAdd.DataSource = get;
+        //    comboBoxMusteriInPaymentAdd.DisplayMember = "FirstName";
+        //    comboBoxMusteriInPaymentAdd.ValueMember = "CustomerId";
 
-        }
+        //}
 
         private void groupBoxPayment_Enter(object sender, EventArgs e)
         {
@@ -117,23 +120,53 @@ namespace WindowsForm.Forms
                 FormsMessage.WarningMessage(getPayment.Message);
                 return;
             }
-            
+
             if (checkBoxOdenisLegvEdilsin.Checked == true)
             {
-                
+
                 getPayment.Data.PaymentStatus = false;
-                getPayment.Data.CancelDate = DateTime.Now;
+                IResult result = _paymentManager.CancelPayment(getPayment.Data);
+                if (!result.Success)
+                {
+                    FormsMessage.WarningMessage(result.Message);
+                    return;
+                }
+                FormsMessage.SuccessMessage(result.Message);
+                TextBoxController.ClearAllTextBoxesByGroupBox(groupBoxCancelPayment);
+                checkBoxOdenisLegvEdilsin.Checked = false;
+                CustomerPaymentListRefresh();
+
+                //getPayment.Data.CancelDate = DateTime.Now;
                 //bax
             }
-            IResult updatedPayment = _paymentManager.Update(getPayment.Data);
-            if (!updatedPayment.Success)
+            else
             {
-                FormsMessage.ErrorMessage(updatedPayment.Message);
+                FormsMessage.WarningMessage(BaseMessages.NoChange);
+            }
+        }
+
+        private void buttonSec_Click(object sender, EventArgs e)
+        {
+            CustomerListForm customerListForm = new CustomerListForm();
+            customerListForm.ShowDialog();
+            textBoxCustomerIdInPaymentAdd.Text = SelectedCustomerForSalesForm.Id.ToString();
+            IDataResult<Customer> result = _customerManager.GetById(SelectedCustomerForSalesForm.Id);
+            if (!result.Success)
+            {
+                FormsMessage.ErrorMessage(result.Message);
                 return;
             }
-            FormsMessage.SuccessMessage(updatedPayment.Message);
-            FormsMessage.SuccessMessage(updatedCustomerBalance.Message);
+            textBoxMusteriInPaymentAdd.Text = result.Data.FirstName + " " + result.Data.LastName;
+            textBoxTelefonInPaymentAdd.Text = result.Data.PhoneNumber;
+        }
 
+        private void buttonTemizle_Click(object sender, EventArgs e)
+        {
+            TextBoxController.ClearAllTextBoxesByGroupBox(groupBoxPaymentAdd);
+        }
+
+        private void groupBoxCancelPayment_Enter(object sender, EventArgs e)
+        {
 
         }
     }
