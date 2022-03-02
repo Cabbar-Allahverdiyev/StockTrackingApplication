@@ -61,7 +61,7 @@ namespace WindowsForm.Forms
             this.dataGridViewCustomerList.ReadOnly = true;
             this.dataGridViewCustomerList.RowTemplate.Height = 25;
             this.dataGridViewCustomerList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewCustomerList.Size = new System.Drawing.Size(670, 434);
+            this.dataGridViewCustomerList.Size = new System.Drawing.Size(858, 434);
             this.dataGridViewCustomerList.TabIndex = 2;
             this.dataGridViewCustomerList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCustomerList_CellDoubleClick);
             // 
@@ -71,7 +71,7 @@ namespace WindowsForm.Forms
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label12.Image = global::WindowsForm.Properties.Resources.searchFerqliBlack_16px;
-            this.label12.Location = new System.Drawing.Point(734, 17);
+            this.label12.Location = new System.Drawing.Point(922, 17);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(23, 17);
             this.label12.TabIndex = 37;
@@ -84,7 +84,7 @@ namespace WindowsForm.Forms
             this.pictureBoxRefresh.ErrorImage = global::WindowsForm.Properties.Resources.exitWhite;
             this.pictureBoxRefresh.Image = global::WindowsForm.Properties.Resources.refreshBlack_16px_;
             this.pictureBoxRefresh.InitialImage = global::WindowsForm.Properties.Resources.exitWhite;
-            this.pictureBoxRefresh.Location = new System.Drawing.Point(907, 14);
+            this.pictureBoxRefresh.Location = new System.Drawing.Point(1095, 14);
             this.pictureBoxRefresh.Name = "pictureBoxRefresh";
             this.pictureBoxRefresh.Size = new System.Drawing.Size(25, 28);
             this.pictureBoxRefresh.TabIndex = 36;
@@ -95,7 +95,7 @@ namespace WindowsForm.Forms
             // 
             this.textBoxAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxAxtar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxAxtar.Location = new System.Drawing.Point(763, 14);
+            this.textBoxAxtar.Location = new System.Drawing.Point(951, 14);
             this.textBoxAxtar.Name = "textBoxAxtar";
             this.textBoxAxtar.Size = new System.Drawing.Size(138, 22);
             this.textBoxAxtar.TabIndex = 35;
@@ -196,7 +196,7 @@ namespace WindowsForm.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
-            this.ClientSize = new System.Drawing.Size(946, 510);
+            this.ClientSize = new System.Drawing.Size(1134, 510);
             this.Controls.Add(this.groupBoxMusteri);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.pictureBoxRefresh);

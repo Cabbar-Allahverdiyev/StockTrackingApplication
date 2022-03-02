@@ -33,13 +33,13 @@ namespace WindowsForm.Forms.UserForms
     {
         int staticUserId = LoginForm.UserId;
         //public static bool QrCodeIsSuccess = false;
-        
+
 
         public SalesFormForUser()
         {
             InitializeComponent();
             TotalPriceLabelWrite();
-
+            UserAuthorization.QrCodeIsSuccess = false;
             MyControl myControl = new MyControl();
             myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
             //myControl.WritePlaceholdersForTextBoxSearchByProductName(textBoxAxtarBarcodeNumber);
@@ -75,7 +75,7 @@ namespace WindowsForm.Forms.UserForms
             Application.Exit();
         }
 
-       
+
         private void buttoElaveEt_Click(object sender, EventArgs e)
         {
 
@@ -144,11 +144,13 @@ namespace WindowsForm.Forms.UserForms
 
         private void ButtonSalesFormSil_Click(object sender, EventArgs e)
         {
-            QrCodeIsSuccess = false;
+            // QrCodeIsSuccess = false;
+            UserAuthorization.QrCodeIsSuccess = false;
             AdminValidationForm validationForm = new AdminValidationForm();
             validationForm.ShowDialog();
-           
-            if (QrCodeIsSuccess == false)
+
+           // if (QrCodeIsSuccess == false)
+            if (UserAuthorization.QrCodeIsSuccess == false)
             {
                 FormsMessage.ErrorMessage(AuthMessages.AuthorizationDenied);
                 return;
@@ -328,7 +330,7 @@ namespace WindowsForm.Forms.UserForms
                         saleWinForm.UserId = cart.UserId;
                         saleWinForm.SoldPrice = cart.SoldPrice;
                         saleWinForm.Quantity = cart.Quantity;
-                        
+
                         if (!saleValidationTool.IsValid(saleWinForm))
                         {
                             return;
@@ -439,7 +441,7 @@ namespace WindowsForm.Forms.UserForms
             try
             {
                 //MyControl.MakeTextBoxNumberBox(e);
-                if (checkBoxBarkodNo.Checked==true)
+                if (checkBoxBarkodNo.Checked == true)
                 {
                     return;
                 }
@@ -653,6 +655,6 @@ namespace WindowsForm.Forms.UserForms
             FindByBarcodeNumberAndAddToCart(textBoxBarkodNo.Text);
         }
 
-        
+
     }
 }

@@ -202,6 +202,7 @@ namespace WindowsForm.Forms.UserForms
                     }
 
                     FormsMessage.SuccessMessage(canceledSale.Message);
+                    TextBoxController.ClearAllTextBoxesByGroupBox(groupBoxCancelSale);
                     checkBoxSatisLegvEdilsin.Checked = false;
                 
                 }

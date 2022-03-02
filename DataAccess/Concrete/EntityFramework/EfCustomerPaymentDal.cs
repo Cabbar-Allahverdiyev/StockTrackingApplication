@@ -19,6 +19,7 @@ namespace DataAccess.Concrete.EntityFramework
             {
                 var result = from payment in context.CustomerPayments
                              join c in context.Customers on payment.CustomerId equals c.Id
+                             orderby payment.Date descending
                              select new CustomerPaymentDto
                              {
                                  CustomerPaymentId = payment.Id,

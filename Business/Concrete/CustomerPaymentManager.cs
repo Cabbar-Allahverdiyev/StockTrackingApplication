@@ -167,7 +167,7 @@ namespace Business.Concrete
         //Dtos---------------------------->
         public IDataResult<List<CustomerPaymentDto>> GetCustomerPaymentDetails()
         {
-            List<CustomerPaymentDto> get = _customerPaymentDal.GetCustomerPaymentDetails();
+            List<CustomerPaymentDto> get = _customerPaymentDal.GetCustomerPaymentDetails(); 
             return new SuccessDataResult<List<CustomerPaymentDto>>(get, CustomerPaymentMessages.GetAll);
         }
 

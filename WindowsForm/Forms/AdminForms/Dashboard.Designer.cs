@@ -85,6 +85,8 @@ namespace WindowsForm.Forms
             this.myDMOther = new WindowsForm.MyControls.MyDropdownMenu(this.components);
             this.musterilerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.musteriOdenisleriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.labelFirstName = new System.Windows.Forms.Label();
+            this.labelLastName = new System.Windows.Forms.Label();
             this.panelTitleBar.SuspendLayout();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
@@ -301,6 +303,8 @@ namespace WindowsForm.Forms
             // panelTitleBar
             // 
             this.panelTitleBar.BackColor = System.Drawing.Color.White;
+            this.panelTitleBar.Controls.Add(this.labelFirstName);
+            this.panelTitleBar.Controls.Add(this.labelLastName);
             this.panelTitleBar.Controls.Add(this.buttonMinimized);
             this.panelTitleBar.Controls.Add(this.buttonMaximized);
             this.panelTitleBar.Controls.Add(this.btnClose);
@@ -740,6 +744,28 @@ namespace WindowsForm.Forms
             this.musteriOdenisleriToolStripMenuItem.Text = "Musteri odenisleri";
             this.musteriOdenisleriToolStripMenuItem.Click += new System.EventHandler(this.musteriOdenisleriToolStripMenuItem_Click);
             // 
+            // labelFirstName
+            // 
+            this.labelFirstName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFirstName.AutoSize = true;
+            this.labelFirstName.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelFirstName.ForeColor = System.Drawing.Color.Black;
+            this.labelFirstName.Location = new System.Drawing.Point(649, 24);
+            this.labelFirstName.Name = "labelFirstName";
+            this.labelFirstName.Size = new System.Drawing.Size(0, 16);
+            this.labelFirstName.TabIndex = 11;
+            // 
+            // labelLastName
+            // 
+            this.labelLastName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelLastName.AutoSize = true;
+            this.labelLastName.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelLastName.ForeColor = System.Drawing.Color.Black;
+            this.labelLastName.Location = new System.Drawing.Point(649, 40);
+            this.labelLastName.Name = "labelLastName";
+            this.labelLastName.Size = new System.Drawing.Size(0, 16);
+            this.labelLastName.TabIndex = 10;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -829,5 +855,7 @@ namespace WindowsForm.Forms
         private MyControls.MyDropdownMenu myDMOther;
         private System.Windows.Forms.ToolStripMenuItem musterilerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem musteriOdenisleriToolStripMenuItem;
+        private System.Windows.Forms.Label labelFirstName;
+        private System.Windows.Forms.Label labelLastName;
     }
 }

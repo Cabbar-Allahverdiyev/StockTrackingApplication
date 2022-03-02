@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Business.Concrete;
+using Core.Entities.Concrete;
+using Core.Utilities.Results;
+using DataAccess.Concrete.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +20,7 @@ namespace WindowsForm.Forms
     public partial class Dashboard : Form
     {
         MyControl myControl = new MyControl();
+        UserManager _userManager = new UserManager(new EfUserDal());
         private Form activateForm;
         //private Button currentButton;
         private Size formSize;
@@ -26,7 +31,10 @@ namespace WindowsForm.Forms
             this.Padding = new Padding();
             CollapseMenu();
             this.BackColor = Color.FromArgb(41, 128, 185);
-
+            //user dashboard formdada var
+            IDataResult<User> getUser = _userManager.GetById(LoginForm.UserId);
+            labelFirstName.Text = getUser.Data.FirstName;
+            labelLastName.Text = getUser.Data.LastName;
             //myDropdownMenu2.PrimaryColor = Color.SeaGreen;
             //myDropdownMenu2.MenuItemTextColor = Color.SeaGreen;
 

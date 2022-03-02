@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Business.Concrete;
+using Core.Entities.Concrete;
+using Core.Utilities.Results;
+using DataAccess.Concrete.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,6 +23,7 @@ namespace WindowsForm.Forms.UserForms
         private Form activateForm;
         private Size formSize;
         MyControl myControl = new MyControl();
+        UserManager _userManager = new UserManager(new EfUserDal());
 
         public UserDashboard()
         {
@@ -27,6 +32,9 @@ namespace WindowsForm.Forms.UserForms
             CollapseMenu();
             this.BackColor = Color.FromArgb(41, 128, 185);
             DisableButton();
+            IDataResult<User> getUser = _userManager.GetById(LoginForm.UserId);
+            labelFirstName.Text=getUser.Data.FirstName;
+            labelLastName.Text=getUser.Data.LastName;
             //WM_NCCALCSIZE
         }
 
@@ -281,7 +289,7 @@ namespace WindowsForm.Forms.UserForms
         //Sales-------------------------------------------->
         private void satislariSiralaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormSalesList(), sender);
+            OpenChildForm(new FormSalesListForUser(), sender);
         }
 
         //Istifadeci--------------------------------------------->

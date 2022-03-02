@@ -27,7 +27,7 @@ namespace WindowsForm.Forms.UserForms
                
                 if (value.Equals("0000000361236"))
                 {
-                    SalesFormForUser.QrCodeIsSuccess = true;
+                    //SalesFormForUser.QrCodeIsSuccess = true;
                    // FormSalesListForUser.QrCodeIsSuccess = true;
                     UserAuthorization.QrCodeIsSuccess = true;
                     FormsMessage.SuccessMessage(AuthMessages.Alowed);

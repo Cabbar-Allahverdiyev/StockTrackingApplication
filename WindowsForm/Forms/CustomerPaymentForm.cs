@@ -16,6 +16,8 @@ using WindowsForm.Core.Controllers.Concrete;
 using WindowsForm.Core.Controllers.Concrete.ValidatorControllers;
 using WindowsForm.MyControls;
 using WindowsForm.Core.Constants.SelectionItem;
+using WindowsForm.Forms.UserForms;
+using WindowsForm.Core.Constants.FormsAuthorization.User;
 
 namespace WindowsForm.Forms
 {
@@ -38,6 +40,8 @@ namespace WindowsForm.Forms
         {
             try
             {
+                
+                
                 CustomerPayment customerPayment = new CustomerPayment();
                 customerPayment.CustomerId = Convert.ToInt32(textBoxCustomerIdInPaymentAdd.Text);
                 customerPayment.Value = decimal.Parse(textBoxMeblegInPaymentAdd.Text);
@@ -106,6 +110,21 @@ namespace WindowsForm.Forms
 
         private void buttonTetbiqEt_Click(object sender, EventArgs e)
         {
+
+           
+
+            //else if (LoginForm.UserId != 2004)
+            //{
+            //    AdminValidationForm validationForm = new AdminValidationForm();
+            //    validationForm.ShowDialog();
+
+            //    // if (QrCodeIsSuccess == false)
+            //    if (UserAuthorization.QrCodeIsSuccess == false)
+            //    {
+            //        FormsMessage.ErrorMessage(AuthMessages.AuthorizationDenied);
+            //        return;
+            //    }
+            //}
             CustomerPayment customerPayment = new CustomerPayment();
             if (textBoxCustomerPaymentIdInCancelPayment.Text == "")
             {
@@ -123,6 +142,20 @@ namespace WindowsForm.Forms
 
             if (checkBoxOdenisLegvEdilsin.Checked == true)
             {
+                if (LoginForm.UserId != 3002 && LoginForm.UserId != 2004)
+                {
+                    UserAuthorization.QrCodeIsSuccess = false;
+                    AdminValidationForm validationForm = new AdminValidationForm();
+                    validationForm.ShowDialog();
+
+                    // if (QrCodeIsSuccess == false)
+                    if (UserAuthorization.QrCodeIsSuccess == false)
+                    {
+                        FormsMessage.ErrorMessage(AuthMessages.AuthorizationDenied);
+                        return;
+                    }
+                }
+
 
                 getPayment.Data.PaymentStatus = false;
                 IResult result = _paymentManager.CancelPayment(getPayment.Data);
@@ -147,6 +180,7 @@ namespace WindowsForm.Forms
 
         private void buttonSec_Click(object sender, EventArgs e)
         {
+            SelectedCustomerForSalesForm.Id = 0;
             CustomerListForm customerListForm = new CustomerListForm();
             customerListForm.ShowDialog();
             textBoxCustomerIdInPaymentAdd.Text = SelectedCustomerForSalesForm.Id.ToString();

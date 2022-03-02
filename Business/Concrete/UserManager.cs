@@ -79,13 +79,22 @@ namespace Business.Concrete
         public IDataResult<List<User>> GetAll()
         {
             List<User> get = _userDal.GetAll();
-            if (get is null)
+            if (get == null)
             {
                 return new ErrorDataResult<List<User>>(UserMessages.UserNotFound);
             }
             return new SuccessDataResult<List<User>>(get, UserMessages.UserGetAll);
         }
 
+        public IDataResult<User> GetById(int id)
+        {
+            User get = _userDal.Get(u => u.Id == id);
+            if (get == null)
+            {
+                return new ErrorDataResult<User>(UserMessages.UserNotFound);
+            }
+            return new SuccessDataResult<User>(get,UserMessages.UserFound);
+        }
 
         //DTOs
         [CacheAspect]
@@ -346,6 +355,6 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-        
+       
     }
 }

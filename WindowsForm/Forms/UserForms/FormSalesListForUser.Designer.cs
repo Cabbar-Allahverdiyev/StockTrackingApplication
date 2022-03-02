@@ -35,7 +35,7 @@ namespace WindowsForm.Forms.UserForms
             this.comboBoxDays = new System.Windows.Forms.ComboBox();
             this.comboBoxMonths = new System.Windows.Forms.ComboBox();
             this.comboBoxYears = new System.Windows.Forms.ComboBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxDate = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.labelTotal = new System.Windows.Forms.Label();
             this.buttonTemizle = new System.Windows.Forms.Button();
@@ -46,7 +46,7 @@ namespace WindowsForm.Forms.UserForms
             this.label12 = new System.Windows.Forms.Label();
             this.textBoxAxtar = new System.Windows.Forms.TextBox();
             this.comboBoxAxtar = new System.Windows.Forms.ComboBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBoxCancelSale = new System.Windows.Forms.GroupBox();
             this.checkBoxSatisLegvEdilsin = new System.Windows.Forms.CheckBox();
             this.textBoxTarix = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -62,9 +62,9 @@ namespace WindowsForm.Forms.UserForms
             this.label13 = new System.Windows.Forms.Label();
             this.buttonTetbiqEt = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSaleList)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxDate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).BeginInit();
-            this.groupBox2.SuspendLayout();
+            this.groupBoxCancelSale.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridViewSaleList
@@ -122,24 +122,24 @@ namespace WindowsForm.Forms.UserForms
             this.comboBoxYears.Size = new System.Drawing.Size(169, 25);
             this.comboBoxYears.TabIndex = 26;
             // 
-            // groupBox1
+            // groupBoxDate
             // 
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.labelTotal);
-            this.groupBox1.Controls.Add(this.buttonTemizle);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.comboBoxDays);
-            this.groupBox1.Controls.Add(this.comboBoxYears);
-            this.groupBox1.Controls.Add(this.buttonAxtar);
-            this.groupBox1.Controls.Add(this.comboBoxMonths);
-            this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox1.Location = new System.Drawing.Point(12, 43);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(248, 215);
-            this.groupBox1.TabIndex = 27;
-            this.groupBox1.TabStop = false;
+            this.groupBoxDate.Controls.Add(this.label5);
+            this.groupBoxDate.Controls.Add(this.labelTotal);
+            this.groupBoxDate.Controls.Add(this.buttonTemizle);
+            this.groupBoxDate.Controls.Add(this.label3);
+            this.groupBoxDate.Controls.Add(this.label2);
+            this.groupBoxDate.Controls.Add(this.label1);
+            this.groupBoxDate.Controls.Add(this.comboBoxDays);
+            this.groupBoxDate.Controls.Add(this.comboBoxYears);
+            this.groupBoxDate.Controls.Add(this.buttonAxtar);
+            this.groupBoxDate.Controls.Add(this.comboBoxMonths);
+            this.groupBoxDate.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBoxDate.Location = new System.Drawing.Point(12, 38);
+            this.groupBoxDate.Name = "groupBoxDate";
+            this.groupBoxDate.Size = new System.Drawing.Size(248, 215);
+            this.groupBoxDate.TabIndex = 27;
+            this.groupBoxDate.TabStop = false;
             // 
             // label5
             // 
@@ -248,28 +248,28 @@ namespace WindowsForm.Forms.UserForms
             this.comboBoxAxtar.Size = new System.Drawing.Size(71, 21);
             this.comboBoxAxtar.TabIndex = 34;
             // 
-            // groupBox2
+            // groupBoxCancelSale
             // 
-            this.groupBox2.Controls.Add(this.checkBoxSatisLegvEdilsin);
-            this.groupBox2.Controls.Add(this.textBoxTarix);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.textBoxSatIici);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.textBoxUmumiDeyer);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.textBoxMiqdar);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.textBoxMehsul);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.textBoxSaleId);
-            this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.buttonTetbiqEt);
-            this.groupBox2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox2.Location = new System.Drawing.Point(12, 264);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(248, 264);
-            this.groupBox2.TabIndex = 35;
-            this.groupBox2.TabStop = false;
+            this.groupBoxCancelSale.Controls.Add(this.checkBoxSatisLegvEdilsin);
+            this.groupBoxCancelSale.Controls.Add(this.textBoxTarix);
+            this.groupBoxCancelSale.Controls.Add(this.label10);
+            this.groupBoxCancelSale.Controls.Add(this.textBoxSatIici);
+            this.groupBoxCancelSale.Controls.Add(this.label9);
+            this.groupBoxCancelSale.Controls.Add(this.textBoxUmumiDeyer);
+            this.groupBoxCancelSale.Controls.Add(this.label8);
+            this.groupBoxCancelSale.Controls.Add(this.textBoxMiqdar);
+            this.groupBoxCancelSale.Controls.Add(this.label7);
+            this.groupBoxCancelSale.Controls.Add(this.textBoxMehsul);
+            this.groupBoxCancelSale.Controls.Add(this.label6);
+            this.groupBoxCancelSale.Controls.Add(this.textBoxSaleId);
+            this.groupBoxCancelSale.Controls.Add(this.label13);
+            this.groupBoxCancelSale.Controls.Add(this.buttonTetbiqEt);
+            this.groupBoxCancelSale.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBoxCancelSale.Location = new System.Drawing.Point(12, 264);
+            this.groupBoxCancelSale.Name = "groupBoxCancelSale";
+            this.groupBoxCancelSale.Size = new System.Drawing.Size(248, 264);
+            this.groupBoxCancelSale.TabIndex = 35;
+            this.groupBoxCancelSale.TabStop = false;
             // 
             // checkBoxSatisLegvEdilsin
             // 
@@ -402,12 +402,12 @@ namespace WindowsForm.Forms.UserForms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(912, 540);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBoxCancelSale);
             this.Controls.Add(this.comboBoxAxtar);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.textBoxAxtar);
             this.Controls.Add(this.pictureBoxRefresh);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBoxDate);
             this.Controls.Add(this.dataGridViewSaleList);
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "FormSalesListForUser";
@@ -415,11 +415,11 @@ namespace WindowsForm.Forms.UserForms
             this.Text = "Satışları sıralamaq səhifəsi";
             this.Load += new System.EventHandler(this.FormSalesList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSaleList)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBoxDate.ResumeLayout(false);
+            this.groupBoxDate.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.groupBoxCancelSale.ResumeLayout(false);
+            this.groupBoxCancelSale.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -458,5 +458,7 @@ namespace WindowsForm.Forms.UserForms
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBoxSatIici;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.GroupBox groupBoxDate;
+        private System.Windows.Forms.GroupBox groupBoxCancelSale;
     }
 }
