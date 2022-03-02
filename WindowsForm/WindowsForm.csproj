@@ -41,6 +41,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Utilities\Helpers\" />
     <Folder Include="Wwwroot\" />
   </ItemGroup>
 

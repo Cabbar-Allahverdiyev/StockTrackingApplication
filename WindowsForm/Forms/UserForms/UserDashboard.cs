@@ -231,10 +231,11 @@ namespace WindowsForm.Forms.UserForms
             Open_DropdownMenu(myDMUser, sender);
         }
 
-        private void buttonSuppliers_Click(object sender, EventArgs e)
+        private void buttonOther_Click(object sender, EventArgs e)
         {
-            Open_DropdownMenu(myDMSupplier, sender);
+            Open_DropdownMenu(myDMOther, sender);
         }
+
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -356,11 +357,22 @@ namespace WindowsForm.Forms.UserForms
         }
 
         //Supplier---------------------->
-        private void elaveEtToolStripMenuItem1_Click(object sender, EventArgs e)
+    
+
+        private void tedarukToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenChildForm(new SupplierForm(), sender);
         }
 
+        private void musterilerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new CustomerForm(), sender);
+        }
+
+        private void musteriOdenisleriToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new CustomerPaymentForm(), sender);
+        }
 
 
         //solid prinsiplerine uygu hala sal
@@ -441,6 +453,12 @@ namespace WindowsForm.Forms.UserForms
             childForm.Show();
             labelTitle.Text = childForm.Text;
         }
+
+       
+
+
+
+
 
 
 

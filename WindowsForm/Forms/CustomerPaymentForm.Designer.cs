@@ -368,7 +368,7 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.GroupBox groupBoxPaymentAdd;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBoxMusteriInPaymentAdd;
+        //private System.Windows.Forms.ComboBox comboBoxMusteriInPaymentAdd;
         private System.Windows.Forms.TextBox textBoxMeblegInPaymentAdd;
         private System.Windows.Forms.Button buttonTemizle;
         private System.Windows.Forms.Button buttoElaveEt;

@@ -12,6 +12,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using WindowsForm.Core.Constants.FormsAuthorization.User;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.Concrete;
 using WindowsForm.Core.Controllers.ValidatorControllers;
@@ -21,7 +22,7 @@ namespace WindowsForm.Forms.UserForms
 {
     public partial class FormSalesListForUser : Form
     {
-        public static bool QrCodeIsSuccess = false;
+       // public static bool QrCodeIsSuccess = false;
 
         SaleWinFormManager _saleWinFormManager = new SaleWinFormManager(new EfSaleWinFormDal(),new ProductManager (new EfProductDal()));
         ProductManager _productManager = new ProductManager(new EfProductDal());
@@ -170,11 +171,12 @@ namespace WindowsForm.Forms.UserForms
 
         private void buttonTetbiqEt_Click(object sender, EventArgs e)
         {
-            QrCodeIsSuccess = false;
-            AdminValidationForm validationForm = new AdminValidationForm();
+            //QrCodeIsSuccess = false;
+            UserAuthorization.QrCodeIsSuccess = false;
+             AdminValidationForm validationForm = new AdminValidationForm();
             validationForm.ShowDialog();
 
-            if (QrCodeIsSuccess == false)
+            if (UserAuthorization.QrCodeIsSuccess == false)
             {
                 FormsMessage.ErrorMessage(AuthMessages.AuthorizationDenied);
                 return;
@@ -188,48 +190,20 @@ namespace WindowsForm.Forms.UserForms
                     return;
                 }
                 sale.Id = int.Parse(textBoxSaleId.Text);
-                IDataResult<SaleWinForm> getSale = _saleWinFormManager.GetById(sale.Id);
-                if (!getSale.Success)
-                {
-                    FormsMessage.ErrorMessage(getSale.Message);
-                    return;
-                }
-                sale = getSale.Data;
-                sale.SaleStatus = false;
-
-                if (!saleValidationTool.IsValid(sale))
-                {
-                    return;
-                }
-                IResult updatedSale;
+               
+                IResult canceledSale;
                 if (checkBoxSatisLegvEdilsin.Checked == true)
                 {
-                    updatedSale = _saleWinFormManager.Update(sale);
-
-                    if (!updatedSale.Success)
+                    canceledSale = _saleWinFormManager.CancelSale(sale);
+                    if (!canceledSale.Success)
                     {
-                        FormsMessage.WarningMessage(updatedSale.Message);
+                        FormsMessage.WarningMessage(canceledSale.Message);
                         return;
                     }
 
-                    IDataResult<Product> getProduct = _productManager.GetById(sale.ProductId);
-                    if (!getProduct.Success)
-                    {
-                        FormsMessage.ErrorMessage(getProduct.Message);
-                        return;
-                    }
-                    getProduct.Data.UnitsInStock += sale.Quantity;
-                    IResult productUpdated = _productManager.Update(getProduct.Data);
-                    if (!productUpdated.Success)
-                    {
-                        FormsMessage.ErrorMessage(productUpdated.Message);
-                        return;
-                    }
-
-                    FormsMessage.SuccessMessage(ProductMessages.UnitsInStockIncreased(sale.Quantity));
-                    FormsMessage.SuccessMessage(updatedSale.Message);
-                    FormsMessage.SuccessMessage(SaleMessages.SaleCancel);
+                    FormsMessage.SuccessMessage(canceledSale.Message);
                     checkBoxSatisLegvEdilsin.Checked = false;
+                
                 }
 
                 SaleListRefesh();

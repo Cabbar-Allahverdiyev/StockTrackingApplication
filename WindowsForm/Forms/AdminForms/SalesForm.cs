@@ -24,7 +24,7 @@ using WindowsForm.Utilities.BarcodeScanner;
 using WindowsForm.Utilities.Search.Concrete.ProductSearch;
 using DataAccess.Concrete.EfInMemory;
 using WindowsForm.MyControls;
-using WindowsForm.Utilities.Helpers.SelectionItem;
+using WindowsForm.Core.Constants.SelectionItem;
 
 namespace WindowsForm.Forms
 {
@@ -550,7 +550,7 @@ namespace WindowsForm.Forms
         {
             decimal tolalPrice = 0;
             decimal price;
-            List<Cart> carts = _cartManager.GetAll().Data;
+            List<Cart> carts = _cartManager.GetAllByUserId(staticUserId).Data;
 
             foreach (Cart cart in carts)
             {

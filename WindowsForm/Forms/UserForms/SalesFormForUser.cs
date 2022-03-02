@@ -24,14 +24,16 @@ using WindowsForm.Utilities.Search.Concrete.ProductSearch;
 using DataAccess.Concrete.EfInMemory;
 using WindowsForm.MyControls;
 using System.Threading;
-using WindowsForm.Utilities.Helpers.SelectionItem;
+using WindowsForm.Core.Constants.SelectionItem;
+using WindowsForm.Core.Constants.FormsAuthorization.User;
 
 namespace WindowsForm.Forms.UserForms
 {
     public partial class SalesFormForUser : Form
     {
         int staticUserId = LoginForm.UserId;
-        public static bool QrCodeIsSuccess = false;
+        //public static bool QrCodeIsSuccess = false;
+        
 
         public SalesFormForUser()
         {
@@ -542,7 +544,7 @@ namespace WindowsForm.Forms.UserForms
         {
             decimal tolalPrice = 0;
             decimal price;
-            List<Cart> carts = _cartManager.GetAll().Data;
+            List<Cart> carts = _cartManager.GetAllByUserId(staticUserId).Data;
 
             foreach (Cart cart in carts)
             {

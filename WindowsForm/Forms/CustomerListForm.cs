@@ -7,7 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using WindowsForm.Utilities.Helpers.SelectionItem;
+using WindowsForm.Core.Constants.SelectionItem;
 
 namespace WindowsForm.Forms
 {
