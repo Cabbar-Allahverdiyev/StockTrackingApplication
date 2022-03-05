@@ -18,7 +18,7 @@ namespace WindowsForm.Utilities.Search.Concrete.SupplierSearch
         public void GetDataWriteGridView(string seachText, DataGridView dataGridView)
         {
             List<Supplier> data = _supplierManager.GetAll().Data;
-            List<Supplier> oldData = _supplierManager.GetAll().Data;
+            List<Supplier> oldData = data; 
             Search(data, oldData, seachText, dataGridView);
         }
 

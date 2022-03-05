@@ -18,7 +18,7 @@ namespace WindowsForm.Utilities.Search.Concrete.UserSearch
         public void GetDataWriteGridView(string seachText, DataGridView dataGridView)
         {
             List<UserDto> data = _userManager.GetUserDetails().Data;
-            List<UserDto> oldData = _userManager.GetUserDetails().Data;
+            List<UserDto> oldData = data;
             Search(data, oldData, seachText, dataGridView);
         }
 

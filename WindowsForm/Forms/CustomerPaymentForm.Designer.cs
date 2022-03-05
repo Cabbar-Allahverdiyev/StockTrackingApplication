@@ -56,9 +56,14 @@ namespace WindowsForm.Forms
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxMusteriInCancelPayment = new System.Windows.Forms.TextBox();
+            this.comboBoxAxtar = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBoxAxtar = new System.Windows.Forms.TextBox();
+            this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPaymentList)).BeginInit();
             this.groupBoxPaymentAdd.SuspendLayout();
             this.groupBoxCancelPayment.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewPaymentList
@@ -70,12 +75,12 @@ namespace WindowsForm.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewPaymentList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.dataGridViewPaymentList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewPaymentList.Location = new System.Drawing.Point(276, 39);
+            this.dataGridViewPaymentList.Location = new System.Drawing.Point(276, 40);
             this.dataGridViewPaymentList.Name = "dataGridViewPaymentList";
             this.dataGridViewPaymentList.ReadOnly = true;
             this.dataGridViewPaymentList.RowTemplate.Height = 25;
             this.dataGridViewPaymentList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewPaymentList.Size = new System.Drawing.Size(671, 458);
+            this.dataGridViewPaymentList.Size = new System.Drawing.Size(671, 457);
             this.dataGridViewPaymentList.TabIndex = 2;
             this.dataGridViewPaymentList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPaymentList_CellDoubleClick);
             // 
@@ -341,12 +346,61 @@ namespace WindowsForm.Forms
             this.textBoxMusteriInCancelPayment.Size = new System.Drawing.Size(178, 22);
             this.textBoxMusteriInCancelPayment.TabIndex = 4;
             // 
+            // comboBoxAxtar
+            // 
+            this.comboBoxAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxAxtar.Font = new System.Drawing.Font("Century Gothic", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comboBoxAxtar.FormattingEnabled = true;
+            this.comboBoxAxtar.Location = new System.Drawing.Point(844, 12);
+            this.comboBoxAxtar.Name = "comboBoxAxtar";
+            this.comboBoxAxtar.Size = new System.Drawing.Size(71, 21);
+            this.comboBoxAxtar.TabIndex = 38;
+            // 
+            // label12
+            // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label12.Image = global::WindowsForm.Properties.Resources.searchFerqliBlack_16px;
+            this.label12.Location = new System.Drawing.Point(671, 15);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(23, 17);
+            this.label12.TabIndex = 37;
+            this.label12.Text = "     ";
+            // 
+            // textBoxAxtar
+            // 
+            this.textBoxAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxAxtar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxAxtar.Location = new System.Drawing.Point(700, 12);
+            this.textBoxAxtar.Name = "textBoxAxtar";
+            this.textBoxAxtar.Size = new System.Drawing.Size(138, 22);
+            this.textBoxAxtar.TabIndex = 36;
+            this.textBoxAxtar.TextChanged += new System.EventHandler(this.textBoxAxtar_TextChanged);
+            // 
+            // pictureBoxRefresh
+            // 
+            this.pictureBoxRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBoxRefresh.ErrorImage = global::WindowsForm.Properties.Resources.exitWhite;
+            this.pictureBoxRefresh.Image = global::WindowsForm.Properties.Resources.refreshBlack_16px_;
+            this.pictureBoxRefresh.InitialImage = global::WindowsForm.Properties.Resources.exitWhite;
+            this.pictureBoxRefresh.Location = new System.Drawing.Point(922, 12);
+            this.pictureBoxRefresh.Name = "pictureBoxRefresh";
+            this.pictureBoxRefresh.Size = new System.Drawing.Size(25, 25);
+            this.pictureBoxRefresh.TabIndex = 35;
+            this.pictureBoxRefresh.TabStop = false;
+            // 
             // CustomerPaymentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(959, 510);
+            this.Controls.Add(this.comboBoxAxtar);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.textBoxAxtar);
+            this.Controls.Add(this.pictureBoxRefresh);
             this.Controls.Add(this.groupBoxCancelPayment);
             this.Controls.Add(this.groupBoxPaymentAdd);
             this.Controls.Add(this.dataGridViewPaymentList);
@@ -358,7 +412,9 @@ namespace WindowsForm.Forms
             this.groupBoxPaymentAdd.PerformLayout();
             this.groupBoxCancelPayment.ResumeLayout(false);
             this.groupBoxCancelPayment.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -391,5 +447,9 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.TextBox textBoxMusteriInPaymentAdd;
         private System.Windows.Forms.Button buttonSec;
         private System.Windows.Forms.TextBox textBoxCustomerIdInPaymentAdd;
+        private System.Windows.Forms.ComboBox comboBoxAxtar;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox textBoxAxtar;
+        private System.Windows.Forms.PictureBox pictureBoxRefresh;
     }
 }

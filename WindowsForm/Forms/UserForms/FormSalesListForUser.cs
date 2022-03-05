@@ -173,12 +173,18 @@ namespace WindowsForm.Forms.UserForms
         {
             //QrCodeIsSuccess = false;
             UserAuthorization.QrCodeIsSuccess = false;
-             AdminValidationForm validationForm = new AdminValidationForm();
+            if (checkBoxSatisLegvEdilsin.Checked == false)
+            {
+                FormsMessage.InformationMessage(BaseMessages.NoChange);
+                return;
+            }
+            AdminValidationForm validationForm = new AdminValidationForm();
             validationForm.ShowDialog();
+           
 
             if (UserAuthorization.QrCodeIsSuccess == false)
             {
-                FormsMessage.ErrorMessage(AuthMessages.AuthorizationDenied);
+                FormsMessage.WarningMessage(AuthMessages.AuthorizationDenied);
                 return;
             }
             try

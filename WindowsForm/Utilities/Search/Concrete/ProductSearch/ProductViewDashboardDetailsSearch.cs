@@ -20,7 +20,7 @@ namespace WindowsForm.Utilities.Search.Concrete.ProductSearch
         {
             
             List<ProductViewDashboardDetailDto> data = _productManager.GetAllProductViewDasboardDetails().Data;
-            List<ProductViewDashboardDetailDto> oldData = _productManager.GetAllProductViewDasboardDetails().Data;
+            List<ProductViewDashboardDetailDto> oldData = data;
             SearchByProductName(data, oldData, seachText, dataGridView);
         }
         public void GetDataWriteGridView(string seachText,DataGridView dataGridView,string property)

@@ -18,6 +18,7 @@ using WindowsForm.MyControls;
 using WindowsForm.Core.Constants.SelectionItem;
 using WindowsForm.Forms.UserForms;
 using WindowsForm.Core.Constants.FormsAuthorization.User;
+using WindowsForm.Utilities.Search.Concrete.CustomerPaymentSearch;
 
 namespace WindowsForm.Forms
 {
@@ -70,48 +71,10 @@ namespace WindowsForm.Forms
 
         }
 
-
-        //Key Press----------------------------------->
-        private void textBoxMebleg_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            MyControl.MakeTextBoxDecimalBox(sender, e);
-        }
-
-
-        //Elave metodlar------------------>
-        private void CustomerPaymentListRefresh()
-        {
-            dataGridViewPaymentList.DataSource = _paymentManager.GetCustomerPaymentDetails().Data;
-        }
-
-        //private void CustomerGetComboBox()
-        //{
-        //    List<CustomerDto> get = _customerManager.GetCustomerDetails().Data;
-        //    comboBoxMusteriInPaymentAdd.DataSource = get;
-        //    comboBoxMusteriInPaymentAdd.DisplayMember = "FirstName";
-        //    comboBoxMusteriInPaymentAdd.ValueMember = "CustomerId";
-
-        //}
-
-        private void groupBoxPayment_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridViewPaymentList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            textBoxCustomerPaymentIdInCancelPayment.Text = dataGridViewPaymentList.CurrentRow.Cells["CustomerPaymentId"].Value.ToString();
-            textBoxMusteriInCancelPayment.Text = dataGridViewPaymentList.CurrentRow.Cells["FullName"].Value.ToString();
-            //textBoxSaticiInCancelPayment.Text = dataGridViewPaymentList.CurrentRow.Cells["UserName"].Value.ToString();
-            textBoxMeblegInCancelPayment.Text = dataGridViewPaymentList.CurrentRow.Cells["Value"].Value.ToString();
-            textBoxTarixInCancelPayment.Text = dataGridViewPaymentList.CurrentRow.Cells["Date"].Value.ToString();
-            checkBoxOdenisLegvEdilsin.Checked = false;
-        }
-
         private void buttonTetbiqEt_Click(object sender, EventArgs e)
         {
 
-           
+
 
             //else if (LoginForm.UserId != 2004)
             //{
@@ -151,7 +114,7 @@ namespace WindowsForm.Forms
                     // if (QrCodeIsSuccess == false)
                     if (UserAuthorization.QrCodeIsSuccess == false)
                     {
-                        FormsMessage.ErrorMessage(AuthMessages.AuthorizationDenied);
+                        FormsMessage.WarningMessage(AuthMessages.AuthorizationDenied);
                         return;
                     }
                 }
@@ -174,7 +137,7 @@ namespace WindowsForm.Forms
             }
             else
             {
-                FormsMessage.WarningMessage(BaseMessages.NoChange);
+                FormsMessage.InformationMessage(BaseMessages.NoChange);
             }
         }
 
@@ -199,9 +162,58 @@ namespace WindowsForm.Forms
             TextBoxController.ClearAllTextBoxesByGroupBox(groupBoxPaymentAdd);
         }
 
+        //Cell Double Click-------------------------->
+        private void dataGridViewPaymentList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textBoxCustomerPaymentIdInCancelPayment.Text = dataGridViewPaymentList.CurrentRow.Cells["CustomerPaymentId"].Value.ToString();
+            textBoxMusteriInCancelPayment.Text = dataGridViewPaymentList.CurrentRow.Cells["FullName"].Value.ToString();
+            //textBoxSaticiInCancelPayment.Text = dataGridViewPaymentList.CurrentRow.Cells["UserName"].Value.ToString();
+            textBoxMeblegInCancelPayment.Text = dataGridViewPaymentList.CurrentRow.Cells["Value"].Value.ToString();
+            textBoxTarixInCancelPayment.Text = dataGridViewPaymentList.CurrentRow.Cells["Date"].Value.ToString();
+            checkBoxOdenisLegvEdilsin.Checked = false;
+        }
+
+        //Text chamged ------------------------------->
+
+        private void textBoxAxtar_TextChanged(object sender, EventArgs e)
+        {
+            CustomerPaymentDtoSearch detailSearch = new  CustomerPaymentDtoSearch(
+                new CustomerPaymentManager(new EfCustomerPaymentDal(), new CustomerBalanceManager(new EfCustomerBalanceDal())));
+            detailSearch.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewPaymentList);
+        }
+
+        //Key Press----------------------------------->
+        private void textBoxMebleg_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MyControl.MakeTextBoxDecimalBox(sender, e);
+        }
+
+
+        //Elave metodlar------------------>
+        private void CustomerPaymentListRefresh()
+        {
+            dataGridViewPaymentList.DataSource = _paymentManager.GetCustomerPaymentDetails().Data;
+        }
+
+        //private void CustomerGetComboBox()
+        //{
+        //    List<CustomerDto> get = _customerManager.GetCustomerDetails().Data;
+        //    comboBoxMusteriInPaymentAdd.DataSource = get;
+        //    comboBoxMusteriInPaymentAdd.DisplayMember = "FirstName";
+        //    comboBoxMusteriInPaymentAdd.ValueMember = "CustomerId";
+
+        //}
+
+        private void groupBoxPayment_Enter(object sender, EventArgs e)
+        {
+
+        }
+
         private void groupBoxCancelPayment_Enter(object sender, EventArgs e)
         {
 
         }
+
+      
     }
 }

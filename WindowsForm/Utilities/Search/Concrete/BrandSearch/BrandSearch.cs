@@ -19,7 +19,7 @@ namespace WindowsForm.Utilities.Search.Concrete.BrandSearch
         {
            
             List<Brand> data = _brandManager.GetAll().Data;
-            List<Brand> oldData = _brandManager.GetAll().Data;
+            List<Brand> oldData = data;
             Search(data, oldData, seachText, dataGridView);
         }
 

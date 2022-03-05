@@ -152,7 +152,7 @@ namespace WindowsForm.Forms.UserForms
            // if (QrCodeIsSuccess == false)
             if (UserAuthorization.QrCodeIsSuccess == false)
             {
-                FormsMessage.ErrorMessage(AuthMessages.AuthorizationDenied);
+                FormsMessage.WarningMessage(AuthMessages.AuthorizationDenied);
                 return;
             }
             try

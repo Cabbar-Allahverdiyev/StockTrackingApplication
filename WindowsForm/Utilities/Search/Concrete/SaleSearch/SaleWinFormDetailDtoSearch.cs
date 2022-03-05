@@ -12,7 +12,7 @@ namespace WindowsForm.Utilities.Search.Concrete.SaleSearch
     public class SaleWinFormDetailDtoSearch : IWinFormsSearch
     {
         SaleWinFormManager _saleWinFormManager = new SaleWinFormManager(new EfSaleWinFormDal(), new ProductManager(new EfProductDal()));
-        public void GetDataWriteGridView(string seachText, DataGridView dataGridView)
+        public void GetDataWriteGridView(string seachText, DataGridView dataGridView) 
         {
             List<SaleWinFormDto> data = _saleWinFormManager.GetAllSaleWinFormDtoDetails().Data;
             List<SaleWinFormDto> oldData = _saleWinFormManager.GetAllSaleWinFormDtoDetails().Data;

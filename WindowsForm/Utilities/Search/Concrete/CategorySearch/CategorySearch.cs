@@ -17,7 +17,7 @@ namespace WindowsForm.Utilities.Search.Concrete.CategorySearch
         public void GetDataWriteGridView(string seachText, DataGridView dataGridView)
         {
             List<Category> data = _categoryManager.GetAll().Data;
-            List<Category> oldData = _categoryManager.GetAll().Data;
+            List<Category> oldData = data;
             Search(data, oldData, seachText, dataGridView);
         }
 

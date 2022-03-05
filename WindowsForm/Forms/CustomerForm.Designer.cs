@@ -33,14 +33,10 @@ namespace WindowsForm.Forms
             this.buttonTemizle = new System.Windows.Forms.Button();
             this.buttonEalveEt = new System.Windows.Forms.Button();
             this.textBoxAdres = new System.Windows.Forms.TextBox();
-            this.textBoxSifreTekrari = new System.Windows.Forms.TextBox();
-            this.textBoxSifre = new System.Windows.Forms.TextBox();
             this.textBoxEmail = new System.Windows.Forms.TextBox();
             this.textBoxSoyad = new System.Windows.Forms.TextBox();
             this.textBoxAd = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -63,7 +59,7 @@ namespace WindowsForm.Forms
             this.buttonTemizle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTemizle.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonTemizle.Image = global::WindowsForm.Properties.Resources.TemizleBlack;
-            this.buttonTemizle.Location = new System.Drawing.Point(91, 219);
+            this.buttonTemizle.Location = new System.Drawing.Point(91, 163);
             this.buttonTemizle.Name = "buttonTemizle";
             this.buttonTemizle.Size = new System.Drawing.Size(85, 26);
             this.buttonTemizle.TabIndex = 33;
@@ -76,7 +72,7 @@ namespace WindowsForm.Forms
             this.buttonEalveEt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEalveEt.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonEalveEt.Image = global::WindowsForm.Properties.Resources.elaveEtBlack;
-            this.buttonEalveEt.Location = new System.Drawing.Point(182, 219);
+            this.buttonEalveEt.Location = new System.Drawing.Point(182, 163);
             this.buttonEalveEt.Name = "buttonEalveEt";
             this.buttonEalveEt.Size = new System.Drawing.Size(85, 26);
             this.buttonEalveEt.TabIndex = 32;
@@ -88,26 +84,10 @@ namespace WindowsForm.Forms
             // textBoxAdres
             // 
             this.textBoxAdres.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxAdres.Location = new System.Drawing.Point(91, 191);
+            this.textBoxAdres.Location = new System.Drawing.Point(91, 135);
             this.textBoxAdres.Name = "textBoxAdres";
             this.textBoxAdres.Size = new System.Drawing.Size(176, 22);
             this.textBoxAdres.TabIndex = 31;
-            // 
-            // textBoxSifreTekrari
-            // 
-            this.textBoxSifreTekrari.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxSifreTekrari.Location = new System.Drawing.Point(91, 163);
-            this.textBoxSifreTekrari.Name = "textBoxSifreTekrari";
-            this.textBoxSifreTekrari.Size = new System.Drawing.Size(176, 22);
-            this.textBoxSifreTekrari.TabIndex = 30;
-            // 
-            // textBoxSifre
-            // 
-            this.textBoxSifre.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxSifre.Location = new System.Drawing.Point(91, 135);
-            this.textBoxSifre.Name = "textBoxSifre";
-            this.textBoxSifre.Size = new System.Drawing.Size(176, 22);
-            this.textBoxSifre.TabIndex = 29;
             // 
             // textBoxEmail
             // 
@@ -137,31 +117,11 @@ namespace WindowsForm.Forms
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(37, 193);
+            this.label7.Location = new System.Drawing.Point(37, 137);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(48, 17);
             this.label7.TabIndex = 24;
             this.label7.Text = "Adres :";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(6, 165);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(79, 17);
-            this.label6.TabIndex = 23;
-            this.label6.Text = "Şifrə təkrarı :";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(46, 138);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 17);
-            this.label5.TabIndex = 22;
-            this.label5.Text = "Şifrə :";
             // 
             // label4
             // 
@@ -231,10 +191,6 @@ namespace WindowsForm.Forms
             this.groupBox1.Controls.Add(this.buttonEalveEt);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.textBoxAdres);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.textBoxSifreTekrari);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.textBoxSifre);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.textBoxEmail);
             this.groupBox1.Controls.Add(this.textBoxAd);
@@ -267,14 +223,10 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.Button buttonTemizle;
         private System.Windows.Forms.Button buttonEalveEt;
         private System.Windows.Forms.TextBox textBoxAdres;
-        private System.Windows.Forms.TextBox textBoxSifreTekrari;
-        private System.Windows.Forms.TextBox textBoxSifre;
         private System.Windows.Forms.TextBox textBoxEmail;
         private System.Windows.Forms.TextBox textBoxSoyad;
         private System.Windows.Forms.TextBox textBoxAd;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
