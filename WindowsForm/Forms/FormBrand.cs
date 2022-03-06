@@ -1,10 +1,8 @@
 ﻿using Business.Concrete;
 using Business.Constants.Messages;
-using Business.ValidationRules.FluentValidation;
 using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
-using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -71,7 +69,7 @@ namespace WindowsForm.Forms
             }
             catch (Exception ex)
             {
-                FormsMessage.ErrorMessage($"{BaseMessages.ErrorMessage} |{ex.Message}");
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
                 return;
             }
 

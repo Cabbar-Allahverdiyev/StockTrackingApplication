@@ -87,7 +87,7 @@ namespace WindowsForm.Forms
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            this.timer1.Interval=20000;
+            this.timer1.Interval=30000;
             MessageBox.Show(labelMessage.Text, BaseMessages.InformationMessage, MessageBoxButtons.OK, MessageBoxIcon.Information);
             
 

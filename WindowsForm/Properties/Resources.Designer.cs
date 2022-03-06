@@ -133,6 +133,16 @@ namespace WindowsForm.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
+        internal static System.Drawing.Bitmap editBlack_16px_2 {
+            get {
+                object obj = ResourceManager.GetObject("editBlack_16px_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
         internal static System.Drawing.Bitmap elaveEt {
             get {
                 object obj = ResourceManager.GetObject("elaveEt", resourceCulture);

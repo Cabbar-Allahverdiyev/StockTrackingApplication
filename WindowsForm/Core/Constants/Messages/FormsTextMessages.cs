@@ -10,5 +10,7 @@ namespace WindowsForm.Core.Constants.Messages
         public static string SaleIdBlank = "'SaleId' bölməsi boşdur zəhmət olmasa bir dəyər seçin";
 
         public static string CustomerPaymentIdBlank = "'Id' bölməsi boşdur zəhmət olmasa bir dəyər seçin";
+        public static string QuantityIsBlank = "'Miqdar' bölməsi boşdur zəhmət olmasa bir dəyər yazın";
+       // public static string
     }
 }

@@ -15,6 +15,7 @@ using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Utilities.Search.Concrete.ProductSearch;
 using WindowsForm.MyControls;
 using WindowsForm.Core.Controllers.Concrete;
+using System.Reflection;
 
 namespace WindowsForm.Forms
 {
@@ -66,7 +67,7 @@ namespace WindowsForm.Forms
             }
             catch (Exception ex)
             {
-                FormsMessage.ErrorMessage($"{BaseMessages.ErrorMessage} | {ex.Message}");
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
                 return;
             }
         }
@@ -79,6 +80,11 @@ namespace WindowsForm.Forms
         //Double Click ------------------------------------>
         private void dataGridViewFormPrdouctList_DoubleClick(object sender, EventArgs e)
         {
+            if (dataGridViewProductList.CurrentRow == null)
+            {
+                FormsMessage.WarningMessage(BaseMessages.SelectedValueIsNull);
+                return;
+            }
             var productViewDetailByProductId = _productManager.GetProductViewDetailByProductId(
                              Convert.ToInt32(dataGridViewProductList.CurrentRow.Cells["ProductId"].Value.ToString())
                         );

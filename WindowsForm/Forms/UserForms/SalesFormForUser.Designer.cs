@@ -32,6 +32,7 @@ namespace WindowsForm.Forms.UserForms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SalesFormForUser));
             this.dataGridViewProductList = new System.Windows.Forms.DataGridView();
             this.groupBoxMehsul = new System.Windows.Forms.GroupBox();
+            this.buttonDuzelt = new System.Windows.Forms.Button();
             this.ButtonSalesFormSil = new System.Windows.Forms.Button();
             this.buttonBarkodNoAxtar = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -96,6 +97,7 @@ namespace WindowsForm.Forms.UserForms
             // 
             // groupBoxMehsul
             // 
+            this.groupBoxMehsul.Controls.Add(this.buttonDuzelt);
             this.groupBoxMehsul.Controls.Add(this.ButtonSalesFormSil);
             this.groupBoxMehsul.Controls.Add(this.buttonBarkodNoAxtar);
             this.groupBoxMehsul.Controls.Add(this.pictureBox1);
@@ -122,11 +124,25 @@ namespace WindowsForm.Forms.UserForms
             this.groupBoxMehsul.TabStop = false;
             this.groupBoxMehsul.Text = "Məhsul";
             // 
+            // buttonDuzelt
+            // 
+            this.buttonDuzelt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDuzelt.Image = global::WindowsForm.Properties.Resources.editBlack_16px_2;
+            this.buttonDuzelt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonDuzelt.Location = new System.Drawing.Point(57, 354);
+            this.buttonDuzelt.Name = "buttonDuzelt";
+            this.buttonDuzelt.Size = new System.Drawing.Size(88, 23);
+            this.buttonDuzelt.TabIndex = 39;
+            this.buttonDuzelt.Text = "Düzəlt";
+            this.buttonDuzelt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonDuzelt.UseVisualStyleBackColor = true;
+            this.buttonDuzelt.Click += new System.EventHandler(this.buttonDuzelt_Click);
+            // 
             // ButtonSalesFormSil
             // 
             this.ButtonSalesFormSil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonSalesFormSil.Image = ((System.Drawing.Image)(resources.GetObject("ButtonSalesFormSil.Image")));
-            this.ButtonSalesFormSil.Location = new System.Drawing.Point(150, 354);
+            this.ButtonSalesFormSil.Location = new System.Drawing.Point(148, 354);
             this.ButtonSalesFormSil.Name = "ButtonSalesFormSil";
             this.ButtonSalesFormSil.Size = new System.Drawing.Size(88, 23);
             this.ButtonSalesFormSil.TabIndex = 35;
@@ -583,5 +599,6 @@ namespace WindowsForm.Forms.UserForms
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button buttonDuzelt;
     }
 }

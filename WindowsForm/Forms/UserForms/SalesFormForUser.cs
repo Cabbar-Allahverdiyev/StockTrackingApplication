@@ -1,13 +1,11 @@
 ﻿using Business.Concrete;
 using Business.Constants.Messages;
-using Business.ValidationRules;
-using Business.ValidationRules.FluentValidation;
 using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using Entities.DTOs.CartDtos;
-using FluentValidation.Results;
 using System;
+using System.Reflection;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,14 +14,10 @@ using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.Concrete;
-using WindowsForm.Core.Controllers;
 using WindowsForm.Core.Controllers.ValidatorControllers;
 using USB_Barcode_Scanner;
-using WindowsForm.Utilities.BarcodeScanner;
 using WindowsForm.Utilities.Search.Concrete.ProductSearch;
-using DataAccess.Concrete.EfInMemory;
 using WindowsForm.MyControls;
-using System.Threading;
 using WindowsForm.Core.Constants.SelectionItem;
 using WindowsForm.Core.Constants.FormsAuthorization.User;
 
@@ -32,6 +26,7 @@ namespace WindowsForm.Forms.UserForms
     public partial class SalesFormForUser : Form
     {
         int staticUserId = LoginForm.UserId;
+        private int _cartId = 0;
         //public static bool QrCodeIsSuccess = false;
 
 
@@ -136,7 +131,7 @@ namespace WindowsForm.Forms.UserForms
             catch (Exception ex)
             {
 
-                FormsMessage.ErrorMessage($"{ButtonMessages.ElaveEtError} {BaseMessages.ErrorMessage} / {ex.Message}");
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
                 return;
             }
 
@@ -144,19 +139,20 @@ namespace WindowsForm.Forms.UserForms
 
         private void ButtonSalesFormSil_Click(object sender, EventArgs e)
         {
-            // QrCodeIsSuccess = false;
-            UserAuthorization.QrCodeIsSuccess = false;
-            AdminValidationForm validationForm = new AdminValidationForm();
-            validationForm.ShowDialog();
 
-           // if (QrCodeIsSuccess == false)
-            if (UserAuthorization.QrCodeIsSuccess == false)
-            {
-                FormsMessage.WarningMessage(AuthMessages.AuthorizationDenied);
-                return;
-            }
             try
             {
+                // QrCodeIsSuccess = false;
+                UserAuthorization.QrCodeIsSuccess = false;
+                AdminValidationForm validationForm = new AdminValidationForm();
+                validationForm.ShowDialog();
+
+                // if (QrCodeIsSuccess == false)
+                if (UserAuthorization.QrCodeIsSuccess == false)
+                {
+                    FormsMessage.WarningMessage(AuthMessages.AuthorizationDenied);
+                    return;
+                }
                 Cart cart = new Cart();
                 CartAddDto cartAddDto = _cartManager.GetCartAddDetailByBarcodeNumber(textBoxBarkodNo.Text).Data;
 
@@ -198,22 +194,27 @@ namespace WindowsForm.Forms.UserForms
             }
             catch (ArgumentNullException ex)
             {
-                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {BaseMessages.ErrorMessage} : Hansısa dəyər boşdur zəhmət olmasa bütün dəyərləri yenidən yoxlayın | {ex.Message}");
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex) +
+                      " ( Hansısa dəyər boşdur zəhmət olmasa bütün dəyərləri yenidən yoxlayın ) ");
                 return;
             }
             catch (FormatException ex)
             {
-                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {BaseMessages.ErrorMessage} : Daxil edilən dəyərlərin hansısa yerləşdiyi xnanın formatına uyğun deyil zəhmət olmasa bütün dəyərləri yenidən yoxlayın | {ex.Message}");
+
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex) +
+                     " ( Daxil edilən dəyərlərin hansısa yerləşdiyi xananın formatına uyğun deyil zəhmət olmasa bütün dəyərləri yenidən gözdən keçirin ) ");
                 return;
             }
             catch (NullReferenceException ex)
             {
-                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {BaseMessages.ErrorMessage} | {ex.Message}");
+
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex) +
+                    " ( Daxil edilən dəyərlərin hansısa yerləşdiyi xananın formatına uyğun deyil və ya referans boşdur zəhmət olmasa bütün dəyərləri yenidən gözdən keçirin ) ");
                 return;
             }
             catch (Exception ex)
             {
-                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {BaseMessages.ErrorMessage} | {ex.Message}");
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
                 return;
             }
 
@@ -223,6 +224,11 @@ namespace WindowsForm.Forms.UserForms
         {
             try
             {
+                if (textBoxCustomerId.Text == "")
+                {
+                    FormsMessage.WarningMessage(BaseMessages.SelectValue);
+                    return;
+                }
                 int customerId = int.Parse(textBoxCustomerId.Text);
 
                 Debt debt = new Debt();
@@ -278,27 +284,36 @@ namespace WindowsForm.Forms.UserForms
             catch (Exception ex)
             {
 
-                FormsMessage.ErrorMessage($"{ButtonMessages.SatisEtmekError} {BaseMessages.ErrorMessage} /{ex.Message}");
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
                 return;
             }
         }
 
         private void buttonSec_Click(object sender, EventArgs e)
         {
-            CustomerListForm customerListForm = new CustomerListForm();
-            customerListForm.ShowDialog();
-            textBoxCustomerId.Text = SelectedCustomerForSalesForm.Id.ToString();
-            IDataResult<Customer> result = _customerManager.GetById(SelectedCustomerForSalesForm.Id);
-            if (!result.Success)
+            try
             {
-                FormsMessage.ErrorMessage(result.Message);
+                CustomerListForm customerListForm = new CustomerListForm();
+                customerListForm.ShowDialog();
+                textBoxCustomerId.Text = SelectedCustomerForSalesForm.Id.ToString();
+                IDataResult<Customer> result = _customerManager.GetById(SelectedCustomerForSalesForm.Id);
+                if (!result.Success)
+                {
+                    FormsMessage.ErrorMessage(result.Message);
+                    return;
+                }
+
+                textBoxAd.Text = result.Data.FirstName;
+                textBoxSoyad.Text = result.Data.LastName;
+                textBoxTelefon.Text = result.Data.PhoneNumber;
+                FormsMessage.SuccessMessage(result.Message);
+            }
+            catch (Exception ex)
+            {
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
                 return;
             }
 
-            textBoxAd.Text = result.Data.FirstName;
-            textBoxSoyad.Text = result.Data.LastName;
-            textBoxTelefon.Text = result.Data.PhoneNumber;
-            FormsMessage.SuccessMessage(result.Message);
         }
 
         private void buttonTemizle_Click(object sender, EventArgs e)
@@ -370,7 +385,7 @@ namespace WindowsForm.Forms.UserForms
             catch (Exception ex)
             {
 
-                FormsMessage.ErrorMessage($"{ButtonMessages.SatisEtmekError} {BaseMessages.ErrorMessage} /{ex.Message}");
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
                 return;
             }
 
@@ -380,6 +395,58 @@ namespace WindowsForm.Forms.UserForms
         {
             ProductListRefesh();
             CartListRefesh();
+        }
+
+        private void buttonBarkodNoAxtar_Click(object sender, EventArgs e)
+        {
+            FindByBarcodeNumberAndAddToCart(textBoxBarkodNo.Text);
+        }
+
+        private void buttonDuzelt_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                UserAuthorization.QrCodeIsSuccess = false;
+                AdminValidationForm validationForm = new AdminValidationForm();
+                validationForm.ShowDialog();
+
+                // if (QrCodeIsSuccess == false)
+                if (UserAuthorization.QrCodeIsSuccess == false)
+                {
+                    FormsMessage.WarningMessage(AuthMessages.AuthorizationDenied);
+                    return;
+                }
+                Cart cart = _cartManager.GetById(_cartId).Data;
+
+                if (textBoxMiqdar.Text == "")
+                {
+                    FormsMessage.WarningMessage(FormsTextMessages.QuantityIsBlank);
+                    return;
+                }
+
+                cart.Quantity = int.Parse(textBoxMiqdar.Text);
+
+                cart.SoldPrice = textBoxQiymet.Text == "" ? decimal.Parse(textBoxMaxQiymet.Text) : decimal.Parse(textBoxQiymet.Text);
+                cart.TotalPrice = cart.Quantity * cart.SoldPrice;
+
+                IResult updatedCart = _cartManager.Update(cart);
+                if (!updatedCart.Success)
+                {
+                    FormsMessage.ErrorMessage(updatedCart.Message);
+                    return;
+                }
+                FormsMessage.SuccessMessage(updatedCart.Message);
+
+                CartListRefesh();
+                TotalPriceLabelWrite();
+                GroupBoxMehsulControlClear();
+            }
+            catch (Exception ex)
+            {
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
+                return;
+            }
+
         }
 
         //Text Changed -------------------->
@@ -402,6 +469,22 @@ namespace WindowsForm.Forms.UserForms
             detailsSearch.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewProductList);
         }
 
+        //Checked Changed----------------------------->
+        private void checkBoxBarkodNo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxBarkodNo.Checked == false)
+            {
+                checkBoxBarkodNo.Text = "Avtomatik";
+                buttonBarkodNoAxtar.Visible = false;
+            }
+            else
+            {
+                checkBoxBarkodNo.Text = "Manual";
+                buttonBarkodNoAxtar.Visible = true;
+            }
+
+        }
+
 
 
         //Double Click----------------------------------->
@@ -409,23 +492,45 @@ namespace WindowsForm.Forms.UserForms
 
         private void dataGridViewCartList_DoubleClick(object sender, EventArgs e)
         {
-            GroupBoxMehsulControlClear();
+            try
+            {
+                GroupBoxMehsulControlClear();
+                _cartId = 0;
+                if (dataGridViewCartList.CurrentRow == null)
+                {
+                    FormsMessage.WarningMessage(BaseMessages.SelectedValueIsNull);
+                    return;
+                }
 
-            textBoxProductId.Text = dataGridViewCartList.CurrentRow.Cells["ProductId"].Value.ToString();
+                textBoxProductId.Text = dataGridViewCartList.CurrentRow.Cells["ProductId"].Value.ToString();
+                _cartId = int.Parse(dataGridViewCartList.CurrentRow.Cells["Id"].Value.ToString());
 
-            CartDto cartDto = _cartManager.GetCartDtoDetailByProductId(Convert.ToInt32(textBoxProductId.Text)).Data;
-            textBoxBarkodNo.Text = cartDto.BarcodeNumber.ToString();
-            textBoxMehsulAdi.Text = cartDto.ProductName.ToString();
-            textBoxMaxQiymet.Text = cartDto.UnitPrice.ToString();
+                CartDto cartDto = _cartManager.GetCartDtoDetailByProductId(Convert.ToInt32(textBoxProductId.Text)).Data;
+                textBoxBarkodNo.Text = cartDto.BarcodeNumber.ToString();
+                textBoxMehsulAdi.Text = cartDto.ProductName.ToString();
+                textBoxMaxQiymet.Text = cartDto.UnitPrice.ToString();
 
-            textBoxQiymet.Text = dataGridViewCartList.CurrentRow.Cells["Qiymet"].Value.ToString();
-            textBoxMiqdar.Text = dataGridViewCartList.CurrentRow.Cells["Miqdar"].Value.ToString();
-            textBoxCem.Text = dataGridViewCartList.CurrentRow.Cells["Cem"].Value.ToString();
+                textBoxQiymet.Text = dataGridViewCartList.CurrentRow.Cells["Qiymet"].Value.ToString();
+                textBoxMiqdar.Text = dataGridViewCartList.CurrentRow.Cells["Miqdar"].Value.ToString();
+                textBoxCem.Text = dataGridViewCartList.CurrentRow.Cells["Cem"].Value.ToString();
+            }
+            catch (Exception ex)
+            {
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
+                return;
+            }
+
         }
 
         private void DataGridViewSalesForm_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+
             GroupBoxMehsulControlClear();
+            if (dataGridViewProductList.CurrentRow == null)
+            {
+                FormsMessage.WarningMessage(BaseMessages.SelectedValueIsNull);
+                return;
+            }
             textBoxProductId.Text = dataGridViewProductList.CurrentRow.Cells["ProductId"].Value.ToString();
             textBoxBarkodNo.Text = dataGridViewProductList.CurrentRow.Cells["BarcodeNomresi"].Value.ToString();
             textBoxMehsulAdi.Text = dataGridViewProductList.CurrentRow.Cells["MehsulAdi"].Value.ToString();
@@ -454,7 +559,7 @@ namespace WindowsForm.Forms.UserForms
             }
             catch (Exception ex)
             {
-                FormsMessage.ErrorMessage($"{BaseMessages.ErrorMessage} | {ex.Message}");
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
                 return;
             }
         }
@@ -635,25 +740,7 @@ namespace WindowsForm.Forms.UserForms
             TotalPriceLabelWrite();
         }
 
-        private void checkBoxBarkodNo_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxBarkodNo.Checked == false)
-            {
-                checkBoxBarkodNo.Text = "Avtomatik";
-                buttonBarkodNoAxtar.Visible = false;
-            }
-            else
-            {
-                checkBoxBarkodNo.Text = "Manual";
-                buttonBarkodNoAxtar.Visible = true;
-            }
 
-        }
-
-        private void buttonBarkodNoAxtar_Click(object sender, EventArgs e)
-        {
-            FindByBarcodeNumberAndAddToCart(textBoxBarkodNo.Text);
-        }
 
 
     }

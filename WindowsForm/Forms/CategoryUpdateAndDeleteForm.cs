@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
@@ -71,7 +72,7 @@ namespace WindowsForm.Forms
             }
             catch (Exception ex)
             {
-                FormsMessage.ErrorMessage($"{BaseMessages.ErrorMessage} | {ex.Message}");
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
                 return;
             }
         }
@@ -96,13 +97,18 @@ namespace WindowsForm.Forms
             }
             catch (Exception ex)
             {
-                FormsMessage.ErrorMessage($"{BaseMessages.ErrorMessage} | {ex.Message}");
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
                 return;
             }
         }
 
         private void dataGridViewCategoryList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (dataGridViewCategoryList.CurrentRow == null)
+            {
+                FormsMessage.WarningMessage(BaseMessages.SelectedValueIsNull);
+                return;
+            }
             textBoxId.Text = dataGridViewCategoryList.CurrentRow.Cells["Id"].Value.ToString();
             textBoxCategory.Text = dataGridViewCategoryList.CurrentRow.Cells["CategoryName"].Value.ToString();
         }

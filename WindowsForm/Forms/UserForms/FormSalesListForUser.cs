@@ -4,12 +4,12 @@ using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using Entities.DTOs.SaleWinFormDtos;
-using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.FormsAuthorization.User;
@@ -165,7 +165,8 @@ namespace WindowsForm.Forms.UserForms
             }
             catch (Exception ex)
             {
-                FormsMessage.ErrorMessage($"{BaseMessages.ErrorMessage} | {ex.Message}");
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
+                return;
             }
         }
 
@@ -217,7 +218,8 @@ namespace WindowsForm.Forms.UserForms
             }
             catch (Exception ex)
             {
-                FormsMessage.ErrorMessage($"{BaseMessages.ErrorMessage} | {ex.Message}");
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
+                return;
             }
 
 
@@ -239,6 +241,11 @@ namespace WindowsForm.Forms.UserForms
 
         private void dataGridViewSaleList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (dataGridViewSaleList.CurrentRow == null)
+            {
+                FormsMessage.WarningMessage(BaseMessages.SelectedValueIsNull);
+                return;
+            }
             textBoxSaleId.Text = dataGridViewSaleList.CurrentRow.Cells["SaleId"].Value.ToString();
             textBoxMehsul.Text = dataGridViewSaleList.CurrentRow.Cells["MehsulAdi"].Value.ToString();
             textBoxMiqdar.Text = dataGridViewSaleList.CurrentRow.Cells["Miqdar"].Value.ToString();

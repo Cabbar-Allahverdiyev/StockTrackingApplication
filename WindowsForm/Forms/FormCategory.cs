@@ -14,7 +14,6 @@ using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.Concrete;
 using WindowsForm.Core.Controllers.ValidatorControllers;
 using WindowsForm.MyControls;
-using WindowsForm.Utilities.Search.Concrete.BrandSearch;
 using WindowsForm.Utilities.Search.Concrete.CategorySearch;
 
 namespace WindowsForm.Forms
@@ -74,7 +73,8 @@ namespace WindowsForm.Forms
             }
             catch (Exception ex)
             {
-                FormsMessage.ErrorMessage($"{BaseMessages.ErrorMessage}| {ex.Message}");
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
+                return;
             }
 
         }

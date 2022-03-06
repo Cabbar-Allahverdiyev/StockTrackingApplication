@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using Business.Constants.Messages;
 using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
@@ -7,6 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
@@ -26,26 +28,36 @@ namespace WindowsForm.Forms
 
         private void buttonEalveEt_Click(object sender, EventArgs e)
         {
-            Customer customer = new Customer();
-            customer.FirstName = textBoxAd.Text;
-            customer.LastName = textBoxSoyad.Text;
-            customer.PhoneNumber = textBoxTelefonNomresi.Text;
-            customer.Email = textBoxEmail.Text;
-            customer.Address = textBoxAdres.Text;
-
-            if (!validationTool.IsValid(customer))
+            try
             {
+                Customer customer = new Customer();
+                customer.FirstName = textBoxAd.Text;
+                customer.LastName = textBoxSoyad.Text;
+                customer.PhoneNumber = textBoxTelefonNomresi.Text;
+                customer.Email = textBoxEmail.Text;
+                customer.Address = textBoxAdres.Text;
+
+                if (!validationTool.IsValid(customer))
+                {
+                    return;
+                }
+
+                IResult result = _customerManager.Add(customer);
+                if (!result.Success)
+                {
+                    FormsMessage.ErrorMessage(result.Message);
+                    return;
+                }
+                FormsMessage.SuccessMessage(result.Message);
+                CustomerRefresh();
+            }
+            catch (Exception ex)
+            {
+
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
                 return;
             }
-
-            IResult result = _customerManager.Add(customer);
-            if (!result.Success)
-            {
-                FormsMessage.ErrorMessage(result.Message);
-                return;
-            }
-            FormsMessage.SuccessMessage(result.Message);
-            CustomerRefresh();
+          
         }
 
         private void CustomerForm_Load(object sender, EventArgs e)

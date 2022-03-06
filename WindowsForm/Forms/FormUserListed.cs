@@ -1,7 +1,6 @@
 ﻿using Business.Concrete;
 using Business.Constants.Messages;
 using DataAccess.Concrete.EntityFramework;
-using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,10 +35,16 @@ namespace WindowsForm.Forms
             UserRefresh();
         }
 
-       
+
 
         private void DataGridViewUserListed_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (dataGridViewUserListed.CurrentRow == null)
+            {
+                FormsMessage.WarningMessage(BaseMessages.SelectedValueIsNull);
+                return;
+
+            }
             textBoxAd.Text = dataGridViewUserListed.CurrentRow.Cells["FirstName"].Value.ToString();
             textBoxSoyad.Text = dataGridViewUserListed.CurrentRow.Cells["LastName"].Value.ToString();
             textBoxEmail.Text = dataGridViewUserListed.CurrentRow.Cells["Email"].Value.ToString();

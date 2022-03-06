@@ -4,6 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationIcon>shortcuts_ico_128px.ico</ApplicationIcon>
+    <RootNamespace>WindowsForm</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

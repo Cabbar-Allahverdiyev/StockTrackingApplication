@@ -110,7 +110,7 @@ namespace WindowsForm.Forms
             }
             catch (Exception ex)
             {
-                FormsMessage.ErrorMessage($"{ButtonMessages.UpdateError} {BaseMessages.ErrorMessage} | {ex.Message}");
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
                 return;
             }
         }
@@ -123,6 +123,11 @@ namespace WindowsForm.Forms
 
         private void dataGridViewFormPrdouctList_DoubleClick(object sender, EventArgs e)
         {
+            if (dataGridViewPrdouctList.CurrentRow == null)
+            {
+                FormsMessage.WarningMessage(BaseMessages.SelectedValueIsNull);
+                return;
+            }
             var productViewDetailByProductId = _productManager.GetProductViewDetailByProductId(
                     Convert.ToInt32(dataGridViewPrdouctList.CurrentRow.Cells["ProductId"].Value.ToString())
                );

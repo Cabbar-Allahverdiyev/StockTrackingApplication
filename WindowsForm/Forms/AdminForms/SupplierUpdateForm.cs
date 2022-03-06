@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
@@ -72,7 +73,7 @@ namespace WindowsForm.Forms
             }
             catch (Exception ex)
             {
-                FormsMessage.ErrorMessage($"{BaseMessages.ErrorMessage} | {ex.Message}");
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
                 return;
             }
         }
@@ -96,7 +97,7 @@ namespace WindowsForm.Forms
             }
             catch (Exception ex)
             {
-                FormsMessage.ErrorMessage($"{BaseMessages.ErrorMessage} | {ex.Message}");
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
                 return;
             }
         }
@@ -105,6 +106,11 @@ namespace WindowsForm.Forms
         private void dataGridViewSupplierListed_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             TextBoxClear();
+            if (dataGridView.CurrentRow == null)
+            {
+                FormsMessage.WarningMessage(BaseMessages.SelectedValueIsNull);
+                return;
+            }
             textBoxSupplierId.Text = dataGridViewSupplierListed.CurrentRow.Cells["Id"].Value.ToString();
             textBoxSirketAdi.Text = dataGridViewSupplierListed.CurrentRow.Cells["CompanyName"].Value.ToString();
             textBoxAd.Text = dataGridViewSupplierListed.CurrentRow.Cells["ContactName"].Value.ToString();

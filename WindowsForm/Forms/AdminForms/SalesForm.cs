@@ -25,12 +25,14 @@ using WindowsForm.Utilities.Search.Concrete.ProductSearch;
 using DataAccess.Concrete.EfInMemory;
 using WindowsForm.MyControls;
 using WindowsForm.Core.Constants.SelectionItem;
+using System.Reflection;
 
 namespace WindowsForm.Forms
 {
     public partial class SalesForm : Form
     {
         int staticUserId = LoginForm.UserId;
+        private int _cartId=0;
         // int staticUserId = 2004;
 
         public SalesForm()
@@ -126,22 +128,27 @@ namespace WindowsForm.Forms
             }
             catch (ArgumentNullException ex)
             {
-                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {BaseMessages.ErrorMessage} : Hansısa dəyər boşdur zəhmət olmasa bütün dəyərləri yenidən yoxlayın | {ex.Message}");
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex) +
+                      " ( Hansısa dəyər boşdur zəhmət olmasa bütün dəyərləri yenidən yoxlayın ) ");
                 return;
             }
             catch (FormatException ex)
             {
-                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {BaseMessages.ErrorMessage} : Daxil edilən dəyərlərin hansısa yerləşdiyi xnanın formatına uyğun deyil zəhmət olmasa bütün dəyərləri yenidən yoxlayın | {ex.Message}");
+
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex) +
+                     " ( Daxil edilən dəyərlərin hansısa yerləşdiyi xananın formatına uyğun deyil zəhmət olmasa bütün dəyərləri yenidən gözdən keçirin ) ");
                 return;
             }
             catch (NullReferenceException ex)
             {
-                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {BaseMessages.ErrorMessage} | {ex.Message}");
+
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex) +
+                    " ( Daxil edilən dəyərlərin hansısa yerləşdiyi xananın formatına uyğun deyil və ya referans boşdur zəhmət olmasa bütün dəyərləri yenidən gözdən keçirin ) ");
                 return;
             }
             catch (Exception ex)
             {
-                FormsMessage.ErrorMessage($"{ButtonMessages.SilError} {BaseMessages.ErrorMessage} | {ex.Message}");
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
                 return;
             }
 
@@ -183,6 +190,11 @@ namespace WindowsForm.Forms
         {
             try
             {
+                if (textBoxCustomerId.Text=="")
+                {
+                    FormsMessage.WarningMessage(BaseMessages.SelectValue);
+                    return;
+                }
                 int customerId = int.Parse(textBoxCustomerId.Text);
                 
                 Debt debt = new Debt();
@@ -238,7 +250,7 @@ namespace WindowsForm.Forms
             catch (Exception ex)
             {
 
-                FormsMessage.ErrorMessage($"{ButtonMessages.SatisEtmekError} {BaseMessages.ErrorMessage} /{ex.Message}");
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
                 return;
             }
         }
@@ -302,12 +314,54 @@ namespace WindowsForm.Forms
             }
             catch (Exception ex)
             {
-
-                FormsMessage.ErrorMessage($"{ButtonMessages.ElaveEtError} {BaseMessages.ErrorMessage} / {ex.Message}");
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
                 return;
             }
 
         }
+
+        private void buttonDuzelt_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                Cart cart = _cartManager.GetById(_cartId).Data;
+
+                if (textBoxMiqdar.Text == "")
+                {
+                    FormsMessage.WarningMessage(FormsTextMessages.QuantityIsBlank);
+                    return;
+                }
+
+                cart.Quantity = int.Parse(textBoxMiqdar.Text);
+
+                cart.SoldPrice = textBoxQiymet.Text == "" ? decimal.Parse(textBoxMaxQiymet.Text) : decimal.Parse(textBoxQiymet.Text);
+                cart.TotalPrice = cart.Quantity * cart.SoldPrice;
+
+                IResult updatedCart = _cartManager.Update(cart);
+                if (!updatedCart.Success)
+                {
+                    FormsMessage.ErrorMessage(updatedCart.Message);
+                    return;
+                }
+                FormsMessage.SuccessMessage(updatedCart.Message);
+
+                CartListRefesh();
+                TotalPriceLabelWrite();
+                GroupBoxMehsulControlClear();
+            }
+            catch (NullReferenceException ex)
+            {
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex) + " ( Referans boşdur, bir dəyər seçildiyindən əmin olun (Qeyd : Səbətdəki bir dəyəri seçdiyinzdən əmin olun) )");
+                return;
+            }
+            catch (Exception ex)
+            {
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
+                return;
+            }
+        }
+
         private void buttonTemizle_Click(object sender, EventArgs e)
         {
             GroupBoxMehsulControlClear();
@@ -376,8 +430,7 @@ namespace WindowsForm.Forms
             }
             catch (Exception ex)
             {
-
-                FormsMessage.ErrorMessage($"{ButtonMessages.SatisEtmekError} {BaseMessages.ErrorMessage} /{ex.Message}");
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
                 return;
             }
 
@@ -417,7 +470,13 @@ namespace WindowsForm.Forms
         private void dataGridViewCartList_DoubleClick(object sender, EventArgs e)
         {
             GroupBoxMehsulControlClear();
-
+            _cartId = 0;
+            if (dataGridViewCartList.CurrentRow == null)
+            {
+                FormsMessage.WarningMessage(BaseMessages.SelectedValueIsNull);
+                return;
+            }
+            _cartId = int.Parse(dataGridViewCartList.CurrentRow.Cells["Id"].Value.ToString());
             textBoxProductId.Text = dataGridViewCartList.CurrentRow.Cells["ProductId"].Value.ToString();
 
             CartDto cartDto = _cartManager.GetCartDtoDetailByProductId(Convert.ToInt32(textBoxProductId.Text)).Data;
@@ -433,6 +492,11 @@ namespace WindowsForm.Forms
         private void DataGridViewSalesForm_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             GroupBoxMehsulControlClear();
+            if (dataGridViewProductList.CurrentRow == null)
+            {
+                FormsMessage.WarningMessage(BaseMessages.SelectedValueIsNull);
+                return;
+            }
             textBoxProductId.Text = dataGridViewProductList.CurrentRow.Cells["ProductId"].Value.ToString();
             textBoxBarkodNo.Text = dataGridViewProductList.CurrentRow.Cells["BarcodeNomresi"].Value.ToString();
             textBoxMehsulAdi.Text = dataGridViewProductList.CurrentRow.Cells["MehsulAdi"].Value.ToString();
@@ -604,65 +668,73 @@ namespace WindowsForm.Forms
         private void FindByBarcodeNumberAndAddToCart(string barcodeNumber)
         {
 
-            IResult cartAdded;
-            IResult cartUpdated;
-            bool isbarcodeExists = false;
-
-            IDataResult<Product> result = _productManager.GetByProductBarcodeNumber(barcodeNumber);
-            if (result.Success == false)
+            try
             {
-                FormsMessage.WarningMessage(result.Message);
-                GroupBoxMehsulControlClear(); //bura yeniden bax
-                return;
-            }
-            // GroupBoxMehsulControlClear();
-            Cart cart = new Cart();
-            cart.ProductId = result.Data.Id;
-            cart.UserId = staticUserId; //sonra dinamiklesdir
-            cart.Quantity = 1;
-            cart.SoldPrice = result.Data.UnitPrice;
-            cart.TotalPrice = cart.Quantity * cart.SoldPrice;
+                IResult cartAdded;
+                IResult cartUpdated;
+                bool isbarcodeExists = false;
 
-            if (!cartValidationTool.IsValid(cart))
-            {
-                return;
-            }
-
-
-
-            IsBarcodeNumberExists(cart.ProductId, out isbarcodeExists);
-            if (isbarcodeExists == true)
-            {
-                Cart getCart = _cartManager.GetByProductId(cart.ProductId).Data;
-                cart.Id = getCart.Id;
-                cart.Quantity = getCart.Quantity + 1;
-                cart.TotalPrice = cart.SoldPrice * cart.Quantity;
-                cartUpdated = _cartManager.Update(cart);
-                if (!cartUpdated.Success)
+                IDataResult<Product> result = _productManager.GetByProductBarcodeNumber(barcodeNumber);
+                if (result.Success == false)
                 {
-                    FormsMessage.WarningMessage(cartUpdated.Message);
+                    FormsMessage.WarningMessage(result.Message);
+                    GroupBoxMehsulControlClear(); //bura yeniden bax
                     return;
                 }
-                // FormsMessage.SuccessMessage(cartUpdated.Message);
-            }
-            else
-            {
+                // GroupBoxMehsulControlClear();
+                Cart cart = new Cart();
+                cart.ProductId = result.Data.Id;
+                cart.UserId = staticUserId; //sonra dinamiklesdir
+                cart.Quantity = 1;
+                cart.SoldPrice = result.Data.UnitPrice;
+                cart.TotalPrice = cart.Quantity * cart.SoldPrice;
 
-                cartAdded = _cartManager.Add(cart);
-                if (!cartAdded.Success)
+                if (!cartValidationTool.IsValid(cart))
                 {
-                    FormsMessage.WarningMessage(cartAdded.Message);
                     return;
                 }
-                //FormsMessage.SuccessMessage(CartMessages.ProductAdded);
-            }
-            GroupBoxMehsulControlClear();
-            CartListRefesh();
 
-            TotalPriceLabelWrite();
+
+
+                IsBarcodeNumberExists(cart.ProductId, out isbarcodeExists);
+                if (isbarcodeExists == true)
+                {
+                    Cart getCart = _cartManager.GetByProductId(cart.ProductId).Data;
+                    cart.Id = getCart.Id;
+                    cart.Quantity = getCart.Quantity + 1;
+                    cart.TotalPrice = cart.SoldPrice * cart.Quantity;
+                    cartUpdated = _cartManager.Update(cart);
+                    if (!cartUpdated.Success)
+                    {
+                        FormsMessage.WarningMessage(cartUpdated.Message);
+                        return;
+                    }
+                    // FormsMessage.SuccessMessage(cartUpdated.Message);
+                }
+                else
+                {
+
+                    cartAdded = _cartManager.Add(cart);
+                    if (!cartAdded.Success)
+                    {
+                        FormsMessage.WarningMessage(cartAdded.Message);
+                        return;
+                    }
+                    //FormsMessage.SuccessMessage(CartMessages.ProductAdded);
+                }
+                GroupBoxMehsulControlClear();
+                CartListRefesh();
+
+                TotalPriceLabelWrite();
+            }
+            catch (Exception ex)
+            {
+
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
+                return;
+            }
+          
         }
-
-      
 
        
     }

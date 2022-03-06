@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Entities.DTOs.CartDtos
 {
-    public class CartViewDto:IDto
+    public class CartViewDto:IDto 
     {
         public int Id { get; set; }
         public int ProductId { get; set; }

@@ -17,7 +17,7 @@ namespace WindowsForm.Forms
     public partial class StatisticForProductForm : Form
     {
         ProductManager _productManager = new ProductManager(new EfProductDal());
-        EfSaleWinFormDal formDal = new EfSaleWinFormDal();
+        //EfSaleWinFormDal formDal = new EfSaleWinFormDal();
 
         public StatisticForProductForm()
         {

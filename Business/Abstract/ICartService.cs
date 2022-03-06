@@ -16,6 +16,7 @@ namespace Business.Abstract
         IResult Add(Cart cart);
         IResult Update(Cart cart);
         IResult Delete(Cart cart);
+        IDataResult<Cart> GetById(int cartId);
 
         IDataResult<Cart> GetByProductId(int productId);
 

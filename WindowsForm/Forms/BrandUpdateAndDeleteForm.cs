@@ -59,7 +59,7 @@ namespace WindowsForm.Forms
             }
             catch (Exception ex)
             {
-                FormsMessage.ErrorMessage($"{BaseMessages.ErrorMessage} | {ex.Message}");
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
                 return;
             }
         }
@@ -85,7 +85,7 @@ namespace WindowsForm.Forms
             }
             catch (Exception ex)
             {
-                FormsMessage.ErrorMessage($"{BaseMessages.ErrorMessage} | {ex.Message}");
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
                 return;
             }
         }
@@ -98,6 +98,11 @@ namespace WindowsForm.Forms
         //Cell Double Click----------------------------------------->
         private void dataGridViewBrandList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (dataGridViewBrandList.CurrentRow == null)
+            {
+                FormsMessage.WarningMessage(BaseMessages.SelectedValueIsNull);
+                return;
+            }
             textBoxId.Text = dataGridViewBrandList.CurrentRow.Cells["Id"].Value.ToString();
             textBoxBrand.Text = dataGridViewBrandList.CurrentRow.Cells["BrandName"].Value.ToString();
         }

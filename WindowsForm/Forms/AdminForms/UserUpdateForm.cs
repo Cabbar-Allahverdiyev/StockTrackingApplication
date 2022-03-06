@@ -83,8 +83,8 @@ namespace WindowsForm.Forms
             catch (Exception ex)
             {
 
-                FormsMessage.ErrorMessage($"{ButtonMessages.UpdateError} {BaseMessages.ErrorMessage} | {ex.Message}");
-                return; 
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
+                return;
             }
           
         }
@@ -101,6 +101,11 @@ namespace WindowsForm.Forms
 
         private void DataGridViewUserListed_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (dataGridViewUserListed.CurrentRow == null)
+            {
+                FormsMessage.WarningMessage(BaseMessages.SelectedValueIsNull);
+                return;
+            }
             textBoxUserId.Text = dataGridViewUserListed.CurrentRow.Cells["UserId"].Value.ToString();
             textBoxdAd.Text = dataGridViewUserListed.CurrentRow.Cells["FirstName"].Value.ToString();
             textBoxSoyad.Text = dataGridViewUserListed.CurrentRow.Cells["LastName"].Value.ToString();

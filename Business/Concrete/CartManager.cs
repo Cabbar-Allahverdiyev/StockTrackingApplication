@@ -64,6 +64,16 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Cart>>(get,CartMessages.GetAll);
         }
 
+        public IDataResult<Cart> GetById(int cartId)
+        {
+            Cart get = _cartDal.Get(c => c.Id == cartId);
+            if (get == null)
+            {
+                return new ErrorDataResult<Cart>(CartMessages.NotFound);
+            }
+            return new SuccessDataResult<Cart>(get, CartMessages.Found);
+        }
+
         // Get By----------------------------->
 
         public IDataResult<Cart> GetByProductId(int productId)
@@ -73,7 +83,7 @@ namespace Business.Concrete
             {
                 return new ErrorDataResult<Cart>(CartMessages.NotFound);
             }
-            return new SuccessDataResult<Cart>(get, CartMessages.GetAll);
+            return new SuccessDataResult<Cart>(get, CartMessages.Found);
         }
 
         //Dtos------------------>
@@ -138,6 +148,6 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Cart>>(carts,CartMessages.Found);
         }
 
-        
+      
     }
 }

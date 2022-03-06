@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using Business.Constants.Messages;
 using DataAccess.Concrete.EntityFramework;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Constants.SelectionItem;
 
 namespace WindowsForm.Forms
@@ -38,6 +40,11 @@ namespace WindowsForm.Forms
         //Cell Double Click------------------------->
         private void dataGridViewCustomerList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (dataGridViewCustomerList.CurrentRow == null)
+            {
+                FormsMessage.WarningMessage(BaseMessages.SelectedValueIsNull);
+                return;
+            }
             textBoxCustomerId.Text = dataGridViewCustomerList.CurrentRow.Cells["CustomerId"].Value.ToString();
             textBoxAd.Text=dataGridViewCustomerList.CurrentRow.Cells["FirstName"].Value.ToString();
             textBoxSoyad.Text=dataGridViewCustomerList.CurrentRow.Cells["LastName"].Value.ToString();

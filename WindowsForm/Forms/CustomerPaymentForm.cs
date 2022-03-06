@@ -3,7 +3,6 @@ using Business.Constants.Messages;
 using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
-using Entities.DTOs.CustomerDtos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +18,7 @@ using WindowsForm.Core.Constants.SelectionItem;
 using WindowsForm.Forms.UserForms;
 using WindowsForm.Core.Constants.FormsAuthorization.User;
 using WindowsForm.Utilities.Search.Concrete.CustomerPaymentSearch;
+using System.Reflection;
 
 namespace WindowsForm.Forms
 {
@@ -65,7 +65,7 @@ namespace WindowsForm.Forms
             catch (Exception ex)
             {
 
-                FormsMessage.ErrorMessage($"{BaseMessages.ErrorMessage} | { ex.Message}");
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
                 return;
             }
 
@@ -73,88 +73,92 @@ namespace WindowsForm.Forms
 
         private void buttonTetbiqEt_Click(object sender, EventArgs e)
         {
-
-
-
-            //else if (LoginForm.UserId != 2004)
-            //{
-            //    AdminValidationForm validationForm = new AdminValidationForm();
-            //    validationForm.ShowDialog();
-
-            //    // if (QrCodeIsSuccess == false)
-            //    if (UserAuthorization.QrCodeIsSuccess == false)
-            //    {
-            //        FormsMessage.ErrorMessage(AuthMessages.AuthorizationDenied);
-            //        return;
-            //    }
-            //}
-            CustomerPayment customerPayment = new CustomerPayment();
-            if (textBoxCustomerPaymentIdInCancelPayment.Text == "")
+            try
             {
-                FormsMessage.WarningMessage(FormsTextMessages.CustomerPaymentIdBlank);
-                return;
-            }
-            customerPayment.Id = int.Parse(textBoxCustomerPaymentIdInCancelPayment.Text);
-
-            IDataResult<CustomerPayment> getPayment = _paymentManager.GetById(customerPayment.Id);
-            if (!getPayment.Success)
-            {
-                FormsMessage.WarningMessage(getPayment.Message);
-                return;
-            }
-
-            if (checkBoxOdenisLegvEdilsin.Checked == true)
-            {
-                if (LoginForm.UserId != 3002 && LoginForm.UserId != 2004)
+                CustomerPayment customerPayment = new CustomerPayment();
+                if (textBoxCustomerPaymentIdInCancelPayment.Text == "")
                 {
-                    UserAuthorization.QrCodeIsSuccess = false;
-                    AdminValidationForm validationForm = new AdminValidationForm();
-                    validationForm.ShowDialog();
-
-                    // if (QrCodeIsSuccess == false)
-                    if (UserAuthorization.QrCodeIsSuccess == false)
-                    {
-                        FormsMessage.WarningMessage(AuthMessages.AuthorizationDenied);
-                        return;
-                    }
-                }
-
-
-                getPayment.Data.PaymentStatus = false;
-                IResult result = _paymentManager.CancelPayment(getPayment.Data);
-                if (!result.Success)
-                {
-                    FormsMessage.WarningMessage(result.Message);
+                    FormsMessage.WarningMessage(FormsTextMessages.CustomerPaymentIdBlank);
                     return;
                 }
-                FormsMessage.SuccessMessage(result.Message);
-                TextBoxController.ClearAllTextBoxesByGroupBox(groupBoxCancelPayment);
-                checkBoxOdenisLegvEdilsin.Checked = false;
-                CustomerPaymentListRefresh();
+                customerPayment.Id = int.Parse(textBoxCustomerPaymentIdInCancelPayment.Text);
 
-                //getPayment.Data.CancelDate = DateTime.Now;
-                //bax
+                IDataResult<CustomerPayment> getPayment = _paymentManager.GetById(customerPayment.Id);
+                if (!getPayment.Success)
+                {
+                    FormsMessage.WarningMessage(getPayment.Message);
+                    return;
+                }
+
+                if (checkBoxOdenisLegvEdilsin.Checked == true)
+                {
+                    if (LoginForm.UserId != 3002 && LoginForm.UserId != 2004)
+                    {
+                        UserAuthorization.QrCodeIsSuccess = false;
+                        AdminValidationForm validationForm = new AdminValidationForm();
+                        validationForm.ShowDialog();
+
+                        // if (QrCodeIsSuccess == false)
+                        if (UserAuthorization.QrCodeIsSuccess == false)
+                        {
+                            FormsMessage.WarningMessage(AuthMessages.AuthorizationDenied);
+                            return;
+                        }
+                    }
+
+
+                    getPayment.Data.PaymentStatus = false;
+                    IResult result = _paymentManager.CancelPayment(getPayment.Data);
+                    if (!result.Success)
+                    {
+                        FormsMessage.WarningMessage(result.Message);
+                        return;
+                    }
+                    FormsMessage.SuccessMessage(result.Message);
+                    TextBoxController.ClearAllTextBoxesByGroupBox(groupBoxCancelPayment);
+                    checkBoxOdenisLegvEdilsin.Checked = false;
+                    CustomerPaymentListRefresh();
+
+                    //getPayment.Data.CancelDate = DateTime.Now;
+                    //bax
+                }
+                else
+                {
+                    FormsMessage.InformationMessage(BaseMessages.NoChange);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                FormsMessage.InformationMessage(BaseMessages.NoChange);
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
+                return;
             }
+            
         }
 
         private void buttonSec_Click(object sender, EventArgs e)
         {
-            SelectedCustomerForSalesForm.Id = 0;
-            CustomerListForm customerListForm = new CustomerListForm();
-            customerListForm.ShowDialog();
-            textBoxCustomerIdInPaymentAdd.Text = SelectedCustomerForSalesForm.Id.ToString();
-            IDataResult<Customer> result = _customerManager.GetById(SelectedCustomerForSalesForm.Id);
-            if (!result.Success)
+            try
             {
-                FormsMessage.ErrorMessage(result.Message);
+                SelectedCustomerForSalesForm.Id = 0;
+                CustomerListForm customerListForm = new CustomerListForm();
+                customerListForm.ShowDialog();
+                textBoxCustomerIdInPaymentAdd.Text = SelectedCustomerForSalesForm.Id.ToString();
+                IDataResult<Customer> result = _customerManager.GetById(SelectedCustomerForSalesForm.Id);
+                if (!result.Success)
+                {
+                    FormsMessage.ErrorMessage(result.Message);
+                    return;
+                }
+                textBoxMusteriInPaymentAdd.Text = result.Data.FirstName + " " + result.Data.LastName;
+                textBoxTelefonInPaymentAdd.Text = result.Data.PhoneNumber;
+            }
+            catch (Exception ex)
+            {
+
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
                 return;
             }
-            textBoxMusteriInPaymentAdd.Text = result.Data.FirstName + " " + result.Data.LastName;
-            textBoxTelefonInPaymentAdd.Text = result.Data.PhoneNumber;
+            
         }
 
         private void buttonTemizle_Click(object sender, EventArgs e)
@@ -165,6 +169,11 @@ namespace WindowsForm.Forms
         //Cell Double Click-------------------------->
         private void dataGridViewPaymentList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (dataGridViewPaymentList.CurrentRow == null)
+            {
+                FormsMessage.WarningMessage(BaseMessages.SelectedValueIsNull);
+                return;
+            }
             textBoxCustomerPaymentIdInCancelPayment.Text = dataGridViewPaymentList.CurrentRow.Cells["CustomerPaymentId"].Value.ToString();
             textBoxMusteriInCancelPayment.Text = dataGridViewPaymentList.CurrentRow.Cells["FullName"].Value.ToString();
             //textBoxSaticiInCancelPayment.Text = dataGridViewPaymentList.CurrentRow.Cells["UserName"].Value.ToString();

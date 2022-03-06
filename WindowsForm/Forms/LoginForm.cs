@@ -94,8 +94,8 @@ namespace WindowsForm.Forms
             }
             catch (Exception ex)
             {
-
-                FormsMessage.ErrorMessage($"{ButtonMessages.DaxilOl} {BaseMessages.ErrorMessage} | {ex.Message}"); ;
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
+                return;
             }
         }
         //Text Changed------------------------------->

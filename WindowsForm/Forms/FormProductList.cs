@@ -1,7 +1,5 @@
 ﻿using Business.Concrete;
 using Entities.Concrete;
-using Entities.DTOs;
-using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
 using System;
 using System.Collections.Generic;
@@ -50,6 +48,11 @@ namespace WindowsForm.Forms
 
         private void dataGridViewFormPrdouctList_DoubleClick(object sender, EventArgs e)
         {
+            if (dataGridViewFormPrdouctList.CurrentRow == null)
+            {
+                FormsMessage.WarningMessage(BaseMessages.SelectedValueIsNull);
+                return;
+            }
             var productViewDetailByProductId = _productManager.GetProductViewDetailByProductId(
                     Convert.ToInt32(dataGridViewFormPrdouctList.CurrentRow.Cells["ProductId"].Value.ToString())
                );

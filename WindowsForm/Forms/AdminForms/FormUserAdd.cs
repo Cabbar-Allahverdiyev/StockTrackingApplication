@@ -1,22 +1,18 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
 using Business.Constants.Messages;
-using Business.ValidationRules.FluentValidation;
 using Core.Entities.Concrete;
-using Core.Utilities.Security.JWT;
 using DataAccess.Concrete.EntityFramework;
 using Entities.DTOs.UserDtos;
-using FluentValidation.Results;
-using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
-using WindowsForm.Core.Controllers;
 using WindowsForm.Core.Controllers.Concrete;
 using WindowsForm.Core.Controllers.ValidatorControllers;
 using WindowsForm.MyControls;
@@ -85,7 +81,8 @@ namespace WindowsForm.Forms
             }
             catch (Exception ex)
             {
-                FormsMessage.ErrorMessage($"{BaseMessages.ErrorMessage} | {ex.Message}");
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
+                return;
             }
 
         }

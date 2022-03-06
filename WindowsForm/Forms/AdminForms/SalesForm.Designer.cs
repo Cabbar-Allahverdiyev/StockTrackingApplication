@@ -44,6 +44,7 @@ namespace WindowsForm.Forms
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBoxMehsul = new System.Windows.Forms.GroupBox();
+            this.buttonDuzelt = new System.Windows.Forms.Button();
             this.buttonBarkodNoAxtar = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonTemizle = new System.Windows.Forms.Button();
@@ -232,6 +233,7 @@ namespace WindowsForm.Forms
             // 
             // groupBoxMehsul
             // 
+            this.groupBoxMehsul.Controls.Add(this.buttonDuzelt);
             this.groupBoxMehsul.Controls.Add(this.buttonBarkodNoAxtar);
             this.groupBoxMehsul.Controls.Add(this.pictureBox1);
             this.groupBoxMehsul.Controls.Add(this.buttonTemizle);
@@ -257,6 +259,20 @@ namespace WindowsForm.Forms
             this.groupBoxMehsul.TabIndex = 9;
             this.groupBoxMehsul.TabStop = false;
             this.groupBoxMehsul.Text = "Məhsul";
+            // 
+            // buttonDuzelt
+            // 
+            this.buttonDuzelt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDuzelt.Image = global::WindowsForm.Properties.Resources.editBlack_16px_2;
+            this.buttonDuzelt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonDuzelt.Location = new System.Drawing.Point(57, 349);
+            this.buttonDuzelt.Name = "buttonDuzelt";
+            this.buttonDuzelt.Size = new System.Drawing.Size(88, 25);
+            this.buttonDuzelt.TabIndex = 21;
+            this.buttonDuzelt.Text = "Düzəlt";
+            this.buttonDuzelt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonDuzelt.UseVisualStyleBackColor = true;
+            this.buttonDuzelt.Click += new System.EventHandler(this.buttonDuzelt_Click);
             // 
             // buttonBarkodNoAxtar
             // 
@@ -602,5 +618,6 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.Button buttonBorcElaveEt;
         private System.Windows.Forms.Button buttonSec;
         private System.Windows.Forms.TextBox textBoxCustomerId;
+        private System.Windows.Forms.Button buttonDuzelt;
     }
 }
