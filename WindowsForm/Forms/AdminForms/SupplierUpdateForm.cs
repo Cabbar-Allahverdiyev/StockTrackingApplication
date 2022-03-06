@@ -106,7 +106,7 @@ namespace WindowsForm.Forms
         private void dataGridViewSupplierListed_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             TextBoxClear();
-            if (dataGridView.CurrentRow == null)
+            if (dataGridViewSupplierListed.CurrentRow == null)
             {
                 FormsMessage.WarningMessage(BaseMessages.SelectedValueIsNull);
                 return;

@@ -18,6 +18,7 @@ using WindowsForm.Core.Controllers.ValidatorControllers;
 using WindowsForm.Utilities.Search.Concrete.ProductSearch;
 using WindowsForm.Core.Controllers.Concrete;
 using WindowsForm.MyControls;
+using System.Reflection;
 
 namespace WindowsForm.Forms
 {

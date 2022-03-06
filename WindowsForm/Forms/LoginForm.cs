@@ -11,6 +11,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Net.NetworkInformation;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
