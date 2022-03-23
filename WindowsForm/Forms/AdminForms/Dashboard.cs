@@ -225,7 +225,10 @@ namespace WindowsForm.Forms
 
         private void buttonHome_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new SalesForm(), sender);
+            OpenChildForm(new SalesForm(new CategoryManager(new EfCategoryDal())
+                                         , new BrandManager(new EfBrandDal())
+                                         , new SupplierManager(new EfSupplierDal())
+                                         ), sender);
         }
 
         private void buttonProducts_Click(object sender, EventArgs e)

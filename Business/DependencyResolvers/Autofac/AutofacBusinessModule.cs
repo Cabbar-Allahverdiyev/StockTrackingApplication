@@ -53,7 +53,7 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<SaleManager>().As<ISaleService>().SingleInstance();
             builder.RegisterType<EfSaleDal>().As<ISaleDal>().SingleInstance();
 
-            builder.RegisterType<SupplierManager>().As<ISupplierServices>().SingleInstance();
+            builder.RegisterType<SupplierManager>().As<ISupplierService>().SingleInstance();
             builder.RegisterType<EfSupplierDal>().As<ISupplierDal>().SingleInstance();
 
             builder.RegisterType<AuthManager>().As<IAuthService>();

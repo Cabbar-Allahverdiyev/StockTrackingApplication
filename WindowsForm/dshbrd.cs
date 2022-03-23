@@ -141,7 +141,7 @@ namespace WindowsForm
         {
             // ActivateButton(sender);
             //OpenChildForm(new FormProductList(), sender);
-            OpenChildForm(new Forms.SalesForm(), sender);
+            //OpenChildForm(new Forms.SalesForm(), sender);
         }
 
         private void buttonSales_Click(object sender, EventArgs e)

@@ -1,13 +1,9 @@
 ﻿using Business.Concrete;
 using Business.Constants.Messages;
-using Business.ValidationRules;
-using Business.ValidationRules.FluentValidation;
 using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using Entities.DTOs.CartDtos;
-using Entities.DTOs;
-using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,31 +13,40 @@ using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.Concrete;
-using WindowsForm.Core.Controllers;
 using WindowsForm.Core.Controllers.ValidatorControllers;
 using USB_Barcode_Scanner;
-using WindowsForm.Utilities.BarcodeScanner;
 using WindowsForm.Utilities.Search.Concrete.ProductSearch;
-using DataAccess.Concrete.EfInMemory;
 using WindowsForm.MyControls;
 using WindowsForm.Core.Constants.SelectionItem;
 using System.Reflection;
+using Business.Abstract;
+using System.Linq;
+using Entities.DTOs.ProductDtos;
 
 namespace WindowsForm.Forms
 {
     public partial class SalesForm : Form
     {
         int staticUserId = LoginForm.UserId;
-        private int _cartId=0;
-        // int staticUserId = 2004;
+        private int _cartId = 0;
+        ICategoryService _categoryService;
+        IBrandService _brandService;
+        ISupplierService _supplierService;
 
-        public SalesForm()
+        public SalesForm(ICategoryService categoryService,
+                            IBrandService brandService,
+                            ISupplierService supplierService)
         {
+            _categoryService = categoryService;
+            _brandService = brandService;
+            _supplierService = supplierService;
             InitializeComponent();
             TotalPriceLabelWrite();
 
+
             MyControl myControl = new MyControl();
             myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
+
             //myControl.WritePlaceholdersForTextBoxSearchByProductName(textBoxAxtarBarcodeNumber);
 
             BarcodeScanner barcodeScanner = new BarcodeScanner(textBoxBarkodNo);
@@ -50,16 +55,22 @@ namespace WindowsForm.Forms
 
         }
 
+
         private void SalesForm_Load(object sender, EventArgs e)
         {
             ProductListRefesh();
             CartListRefesh();
             GroupBoxMehsulControlClear();
+            CategoryWriteComboBox();
+            BrandWriteComboBox();
+            SupplierWriteComboBox();
+            ProductListRefesh();
+            //TextBoxController.ClearAllTextBoxesAndCmboBoxesByGroupBox(groupBoxFilter);
         }
 
         ProductManager _productManager = new ProductManager(new EfProductDal());
         CartManager _cartManager = new CartManager(new EfCartDal());
-        CustomerManager _customerManager = new CustomerManager(new EfCustomerDal(),new CustomerBalanceManager(new  EfCustomerBalanceDal()));
+        CustomerManager _customerManager = new CustomerManager(new EfCustomerDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()));
         SaleWinFormManager _saleWinFormManager = new SaleWinFormManager(new EfSaleWinFormDal(), new ProductManager(new EfProductDal()));
         DebtManager _debtManager = new DebtManager(new EfDebtDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()));
 
@@ -179,24 +190,25 @@ namespace WindowsForm.Forms
                 return;
             }
 
-            textBoxAd.Text=result.Data.FirstName;
-            textBoxSoyad.Text=result.Data.LastName;
-            textBoxTelefon.Text=result.Data.PhoneNumber;
+            textBoxAd.Text = result.Data.FirstName;
+            textBoxSoyad.Text = result.Data.LastName;
+            textBoxTelefon.Text = result.Data.PhoneNumber;
             FormsMessage.SuccessMessage(result.Message);
 
         }
 
+        
         private void buttonBorcElaveEt_Click(object sender, EventArgs e)
         {
             try
             {
-                if (textBoxCustomerId.Text=="")
+                if (textBoxCustomerId.Text == "")
                 {
                     FormsMessage.WarningMessage(BaseMessages.SelectValue);
                     return;
                 }
                 int customerId = int.Parse(textBoxCustomerId.Text);
-                
+
                 Debt debt = new Debt();
                 IDataResult<List<Cart>> carts = _cartManager.GetAllByUserId(staticUserId);
                 IResult debtAdded;
@@ -391,7 +403,7 @@ namespace WindowsForm.Forms
                         saleWinForm.UserId = cart.UserId;
                         saleWinForm.SoldPrice = cart.SoldPrice;
                         saleWinForm.Quantity = cart.Quantity;
-                       
+
                         if (!saleValidationTool.IsValid(saleWinForm))
                         {
                             return;
@@ -436,10 +448,17 @@ namespace WindowsForm.Forms
 
         }
 
+        private void buttonAxtar_Click(object sender, EventArgs e)
+        {
+            ComboBoxSelectedValue();
+        }
+
+
         private void pictureBoxRefresh_Click(object sender, EventArgs e)
         {
             ProductListRefesh();
             CartListRefesh();
+            TextBoxController.ClearAllTextBoxesAndCmboBoxesByGroupBox(groupBoxFilter);
         }
 
         //Text Changed -------------------->
@@ -458,7 +477,11 @@ namespace WindowsForm.Forms
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-
+            //string searchText = textBoxAxtar.Text;
+            //List<ProductViewDashboardDetailDto> result = _productManager.GetAllProductViewDasboardDetails().Data
+            //                                         .Where(p => p.MehsulAdi.ToLower().Contains(searchText.ToLower()))
+            //                                         .ToList();
+            //dataGridViewProductList.DataSource = result;
             detailsSearch.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewProductList);
         }
 
@@ -733,9 +756,88 @@ namespace WindowsForm.Forms
                 FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
                 return;
             }
-          
+
         }
 
+
+        public void CategoryWriteComboBox()
+        {
+            List<Category> categories = _categoryService.GetAll().Data;
+            comboBoxCategoryList.DataSource = categories;
+            comboBoxCategoryList.DisplayMember = "CategoryName";
+            comboBoxCategoryList.ValueMember = "Id";
+            comboBoxCategoryList.Text = "";
+        }
+
+        public void BrandWriteComboBox()
+        {
+            List<Brand> brands = _brandService.GetAll().Data;
+            comboBoxBrandList.DataSource = brands;
+            comboBoxBrandList.DisplayMember = "BrandName";
+            comboBoxBrandList.ValueMember = "Id";
+            comboBoxBrandList.Text = "";
+        }
+
+        public void SupplierWriteComboBox()
+        {
+            List<Supplier> suppliers = _supplierService.GetAll().Data;
+            comboBoxSupplierList.DataSource = suppliers;
+            comboBoxSupplierList.DisplayMember = "CompanyName";
+            comboBoxSupplierList.ValueMember = "Id";
+            comboBoxSupplierList.Text = "";
+        }
+
+
        
+
+       
+        public void ComboBoxSelectedValue()
+        {
+            List<ProductViewDashboardDetailDto> data = _productManager.GetAllProductViewDasboardDetails().Data;
+            if (comboBoxCategoryList.Text == "" && comboBoxSupplierList.Text == "" && comboBoxBrandList.Text == "")
+            {
+                dataGridViewProductList.DataSource = data;
+                return;
+            }
+            else if (comboBoxCategoryList.Text != "" && comboBoxSupplierList.Text == "" && comboBoxBrandList.Text == "")
+            {
+                dataGridViewProductList.DataSource = data.Where(p => p.Kateqoriya == comboBoxCategoryList.Text).ToList();
+            }
+            else if (comboBoxCategoryList.Text == "" && comboBoxSupplierList.Text != "" && comboBoxBrandList.Text == "")
+            {
+                dataGridViewProductList.DataSource = data.Where(p => p.TedarikciSirket == comboBoxSupplierList.Text).ToList();
+            }
+            else if (comboBoxCategoryList.Text == "" && comboBoxSupplierList.Text == "" && comboBoxBrandList.Text != "")
+            {
+                dataGridViewProductList.DataSource = data.Where(p => p.Marka == comboBoxBrandList.Text).ToList();
+            }
+            else if (comboBoxCategoryList.Text != "" && comboBoxSupplierList.Text != "" && comboBoxBrandList.Text == "")
+            {
+                dataGridViewProductList.DataSource = data.Where(p => p.Kateqoriya == comboBoxCategoryList.Text)
+                                                    .Where(p => p.TedarikciSirket == comboBoxSupplierList.Text)
+                                                    .ToList();
+            }
+            else if (comboBoxCategoryList.Text != "" && comboBoxSupplierList.Text == "" && comboBoxBrandList.Text != "")
+            {
+                dataGridViewProductList.DataSource = data.Where(p => p.Kateqoriya == comboBoxCategoryList.Text)
+                                                   .Where(p => p.Marka == comboBoxBrandList.Text)
+                                                   .ToList();
+            }
+            else if (comboBoxCategoryList.Text == "" && comboBoxSupplierList.Text != "" && comboBoxBrandList.Text != "")
+            {
+                dataGridViewProductList.DataSource = data.Where(p => p.TedarikciSirket == comboBoxSupplierList.Text)
+                                                   .Where(p => p.Marka == comboBoxBrandList.Text)
+                                                   .ToList();
+            }
+            else if (comboBoxCategoryList.Text != "" && comboBoxSupplierList.Text != "" && comboBoxBrandList.Text != "")
+            {
+                dataGridViewProductList.DataSource = data.Where(p => p.Kateqoriya == comboBoxCategoryList.Text)
+                                                   .Where(p => p.TedarikciSirket == comboBoxSupplierList.Text)
+                                                   .Where(p => p.Marka == comboBoxBrandList.Text)
+                                                   .ToList();
+            }
+        }
+
+
     }
 }

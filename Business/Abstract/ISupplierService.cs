@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Business.Abstract
 {
-    public interface ISupplierServices
+    public interface ISupplierService
     {
         IDataResult<List<Supplier>> GetAll();
         IResult Add(Supplier supplier);

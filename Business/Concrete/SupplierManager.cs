@@ -12,7 +12,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    public class SupplierManager : ISupplierServices
+    public class SupplierManager : ISupplierService
     {
         ISupplierDal _supplierDal;
         public SupplierManager(ISupplierDal supplierDal)
