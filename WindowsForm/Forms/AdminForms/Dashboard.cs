@@ -228,7 +228,14 @@ namespace WindowsForm.Forms
             OpenChildForm(new SalesForm(new CategoryManager(new EfCategoryDal())
                                          , new BrandManager(new EfBrandDal())
                                          , new SupplierManager(new EfSupplierDal())
+                                         , new ProductManager(new EfProductDal())
+                                         , new CartManager(new EfCartDal())
+                                         , new CustomerManager(new EfCustomerDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()))
+                                         , new SaleWinFormManager(new EfSaleWinFormDal(), new ProductManager(new EfProductDal()))
+                                         , new DebtManager(new EfDebtDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()))
                                          ), sender);
+
+
         }
 
         private void buttonProducts_Click(object sender, EventArgs e)

@@ -199,7 +199,15 @@ namespace WindowsForm.Forms.UserForms
 
         private void buttonHome_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new SalesFormForUser(), sender);
+            OpenChildForm(new SalesFormForUser(new CategoryManager(new EfCategoryDal())
+                                         , new BrandManager(new EfBrandDal())
+                                         , new SupplierManager(new EfSupplierDal())
+                                         , new ProductManager(new EfProductDal())
+                                         , new CartManager(new EfCartDal())
+                                         , new CustomerManager(new EfCustomerDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()))
+                                         , new SaleWinFormManager(new EfSaleWinFormDal(), new ProductManager(new EfProductDal()))
+                                         , new DebtManager(new EfDebtDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()))
+                                         ), sender);
         }
 
         private void buttonProducts_Click(object sender, EventArgs e)

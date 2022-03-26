@@ -20,6 +20,7 @@ using WindowsForm.Utilities.Search.Concrete.ProductSearch;
 using WindowsForm.MyControls;
 using WindowsForm.Core.Constants.SelectionItem;
 using WindowsForm.Core.Constants.FormsAuthorization.User;
+using Business.Abstract;
 
 namespace WindowsForm.Forms.UserForms
 {
@@ -28,10 +29,34 @@ namespace WindowsForm.Forms.UserForms
         int staticUserId = LoginForm.UserId;
         private int _cartId = 0;
         //public static bool QrCodeIsSuccess = false;
+        IProductService _productService;
+        ICartService _cartService;
+        ICustomerService _customerService;
+        ISaleWinFormService _saleWinFormService;
+        IDebtService _debtService;
+        ICategoryService _categoryService;
+        IBrandService _brandService;
+        ISupplierService _supplierService;
 
-
-        public SalesFormForUser()
+        public SalesFormForUser(ICategoryService categoryService
+                            ,IBrandService brandService
+                            ,ISupplierService supplierService
+                            , IProductService productService
+                            ,ICartService cartService
+                            ,ICustomerService customerService
+                            ,ISaleWinFormService saleWinFormService
+                            ,IDebtService debtService
+                            )
         {
+            _productService = productService;
+            _cartService = cartService;
+            _customerService = customerService;
+            _saleWinFormService = saleWinFormService;
+            _debtService = debtService;
+
+            _categoryService = categoryService;
+            _brandService = brandService;
+            _supplierService = supplierService;
             InitializeComponent();
             TotalPriceLabelWrite();
             UserAuthorization.QrCodeIsSuccess = false;
@@ -47,16 +72,19 @@ namespace WindowsForm.Forms.UserForms
 
         private void SalesForm_Load(object sender, EventArgs e)
         {
+            CategoryWriteComboBox();
+            BrandWriteComboBox();
+            SupplierWriteComboBox();
             ProductListRefesh();
             CartListRefesh();
             GroupBoxMehsulControlClear();
         }
 
-        ProductManager _productManager = new ProductManager(new EfProductDal());
-        CartManager _cartManager = new CartManager(new EfCartDal());
-        SaleWinFormManager _saleWinFormManager = new SaleWinFormManager(new EfSaleWinFormDal(), new ProductManager(new EfProductDal()));
-        CustomerManager _customerManager = new CustomerManager(new EfCustomerDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()));
-        DebtManager _debtManager = new DebtManager(new EfDebtDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()));
+       // ProductManager _productService = new ProductManager(new EfProductDal());
+       // CartManager _cartService = new CartManager(new EfCartDal());
+        //SaleWinFormManager _saleWinFormService = new SaleWinFormManager(new EfSaleWinFormDal(), new ProductManager(new EfProductDal()));
+        //CustomerManager _customerService = new CustomerManager(new EfCustomerDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()));
+        //DebtManager _debtService = new DebtManager(new EfDebtDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()));
 
         CartValidationTool cartValidationTool = new CartValidationTool();
         SaleValidationTool saleValidationTool = new SaleValidationTool();
@@ -100,12 +128,12 @@ namespace WindowsForm.Forms.UserForms
                 IsBarcodeNumberExists(int.Parse(textBoxProductId.Text), out isBarcodeNumberExists);
                 if (isBarcodeNumberExists == true)
                 {
-                    CartAddDto cartAddDto = _cartManager.GetCartAddDetailByProductId(int.Parse(textBoxProductId.Text)).Data;
+                    CartAddDto cartAddDto = _cartService.GetCartAddDetailByProductId(int.Parse(textBoxProductId.Text)).Data;
                     cart.Id = cartAddDto.CartId;
                     cart.Quantity = textBoxMiqdar.Text.Equals("1") ? cartAddDto.Quantity + int.Parse(textBoxMiqdar.Text) : int.Parse(textBoxMiqdar.Text);
                     cart.SoldPrice = decimal.Parse(textBoxQiymet.Text == "" ? textBoxMaxQiymet.Text : textBoxQiymet.Text);
                     cart.TotalPrice = cart.SoldPrice * cart.Quantity;
-                    cartUpdated = _cartManager.Update(cart);
+                    cartUpdated = _cartService.Update(cart);
                     if (!cartUpdated.Success)
                     {
                         FormsMessage.WarningMessage(cartUpdated.Message);
@@ -115,7 +143,7 @@ namespace WindowsForm.Forms.UserForms
                 }
                 else
                 {
-                    cartAdded = _cartManager.Add(cart);
+                    cartAdded = _cartService.Add(cart);
                     if (!cartAdded.Success)
                     {
                         FormsMessage.WarningMessage(cartAdded.Message);
@@ -154,14 +182,14 @@ namespace WindowsForm.Forms.UserForms
                     return;
                 }
                 Cart cart = new Cart();
-                CartAddDto cartAddDto = _cartManager.GetCartAddDetailByBarcodeNumber(textBoxBarkodNo.Text).Data;
+                CartAddDto cartAddDto = _cartService.GetCartAddDetailByBarcodeNumber(textBoxBarkodNo.Text).Data;
 
                 if (cartAddDto != null)
                 {
                     cart.Id = cartAddDto.CartId;
                     if (cartAddDto.Quantity <= 1 || textBoxMiqdar.Text == "" || cartAddDto.Quantity <= Convert.ToInt32(textBoxMiqdar.Text))
                     {
-                        IResult result = _cartManager.Delete(cart);
+                        IResult result = _cartService.Delete(cart);
                         if (!result.Success)
                         {
                             FormsMessage.ErrorMessage(result.Message);
@@ -178,7 +206,7 @@ namespace WindowsForm.Forms.UserForms
                         CalculateTotalPrice(cart.Quantity, cart.SoldPrice);
                         cart.TotalPrice = Convert.ToDecimal(textBoxCem.Text);
                         //  CartValidation(cart);
-                        IResult result = _cartManager.Update(cart);
+                        IResult result = _cartService.Update(cart);
                         if (!result.Success)
                         {
                             FormsMessage.WarningMessage(result.Message);
@@ -232,7 +260,7 @@ namespace WindowsForm.Forms.UserForms
                 int customerId = int.Parse(textBoxCustomerId.Text);
 
                 Debt debt = new Debt();
-                IDataResult<List<Cart>> carts = _cartManager.GetAllByUserId(staticUserId);
+                IDataResult<List<Cart>> carts = _cartService.GetAllByUserId(staticUserId);
                 IResult debtAdded;
                 IResult productUpdated;
                 List<string> messages = new List<string>();
@@ -243,15 +271,15 @@ namespace WindowsForm.Forms.UserForms
                     foreach (Cart cart in carts.Data)
                     {
 
-                        Product product = _productManager.GetById(cart.ProductId).Data;
+                        Product product = _productService.GetById(cart.ProductId).Data;
                         product.UnitsInStock -= cart.Quantity;
                         debt.ProductId = cart.ProductId;
                         debt.CustomerId = customerId;
                         debt.SoldPrice = cart.SoldPrice;
                         debt.Quantity = cart.Quantity;
 
-                        debtAdded = _debtManager.Add(debt);
-                        productUpdated = _productManager.Update(product);
+                        debtAdded = _debtService.Add(debt);
+                        productUpdated = _productService.Update(product);
                         if (!debtAdded.Success || !productUpdated.Success)
                         {
                             messages.Add(product.BarcodeNumber + " - " + product.ProductName + " : " + debtAdded.Message + " & " + productUpdated.Message);
@@ -296,7 +324,7 @@ namespace WindowsForm.Forms.UserForms
                 CustomerListForm customerListForm = new CustomerListForm();
                 customerListForm.ShowDialog();
                 textBoxCustomerId.Text = SelectedCustomerForSalesForm.Id.ToString();
-                IDataResult<Customer> result = _customerManager.GetById(SelectedCustomerForSalesForm.Id);
+                IDataResult<Customer> result = _customerService.GetById(SelectedCustomerForSalesForm.Id);
                 if (!result.Success)
                 {
                     FormsMessage.ErrorMessage(result.Message);
@@ -327,7 +355,7 @@ namespace WindowsForm.Forms.UserForms
             try
             {
                 SaleWinForm saleWinForm = new SaleWinForm();
-                IDataResult<List<Cart>> carts = _cartManager.GetAllByUserId(staticUserId);
+                IDataResult<List<Cart>> carts = _cartService.GetAllByUserId(staticUserId);
                 IResult saleWinFormAdded;
                 IResult productUpdated;
                 List<string> messages = new List<string>();
@@ -338,7 +366,7 @@ namespace WindowsForm.Forms.UserForms
                     foreach (Cart cart in carts.Data)
                     {
 
-                        Product product = _productManager.GetById(cart.ProductId).Data;
+                        Product product = _productService.GetById(cart.ProductId).Data;
                         product.UnitsInStock -= cart.Quantity;
                         saleWinForm.Id = 0;
                         saleWinForm.ProductId = cart.ProductId;
@@ -351,8 +379,8 @@ namespace WindowsForm.Forms.UserForms
                             return;
                         }
 
-                        saleWinFormAdded = _saleWinFormManager.Add(saleWinForm);
-                        productUpdated = _productManager.Update(product);
+                        saleWinFormAdded = _saleWinFormService.Add(saleWinForm);
+                        productUpdated = _productService.Update(product);
                         if (!saleWinFormAdded.Success || !productUpdated.Success)
                         {
                             messages.Add(product.BarcodeNumber + " - " + product.ProductName + " : " + saleWinFormAdded.Message + " & " + productUpdated.Message);
@@ -416,7 +444,7 @@ namespace WindowsForm.Forms.UserForms
                     FormsMessage.WarningMessage(AuthMessages.AuthorizationDenied);
                     return;
                 }
-                Cart cart = _cartManager.GetById(_cartId).Data;
+                Cart cart = _cartService.GetById(_cartId).Data;
 
                 if (textBoxMiqdar.Text == "")
                 {
@@ -429,7 +457,7 @@ namespace WindowsForm.Forms.UserForms
                 cart.SoldPrice = textBoxQiymet.Text == "" ? decimal.Parse(textBoxMaxQiymet.Text) : decimal.Parse(textBoxQiymet.Text);
                 cart.TotalPrice = cart.Quantity * cart.SoldPrice;
 
-                IResult updatedCart = _cartManager.Update(cart);
+                IResult updatedCart = _cartService.Update(cart);
                 if (!updatedCart.Success)
                 {
                     FormsMessage.ErrorMessage(updatedCart.Message);
@@ -449,6 +477,20 @@ namespace WindowsForm.Forms.UserForms
 
         }
 
+        private void buttonAxtar_Click(object sender, EventArgs e)
+        {
+            SalesForm salesForm = new SalesForm(new CategoryManager(new EfCategoryDal())
+                                         , new BrandManager(new EfBrandDal())
+                                         , new SupplierManager(new EfSupplierDal())
+                                         , new ProductManager(new EfProductDal())
+                                         , new CartManager(new EfCartDal())
+                                         , new CustomerManager(new EfCustomerDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()))
+                                         , new SaleWinFormManager(new EfSaleWinFormDal(), new ProductManager(new EfProductDal()))
+                                         , new DebtManager(new EfDebtDal(), new CustomerBalanceManager(new EfCustomerBalanceDal())));
+
+            salesForm.ComboBoxSelectedValue(dataGridViewProductList, comboBoxCategoryList.Text, comboBoxSupplierList.Text, comboBoxBrandList.Text);
+        }
+
         //Text Changed -------------------->
         private void textBoxMiqdar_TextChanged(object sender, EventArgs e)
         {
@@ -462,6 +504,7 @@ namespace WindowsForm.Forms.UserForms
 
 
         }
+
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
@@ -505,7 +548,7 @@ namespace WindowsForm.Forms.UserForms
                 textBoxProductId.Text = dataGridViewCartList.CurrentRow.Cells["ProductId"].Value.ToString();
                 _cartId = int.Parse(dataGridViewCartList.CurrentRow.Cells["Id"].Value.ToString());
 
-                CartDto cartDto = _cartManager.GetCartDtoDetailByProductId(Convert.ToInt32(textBoxProductId.Text)).Data;
+                CartDto cartDto = _cartService.GetCartDtoDetailByProductId(Convert.ToInt32(textBoxProductId.Text)).Data;
                 textBoxBarkodNo.Text = cartDto.BarcodeNumber.ToString();
                 textBoxMehsulAdi.Text = cartDto.ProductName.ToString();
                 textBoxMaxQiymet.Text = cartDto.UnitPrice.ToString();
@@ -614,7 +657,7 @@ namespace WindowsForm.Forms.UserForms
 
         private void IsBarcodeNumberExists(int productId, out bool isBarcodeNumberExists)
         {
-            IDataResult<CartAddDto> result = _cartManager.GetCartAddDetailByProductId(productId);
+            IDataResult<CartAddDto> result = _cartService.GetCartAddDetailByProductId(productId);
             // IDataResult<CartAddDto> result = _cartManager.GetCartAddDetailByBarcodeNumber(Convert.ToInt32(textBoxBarkodNo.Text));
             if (result.Success)
             {
@@ -630,7 +673,7 @@ namespace WindowsForm.Forms.UserForms
         {
             Cart cart = new Cart();
             cart.UserId = staticUserId;    //Mutleq Dinamiklesdir
-            _cartManager.ByUserIdAllRemove(cart.UserId);
+            _cartService.ByUserIdAllRemove(cart.UserId);
 
 
 
@@ -638,12 +681,12 @@ namespace WindowsForm.Forms.UserForms
 
         private void CartListRefesh()
         {
-            dataGridViewCartList.DataSource = _cartManager.GetAllCartViewDetailsByUserId(staticUserId).Data;
+            dataGridViewCartList.DataSource = _cartService.GetAllCartViewDetailsByUserId(staticUserId).Data;
         }
 
         private void ProductListRefesh()
         {
-            dataGridViewProductList.DataSource = _productManager.GetAllProductViewDasboardDetails().Data;
+            dataGridViewProductList.DataSource = _productService.GetAllProductViewDasboardDetails().Data;
         }
 
 
@@ -651,7 +694,7 @@ namespace WindowsForm.Forms.UserForms
         {
             decimal tolalPrice = 0;
             decimal price;
-            List<Cart> carts = _cartManager.GetAllByUserId(staticUserId).Data;
+            List<Cart> carts = _cartService.GetAllByUserId(staticUserId).Data;
 
             foreach (Cart cart in carts)
             {
@@ -686,7 +729,7 @@ namespace WindowsForm.Forms.UserForms
             IResult cartAdded;
             IResult cartUpdated;
 
-            IDataResult<Product> result = _productManager.GetByProductBarcodeNumber(barcodeNumber);
+            IDataResult<Product> result = _productService.GetByProductBarcodeNumber(barcodeNumber);
             if (result.Success == false)
             {
                 FormsMessage.WarningMessage(result.Message);
@@ -711,11 +754,11 @@ namespace WindowsForm.Forms.UserForms
             IsBarcodeNumberExists(cart.ProductId, out isbarcodeExists);
             if (isbarcodeExists == true)
             {
-                Cart getCart = _cartManager.GetByProductId(cart.ProductId).Data;
+                Cart getCart = _cartService.GetByProductId(cart.ProductId).Data;
                 cart.Id = getCart.Id;
                 cart.Quantity = getCart.Quantity + 1;
                 cart.TotalPrice = cart.SoldPrice * cart.Quantity;
-                cartUpdated = _cartManager.Update(cart);
+                cartUpdated = _cartService.Update(cart);
                 if (!cartUpdated.Success)
                 {
                     FormsMessage.WarningMessage(cartUpdated.Message);
@@ -726,7 +769,7 @@ namespace WindowsForm.Forms.UserForms
             else
             {
 
-                cartAdded = _cartManager.Add(cart);
+                cartAdded = _cartService.Add(cart);
                 if (!cartAdded.Success)
                 {
                     FormsMessage.WarningMessage(cartAdded.Message);
@@ -740,7 +783,32 @@ namespace WindowsForm.Forms.UserForms
             TotalPriceLabelWrite();
         }
 
+        public void CategoryWriteComboBox()
+        {
+            List<Category> categories = _categoryService.GetAll().Data;
+            comboBoxCategoryList.DataSource = categories;
+            comboBoxCategoryList.DisplayMember = "CategoryName";
+            comboBoxCategoryList.ValueMember = "Id";
+            comboBoxCategoryList.Text = "";
+        }
 
+        public void BrandWriteComboBox()
+        {
+            List<Brand> brands = _brandService.GetAll().Data;
+            comboBoxBrandList.DataSource = brands;
+            comboBoxBrandList.DisplayMember = "BrandName";
+            comboBoxBrandList.ValueMember = "Id";
+            comboBoxBrandList.Text = "";
+        }
+
+        public void SupplierWriteComboBox()
+        {
+            List<Supplier> suppliers = _supplierService.GetAll().Data;
+            comboBoxSupplierList.DataSource = suppliers;
+            comboBoxSupplierList.DisplayMember = "CompanyName";
+            comboBoxSupplierList.ValueMember = "Id";
+            comboBoxSupplierList.Text = "";
+        }
 
 
     }
