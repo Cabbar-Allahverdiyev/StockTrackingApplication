@@ -38,7 +38,8 @@ namespace WindowsForm.Forms
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            search.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewCategoryList);
+            List<Category> data = _categoryManager.GetAll().Data;
+            search.GetDataWriteGridView(data,textBoxAxtar.Text, dataGridViewCategoryList);
         }
 
         private void buttonTemizle_Click(object sender, EventArgs e)

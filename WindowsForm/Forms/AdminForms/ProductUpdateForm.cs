@@ -19,6 +19,7 @@ using WindowsForm.Utilities.Search.Concrete.ProductSearch;
 using WindowsForm.Core.Controllers.Concrete;
 using WindowsForm.MyControls;
 using System.Reflection;
+using Entities.DTOs.ProductDtos;
 
 namespace WindowsForm.Forms
 {
@@ -48,7 +49,6 @@ namespace WindowsForm.Forms
             WriteBrandsInComboBox();
             WriteCategoryInComboBox();
             WriteSuppliersInComboBox();
-            myControl.WriteProductPropertiesInComboBox(comboBoxProperty);
             GroupBoxVarOlanMehsulControlClear();
         }
 
@@ -154,8 +154,10 @@ namespace WindowsForm.Forms
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            detailsSearch.SearchBySelectedValueOfComboBoxAndWriteToDataGridView(textBoxAxtar
-                , dataGridViewPrdouctList, comboBoxProperty);
+            List<ProductViewDashboardDetailDto> data = _productManager.GetAllProductViewDasboardDetails().Data;
+            detailsSearch.GetDataWriteGridView(data, textBoxAxtar.Text, dataGridViewPrdouctList);
+            //detailsSearch.SearchBySelectedValueOfComboBoxAndWriteToDataGridView(data,textBoxAxtar
+            //    , dataGridViewPrdouctList, comboBoxProperty);
         }
 
 
@@ -221,6 +223,10 @@ namespace WindowsForm.Forms
             dataGridViewPrdouctList.DataSource = _productManager.GetAllProductViewDasboardDetails().Data;
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

@@ -1,7 +1,6 @@
 ﻿using Business.Concrete;
 using Business.Constants.Messages;
 using Core.Utilities.Results;
-using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using Entities.DTOs.CartDtos;
 using System;
@@ -39,13 +38,13 @@ namespace WindowsForm.Forms
         IDebtService _debtService;
 
         public SalesForm(ICategoryService categoryService
-                            ,IBrandService brandService
-                            ,ISupplierService supplierService
+                            , IBrandService brandService
+                            , ISupplierService supplierService
                             , IProductService productService
-                            ,ICartService cartService
-                            ,ICustomerService customerService
-                            ,ISaleWinFormService saleWinFormService
-                            ,IDebtService debtService
+                            , ICartService cartService
+                            , ICustomerService customerService
+                            , ISaleWinFormService saleWinFormService
+                            , IDebtService debtService
                             )
         {
             _productService = productService;
@@ -53,13 +52,12 @@ namespace WindowsForm.Forms
             _customerService = customerService;
             _saleWinFormService = saleWinFormService;
             _debtService = debtService;
-
             _categoryService = categoryService;
             _brandService = brandService;
             _supplierService = supplierService;
+
             InitializeComponent();
             TotalPriceLabelWrite();
-
 
             MyControl myControl = new MyControl();
             myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
@@ -85,7 +83,7 @@ namespace WindowsForm.Forms
             //TextBoxController.ClearAllTextBoxesAndCmboBoxesByGroupBox(groupBoxFilter);
         }
 
-        
+
         //ProductManager _productManager = new ProductManager(new EfProductDal());
         //CartManager _cartManager = new CartManager(new EfCartDal());
         //CustomerManager _customerManager = new CustomerManager(new EfCustomerDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()));
@@ -100,10 +98,10 @@ namespace WindowsForm.Forms
 
 
 
-        private void ButtonSalesFormYenile_Click(object sender, EventArgs e)
-        {
+        //private void ButtonSalesFormYenile_Click(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
         private void ButtonX_Click(object sender, EventArgs e)
         {
@@ -215,7 +213,7 @@ namespace WindowsForm.Forms
 
         }
 
-        
+
         private void buttonBorcElaveEt_Click(object sender, EventArgs e)
         {
             try
@@ -468,7 +466,7 @@ namespace WindowsForm.Forms
 
         private void buttonAxtar_Click(object sender, EventArgs e)
         {
-            ComboBoxSelectedValue(dataGridViewProductList,comboBoxCategoryList.Text,comboBoxSupplierList.Text,comboBoxBrandList.Text);
+            ComboBoxSelectedValue(dataGridViewProductList, comboBoxCategoryList.Text, comboBoxSupplierList.Text, comboBoxBrandList.Text);
         }
 
 
@@ -496,11 +494,12 @@ namespace WindowsForm.Forms
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
             //string searchText = textBoxAxtar.Text;
-            //List<ProductViewDashboardDetailDto> result = _productManager.GetAllProductViewDasboardDetails().Data
+            //List<ProductViewDashboardDetailDto> result = _productService.GetAllProductViewDasboardDetails().Data
             //                                         .Where(p => p.MehsulAdi.ToLower().Contains(searchText.ToLower()))
             //                                         .ToList();
             //dataGridViewProductList.DataSource = result;
-            detailsSearch.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewProductList);
+            List<ProductViewDashboardDetailDto> data = _productService.GetAllProductViewDasboardDetails().Data;
+            detailsSearch.GetDataWriteGridView(data, textBoxAxtar.Text, dataGridViewProductList);
         }
 
 
@@ -806,11 +805,11 @@ namespace WindowsForm.Forms
         }
 
 
-       
 
-       
+
+
         public void ComboBoxSelectedValue(DataGridView dataGridView
-                                            ,string cmbCategoryText, string cmbSupplierText, string cmbBrandText)
+                                            , string cmbCategoryText, string cmbSupplierText, string cmbBrandText)
         {
             List<ProductViewDashboardDetailDto> data = _productService.GetAllProductViewDasboardDetails().Data;
             if (cmbCategoryText == "" && cmbSupplierText == "" && cmbBrandText == "")

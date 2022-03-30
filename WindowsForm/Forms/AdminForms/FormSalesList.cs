@@ -23,7 +23,7 @@ namespace WindowsForm.Forms
     {
         SaleWinFormManager _saleWinFormManager = new SaleWinFormManager(new EfSaleWinFormDal(), new ProductManager(new EfProductDal()));
         ProductManager _productManager = new ProductManager(new EfProductDal());
-        SaleValidationTool saleValidationTool = new SaleValidationTool();
+        // SaleValidationTool saleValidationTool = new SaleValidationTool();
 
         public FormSalesList()
         {
@@ -35,8 +35,6 @@ namespace WindowsForm.Forms
             ComboBoxController.WriteDaysInComboBox(comboBoxDays);
             ComboBoxController.WriteMonthsInComboBox(comboBoxMonths);
             ComboBoxController.WriteYearsInComboBox(comboBoxYears);
-            comboBoxAxtar.Items.Add("MehsulAdi");
-            comboBoxAxtar.Items.Add("Istifadeci");
             SaleListRefesh();
             checkBoxSatisLegvEdilsin.Checked = false;
         }
@@ -214,7 +212,7 @@ namespace WindowsForm.Forms
 
         private void dataGridViewSaleList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridViewSaleList.CurrentRow==null)
+            if (dataGridViewSaleList.CurrentRow == null)
             {
                 FormsMessage.WarningMessage(BaseMessages.SelectedValueIsNull);
                 return;
@@ -237,12 +235,14 @@ namespace WindowsForm.Forms
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
+            List<SaleWinFormDto> data = _saleWinFormManager.GetAllSaleWinFormDtoDetails().Data;
             SaleWinFormDetailDtoSearch detailSearch = new SaleWinFormDetailDtoSearch();
-            detailSearch.SearchBySelectedValueOfComboBoxAndWriteToDataGridView(textBoxAxtar, dataGridViewSaleList, comboBoxAxtar);
+            detailSearch.GetDataWriteGridView(data, textBoxAxtar.Text, dataGridViewSaleList);
         }
 
+        private void label12_Click(object sender, EventArgs e)
+        {
 
-
-
+        }
     }
 }

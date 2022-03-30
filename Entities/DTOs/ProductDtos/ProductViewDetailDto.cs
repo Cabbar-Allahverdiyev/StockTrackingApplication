@@ -5,13 +5,13 @@ using System.Text;
 
 namespace Entities.DTOs.ProductDtos
 {
-    public class ProductViewDetailDto:IDto
+    public class ProductViewDetailDto : IDto
     {
         public int ProductId { get; set; }
+        public string BarcodeNomresi { get; set; }
         public string Kateqoriya { get; set; }
         public string Marka { get; set; }
         public string MehsulAdi { get; set; }
-        public string BarcodeNomresi { get; set; }
         public int StokdakiVahid { get; set; }
         public int SifaristekiVahid { get; set; }
         public int YeniSifarisEdedi { get; set; }

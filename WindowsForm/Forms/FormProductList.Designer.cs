@@ -52,7 +52,6 @@ namespace WindowsForm.Forms
             this.textBoxVarOlanMehsulAdi = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.textBoxAxtar = new System.Windows.Forms.TextBox();
-            this.comboBoxProperty = new System.Windows.Forms.ComboBox();
             this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFormPrdouctList)).BeginInit();
@@ -289,20 +288,11 @@ namespace WindowsForm.Forms
             // 
             this.textBoxAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxAxtar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxAxtar.Location = new System.Drawing.Point(611, 13);
+            this.textBoxAxtar.Location = new System.Drawing.Point(687, 13);
             this.textBoxAxtar.Name = "textBoxAxtar";
             this.textBoxAxtar.Size = new System.Drawing.Size(145, 22);
             this.textBoxAxtar.TabIndex = 6;
             this.textBoxAxtar.TextChanged += new System.EventHandler(this.textBoxAxtar_TextChanged);
-            // 
-            // comboBoxProperty
-            // 
-            this.comboBoxProperty.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxProperty.FormattingEnabled = true;
-            this.comboBoxProperty.Location = new System.Drawing.Point(762, 13);
-            this.comboBoxProperty.Name = "comboBoxProperty";
-            this.comboBoxProperty.Size = new System.Drawing.Size(70, 23);
-            this.comboBoxProperty.TabIndex = 7;
             // 
             // pictureBoxRefresh
             // 
@@ -324,7 +314,7 @@ namespace WindowsForm.Forms
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Image = global::WindowsForm.Properties.Resources.searchFerqliBlack_16px;
-            this.label1.Location = new System.Drawing.Point(582, 15);
+            this.label1.Location = new System.Drawing.Point(658, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(23, 17);
             this.label1.TabIndex = 34;
@@ -338,7 +328,6 @@ namespace WindowsForm.Forms
             this.ClientSize = new System.Drawing.Size(878, 520);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBoxRefresh);
-            this.Controls.Add(this.comboBoxProperty);
             this.Controls.Add(this.textBoxAxtar);
             this.Controls.Add(this.GroupBoxVarOlanMehsul);
             this.Controls.Add(this.dataGridViewFormPrdouctList);
@@ -381,7 +370,6 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textBoxVarOlanMehsulAdi;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox comboBoxProperty;
         private System.Windows.Forms.PictureBox pictureBoxRefresh;
         private System.Windows.Forms.Label label1;
     }

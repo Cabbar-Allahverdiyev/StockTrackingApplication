@@ -38,8 +38,8 @@ namespace WindowsForm.Forms.UserForms
             ComboBoxController.WriteDaysInComboBox(comboBoxDays);
             ComboBoxController.WriteMonthsInComboBox(comboBoxMonths);
             ComboBoxController.WriteYearsInComboBox(comboBoxYears);
-            comboBoxAxtar.Items.Add("MehsulAdi");
-            comboBoxAxtar.Items.Add("Istifadeci");
+            //comboBoxAxtar.Items.Add("MehsulAdi");
+            //comboBoxAxtar.Items.Add("Istifadeci");
             SaleListRefesh();
             checkBoxSatisLegvEdilsin.Checked = false;
         }
@@ -265,11 +265,13 @@ namespace WindowsForm.Forms.UserForms
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
             SaleWinFormDetailDtoSearch detailSearch = new SaleWinFormDetailDtoSearch();
-            detailSearch.SearchBySelectedValueOfComboBoxAndWriteToDataGridView(textBoxAxtar, dataGridViewSaleList, comboBoxAxtar);
+            List<SaleWinFormDto> data = _saleWinFormManager.GetAllSaleWinFormDtoDetails().Data;
+            detailSearch.GetDataWriteGridView(data,textBoxAxtar.Text,dataGridViewSaleList);
         }
 
+        private void label12_Click(object sender, EventArgs e)
+        {
 
-
-
+        }
     }
 }

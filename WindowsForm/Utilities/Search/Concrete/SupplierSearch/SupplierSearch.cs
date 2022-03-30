@@ -4,6 +4,7 @@ using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
@@ -11,53 +12,18 @@ using WindowsForm.Utilities.Search.Abstract;
 
 namespace WindowsForm.Utilities.Search.Concrete.SupplierSearch
 {
-    public class SupplierSearch : IWinFormsSearch
+    public class SupplierSearch : IWinFormsSearch<Supplier>
     {
-        SupplierManager _supplierManager = new SupplierManager(new EfSupplierDal());
-
-        public void GetDataWriteGridView(string seachText, DataGridView dataGridView)
+        public void GetDataWriteGridView(List<Supplier> data, string seachText, DataGridView dataGridView)
         {
-            List<Supplier> data = _supplierManager.GetAll().Data;
-            List<Supplier> oldData = data; 
-            Search(data, oldData, seachText, dataGridView);
+            dataGridView.DataSource = Search(data, seachText);
         }
 
-        public void Search(List<Supplier> data, List<Supplier> oldData, string searchText, DataGridView dataGridView)
+        public List<Supplier> Search(List<Supplier> data, string searchText)
         {
-            List<Supplier> newList = new List<Supplier>();
-            List<Supplier> oldList = oldData;
-            List<Supplier> list = data;
-            searchText = searchText.ToLower();
-            for (int i = 0; i < list.Count; i++)
-            {
-                list[i].CompanyName = list[i].CompanyName.ToLower();
-            }
-
-            foreach (var product in list)
-            {
-                if (product.CompanyName.Contains(searchText))
-                {
-                    newList.Add(product);
-                }
-            }
-
-            if (searchText != "")
-            {
-                if (newList.Count == 0)
-                {
-                    FormsMessage.ErrorMessage(SupplierMessages.SupplierNotFound);
-                    return;
-                }
-                dataGridView.DataSource = newList;
-                return;
-            }
-
-            dataGridView.DataSource = oldList;
+            return data.Where(s => $"{s.Id} {s.CompanyName} {s.ContactName} {s.WhenWillCome} {s.Address} {s.City} {s.Email} {s.Phone} {s.IsSupplierActive}"
+            .ToLower().Contains(searchText.ToLower())).ToList();
         }
 
-        public void SearchBySelectedValueOfComboBoxAndWriteToDataGridView(TextBox textBox, DataGridView dataGridView, ComboBox comboBox)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

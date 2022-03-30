@@ -47,7 +47,6 @@ namespace WindowsForm.Forms
             this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
             this.label12 = new System.Windows.Forms.Label();
             this.textBoxAxtar = new System.Windows.Forms.TextBox();
-            this.comboBoxAxtar = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.checkBoxSatisLegvEdilsin = new System.Windows.Forms.CheckBox();
             this.textBoxTarix = new System.Windows.Forms.TextBox();
@@ -246,31 +245,22 @@ namespace WindowsForm.Forms
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label12.Image = global::WindowsForm.Properties.Resources.searchFerqliBlack_16px;
-            this.label12.Location = new System.Drawing.Point(624, 18);
+            this.label12.Location = new System.Drawing.Point(702, 18);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(23, 17);
             this.label12.TabIndex = 33;
             this.label12.Text = "     ";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // textBoxAxtar
             // 
             this.textBoxAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxAxtar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxAxtar.Location = new System.Drawing.Point(653, 15);
+            this.textBoxAxtar.Location = new System.Drawing.Point(731, 15);
             this.textBoxAxtar.Name = "textBoxAxtar";
             this.textBoxAxtar.Size = new System.Drawing.Size(138, 22);
             this.textBoxAxtar.TabIndex = 32;
             this.textBoxAxtar.TextChanged += new System.EventHandler(this.textBoxAxtar_TextChanged);
-            // 
-            // comboBoxAxtar
-            // 
-            this.comboBoxAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxAxtar.Font = new System.Drawing.Font("Century Gothic", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comboBoxAxtar.FormattingEnabled = true;
-            this.comboBoxAxtar.Location = new System.Drawing.Point(797, 15);
-            this.comboBoxAxtar.Name = "comboBoxAxtar";
-            this.comboBoxAxtar.Size = new System.Drawing.Size(71, 21);
-            this.comboBoxAxtar.TabIndex = 34;
             // 
             // groupBox2
             // 
@@ -427,7 +417,6 @@ namespace WindowsForm.Forms
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(912, 540);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.comboBoxAxtar);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.textBoxAxtar);
             this.Controls.Add(this.pictureBoxRefresh);
@@ -468,7 +457,6 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button buttonTemizle;
-        private System.Windows.Forms.ComboBox comboBoxAxtar;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox textBoxSaleId;
         private System.Windows.Forms.Label label13;

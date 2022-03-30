@@ -41,7 +41,7 @@ namespace WindowsForm.Forms
         private void ProductDeleteForm_Load(object sender, EventArgs e)
         {
             ProductRefresh();
-            myControl.WriteProductPropertiesInComboBox(comboBoxProperty);
+          //  myControl.WriteProductPropertiesInComboBox(comboBoxProperty);
             BrandGetComboBoxVarOlan();
             CategoryGetComboBoxVarOlan();
             SupplierGetComboBox();
@@ -109,7 +109,9 @@ namespace WindowsForm.Forms
         //Text changed -------------------------------->
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            detailsSearch.SearchBySelectedValueOfComboBoxAndWriteToDataGridView(textBoxAxtar, dataGridViewProductList, comboBoxProperty);
+            List<ProductViewDashboardDetailDto> data = _productManager.GetAllProductViewDasboardDetails().Data;
+            detailsSearch.GetDataWriteGridView(data, textBoxAxtar.Text,dataGridViewProductList);
+            //detailsSearch.SearchBySelectedValueOfComboBoxAndWriteToDataGridView(data,textBoxAxtar, dataGridViewProductList, comboBoxProperty);
         }
 
 

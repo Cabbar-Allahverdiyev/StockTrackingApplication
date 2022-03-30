@@ -37,7 +37,7 @@ namespace WindowsForm.Forms
         SupplierManager _supplierManager = new SupplierManager(new EfSupplierDal());
         ProductValidationTool validationTool = new ProductValidationTool();
 
-        ProductViewDetailSearch detailSearch = new ProductViewDetailSearch();
+        ProductViewDashboardDetailsSearch detailSearch = new ProductViewDashboardDetailsSearch();
 
         private void FormProductAdd_Load(object sender, EventArgs e)
         {
@@ -102,16 +102,15 @@ namespace WindowsForm.Forms
         private void DataGridViewProductList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            IDataResult<ProductViewDetailDto> productViewDetailByProductId = _productManager.GetProductViewDetailByProductId(
-                     Convert.ToInt32(dataGridViewProductList.CurrentRow.Cells["ProductId"].Value.ToString())
-                );
+          
 
         }
 
         //Text Changed --------------------------------->
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            detailSearch.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewProductList);
+            List<ProductViewDashboardDetailDto> data = _productManager.GetAllProductViewDasboardDetails().Data;
+            detailSearch.GetDataWriteGridView(data,textBoxAxtar.Text, dataGridViewProductList);
         }
 
         //Key Press---------------------------------------->

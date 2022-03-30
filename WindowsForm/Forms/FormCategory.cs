@@ -88,7 +88,8 @@ namespace WindowsForm.Forms
         //Text Changed------------------------------>
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            search.GetDataWriteGridView(textBoxAxtar.Text, DataGridViewFormCategory);
+            List<Category> data = _categoryManager.GetAll().Data;
+            search.GetDataWriteGridView(data,textBoxAxtar.Text, DataGridViewFormCategory);
         }
 
         //Elave metodlar------->

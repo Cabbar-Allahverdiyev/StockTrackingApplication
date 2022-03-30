@@ -100,7 +100,8 @@ namespace WindowsForm.Forms
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            search.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewSupplierListed);
+            List<Supplier> data = _suplierManager.GetAll().Data;
+            search.GetDataWriteGridView(data,textBoxAxtar.Text, dataGridViewSupplierListed);
         }
 
         private void SupplierRefresh()

@@ -1,6 +1,7 @@
 ﻿using Business.Concrete;
 using Business.Constants.Messages;
 using DataAccess.Concrete.EntityFramework;
+using Entities.DTOs.UserDtos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -54,7 +55,8 @@ namespace WindowsForm.Forms
 
         private void TextBoxFormUserListedAxtar_TextChanged(object sender, EventArgs e)
         {
-            detailSearch.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewUserListed);
+            List<UserDto> data = _userService.GetUserDetails().Data;
+            detailSearch.GetDataWriteGridView(data,textBoxAxtar.Text, dataGridViewUserListed);
         }
 
         //Elave Metodlar ----------------------->

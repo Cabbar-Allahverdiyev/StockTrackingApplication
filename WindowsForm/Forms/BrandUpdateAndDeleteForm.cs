@@ -111,7 +111,8 @@ namespace WindowsForm.Forms
         //Tetx Changed------------------------------>
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            brandSearch.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewBrandList);
+            List<Brand> data = _brandManager.GetAll().Data;
+            brandSearch.GetDataWriteGridView(data,textBoxAxtar.Text, dataGridViewBrandList);
         }
 
 

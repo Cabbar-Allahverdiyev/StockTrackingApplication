@@ -99,9 +99,8 @@ namespace WindowsForm.Forms
         private void TextBoxFormUserListedAxtar_TextChanged(object sender, EventArgs e)
         {
             List<UserDto> data = _userManager.GetUserDetails().Data;
-            List<UserDto> oldData = _userManager.GetUserDetails().Data;
-            UserDtoSearch search = new UserDtoSearch();
-            search.Search(data, oldData, textBoxAxtar.Text, dataGridViewUserListed);
+           UserDtoSearch search = new UserDtoSearch();
+            search.GetDataWriteGridView(data, textBoxAxtar.Text, dataGridViewUserListed);
 
         }
 

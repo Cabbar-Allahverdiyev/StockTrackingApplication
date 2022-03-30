@@ -124,7 +124,8 @@ namespace WindowsForm.Forms
         //text Changed--------------------------------------->
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            search.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewSupplierListed);
+            List<Supplier> data = _suplierManager.GetAll().Data;
+            search.GetDataWriteGridView(data,textBoxAxtar.Text, dataGridViewSupplierListed);
         }
 
         //elave ---------------------------->

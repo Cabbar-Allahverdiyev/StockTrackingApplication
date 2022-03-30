@@ -56,7 +56,6 @@ namespace WindowsForm.Forms
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxMusteriInCancelPayment = new System.Windows.Forms.TextBox();
-            this.comboBoxAxtar = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.textBoxAxtar = new System.Windows.Forms.TextBox();
             this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
@@ -346,23 +345,13 @@ namespace WindowsForm.Forms
             this.textBoxMusteriInCancelPayment.Size = new System.Drawing.Size(178, 22);
             this.textBoxMusteriInCancelPayment.TabIndex = 4;
             // 
-            // comboBoxAxtar
-            // 
-            this.comboBoxAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxAxtar.Font = new System.Drawing.Font("Century Gothic", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comboBoxAxtar.FormattingEnabled = true;
-            this.comboBoxAxtar.Location = new System.Drawing.Point(844, 12);
-            this.comboBoxAxtar.Name = "comboBoxAxtar";
-            this.comboBoxAxtar.Size = new System.Drawing.Size(71, 21);
-            this.comboBoxAxtar.TabIndex = 38;
-            // 
             // label12
             // 
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label12.Image = global::WindowsForm.Properties.Resources.searchFerqliBlack_16px;
-            this.label12.Location = new System.Drawing.Point(671, 15);
+            this.label12.Location = new System.Drawing.Point(749, 15);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(23, 17);
             this.label12.TabIndex = 37;
@@ -372,7 +361,7 @@ namespace WindowsForm.Forms
             // 
             this.textBoxAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxAxtar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxAxtar.Location = new System.Drawing.Point(700, 12);
+            this.textBoxAxtar.Location = new System.Drawing.Point(778, 12);
             this.textBoxAxtar.Name = "textBoxAxtar";
             this.textBoxAxtar.Size = new System.Drawing.Size(138, 22);
             this.textBoxAxtar.TabIndex = 36;
@@ -397,7 +386,6 @@ namespace WindowsForm.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(959, 510);
-            this.Controls.Add(this.comboBoxAxtar);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.textBoxAxtar);
             this.Controls.Add(this.pictureBoxRefresh);
@@ -407,6 +395,7 @@ namespace WindowsForm.Forms
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "CustomerPaymentForm";
             this.Text = "CustomerPaymentForm";
+            this.Load += new System.EventHandler(this.CustomerPaymentForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPaymentList)).EndInit();
             this.groupBoxPaymentAdd.ResumeLayout(false);
             this.groupBoxPaymentAdd.PerformLayout();
@@ -447,7 +436,6 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.TextBox textBoxMusteriInPaymentAdd;
         private System.Windows.Forms.Button buttonSec;
         private System.Windows.Forms.TextBox textBoxCustomerIdInPaymentAdd;
-        private System.Windows.Forms.ComboBox comboBoxAxtar;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textBoxAxtar;
         private System.Windows.Forms.PictureBox pictureBoxRefresh;

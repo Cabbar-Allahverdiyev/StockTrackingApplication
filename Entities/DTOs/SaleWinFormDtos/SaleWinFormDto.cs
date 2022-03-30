@@ -14,7 +14,8 @@ namespace Entities.DTOs.SaleWinFormDtos
         public decimal SatilanQiymet { get; set; }
         public int Miqdar { get; set; }
         public decimal Cem { get; set; }
-        public bool SatisinVeziyyeti { get; set; }
         public DateTime Tarix { get; set; }
+        public bool SatisinVeziyyeti { get; set; }
+        
     }
 }

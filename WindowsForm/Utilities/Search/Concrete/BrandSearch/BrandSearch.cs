@@ -4,6 +4,7 @@ using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
@@ -11,55 +12,18 @@ using WindowsForm.Utilities.Search.Abstract;
 
 namespace WindowsForm.Utilities.Search.Concrete.BrandSearch
 {
-    public class BrandSearch : IWinFormsSearch
+    public class BrandSearch : IWinFormsSearch<Brand>
     {
-        BrandManager _brandManager = new BrandManager(new EfBrandDal());
 
-        public void GetDataWriteGridView(string seachText, DataGridView dataGridView)
+        public void GetDataWriteGridView(List<Brand> data, string seachText, DataGridView dataGridView)
         {
-           
-            List<Brand> data = _brandManager.GetAll().Data;
-            List<Brand> oldData = data;
-            Search(data, oldData, seachText, dataGridView);
+            dataGridView.DataSource = Search(data, seachText);
         }
 
-        public void Search(List<Brand> data, List<Brand> oldData, string searchText, DataGridView dataGridView)
+        public List<Brand> Search(List<Brand> data, string searchText)
         {
-
-            List<Brand> newList = new List<Brand>();
-            List<Brand> oldList = oldData;
-            List<Brand> list = data;
-            searchText = searchText.ToLower();
-            for (int i = 0; i < list.Count; i++)
-            {
-                list[i].BrandName = list[i].BrandName.ToLower();
-            }
-
-            foreach (var product in list)
-            {
-                if (product.BrandName.Contains(searchText))
-                {
-                    newList.Add(product);
-                }
-            }
-
-            if (searchText != "")
-            {
-                if (newList.Count == 0)
-                {
-                    FormsMessage.ErrorMessage(BrandMessages.BrandNotFound);
-                    return;
-                }
-                dataGridView.DataSource = newList;
-                return;
-            }
-
-            dataGridView.DataSource = oldList;
+            return data.Where(b =>$"{b.Id} {b.BrandName}" .ToLower().Contains(searchText.ToLower())).ToList();
         }
 
-        public void SearchBySelectedValueOfComboBoxAndWriteToDataGridView(TextBox textBox, DataGridView dataGridView, ComboBox comboBox)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

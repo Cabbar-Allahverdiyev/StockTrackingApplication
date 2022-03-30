@@ -13,6 +13,7 @@ using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Utilities.Search.Concrete.ProductSearch;
 using WindowsForm.MyControls;
 using WindowsForm.Core.Controllers.Concrete;
+using Entities.DTOs.ProductDtos;
 
 namespace WindowsForm.Forms
 {
@@ -37,7 +38,6 @@ namespace WindowsForm.Forms
         private void FormProductList_Load(object sender, EventArgs e)
         {
             ProductRefresh();
-            myControl.WriteProductPropertiesInComboBox(comboBoxProperty);
             BrandGetComboBoxVarOlan();
             CategoryGetComboBoxVarOlan();
             SupplierGetComboBox();
@@ -107,8 +107,10 @@ namespace WindowsForm.Forms
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            detailsSearch.SearchBySelectedValueOfComboBoxAndWriteToDataGridView(textBoxAxtar
-                , dataGridViewFormPrdouctList, comboBoxProperty);
+            List<ProductViewDashboardDetailDto> data = _productManager.GetAllProductViewDasboardDetails().Data;
+            detailsSearch.GetDataWriteGridView(data, textBoxAxtar.Text, dataGridViewFormPrdouctList);
+            //detailsSearch.SearchBySelectedValueOfComboBoxAndWriteToDataGridView(data,textBoxAxtar
+            //    , dataGridViewFormPrdouctList, comboBoxProperty);
             //detailsSearch.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewFormPrdouctList);
         }
 
@@ -118,7 +120,7 @@ namespace WindowsForm.Forms
             TextBoxController.ClearAllTextBoxesAndCmboBoxesByGroupBox(GroupBoxVarOlanMehsul);
             //foreach (Control control in GroupBoxVarOlanMehsul.Controls)
             //{
-              
+
             //    if (control is TextBox)
             //    {
             //        control.Text = "";
@@ -127,7 +129,7 @@ namespace WindowsForm.Forms
             //    {
             //        control.Text = "";
             //    }
-               LabelMiqdarVB.Text = "";
+            LabelMiqdarVB.Text = "";
             //}
         }
 

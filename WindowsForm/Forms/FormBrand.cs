@@ -80,7 +80,8 @@ namespace WindowsForm.Forms
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            brandSearch.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewBrandsListed);
+            List<Brand> data = _brandManager.GetAll().Data;
+            brandSearch.GetDataWriteGridView(data,textBoxAxtar.Text, dataGridViewBrandsListed);
         }
 
         private void pictureBoxRefresh_Click(object sender, EventArgs e)

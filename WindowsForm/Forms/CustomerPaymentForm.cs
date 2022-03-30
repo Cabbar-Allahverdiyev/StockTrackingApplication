@@ -19,6 +19,7 @@ using WindowsForm.Forms.UserForms;
 using WindowsForm.Core.Constants.FormsAuthorization.User;
 using WindowsForm.Utilities.Search.Concrete.CustomerPaymentSearch;
 using System.Reflection;
+using Entities.DTOs.CustomerPaymentDtos;
 
 namespace WindowsForm.Forms
 {
@@ -186,9 +187,10 @@ namespace WindowsForm.Forms
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            CustomerPaymentDtoSearch detailSearch = new  CustomerPaymentDtoSearch(
-                new CustomerPaymentManager(new EfCustomerPaymentDal(), new CustomerBalanceManager(new EfCustomerBalanceDal())));
-            detailSearch.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewPaymentList);
+
+            List<CustomerPaymentDto> data = _paymentManager.GetCustomerPaymentDetails().Data;
+            CustomerPaymentDtoSearch detailSearch = new  CustomerPaymentDtoSearch();
+            detailSearch.GetDataWriteGridView(data, textBoxAxtar.Text, dataGridViewPaymentList);
         }
 
         //Key Press----------------------------------->
@@ -223,6 +225,9 @@ namespace WindowsForm.Forms
 
         }
 
-      
+        private void CustomerPaymentForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

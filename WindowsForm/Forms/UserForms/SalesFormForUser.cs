@@ -21,6 +21,7 @@ using WindowsForm.MyControls;
 using WindowsForm.Core.Constants.SelectionItem;
 using WindowsForm.Core.Constants.FormsAuthorization.User;
 using Business.Abstract;
+using Entities.DTOs.ProductDtos;
 
 namespace WindowsForm.Forms.UserForms
 {
@@ -508,8 +509,8 @@ namespace WindowsForm.Forms.UserForms
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-
-            detailsSearch.GetDataWriteGridView(textBoxAxtar.Text, dataGridViewProductList);
+            List<ProductViewDashboardDetailDto> data = _productService.GetAllProductViewDasboardDetails().Data;
+            detailsSearch.GetDataWriteGridView(data,textBoxAxtar.Text, dataGridViewProductList);
         }
 
         //Checked Changed----------------------------->
