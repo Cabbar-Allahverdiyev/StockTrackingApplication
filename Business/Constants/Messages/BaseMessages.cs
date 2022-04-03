@@ -18,7 +18,7 @@ namespace Business.Constants.Messages
 
         public static string ExceptionMessage(string className,string methodName,Exception exception)
         {
-            string e = BaseMessages.ErrorMessage + " | " +className + "." + methodName + " : " + exception.Message;
+            string e = BaseMessages.ErrorMessage + " | " +className + "." + methodName + " : " + exception.Message +$"( {exception.StackTrace} )";
             return e;
         }
     }

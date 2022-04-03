@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
@@ -33,8 +34,25 @@ namespace WindowsForm.Forms
 
         private void buttonSec_Click(object sender, EventArgs e)
         {
-            SelectedCustomerForSalesForm.Id = int.Parse(textBoxCustomerId.Text);
-            this.Hide();
+            try
+            {
+                SelectedCustomerForSalesForm.Id = int.Parse(textBoxCustomerId.Text);
+                this.Hide();
+            }
+           
+            catch (ArgumentNullException ex)
+            {
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex) +
+                      " ( Hansısa dəyər boşdur zəhmət olmasa bütün dəyərləri yenidən yoxlayın ) ");
+                return;
+            }
+            catch (Exception ex)
+            {
+
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex)+" dəyər seçib yenidən yoxlayın");
+                return;
+            }
+            
         }
 
         //Cell Double Click------------------------->

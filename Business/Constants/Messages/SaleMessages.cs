@@ -13,7 +13,7 @@ namespace Business.Constants.Messages
         public static string IsNotDeleted = "Satış silinə bilmədi";
         public static string Updated = "Satış yeniləndi";
         public static string IsNotUpdating = "Satış  yenilənə bilmədi";
-        public static string GetAll = "Satış sıralandi";
+        public static string GetAll = "Satışlar sıralandi";
         public static string Found = "Satış tapıldı";
         public static string NotFound = "Belə bir Satış yoxdur";
 

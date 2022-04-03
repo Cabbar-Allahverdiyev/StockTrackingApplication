@@ -93,7 +93,7 @@ namespace WindowsForm.Forms
 
                 if (checkBoxOdenisLegvEdilsin.Checked == true)
                 {
-                    if (LoginForm.UserId != 3002 && LoginForm.UserId != 2004)
+                    if (LoginForm.UserId != 3002 && LoginForm.UserId != 2004) //
                     {
                         UserAuthorization.QrCodeIsSuccess = false;
                         AdminValidationForm validationForm = new AdminValidationForm();
