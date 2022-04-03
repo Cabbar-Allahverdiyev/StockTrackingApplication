@@ -52,6 +52,7 @@ namespace Business.Concrete
                 }
 
                 debt.Date = DateTime.Now;
+                debt.Id =0;
                 _debtDal.Add(debt);
                 return new SuccessResult($"{DebtMessages.Added} və {result.Message}");
             }
