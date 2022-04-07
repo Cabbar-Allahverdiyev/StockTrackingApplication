@@ -435,16 +435,21 @@ namespace WindowsForm.Forms.UserForms
         {
             try
             {
+                if (decimal.Parse(textBoxQiymet.Text)==0)
+                {
+                    FormsMessage.WarningMessage(FormsTextMessages.UnitPriceGreaterThanZero);
+                        return;
+                }
                 UserAuthorization.QrCodeIsSuccess = false;
                 AdminValidationForm validationForm = new AdminValidationForm();
                 validationForm.ShowDialog();
-
+                
                 // if (QrCodeIsSuccess == false)
-                if (UserAuthorization.QrCodeIsSuccess == false)
-                {
-                    FormsMessage.WarningMessage(AuthMessages.AuthorizationDenied);
-                    return;
-                }
+                //if (UserAuthorization.QrCodeIsSuccess == false)
+                //{
+                //    FormsMessage.WarningMessage(AuthMessages.AuthorizationDenied);
+                //    return;
+                //}
                 Cart cart = _cartService.GetById(_cartId).Data;
 
                 if (textBoxMiqdar.Text == "")

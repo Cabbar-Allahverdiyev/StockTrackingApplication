@@ -54,7 +54,7 @@ namespace WindowsForm.Forms
         {
             try
             {
-                string thisComputerMacAddress = "E8039AB2FF83";
+                string thisComputerMacAddress = "28924A521735";
                 if (thisComputerMacAddress!=GetMacAddress())
                 {
                     

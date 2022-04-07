@@ -9,6 +9,8 @@ namespace WindowsForm.Core.Constants.Messages
 {
     public static class FormsMessage
     {
+        public static string UnitPriceIsNull { get; internal set; }
+
         public static void Alert(string message, AlertForm.EnumType type)
         {
             AlertForm form = new AlertForm();
@@ -34,6 +36,6 @@ namespace WindowsForm.Core.Constants.Messages
             Alert(resultMessage, AlertForm.EnumType.Warning);
         }
 
-       
+        
     }
 }
