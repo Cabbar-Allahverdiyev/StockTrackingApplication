@@ -53,8 +53,8 @@ namespace WindowsForm.Forms
         {
             try
             {
-                Product result = _productManager.GetByProductBarcodeNumber(textBoxVarOlanBarkodNo.Text).Data;
-                product.Id = result.Id;
+                //Product result = _productManager.GetByProductBarcodeNumber(textBoxVarOlanBarkodNo.Text).Data;
+                product.Id = int.Parse(dataGridViewProductList.CurrentRow.Cells["ProductId"].Value.ToString());
                 IResult productDeleted = _productManager.Delete(product);
                 if (!productDeleted.Success)
                 {

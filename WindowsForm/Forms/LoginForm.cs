@@ -54,7 +54,8 @@ namespace WindowsForm.Forms
         {
             try
             {
-                string thisComputerMacAddress = "28924A521735";
+                 string thisComputerMacAddress = "28924A521735"; //Murad IphoneShop
+                //string thisComputerMacAddress = "E8039AB2FF83"; //Menim
                 if (thisComputerMacAddress!=GetMacAddress())
                 {
                     

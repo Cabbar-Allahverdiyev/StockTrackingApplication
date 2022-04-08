@@ -83,12 +83,12 @@ namespace WindowsForm.MyControls
 
         public static void MakeTextBoxDecimalBox(object sender, KeyPressEventArgs keyPressEventArgs)
         {
-            if (!char.IsControl(keyPressEventArgs.KeyChar) && !char.IsDigit(keyPressEventArgs.KeyChar) && (keyPressEventArgs.KeyChar != ','))
+            if (!char.IsControl(keyPressEventArgs.KeyChar) && !char.IsDigit(keyPressEventArgs.KeyChar) && (keyPressEventArgs.KeyChar != '.'))
             {
                 keyPressEventArgs.Handled = true;
             }
 
-            if ((keyPressEventArgs.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
+            if ((keyPressEventArgs.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
             {
                 keyPressEventArgs.Handled = true;
             }

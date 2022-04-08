@@ -85,7 +85,7 @@ namespace WindowsForm.Forms
                 Category category = new Category();
                 category.Id = int.Parse(textBoxId.Text);
                
-                var categryDeleted = _categoryManager.Update(category);
+                var categryDeleted = _categoryManager.Delete(category);
                 if (!categryDeleted.Success)
                 {
                     FormsMessage.WarningMessage(categryDeleted.Message);

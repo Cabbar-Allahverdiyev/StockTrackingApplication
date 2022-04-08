@@ -36,6 +36,9 @@ namespace WindowsForm.Forms
             ComboBoxController.WriteMonthsInComboBox(comboBoxMonths);
             ComboBoxController.WriteYearsInComboBox(comboBoxYears);
             SaleListRefesh();
+            CalculateCountOfAllProduct();
+            CalculateUnitPriceOfAllProduct();
+            CalculatePurchasePriceOfAllProduct();
             checkBoxSatisLegvEdilsin.Checked = false;
         }
 
@@ -227,6 +230,33 @@ namespace WindowsForm.Forms
         }
 
         //Elave Metodlar------------------------>
+        private void CalculateCountOfAllProduct()
+        {
+            List<Product> result = _productManager.GetAll().Data;
+            labelCountOfAllProduct.Text = result.Count.ToString();
+        }
+        
+        private void CalculateUnitPriceOfAllProduct()
+        {
+            List<Product> result = _productManager.GetAll().Data;
+            decimal total = 0;
+            foreach (Product product in result)
+            {
+                total += product.UnitPrice;
+            }
+            labelPriceOfAllProduct.Text = total.ToString();
+        }
+        private void CalculatePurchasePriceOfAllProduct()
+        {
+            List<Product> result = _productManager.GetAll().Data;
+            decimal total = 0;
+            foreach (Product product in result)
+            {
+                total += product.PurchasePrice;
+            }
+            labelPurchasePriceOfAllProduct.Text = total.ToString();
+        }
+
 
         private void SaleListRefesh()
         {
@@ -241,6 +271,16 @@ namespace WindowsForm.Forms
         }
 
         private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBoxProducts_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelOurchasePriceOfAllProduct_Click(object sender, EventArgs e)
         {
 
         }
