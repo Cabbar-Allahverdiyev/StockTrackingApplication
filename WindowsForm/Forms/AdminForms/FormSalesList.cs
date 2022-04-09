@@ -233,7 +233,12 @@ namespace WindowsForm.Forms
         private void CalculateCountOfAllProduct()
         {
             List<Product> result = _productManager.GetAll().Data;
-            labelCountOfAllProduct.Text = result.Count.ToString();
+            int total=0;
+            foreach (Product product in result)
+            {
+                total += product.UnitsInStock;
+            }
+            labelCountOfAllProduct.Text = total.ToString();
         }
         
         private void CalculateUnitPriceOfAllProduct()
@@ -242,7 +247,7 @@ namespace WindowsForm.Forms
             decimal total = 0;
             foreach (Product product in result)
             {
-                total += product.UnitPrice;
+                total += product.UnitPrice*product.UnitsInStock;
             }
             labelPriceOfAllProduct.Text = total.ToString();
         }
@@ -252,7 +257,7 @@ namespace WindowsForm.Forms
             decimal total = 0;
             foreach (Product product in result)
             {
-                total += product.PurchasePrice;
+                total += product.PurchasePrice*product.UnitsInStock;
             }
             labelPurchasePriceOfAllProduct.Text = total.ToString();
         }

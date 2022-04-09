@@ -63,12 +63,13 @@ namespace WindowsForm.Forms
             this.label13 = new System.Windows.Forms.Label();
             this.buttonTetbiqEt = new System.Windows.Forms.Button();
             this.groupBoxProducts = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.labelPurchasePriceOfAllProduct = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.labelPriceOfAllProduct = new System.Windows.Forms.Label();
             this.labelCountOfAllProduct = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.labelPurchasePriceOfAllProduct = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSaleList)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).BeginInit();
@@ -420,6 +421,7 @@ namespace WindowsForm.Forms
             // 
             // groupBoxProducts
             // 
+            this.groupBoxProducts.Controls.Add(this.label16);
             this.groupBoxProducts.Controls.Add(this.label15);
             this.groupBoxProducts.Controls.Add(this.labelPurchasePriceOfAllProduct);
             this.groupBoxProducts.Controls.Add(this.label11);
@@ -428,15 +430,36 @@ namespace WindowsForm.Forms
             this.groupBoxProducts.Controls.Add(this.labelCountOfAllProduct);
             this.groupBoxProducts.Location = new System.Drawing.Point(12, 534);
             this.groupBoxProducts.Name = "groupBoxProducts";
-            this.groupBoxProducts.Size = new System.Drawing.Size(248, 100);
+            this.groupBoxProducts.Size = new System.Drawing.Size(248, 125);
             this.groupBoxProducts.TabIndex = 36;
             this.groupBoxProducts.TabStop = false;
             this.groupBoxProducts.Enter += new System.EventHandler(this.groupBoxProducts_Enter);
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(41, 62);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(118, 17);
+            this.label15.TabIndex = 43;
+            this.label15.Text = "Bütün məhsulların   ";
+            // 
+            // labelPurchasePriceOfAllProduct
+            // 
+            this.labelPurchasePriceOfAllProduct.AutoSize = true;
+            this.labelPurchasePriceOfAllProduct.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelPurchasePriceOfAllProduct.ForeColor = System.Drawing.Color.Red;
+            this.labelPurchasePriceOfAllProduct.Location = new System.Drawing.Point(164, 75);
+            this.labelPurchasePriceOfAllProduct.Name = "labelPurchasePriceOfAllProduct";
+            this.labelPurchasePriceOfAllProduct.Size = new System.Drawing.Size(22, 21);
+            this.labelPurchasePriceOfAllProduct.TabIndex = 42;
+            this.labelPurchasePriceOfAllProduct.Text = "#";
+            this.labelPurchasePriceOfAllProduct.Click += new System.EventHandler(this.labelOurchasePriceOfAllProduct_Click);
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(48, 28);
+            this.label11.Location = new System.Drawing.Point(12, 24);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(147, 17);
             this.label11.TabIndex = 41;
@@ -445,7 +468,7 @@ namespace WindowsForm.Forms
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(42, 45);
+            this.label14.Location = new System.Drawing.Point(6, 41);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(153, 17);
             this.label14.TabIndex = 40;
@@ -456,7 +479,7 @@ namespace WindowsForm.Forms
             this.labelPriceOfAllProduct.AutoSize = true;
             this.labelPriceOfAllProduct.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelPriceOfAllProduct.ForeColor = System.Drawing.Color.Red;
-            this.labelPriceOfAllProduct.Location = new System.Drawing.Point(200, 45);
+            this.labelPriceOfAllProduct.Location = new System.Drawing.Point(164, 41);
             this.labelPriceOfAllProduct.Name = "labelPriceOfAllProduct";
             this.labelPriceOfAllProduct.Size = new System.Drawing.Size(22, 21);
             this.labelPriceOfAllProduct.TabIndex = 39;
@@ -467,32 +490,20 @@ namespace WindowsForm.Forms
             this.labelCountOfAllProduct.AutoSize = true;
             this.labelCountOfAllProduct.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelCountOfAllProduct.ForeColor = System.Drawing.Color.Red;
-            this.labelCountOfAllProduct.Location = new System.Drawing.Point(200, 24);
+            this.labelCountOfAllProduct.Location = new System.Drawing.Point(164, 20);
             this.labelCountOfAllProduct.Name = "labelCountOfAllProduct";
             this.labelCountOfAllProduct.Size = new System.Drawing.Size(22, 21);
             this.labelCountOfAllProduct.TabIndex = 38;
             this.labelCountOfAllProduct.Text = "#";
             // 
-            // label15
+            // label16
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(5, 62);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(189, 17);
-            this.label15.TabIndex = 43;
-            this.label15.Text = "Bütün məhsulların maya dəyəri :";
-            // 
-            // labelPurchasePriceOfAllProduct
-            // 
-            this.labelPurchasePriceOfAllProduct.AutoSize = true;
-            this.labelPurchasePriceOfAllProduct.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelPurchasePriceOfAllProduct.ForeColor = System.Drawing.Color.Red;
-            this.labelPurchasePriceOfAllProduct.Location = new System.Drawing.Point(200, 62);
-            this.labelPurchasePriceOfAllProduct.Name = "labelPurchasePriceOfAllProduct";
-            this.labelPurchasePriceOfAllProduct.Size = new System.Drawing.Size(22, 21);
-            this.labelPurchasePriceOfAllProduct.TabIndex = 42;
-            this.labelPurchasePriceOfAllProduct.Text = "#";
-            this.labelPurchasePriceOfAllProduct.Click += new System.EventHandler(this.labelOurchasePriceOfAllProduct_Click);
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(71, 79);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(88, 17);
+            this.label16.TabIndex = 44;
+            this.label16.Text = " maya dəyəri :";
             // 
             // FormSalesList
             // 
@@ -566,5 +577,6 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.Label labelCountOfAllProduct;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label labelPurchasePriceOfAllProduct;
+        private System.Windows.Forms.Label label16;
     }
 }

@@ -1,9 +1,11 @@
-﻿using Core.CrossCuttingConcerns.Validation.Abstract;
+﻿using Business.Constants.Messages;
+using Core.CrossCuttingConcerns.Validation.Abstract;
 using Entities.Concrete;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Business.ValidationRules.FluentValidation
 {
@@ -18,6 +20,8 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(s => s.ContactName).NotEmpty();
             RuleFor(s => s.ContactName).MinimumLength(4);
             RuleFor(s => s.ContactName).MaximumLength(50);
+
+            RuleFor(s=>s.Phone).Matches(new Regex(@"^(0(\d{9}))$")).WithMessage("Telefon nömrəsi formata uyğun deyil məs: 0554926939");
 
             RuleFor(s => s.Address).MaximumLength(100);
 

@@ -37,6 +37,8 @@ namespace WindowsForm.Forms
         ISaleWinFormService _saleWinFormService;
         IDebtService _debtService;
 
+        MyControl myControl = new MyControl();
+
         public SalesForm(ICategoryService categoryService
                             , IBrandService brandService
                             , ISupplierService supplierService
@@ -59,8 +61,9 @@ namespace WindowsForm.Forms
             InitializeComponent();
             TotalPriceLabelWrite();
 
-            MyControl myControl = new MyControl();
+            
             myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
+           
 
             //myControl.WritePlaceholdersForTextBoxSearchByProductName(textBoxAxtarBarcodeNumber);
 
@@ -642,6 +645,12 @@ namespace WindowsForm.Forms
         private void CartListRefesh()
         {
             dataGridViewCartList.DataSource = _cartService.GetAllCartViewDetailsByUserId(staticUserId).Data;
+            
+            myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "AlisQiymeti",Color.Yellow);
+            myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "Qiymet",Color.Green);
+            myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "Cem",Color.Red);
+            //myControl.MakeDataGridViewCurrentRowGreenColor(dataGridViewCartList, 4);
+            //myControl.MakeDataGridViewCurrentRowRedColor(dataGridViewCartList, 6);
         }
 
         private void ProductListRefesh()

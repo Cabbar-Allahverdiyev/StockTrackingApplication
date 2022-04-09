@@ -23,12 +23,16 @@ namespace DataAccess.Concrete.EntityFramework
                 var result = from s in context.SalesWinForms
                              join p in context.Products on s.ProductId equals p.Id
                              join u in context.Users on s.UserId equals u.Id
+                             join c in context.Categories on p.CategoryId equals c.Id
+                             join b in context.Brands on p.BrandId equals b.Id
                              orderby s.SellDate descending
                              select new SaleWinFormDto
                              {
                                  SaleId = s.Id,
                                  ProductId = s.ProductId,
                                  MehsulAdi = p.ProductName,
+                                 Kateqoriya=c.CategoryName,
+                                 Marka=b.BrandName,
                                  Istifadeci = $"{u.FirstName} {u.LastName}",
                                  SatilanQiymet = s.SoldPrice,
                                  Miqdar = s.Quantity,

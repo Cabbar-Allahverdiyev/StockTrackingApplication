@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -16,5 +17,8 @@ namespace Business.Constants.Messages
         public static string SupplierGetAll = "Tədarikçi sıralandi";
         public static string SupplierFound = "Tədarikçi tapıldı";
         public static string SupplierNotFound = "Belə bir tədarikçi yoxdur";
+
+        public static string PhoneNumberNotValid= "Telefon nömrəsi formata uyğun deyil məs: 0554926939"; //niyese islemir
+       
     }
 }

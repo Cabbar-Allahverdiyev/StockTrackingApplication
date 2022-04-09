@@ -80,6 +80,7 @@ namespace WindowsForm.Forms
                 }
                 FormsMessage.SuccessMessage(supplierAdd.Message);
                 SupplierRefresh();
+                TextBoxController.ClearAllTextBoxesByGroupBox(groupBox1);
 
                 foreach (Control control in this.Controls)
                 {

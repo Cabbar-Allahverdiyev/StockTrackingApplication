@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Forms;
@@ -115,6 +116,44 @@ namespace WindowsForm.MyControls
                 return;
             }
         }
-       
+
+        public void MakeDataGridViewCurrentRowRedColor(DataGridView dataGridView,int rowIndex)
+        {
+            dataGridView.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
+            //foreach (DataGridViewRow row in dataGridView.Rows)
+            //{
+
+            //    if (row.Index == rowIndex)
+            //    {
+            //        row.DefaultCellStyle.BackColor = Color.Red;
+            //    }
+               
+            //}
+        }
+
+        public void MakeDataGridViewCurrentRowGreenColor(DataGridView dataGridView, int rowIndex)
+        {
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                if (row.Index == rowIndex)
+                {
+                    row.DefaultCellStyle.BackColor = Color.Green;
+                }
+            }
+        }
+
+        public void MakeDataGridViewCurrentColumnCurrentColor(DataGridView dataGridView, string columnName,Color color)
+        {
+            dataGridView.Columns[columnName].DefaultCellStyle.BackColor = color;
+            //foreach (DataGridViewColumn col in dataGridView.Columns)
+            //{
+            //    if (row.Index==rowIndex)
+            //    {
+            //        row.DefaultCellStyle.BackColor = Color.Yellow;
+            //    }
+                
+            //}
+        }
+
     }
 }

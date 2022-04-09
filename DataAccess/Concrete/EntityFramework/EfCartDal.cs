@@ -102,15 +102,19 @@ namespace DataAccess.Concrete.EntityFramework
                 var result = from c in context.Carts
                              join p in context.Products on c.ProductId equals p.Id
                              join u in context.Users on c.UserId equals u.Id
+                             join category in context.Categories on p.CategoryId equals category.Id
                              select new CartViewDto {
                                  Id=c.Id,
                                  ProductId=c.ProductId,
                                  MehsulAdi=p.ProductName,
+                                 Kateqoriya=category.CategoryName,
                                  UserId=c.UserId,
-                                 Istifadeci = $"{u.FirstName} {u.LastName}",
+                                 AlisQiymeti=p.PurchasePrice,
+                                 //Istifadeci = $"{u.FirstName} {u.LastName}",
                                  Qiymet=c.SoldPrice,
                                  Miqdar=c.Quantity,
                                  Cem=c.TotalPrice,
+                                 Aciqlama=p.Description,
                                  CartDate=c.CartDate
                              };
 
