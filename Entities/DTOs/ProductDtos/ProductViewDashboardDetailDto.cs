@@ -14,7 +14,7 @@ namespace Entities.DTOs.ProductDtos
         public string MehsulAdi { get; set; }
         public int StokdakiVahid { get; set; }
         public decimal Qiymet { get; set; }
-        public decimal AlısQiymet { get; set; }
+        public decimal AlisQiymet { get; set; }
         public string TedarikciSirket { get; set; }
         public string Kemiyyet { get; set; }
         public string Aciqlama { get; set; }

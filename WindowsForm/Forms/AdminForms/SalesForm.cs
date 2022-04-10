@@ -61,9 +61,9 @@ namespace WindowsForm.Forms
             InitializeComponent();
             TotalPriceLabelWrite();
 
-            
+
             myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
-           
+
 
             //myControl.WritePlaceholdersForTextBoxSearchByProductName(textBoxAxtarBarcodeNumber);
 
@@ -252,10 +252,15 @@ namespace WindowsForm.Forms
                         if (!debtAdded.Success || !productUpdated.Success)
                         {
                             messages.Add(product.BarcodeNumber + " - " + product.ProductName + " : " + debtAdded.Message + " & " + productUpdated.Message);
-
+                            foreach (string message in messages)
+                            {
+                                resultMessage += $" {message} {newResultMessage} |";
+                            }
+                            FormsMessage.ErrorMessage(resultMessage);
+                            return;
                         }
-                        messages.Add(product.ProductName + " : " + debtAdded.Message + " & " + productUpdated.Message);
 
+                        messages.Add(product.ProductName + " : " + debtAdded.Message + " & " + productUpdated.Message);
 
                     }
                     foreach (string message in messages)
@@ -276,6 +281,7 @@ namespace WindowsForm.Forms
                 CartListRefesh();
                 ProductListRefesh();
                 GroupBoxMehsulControlClear();
+                GroupBoxMusteriControlClear();
                 TotalPriceLabelWrite();
             }
             catch (Exception ex)
@@ -285,6 +291,8 @@ namespace WindowsForm.Forms
                 return;
             }
         }
+
+
 
         private void buttoElaveEt_Click(object sender, EventArgs e)
         {
@@ -317,7 +325,7 @@ namespace WindowsForm.Forms
                 {
                     CartAddDto cartAddDto = _cartService.GetCartAddDetailByProductId(int.Parse(textBoxProductId.Text)).Data;
                     cart.Id = cartAddDto.CartId;
-                    cart.Quantity = textBoxMiqdar.Text.Equals("1") ? cartAddDto.Quantity + int.Parse(textBoxMiqdar.Text) : int.Parse(textBoxMiqdar.Text);
+                    cart.Quantity = cartAddDto.Quantity + int.Parse(textBoxMiqdar.Text);
                     cart.SoldPrice = decimal.Parse(textBoxQiymet.Text == "" ? textBoxMaxQiymet.Text : textBoxQiymet.Text);
                     cart.TotalPrice = cart.SoldPrice * cart.Quantity;
                     cartUpdated = _cartService.Update(cart);
@@ -611,6 +619,10 @@ namespace WindowsForm.Forms
             }
         }
 
+        private void GroupBoxMusteriControlClear()
+        {
+            TextBoxController.ClearAllTextBoxesByGroupBox(groupBoxMusteri);
+        }
 
         private void GroupBoxMehsulControlClear()
         {
@@ -645,17 +657,17 @@ namespace WindowsForm.Forms
         private void CartListRefesh()
         {
             dataGridViewCartList.DataSource = _cartService.GetAllCartViewDetailsByUserId(staticUserId).Data;
-            
-            myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "AlisQiymeti",Color.Yellow);
-            myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "Qiymet",Color.Green);
-            myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "Cem",Color.Red);
-            //myControl.MakeDataGridViewCurrentRowGreenColor(dataGridViewCartList, 4);
-            //myControl.MakeDataGridViewCurrentRowRedColor(dataGridViewCartList, 6);
+
+            myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "AlisQiymeti", Color.Yellow);
+            myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "Qiymet", Color.Green);
+            myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "Cem", Color.Red);
         }
 
         private void ProductListRefesh()
         {
             dataGridViewProductList.DataSource = _productService.GetAllProductViewDasboardDetails().Data;
+            myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewProductList, "AlisQiymet", Color.Yellow);
+            myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewProductList, "Qiymet", Color.Green);
         }
 
 

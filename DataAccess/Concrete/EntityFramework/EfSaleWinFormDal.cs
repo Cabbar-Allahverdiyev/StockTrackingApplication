@@ -31,9 +31,10 @@ namespace DataAccess.Concrete.EntityFramework
                                  SaleId = s.Id,
                                  ProductId = s.ProductId,
                                  MehsulAdi = p.ProductName,
-                                 Kateqoriya=c.CategoryName,
-                                 Marka=b.BrandName,
+                                 Kateqoriya = c.CategoryName,
+                                 Marka = b.BrandName,
                                  Istifadeci = $"{u.FirstName} {u.LastName}",
+                                 AlisQiymeti = p.PurchasePrice,
                                  SatilanQiymet = s.SoldPrice,
                                  Miqdar = s.Quantity,
                                  Cem = s.SoldPrice * s.Quantity,
@@ -48,67 +49,69 @@ namespace DataAccess.Concrete.EntityFramework
         }
 
 
-        public List<SaleWinFormDto> GetAllWinFormDtoDetailsByDayAndMonthAndYear(int day, int month, int year)
-        {
-            using (StockTrackingProjectContext context = new StockTrackingProjectContext())
-            {
+        //public List<SaleWinFormDto> GetAllWinFormDtoDetailsByDayAndMonthAndYear(int day, int month, int year)
+        //{
+        //    using (StockTrackingProjectContext context = new StockTrackingProjectContext())
+        //    {
 
-                var result = from s in context.SalesWinForms
-                             join p in context.Products on s.ProductId equals p.Id
-                             join u in context.Users on s.UserId equals u.Id
-                             where s.SellDate.Day == day
-                             where s.SellDate.Month == month
-                             where s.SellDate.Year == year
-                             orderby s.SellDate descending
-                             select new SaleWinFormDto
-                             {
-                                 SaleId = s.Id,
-                                 ProductId = s.ProductId,
-                                 MehsulAdi = p.ProductName,
-                                 Istifadeci = $"{u.FirstName} {u.LastName}",
-                                 SatilanQiymet = s.SoldPrice,
-                                 Miqdar = s.Quantity,
-                                 Cem = s.SoldPrice * s.Quantity,
-                                 SatisinVeziyyeti = s.SaleStatus,
-                                 Tarix = s.SellDate
+        //        var result = from s in context.SalesWinForms
+        //                     join p in context.Products on s.ProductId equals p.Id
+        //                     join u in context.Users on s.UserId equals u.Id
+        //                     where s.SellDate.Day == day
+        //                     where s.SellDate.Month == month
+        //                     where s.SellDate.Year == year
+        //                     orderby s.SellDate descending
+        //                     select new SaleWinFormDto
+        //                     {
+        //                         SaleId = s.Id,
+        //                         ProductId = s.ProductId,
+        //                         MehsulAdi = p.ProductName,
+        //                         Istifadeci = $"{u.FirstName} {u.LastName}",
+        //                         AlisQiymeti = p.PurchasePrice,
+        //                         SatilanQiymet = s.SoldPrice,
+        //                         Miqdar = s.Quantity,
+        //                         Cem = s.SoldPrice * s.Quantity,
+        //                         SatisinVeziyyeti = s.SaleStatus,
+        //                         Tarix = s.SellDate
 
-                             };
+        //                     };
 
-                return result.ToList();
-            }
+        //        return result.ToList();
+        //    }
 
-        }
+        //}
 
       
-        public List<SaleWinFormDto> GetAllWinFormDtoDetailsByMonthAndYear(int month, int year)
-        {
+        //public List<SaleWinFormDto> GetAllWinFormDtoDetailsByMonthAndYear(int month, int year)
+        //{
 
-            using (StockTrackingProjectContext context = new StockTrackingProjectContext())
-            {
+        //    using (StockTrackingProjectContext context = new StockTrackingProjectContext())
+        //    {
 
-                var result = from s in context.SalesWinForms
-                             join p in context.Products on s.ProductId equals p.Id
-                             join u in context.Users on s.UserId equals u.Id
-                             where s.SellDate.Month == month
-                             where s.SellDate.Year == year
-                             orderby s.SellDate descending
-                             select new SaleWinFormDto
-                             {
-                                 SaleId = s.Id,
-                                 ProductId = s.ProductId,
-                                 MehsulAdi = p.ProductName,
-                                 Istifadeci = $"{u.FirstName} {u.LastName}",
-                                 SatilanQiymet = s.SoldPrice,
-                                 Miqdar = s.Quantity,
-                                 Cem = s.SoldPrice * s.Quantity,
-                                 SatisinVeziyyeti = s.SaleStatus,
-                                 Tarix = s.SellDate
+        //        var result = from s in context.SalesWinForms
+        //                     join p in context.Products on s.ProductId equals p.Id
+        //                     join u in context.Users on s.UserId equals u.Id
+        //                     where s.SellDate.Month == month
+        //                     where s.SellDate.Year == year
+        //                     orderby s.SellDate descending
+        //                     select new SaleWinFormDto
+        //                     {
+        //                         SaleId = s.Id,
+        //                         ProductId = s.ProductId,
+        //                         MehsulAdi = p.ProductName,
+        //                         Istifadeci = $"{u.FirstName} {u.LastName}",
+        //                         AlisQiymeti = p.PurchasePrice,
+        //                         SatilanQiymet = s.SoldPrice,
+        //                         Miqdar = s.Quantity,
+        //                         Cem = s.SoldPrice * s.Quantity,
+        //                         SatisinVeziyyeti = s.SaleStatus,
+        //                         Tarix = s.SellDate
 
-                             };
+        //                     };
 
-                return result.ToList();
-            }
-        }
+        //        return result.ToList();
+        //    }
+        //}
 
         //public List<SaleWinFormDto> GetAllWinFormDtoDetailsByDecreasingProducts(Expression<Func<SaleWinFormDto, bool>> filter = null)
         //{

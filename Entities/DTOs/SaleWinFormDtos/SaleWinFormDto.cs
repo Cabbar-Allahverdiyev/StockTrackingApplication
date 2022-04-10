@@ -13,6 +13,7 @@ namespace Entities.DTOs.SaleWinFormDtos
         public string Kateqoriya { get; set; }
         public string Marka { get; set; }
         public string Istifadeci { get; set; }
+        public decimal AlisQiymeti { get; set; }
         public decimal SatilanQiymet { get; set; }
         public int Miqdar { get; set; }
         public decimal Cem { get; set; }

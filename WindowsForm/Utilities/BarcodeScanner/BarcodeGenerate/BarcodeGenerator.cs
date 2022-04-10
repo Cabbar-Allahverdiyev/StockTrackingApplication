@@ -6,6 +6,8 @@ using System.Windows.Forms;
 using System.Drawing;
 using Business.Constants.Messages;
 using Core.Utilities.Results;
+using Business.Abstract;
+using Entities.Concrete;
 
 namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate
 {
@@ -15,6 +17,12 @@ namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate
         BarcodeDecoder scanner;
 
         OpenFileDialog openDialog;
+        IProductService _productService;
+
+        public BarcodeGenerator(IProductService productService)
+        {
+            _productService = productService;
+        }
 
         public IDataResult<Image> GenerateBarcode(string text)
         {
@@ -89,10 +97,22 @@ namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate
 
         public IDataResult<string> RandomBarcodeNumberGenerator()
         {
-            Random random = new Random();
-            string randomText = "476" + "0776" + random.Next(0, 99999).ToString()+"0"; //eger sistemde varsa yeniden yarat
-            //string randomText = random.Next(0, 999999).ToString("D13"); //eger sistemde varsa yeniden yarat
-            return new SuccessDataResult<string>(randomText, BarcodeNumberMessages.RandomBarcodeNumberGenerated);
+            IDataResult<Product> result;
+            do
+            {
+                Random random = new Random();
+                string randomText = "476" + "0776" + random.Next(0, 99999).ToString() + "0"; //eger sistemde varsa yeniden yarat
+                                                                                             //string randomText = random.Next(0, 999999).ToString("D13"); //eger sistemde varsa yeniden yarat
+                result= _productService.GetByProductBarcodeNumber(randomText);
+                if (result.Success)
+                {
+                    return new ErrorDataResult<string>(ProductMessages.BarcodeNumberAvailable);
+
+
+                }
+                return new SuccessDataResult<string>(randomText, BarcodeNumberMessages.RandomBarcodeNumberGenerated);
+            } while (!result.Success);
+           
         }
     }
 }

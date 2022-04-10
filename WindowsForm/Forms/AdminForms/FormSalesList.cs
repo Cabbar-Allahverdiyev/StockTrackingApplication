@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.Concrete;
 using WindowsForm.Core.Controllers.ValidatorControllers;
+using WindowsForm.MyControls;
 using WindowsForm.Utilities.Search.Concrete.SaleSearch;
 
 namespace WindowsForm.Forms
@@ -23,6 +24,7 @@ namespace WindowsForm.Forms
     {
         SaleWinFormManager _saleWinFormManager = new SaleWinFormManager(new EfSaleWinFormDal(), new ProductManager(new EfProductDal()));
         ProductManager _productManager = new ProductManager(new EfProductDal());
+        MyControl myControl = new MyControl();
         // SaleValidationTool saleValidationTool = new SaleValidationTool();
 
         public FormSalesList()
@@ -266,6 +268,10 @@ namespace WindowsForm.Forms
         private void SaleListRefesh()
         {
             dataGridViewSaleList.DataSource = _saleWinFormManager.GetAllSaleWinFormDtoDetails().Data;
+
+            myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewSaleList, "AlisQiymeti", Color.Yellow);
+            myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewSaleList, "SatilanQiymet", Color.Green);
+            myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewSaleList, "Cem", Color.Red);
         }
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)

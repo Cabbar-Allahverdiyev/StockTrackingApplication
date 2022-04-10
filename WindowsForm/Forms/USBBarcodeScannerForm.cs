@@ -8,6 +8,7 @@ using USB_Barcode_Scanner;
 using WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate;
 using Core.Utilities.Results;
 using Business.Concrete;
+using DataAccess.Concrete.EntityFramework;
 
 namespace WindowsForm.Forms
 {
@@ -26,7 +27,7 @@ namespace WindowsForm.Forms
         //BarcodeDecoder scanner;
         //SaveFileDialog saveDialog;
         //OpenFileDialog openDialog;
-        BarcodeGenerator barcodeGenerator = new BarcodeGenerator();
+        BarcodeGenerator barcodeGenerator = new BarcodeGenerator(new ProductManager(new EfProductDal()));
 
         private void BarcodeScanner_BarcodeScanned(object sender, BarcodeScannerEventArgs e)
         {

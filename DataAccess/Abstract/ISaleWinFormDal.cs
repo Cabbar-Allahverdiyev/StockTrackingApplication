@@ -16,8 +16,8 @@ namespace DataAccess.Abstract
         //List<SaleWinFormDto> GetAllWinFormDtoDetailsByProductsThatNeverSell(Expression<Func<SaleWinFormDto, bool>> filter = null);
         //List<SaleWinFormDto> GetAllWinFormDtoDetailsByFinishedProducts(Expression<Func<SaleWinFormDto, bool>> filter = null);
 
-        List<SaleWinFormDto> GetAllWinFormDtoDetailsByDayAndMonthAndYear(int day, int month, int year);
-        List<SaleWinFormDto> GetAllWinFormDtoDetailsByMonthAndYear(int month, int year);
+        //List<SaleWinFormDto> GetAllWinFormDtoDetailsByDayAndMonthAndYear(int day, int month, int year);
+        //List<SaleWinFormDto> GetAllWinFormDtoDetailsByMonthAndYear(int month, int year);
 
     }
 }

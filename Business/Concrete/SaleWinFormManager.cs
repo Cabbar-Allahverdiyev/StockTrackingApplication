@@ -153,7 +153,8 @@ namespace Business.Concrete
         [CacheAspect]
         public IDataResult<List<SaleWinFormDto>> GetAllSaleWinFormDetailsSalesForDayAndMonthAndYear(int day, int month, int year)
         {
-            List<SaleWinFormDto> get = _saleWinFormDal.GetAllWinFormDtoDetailsByDayAndMonthAndYear(day, month, year);
+            //List<SaleWinFormDto> get = _saleWinFormDal.GetAllWinFormDtoDetailsByDayAndMonthAndYear(day, month, year);
+            List<SaleWinFormDto> get = _saleWinFormDal.GetAllWinFormDtoDetails(s =>s.Tarix.ToString().Contains(day.ToString())).Where(s => s.Tarix.ToString().Contains(month.ToString())).Where(s => s.Tarix.ToString().Contains(year.ToString())).ToList();
             //if (get == null)
             //{
             //    return new ErrorDataResult<List<SaleWinFormDto>>(SaleMessages.NotFound);
@@ -164,7 +165,8 @@ namespace Business.Concrete
         [CacheAspect]
         public IDataResult<List<SaleWinFormDto>> GetAllSaleWinFormDetailsSalesForMonthAndYear(int month, int year)
         {
-            List<SaleWinFormDto> get = _saleWinFormDal.GetAllWinFormDtoDetailsByMonthAndYear(month, year);
+            //List<SaleWinFormDto> get = _saleWinFormDal.GetAllWinFormDtoDetailsByMonthAndYear(month, year);
+            List<SaleWinFormDto> get = _saleWinFormDal.GetAllWinFormDtoDetails().Where(s => s.Tarix.ToString().Contains(month.ToString())).Where(s => s.Tarix.ToString().Contains(year.ToString())).ToList();
             //if (get == null)
             //{
             //    return new ErrorDataResult<List<SaleWinFormDto>>(SaleMessages.NotFound);

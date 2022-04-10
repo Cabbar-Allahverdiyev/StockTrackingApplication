@@ -22,7 +22,7 @@ namespace WindowsForm.Utilities.Search.Concrete.ProductSearch
        
         public List<ProductViewDashboardDetailDto> Search(List<ProductViewDashboardDetailDto> data, string searchText)
         {
-            return data.Where(p => $"{p.ProductId} {p.BarcodeNomresi} {p.Kateqoriya} {p.Marka} {p.MehsulAdi} {p.StokdakiVahid} {p.Qiymet} {p.AlısQiymet} {p.TedarikciSirket} {p.Kemiyyet} {p.Aciqlama} {p.SonDeyistirilmeTaixi.Day}.{p.SonDeyistirilmeTaixi.Month} {p.SonDeyistirilmeTaixi.Hour} {p.Sonlanmis}"
+            return data.Where(p => $"{p.ProductId} {p.BarcodeNomresi} {p.Kateqoriya} {p.Marka} {p.MehsulAdi} {p.StokdakiVahid} {p.Qiymet} {p.AlisQiymet} {p.TedarikciSirket} {p.Kemiyyet} {p.Aciqlama} {p.SonDeyistirilmeTaixi.Day}.{p.SonDeyistirilmeTaixi.Month} {p.SonDeyistirilmeTaixi.Hour} {p.Sonlanmis}"
             .ToLower().Contains(searchText.ToLower())).ToList();
         }
     }

@@ -13,6 +13,7 @@ using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.Concrete.ValidatorControllers;
+using WindowsForm.Utilities.Search.Concrete.CustomerSearch;
 
 namespace WindowsForm.Forms
 {
@@ -68,6 +69,12 @@ namespace WindowsForm.Forms
         private void CustomerRefresh()
         {
             dataGridViewList.DataSource = _customerManager.GetCustomerDetails().Data;
+        }
+
+        private void textBoxAxtar_TextChanged(object sender, EventArgs e)
+        {
+            CustomerDtoSearch customerDtoSearch = new CustomerDtoSearch();
+            customerDtoSearch.GetDataWriteGridView(_customerManager.GetCustomerDetails().Data, textBoxAxtar.Text, dataGridViewList);
         }
     }
 }

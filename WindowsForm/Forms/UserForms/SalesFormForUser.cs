@@ -133,7 +133,7 @@ namespace WindowsForm.Forms.UserForms
                 {
                     CartAddDto cartAddDto = _cartService.GetCartAddDetailByProductId(int.Parse(textBoxProductId.Text)).Data;
                     cart.Id = cartAddDto.CartId;
-                    cart.Quantity = textBoxMiqdar.Text.Equals("1") ? cartAddDto.Quantity + int.Parse(textBoxMiqdar.Text) : int.Parse(textBoxMiqdar.Text);
+                    cart.Quantity = cartAddDto.Quantity + int.Parse(textBoxMiqdar.Text);
                     cart.SoldPrice = decimal.Parse(textBoxQiymet.Text == "" ? textBoxMaxQiymet.Text : textBoxQiymet.Text);
                     cart.TotalPrice = cart.SoldPrice * cart.Quantity;
                     cartUpdated = _cartService.Update(cart);
@@ -286,7 +286,12 @@ namespace WindowsForm.Forms.UserForms
                         if (!debtAdded.Success || !productUpdated.Success)
                         {
                             messages.Add(product.BarcodeNumber + " - " + product.ProductName + " : " + debtAdded.Message + " & " + productUpdated.Message);
-
+                            foreach (string message in messages)
+                            {
+                                resultMessage += $" {message} {newResultMessage} |";
+                            }
+                            FormsMessage.ErrorMessage(resultMessage);
+                            return;
                         }
                         messages.Add(product.ProductName + " : " + debtAdded.Message + " & " + productUpdated.Message);
 
@@ -309,6 +314,7 @@ namespace WindowsForm.Forms.UserForms
                 RemoveCart();
                 CartListRefesh();
                 ProductListRefesh();
+                GroupBoxMusteriControlClear();
                 GroupBoxMehsulControlClear();
                 TotalPriceLabelWrite();
             }
@@ -442,9 +448,9 @@ namespace WindowsForm.Forms.UserForms
                     FormsMessage.WarningMessage(FormsTextMessages.UnitPriceGreaterThanZero);
                         return;
                 }
-                UserAuthorization.QrCodeIsSuccess = false;
-                AdminValidationForm validationForm = new AdminValidationForm();
-                validationForm.ShowDialog();
+                //UserAuthorization.QrCodeIsSuccess = false;
+                //AdminValidationForm validationForm = new AdminValidationForm();
+                //validationForm.ShowDialog();
                 
                 // if (QrCodeIsSuccess == false)
                 //if (UserAuthorization.QrCodeIsSuccess == false)
@@ -663,6 +669,11 @@ namespace WindowsForm.Forms.UserForms
             textBoxMiqdar.Text = "1";
         }
 
+        private void GroupBoxMusteriControlClear()
+        {
+            TextBoxController.ClearAllTextBoxesByGroupBox(groupBoxMusteri);
+        }
+
         private void IsBarcodeNumberExists(int productId, out bool isBarcodeNumberExists)
         {
             IDataResult<CartAddDto> result = _cartService.GetCartAddDetailByProductId(productId);
@@ -699,6 +710,8 @@ namespace WindowsForm.Forms.UserForms
         private void ProductListRefesh()
         {
             dataGridViewProductList.DataSource = _productService.GetAllProductViewDasboardDetails().Data;
+            myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewProductList, "AlisQiymet", Color.Yellow);
+            myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewProductList, "Qiymet", Color.Green);
         }
 
 
