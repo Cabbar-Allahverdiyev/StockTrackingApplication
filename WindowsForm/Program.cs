@@ -30,13 +30,16 @@ namespace WindowsForm
             Application.SetCompatibleTextRenderingDefault(false);
             // Application.Run(new Forms.Dashboard());
             //Application.Run(new Forms.UserForms.UserDashboard());
-         
-                Application.Run(new Forms.LoginForm());
-           
-                
 
-           // Application.Run(new Forms.StatisticForProductForm());
-            //Application.Run(new Forms.UserForms.AdminValidationForm());
+            //Application.Run(new Forms.LoginForm());
+
+
+
+            //Application.Run(new Forms.StatisticForProductForm());
+            Application.Run(new Forms.AdminForms.AdminVerificationForm(new UserManager(new EfUserDal())
+                
+ 
+                ));
            //Application.Run(new Forms.CustomerPaymentForm()) ;
            
 

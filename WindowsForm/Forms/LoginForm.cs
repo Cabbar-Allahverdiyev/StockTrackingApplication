@@ -54,11 +54,11 @@ namespace WindowsForm.Forms
         {
             try
             {
-               //  string thisComputerMacAddress = "28924A521735"; //Murad IphoneShop
-               string thisComputerMacAddress = "E8039AB2FF83"; //Menim
-                if (thisComputerMacAddress!=GetMacAddress())
+               // string thisComputerMacAddress = "28924A521735"; //Murad IphoneShop
+                string thisComputerMacAddress = "E8039AB2FF83"; //Menim
+                if (thisComputerMacAddress != GetMacAddress())
                 {
-                    
+
                     FormsMessage.ErrorMessage("Zəhmət olmasa istehsalçı ilə əlaqə qurun");
                     FormsMessage.ErrorMessage("Bu kompyuterin icazəsi yoxdur");
                     return;

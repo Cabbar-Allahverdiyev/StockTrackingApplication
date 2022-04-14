@@ -8,5 +8,6 @@ namespace WindowsForm.Core.Constants.FormsAuthorization.User
     public static class UserAuthorization
     {
         public static bool QrCodeIsSuccess { get; set; }
+        public static bool IsAdminVerified { get; set; }
     }
 }
