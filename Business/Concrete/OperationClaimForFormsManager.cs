@@ -6,6 +6,7 @@ using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Business.Concrete
@@ -74,5 +75,18 @@ namespace Business.Concrete
             }
             return new SuccessDataResult<List<OperationClaimForForms>>(get, OperationClaimForFormsMessages.GetAll);
         }
+
+        [CacheAspect]
+        public IDataResult<List<OperationClaimForForms>> GetAllButTheBoss()
+        {
+            List<OperationClaimForForms> get = _operationClaimForFormsDal.GetAll().SkipLast(1).ToList();
+            
+            if (get == null)
+            {
+                return new ErrorDataResult<List<OperationClaimForForms>>(OperationClaimForFormsMessages.NotFound);
+            }
+            return new SuccessDataResult<List<OperationClaimForForms>>(get, OperationClaimForFormsMessages.GetAll);
+        }
+
     }
 }

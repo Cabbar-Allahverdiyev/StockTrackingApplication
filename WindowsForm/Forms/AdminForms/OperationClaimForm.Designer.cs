@@ -33,8 +33,10 @@ namespace WindowsForm.Forms.AdminForms
             this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
             this.label12 = new System.Windows.Forms.Label();
             this.textBoxAxtar = new System.Windows.Forms.TextBox();
-            this.dataGridViewProductList = new System.Windows.Forms.DataGridView();
+            this.dataGridViewUserClaims = new System.Windows.Forms.DataGridView();
             this.groupBoxOperationClaim = new System.Windows.Forms.GroupBox();
+            this.buttonDuzelt = new System.Windows.Forms.Button();
+            this.ButtonSalesFormSil = new System.Windows.Forms.Button();
             this.buttonTemizle = new System.Windows.Forms.Button();
             this.buttonElaveEt = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -43,10 +45,8 @@ namespace WindowsForm.Forms.AdminForms
             this.comboBoxIstifadeci = new System.Windows.Forms.ComboBox();
             this.comboBoxSelahiyyet = new System.Windows.Forms.ComboBox();
             this.textBoxId = new System.Windows.Forms.TextBox();
-            this.buttonDuzelt = new System.Windows.Forms.Button();
-            this.ButtonSalesFormSil = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUserClaims)).BeginInit();
             this.groupBoxOperationClaim.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,22 +84,22 @@ namespace WindowsForm.Forms.AdminForms
             this.textBoxAxtar.Size = new System.Drawing.Size(135, 22);
             this.textBoxAxtar.TabIndex = 37;
             // 
-            // dataGridViewProductList
+            // dataGridViewUserClaims
             // 
-            this.dataGridViewProductList.AllowUserToAddRows = false;
-            this.dataGridViewProductList.AllowUserToDeleteRows = false;
-            this.dataGridViewProductList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dataGridViewUserClaims.AllowUserToAddRows = false;
+            this.dataGridViewUserClaims.AllowUserToDeleteRows = false;
+            this.dataGridViewUserClaims.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewProductList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
-            this.dataGridViewProductList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewProductList.Location = new System.Drawing.Point(339, 40);
-            this.dataGridViewProductList.Name = "dataGridViewProductList";
-            this.dataGridViewProductList.ReadOnly = true;
-            this.dataGridViewProductList.RowTemplate.Height = 25;
-            this.dataGridViewProductList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewProductList.Size = new System.Drawing.Size(555, 491);
-            this.dataGridViewProductList.TabIndex = 36;
+            this.dataGridViewUserClaims.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
+            this.dataGridViewUserClaims.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewUserClaims.Location = new System.Drawing.Point(339, 40);
+            this.dataGridViewUserClaims.Name = "dataGridViewUserClaims";
+            this.dataGridViewUserClaims.ReadOnly = true;
+            this.dataGridViewUserClaims.RowTemplate.Height = 25;
+            this.dataGridViewUserClaims.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewUserClaims.Size = new System.Drawing.Size(555, 491);
+            this.dataGridViewUserClaims.TabIndex = 36;
             // 
             // groupBoxOperationClaim
             // 
@@ -119,6 +119,31 @@ namespace WindowsForm.Forms.AdminForms
             this.groupBoxOperationClaim.Size = new System.Drawing.Size(297, 189);
             this.groupBoxOperationClaim.TabIndex = 40;
             this.groupBoxOperationClaim.TabStop = false;
+            // 
+            // buttonDuzelt
+            // 
+            this.buttonDuzelt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDuzelt.Image = global::WindowsForm.Properties.Resources.editBlack_16px_2;
+            this.buttonDuzelt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonDuzelt.Location = new System.Drawing.Point(108, 148);
+            this.buttonDuzelt.Name = "buttonDuzelt";
+            this.buttonDuzelt.Size = new System.Drawing.Size(88, 25);
+            this.buttonDuzelt.TabIndex = 26;
+            this.buttonDuzelt.Text = "Düzəlt";
+            this.buttonDuzelt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonDuzelt.UseVisualStyleBackColor = true;
+            // 
+            // ButtonSalesFormSil
+            // 
+            this.ButtonSalesFormSil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonSalesFormSil.Image = ((System.Drawing.Image)(resources.GetObject("ButtonSalesFormSil.Image")));
+            this.ButtonSalesFormSil.Location = new System.Drawing.Point(201, 148);
+            this.ButtonSalesFormSil.Name = "ButtonSalesFormSil";
+            this.ButtonSalesFormSil.Size = new System.Drawing.Size(88, 25);
+            this.ButtonSalesFormSil.TabIndex = 25;
+            this.ButtonSalesFormSil.Text = "Sil";
+            this.ButtonSalesFormSil.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ButtonSalesFormSil.UseVisualStyleBackColor = true;
             // 
             // buttonTemizle
             // 
@@ -143,6 +168,7 @@ namespace WindowsForm.Forms.AdminForms
             this.buttonElaveEt.Text = "Əlavə et";
             this.buttonElaveEt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonElaveEt.UseVisualStyleBackColor = true;
+            this.buttonElaveEt.Click += new System.EventHandler(this.buttonElaveEt_Click);
             // 
             // label3
             // 
@@ -194,31 +220,6 @@ namespace WindowsForm.Forms.AdminForms
             this.textBoxId.Size = new System.Drawing.Size(181, 22);
             this.textBoxId.TabIndex = 1;
             // 
-            // buttonDuzelt
-            // 
-            this.buttonDuzelt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDuzelt.Image = global::WindowsForm.Properties.Resources.editBlack_16px_2;
-            this.buttonDuzelt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonDuzelt.Location = new System.Drawing.Point(108, 148);
-            this.buttonDuzelt.Name = "buttonDuzelt";
-            this.buttonDuzelt.Size = new System.Drawing.Size(88, 25);
-            this.buttonDuzelt.TabIndex = 26;
-            this.buttonDuzelt.Text = "Düzəlt";
-            this.buttonDuzelt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonDuzelt.UseVisualStyleBackColor = true;
-            // 
-            // ButtonSalesFormSil
-            // 
-            this.ButtonSalesFormSil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonSalesFormSil.Image = ((System.Drawing.Image)(resources.GetObject("ButtonSalesFormSil.Image")));
-            this.ButtonSalesFormSil.Location = new System.Drawing.Point(201, 148);
-            this.ButtonSalesFormSil.Name = "ButtonSalesFormSil";
-            this.ButtonSalesFormSil.Size = new System.Drawing.Size(88, 25);
-            this.ButtonSalesFormSil.TabIndex = 25;
-            this.ButtonSalesFormSil.Text = "Sil";
-            this.ButtonSalesFormSil.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ButtonSalesFormSil.UseVisualStyleBackColor = true;
-            // 
             // OperationClaimForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -228,12 +229,12 @@ namespace WindowsForm.Forms.AdminForms
             this.Controls.Add(this.pictureBoxRefresh);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.textBoxAxtar);
-            this.Controls.Add(this.dataGridViewProductList);
+            this.Controls.Add(this.dataGridViewUserClaims);
             this.Name = "OperationClaimForm";
             this.Text = "OperationClaimForm";
             this.Load += new System.EventHandler(this.OperationClaimForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUserClaims)).EndInit();
             this.groupBoxOperationClaim.ResumeLayout(false);
             this.groupBoxOperationClaim.PerformLayout();
             this.ResumeLayout(false);
@@ -246,7 +247,7 @@ namespace WindowsForm.Forms.AdminForms
         private System.Windows.Forms.PictureBox pictureBoxRefresh;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textBoxAxtar;
-        private System.Windows.Forms.DataGridView dataGridViewProductList;
+        private System.Windows.Forms.DataGridView dataGridViewUserClaims;
         private System.Windows.Forms.GroupBox groupBoxOperationClaim;
         private System.Windows.Forms.Button buttonTemizle;
         private System.Windows.Forms.Button buttonElaveEt;

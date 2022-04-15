@@ -4,13 +4,14 @@ using Core.Aspects.Autofac.Caching;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs.UserOperationClaimDtos;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Business.Concrete
 {
-    class UserOperationClaimForFormsManager : IUserOperationClaimForFormsService
+    public class UserOperationClaimForFormsManager : IUserOperationClaimForFormsService
     {
         IUserOperationClaimForFormsDal _userOperationClaimForFormsDal;
 
@@ -70,8 +71,12 @@ namespace Business.Concrete
             return new SuccessDataResult<UserOperationClaimForForms>(get, UserOperationClaimForFormsMessages.Found);
         }
 
+        //Dtos
+        public IDataResult<List<UserOperationClaimDto>> GetAllUserOperationClaimDtoDetails()
+        {
 
-       
-
+            List<UserOperationClaimDto> get = _userOperationClaimForFormsDal.GetUserOperationClaimDetails();
+            return new SuccessDataResult<List<UserOperationClaimDto>>(get, UserOperationClaimForFormsMessages.GetAll);
+        }
     }
 }

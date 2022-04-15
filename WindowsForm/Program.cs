@@ -36,12 +36,13 @@ namespace WindowsForm
 
 
             //Application.Run(new Forms.StatisticForProductForm());
-            Application.Run(new Forms.AdminForms.AdminVerificationForm(new UserManager(new EfUserDal())
-                
- 
-                ));
-           //Application.Run(new Forms.CustomerPaymentForm()) ;
-           
+            //Application.Run(new Forms.AdminForms.AdminVerificationForm(new UserManager(new EfUserDal())));
+            Application.Run(new Forms.AdminForms.OperationClaimForm(new UserManager(new EfUserDal())
+                            ,new OperationClaimForFormsManager(new EfOperationClaimForFormsDal())
+                            ,new UserOperationClaimForFormsManager(new EfUserOperationClaimForFormsDal())
+                            ));
+            //Application.Run(new Forms.CustomerPaymentForm()) ;
+
 
         }
     }

@@ -64,7 +64,7 @@ namespace WindowsForm.Forms.AdminForms
             FormsMessage.SuccessMessage(result.Message);
             OperationClaimForm operationClaimForm = new OperationClaimForm(new UserManager(new EfUserDal())
                 , new OperationClaimForFormsManager(new EfOperationClaimForFormsDal())
-
+                ,new UserOperationClaimForFormsManager(new EfUserOperationClaimForFormsDal())
                 );
            
             this.Hide();

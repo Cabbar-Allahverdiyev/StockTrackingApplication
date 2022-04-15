@@ -1,5 +1,6 @@
 ﻿using Core.Utilities.Results;
 using Entities.Concrete;
+using Entities.DTOs.UserOperationClaimDtos;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,5 +16,6 @@ namespace Business.Abstract
         IDataResult<UserOperationClaimForForms> GetById(int id);
 
         IDataResult<UserOperationClaimForForms> GetByUserId(int userId);
+        IDataResult<List<UserOperationClaimDto>> GetAllUserOperationClaimDtoDetails();
     }
 }
