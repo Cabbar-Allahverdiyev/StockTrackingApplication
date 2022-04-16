@@ -9,6 +9,7 @@ using Core.Utilities.Business;
 using Core.Utilities.Results;
 using Core.Utilities.Security.Hashing;
 using DataAccess.Abstract;
+using Entities.Concrete;
 using Entities.DTOs.UserDtos;
 using System;
 using System.Collections.Generic;
@@ -163,8 +164,50 @@ namespace Business.Concrete
             return new SuccessDataResult<List<OperationClaim>>(get);
         }
 
+        [CacheAspect]
+        public IDataResult<List<OperationClaimForForms>> GetClaimsForForms(User user)
+        {
+            var get = _userDal.GetClaimsForForms(user);
+            if (get == null)
+            {
+                return new ErrorDataResult<List<OperationClaimForForms>>(UserMessages.GetClaimsIsNull);
+            }
+            return new SuccessDataResult<List<OperationClaimForForms>>(get);
+        }
 
+       
 
+        public IResult CheckUserOperationClaimIsBossAndAdminByUserIdForForms(int userId)
+        {
+            User getUser = GetById(userId).Data;
+            IDataResult<List<OperationClaimForForms>> getClaims = GetClaimsForForms(getUser);
+            foreach (OperationClaimForForms claim in getClaims.Data)
+            {
+                if (claim.Name=="Boss"||claim.Name=="Admin")
+                {
+                    return new SuccessResult();
+                }
+            }
+            return new ErrorResult(UserMessages.UserDoesNotHaveAdminPermission);
+        }
+
+        public IResult CheckUserOperationClaimIsBossByUserIdForForms(int userId)
+        {
+            User getUser = GetById(userId).Data;
+            IDataResult<List<OperationClaimForForms>> getClaims = GetClaimsForForms(getUser);
+            foreach (OperationClaimForForms claim in getClaims.Data)
+            {
+                if (claim.Name == "Boss")
+                {
+                    return new SuccessResult();
+                }
+
+            }
+            return new ErrorResult(UserMessages.UserDoesNotHaveBossPermission);
+        }
+       
+
+      
 
 
         public IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string password, string passwordRepeat)

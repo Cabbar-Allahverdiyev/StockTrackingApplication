@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Business.Concrete;
+using DataAccess.Concrete.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
@@ -110,7 +112,9 @@ namespace WindowsForm.MyControls
             DialogResult dialogResult = MessageBox.Show(message, title, messageButtons);
             if (dialogResult == DialogResult.Yes)
             {
-                LoginForm loginForm = new LoginForm();
+                LoginForm loginForm = new LoginForm(new UserOperationClaimForFormsManager(new EfUserOperationClaimForFormsDal())
+                   , new UserManager(new EfUserDal()));
+                           
                 form.Hide();
                 loginForm.Show();
                 return;

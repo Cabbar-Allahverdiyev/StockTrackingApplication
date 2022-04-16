@@ -32,5 +32,8 @@ namespace Business.Constants.Messages
         public static string EmailAvailable="Bu emailda artıq istifadəçi mövcuddur, zəhmət olmasa başqa email sınayın";
         public static string PhoneNumberFormatIsNotSuitable="Telefon nömrəsi formata uyğun deyil (məsələn : 0554926939)";
         public static string PhoneNumberAvailable = "Bu nömrə artıq sistemdə mövcuddur";
+
+        public static string UserDoesNotHaveBossPermission = "Bu istifadəçinin 'Boss' səlahiyyəti yoxdur!";
+        public static string UserDoesNotHaveAdminPermission = "Bu istifadəçinin 'Admin' səlahiyyəti yoxdur!";
     }
 }

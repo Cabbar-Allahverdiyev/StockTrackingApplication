@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Linq;
 using System.Text;
+using Entities.Concrete;
 
 namespace DataAccess.Concrete.EntityFramework
 {
@@ -55,6 +56,30 @@ namespace DataAccess.Concrete.EntityFramework
         public List<OperationClaim> GetClaims(User user)
         {
             throw new NotImplementedException();
+            //using (StockTrackingProjectContext context = new StockTrackingProjectContext())
+            //{
+            //    var result = from operationClaim in context.OperationClaims
+            //                 join userOperationClaim in context.UserOperationClaims
+            //                     on operationClaim.Id equals userOperationClaim.OperationClaimId
+            //                 where userOperationClaim.UserId == user.Id
+            //                 select new OperationClaim { Id = operationClaim.Id, Name = operationClaim.Name };
+            //    return result.ToList();
+
+            //}
+        }
+
+        public List<OperationClaimForForms> GetClaimsForForms(User user)
+        {
+            using (StockTrackingProjectContext context = new StockTrackingProjectContext())
+            {
+                var result = from operationClaim in context.OperationClaimsForForms
+                             join userOperationClaim in context.UserOperationClaimsForForms
+                                 on operationClaim.Id equals userOperationClaim.OperationClaimId
+                             where userOperationClaim.UserId == user.Id
+                             select new OperationClaimForForms { Id = operationClaim.Id, Name = operationClaim.Name };
+                return result.ToList();
+
+            }
         }
 
 

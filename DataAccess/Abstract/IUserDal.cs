@@ -1,5 +1,6 @@
 ﻿using Core.DataAccess;
 using Core.Entities.Concrete;
+using Entities.Concrete;
 using Entities.DTOs.UserDtos;
 using System;
 using System.Collections.Generic;
@@ -13,5 +14,6 @@ namespace DataAccess.Abstract
         List<UserDto> GetUserDetails(Expression<Func<UserDto, bool>> filter = null);
         UserDto GetUserDetail(int userId);
         List<OperationClaim> GetClaims(User user);
+        List<OperationClaimForForms> GetClaimsForForms(User user);
     }
 }

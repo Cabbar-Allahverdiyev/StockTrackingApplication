@@ -31,16 +31,17 @@ namespace WindowsForm
             // Application.Run(new Forms.Dashboard());
             //Application.Run(new Forms.UserForms.UserDashboard());
 
-            //Application.Run(new Forms.LoginForm());
+            Application.Run(new Forms.LoginForm(new UserOperationClaimForFormsManager(new EfUserOperationClaimForFormsDal())
+                   , new UserManager(new EfUserDal())));
 
 
 
             //Application.Run(new Forms.StatisticForProductForm());
             //Application.Run(new Forms.AdminForms.AdminVerificationForm(new UserManager(new EfUserDal())));
-            Application.Run(new Forms.AdminForms.OperationClaimForm(new UserManager(new EfUserDal())
-                            ,new OperationClaimForFormsManager(new EfOperationClaimForFormsDal())
-                            ,new UserOperationClaimForFormsManager(new EfUserOperationClaimForFormsDal())
-                            ));
+            //Application.Run(new Forms.AdminForms.OperationClaimForm(new UserManager(new EfUserDal())
+            //                ,new OperationClaimForFormsManager(new EfOperationClaimForFormsDal())
+            //                ,new UserOperationClaimForFormsManager(new EfUserOperationClaimForFormsDal())
+            //                ));
             //Application.Run(new Forms.CustomerPaymentForm()) ;
 
 

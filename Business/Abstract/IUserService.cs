@@ -1,6 +1,7 @@
 ﻿using Core.Entities.Concrete;
 using Core.Utilities;
 using Core.Utilities.Results;
+using Entities.Concrete;
 using Entities.DTOs.UserDtos;
 using System;
 using System.Collections.Generic;
@@ -17,11 +18,14 @@ namespace Business.Abstract
         IDataResult<User> GetById(int id);
 
        IDataResult<List<OperationClaim>> GetClaims(User user);
+        IDataResult<List<OperationClaimForForms>> GetClaimsForForms(User user);
+        IResult CheckUserOperationClaimIsBossByUserIdForForms(int userId);
+        IResult CheckUserOperationClaimIsBossAndAdminByUserIdForForms(int userId);
 
         IDataResult<User> GetByMail(string email);
         IResult UserExists(string email);
-        
-        
+
+       
 
         //DTOs
         IDataResult<List<UserDto>> GetUserDetails();

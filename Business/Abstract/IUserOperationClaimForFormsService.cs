@@ -17,5 +17,6 @@ namespace Business.Abstract
 
         IDataResult<UserOperationClaimForForms> GetByUserId(int userId);
         IDataResult<List<UserOperationClaimDto>> GetAllUserOperationClaimDtoDetails();
+        IDataResult<List<UserOperationClaimForForms>> GetAllOperationClaimByUserId(int userId);
     }
 }

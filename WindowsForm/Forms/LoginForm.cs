@@ -1,8 +1,10 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
 using Business.Constants.Messages;
 using Core.Entities.Concrete;
 using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
+using Entities.Concrete;
 using Entities.DTOs.UserDtos;
 using System;
 using System.Collections.Generic;
@@ -22,14 +24,17 @@ namespace WindowsForm.Forms
 {
     public partial class LoginForm : Form
     {
-        UserManager _userManager = new UserManager(new EfUserDal());
+        // UserManager _userManager = new UserManager(new EfUserDal());
+        IUserService _userService;
+        IUserOperationClaimForFormsService _userOperationClaimForFormsService;
         public static int UserId;
 
-        public LoginForm()
+        public LoginForm(IUserOperationClaimForFormsService userOperationClaimForFormsService, IUserService userService)
         {
+            _userOperationClaimForFormsService = userOperationClaimForFormsService;
+            _userService = userService;
             InitializeComponent();
             this.BackColor = Color.FromArgb(41, 128, 185);
-
 
         }
 
@@ -54,7 +59,7 @@ namespace WindowsForm.Forms
         {
             try
             {
-               // string thisComputerMacAddress = "28924A521735"; //Murad IphoneShop
+                // string thisComputerMacAddress = "28924A521735"; //Murad IphoneShop
                 string thisComputerMacAddress = "E8039AB2FF83"; //Menim
                 if (thisComputerMacAddress != GetMacAddress())
                 {
@@ -72,22 +77,24 @@ namespace WindowsForm.Forms
                 userForLoginDto.Email = textBoxEmail.Text;
                 userForLoginDto.Password = textBoxPassword.Text;
 
-                IDataResult<User> userToLogin = _userManager.Login(userForLoginDto);
+                IDataResult<User> userToLogin = _userService.Login(userForLoginDto);
                 if (!userToLogin.Success)
                 {
                     FormsMessage.ErrorMessage(userToLogin.Message);
                     return;
                 }
 
-                User user = _userManager.GetByMail(userForLoginDto.Email).Data;
+                User user = _userService.GetByMail(userForLoginDto.Email).Data;
                 UserId = user.Id;
-                if (user.Id == 3002 || user.Id == 2004)
+                IResult getUserClaims = _userService.CheckUserOperationClaimIsBossAndAdminByUserIdForForms(user.Id);
+                if (getUserClaims.Success)
                 {
                     Dashboard dashboard = new Dashboard();
                     this.Hide();
                     dashboard.Show();
                     return;
                 }
+
                 UserDashboard userDashboard = new UserDashboard();
                 this.Hide();
                 userDashboard.Show();
