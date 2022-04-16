@@ -12,6 +12,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Linq;
 using System.Net.NetworkInformation;
 using System.Reflection;
 using System.Text;
@@ -27,6 +28,8 @@ namespace WindowsForm.Forms
         // UserManager _userManager = new UserManager(new EfUserDal());
         IUserService _userService;
         IUserOperationClaimForFormsService _userOperationClaimForFormsService;
+        MacAddressManager _macAddressManager = new MacAddressManager(new EfMacAddressDal());
+
         public static int UserId;
 
         public LoginForm(IUserOperationClaimForFormsService userOperationClaimForFormsService, IUserService userService)
@@ -60,10 +63,11 @@ namespace WindowsForm.Forms
             try
             {
                 // string thisComputerMacAddress = "28924A521735"; //Murad IphoneShop
-                string thisComputerMacAddress = "E8039AB2FF83"; //Menim
+                //string thisComputerMacAddress = "E8039AB2FF83"; //Menim
+                string thisComputerMacAddress = _macAddressManager.GetAll().Data.SingleOrDefault().Address;
                 if (thisComputerMacAddress != GetMacAddress())
                 {
-
+                    FormsMessage.ErrorMessage("Əlaqə vasitələri səhifənin aşağısındadır");
                     FormsMessage.ErrorMessage("Zəhmət olmasa istehsalçı ilə əlaqə qurun");
                     FormsMessage.ErrorMessage("Bu kompyuterin icazəsi yoxdur");
                     return;
@@ -100,6 +104,14 @@ namespace WindowsForm.Forms
                 userDashboard.Show();
 
 
+            }
+            catch(NullReferenceException ex)
+            {
+                FormsMessage.ErrorMessage("Əlaqə vasitələri səhifənin aşağısındadır");
+                FormsMessage.ErrorMessage("Zəhmət olmasa istehsalçı ilə əlaqə qurun");
+                FormsMessage.ErrorMessage("Bu kompyuterin icazəsi yoxdur");
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
+                return;
             }
             catch (Exception ex)
             {

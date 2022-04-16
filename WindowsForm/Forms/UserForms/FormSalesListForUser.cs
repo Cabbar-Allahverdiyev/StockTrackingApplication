@@ -23,9 +23,9 @@ namespace WindowsForm.Forms.UserForms
 {
     public partial class FormSalesListForUser : Form
     {
-       // public static bool QrCodeIsSuccess = false;
+        // public static bool QrCodeIsSuccess = false;
 
-        SaleWinFormManager _saleWinFormManager = new SaleWinFormManager(new EfSaleWinFormDal(),new ProductManager (new EfProductDal()));
+        SaleWinFormManager _saleWinFormManager = new SaleWinFormManager(new EfSaleWinFormDal(), new ProductManager(new EfProductDal()));
         ProductManager _productManager = new ProductManager(new EfProductDal());
         SaleValidationTool saleValidationTool = new SaleValidationTool();
         MyControl myControl = new MyControl();
@@ -73,18 +73,11 @@ namespace WindowsForm.Forms.UserForms
                         if (item.SatisinVeziyyeti == true)
                         {
                             saleTotal += item.Cem;
-
-                            //Product getProduct = _productManager.GetById(item.ProductId).Data;
-                            //for (int i = 1; i < item.Miqdar + 1; i++)
-                            //{
-                            //    incomeTotal += (item.SatilanQiymet - getProduct.PurchasePrice);
-                            //}
                         }
 
                     }
 
                     labelTotal.Text = saleTotal.ToString();
-
 
                     dataGridViewSaleList.DataSource = dataMonth;
                     return;
@@ -100,20 +93,11 @@ namespace WindowsForm.Forms.UserForms
                         if (item.SatisinVeziyyeti == true)
                         {
                             saleTotal += item.Cem;
-
-                            // Product getProduct = _productManager.GetById(item.ProductId).Data;
-                            //for (int i = 1; i < item.Miqdar + 1; i++)
-                            //{
-                            //    incomeTotal += (item.SatilanQiymet - getProduct.PurchasePrice);
-                            //}
                         }
                     }
 
                     labelTotal.Text = saleTotal.ToString();
-                    //if (staticUseraId == 3002 || staticUseraId == 2004)
-                    //{
-                    //    labelIncome.Text = incomeTotal.ToString();
-                    //}
+
                     dataGridViewSaleList.DataSource = dataYear;
                     return;
                 }
@@ -128,18 +112,10 @@ namespace WindowsForm.Forms.UserForms
                         if (item.SatisinVeziyyeti == true)
                         {
                             saleTotal += item.Cem;
-                            //Product getProduct = _productManager.GetById(item.ProductId).Data;
-                            //for (int i = 1; i < item.Miqdar + 1; i++)
-                            //{
-                            //    incomeTotal += (item.SatilanQiymet - getProduct.PurchasePrice);
-                            //}
+
                         }
                     }
                     labelTotal.Text = saleTotal.ToString();
-                    //if (staticUseraId == 3002 || staticUseraId == 2004)
-                    //{
-                    //    labelIncome.Text = incomeTotal.ToString();
-                    //}
                     dataGridViewSaleList.DataSource = dataMonth;
                     return;
                 }
@@ -151,18 +127,9 @@ namespace WindowsForm.Forms.UserForms
                     if (item.SatisinVeziyyeti == true)
                     {
                         saleTotal += item.Cem;
-                        //Product getProduct = _productManager.GetById(item.ProductId).Data;
-                        //for (int i = 1; i < item.Miqdar + 1; i++)
-                        //{
-                        //    incomeTotal += (item.SatilanQiymet - getProduct.PurchasePrice);
-                        //}
                     }
                 }
                 labelTotal.Text = saleTotal.ToString();
-                //if (staticUseraId == 3002 || staticUseraId == 2004)
-                //{
-                //    labelIncome.Text = incomeTotal.ToString();
-                //}
                 dataGridViewSaleList.DataSource = data;
             }
             catch (Exception ex)
@@ -174,7 +141,6 @@ namespace WindowsForm.Forms.UserForms
 
         private void buttonTetbiqEt_Click(object sender, EventArgs e)
         {
-            //QrCodeIsSuccess = false;
             UserAuthorization.QrCodeIsSuccess = false;
             if (checkBoxSatisLegvEdilsin.Checked == false)
             {
@@ -183,7 +149,7 @@ namespace WindowsForm.Forms.UserForms
             }
             AdminValidationForm validationForm = new AdminValidationForm();
             validationForm.ShowDialog();
-           
+
 
             if (UserAuthorization.QrCodeIsSuccess == false)
             {
@@ -199,7 +165,7 @@ namespace WindowsForm.Forms.UserForms
                     return;
                 }
                 sale.Id = int.Parse(textBoxSaleId.Text);
-               
+
                 IResult canceledSale;
                 if (checkBoxSatisLegvEdilsin.Checked == true)
                 {
@@ -213,7 +179,7 @@ namespace WindowsForm.Forms.UserForms
                     FormsMessage.SuccessMessage(canceledSale.Message);
                     TextBoxController.ClearAllTextBoxesByGroupBox(groupBoxCancelSale);
                     checkBoxSatisLegvEdilsin.Checked = false;
-                
+
                 }
 
                 SaleListRefesh();
@@ -223,8 +189,6 @@ namespace WindowsForm.Forms.UserForms
                 FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
                 return;
             }
-
-
         }
 
 
@@ -271,7 +235,7 @@ namespace WindowsForm.Forms.UserForms
         {
             SaleWinFormDetailDtoSearch detailSearch = new SaleWinFormDetailDtoSearch();
             List<SaleWinFormDto> data = _saleWinFormManager.GetAllSaleWinFormDtoDetails().Data;
-            detailSearch.GetDataWriteGridView(data,textBoxAxtar.Text,dataGridViewSaleList);
+            detailSearch.GetDataWriteGridView(data, textBoxAxtar.Text, dataGridViewSaleList);
         }
 
         private void label12_Click(object sender, EventArgs e)

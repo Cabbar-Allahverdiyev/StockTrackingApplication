@@ -85,13 +85,14 @@ namespace WindowsForm.Forms.AdminForms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(297, 147);
+            this.ClientSize = new System.Drawing.Size(297, 113);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.textBoxLogin);
             this.Controls.Add(this.buttonOk);
             this.Name = "AdminVerificationForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminVerificationForm";
             this.Load += new System.EventHandler(this.AdminVerificationForm_Load);
             this.ResumeLayout(false);

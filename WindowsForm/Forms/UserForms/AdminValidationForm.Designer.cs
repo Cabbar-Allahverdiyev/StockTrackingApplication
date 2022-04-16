@@ -47,6 +47,7 @@ namespace WindowsForm.Forms.UserForms
             this.ClientSize = new System.Drawing.Size(264, 42);
             this.Controls.Add(this.textBox1);
             this.Name = "AdminValidationForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminValidationForm";
             this.ResumeLayout(false);
             this.PerformLayout();

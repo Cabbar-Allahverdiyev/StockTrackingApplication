@@ -386,7 +386,7 @@ namespace WindowsForm.Forms.UserForms
 
         private void musteriOdenisleriToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new CustomerPaymentForm(), sender);
+            OpenChildForm(new CustomerPaymentForm(new UserManager(new EfUserDal())), sender);
         }
 
 

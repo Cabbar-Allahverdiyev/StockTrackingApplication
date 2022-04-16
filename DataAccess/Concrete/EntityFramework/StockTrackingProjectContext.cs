@@ -13,7 +13,7 @@ namespace DataAccess.Concrete.EntityFramework
         {
             //optionsBuilder.UseSqlServer(@"Server=DESKTOP-N8AGODS\MSSQLSERVER66;Database=StockTracking;Trusted_Connection=true");
             optionsBuilder.UseSqlServer(@"Server=(localdb)\MsSqlLocalDb;Database=StockTracking;Trusted_Connection=true"); //menim
-                                                                                                                          //optionsBuilder.UseSqlServer(@"Server=DESKTOP-1FKP1NM\SQLEXPRESS;Database=StockTracking;Trusted_Connection=true"); //Murad IphoneShop
+           //optionsBuilder.UseSqlServer(@"Server=DESKTOP-1FKP1NM\SQLEXPRESS;Database=StockTracking;Trusted_Connection=true"); //Murad IphoneShop
         }
 
         public DbSet<User> Users { get; set; }
@@ -30,7 +30,8 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<BonusCard> BonusCards { get; set; }
         public DbSet<Debt> Debts { get; set; }
         public DbSet<OperationClaimForForms> OperationClaimsForForms { get; set; }
-        public DbSet<UserOperationClaimForForms> UserOperationClaimsForForms { get; set; } 
+        public DbSet<UserOperationClaimForForms> UserOperationClaimsForForms { get; set; }
+        public DbSet<MacAddress> MacAdresses { get; set; }
 
         public DbSet<BarcodeNumber> BarcodeNumbers { get; set; }
     }

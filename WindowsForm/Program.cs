@@ -1,3 +1,4 @@
+using Business.Abstract;
 using Business.Concrete;
 using Business.Constants.Messages;
 using Core.Utilities.Security.JWT;
@@ -19,20 +20,20 @@ namespace WindowsForm
         ///  The main entry point for the application.
         /// </summary>
         /// 
-
-
-
+        
+     
         [STAThread]
         static void Main()
         {
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            // Application.Run(new Forms.Dashboard());
+            // Application.Run(new Forms.FormNese());
             //Application.Run(new Forms.UserForms.UserDashboard());
 
             Application.Run(new Forms.LoginForm(new UserOperationClaimForFormsManager(new EfUserOperationClaimForFormsDal())
                    , new UserManager(new EfUserDal())));
+
 
 
 

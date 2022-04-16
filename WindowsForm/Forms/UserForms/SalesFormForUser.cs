@@ -493,14 +493,16 @@ namespace WindowsForm.Forms.UserForms
 
         private void buttonAxtar_Click(object sender, EventArgs e)
         {
-            SalesForm salesForm = new SalesForm(new CategoryManager(new EfCategoryDal())
-                                         , new BrandManager(new EfBrandDal())
-                                         , new SupplierManager(new EfSupplierDal())
-                                         , new ProductManager(new EfProductDal())
-                                         , new CartManager(new EfCartDal())
-                                         , new CustomerManager(new EfCustomerDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()))
-                                         , new SaleWinFormManager(new EfSaleWinFormDal(), new ProductManager(new EfProductDal()))
-                                         , new DebtManager(new EfDebtDal(), new CustomerBalanceManager(new EfCustomerBalanceDal())));
+        //    SalesForm salesForm = new SalesForm(new CategoryManager(new EfCategoryDal())
+        //                                 , new BrandManager(new EfBrandDal())
+        //                                 , new SupplierManager(new EfSupplierDal())
+        //                                 , new ProductManager(new EfProductDal())
+        //                                 , new CartManager(new EfCartDal())
+        //                                 , new CustomerManager(new EfCustomerDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()))
+        //                                 , new SaleWinFormManager(new EfSaleWinFormDal(), new ProductManager(new EfProductDal()))
+        //                                 , new DebtManager(new EfDebtDal(), new CustomerBalanceManager(new EfCustomerBalanceDal())));
+             SalesForm salesForm = new SalesForm(_categoryService,_brandService,_supplierService,_productService,_cartService
+                 ,_customerService,_saleWinFormService,_debtService);
 
             salesForm.ComboBoxSelectedValue(dataGridViewProductList, comboBoxCategoryList.Text, comboBoxSupplierList.Text, comboBoxBrandList.Text);
         }

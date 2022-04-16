@@ -57,7 +57,8 @@ namespace WindowsForm.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Alert("Məlumat", AlertForm.EnumType.Info);
+            string path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            this.Alert("Məlumat " +path, AlertForm.EnumType.Info);
         }
 
         private void button1_Click(object sender, EventArgs e)

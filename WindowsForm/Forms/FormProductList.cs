@@ -133,19 +133,6 @@ namespace WindowsForm.Forms
             //}
         }
 
-        private void ChangeTheColorOfTheSoughtValue(int columnIndex)
-        {
-            string searchValue = textBoxAxtar.Text;
-            DataGridViewCell cell = GetCellWhereTextExistsInGridView(textBoxAxtar.Text, dataGridViewFormPrdouctList, columnIndex);
-            if (cell != null)
-            {
-                cell.Style = new DataGridViewCellStyle { ForeColor = Color.Red };
-            }
-            else
-            {
-                FormsMessage.ErrorMessage(ProductMessages.ProductNotFound);
-            }
-        }
 
         private DataGridViewCell GetCellWhereTextExistsInGridView(string searchText, DataGridView dataGridView, int columnIndex)
         {

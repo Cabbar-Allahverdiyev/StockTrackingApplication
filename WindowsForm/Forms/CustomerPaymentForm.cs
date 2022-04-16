@@ -20,6 +20,7 @@ using WindowsForm.Core.Constants.FormsAuthorization.User;
 using WindowsForm.Utilities.Search.Concrete.CustomerPaymentSearch;
 using System.Reflection;
 using Entities.DTOs.CustomerPaymentDtos;
+using Business.Abstract;
 
 namespace WindowsForm.Forms
 {
@@ -29,12 +30,17 @@ namespace WindowsForm.Forms
         CustomerManager _customerManager = new CustomerManager(new EfCustomerDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()));
         CustomerPaymentValidationTool validationTool = new CustomerPaymentValidationTool();
 
-        public CustomerPaymentForm()
+        IUserService _userService;
+
+
+        public CustomerPaymentForm(IUserService userService)
         {
+            _userService = userService;
             InitializeComponent();
             CustomerPaymentListRefresh();
             //CustomerGetComboBox();
             checkBoxOdenisLegvEdilsin.Checked = false;
+            
         }
 
         //Click-------------->
@@ -93,7 +99,8 @@ namespace WindowsForm.Forms
 
                 if (checkBoxOdenisLegvEdilsin.Checked == true)
                 {
-                    if (LoginForm.UserId != 3002 && LoginForm.UserId != 2004) //
+                    IResult checkedClaim = _userService.CheckUserOperationClaimIsBossAndAdminByUserIdForForms(LoginForm.UserId);
+                    if (!checkedClaim.Success)
                     {
                         UserAuthorization.QrCodeIsSuccess = false;
                         AdminValidationForm validationForm = new AdminValidationForm();
@@ -106,7 +113,6 @@ namespace WindowsForm.Forms
                             return;
                         }
                     }
-
 
                     getPayment.Data.PaymentStatus = false;
                     IResult result = _paymentManager.CancelPayment(getPayment.Data);
