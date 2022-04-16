@@ -43,6 +43,8 @@ namespace WindowsForm.Forms
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.panelTitleBar = new System.Windows.Forms.Panel();
+            this.labelFirstName = new System.Windows.Forms.Label();
+            this.labelLastName = new System.Windows.Forms.Label();
             this.buttonMinimized = new System.Windows.Forms.Button();
             this.buttonMaximized = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
@@ -85,8 +87,7 @@ namespace WindowsForm.Forms
             this.myDMOther = new WindowsForm.MyControls.MyDropdownMenu(this.components);
             this.musterilerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.musteriOdenisleriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.labelFirstName = new System.Windows.Forms.Label();
-            this.labelLastName = new System.Windows.Forms.Label();
+            this.selahiyyetlerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelTitleBar.SuspendLayout();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
@@ -320,6 +321,28 @@ namespace WindowsForm.Forms
             this.panelTitleBar.TabIndex = 4;
             this.panelTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDown);
             // 
+            // labelFirstName
+            // 
+            this.labelFirstName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFirstName.AutoSize = true;
+            this.labelFirstName.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelFirstName.ForeColor = System.Drawing.Color.Black;
+            this.labelFirstName.Location = new System.Drawing.Point(649, 24);
+            this.labelFirstName.Name = "labelFirstName";
+            this.labelFirstName.Size = new System.Drawing.Size(0, 16);
+            this.labelFirstName.TabIndex = 11;
+            // 
+            // labelLastName
+            // 
+            this.labelLastName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelLastName.AutoSize = true;
+            this.labelLastName.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelLastName.ForeColor = System.Drawing.Color.Black;
+            this.labelLastName.Location = new System.Drawing.Point(649, 40);
+            this.labelLastName.Name = "labelLastName";
+            this.labelLastName.Size = new System.Drawing.Size(0, 16);
+            this.labelLastName.TabIndex = 10;
+            // 
             // buttonMinimized
             // 
             this.buttonMinimized.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -532,62 +555,62 @@ namespace WindowsForm.Forms
             this.myDMProduct.MenuItemTextColor = System.Drawing.Color.DimGray;
             this.myDMProduct.Name = "myDMProduct";
             this.myDMProduct.PrimaryColor = System.Drawing.Color.MediumSlateBlue;
-            this.myDMProduct.Size = new System.Drawing.Size(208, 180);
+            this.myDMProduct.Size = new System.Drawing.Size(200, 180);
             // 
             // məhsullarıSıralaToolStripMenuItem
             // 
             this.məhsullarıSıralaToolStripMenuItem.Name = "məhsullarıSıralaToolStripMenuItem";
-            this.məhsullarıSıralaToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.məhsullarıSıralaToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.məhsullarıSıralaToolStripMenuItem.Text = "Məhsulları sırala";
             this.məhsullarıSıralaToolStripMenuItem.Click += new System.EventHandler(this.məhsullarıSıralaToolStripMenuItem_Click);
             // 
             // məhsulSilToolStripMenuItem
             // 
             this.məhsulSilToolStripMenuItem.Name = "məhsulSilToolStripMenuItem";
-            this.məhsulSilToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.məhsulSilToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.məhsulSilToolStripMenuItem.Text = "Məhsul sil";
             this.məhsulSilToolStripMenuItem.Click += new System.EventHandler(this.məhsulSilToolStripMenuItem_Click);
             // 
             // məhsulYeniləToolStripMenuItem
             // 
             this.məhsulYeniləToolStripMenuItem.Name = "məhsulYeniləToolStripMenuItem";
-            this.məhsulYeniləToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.məhsulYeniləToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.məhsulYeniləToolStripMenuItem.Text = "Məhsul yenilə";
             this.məhsulYeniləToolStripMenuItem.Click += new System.EventHandler(this.məhsulYeniləToolStripMenuItem_Click);
             // 
             // məhsulƏlavəEtToolStripMenuItem
             // 
             this.məhsulƏlavəEtToolStripMenuItem.Name = "məhsulƏlavəEtToolStripMenuItem";
-            this.məhsulƏlavəEtToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.məhsulƏlavəEtToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.məhsulƏlavəEtToolStripMenuItem.Text = "Məhsul əlavə et";
             this.məhsulƏlavəEtToolStripMenuItem.Click += new System.EventHandler(this.məhsulƏlavəEtToolStripMenuItem_Click);
             // 
             // markalarToolStripMenuItem
             // 
             this.markalarToolStripMenuItem.Name = "markalarToolStripMenuItem";
-            this.markalarToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.markalarToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.markalarToolStripMenuItem.Text = "Marka Əlavə et";
             this.markalarToolStripMenuItem.Click += new System.EventHandler(this.markalarToolStripMenuItem_Click);
             // 
             // markalarıYeniləVəSilToolStripMenuItem
             // 
             this.markalarıYeniləVəSilToolStripMenuItem.Name = "markalarıYeniləVəSilToolStripMenuItem";
-            this.markalarıYeniləVəSilToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.markalarıYeniləVəSilToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.markalarıYeniləVəSilToolStripMenuItem.Text = "Markaları yenilə və sil";
             this.markalarıYeniləVəSilToolStripMenuItem.Click += new System.EventHandler(this.markalarıYeniləVəSilToolStripMenuItem_Click);
             // 
             // tedarukculeriElaveEtToolStripMenuItem
             // 
             this.tedarukculeriElaveEtToolStripMenuItem.Name = "tedarukculeriElaveEtToolStripMenuItem";
-            this.tedarukculeriElaveEtToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.tedarukculeriElaveEtToolStripMenuItem.Text = "Tedarukculeri elave et";
+            this.tedarukculeriElaveEtToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.tedarukculeriElaveEtToolStripMenuItem.Text = "Tedarikcileri elave et";
             this.tedarukculeriElaveEtToolStripMenuItem.Click += new System.EventHandler(this.tedarukculeriElaveEtToolStripMenuItem_Click);
             // 
             // tedarukculeriYenileVeSilToolStripMenuItem
             // 
             this.tedarukculeriYenileVeSilToolStripMenuItem.Name = "tedarukculeriYenileVeSilToolStripMenuItem";
-            this.tedarukculeriYenileVeSilToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.tedarukculeriYenileVeSilToolStripMenuItem.Text = "Tedarukculeri yenile ve sil";
+            this.tedarukculeriYenileVeSilToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.tedarukculeriYenileVeSilToolStripMenuItem.Text = "Tedarikcileri yenile ve sil";
             this.tedarukculeriYenileVeSilToolStripMenuItem.Click += new System.EventHandler(this.tedarukculeriYenileVeSilToolStripMenuItem_Click);
             // 
             // myDMSales
@@ -723,48 +746,34 @@ namespace WindowsForm.Forms
             this.myDMOther.IsMainMenu = false;
             this.myDMOther.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.musterilerToolStripMenuItem,
-            this.musteriOdenisleriToolStripMenuItem});
+            this.musteriOdenisleriToolStripMenuItem,
+            this.selahiyyetlerToolStripMenuItem});
             this.myDMOther.MenuItemHeight = 25;
             this.myDMOther.MenuItemTextColor = System.Drawing.Color.DimGray;
             this.myDMOther.Name = "myDMOther";
             this.myDMOther.PrimaryColor = System.Drawing.Color.MediumSlateBlue;
-            this.myDMOther.Size = new System.Drawing.Size(169, 48);
+            this.myDMOther.Size = new System.Drawing.Size(181, 92);
             // 
             // musterilerToolStripMenuItem
             // 
             this.musterilerToolStripMenuItem.Name = "musterilerToolStripMenuItem";
-            this.musterilerToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.musterilerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.musterilerToolStripMenuItem.Text = "Musteriler";
             this.musterilerToolStripMenuItem.Click += new System.EventHandler(this.musterilerToolStripMenuItem_Click);
             // 
             // musteriOdenisleriToolStripMenuItem
             // 
             this.musteriOdenisleriToolStripMenuItem.Name = "musteriOdenisleriToolStripMenuItem";
-            this.musteriOdenisleriToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.musteriOdenisleriToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.musteriOdenisleriToolStripMenuItem.Text = "Musteri odenisleri";
             this.musteriOdenisleriToolStripMenuItem.Click += new System.EventHandler(this.musteriOdenisleriToolStripMenuItem_Click);
             // 
-            // labelFirstName
+            // selahiyyetlerToolStripMenuItem
             // 
-            this.labelFirstName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelFirstName.AutoSize = true;
-            this.labelFirstName.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelFirstName.ForeColor = System.Drawing.Color.Black;
-            this.labelFirstName.Location = new System.Drawing.Point(649, 24);
-            this.labelFirstName.Name = "labelFirstName";
-            this.labelFirstName.Size = new System.Drawing.Size(0, 16);
-            this.labelFirstName.TabIndex = 11;
-            // 
-            // labelLastName
-            // 
-            this.labelLastName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelLastName.AutoSize = true;
-            this.labelLastName.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelLastName.ForeColor = System.Drawing.Color.Black;
-            this.labelLastName.Location = new System.Drawing.Point(649, 40);
-            this.labelLastName.Name = "labelLastName";
-            this.labelLastName.Size = new System.Drawing.Size(0, 16);
-            this.labelLastName.TabIndex = 10;
+            this.selahiyyetlerToolStripMenuItem.Name = "selahiyyetlerToolStripMenuItem";
+            this.selahiyyetlerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.selahiyyetlerToolStripMenuItem.Text = "Selahiyyetler";
+            this.selahiyyetlerToolStripMenuItem.Click += new System.EventHandler(this.selahiyyetlerToolStripMenuItem_Click);
             // 
             // Dashboard
             // 
@@ -857,5 +866,6 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.ToolStripMenuItem musteriOdenisleriToolStripMenuItem;
         private System.Windows.Forms.Label labelFirstName;
         private System.Windows.Forms.Label labelLastName;
+        private System.Windows.Forms.ToolStripMenuItem selahiyyetlerToolStripMenuItem;
     }
 }

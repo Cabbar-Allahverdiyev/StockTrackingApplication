@@ -26,12 +26,11 @@ namespace WindowsForm.Forms.AdminForms
 
         public AdminVerificationForm(IUserService userService)
         {
-            InitializeComponent();
             _userService = userService;
-          
+            InitializeComponent();
         }
 
-
+        
        
         private void buttonOk_Click(object sender, EventArgs e)
         {
@@ -45,7 +44,15 @@ namespace WindowsForm.Forms.AdminForms
             userForLoginDto.Email = textBoxLogin.Text;
             userForLoginDto.Password = textBoxPassword.Text;
 
-            if (userForLoginDto.Email.ToLower()!="cabbar@cabbar.com")
+            IDataResult<User> user = _userService.GetByMail(userForLoginDto.Email);
+            if (!user.Success)
+            {
+                FormsMessage.WarningMessage(user.Message);
+                return;
+            }
+
+            IResult checkUserClaim= _userService.CheckUserOperationClaimIsBossByUserIdForForms(user.Data.Id);
+            if (!checkUserClaim.Success)
             {
                 FormsMessage.WarningMessage(AuthMessages.AuthorizationDenied);
                 return;
@@ -62,13 +69,11 @@ namespace WindowsForm.Forms.AdminForms
 
             UserAuthorization.IsAdminVerified = true;
             FormsMessage.SuccessMessage(result.Message);
-            OperationClaimForm operationClaimForm = new OperationClaimForm(new UserManager(new EfUserDal())
-                , new OperationClaimForFormsManager(new EfOperationClaimForFormsDal())
-                ,new UserOperationClaimForFormsManager(new EfUserOperationClaimForFormsDal())
-                );
-           
+
+
             this.Hide();
-            operationClaimForm.Show();
+           // operationClaimForm.Show();
+           // operationClaimForm.Show();
 
 
         }

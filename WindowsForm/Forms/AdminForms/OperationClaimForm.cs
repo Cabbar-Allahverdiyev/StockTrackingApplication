@@ -30,13 +30,14 @@ namespace WindowsForm.Forms.AdminForms
             _userService = userService;
             _operationClaimService = operationClaimService;
             _useroperationClaimService = useroperationClaimService;
-            //AdminVerificationForm adminVerificationForm = new AdminVerificationForm(_userService);
-            //adminVerificationForm.ShowDialog();
-            //if (UserAuthorization.IsAdminVerified == false)
-            //{
-            //    FormsMessage.WarningMessage(AuthMessages.AuthorizationDenied);
-            //    return;
-            //}
+            UserAuthorization.IsAdminVerified = false;
+            AdminVerificationForm adminVerificationForm = new AdminVerificationForm(_userService);
+            adminVerificationForm.ShowDialog();
+            if (UserAuthorization.IsAdminVerified == false)
+            {
+                FormsMessage.WarningMessage(AuthMessages.AuthorizationDenied);
+                return;
+            }
             InitializeComponent();
             
         }

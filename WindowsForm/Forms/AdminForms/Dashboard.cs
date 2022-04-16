@@ -423,6 +423,13 @@ namespace WindowsForm.Forms
             OpenChildForm(new CustomerPaymentForm(new UserManager(new EfUserDal())), sender);
         }
 
+        private void selahiyyetlerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new AdminForms.OperationClaimForm(new UserManager(new EfUserDal())
+                            , new OperationClaimForFormsManager(new EfOperationClaimForFormsDal())
+                            , new UserOperationClaimForFormsManager(new EfUserOperationClaimForFormsDal())
+                            ), sender);
+        }
 
 
 
@@ -509,6 +516,8 @@ namespace WindowsForm.Forms
             childForm.Show();
             labelTitle.Text = childForm.Text;
         }
+
+       
 
 
 
