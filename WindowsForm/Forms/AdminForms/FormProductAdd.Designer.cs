@@ -30,6 +30,7 @@ namespace WindowsForm.Forms
         private void InitializeComponent()
         {
             this.GroupBoxFormProductAddYeniMehsul = new System.Windows.Forms.GroupBox();
+            this.buttonBarcodeGenerate = new System.Windows.Forms.Button();
             this.buttonTemizle = new System.Windows.Forms.Button();
             this.pictureBoxProductImage = new System.Windows.Forms.PictureBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -65,6 +66,7 @@ namespace WindowsForm.Forms
             // 
             // GroupBoxFormProductAddYeniMehsul
             // 
+            this.GroupBoxFormProductAddYeniMehsul.Controls.Add(this.buttonBarcodeGenerate);
             this.GroupBoxFormProductAddYeniMehsul.Controls.Add(this.buttonTemizle);
             this.GroupBoxFormProductAddYeniMehsul.Controls.Add(this.pictureBoxProductImage);
             this.GroupBoxFormProductAddYeniMehsul.Controls.Add(this.label17);
@@ -92,9 +94,21 @@ namespace WindowsForm.Forms
             this.GroupBoxFormProductAddYeniMehsul.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.GroupBoxFormProductAddYeniMehsul.Location = new System.Drawing.Point(0, 0);
             this.GroupBoxFormProductAddYeniMehsul.Name = "GroupBoxFormProductAddYeniMehsul";
-            this.GroupBoxFormProductAddYeniMehsul.Size = new System.Drawing.Size(288, 619);
+            this.GroupBoxFormProductAddYeniMehsul.Size = new System.Drawing.Size(313, 619);
             this.GroupBoxFormProductAddYeniMehsul.TabIndex = 0;
             this.GroupBoxFormProductAddYeniMehsul.TabStop = false;
+            // 
+            // buttonBarcodeGenerate
+            // 
+            this.buttonBarcodeGenerate.FlatAppearance.BorderSize = 0;
+            this.buttonBarcodeGenerate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBarcodeGenerate.Image = global::WindowsForm.Properties.Resources.refresh_barcode_16px;
+            this.buttonBarcodeGenerate.Location = new System.Drawing.Point(279, 172);
+            this.buttonBarcodeGenerate.Name = "buttonBarcodeGenerate";
+            this.buttonBarcodeGenerate.Size = new System.Drawing.Size(27, 26);
+            this.buttonBarcodeGenerate.TabIndex = 25;
+            this.buttonBarcodeGenerate.UseVisualStyleBackColor = true;
+            this.buttonBarcodeGenerate.Click += new System.EventHandler(this.buttonBarcodeGenerate_Click);
             // 
             // buttonTemizle
             // 
@@ -114,7 +128,7 @@ namespace WindowsForm.Forms
             this.pictureBoxProductImage.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBoxProductImage.Location = new System.Drawing.Point(3, 18);
             this.pictureBoxProductImage.Name = "pictureBoxProductImage";
-            this.pictureBoxProductImage.Size = new System.Drawing.Size(282, 138);
+            this.pictureBoxProductImage.Size = new System.Drawing.Size(307, 138);
             this.pictureBoxProductImage.TabIndex = 0;
             this.pictureBoxProductImage.TabStop = false;
             // 
@@ -408,5 +422,6 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.Button buttonTemizle;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.PictureBox pictureBoxRefresh;
+        private System.Windows.Forms.Button buttonBarcodeGenerate;
     }
 }

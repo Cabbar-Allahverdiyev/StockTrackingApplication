@@ -37,6 +37,7 @@ namespace WindowsForm.Forms
         SupplierManager _supplierManager = new SupplierManager(new EfSupplierDal());
         ProductValidationTool validationTool = new ProductValidationTool();
 
+        USBBarcodeScannerForm usbBarcodeScannerForm = new USBBarcodeScannerForm();
         ProductViewDashboardDetailsSearch detailSearch = new ProductViewDashboardDetailsSearch();
 
         private void FormProductAdd_Load(object sender, EventArgs e)
@@ -96,6 +97,19 @@ namespace WindowsForm.Forms
         private void buttonTemizle_Click(object sender, EventArgs e)
         {
             TextBoxController.ClearAllTextBoxesAndCmboBoxesByGroupBox(GroupBoxFormProductAddYeniMehsul);
+        }
+
+        private void buttonBarcodeGenerate_Click(object sender, EventArgs e)
+        {
+            USBBarcodeScannerForm.BarcodeNumber = null;
+            usbBarcodeScannerForm.ShowDialog();
+            if (USBBarcodeScannerForm.BarcodeNumber==null)
+            {
+                FormsMessage.WarningMessage(BarcodeNumberMessages.BarcodeNumberNotSelected);
+                return;
+            }
+            textBoxBarkodNo.Text=USBBarcodeScannerForm.BarcodeNumber;
+            FormsMessage.SuccessMessage(BarcodeNumberMessages.BarcodeNumberSelected);
         }
 
         //Cell Double Click----------------------------------------->
@@ -169,5 +183,7 @@ namespace WindowsForm.Forms
         {
             dataGridViewProductList.DataSource = _productManager.GetAllProductViewDasboardDetails().Data;
         }
+
+        
     }
 }
