@@ -29,7 +29,7 @@ namespace WindowsForm
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             // Application.Run(new Forms.FormNese());
-            //Application.Run(new Forms.UserForms.UserDashboard());
+            //Application.Run(new Forms.USBBarcodeScannerForm());
 
             Application.Run(new Forms.LoginForm(new UserOperationClaimForFormsManager(new EfUserOperationClaimForFormsDal())
                    , new UserManager(new EfUserDal())));

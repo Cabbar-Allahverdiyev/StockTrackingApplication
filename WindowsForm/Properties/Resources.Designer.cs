@@ -323,6 +323,16 @@ namespace WindowsForm.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
+        internal static System.Drawing.Bitmap refresh_barcode_16px {
+            get {
+                object obj = ResourceManager.GetObject("refresh_barcode_16px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
         internal static System.Drawing.Bitmap refreshBlack_16px_ {
             get {
                 object obj = ResourceManager.GetObject("refreshBlack_16px_", resourceCulture);

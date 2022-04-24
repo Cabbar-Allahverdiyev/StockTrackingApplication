@@ -11,6 +11,7 @@
   <ItemGroup>
     <PackageReference Include="FontAwesome.Sharp" Version="5.15.3" />
     <PackageReference Include="MessagingToolkit.Barcode" Version="1.7.0.2" />
+    <PackageReference Include="Zen.Barcode.Rendering.Framework" Version="3.1.10729.1" />
     <PackageReference Include="ZXing.Net" Version="0.16.6" />
   </ItemGroup>
 
