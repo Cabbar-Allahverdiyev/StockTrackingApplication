@@ -12,9 +12,11 @@ using System.Drawing;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
+using WindowsForm.Core.Constants.FormsAuthorization.User;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.Concrete;
 using WindowsForm.Core.Controllers.ValidatorControllers;
+using WindowsForm.Forms.AdminForms;
 using WindowsForm.MyControls;
 
 namespace WindowsForm.Forms
@@ -22,17 +24,24 @@ namespace WindowsForm.Forms
     public partial class FormUserAdd : Form
     {
 
-        UserManager _userService = new UserManager(new EfUserDal());
+        IUserService _userService;
+        IOperationClaimForFormsService _operationClaimForFormsService;
+        IUserOperationClaimForFormsService _userOperationClaimForFormsService;
+
         UserValidationTool validationTool = new UserValidationTool();
         MyControl myControl = new MyControl();
-        public FormUserAdd()
+        public FormUserAdd(IUserService userService, IOperationClaimForFormsService operationClaimForFormsService, IUserOperationClaimForFormsService userOperationClaimForFormsService)
         {
+            _userService = userService;
+            _operationClaimForFormsService = operationClaimForFormsService;
+            _userOperationClaimForFormsService = userOperationClaimForFormsService;
             InitializeComponent();
 
             myControl.MakeAsteriskPasswordCharacterAndMaxLengthFourTen(textBoxSifre, textBoxSifreTekrari);
             myControl.WritePlaceholdersForTextBoxPhoneNumberAndMaxLengthTen(textBoxTelefonNomresi);
             myControl.WritePlaceholdersForTextBoxEmail(textBoxEmail);
             myControl.WritePlaceholdersForTextBoxAddress(textBoxAdres);
+           
         }
 
         //Click------------------------------->
@@ -121,6 +130,21 @@ namespace WindowsForm.Forms
         private void label6_MouseUp(object sender, MouseEventArgs e)
         {
             myControl.MakeAsteriskPasswordCharacterAndMaxLengthFourTen(textBoxSifreTekrari);
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonSelahiyyetVer_Click(object sender, EventArgs e)
+        {
+            OperationClaimForm operationClaimForm = new OperationClaimForm(_userService,_operationClaimForFormsService,_userOperationClaimForFormsService);
+            if (UserAuthorization.IsAdminVerified == false)
+            {
+                return;
+            }
+            operationClaimForm.ShowDialog();
         }
     }
 }

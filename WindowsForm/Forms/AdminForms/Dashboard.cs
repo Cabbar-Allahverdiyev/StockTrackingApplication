@@ -20,6 +20,8 @@ namespace WindowsForm.Forms
     {
         MyControl myControl = new MyControl();
         UserManager _userManager = new UserManager(new EfUserDal());
+        OperationClaimForFormsManager _operationClaimManager=new OperationClaimForFormsManager(new EfOperationClaimForFormsDal());
+        UserOperationClaimForFormsManager _userOperationClaimForFormsManager = new UserOperationClaimForFormsManager(new EfUserOperationClaimForFormsDal());
         private Form activateForm;
         //private Button currentButton;
         private Size formSize;
@@ -342,7 +344,7 @@ namespace WindowsForm.Forms
 
         private void istifadəçiƏlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormUserAdd(), sender);
+            OpenChildForm(new FormUserAdd(_userManager,_operationClaimManager,_userOperationClaimForFormsManager), sender);
         }
 
         private void istifadəçiləriYeniləToolStripMenuItem_Click(object sender, EventArgs e)

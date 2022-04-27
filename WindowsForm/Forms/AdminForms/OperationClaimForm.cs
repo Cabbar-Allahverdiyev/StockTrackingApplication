@@ -38,6 +38,7 @@ namespace WindowsForm.Forms.AdminForms
                 FormsMessage.WarningMessage(AuthMessages.AuthorizationDenied);
                 return;
             }
+            
             InitializeComponent();
             
         }
