@@ -1,4 +1,5 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
 using Core.Entities.Concrete;
 using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
@@ -19,21 +20,59 @@ namespace WindowsForm.Forms
     public partial class Dashboard : Form
     {
         MyControl myControl = new MyControl();
-        UserManager _userManager = new UserManager(new EfUserDal());
-        OperationClaimForFormsManager _operationClaimManager=new OperationClaimForFormsManager(new EfOperationClaimForFormsDal());
-        UserOperationClaimForFormsManager _userOperationClaimForFormsManager = new UserOperationClaimForFormsManager(new EfUserOperationClaimForFormsDal());
+        IUserService _userService;
+        IOperationClaimForFormsService _operationClaimService;
+        IUserOperationClaimForFormsService _userOperationClaimService;
+        IProductService _productService;
+        IBrandService _brandService;
+        ICategoryService _categoryService;
+        ICustomerService _customerService;
+        ICustomerBalanceService _customerBalanceService;
+        ICustomerPaymentService _customerPaymentService;
+        ICartService _cartService;
+        IDebtService _debtService;
+        ISaleWinFormService _saleWinFormService;
+        ISupplierService _supplierService;
+        //OperationClaimForFormsManager _operationClaimManager=new OperationClaimForFormsManager(new EfOperationClaimForFormsDal());
+        //UserOperationClaimForFormsManager _userOperationClaimForFormsManager = new UserOperationClaimForFormsManager(new EfUserOperationClaimForFormsDal());
         private Form activateForm;
         //private Button currentButton;
         private Size formSize;
 
-        public Dashboard()
+        public Dashboard(IUserService userManager
+            , IOperationClaimForFormsService operationClaimManager
+            , IUserOperationClaimForFormsService userOperationClaimForFormsManager
+            , IProductService productService
+            , IBrandService brandService
+            , ICategoryService categoryService
+            , ICustomerService customerService
+            , ICustomerBalanceService customerBalanceService
+            , ICustomerPaymentService customerPaymentService
+            , ICartService cartService
+            //, ISaleService saleService
+            , IDebtService debtService, ISaleWinFormService saleWinFormService, ISupplierService supplierService)
         {
+            _userService = userManager;
+            _operationClaimService = operationClaimManager;
+            _userOperationClaimService = userOperationClaimForFormsManager;
+            _productService = productService;
+            _brandService = brandService;
+            _categoryService = categoryService;
+            _customerService = customerService;
+            _customerBalanceService = customerBalanceService;
+            _customerPaymentService = customerPaymentService;
+            _cartService = cartService;
+            //_saleService = saleService;
+            _debtService = debtService;
+            _saleWinFormService = saleWinFormService;
+            _supplierService = supplierService;
+
             InitializeComponent();
             this.Padding = new Padding();
             CollapseMenu();
             this.BackColor = Color.FromArgb(41, 128, 185);
             //user dashboard formdada var
-            IDataResult<User> getUser = _userManager.GetById(LoginForm.UserId);
+            IDataResult<User> getUser = _userService.GetById(LoginForm.UserId);
             labelFirstName.Text = getUser.Data.FirstName;
             labelLastName.Text = getUser.Data.LastName;
             //myDropdownMenu2.PrimaryColor = Color.SeaGreen;
@@ -45,6 +84,8 @@ namespace WindowsForm.Forms
             //myDropdownMenu2.PrimaryColor = Color.OrangeRed;
             //myDropdownMenu2.MenuItemTextColor = Color.OrangeRed;
             DisableButton();
+
+
             //WM_NCCALCSIZE
         }
 
@@ -227,15 +268,23 @@ namespace WindowsForm.Forms
 
         private void buttonHome_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new SalesForm(new CategoryManager(new EfCategoryDal())
-                                         , new BrandManager(new EfBrandDal())
-                                         , new SupplierManager(new EfSupplierDal())
-                                         , new ProductManager(new EfProductDal())
-                                         , new CartManager(new EfCartDal())
-                                         , new CustomerManager(new EfCustomerDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()))
-                                         , new SaleWinFormManager(new EfSaleWinFormDal(), new ProductManager(new EfProductDal()))
-                                         , new DebtManager(new EfDebtDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()))
-                                         ), sender);
+            OpenChildForm(new SalesForm(_categoryService
+                                        , _brandService
+                                        , _supplierService
+                                        , _productService
+                                        , _cartService
+                                        , _customerService
+                                        , _saleWinFormService
+                                        , _debtService), sender);
+            //OpenChildForm(new SalesForm(new CategoryManager(new EfCategoryDal())
+            //                            , new BrandManager(new EfBrandDal())
+            //                            , new SupplierManager(new EfSupplierDal())
+            //                            , new ProductManager(new EfProductDal())
+            //                            , new CartManager(new EfCartDal())
+            //                            , new CustomerManager(new EfCustomerDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()))
+            //                            , new SaleWinFormManager(new EfSaleWinFormDal(), new ProductManager(new EfProductDal()))
+            //                            , new DebtManager(new EfDebtDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()))
+            //                            ), sender);
 
 
         }
@@ -283,7 +332,19 @@ namespace WindowsForm.Forms
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            myControl.CloseYesNo(this);
+            myControl.CloseYesNo(this,new  LoginForm(_userOperationClaimService
+                                                    ,_userService
+                                                    ,_operationClaimService
+                                                    ,_productService
+                                                    ,_categoryService
+                                                    ,_customerService
+                                                    , _customerBalanceService
+                                                    , _customerPaymentService
+                                                    , _cartService
+                                                    , _debtService
+                                                    ,_saleWinFormService
+                                                    ,_supplierService
+                                                    ,_brandService));
 
 
         }
@@ -307,7 +368,7 @@ namespace WindowsForm.Forms
 
         private void məhsulƏlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormProductAdd(), sender);
+            OpenChildForm(new FormProductAdd(_productService,_brandService,_categoryService,_supplierService), sender);
         }
 
         private void markalarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -333,7 +394,7 @@ namespace WindowsForm.Forms
         //Sales-------------------------------------------->
         private void satislariSiralaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormSalesList(), sender);
+            OpenChildForm(new FormSalesList(_productService,_saleWinFormService), sender);
         }
 
         //Istifadeci--------------------------------------------->
@@ -344,7 +405,7 @@ namespace WindowsForm.Forms
 
         private void istifadəçiƏlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormUserAdd(_userManager,_operationClaimManager,_userOperationClaimForFormsManager), sender);
+            OpenChildForm(new FormUserAdd(_userService, _operationClaimService, _userOperationClaimService), sender);
         }
 
         private void istifadəçiləriYeniləToolStripMenuItem_Click(object sender, EventArgs e)
@@ -422,15 +483,17 @@ namespace WindowsForm.Forms
 
         private void musteriOdenisleriToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new CustomerPaymentForm(new UserManager(new EfUserDal())), sender);
+            OpenChildForm(new CustomerPaymentForm(_userService), sender);
+            // OpenChildForm(new CustomerPaymentForm(new UserManager(new EfUserDal())), sender);
         }
 
         private void selahiyyetlerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new AdminForms.OperationClaimForm(new UserManager(new EfUserDal())
-                            , new OperationClaimForFormsManager(new EfOperationClaimForFormsDal())
-                            , new UserOperationClaimForFormsManager(new EfUserOperationClaimForFormsDal())
-                            ), sender);
+            OpenChildForm(new AdminForms.OperationClaimForm(_userService,_operationClaimService,_userOperationClaimService), sender);
+            //OpenChildForm(new AdminForms.OperationClaimForm(new UserManager(new EfUserDal())
+            //                , new OperationClaimForFormsManager(new EfOperationClaimForFormsDal())
+            //                , new UserOperationClaimForFormsManager(new EfUserOperationClaimForFormsDal())
+            //                ), sender);
         }
 
 
@@ -519,7 +582,7 @@ namespace WindowsForm.Forms
             labelTitle.Text = childForm.Text;
         }
 
-       
+
 
 
 

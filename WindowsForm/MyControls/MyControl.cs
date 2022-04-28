@@ -104,7 +104,7 @@ namespace WindowsForm.MyControls
 
         }
 
-        public void CloseYesNo(Form form)
+        public void CloseYesNo(Form formToHide,Form formToShow)
         {
             MessageBoxButtons messageButtons = MessageBoxButtons.YesNo;
             string title = "Çıxış pəncərəsi";
@@ -112,11 +112,12 @@ namespace WindowsForm.MyControls
             DialogResult dialogResult = MessageBox.Show(message, title, messageButtons);
             if (dialogResult == DialogResult.Yes)
             {
-                LoginForm loginForm = new LoginForm(new UserOperationClaimForFormsManager(new EfUserOperationClaimForFormsDal())
-                   , new UserManager(new EfUserDal()));
-                           
-                form.Hide();
-                loginForm.Show();
+
+                //LoginForm loginForm = new LoginForm(new UserOperationClaimForFormsManager(new EfUserOperationClaimForFormsDal())
+                //   , new UserManager(new EfUserDal()));
+
+                formToHide.Hide();
+                formToShow.Show();
                 return;
             }
         }

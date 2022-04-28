@@ -1,4 +1,5 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
 using Business.Constants.Messages;
 using Core.Entities.Concrete;
 using Core.Utilities.Results;
@@ -21,9 +22,11 @@ namespace WindowsForm.Forms
 {
     public partial class UserDeleteForm : Form
     {
-        UserManager _userManager = new UserManager(new EfUserDal());
-        public UserDeleteForm()
+        //UserManager _userService = new UserManager(new EfUserDal());
+        IUserService _userService;
+        public UserDeleteForm(IUserService userService)
         {
+            _userService = userService;
             InitializeComponent();
             MyControl myControl = new MyControl();
             myControl.WritePlaceholdersForTextBoxAddress(textBoxAdres);
@@ -46,7 +49,7 @@ namespace WindowsForm.Forms
 
                 //user.Id = Convert.ToInt32(dataGridViewUserListed.CurrentRow.Cells["UserId"].Value);
                 user.Id = int.Parse(textBoxUserId.Text);
-                IResult userDeleted = _userManager.Delete(user);
+                IResult userDeleted = _userService.Delete(user);
                 if (userDeleted.Success)
                 {
                     FormsMessage.SuccessMessage(userDeleted.Message);
@@ -98,7 +101,7 @@ namespace WindowsForm.Forms
 
         private void TextBoxFormUserListedAxtar_TextChanged(object sender, EventArgs e)
         {
-            List<UserDto> data = _userManager.GetUserDetails().Data;
+            List<UserDto> data = _userService.GetUserDetails().Data;
            UserDtoSearch search = new UserDtoSearch();
             search.GetDataWriteGridView(data, textBoxAxtar.Text, dataGridViewUserListed);
 
@@ -107,7 +110,7 @@ namespace WindowsForm.Forms
         //Elave Metodlar------------------------------->
         private void UserRefresh()
         {
-            dataGridViewUserListed.DataSource = _userManager.GetUserDetails().Data;
+            dataGridViewUserListed.DataSource = _userService.GetUserDetails().Data;
         }
         
     }

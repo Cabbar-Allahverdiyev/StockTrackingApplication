@@ -1,4 +1,5 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
 using Business.Constants.Messages;
 using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
@@ -22,8 +23,21 @@ namespace WindowsForm.Forms
 {
     public partial class FormProductAdd : Form
     {
-        public FormProductAdd()
+        IProductService _productService;
+        IBrandService _brandService;
+        ICategoryService _categoryService;
+        ISupplierService _supplierService;
+
+
+        public FormProductAdd(IProductService productService
+                            , IBrandService brandService
+                            , ICategoryService categoryService
+                            , ISupplierService supplierService)
         {
+            _productService = productService;
+            _brandService = brandService;
+            _categoryService = categoryService;
+            _supplierService = supplierService;
             InitializeComponent();
             MyControl myControl = new MyControl();
             myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
@@ -31,10 +45,13 @@ namespace WindowsForm.Forms
             myControl.WritePlaceholdersForTextBoxQuantityPerUnit(textBoxKemiyyet);
 
         }
-        ProductManager _productManager = new ProductManager(new EfProductDal());
-        CategoryManager _categoryManager = new CategoryManager(new EfCategoryDal());
-        BrandManager _brandManager = new BrandManager(new EfBrandDal());
-        SupplierManager _supplierManager = new SupplierManager(new EfSupplierDal());
+
+
+        //ProductManager _productManager = new ProductManager(new EfProductDal());
+        //CategoryManager _categoryManager = new CategoryManager(new EfCategoryDal());
+        //BrandManager _brandManager = new BrandManager(new EfBrandDal());
+        //SupplierManager _supplierManager = new SupplierManager(new EfSupplierDal());
+
         ProductValidationTool validationTool = new ProductValidationTool();
 
         USBBarcodeScannerForm usbBarcodeScannerForm = new USBBarcodeScannerForm();
@@ -42,7 +59,7 @@ namespace WindowsForm.Forms
 
         private void FormProductAdd_Load(object sender, EventArgs e)
         {
-            ProductRefresh();            
+            ProductRefresh();
             CategoryGetComboBoxYeni();
             BrandGetComboBoxYeni();
             SupplierGetComboBox();
@@ -74,7 +91,7 @@ namespace WindowsForm.Forms
                 if (!validationTool.IsValid(product))
                 { return; }
 
-                IResult productAdd = _productManager.Add(product);
+                IResult productAdd = _productService.Add(product);
                 if (!productAdd.Success)
                 {
                     FormsMessage.WarningMessage(productAdd.Message);
@@ -103,12 +120,12 @@ namespace WindowsForm.Forms
         {
             USBBarcodeScannerForm.BarcodeNumber = null;
             usbBarcodeScannerForm.ShowDialog();
-            if (USBBarcodeScannerForm.BarcodeNumber==null)
+            if (USBBarcodeScannerForm.BarcodeNumber == null)
             {
                 FormsMessage.WarningMessage(BarcodeNumberMessages.BarcodeNumberNotSelected);
                 return;
             }
-            textBoxBarkodNo.Text=USBBarcodeScannerForm.BarcodeNumber;
+            textBoxBarkodNo.Text = USBBarcodeScannerForm.BarcodeNumber;
             FormsMessage.SuccessMessage(BarcodeNumberMessages.BarcodeNumberSelected);
         }
 
@@ -116,15 +133,15 @@ namespace WindowsForm.Forms
         private void DataGridViewProductList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
-          
+
 
         }
 
         //Text Changed --------------------------------->
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            List<ProductViewDashboardDetailDto> data = _productManager.GetAllProductViewDasboardDetails().Data;
-            detailSearch.GetDataWriteGridView(data,textBoxAxtar.Text, dataGridViewProductList);
+            List<ProductViewDashboardDetailDto> data = _productService.GetAllProductViewDasboardDetails().Data;
+            detailSearch.GetDataWriteGridView(data, textBoxAxtar.Text, dataGridViewProductList);
         }
 
         //Key Press---------------------------------------->
@@ -149,7 +166,7 @@ namespace WindowsForm.Forms
 
         private void CategoryGetComboBoxYeni()
         {
-            var categoryGetAll = _categoryManager.GetAll();
+            var categoryGetAll = _categoryService.GetAll();
             comboBoxKategoriya.DataSource = categoryGetAll.Data;
             comboBoxKategoriya.DisplayMember = "CategoryName";
             comboBoxKategoriya.ValueMember = "Id";
@@ -159,7 +176,7 @@ namespace WindowsForm.Forms
 
         private void BrandGetComboBoxYeni()
         {
-            var brandGetAll = _brandManager.GetAll();
+            var brandGetAll = _brandService.GetAll();
 
             comboBoxMarka.DataSource = brandGetAll.Data;
             comboBoxMarka.DisplayMember = "BrandName";
@@ -168,7 +185,7 @@ namespace WindowsForm.Forms
 
         private void SupplierGetComboBox()
         {
-            var supplierGetAll = _supplierManager.GetAll();
+            var supplierGetAll = _supplierService.GetAll();
             comboBoxTedarikci.DataSource = supplierGetAll.Data;
             comboBoxTedarikci.DisplayMember = "CompanyName";
             comboBoxTedarikci.ValueMember = "Id";
@@ -181,9 +198,9 @@ namespace WindowsForm.Forms
 
         private void ProductRefresh()
         {
-            dataGridViewProductList.DataSource = _productManager.GetAllProductViewDasboardDetails().Data;
+            dataGridViewProductList.DataSource = _productService.GetAllProductViewDasboardDetails().Data;
         }
 
-        
+
     }
 }

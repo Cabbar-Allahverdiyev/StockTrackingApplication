@@ -1,4 +1,5 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
 using Business.Constants.Messages;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
@@ -19,12 +20,14 @@ namespace WindowsForm.Forms
 {
     public partial class SupplierUpdateForm : Form
     {
-        SupplierManager _suplierManager = new SupplierManager(new EfSupplierDal());
+        ISupplierService _suplierService;
+       // SupplierManager _suplierService = new SupplierManager(new EfSupplierDal());
         SupplierValidationTool validationTool = new SupplierValidationTool();
         SupplierSearch search = new SupplierSearch();
 
-        public SupplierUpdateForm()
+        public SupplierUpdateForm(ISupplierService supplierService)
         {
+            _suplierService = supplierService;
             InitializeComponent();
             SupplierRefresh();
         }
@@ -60,7 +63,7 @@ namespace WindowsForm.Forms
                     return;
                 }
 
-                var supplierUpdate = _suplierManager.Update(supplier);
+                var supplierUpdate = _suplierService.Update(supplier);
                 if (!supplierUpdate.Success)
                 {
                     FormsMessage.WarningMessage(supplierUpdate.Message);
@@ -85,7 +88,7 @@ namespace WindowsForm.Forms
                 Supplier supplier = new Supplier();
                 supplier.Id = int.Parse(textBoxSupplierId.Text);
 
-                var supplierDelete = _suplierManager.Delete(supplier);
+                var supplierDelete = _suplierService.Delete(supplier);
                 if (!supplierDelete.Success)
                 {
                     FormsMessage.WarningMessage(supplierDelete.Message);
@@ -124,14 +127,14 @@ namespace WindowsForm.Forms
         //text Changed--------------------------------------->
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            List<Supplier> data = _suplierManager.GetAll().Data;
+            List<Supplier> data = _suplierService.GetAll().Data;
             search.GetDataWriteGridView(data,textBoxAxtar.Text, dataGridViewSupplierListed);
         }
 
         //elave ---------------------------->
         private void SupplierRefresh()
         {
-            dataGridViewSupplierListed.DataSource = _suplierManager.GetAll().Data;
+            dataGridViewSupplierListed.DataSource = _suplierService.GetAll().Data;
         }
 
         private void TextBoxClear()

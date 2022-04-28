@@ -28,6 +28,7 @@ namespace WindowsForm.Forms
     {
         int staticUserId = LoginForm.UserId;
         private int _cartId = 0;
+
         ICategoryService _categoryService;
         IBrandService _brandService;
         ISupplierService _supplierService;
@@ -60,17 +61,9 @@ namespace WindowsForm.Forms
 
             InitializeComponent();
             TotalPriceLabelWrite();
-
-
             myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
-
-
-            //myControl.WritePlaceholdersForTextBoxSearchByProductName(textBoxAxtarBarcodeNumber);
-
             BarcodeScanner barcodeScanner = new BarcodeScanner(textBoxBarkodNo);
             barcodeScanner.BarcodeScanned += BarcodeScanner_BarcodeScanned;
-
-
         }
 
 
@@ -83,28 +76,11 @@ namespace WindowsForm.Forms
             BrandWriteComboBox();
             SupplierWriteComboBox();
             ProductListRefesh();
-            //TextBoxController.ClearAllTextBoxesAndCmboBoxesByGroupBox(groupBoxFilter);
         }
-
-
-        //ProductManager _productManager = new ProductManager(new EfProductDal());
-        //CartManager _cartManager = new CartManager(new EfCartDal());
-        //CustomerManager _customerManager = new CustomerManager(new EfCustomerDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()));
-        //SaleWinFormManager _saleWinFormManager = new SaleWinFormManager(new EfSaleWinFormDal(), new ProductManager(new EfProductDal()));
-        // DebtManager _debtManager = new DebtManager(new EfDebtDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()));
 
         CartValidationTool cartValidationTool = new CartValidationTool();
         SaleValidationTool saleValidationTool = new SaleValidationTool();
         ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
-
-
-
-
-
-        //private void ButtonSalesFormYenile_Click(object sender, EventArgs e)
-        //{
-
-        //}
 
         private void ButtonX_Click(object sender, EventArgs e)
         {
@@ -633,7 +609,6 @@ namespace WindowsForm.Forms
         private void IsBarcodeNumberExists(int productId, out bool isBarcodeNumberExists)
         {
             IDataResult<CartAddDto> result = _cartService.GetCartAddDetailByProductId(productId);
-            // IDataResult<CartAddDto> result = _cartManager.GetCartAddDetailByBarcodeNumber(Convert.ToInt32(textBoxBarkodNo.Text));
             if (result.Success)
             {
                 isBarcodeNumberExists = true;
@@ -647,18 +622,14 @@ namespace WindowsForm.Forms
         private void RemoveCart()
         {
             Cart cart = new Cart();
-            cart.UserId = staticUserId;    //Mutleq Dinamiklesdir
+            cart.UserId = staticUserId;
             _cartService.ByUserIdAllRemove(cart.UserId);
-
-
-
         }
 
         private void CartListRefesh()
         {
             dataGridViewCartList.DataSource = _cartService.GetAllCartViewDetailsByUserId(staticUserId).Data;
-
-            myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "AlisQiymeti", Color.Yellow);
+                        myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "AlisQiymeti", Color.Yellow);
             myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "Qiymet", Color.Green);
             myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "Cem", Color.Red);
         }
@@ -676,8 +647,7 @@ namespace WindowsForm.Forms
             decimal tolalPrice = 0;
             decimal price;
             List<Cart> carts = _cartService.GetAllByUserId(staticUserId).Data;
-
-            foreach (Cart cart in carts)
+                        foreach (Cart cart in carts)
             {
                 price = cart.TotalPrice;
                 tolalPrice += price;
@@ -769,8 +739,7 @@ namespace WindowsForm.Forms
                     {
                         FormsMessage.WarningMessage(cartUpdated.Message);
                         return;
-                    }
-                    // FormsMessage.SuccessMessage(cartUpdated.Message);
+                    }                   
                 }
                 else
                 {
@@ -781,7 +750,6 @@ namespace WindowsForm.Forms
                         FormsMessage.WarningMessage(cartAdded.Message);
                         return;
                     }
-                    //FormsMessage.SuccessMessage(CartMessages.ProductAdded);
                 }
                 GroupBoxMehsulControlClear();
                 CartListRefesh();

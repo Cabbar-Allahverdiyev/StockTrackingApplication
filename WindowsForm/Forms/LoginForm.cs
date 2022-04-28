@@ -28,17 +28,54 @@ namespace WindowsForm.Forms
         // UserManager _userManager = new UserManager(new EfUserDal());
         IUserService _userService;
         IUserOperationClaimForFormsService _userOperationClaimForFormsService;
+
+        IOperationClaimForFormsService _operationClaimService;
+        //IUserOperationClaimForFormsService _userOperationClaimService;
+        IProductService _productService;
+        IBrandService _brandService;
+        ICategoryService _categoryService;
+        ICustomerService _customerService;
+        ICustomerBalanceService _customerBalanceService;
+        ICustomerPaymentService _customerPaymentService;
+        ICartService _cartService;
+        //ISaleService _saleService;
+        IDebtService _debtService;
+        ISaleWinFormService _saleWinFormService;
+        ISupplierService _supplierService;
+
         MacAddressManager _macAddressManager = new MacAddressManager(new EfMacAddressDal());
 
         public static int UserId;
 
-        public LoginForm(IUserOperationClaimForFormsService userOperationClaimForFormsService, IUserService userService)
+        public LoginForm(IUserOperationClaimForFormsService userOperationClaimForFormsService
+            , IUserService userService
+            , IOperationClaimForFormsService operationClaimService
+            , IProductService productService
+            , ICategoryService categoryService
+            , ICustomerService customerService
+            , ICustomerBalanceService customerBalanceService
+            , ICustomerPaymentService customerPaymentService
+            , ICartService cartService
+            , IDebtService debtService
+            , ISaleWinFormService saleWinFormService
+            , ISupplierService supplierService
+            , IBrandService brandService)
         {
             _userOperationClaimForFormsService = userOperationClaimForFormsService;
             _userService = userService;
             InitializeComponent();
             this.BackColor = Color.FromArgb(41, 128, 185);
-
+            _operationClaimService = operationClaimService;
+            _productService = productService;
+            _categoryService = categoryService;
+            _customerService = customerService;
+            _customerBalanceService = customerBalanceService;
+            _customerPaymentService = customerPaymentService;
+            _cartService = cartService;
+            _debtService = debtService;
+            _saleWinFormService = saleWinFormService;
+            _supplierService = supplierService;
+            _brandService = brandService;
         }
 
         //Click------------------------------->
@@ -93,7 +130,20 @@ namespace WindowsForm.Forms
                 IResult getUserClaims = _userService.CheckUserOperationClaimIsBossAndAdminByUserIdForForms(user.Id);
                 if (getUserClaims.Success)
                 {
-                    Dashboard dashboard = new Dashboard();
+                    Dashboard dashboard = new Dashboard(_userService
+                                                    ,_operationClaimService
+                                                    ,_userOperationClaimForFormsService
+                                                    ,_productService
+                                                    ,_brandService
+                                                    ,_categoryService
+                                                    ,_customerService
+                                                    ,_customerBalanceService
+                                                    ,_customerPaymentService
+                                                    ,_cartService
+                                                    ,_debtService
+                                                    ,_saleWinFormService
+                                                    ,_supplierService
+                                                    );
                     this.Hide();
                     dashboard.Show();
                     return;
@@ -105,7 +155,7 @@ namespace WindowsForm.Forms
 
 
             }
-            catch(NullReferenceException ex)
+            catch (NullReferenceException ex)
             {
                 FormsMessage.ErrorMessage("Əlaqə vasitələri səhifənin aşağısındadır");
                 FormsMessage.ErrorMessage("Zəhmət olmasa istehsalçı ilə əlaqə qurun");

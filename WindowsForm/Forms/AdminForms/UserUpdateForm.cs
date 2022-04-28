@@ -1,4 +1,5 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
 using Business.Constants.Messages;
 using Core.Entities.Concrete;
 using DataAccess.Concrete.EntityFramework;
@@ -21,21 +22,23 @@ namespace WindowsForm.Forms
 {
     public partial class UserUpdateForm : Form
     {
-        UserManager _userManager = new UserManager(new EfUserDal());
+      //  UserManager _userService = new UserManager(new EfUserDal());
+        IUserService _userService;
         UserValidationTool validationTool = new UserValidationTool();
 
-        public UserUpdateForm()
+        public UserUpdateForm(IUserService userService)
         {
+            _userService = userService;
             InitializeComponent();
             MyControl myControl = new MyControl();
-            myControl.MakeAsteriskPasswordCharacterAndMaxLengthFourTen(textBoxYeniSİfre,textBoxSifreTexrari);
+            myControl.MakeAsteriskPasswordCharacterAndMaxLengthFourTen(textBoxYeniSİfre, textBoxSifreTexrari);
             myControl.WritePlaceholdersForTextBoxEmail(textBoxEmail);
             myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
             myControl.WritePlaceholdersForTextBoxAddress(textBoxAdres);
             UserRefresh();
         }
 
-      
+
         private void UserUpdateForm_Load(object sender, EventArgs e)
         {
 
@@ -43,7 +46,7 @@ namespace WindowsForm.Forms
 
         private void TextBoxFormUserListedAxtar_TextChanged(object sender, EventArgs e)
         {
-            List<UserDto> data = _userManager.GetUserDetails().Data;
+            List<UserDto> data = _userService.GetUserDetails().Data;
            
             UserDtoSearch search = new UserDtoSearch();
             search.GetDataWriteGridView(data, textBoxAxtar.Text, dataGridViewUserListed);
@@ -67,7 +70,7 @@ namespace WindowsForm.Forms
                 }
                
 
-                var userUpdated = _userManager.Update(user);
+                var userUpdated = _userService.Update(user);
 
                 if (userUpdated.Success)
                 {
@@ -117,7 +120,7 @@ namespace WindowsForm.Forms
 
         private void UserRefresh()
         {
-            dataGridViewUserListed.DataSource = _userManager.GetUserDetails().Data;
+            dataGridViewUserListed.DataSource = _userService.GetUserDetails().Data;
         }
 
         

@@ -1,4 +1,5 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
 using Business.Constants.Messages;
 using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
@@ -22,14 +23,21 @@ namespace WindowsForm.Forms
 {
     public partial class FormSalesList : Form
     {
-        SaleWinFormManager _saleWinFormManager = new SaleWinFormManager(new EfSaleWinFormDal(), new ProductManager(new EfProductDal()));
-        ProductManager _productManager = new ProductManager(new EfProductDal());
+       // SaleWinFormManager _saleWinFormService = new SaleWinFormManager(new EfSaleWinFormDal(), new ProductManager(new EfProductDal()));
+        //ProductManager _productService = new ProductManager(new EfProductDal());
+
+        IProductService _productService;      
+        ISaleWinFormService _saleWinFormService;       
+
         MyControl myControl = new MyControl();
         // SaleValidationTool saleValidationTool = new SaleValidationTool();
 
-        public FormSalesList()
+        public FormSalesList(IProductService productService, ISaleWinFormService saleWinFormService)
         {
+            _productService = productService;
+            _saleWinFormService = saleWinFormService;
             InitializeComponent();
+           
         }
 
         private void FormSalesList_Load(object sender, EventArgs e)
@@ -63,7 +71,7 @@ namespace WindowsForm.Forms
 
                 if (comboBoxDays.SelectedItem == null && comboBoxMonths.SelectedItem != null && comboBoxYears.SelectedItem == null)
                 {
-                    List<SaleWinFormDto> dataMonth = _saleWinFormManager
+                    List<SaleWinFormDto> dataMonth = _saleWinFormService
                         .GetAllSaleWinFormDetailsSalesForMonthAndYear(selectedMonthItem, selectedYearItem).Data;
 
                     foreach (SaleWinFormDto item in dataMonth)
@@ -74,7 +82,7 @@ namespace WindowsForm.Forms
 
                             saleTotal += item.Cem;
 
-                            Product getProduct = _productManager.GetById(item.ProductId).Data;
+                            Product getProduct = _productService.GetById(item.ProductId).Data;
                             for (int i = 1; i < item.Miqdar + 1; i++)
                             {
                                 incomeTotal += (item.SatilanQiymet - getProduct.PurchasePrice);
@@ -91,7 +99,7 @@ namespace WindowsForm.Forms
 
                 if (comboBoxDays.SelectedItem == null && comboBoxMonths.SelectedItem == null && comboBoxYears.SelectedItem != null)
                 {
-                    List<SaleWinFormDto> dataYear = _saleWinFormManager
+                    List<SaleWinFormDto> dataYear = _saleWinFormService
                         .GetAllSaleWinFormDetailsSalesForYear(selectedYearItem).Data;
 
                     foreach (SaleWinFormDto item in dataYear)
@@ -100,7 +108,7 @@ namespace WindowsForm.Forms
                         {
                             saleTotal += item.Cem;
 
-                            Product getProduct = _productManager.GetById(item.ProductId).Data;
+                            Product getProduct = _productService.GetById(item.ProductId).Data;
                             for (int i = 1; i < item.Miqdar + 1; i++)
                             {
                                 incomeTotal += (item.SatilanQiymet - getProduct.PurchasePrice);
@@ -117,14 +125,14 @@ namespace WindowsForm.Forms
 
                 if (comboBoxDays.SelectedItem == null && comboBoxMonths.SelectedItem != null && comboBoxYears.SelectedItem != null)
                 {
-                    List<SaleWinFormDto> dataMonth = _saleWinFormManager
+                    List<SaleWinFormDto> dataMonth = _saleWinFormService
                         .GetAllSaleWinFormDetailsSalesForMonthAndYear(selectedMonthItem, selectedYearItem).Data;
                     foreach (SaleWinFormDto item in dataMonth)
                     {
                         if (item.SatisinVeziyyeti == true)
                         {
                             saleTotal += item.Cem;
-                            Product getProduct = _productManager.GetById(item.ProductId).Data;
+                            Product getProduct = _productService.GetById(item.ProductId).Data;
                             for (int i = 1; i < item.Miqdar + 1; i++)
                             {
                                 incomeTotal += (item.SatilanQiymet - getProduct.PurchasePrice);
@@ -140,14 +148,14 @@ namespace WindowsForm.Forms
                     return;
                 }
 
-                List<SaleWinFormDto> data = _saleWinFormManager
+                List<SaleWinFormDto> data = _saleWinFormService
                         .GetAllSaleWinFormDetailsSalesForDayAndMonthAndYear(selectedDayItem, selectedMonthItem, selectedYearItem).Data;
                 foreach (SaleWinFormDto item in data)
                 {
                     if (item.SatisinVeziyyeti == true)
                     {
                         saleTotal += item.Cem;
-                        Product getProduct = _productManager.GetById(item.ProductId).Data;
+                        Product getProduct = _productService.GetById(item.ProductId).Data;
                         for (int i = 1; i < item.Miqdar + 1; i++)
                         {
                             incomeTotal += (item.SatilanQiymet - getProduct.PurchasePrice);
@@ -182,7 +190,7 @@ namespace WindowsForm.Forms
                 IResult canceledSale;
                 if (checkBoxSatisLegvEdilsin.Checked == true)
                 {
-                    canceledSale = _saleWinFormManager.CancelSale(sale);
+                    canceledSale = _saleWinFormService.CancelSale(sale);
                     if (!canceledSale.Success)
                     {
                         FormsMessage.WarningMessage(canceledSale.Message);
@@ -234,7 +242,7 @@ namespace WindowsForm.Forms
         //Elave Metodlar------------------------>
         private void CalculateCountOfAllProduct()
         {
-            List<Product> result = _productManager.GetAll().Data;
+            List<Product> result = _productService.GetAll().Data;
             int total=0;
             foreach (Product product in result)
             {
@@ -245,7 +253,7 @@ namespace WindowsForm.Forms
         
         private void CalculateUnitPriceOfAllProduct()
         {
-            List<Product> result = _productManager.GetAll().Data;
+            List<Product> result = _productService.GetAll().Data;
             decimal total = 0;
             foreach (Product product in result)
             {
@@ -255,7 +263,7 @@ namespace WindowsForm.Forms
         }
         private void CalculatePurchasePriceOfAllProduct()
         {
-            List<Product> result = _productManager.GetAll().Data;
+            List<Product> result = _productService.GetAll().Data;
             decimal total = 0;
             foreach (Product product in result)
             {
@@ -267,7 +275,7 @@ namespace WindowsForm.Forms
 
         private void SaleListRefesh()
         {
-            dataGridViewSaleList.DataSource = _saleWinFormManager.GetAllSaleWinFormDtoDetails().Data;
+            dataGridViewSaleList.DataSource = _saleWinFormService.GetAllSaleWinFormDtoDetails().Data;
 
             myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewSaleList, "AlisQiymeti", Color.Yellow);
             myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewSaleList, "SatilanQiymet", Color.Green);
@@ -276,7 +284,7 @@ namespace WindowsForm.Forms
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            List<SaleWinFormDto> data = _saleWinFormManager.GetAllSaleWinFormDtoDetails().Data;
+            List<SaleWinFormDto> data = _saleWinFormService.GetAllSaleWinFormDtoDetails().Data;
             SaleWinFormDetailDtoSearch detailSearch = new SaleWinFormDetailDtoSearch();
             detailSearch.GetDataWriteGridView(data, textBoxAxtar.Text, dataGridViewSaleList);
         }

@@ -20,24 +20,29 @@ using WindowsForm.Core.Controllers.Concrete;
 using WindowsForm.MyControls;
 using System.Reflection;
 using Entities.DTOs.ProductDtos;
+using Business.Abstract;
 
 namespace WindowsForm.Forms
 {
     public partial class ProductUpdateForm : Form
     {
-        ProductManager _productManager = new ProductManager(new EfProductDal());
         Product product = new Product();
         ProductValidationTool validationTool = new ProductValidationTool();
         ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
+        IProductService _productService;
+        IBrandService _brandService;
+        ICategoryService _categoryService;
+        ISupplierService _supplierService;
 
-        CategoryManager _categoryManager = new CategoryManager(new EfCategoryDal());
-        BrandManager _brandManager = new BrandManager(new EfBrandDal());
-        SupplierManager _supplierManager = new SupplierManager(new EfSupplierDal());
 
         MyControl myControl = new MyControl();
 
-        public ProductUpdateForm()
+        public ProductUpdateForm(IProductService productManager, IBrandService brandManager, ICategoryService categoryManager, ISupplierService supplierManager)
         {
+            _productService = productManager;
+            _brandService = brandManager;
+            _categoryService = categoryManager;
+            _supplierService = supplierManager;
             InitializeComponent();
             myControl.WritePlaceholdersForTextBoxSearchByProductName(textBoxAxtar);
             myControl.WritePlaceholdersForTextBoxBarcodeNo(textBoxBarkodNo);
@@ -98,7 +103,7 @@ namespace WindowsForm.Forms
                 }
 
 
-                IResult productUpdated = _productManager.Update(product);
+                IResult productUpdated = _productService.Update(product);
 
                 if (!productUpdated.Success)
                 {
@@ -129,7 +134,7 @@ namespace WindowsForm.Forms
                 FormsMessage.WarningMessage(BaseMessages.SelectedValueIsNull);
                 return;
             }
-            var productViewDetailByProductId = _productManager.GetProductViewDetailByProductId(
+            var productViewDetailByProductId = _productService.GetProductViewDetailByProductId(
                     Convert.ToInt32(dataGridViewPrdouctList.CurrentRow.Cells["ProductId"].Value.ToString())
                );
 
@@ -154,7 +159,7 @@ namespace WindowsForm.Forms
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            List<ProductViewDashboardDetailDto> data = _productManager.GetAllProductViewDasboardDetails().Data;
+            List<ProductViewDashboardDetailDto> data = _productService.GetAllProductViewDasboardDetails().Data;
             detailsSearch.GetDataWriteGridView(data, textBoxAxtar.Text, dataGridViewPrdouctList);
             //detailsSearch.SearchBySelectedValueOfComboBoxAndWriteToDataGridView(data,textBoxAxtar
             //    , dataGridViewPrdouctList, comboBoxProperty);
@@ -187,7 +192,7 @@ namespace WindowsForm.Forms
         //Genericlestir mutleq
         private void WriteCategoryInComboBox()
         {
-            var categoryGetAll = _categoryManager.GetAll();
+            var categoryGetAll = _categoryService.GetAll();
             comboBoxKateqoriya.DataSource = categoryGetAll.Data;
             comboBoxKateqoriya.DisplayMember = "CategoryName";
             comboBoxKateqoriya.ValueMember = "Id";
@@ -195,7 +200,7 @@ namespace WindowsForm.Forms
 
         private void WriteBrandsInComboBox()
         {
-            var brandGetAll = _brandManager.GetAll();
+            var brandGetAll = _brandService.GetAll();
             comboBoxMarka.DataSource = brandGetAll.Data;
             comboBoxMarka.DisplayMember = "BrandName";
             comboBoxMarka.ValueMember = "Id";
@@ -205,7 +210,7 @@ namespace WindowsForm.Forms
 
         private void WriteSuppliersInComboBox()
         {
-            var supplierGetAll = _supplierManager.GetAll();
+            var supplierGetAll = _supplierService.GetAll();
             comboBoxTedarikci.DataSource = supplierGetAll.Data;
             comboBoxTedarikci.DisplayMember = "CompanyName";
             comboBoxTedarikci.ValueMember = "Id";
@@ -220,7 +225,7 @@ namespace WindowsForm.Forms
 
         private void ProductRefresh()
         {
-            dataGridViewPrdouctList.DataSource = _productManager.GetAllProductViewDasboardDetails().Data;
+            dataGridViewPrdouctList.DataSource = _productService.GetAllProductViewDasboardDetails().Data;
         }
 
         private void label1_Click(object sender, EventArgs e)
