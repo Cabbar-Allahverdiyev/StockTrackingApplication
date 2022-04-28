@@ -42,13 +42,13 @@ namespace WindowsForm.Forms.UserForms
         MyControl myControl = new MyControl();
 
         public SalesFormForUser(ICategoryService categoryService
-                            ,IBrandService brandService
-                            ,ISupplierService supplierService
+                            , IBrandService brandService
+                            , ISupplierService supplierService
                             , IProductService productService
-                            ,ICartService cartService
-                            ,ICustomerService customerService
-                            ,ISaleWinFormService saleWinFormService
-                            ,IDebtService debtService
+                            , ICartService cartService
+                            , ICustomerService customerService
+                            , ISaleWinFormService saleWinFormService
+                            , IDebtService debtService
                             )
         {
             _productService = productService;
@@ -63,7 +63,7 @@ namespace WindowsForm.Forms.UserForms
             InitializeComponent();
             TotalPriceLabelWrite();
             UserAuthorization.QrCodeIsSuccess = false;
-            
+
             myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
             //myControl.WritePlaceholdersForTextBoxSearchByProductName(textBoxAxtarBarcodeNumber);
 
@@ -83,17 +83,9 @@ namespace WindowsForm.Forms.UserForms
             GroupBoxMehsulControlClear();
         }
 
-       // ProductManager _productService = new ProductManager(new EfProductDal());
-       // CartManager _cartService = new CartManager(new EfCartDal());
-        //SaleWinFormManager _saleWinFormService = new SaleWinFormManager(new EfSaleWinFormDal(), new ProductManager(new EfProductDal()));
-        //CustomerManager _customerService = new CustomerManager(new EfCustomerDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()));
-        //DebtManager _debtService = new DebtManager(new EfDebtDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()));
-
         CartValidationTool cartValidationTool = new CartValidationTool();
         SaleValidationTool saleValidationTool = new SaleValidationTool();
         ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
-
-
 
         private void ButtonX_Click(object sender, EventArgs e)
         {
@@ -173,12 +165,10 @@ namespace WindowsForm.Forms.UserForms
 
             try
             {
-                // QrCodeIsSuccess = false;
                 UserAuthorization.QrCodeIsSuccess = false;
                 AdminValidationForm validationForm = new AdminValidationForm();
                 validationForm.ShowDialog();
 
-                // if (QrCodeIsSuccess == false)
                 if (UserAuthorization.QrCodeIsSuccess == false)
                 {
                     FormsMessage.WarningMessage(AuthMessages.AuthorizationDenied);
@@ -208,7 +198,6 @@ namespace WindowsForm.Forms.UserForms
                         cart.SoldPrice = cartAddDto.SoldPrice;
                         CalculateTotalPrice(cart.Quantity, cart.SoldPrice);
                         cart.TotalPrice = Convert.ToDecimal(textBoxCem.Text);
-                        //  CartValidation(cart);
                         IResult result = _cartService.Update(cart);
                         if (!result.Success)
                         {
@@ -404,9 +393,6 @@ namespace WindowsForm.Forms.UserForms
                         resultMessage += $" {message} {newResultMessage} |";
                     }
                     FormsMessage.SuccessMessage(resultMessage);
-
-
-                    //GroupBoxIstifadeciControlClear();
                 }
                 else
                 {
@@ -443,21 +429,11 @@ namespace WindowsForm.Forms.UserForms
         {
             try
             {
-                if (decimal.Parse(textBoxQiymet.Text)==0)
+                if (decimal.Parse(textBoxQiymet.Text) == 0)
                 {
                     FormsMessage.WarningMessage(FormsTextMessages.UnitPriceGreaterThanZero);
-                        return;
+                    return;
                 }
-                //UserAuthorization.QrCodeIsSuccess = false;
-                //AdminValidationForm validationForm = new AdminValidationForm();
-                //validationForm.ShowDialog();
-                
-                // if (QrCodeIsSuccess == false)
-                //if (UserAuthorization.QrCodeIsSuccess == false)
-                //{
-                //    FormsMessage.WarningMessage(AuthMessages.AuthorizationDenied);
-                //    return;
-                //}
                 Cart cart = _cartService.GetById(_cartId).Data;
 
                 if (textBoxMiqdar.Text == "")
@@ -493,16 +469,8 @@ namespace WindowsForm.Forms.UserForms
 
         private void buttonAxtar_Click(object sender, EventArgs e)
         {
-        //    SalesForm salesForm = new SalesForm(new CategoryManager(new EfCategoryDal())
-        //                                 , new BrandManager(new EfBrandDal())
-        //                                 , new SupplierManager(new EfSupplierDal())
-        //                                 , new ProductManager(new EfProductDal())
-        //                                 , new CartManager(new EfCartDal())
-        //                                 , new CustomerManager(new EfCustomerDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()))
-        //                                 , new SaleWinFormManager(new EfSaleWinFormDal(), new ProductManager(new EfProductDal()))
-        //                                 , new DebtManager(new EfDebtDal(), new CustomerBalanceManager(new EfCustomerBalanceDal())));
-             SalesForm salesForm = new SalesForm(_categoryService,_brandService,_supplierService,_productService,_cartService
-                 ,_customerService,_saleWinFormService,_debtService);
+            SalesForm salesForm = new SalesForm(_categoryService, _brandService, _supplierService, _productService, _cartService
+               , _customerService, _saleWinFormService, _debtService);
 
             salesForm.ComboBoxSelectedValue(dataGridViewProductList, comboBoxCategoryList.Text, comboBoxSupplierList.Text, comboBoxBrandList.Text);
         }
@@ -525,7 +493,7 @@ namespace WindowsForm.Forms.UserForms
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
             List<ProductViewDashboardDetailDto> data = _productService.GetAllProductViewDasboardDetails().Data;
-            detailsSearch.GetDataWriteGridView(data,textBoxAxtar.Text, dataGridViewProductList);
+            detailsSearch.GetDataWriteGridView(data, textBoxAxtar.Text, dataGridViewProductList);
         }
 
         //Checked Changed----------------------------->
@@ -679,7 +647,6 @@ namespace WindowsForm.Forms.UserForms
         private void IsBarcodeNumberExists(int productId, out bool isBarcodeNumberExists)
         {
             IDataResult<CartAddDto> result = _cartService.GetCartAddDetailByProductId(productId);
-            // IDataResult<CartAddDto> result = _cartManager.GetCartAddDetailByBarcodeNumber(Convert.ToInt32(textBoxBarkodNo.Text));
             if (result.Success)
             {
                 isBarcodeNumberExists = true;
@@ -693,11 +660,8 @@ namespace WindowsForm.Forms.UserForms
         private void RemoveCart()
         {
             Cart cart = new Cart();
-            cart.UserId = staticUserId;    //Mutleq Dinamiklesdir
+            cart.UserId = staticUserId;
             _cartService.ByUserIdAllRemove(cart.UserId);
-
-
-
         }
 
         private void CartListRefesh()
@@ -791,7 +755,6 @@ namespace WindowsForm.Forms.UserForms
                     FormsMessage.WarningMessage(cartUpdated.Message);
                     return;
                 }
-                // FormsMessage.SuccessMessage(cartUpdated.Message);
             }
             else
             {
@@ -802,7 +765,6 @@ namespace WindowsForm.Forms.UserForms
                     FormsMessage.WarningMessage(cartAdded.Message);
                     return;
                 }
-                //FormsMessage.SuccessMessage(CartMessages.ProductAdded);
             }
             GroupBoxMehsulControlClear();
             CartListRefesh();

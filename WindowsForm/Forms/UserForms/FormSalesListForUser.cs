@@ -1,4 +1,5 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
 using Business.Constants.Messages;
 using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
@@ -23,15 +24,13 @@ namespace WindowsForm.Forms.UserForms
 {
     public partial class FormSalesListForUser : Form
     {
-        // public static bool QrCodeIsSuccess = false;
-
-        SaleWinFormManager _saleWinFormManager = new SaleWinFormManager(new EfSaleWinFormDal(), new ProductManager(new EfProductDal()));
-        ProductManager _productManager = new ProductManager(new EfProductDal());
-        SaleValidationTool saleValidationTool = new SaleValidationTool();
+        //SaleWinFormManager _saleWinFormService = new SaleWinFormManager(new EfSaleWinFormDal(), new ProductManager(new EfProductDal()));
+        ISaleWinFormService _saleWinFormService;
         MyControl myControl = new MyControl();
 
-        public FormSalesListForUser()
+        public FormSalesListForUser(ISaleWinFormService saleWinFormService)
         {
+            _saleWinFormService = saleWinFormService;
             InitializeComponent();
         }
 
@@ -40,8 +39,6 @@ namespace WindowsForm.Forms.UserForms
             ComboBoxController.WriteDaysInComboBox(comboBoxDays);
             ComboBoxController.WriteMonthsInComboBox(comboBoxMonths);
             ComboBoxController.WriteYearsInComboBox(comboBoxYears);
-            //comboBoxAxtar.Items.Add("MehsulAdi");
-            //comboBoxAxtar.Items.Add("Istifadeci");
             SaleListRefesh();
             checkBoxSatisLegvEdilsin.Checked = false;
         }
@@ -65,7 +62,7 @@ namespace WindowsForm.Forms.UserForms
 
                 if (comboBoxDays.SelectedItem == null && comboBoxMonths.SelectedItem != null && comboBoxYears.SelectedItem == null)
                 {
-                    List<SaleWinFormDto> dataMonth = _saleWinFormManager
+                    List<SaleWinFormDto> dataMonth = _saleWinFormService
                         .GetAllSaleWinFormDetailsSalesForMonthAndYear(selectedMonthItem, selectedYearItem).Data;
 
                     foreach (SaleWinFormDto item in dataMonth)
@@ -85,7 +82,7 @@ namespace WindowsForm.Forms.UserForms
 
                 if (comboBoxDays.SelectedItem == null && comboBoxMonths.SelectedItem == null && comboBoxYears.SelectedItem != null)
                 {
-                    List<SaleWinFormDto> dataYear = _saleWinFormManager
+                    List<SaleWinFormDto> dataYear = _saleWinFormService
                         .GetAllSaleWinFormDetailsSalesForYear(selectedYearItem).Data;
 
                     foreach (SaleWinFormDto item in dataYear)
@@ -105,7 +102,7 @@ namespace WindowsForm.Forms.UserForms
 
                 if (comboBoxDays.SelectedItem == null && comboBoxMonths.SelectedItem != null && comboBoxYears.SelectedItem != null)
                 {
-                    List<SaleWinFormDto> dataMonth = _saleWinFormManager
+                    List<SaleWinFormDto> dataMonth = _saleWinFormService
                         .GetAllSaleWinFormDetailsSalesForMonthAndYear(selectedMonthItem, selectedYearItem).Data;
                     foreach (SaleWinFormDto item in dataMonth)
                     {
@@ -120,7 +117,7 @@ namespace WindowsForm.Forms.UserForms
                     return;
                 }
 
-                List<SaleWinFormDto> data = _saleWinFormManager
+                List<SaleWinFormDto> data = _saleWinFormService
                         .GetAllSaleWinFormDetailsSalesForDayAndMonthAndYear(selectedDayItem, selectedMonthItem, selectedYearItem).Data;
                 foreach (SaleWinFormDto item in data)
                 {
@@ -169,7 +166,7 @@ namespace WindowsForm.Forms.UserForms
                 IResult canceledSale;
                 if (checkBoxSatisLegvEdilsin.Checked == true)
                 {
-                    canceledSale = _saleWinFormManager.CancelSale(sale);
+                    canceledSale = _saleWinFormService.CancelSale(sale);
                     if (!canceledSale.Success)
                     {
                         FormsMessage.WarningMessage(canceledSale.Message);
@@ -225,7 +222,7 @@ namespace WindowsForm.Forms.UserForms
 
         private void SaleListRefesh()
         {
-            dataGridViewSaleList.DataSource = _saleWinFormManager.GetAllSaleWinFormDtoDetails().Data;
+            dataGridViewSaleList.DataSource = _saleWinFormService.GetAllSaleWinFormDtoDetails().Data;
             myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewSaleList, "AlisQiymeti", Color.Yellow);
             myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewSaleList, "SatilanQiymet", Color.Green);
             myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewSaleList, "Cem", Color.Red);
@@ -234,7 +231,7 @@ namespace WindowsForm.Forms.UserForms
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
             SaleWinFormDetailDtoSearch detailSearch = new SaleWinFormDetailDtoSearch();
-            List<SaleWinFormDto> data = _saleWinFormManager.GetAllSaleWinFormDtoDetails().Data;
+            List<SaleWinFormDto> data = _saleWinFormService.GetAllSaleWinFormDtoDetails().Data;
             detailSearch.GetDataWriteGridView(data, textBoxAxtar.Text, dataGridViewSaleList);
         }
 

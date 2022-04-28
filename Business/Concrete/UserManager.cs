@@ -148,7 +148,7 @@ namespace Business.Concrete
             User get = _userDal.Get(u => u.Email == email);
             if (get == null)
             {
-                return new ErrorDataResult<User>();
+                return new ErrorDataResult<User>(UserMessages.UserNotFound);
             }
             return new SuccessDataResult<User>(get);
         }

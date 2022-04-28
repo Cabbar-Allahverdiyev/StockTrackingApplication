@@ -39,9 +39,9 @@ namespace WindowsForm.Forms
         //private Button currentButton;
         private Size formSize;
 
-        public Dashboard(IUserService userManager
-            , IOperationClaimForFormsService operationClaimManager
-            , IUserOperationClaimForFormsService userOperationClaimForFormsManager
+        public Dashboard(IUserService userService
+            , IOperationClaimForFormsService operationClaimService
+            , IUserOperationClaimForFormsService userOperationClaimForFormsService
             , IProductService productService
             , IBrandService brandService
             , ICategoryService categoryService
@@ -49,12 +49,11 @@ namespace WindowsForm.Forms
             , ICustomerBalanceService customerBalanceService
             , ICustomerPaymentService customerPaymentService
             , ICartService cartService
-            //, ISaleService saleService
             , IDebtService debtService, ISaleWinFormService saleWinFormService, ISupplierService supplierService)
         {
-            _userService = userManager;
-            _operationClaimService = operationClaimManager;
-            _userOperationClaimService = userOperationClaimForFormsManager;
+            _userService = userService;
+            _operationClaimService = operationClaimService;
+            _userOperationClaimService = userOperationClaimForFormsService;
             _productService = productService;
             _brandService = brandService;
             _categoryService = categoryService;
@@ -62,7 +61,6 @@ namespace WindowsForm.Forms
             _customerBalanceService = customerBalanceService;
             _customerPaymentService = customerPaymentService;
             _cartService = cartService;
-            //_saleService = saleService;
             _debtService = debtService;
             _saleWinFormService = saleWinFormService;
             _supplierService = supplierService;
@@ -332,19 +330,19 @@ namespace WindowsForm.Forms
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            myControl.CloseYesNo(this,new  LoginForm(_userOperationClaimService
-                                                    ,_userService
-                                                    ,_operationClaimService
-                                                    ,_productService
-                                                    ,_categoryService
-                                                    ,_customerService
+            myControl.CloseYesNo(this, new LoginForm(_userOperationClaimService
+                                                    , _userService
+                                                    , _operationClaimService
+                                                    , _productService
+                                                    , _categoryService
+                                                    , _customerService
                                                     , _customerBalanceService
                                                     , _customerPaymentService
                                                     , _cartService
                                                     , _debtService
-                                                    ,_saleWinFormService
-                                                    ,_supplierService
-                                                    ,_brandService));
+                                                    , _saleWinFormService
+                                                    , _supplierService
+                                                    , _brandService));
 
 
         }
@@ -353,7 +351,7 @@ namespace WindowsForm.Forms
         //Product--------------------------------------->
         private void məhsulSilToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new ProductDeleteForm(), sender);
+            OpenChildForm(new ProductDeleteForm(_productService,_brandService,_categoryService,_supplierService), sender);
         }
 
         private void məhsullarıSıralaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -363,12 +361,12 @@ namespace WindowsForm.Forms
 
         private void məhsulYeniləToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new ProductUpdateForm(), sender);
+            OpenChildForm(new ProductUpdateForm(_productService,_brandService,_categoryService,_supplierService), sender);
         }
 
         private void məhsulƏlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormProductAdd(_productService,_brandService,_categoryService,_supplierService), sender);
+            OpenChildForm(new FormProductAdd(_productService, _brandService, _categoryService, _supplierService), sender);
         }
 
         private void markalarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -389,12 +387,12 @@ namespace WindowsForm.Forms
 
         private void tedarukculeriYenileVeSilToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new SupplierUpdateForm(), sender);
+            OpenChildForm(new SupplierUpdateForm(_supplierService), sender);
         }
         //Sales-------------------------------------------->
         private void satislariSiralaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormSalesList(_productService,_saleWinFormService), sender);
+            OpenChildForm(new FormSalesList(_productService, _saleWinFormService), sender);
         }
 
         //Istifadeci--------------------------------------------->
@@ -410,12 +408,12 @@ namespace WindowsForm.Forms
 
         private void istifadəçiləriYeniləToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new UserUpdateForm(), sender);
+            OpenChildForm(new UserUpdateForm(_userService), sender);
         }
 
         private void istifadəçiSilToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new UserDeleteForm(), sender);
+            OpenChildForm(new UserDeleteForm(_userService), sender);
         }
 
         //Categories------------------------------------------>
@@ -489,7 +487,7 @@ namespace WindowsForm.Forms
 
         private void selahiyyetlerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new AdminForms.OperationClaimForm(_userService,_operationClaimService,_userOperationClaimService), sender);
+            OpenChildForm(new AdminForms.OperationClaimForm(_userService, _operationClaimService, _userOperationClaimService), sender);
             //OpenChildForm(new AdminForms.OperationClaimForm(new UserManager(new EfUserDal())
             //                , new OperationClaimForFormsManager(new EfOperationClaimForFormsDal())
             //                , new UserOperationClaimForFormsManager(new EfUserOperationClaimForFormsDal())

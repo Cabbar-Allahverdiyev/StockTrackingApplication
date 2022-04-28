@@ -149,7 +149,19 @@ namespace WindowsForm.Forms
                     return;
                 }
 
-                UserDashboard userDashboard = new UserDashboard();
+                UserDashboard userDashboard = new UserDashboard(_userService
+                                                                , _operationClaimService
+                                                                , _userOperationClaimForFormsService
+                                                                , _productService
+                                                                , _brandService
+                                                                , _categoryService
+                                                                , _customerService
+                                                                , _customerBalanceService
+                                                                , _customerPaymentService
+                                                                , _cartService
+                                                                , _debtService
+                                                                , _saleWinFormService
+                                                                , _supplierService);
                 this.Hide();
                 userDashboard.Show();
 

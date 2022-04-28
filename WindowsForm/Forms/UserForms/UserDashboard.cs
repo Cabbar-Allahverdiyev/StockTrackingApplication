@@ -1,4 +1,5 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
 using Core.Entities.Concrete;
 using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
@@ -18,22 +19,61 @@ namespace WindowsForm.Forms.UserForms
 {
     public partial class UserDashboard : Form
     {
+        IUserService _userService;
+      
+        IOperationClaimForFormsService _operationClaimService;
+        IUserOperationClaimForFormsService _userOperationClaimService;
+        IProductService _productService;
+        IBrandService _brandService;
+        ICategoryService _categoryService;
+        ICustomerService _customerService;
+        ICustomerBalanceService _customerBalanceService;
+        ICustomerPaymentService _customerPaymentService;
+        ICartService _cartService;
+        IDebtService _debtService;
+        ISaleWinFormService _saleWinFormService;
+        ISupplierService _supplierService;
 
         private Form activateForm;
         private Size formSize;
         MyControl myControl = new MyControl();
-        UserManager _userManager = new UserManager(new EfUserDal());
 
-        public UserDashboard()
+        // UserManager _userService = new UserManager(new EfUserDal());
+
+        public UserDashboard(IUserService userService
+            , IOperationClaimForFormsService operationClaimService
+            , IUserOperationClaimForFormsService userOperationClaimForFormsService
+            , IProductService productService
+            , IBrandService brandService
+            , ICategoryService categoryService
+            , ICustomerService customerService
+            , ICustomerBalanceService customerBalanceService
+            , ICustomerPaymentService customerPaymentService
+            , ICartService cartService
+            , IDebtService debtService, ISaleWinFormService saleWinFormService, ISupplierService supplierService)
         {
+            _userService = userService;
+            _operationClaimService = operationClaimService;
+            _userOperationClaimService = userOperationClaimForFormsService;
+            _productService = productService;
+            _brandService = brandService;
+            _categoryService = categoryService;
+            _customerService = customerService;
+            _customerBalanceService = customerBalanceService;
+            _customerPaymentService = customerPaymentService;
+            _cartService = cartService;
+            _debtService = debtService;
+            _saleWinFormService = saleWinFormService;
+            _supplierService = supplierService;
+                        
             InitializeComponent();
             this.Padding = new Padding();
             CollapseMenu();
             this.BackColor = Color.FromArgb(41, 128, 185);
             DisableButton();
-            IDataResult<User> getUser = _userManager.GetById(LoginForm.UserId);
-            labelFirstName.Text=getUser.Data.FirstName;
-            labelLastName.Text=getUser.Data.LastName;
+            IDataResult<User> getUser = _userService.GetById(LoginForm.UserId);
+            labelFirstName.Text = getUser.Data.FirstName;
+            labelLastName.Text = getUser.Data.LastName;
             //WM_NCCALCSIZE
         }
 
@@ -199,15 +239,14 @@ namespace WindowsForm.Forms.UserForms
 
         private void buttonHome_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new SalesFormForUser(new CategoryManager(new EfCategoryDal())
-                                         , new BrandManager(new EfBrandDal())
-                                         , new SupplierManager(new EfSupplierDal())
-                                         , new ProductManager(new EfProductDal())
-                                         , new CartManager(new EfCartDal())
-                                         , new CustomerManager(new EfCustomerDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()))
-                                         , new SaleWinFormManager(new EfSaleWinFormDal(), new ProductManager(new EfProductDal()))
-                                         , new DebtManager(new EfDebtDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()))
-                                         ), sender);
+            OpenChildForm(new SalesFormForUser(_categoryService
+                                        , _brandService
+                                        , _supplierService
+                                        , _productService
+                                        , _cartService
+                                        , _customerService
+                                        , _saleWinFormService
+                                        , _debtService), sender);
         }
 
         private void buttonProducts_Click(object sender, EventArgs e)
@@ -254,7 +293,19 @@ namespace WindowsForm.Forms.UserForms
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            myControl.CloseYesNo(this);
+            myControl.CloseYesNo(this,new LoginForm(_userOperationClaimService
+                                                    , _userService
+                                                    , _operationClaimService
+                                                    , _productService
+                                                    , _categoryService
+                                                    , _customerService
+                                                    , _customerBalanceService
+                                                    , _customerPaymentService
+                                                    , _cartService
+                                                    , _debtService
+                                                    , _saleWinFormService
+                                                    , _supplierService
+                                                    , _brandService));
         }
 
         //Dropdown menu---------------------------------->
@@ -276,7 +327,7 @@ namespace WindowsForm.Forms.UserForms
 
         private void məhsulƏlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormProductAdd(), sender);
+            OpenChildForm(new FormProductAdd(_productService,_brandService,_categoryService,_supplierService), sender);
         }
 
         private void markalarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -296,7 +347,7 @@ namespace WindowsForm.Forms.UserForms
         //Sales-------------------------------------------->
         private void satislariSiralaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormSalesListForUser(), sender);
+            OpenChildForm(new FormSalesListForUser(_saleWinFormService), sender);
         }
 
         //Istifadeci--------------------------------------------->
@@ -386,7 +437,7 @@ namespace WindowsForm.Forms.UserForms
 
         private void musteriOdenisleriToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new CustomerPaymentForm(new UserManager(new EfUserDal())), sender);
+            OpenChildForm(new CustomerPaymentForm(_userService), sender);
         }
 
 
@@ -447,10 +498,6 @@ namespace WindowsForm.Forms.UserForms
                 else ctrl.BackColor = Color.FromArgb(41, 128, 185);
             }
         }
-
-
-
-
 
         private void OpenChildForm(Form childForm, object btnSender)
         {
