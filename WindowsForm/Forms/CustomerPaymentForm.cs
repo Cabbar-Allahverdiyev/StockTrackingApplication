@@ -1,7 +1,5 @@
-﻿using Business.Concrete;
-using Business.Constants.Messages;
+﻿using Business.Constants.Messages;
 using Core.Utilities.Results;
-using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -26,21 +24,25 @@ namespace WindowsForm.Forms
 {
     public partial class CustomerPaymentForm : Form
     {
-        CustomerPaymentManager _paymentManager = new CustomerPaymentManager(new EfCustomerPaymentDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()));
-        CustomerManager _customerManager = new CustomerManager(new EfCustomerDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()));
+        //CustomerPaymentManager _paymentService = new CustomerPaymentManager(new EfCustomerPaymentDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()));
+        //CustomerManager _customerService = new CustomerManager(new EfCustomerDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()));
+        IUserService _userService;
+        ICustomerPaymentService _paymentService;
+        ICustomerService _customerService;
+
         CustomerPaymentValidationTool validationTool = new CustomerPaymentValidationTool();
 
-        IUserService _userService;
 
 
-        public CustomerPaymentForm(IUserService userService)
+
+        public CustomerPaymentForm(IUserService userService, ICustomerPaymentService paymentService, ICustomerService customerService)
         {
             _userService = userService;
+            _paymentService = paymentService;
+            _customerService = customerService;
             InitializeComponent();
             CustomerPaymentListRefresh();
-            //CustomerGetComboBox();
             checkBoxOdenisLegvEdilsin.Checked = false;
-            
         }
 
         //Click-------------->
@@ -48,8 +50,6 @@ namespace WindowsForm.Forms
         {
             try
             {
-                
-                
                 CustomerPayment customerPayment = new CustomerPayment();
                 customerPayment.CustomerId = Convert.ToInt32(textBoxCustomerIdInPaymentAdd.Text);
                 customerPayment.Value = decimal.Parse(textBoxMeblegInPaymentAdd.Text);
@@ -59,7 +59,7 @@ namespace WindowsForm.Forms
                     return;
                 }
 
-                IResult result = _paymentManager.Add(customerPayment);
+                IResult result = _paymentService.Add(customerPayment);
                 if (!result.Success)
                 {
                     FormsMessage.ErrorMessage(result.Message);
@@ -71,11 +71,9 @@ namespace WindowsForm.Forms
             }
             catch (Exception ex)
             {
-
                 FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
                 return;
             }
-
         }
 
         private void buttonTetbiqEt_Click(object sender, EventArgs e)
@@ -90,7 +88,7 @@ namespace WindowsForm.Forms
                 }
                 customerPayment.Id = int.Parse(textBoxCustomerPaymentIdInCancelPayment.Text);
 
-                IDataResult<CustomerPayment> getPayment = _paymentManager.GetById(customerPayment.Id);
+                IDataResult<CustomerPayment> getPayment = _paymentService.GetById(customerPayment.Id);
                 if (!getPayment.Success)
                 {
                     FormsMessage.WarningMessage(getPayment.Message);
@@ -115,7 +113,7 @@ namespace WindowsForm.Forms
                     }
 
                     getPayment.Data.PaymentStatus = false;
-                    IResult result = _paymentManager.CancelPayment(getPayment.Data);
+                    IResult result = _paymentService.CancelPayment(getPayment.Data);
                     if (!result.Success)
                     {
                         FormsMessage.WarningMessage(result.Message);
@@ -139,7 +137,7 @@ namespace WindowsForm.Forms
                 FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
                 return;
             }
-            
+
         }
 
         private void buttonSec_Click(object sender, EventArgs e)
@@ -147,10 +145,10 @@ namespace WindowsForm.Forms
             try
             {
                 SelectedCustomerForSalesForm.Id = 0;
-                CustomerListForm customerListForm = new CustomerListForm();
+                CustomerListForm customerListForm = new CustomerListForm(_customerService);
                 customerListForm.ShowDialog();
                 textBoxCustomerIdInPaymentAdd.Text = SelectedCustomerForSalesForm.Id.ToString();
-                IDataResult<Customer> result = _customerManager.GetById(SelectedCustomerForSalesForm.Id);
+                IDataResult<Customer> result = _customerService.GetById(SelectedCustomerForSalesForm.Id);
                 if (!result.Success)
                 {
                     FormsMessage.ErrorMessage(result.Message);
@@ -165,7 +163,7 @@ namespace WindowsForm.Forms
                 FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
                 return;
             }
-            
+
         }
 
         private void buttonTemizle_Click(object sender, EventArgs e)
@@ -194,8 +192,8 @@ namespace WindowsForm.Forms
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
 
-            List<CustomerPaymentDto> data = _paymentManager.GetCustomerPaymentDetails().Data;
-            CustomerPaymentDtoSearch detailSearch = new  CustomerPaymentDtoSearch();
+            List<CustomerPaymentDto> data = _paymentService.GetCustomerPaymentDetails().Data;
+            CustomerPaymentDtoSearch detailSearch = new CustomerPaymentDtoSearch();
             detailSearch.GetDataWriteGridView(data, textBoxAxtar.Text, dataGridViewPaymentList);
         }
 
@@ -209,7 +207,7 @@ namespace WindowsForm.Forms
         //Elave metodlar------------------>
         private void CustomerPaymentListRefresh()
         {
-            dataGridViewPaymentList.DataSource = _paymentManager.GetCustomerPaymentDetails().Data;
+            dataGridViewPaymentList.DataSource = _paymentService.GetCustomerPaymentDetails().Data;
         }
 
         //private void CustomerGetComboBox()

@@ -1,8 +1,4 @@
-﻿using Business.Concrete;
-using Core.Utilities.Results;
-using Entities.DTOs.ProductDtos;
-using DataAccess.Concrete.EntityFramework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,16 +7,20 @@ using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
 using Entities.Concrete;
+using Business.Abstract;
 
 namespace WindowsForm.Forms
 {
     public partial class StatisticForProductForm : Form
     {
-        ProductManager _productManager = new ProductManager(new EfProductDal());
+        //ProductManager _productManager = new ProductManager(new EfProductDal());
         //EfSaleWinFormDal formDal = new EfSaleWinFormDal();
 
-        public StatisticForProductForm()
+        IProductService _productService;
+
+        public StatisticForProductForm(IProductService productService)
         {
+            _productService = productService;
             InitializeComponent();
             ProductListRefresh();
         }
@@ -84,7 +84,7 @@ namespace WindowsForm.Forms
 
         private void ProductListRefresh()
         {
-            dataGridViewProductList.DataSource =  _productManager.GetAllProductViewDasboardDetails().Data;
+            dataGridViewProductList.DataSource =  _productService.GetAllProductViewDasboardDetails().Data;
         }
 
      

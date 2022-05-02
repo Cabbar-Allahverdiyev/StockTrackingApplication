@@ -319,7 +319,7 @@ namespace WindowsForm.Forms.UserForms
         {
             try
             {
-                CustomerListForm customerListForm = new CustomerListForm();
+                CustomerListForm customerListForm = new CustomerListForm(_customerService);
                 customerListForm.ShowDialog();
                 textBoxCustomerId.Text = SelectedCustomerForSalesForm.Id.ToString();
                 IDataResult<Customer> result = _customerService.GetById(SelectedCustomerForSalesForm.Id);

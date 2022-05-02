@@ -1,4 +1,5 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
 using Business.Constants.Messages;
 using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
@@ -21,20 +22,22 @@ namespace WindowsForm.Forms
 {
     public partial class FormCategory : Form
     {
-        public FormCategory()
+        ICategoryService _categoryService;
+        public FormCategory(ICategoryService categoryService)
         {
+            _categoryService = categoryService;
             InitializeComponent();
             MyControl myControl = new MyControl();
             myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
         }
 
-        CategoryManager _categoryManager = new CategoryManager(new EfCategoryDal());
+        //CategoryManager _categoryService = new CategoryManager(new EfCategoryDal());
         CategoryValidationTool validationTool = new CategoryValidationTool();
         CategorySearch search = new CategorySearch();
 
         private void FormCategory_Load(object sender, EventArgs e)
         {
-            var getAll = _categoryManager.GetAll();
+            var getAll = _categoryService.GetAll();
             DataGridViewFormCategory.DataSource = getAll.Data;
         }
 
@@ -51,7 +54,7 @@ namespace WindowsForm.Forms
                     return;
                 }
 
-                IResult categoryAdd = _categoryManager.Add(category);
+                IResult categoryAdd = _categoryService.Add(category);
                 if (categoryAdd.Success)
                 {
                     FormsMessage.SuccessMessage(categoryAdd.Message);
@@ -88,14 +91,14 @@ namespace WindowsForm.Forms
         //Text Changed------------------------------>
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            List<Category> data = _categoryManager.GetAll().Data;
+            List<Category> data = _categoryService.GetAll().Data;
             search.GetDataWriteGridView(data,textBoxAxtar.Text, DataGridViewFormCategory);
         }
 
         //Elave metodlar------->
         private void CategoryRefresh()
         {
-            DataGridViewFormCategory.DataSource = _categoryManager.GetAll().Data;
+            DataGridViewFormCategory.DataSource = _categoryService.GetAll().Data;
         }
     }
 }

@@ -175,7 +175,7 @@ namespace WindowsForm.Forms
 
         private void buttonSec_Click(object sender, EventArgs e)
         {
-            CustomerListForm customerListForm = new CustomerListForm();
+            CustomerListForm customerListForm = new CustomerListForm(_customerService);
             customerListForm.ShowDialog();
             textBoxCustomerId.Text = SelectedCustomerForSalesForm.Id.ToString();
             IDataResult<Customer> result = _customerService.GetById(SelectedCustomerForSalesForm.Id);

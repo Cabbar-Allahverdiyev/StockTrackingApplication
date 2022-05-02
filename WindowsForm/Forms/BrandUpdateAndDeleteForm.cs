@@ -1,6 +1,5 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
 using Business.Constants.Messages;
-using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -19,14 +18,17 @@ namespace WindowsForm.Forms
 {
     public partial class BrandUpdateAndDeleteForm : Form
     {
-        BrandManager _brandManager = new BrandManager(new EfBrandDal());
+       // BrandManager _brandService = new BrandManager(new EfBrandDal());
+        IBrandService _brandService;
         BrandValidationTool validationTool = new BrandValidationTool();
         BrandSearch brandSearch = new BrandSearch();
 
-        public BrandUpdateAndDeleteForm()
+        public BrandUpdateAndDeleteForm(IBrandService brandService)
         {
+            _brandService = brandService;
             InitializeComponent();
             BrandRefresh();
+           
         }
         //Click-------------------------->
         private void buttonTemizle_Click(object sender, EventArgs e)
@@ -47,7 +49,7 @@ namespace WindowsForm.Forms
                     return;
                 }
 
-                var brandUdated = _brandManager.Update(brand);
+                var brandUdated = _brandService.Update(brand);
                 if (!brandUdated.Success)
                 {
                     FormsMessage.WarningMessage(brandUdated.Message);
@@ -73,7 +75,7 @@ namespace WindowsForm.Forms
             {
                 Brand brand = new Brand();
                 brand.Id = int.Parse(textBoxId.Text);
-                var brandDeleted = _brandManager.Delete(brand);
+                var brandDeleted = _brandService.Delete(brand);
                 if (!brandDeleted.Success)
                 {
                     FormsMessage.WarningMessage(brandDeleted.Message);
@@ -111,7 +113,7 @@ namespace WindowsForm.Forms
         //Tetx Changed------------------------------>
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            List<Brand> data = _brandManager.GetAll().Data;
+            List<Brand> data = _brandService.GetAll().Data;
             brandSearch.GetDataWriteGridView(data,textBoxAxtar.Text, dataGridViewBrandList);
         }
 
@@ -119,7 +121,7 @@ namespace WindowsForm.Forms
         //Elave metodlar---------------------------->
         private void BrandRefresh()
         {
-           dataGridViewBrandList.DataSource= _brandManager.GetAll().Data;
+           dataGridViewBrandList.DataSource= _brandService.GetAll().Data;
         }
 
         private void TextBoxClear()

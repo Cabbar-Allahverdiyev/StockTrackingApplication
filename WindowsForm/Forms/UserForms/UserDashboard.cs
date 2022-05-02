@@ -317,7 +317,7 @@ namespace WindowsForm.Forms.UserForms
 
         private void məhsullarıSıralaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormProductList(), sender);
+            OpenChildForm(new FormProductList(_productService,_brandService,_categoryService,_supplierService), sender);
         }
 
         private void məhsulYeniləToolStripMenuItem_Click(object sender, EventArgs e)
@@ -332,14 +332,14 @@ namespace WindowsForm.Forms.UserForms
 
         private void markalarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormBrand(), sender);
+            OpenChildForm(new FormBrand(_brandService), sender);
         }
 
 
 
         private void markalarIYeniləVəSilToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new CategoryUpdateAndDeleteForm(), sender);
+            OpenChildForm(new CategoryUpdateAndDeleteForm(_categoryService), sender);
         }
 
 
@@ -353,7 +353,7 @@ namespace WindowsForm.Forms.UserForms
         //Istifadeci--------------------------------------------->
         private void istifadəçiləriSıralaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormUserListed(), sender);
+            OpenChildForm(new FormUserListed(_userService), sender);
         }
 
         private void istifadəçiƏlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
@@ -380,11 +380,11 @@ namespace WindowsForm.Forms.UserForms
 
         private void elaveEtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormCategory(), sender);
+            OpenChildForm(new FormCategory(_categoryService), sender);
         }
         private void yenileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new CategoryUpdateAndDeleteForm(), sender);
+            OpenChildForm(new CategoryUpdateAndDeleteForm(_categoryService), sender);
         }
 
 
@@ -427,17 +427,17 @@ namespace WindowsForm.Forms.UserForms
 
         private void tedarukToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new SupplierForm(), sender);
+            OpenChildForm(new SupplierForm(_supplierService), sender);
         }
 
         private void musterilerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new CustomerForm(), sender);
+            OpenChildForm(new CustomerForm(_customerService), sender);
         }
 
         private void musteriOdenisleriToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new CustomerPaymentForm(_userService), sender);
+            OpenChildForm(new CustomerPaymentForm(_userService,_customerPaymentService,_customerService), sender);
         }
 
 

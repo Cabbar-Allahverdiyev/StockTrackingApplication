@@ -1,4 +1,5 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
 using Business.Constants.Messages;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
@@ -20,18 +21,19 @@ namespace WindowsForm.Forms
 {
     public partial class SupplierForm : Form
     {
-        SupplierManager _suplierManager = new SupplierManager(new EfSupplierDal());
+        ISupplierService _suplierService;
+        //SupplierManager _suplierService = new SupplierManager(new EfSupplierDal());
         SupplierValidationTool validationTool = new SupplierValidationTool();
         SupplierSearch search = new SupplierSearch();
-        public SupplierForm()
+        public SupplierForm(ISupplierService suplierService)
         {
+            _suplierService = suplierService;
             InitializeComponent();
             MyControl myControl = new MyControl();
             myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
             myControl.WritePlaceholdersForTextBoxAddress(textBoxAdres);
             myControl.WritePlaceholdersForTextBoxEmail(textBoxEmail);
             myControl.WritePlaceholdersForTextBoxPhoneNumberAndMaxLengthTen(textBoxTelefon);
-
         }
 
         private void SupplierForm_Load(object sender, EventArgs e)
@@ -72,7 +74,7 @@ namespace WindowsForm.Forms
                     return;
                 }
 
-                var supplierAdd = _suplierManager.Add(supplier);
+                var supplierAdd = _suplierService.Add(supplier);
                 if (!supplierAdd.Success)
                 {
                     FormsMessage.WarningMessage(supplierAdd.Message);
@@ -101,13 +103,13 @@ namespace WindowsForm.Forms
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            List<Supplier> data = _suplierManager.GetAll().Data;
+            List<Supplier> data = _suplierService.GetAll().Data;
             search.GetDataWriteGridView(data,textBoxAxtar.Text, dataGridViewSupplierListed);
         }
 
         private void SupplierRefresh()
         {
-            dataGridViewSupplierListed.DataSource = _suplierManager.GetAll().Data;
+            dataGridViewSupplierListed.DataSource = _suplierService.GetAll().Data;
         }
     }
 }

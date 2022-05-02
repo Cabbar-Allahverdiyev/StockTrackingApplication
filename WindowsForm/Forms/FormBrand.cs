@@ -1,7 +1,6 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
 using Business.Constants.Messages;
 using Core.Utilities.Results;
-using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -21,14 +20,16 @@ namespace WindowsForm.Forms
 {
     public partial class FormBrand : Form
     {
-        public FormBrand()
+        IBrandService _brandService;
+        public FormBrand(IBrandService brandService)
         {
+            _brandService = brandService;
             InitializeComponent();
             MyControl myControl = new MyControl();
             myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
         }
 
-        BrandManager _brandManager = new BrandManager(new EfBrandDal());
+       // BrandManager _brandService = new BrandManager(new EfBrandDal());
         BrandValidationTool validationTool = new BrandValidationTool();
         BrandSearch brandSearch = new BrandSearch();
 
@@ -50,7 +51,7 @@ namespace WindowsForm.Forms
                 }
 
 
-                IResult brandAdd = _brandManager.Add(brand);
+                IResult brandAdd = _brandService.Add(brand);
                 if (brandAdd.Success)
                 {
                     FormsMessage.SuccessMessage(brandAdd.Message);
@@ -73,14 +74,11 @@ namespace WindowsForm.Forms
                 FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
                 return;
             }
-
-
-
         }
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            List<Brand> data = _brandManager.GetAll().Data;
+            List<Brand> data = _brandService.GetAll().Data;
             brandSearch.GetDataWriteGridView(data,textBoxAxtar.Text, dataGridViewBrandsListed);
         }
 
@@ -91,7 +89,7 @@ namespace WindowsForm.Forms
 
         private void BrandRefresh()
         {
-            dataGridViewBrandsListed.DataSource = _brandManager.GetAll().Data;
+            dataGridViewBrandsListed.DataSource = _brandService.GetAll().Data;
         }
     }
 }

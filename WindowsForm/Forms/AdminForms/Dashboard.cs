@@ -356,7 +356,7 @@ namespace WindowsForm.Forms
 
         private void məhsullarıSıralaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormProductList(), sender);
+            OpenChildForm(new FormProductList(_productService,_brandService,_categoryService,_supplierService), sender);
         }
 
         private void məhsulYeniləToolStripMenuItem_Click(object sender, EventArgs e)
@@ -371,17 +371,17 @@ namespace WindowsForm.Forms
 
         private void markalarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormBrand(), sender);
+            OpenChildForm(new FormBrand(_brandService), sender);
         }
 
         private void markalarıYeniləVəSilToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new BrandUpdateAndDeleteForm(), sender);
+            OpenChildForm(new BrandUpdateAndDeleteForm(_brandService), sender);
         }
 
         private void tedarukculeriElaveEtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new SupplierForm(), sender);
+            OpenChildForm(new SupplierForm(_supplierService), sender);
 
         }
 
@@ -398,7 +398,7 @@ namespace WindowsForm.Forms
         //Istifadeci--------------------------------------------->
         private void istifadəçiləriSıralaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormUserListed(), sender);
+            OpenChildForm(new FormUserListed(_userService), sender);
         }
 
         private void istifadəçiƏlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
@@ -420,22 +420,22 @@ namespace WindowsForm.Forms
 
         private void kateqoriyalariSiralaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormCategory(), sender);
+            OpenChildForm(new FormCategory(_categoryService), sender);
         }
 
         private void yenileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new CategoryUpdateAndDeleteForm(), sender);
+            OpenChildForm(new CategoryUpdateAndDeleteForm(_categoryService), sender);
         }
 
         private void elaveEtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormCategory(), sender);
+            OpenChildForm(new FormCategory(_categoryService), sender);
         }
 
         private void silToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new CategoryUpdateAndDeleteForm(), sender);
+            OpenChildForm(new CategoryUpdateAndDeleteForm(_categoryService), sender);
         }
 
 
@@ -476,22 +476,19 @@ namespace WindowsForm.Forms
         //Others--------------------------------->
         private void musterilerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new CustomerForm(), sender);
+            OpenChildForm(new CustomerForm(_customerService), sender);
         }
 
         private void musteriOdenisleriToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new CustomerPaymentForm(_userService), sender);
-            // OpenChildForm(new CustomerPaymentForm(new UserManager(new EfUserDal())), sender);
+            OpenChildForm(new CustomerPaymentForm(_userService,_customerPaymentService,_customerService), sender);
+           
         }
 
         private void selahiyyetlerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenChildForm(new AdminForms.OperationClaimForm(_userService, _operationClaimService, _userOperationClaimService), sender);
-            //OpenChildForm(new AdminForms.OperationClaimForm(new UserManager(new EfUserDal())
-            //                , new OperationClaimForFormsManager(new EfOperationClaimForFormsDal())
-            //                , new UserOperationClaimForFormsManager(new EfUserOperationClaimForFormsDal())
-            //                ), sender);
+           
         }
 
 

@@ -1,6 +1,4 @@
-﻿using Business.Concrete;
-using Entities.Concrete;
-using DataAccess.Concrete.EntityFramework;
+﻿using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,22 +12,30 @@ using WindowsForm.Utilities.Search.Concrete.ProductSearch;
 using WindowsForm.MyControls;
 using WindowsForm.Core.Controllers.Concrete;
 using Entities.DTOs.ProductDtos;
+using Business.Abstract;
 
 namespace WindowsForm.Forms
 {
     public partial class FormProductList : Form
     {
-        ProductManager _productManager = new ProductManager(new EfProductDal());
-        Product product = new Product();
+        IProductService _productService;
+        IBrandService _brandService;
+        ICategoryService _categoryService;
+        ISupplierService _supplierService;
 
-        CategoryManager _categoryManager = new CategoryManager(new EfCategoryDal());
-        BrandManager _brandManager = new BrandManager(new EfBrandDal());
-        SupplierManager _supplierManager = new SupplierManager(new EfSupplierDal());
         ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
         MyControl myControl = new MyControl();
+        Product product = new Product();
 
-        public FormProductList()
+        public FormProductList(IProductService productService
+            , IBrandService brandService
+            , ICategoryService categoryService
+            , ISupplierService supplierService)
         {
+            _productService = productService;
+            _brandService = brandService;
+            _categoryService = categoryService;
+            _supplierService = supplierService;
             InitializeComponent();
             myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
         }
@@ -53,7 +59,7 @@ namespace WindowsForm.Forms
                 FormsMessage.WarningMessage(BaseMessages.SelectedValueIsNull);
                 return;
             }
-            var productViewDetailByProductId = _productManager.GetProductViewDetailByProductId(
+            var productViewDetailByProductId = _productService.GetProductViewDetailByProductId(
                     Convert.ToInt32(dataGridViewFormPrdouctList.CurrentRow.Cells["ProductId"].Value.ToString())
                );
 
@@ -78,7 +84,7 @@ namespace WindowsForm.Forms
         //Genericlestir mutleq
         private void CategoryGetComboBoxVarOlan()
         {
-            var categoryGetAll = _categoryManager.GetAll();
+            var categoryGetAll = _categoryService.GetAll();
             comboBoxVarOlanKateqoriya.DataSource = categoryGetAll.Data;
             comboBoxVarOlanKateqoriya.DisplayMember = "CategoryName";
             comboBoxVarOlanKateqoriya.ValueMember = "Id";
@@ -88,7 +94,7 @@ namespace WindowsForm.Forms
 
         private void BrandGetComboBoxVarOlan()
         {
-            var brandGetAll = _brandManager.GetAll();
+            var brandGetAll = _brandService.GetAll();
             comboBoxVarOlanMarka.DataSource = brandGetAll.Data;
             comboBoxVarOlanMarka.DisplayMember = "BrandName";
             comboBoxVarOlanMarka.ValueMember = "Id";
@@ -98,7 +104,7 @@ namespace WindowsForm.Forms
 
         private void SupplierGetComboBox()
         {
-            var supplierGetAll = _supplierManager.GetAll();
+            var supplierGetAll = _supplierService.GetAll();
             comboBoxVarOlanTedarikci.DataSource = supplierGetAll.Data;
             comboBoxVarOlanTedarikci.DisplayMember = "CompanyName";
             comboBoxVarOlanTedarikci.ValueMember = "Id";
@@ -107,7 +113,7 @@ namespace WindowsForm.Forms
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            List<ProductViewDashboardDetailDto> data = _productManager.GetAllProductViewDasboardDetails().Data;
+            List<ProductViewDashboardDetailDto> data = _productService.GetAllProductViewDasboardDetails().Data;
             detailsSearch.GetDataWriteGridView(data, textBoxAxtar.Text, dataGridViewFormPrdouctList);
             //detailsSearch.SearchBySelectedValueOfComboBoxAndWriteToDataGridView(data,textBoxAxtar
             //    , dataGridViewFormPrdouctList, comboBoxProperty);
@@ -155,7 +161,7 @@ namespace WindowsForm.Forms
 
         private void ProductRefresh()
         {
-            dataGridViewFormPrdouctList.DataSource = _productManager.GetAllProductViewDasboardDetails().Data;
+            dataGridViewFormPrdouctList.DataSource = _productService.GetAllProductViewDasboardDetails().Data;
         }
     }
 }

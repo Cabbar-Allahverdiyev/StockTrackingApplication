@@ -1,7 +1,6 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
 using Business.Constants.Messages;
 using Core.Utilities.Results;
-using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -19,10 +18,12 @@ namespace WindowsForm.Forms
 {
     public partial class CustomerForm : Form
     {
-        CustomerManager _customerManager = new CustomerManager(new EfCustomerDal(),new CustomerBalanceManager(new EfCustomerBalanceDal()));
+        ICustomerService _customerService;
+        //CustomerManager _customerService = new CustomerManager(new EfCustomerDal(),new CustomerBalanceManager(new EfCustomerBalanceDal()));
         CustomerValidationTool validationTool = new CustomerValidationTool();
-        public CustomerForm()
+        public CustomerForm(ICustomerService customerService)
         {
+            _customerService = customerService;
             InitializeComponent();
             CustomerRefresh();
         }
@@ -43,7 +44,7 @@ namespace WindowsForm.Forms
                     return;
                 }
 
-                IResult result = _customerManager.Add(customer);
+                IResult result = _customerService.Add(customer);
                 if (!result.Success)
                 {
                     FormsMessage.ErrorMessage(result.Message);
@@ -68,13 +69,13 @@ namespace WindowsForm.Forms
 
         private void CustomerRefresh()
         {
-            dataGridViewList.DataSource = _customerManager.GetCustomerDetails().Data;
+            dataGridViewList.DataSource = _customerService.GetCustomerDetails().Data;
         }
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
             CustomerDtoSearch customerDtoSearch = new CustomerDtoSearch();
-            customerDtoSearch.GetDataWriteGridView(_customerManager.GetCustomerDetails().Data, textBoxAxtar.Text, dataGridViewList);
+            customerDtoSearch.GetDataWriteGridView(_customerService.GetCustomerDetails().Data, textBoxAxtar.Text, dataGridViewList);
         }
     }
 }

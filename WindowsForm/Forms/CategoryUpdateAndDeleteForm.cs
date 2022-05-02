@@ -1,6 +1,5 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
 using Business.Constants.Messages;
-using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -19,17 +18,19 @@ namespace WindowsForm.Forms
 {
     public partial class CategoryUpdateAndDeleteForm : Form
     {
-        CategoryManager _categoryManager = new CategoryManager(new EfCategoryDal());
+        //CategoryManager _categoryService = new CategoryManager(new EfCategoryDal());
+        ICategoryService _categoryService;
         CategoryValidationTool validationTool = new CategoryValidationTool();
         CategorySearch search = new CategorySearch();
-        
-        public CategoryUpdateAndDeleteForm()
+
+        public CategoryUpdateAndDeleteForm(ICategoryService categoryService)
         {
+            _categoryService = categoryService;
             InitializeComponent();
             CategoryRefresh();
         }
 
-        
+
 
         private void pictureBoxRefresh_Click(object sender, EventArgs e)
         {
@@ -38,7 +39,7 @@ namespace WindowsForm.Forms
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            List<Category> data = _categoryManager.GetAll().Data;
+            List<Category> data = _categoryService.GetAll().Data;
             search.GetDataWriteGridView(data,textBoxAxtar.Text, dataGridViewCategoryList);
         }
 
@@ -60,7 +61,7 @@ namespace WindowsForm.Forms
                     return;
                 }
 
-                var categoryUpdated = _categoryManager.Update(category);
+                var categoryUpdated = _categoryService.Update(category);
                 if (!categoryUpdated.Success)
                 {
                     FormsMessage.WarningMessage(categoryUpdated.Message);
@@ -85,7 +86,7 @@ namespace WindowsForm.Forms
                 Category category = new Category();
                 category.Id = int.Parse(textBoxId.Text);
                
-                var categryDeleted = _categoryManager.Delete(category);
+                var categryDeleted = _categoryService.Delete(category);
                 if (!categryDeleted.Success)
                 {
                     FormsMessage.WarningMessage(categryDeleted.Message);
@@ -116,7 +117,7 @@ namespace WindowsForm.Forms
 
         private void CategoryRefresh()
         {
-            dataGridViewCategoryList.DataSource = _categoryManager.GetAll().Data;
+            dataGridViewCategoryList.DataSource = _categoryService.GetAll().Data;
         }
         private void TextBoxClear()
         {

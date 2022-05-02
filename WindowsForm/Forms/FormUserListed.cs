@@ -1,6 +1,5 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
 using Business.Constants.Messages;
-using DataAccess.Concrete.EntityFramework;
 using Entities.DTOs.UserDtos;
 using System;
 using System.Collections.Generic;
@@ -17,10 +16,13 @@ namespace WindowsForm.Forms
 {
     public partial class FormUserListed : Form
     {
-        UserManager _userService = new UserManager(new EfUserDal());
+        
+        IUserService _userService;
+
         UserDtoSearch detailSearch = new UserDtoSearch();
-        public FormUserListed()
+        public FormUserListed(IUserService userService)
         {
+            _userService = userService;
             InitializeComponent();
             MyControl myControl = new MyControl();
             myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);

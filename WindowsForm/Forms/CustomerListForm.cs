@@ -1,6 +1,5 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
 using Business.Constants.Messages;
-using DataAccess.Concrete.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,12 +16,13 @@ namespace WindowsForm.Forms
 {
     public partial class CustomerListForm : Form
     {
-        CustomerManager _customerManager = new CustomerManager(new EfCustomerDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()));
+        //CustomerManager _customerService = new CustomerManager(new EfCustomerDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()));
+        ICustomerService _customerService;
 
-        
 
-        public CustomerListForm()
+        public CustomerListForm(ICustomerService customerService)
         {
+            _customerService = customerService;
             InitializeComponent();
             CustomerRefresh();
         }
@@ -75,7 +75,7 @@ namespace WindowsForm.Forms
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
             CustomerDtoSearch customerDtoSearch = new CustomerDtoSearch();
-            customerDtoSearch.GetDataWriteGridView(_customerManager.GetCustomerDetails().Data, textBoxAxtar.Text, dataGridViewCustomerList);
+            customerDtoSearch.GetDataWriteGridView(_customerService.GetCustomerDetails().Data, textBoxAxtar.Text, dataGridViewCustomerList);
         }
 
         
@@ -84,7 +84,7 @@ namespace WindowsForm.Forms
         //Elave metodlar ------------------------------->
         private void CustomerRefresh()
         {
-            dataGridViewCustomerList.DataSource = _customerManager.GetCustomerDetails().Data;
+            dataGridViewCustomerList.DataSource = _customerService.GetCustomerDetails().Data;
         }
 
       

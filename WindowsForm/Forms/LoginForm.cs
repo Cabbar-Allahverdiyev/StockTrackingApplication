@@ -25,12 +25,9 @@ namespace WindowsForm.Forms
 {
     public partial class LoginForm : Form
     {
-        // UserManager _userManager = new UserManager(new EfUserDal());
         IUserService _userService;
         IUserOperationClaimForFormsService _userOperationClaimForFormsService;
-
         IOperationClaimForFormsService _operationClaimService;
-        //IUserOperationClaimForFormsService _userOperationClaimService;
         IProductService _productService;
         IBrandService _brandService;
         ICategoryService _categoryService;
@@ -38,7 +35,6 @@ namespace WindowsForm.Forms
         ICustomerBalanceService _customerBalanceService;
         ICustomerPaymentService _customerPaymentService;
         ICartService _cartService;
-        //ISaleService _saleService;
         IDebtService _debtService;
         ISaleWinFormService _saleWinFormService;
         ISupplierService _supplierService;
@@ -131,18 +127,18 @@ namespace WindowsForm.Forms
                 if (getUserClaims.Success)
                 {
                     Dashboard dashboard = new Dashboard(_userService
-                                                    ,_operationClaimService
-                                                    ,_userOperationClaimForFormsService
-                                                    ,_productService
-                                                    ,_brandService
-                                                    ,_categoryService
-                                                    ,_customerService
-                                                    ,_customerBalanceService
-                                                    ,_customerPaymentService
-                                                    ,_cartService
-                                                    ,_debtService
-                                                    ,_saleWinFormService
-                                                    ,_supplierService
+                                                    , _operationClaimService
+                                                    , _userOperationClaimForFormsService
+                                                    , _productService
+                                                    , _brandService
+                                                    , _categoryService
+                                                    , _customerService
+                                                    , _customerBalanceService
+                                                    , _customerPaymentService
+                                                    , _cartService
+                                                    , _debtService
+                                                    , _saleWinFormService
+                                                    , _supplierService
                                                     );
                     this.Hide();
                     dashboard.Show();
