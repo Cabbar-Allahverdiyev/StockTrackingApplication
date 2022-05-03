@@ -88,6 +88,7 @@ namespace WindowsForm.Forms
             this.label5.Size = new System.Drawing.Size(129, 16);
             this.label5.TabIndex = 5;
             this.label5.Text = "Cabbar Allahverdiyev";
+            this.label5.DoubleClick += new System.EventHandler(this.label5_DoubleClick);
             // 
             // label4
             // 

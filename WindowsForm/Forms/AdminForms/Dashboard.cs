@@ -73,16 +73,8 @@ namespace WindowsForm.Forms
             IDataResult<User> getUser = _userService.GetById(LoginForm.UserId);
             labelFirstName.Text = getUser.Data.FirstName;
             labelLastName.Text = getUser.Data.LastName;
-            //myDropdownMenu2.PrimaryColor = Color.SeaGreen;
-            //myDropdownMenu2.MenuItemTextColor = Color.SeaGreen;
-
-            //myDropdownMenu1.IsMainMenu = true;
-            //myDropdownMenu2.IsMainMenu = true;
-
-            //myDropdownMenu2.PrimaryColor = Color.OrangeRed;
-            //myDropdownMenu2.MenuItemTextColor = Color.OrangeRed;
+            
             DisableButton();
-
 
             //WM_NCCALCSIZE
         }
@@ -97,7 +89,7 @@ namespace WindowsForm.Forms
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
-
+            buttonHome_Click(sender, e);
         }
 
         private void labelTitle_Click(object sender, EventArgs e)

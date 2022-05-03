@@ -17,8 +17,10 @@ using System.Net.NetworkInformation;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
+using WindowsForm.Core.Constants.FormsAuthorization.User;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.Concrete;
+using WindowsForm.Forms.AdminForms;
 using WindowsForm.Forms.UserForms;
 
 namespace WindowsForm.Forms
@@ -59,8 +61,6 @@ namespace WindowsForm.Forms
         {
             _userOperationClaimForFormsService = userOperationClaimForFormsService;
             _userService = userService;
-            InitializeComponent();
-            this.BackColor = Color.FromArgb(41, 128, 185);
             _operationClaimService = operationClaimService;
             _productService = productService;
             _categoryService = categoryService;
@@ -72,6 +72,9 @@ namespace WindowsForm.Forms
             _saleWinFormService = saleWinFormService;
             _supplierService = supplierService;
             _brandService = brandService;
+            InitializeComponent();
+            this.BackColor = Color.FromArgb(41, 128, 185);
+            
         }
 
         //Click------------------------------->
@@ -358,6 +361,19 @@ namespace WindowsForm.Forms
                 }
             }
             return sMacAddress;
+        }
+
+        private void label5_DoubleClick(object sender, EventArgs e)
+        {
+            UserAuthorization.IsAdminVerified = false;
+            AdminVerificationForm adminVerificationForm = new AdminVerificationForm(_userService);
+            adminVerificationForm.ShowDialog();
+            if (UserAuthorization.IsAdminVerified ==true)
+            {
+                MacAddressForm macAddressForm = new MacAddressForm();
+                macAddressForm.ShowDialog();
+                return;
+            }
         }
     }
 }
