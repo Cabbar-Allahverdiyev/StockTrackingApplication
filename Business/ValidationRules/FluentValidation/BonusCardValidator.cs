@@ -19,8 +19,8 @@ namespace Business.Constants.Messages
 
             RuleFor(b => b.Balance).NotEmpty();
            
-            RuleFor(b=>b.InterestAdvantage).NotEmpty();
-            RuleFor(b=>b.InterestAdvantage).GreaterThan(0);
+            //RuleFor(b=>b.InterestAdvantage).NotEmpty();
+            //RuleFor(b=>b.InterestAdvantage).GreaterThan(0);
         }
     }
 }

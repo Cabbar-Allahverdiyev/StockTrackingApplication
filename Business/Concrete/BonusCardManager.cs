@@ -15,9 +15,11 @@ namespace Business.Concrete
     {
 
         IBonusCardDal _bonusCardDal;
-        public BonusCardManager (IBonusCardDal bonusCardDal)
+        ICustomerService _customerService;
+        public BonusCardManager(IBonusCardDal bonusCardDal, ICustomerService customerService)
         {
             _bonusCardDal = bonusCardDal;
+            _customerService = customerService;
         }
         //CRUD
         [ValidationAspect(typeof(BonusCardValidator))]
@@ -27,10 +29,12 @@ namespace Business.Concrete
             IResult result = GetByCustomerId(bonusCard.CustomerId);
             if (result.Success)
             {
-                _bonusCardDal.Add(bonusCard);
-                return new SuccessResult(BonusCardMessages.Added);
+                return new ErrorResult(BonusCardMessages.ThisCustomerAlreadyExistsABonusCard);
             }
-            return new ErrorResult(BrandMessages.BrandNotAdded);
+          
+
+            _bonusCardDal.Add(bonusCard);
+            return new SuccessResult(BonusCardMessages.Added);
         }
 
         [CacheRemoveAspect("IBonusCardService.Get")]
@@ -76,6 +80,44 @@ namespace Business.Concrete
                 return new ErrorDataResult<BonusCard>(BonusCardMessages.NotFound);
             }
             return new SuccessDataResult<BonusCard>(get, BonusCardMessages.Found);
+        }
+
+        [CacheRemoveAspect("IBonusCardService.Get")]
+        public IResult IncreaseBalance(int customerId, decimal value)
+        {
+            IDataResult<BonusCard> getBonusCard = GetByCustomerId(customerId);
+            if (!getBonusCard.Success)
+            {
+                return new ErrorResult(BonusCardMessages.ThisCustomerDoesNotHaveABonusCard);
+            }
+            BonusCard bonusCard = getBonusCard.Data;
+            bonusCard.Balance += value;
+            Customer customer = _customerService.GetById(bonusCard.CustomerId).Data;
+            IResult result = Update(bonusCard);
+            if (!result.Success)
+            {
+                return new ErrorResult(BonusCardMessages.NotIncreaseBalance(customer.FirstName));
+            }
+           
+            return new SuccessResult(BonusCardMessages.IncreaseBalance(customer.FirstName));
+        }
+
+        public IResult ReduceBalance(int customerId, decimal value)
+        {
+            IDataResult<BonusCard> getBonusCard = GetByCustomerId(customerId);
+            if (!getBonusCard.Success)
+            {
+                return new ErrorResult(BonusCardMessages.ThisCustomerDoesNotHaveABonusCard);
+            }
+            BonusCard bonusCard = getBonusCard.Data;
+            bonusCard.Balance -= value;
+            Customer customer = _customerService.GetById(bonusCard.CustomerId).Data;
+            IResult result = Update(bonusCard);
+            if (!result.Success)
+            {
+                return new ErrorResult(BonusCardMessages.NotReduceBalance(customer.FirstName));
+            }
+            return new SuccessResult(BonusCardMessages.ReduceBalance(customer.FirstName));
         }
     }
 }

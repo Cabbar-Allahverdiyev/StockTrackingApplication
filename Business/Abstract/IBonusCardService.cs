@@ -15,5 +15,7 @@ namespace Business.Abstract
         IDataResult<BonusCard> GetById(int id);
 
         IDataResult<BonusCard> GetByCustomerId(int customerId);
+        IResult IncreaseBalance(int customerId,decimal value);
+        IResult ReduceBalance(int customerId,decimal value);
     }
 }
