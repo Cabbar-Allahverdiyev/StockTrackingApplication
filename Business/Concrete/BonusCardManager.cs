@@ -5,6 +5,7 @@ using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs.BonusCardDtos;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -118,6 +119,18 @@ namespace Business.Concrete
                 return new ErrorResult(BonusCardMessages.NotReduceBalance(customer.FirstName));
             }
             return new SuccessResult(BonusCardMessages.ReduceBalance(customer.FirstName));
+        }
+
+
+        //Dtos
+        public IDataResult<List<BonusCardForFormsDto>> GetBonusCardForFormsDetails()
+        {
+            List<BonusCardForFormsDto> get = _bonusCardDal.GetBonusCardDetails();
+            if (get == null)
+            {
+                return new ErrorDataResult<List<BonusCardForFormsDto>>(BonusCardMessages.NotFound);
+            }
+            return new SuccessDataResult<List<BonusCardForFormsDto>>(get, BonusCardMessages.Found);
         }
     }
 }

@@ -7,8 +7,7 @@ namespace Entities.DTOs.SaleWinFormDtos
 {
     public class SaleWinFormDto : IDto
     {
-        public int SaleId { get; set; }
-        public int ProductId { get; set; }
+        public string BarkodNomresi { get; set; }
         public string MehsulAdi { get; set; }
         public string Kateqoriya { get; set; }
         public string Marka { get; set; }
@@ -20,5 +19,7 @@ namespace Entities.DTOs.SaleWinFormDtos
         public DateTime Tarix { get; set; }
         public bool SatisinVeziyyeti { get; set; }
         
+        public int SaleId { get; set; }
+        public int ProductId { get; set; }
     }
 }

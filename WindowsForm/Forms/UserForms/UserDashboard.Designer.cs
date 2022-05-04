@@ -43,6 +43,8 @@ namespace WindowsForm.Forms.UserForms
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.panelTitleBar = new System.Windows.Forms.Panel();
+            this.labelFirstName = new System.Windows.Forms.Label();
+            this.labelLastName = new System.Windows.Forms.Label();
             this.buttonMinimized = new System.Windows.Forms.Button();
             this.buttonMaximized = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
@@ -86,8 +88,6 @@ namespace WindowsForm.Forms.UserForms
             this.myDMOther = new WindowsForm.MyControls.MyDropdownMenu(this.components);
             this.musterilerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.musteriOdenisleriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.labelLastName = new System.Windows.Forms.Label();
-            this.labelFirstName = new System.Windows.Forms.Label();
             this.panelTitleBar.SuspendLayout();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
@@ -320,6 +320,28 @@ namespace WindowsForm.Forms.UserForms
             this.panelTitleBar.Size = new System.Drawing.Size(754, 68);
             this.panelTitleBar.TabIndex = 4;
             this.panelTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDown);
+            // 
+            // labelFirstName
+            // 
+            this.labelFirstName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFirstName.AutoSize = true;
+            this.labelFirstName.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelFirstName.ForeColor = System.Drawing.Color.Black;
+            this.labelFirstName.Location = new System.Drawing.Point(649, 24);
+            this.labelFirstName.Name = "labelFirstName";
+            this.labelFirstName.Size = new System.Drawing.Size(0, 16);
+            this.labelFirstName.TabIndex = 9;
+            // 
+            // labelLastName
+            // 
+            this.labelLastName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelLastName.AutoSize = true;
+            this.labelLastName.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelLastName.ForeColor = System.Drawing.Color.Black;
+            this.labelLastName.Location = new System.Drawing.Point(649, 40);
+            this.labelLastName.Name = "labelLastName";
+            this.labelLastName.Size = new System.Drawing.Size(0, 16);
+            this.labelLastName.TabIndex = 8;
             // 
             // buttonMinimized
             // 
@@ -749,28 +771,6 @@ namespace WindowsForm.Forms.UserForms
             this.musteriOdenisleriToolStripMenuItem.Text = "Musteri odenisleri";
             this.musteriOdenisleriToolStripMenuItem.Click += new System.EventHandler(this.musteriOdenisleriToolStripMenuItem_Click);
             // 
-            // labelLastName
-            // 
-            this.labelLastName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelLastName.AutoSize = true;
-            this.labelLastName.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelLastName.ForeColor = System.Drawing.Color.Black;
-            this.labelLastName.Location = new System.Drawing.Point(649, 40);
-            this.labelLastName.Name = "labelLastName";
-            this.labelLastName.Size = new System.Drawing.Size(0, 16);
-            this.labelLastName.TabIndex = 8;
-            // 
-            // labelFirstName
-            // 
-            this.labelFirstName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelFirstName.AutoSize = true;
-            this.labelFirstName.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelFirstName.ForeColor = System.Drawing.Color.Black;
-            this.labelFirstName.Location = new System.Drawing.Point(649, 24);
-            this.labelFirstName.Name = "labelFirstName";
-            this.labelFirstName.Size = new System.Drawing.Size(0, 16);
-            this.labelFirstName.TabIndex = 9;
-            // 
             // UserDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -785,6 +785,7 @@ namespace WindowsForm.Forms.UserForms
             this.Name = "UserDashboard";
             this.Text = "Əsas Səhifə";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.UserDashboard_Load);
             this.Resize += new System.EventHandler(this.Dashboard_Resize);
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();

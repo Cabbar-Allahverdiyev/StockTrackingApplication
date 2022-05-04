@@ -28,6 +28,7 @@ namespace DataAccess.Concrete.EntityFramework
                              orderby s.SellDate descending
                              select new SaleWinFormDto
                              {
+                                 BarkodNomresi=p.BarcodeNumber,
                                  SaleId = s.Id,
                                  ProductId = s.ProductId,
                                  MehsulAdi = p.ProductName,

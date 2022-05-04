@@ -77,7 +77,10 @@ namespace WindowsForm.Forms.UserForms
             //WM_NCCALCSIZE
         }
 
-
+        private void UserDashboard_Load(object sender, EventArgs e)
+        {
+            buttonHome_Click(sender,e);
+        }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -516,7 +519,9 @@ namespace WindowsForm.Forms.UserForms
             labelTitle.Text = childForm.Text;
         }
 
-       
+        
+
+
 
 
 

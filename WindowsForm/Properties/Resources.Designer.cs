@@ -83,6 +83,16 @@ namespace WindowsForm.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
+        internal static System.Drawing.Bitmap bonus_card_16px_2 {
+            get {
+                object obj = ResourceManager.GetObject("bonus_card_16px_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
         internal static System.Drawing.Bitmap bunch_of_keys_blue_24px {
             get {
                 object obj = ResourceManager.GetObject("bunch_of_keys_blue_24px", resourceCulture);

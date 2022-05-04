@@ -55,9 +55,12 @@ namespace WindowsForm
             DebtManager debtManager = new DebtManager(new EfDebtDal(),customerBalanceManager);
             SupplierManager supplierManager = new SupplierManager(new EfSupplierDal());
 
+            BonusCardManager bonusCardManager = new BonusCardManager(new EfBonusCardDal(),customerManager);
             // Application.Run(new Forms.FormNese());
             //Application.Run(new Forms.USBBarcodeScannerForm());
-             
+
+            Application.Run(new Forms.BonusCardSelectForm(bonusCardManager));
+
             Application.Run(new Forms.LoginForm(userOperationClaimForFormsManager,userManager,operationClaimForFormsManager,productManager
                 ,categoryManager,customerManager,customerBalanceManager,customerPaymentManager,cartManager,debtManager,saleManager,supplierManager
                 ,brandManager));
