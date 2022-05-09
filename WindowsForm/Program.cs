@@ -59,22 +59,13 @@ namespace WindowsForm
             // Application.Run(new Forms.FormNese());
             //Application.Run(new Forms.USBBarcodeScannerForm());
 
-            Application.Run(new Forms.BonusCardSelectForm(bonusCardManager));
+            // Application.Run(new Forms.AdminForms.BonusCardUpdateAndDeleteForm(bonusCardManager));
+            //Application.Run(new Forms.BonusCardAddForm(bonusCardManager,customerManager));
 
-            Application.Run(new Forms.LoginForm(userOperationClaimForFormsManager,userManager,operationClaimForFormsManager,productManager
-                ,categoryManager,customerManager,customerBalanceManager,customerPaymentManager,cartManager,debtManager,saleManager,supplierManager
-                ,brandManager));
+            Application.Run(new Forms.LoginForm(userOperationClaimForFormsManager, userManager, operationClaimForFormsManager, productManager
+                , categoryManager, customerManager, customerBalanceManager, customerPaymentManager, cartManager, debtManager, saleManager, supplierManager
+                , brandManager));
 
-
-
-
-            //Application.Run(new Forms.StatisticForProductForm());
-            //Application.Run(new Forms.AdminForms.AdminVerificationForm(new UserManager(new EfUserDal())));
-            //Application.Run(new Forms.AdminForms.OperationClaimForm(new UserManager(new EfUserDal())
-            //                ,new OperationClaimForFormsManager(new EfOperationClaimForFormsDal())
-            //                ,new UserOperationClaimForFormsManager(new EfUserOperationClaimForFormsDal())
-            //                ));
-            //Application.Run(new Forms.CustomerPaymentForm()) ;
 
 
         }
