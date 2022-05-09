@@ -32,8 +32,9 @@ namespace Business.Concrete
             {
                 return new ErrorResult(BonusCardMessages.ThisCustomerAlreadyExistsABonusCard);
             }
-          
 
+            bonusCard.Balance = 0;
+            bonusCard.InterestAdvantage = 5;
             _bonusCardDal.Add(bonusCard);
             return new SuccessResult(BonusCardMessages.Added);
         }
