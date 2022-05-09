@@ -313,37 +313,62 @@ namespace WindowsForm.Forms.UserForms
 
         //Dropdown menu---------------------------------->
         //Product--------------------------------------->
-        private void məhsulSilToolStripMenuItem_Click(object sender, EventArgs e)
+
+
+        private void sıralaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // OpenChildForm(new ProductDeleteForm(), sender);
+            OpenChildForm(new FormProductList(_productService, _brandService, _categoryService, _supplierService), sender);
+
         }
 
-        private void məhsullarıSıralaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void əlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormProductList(_productService,_brandService,_categoryService,_supplierService), sender);
+            OpenChildForm(new FormProductAdd(_productService, _brandService, _categoryService, _supplierService), sender);
+
         }
 
-        private void məhsulYeniləToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //OpenChildForm(new ProductUpdateForm(), sender);
-        }
-
-        private void məhsulƏlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new FormProductAdd(_productService,_brandService,_categoryService,_supplierService), sender);
-        }
-
-        private void markalarToolStripMenuItem_Click(object sender, EventArgs e)
+        //Brand__________________>
+        private void əlavəEtToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             OpenChildForm(new FormBrand(_brandService), sender);
         }
 
-
-
-        private void markalarIYeniləVəSilToolStripMenuItem_Click(object sender, EventArgs e)
+        //Supplier_________________>
+        private void əlavəEtToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new CategoryUpdateAndDeleteForm(_categoryService), sender);
+            OpenChildForm(new SupplierForm(_supplierService),sender);
         }
+        //private void məhsulSilToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    // OpenChildForm(new ProductDeleteForm(), sender);
+        //}
+
+        //private void məhsullarıSıralaToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    OpenChildForm(new FormProductList(_productService,_brandService,_categoryService,_supplierService), sender);
+        //}
+
+        //private void məhsulYeniləToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    //OpenChildForm(new ProductUpdateForm(), sender);
+        //}
+
+        //private void məhsulƏlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    OpenChildForm(new FormProductAdd(_productService,_brandService,_categoryService,_supplierService), sender);
+        //}
+
+        //private void markalarToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    OpenChildForm(new FormBrand(_brandService), sender);
+        //}
+
+
+
+        //private void markalarIYeniləVəSilToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    OpenChildForm(new CategoryUpdateAndDeleteForm(_categoryService), sender);
+        //}
 
 
 
@@ -519,55 +544,8 @@ namespace WindowsForm.Forms.UserForms
             labelTitle.Text = childForm.Text;
         }
 
-        
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //private void ActivateButton(object btnSender)
-        //{
-        //    if (btnSender != null)
-        //    {
-        //        if (currentButton.Equals((MyDropdownMenu)btnSender))
-        //        {
-        //            DisableButton();
-        //            //Color color = SelectThemeColor();
-        //            currentButton = (Button)btnSender;
-        //            //currentButton.BackColor = color;
-        //           // currentButton.ForeColor = Color.White;
-        //           // currentButton.Font = new System.Drawing.Font("Segoe UI", 11.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        //            //panelTitleBar.BackColor = color;
-        //           // panelLogo.BackColor = ThemeColor.ChangeColorBrightness(color, -0.3);
-        //            //ThemeColor.PrimaryColor = color;
-        //            //ThemeColor.SecondaryColor = ThemeColor.ChangeColorBrightness(color, -0.3);
-        //            buttonCloseChildForm.Visible = true;
-
-        //        }
-        //    }
-        //}
 
 
 
