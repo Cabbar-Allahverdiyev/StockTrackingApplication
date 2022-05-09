@@ -73,7 +73,7 @@ namespace WindowsForm.Forms
             IDataResult<User> getUser = _userService.GetById(LoginForm.UserId);
             labelFirstName.Text = getUser.Data.FirstName;
             labelLastName.Text = getUser.Data.LastName;
-            
+
             DisableButton();
 
             //WM_NCCALCSIZE
@@ -341,46 +341,89 @@ namespace WindowsForm.Forms
 
         //Dropdown menu---------------------------------->
         //Product--------------------------------------->
-        private void məhsulSilToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void sıralaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new ProductDeleteForm(_productService,_brandService,_categoryService,_supplierService), sender);
+            OpenChildForm(new FormProductList(_productService, _brandService, _categoryService, _supplierService), sender);
         }
 
-        private void məhsullarıSıralaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new FormProductList(_productService,_brandService,_categoryService,_supplierService), sender);
-        }
 
-        private void məhsulYeniləToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new ProductUpdateForm(_productService,_brandService,_categoryService,_supplierService), sender);
-        }
-
-        private void məhsulƏlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
+        private void əlavəEtToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             OpenChildForm(new FormProductAdd(_productService, _brandService, _categoryService, _supplierService), sender);
         }
 
-        private void markalarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void yeniləToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new ProductUpdateForm(_productService, _brandService, _categoryService, _supplierService), sender);
+        }
+
+        private void silToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new ProductDeleteForm(_productService, _brandService, _categoryService, _supplierService), sender);
+        }
+
+        //Brand_______________________>
+        private void əlavəEtToolStripMenuItem3_Click(object sender, EventArgs e)
         {
             OpenChildForm(new FormBrand(_brandService), sender);
         }
 
-        private void markalarıYeniləVəSilToolStripMenuItem_Click(object sender, EventArgs e)
+        private void yeniləVəSilToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenChildForm(new BrandUpdateAndDeleteForm(_brandService), sender);
         }
 
-        private void tedarukculeriElaveEtToolStripMenuItem_Click(object sender, EventArgs e)
+        //Supplier_____________________>
+        private void əlavəEtToolStripMenuItem4_Click(object sender, EventArgs e)
         {
             OpenChildForm(new SupplierForm(_supplierService), sender);
-
         }
 
-        private void tedarukculeriYenileVeSilToolStripMenuItem_Click(object sender, EventArgs e)
+        private void yeniləVəSilToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             OpenChildForm(new SupplierUpdateForm(_supplierService), sender);
         }
+        //private void məhsulSilToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    OpenChildForm(new ProductDeleteForm(_productService,_brandService,_categoryService,_supplierService), sender);
+        //}
+
+        //private void məhsullarıSıralaToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    OpenChildForm(new FormProductList(_productService,_brandService,_categoryService,_supplierService), sender);
+        //}
+
+        //private void məhsulYeniləToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    OpenChildForm(new ProductUpdateForm(_productService,_brandService,_categoryService,_supplierService), sender);
+        //}
+
+        //private void məhsulƏlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    OpenChildForm(new FormProductAdd(_productService, _brandService, _categoryService, _supplierService), sender);
+        //}
+        //////////
+        //private void markalarToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    OpenChildForm(new FormBrand(_brandService), sender);
+        //}
+
+        //private void markalarıYeniləVəSilToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    OpenChildForm(new BrandUpdateAndDeleteForm(_brandService), sender);
+        //}
+
+        //private void tedarukculeriElaveEtToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    OpenChildForm(new SupplierForm(_supplierService), sender);
+
+        //}
+
+        //private void tedarukculeriYenileVeSilToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    OpenChildForm(new SupplierUpdateForm(_supplierService), sender);
+        //}
         //Sales-------------------------------------------->
         private void satislariSiralaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -473,14 +516,14 @@ namespace WindowsForm.Forms
 
         private void musteriOdenisleriToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new CustomerPaymentForm(_userService,_customerPaymentService,_customerService), sender);
-           
+            OpenChildForm(new CustomerPaymentForm(_userService, _customerPaymentService, _customerService), sender);
+
         }
 
         private void selahiyyetlerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenChildForm(new AdminForms.OperationClaimForm(_userService, _operationClaimService, _userOperationClaimService), sender);
-           
+
         }
 
 
@@ -568,6 +611,13 @@ namespace WindowsForm.Forms
             childForm.Show();
             labelTitle.Text = childForm.Text;
         }
+
+       
+
+
+
+
+
 
 
 

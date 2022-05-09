@@ -480,12 +480,7 @@ namespace WindowsForm.Forms
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            //string searchText = textBoxAxtar.Text;
-            //List<ProductViewDashboardDetailDto> result = _productService.GetAllProductViewDasboardDetails().Data
-            //                                         .Where(p => p.MehsulAdi.ToLower().Contains(searchText.ToLower()))
-            //                                         .ToList();
-            //dataGridViewProductList.DataSource = result;
-            List<ProductViewDashboardDetailDto> data = _productService.GetAllProductViewDasboardDetails().Data;
+                       List<ProductViewDashboardDetailDto> data = _productService.GetAllProductViewDasboardDetails().Data;
             detailsSearch.GetDataWriteGridView(data, textBoxAxtar.Text, dataGridViewProductList);
         }
 
