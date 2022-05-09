@@ -30,6 +30,12 @@ namespace WindowsForm.Forms
         private void InitializeComponent()
         {
             this.groupBoxMusteri = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBoxGuzest = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBoxBonusCardBarcode = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.textBoxBonusCardId = new System.Windows.Forms.TextBox();
             this.buttonSec = new System.Windows.Forms.Button();
             this.textBoxBalance = new System.Windows.Forms.TextBox();
@@ -42,9 +48,6 @@ namespace WindowsForm.Forms
             this.buttonAxtar = new System.Windows.Forms.Button();
             this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
             this.textBoxAxtar = new System.Windows.Forms.TextBox();
-            this.textBoxBonusCardBarcode = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.groupBoxMusteri.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).BeginInit();
@@ -52,6 +55,9 @@ namespace WindowsForm.Forms
             // 
             // groupBoxMusteri
             // 
+            this.groupBoxMusteri.Controls.Add(this.label7);
+            this.groupBoxMusteri.Controls.Add(this.textBoxGuzest);
+            this.groupBoxMusteri.Controls.Add(this.label6);
             this.groupBoxMusteri.Controls.Add(this.label5);
             this.groupBoxMusteri.Controls.Add(this.textBoxBonusCardBarcode);
             this.groupBoxMusteri.Controls.Add(this.label1);
@@ -66,11 +72,63 @@ namespace WindowsForm.Forms
             this.groupBoxMusteri.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBoxMusteri.Location = new System.Drawing.Point(12, 44);
             this.groupBoxMusteri.Name = "groupBoxMusteri";
-            this.groupBoxMusteri.Size = new System.Drawing.Size(244, 224);
+            this.groupBoxMusteri.Size = new System.Drawing.Size(244, 251);
             this.groupBoxMusteri.TabIndex = 9;
             this.groupBoxMusteri.TabStop = false;
-            this.groupBoxMusteri.Text = "Müştəri";
             this.groupBoxMusteri.Enter += new System.EventHandler(this.groupBoxMusteri_Enter);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.Location = new System.Drawing.Point(133, 177);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(17, 15);
+            this.label7.TabIndex = 45;
+            this.label7.Text = "%";
+            // 
+            // textBoxGuzest
+            // 
+            this.textBoxGuzest.Enabled = false;
+            this.textBoxGuzest.Location = new System.Drawing.Point(78, 173);
+            this.textBoxGuzest.Name = "textBoxGuzest";
+            this.textBoxGuzest.Size = new System.Drawing.Size(49, 22);
+            this.textBoxGuzest.TabIndex = 44;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(19, 176);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(53, 17);
+            this.label6.TabIndex = 43;
+            this.label6.Text = "Güzəşt :";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(17, 153);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(48, 17);
+            this.label5.TabIndex = 42;
+            this.label5.Text = "Bonus :";
+            // 
+            // textBoxBonusCardBarcode
+            // 
+            this.textBoxBonusCardBarcode.Enabled = false;
+            this.textBoxBonusCardBarcode.Location = new System.Drawing.Point(78, 48);
+            this.textBoxBonusCardBarcode.Name = "textBoxBonusCardBarcode";
+            this.textBoxBonusCardBarcode.Size = new System.Drawing.Size(160, 22);
+            this.textBoxBonusCardBarcode.TabIndex = 41;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(17, 51);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 17);
+            this.label1.TabIndex = 40;
+            this.label1.Text = "Barkod :";
             // 
             // textBoxBonusCardId
             // 
@@ -85,13 +143,14 @@ namespace WindowsForm.Forms
             this.buttonSec.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSec.Image = global::WindowsForm.Properties.Resources.choose_page_16px;
             this.buttonSec.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonSec.Location = new System.Drawing.Point(150, 173);
+            this.buttonSec.Location = new System.Drawing.Point(150, 207);
             this.buttonSec.Name = "buttonSec";
             this.buttonSec.Size = new System.Drawing.Size(88, 28);
             this.buttonSec.TabIndex = 38;
             this.buttonSec.Text = "  Seç";
             this.buttonSec.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonSec.UseVisualStyleBackColor = true;
+            this.buttonSec.Click += new System.EventHandler(this.buttonSec_Click);
             // 
             // textBoxBalance
             // 
@@ -160,6 +219,7 @@ namespace WindowsForm.Forms
             this.dataGridViewList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewList.Size = new System.Drawing.Size(542, 346);
             this.dataGridViewList.TabIndex = 10;
+            this.dataGridViewList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewList_CellDoubleClick);
             // 
             // buttonAxtar
             // 
@@ -186,6 +246,7 @@ namespace WindowsForm.Forms
             this.pictureBoxRefresh.Size = new System.Drawing.Size(25, 28);
             this.pictureBoxRefresh.TabIndex = 42;
             this.pictureBoxRefresh.TabStop = false;
+            this.pictureBoxRefresh.Click += new System.EventHandler(this.pictureBoxRefresh_Click);
             // 
             // textBoxAxtar
             // 
@@ -195,32 +256,7 @@ namespace WindowsForm.Forms
             this.textBoxAxtar.Name = "textBoxAxtar";
             this.textBoxAxtar.Size = new System.Drawing.Size(138, 22);
             this.textBoxAxtar.TabIndex = 41;
-            // 
-            // textBoxBonusCardBarcode
-            // 
-            this.textBoxBonusCardBarcode.Enabled = false;
-            this.textBoxBonusCardBarcode.Location = new System.Drawing.Point(78, 48);
-            this.textBoxBonusCardBarcode.Name = "textBoxBonusCardBarcode";
-            this.textBoxBonusCardBarcode.Size = new System.Drawing.Size(160, 22);
-            this.textBoxBonusCardBarcode.TabIndex = 41;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 51);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 17);
-            this.label1.TabIndex = 40;
-            this.label1.Text = "Barkod :";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(17, 153);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(48, 17);
-            this.label5.TabIndex = 42;
-            this.label5.Text = "Bonus :";
+            this.textBoxAxtar.TextChanged += new System.EventHandler(this.textBoxAxtar_TextChanged);
             // 
             // BonusCardSelectForm
             // 
@@ -264,5 +300,8 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBoxBonusCardBarcode;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBoxGuzest;
+        private System.Windows.Forms.Label label6;
     }
 }
