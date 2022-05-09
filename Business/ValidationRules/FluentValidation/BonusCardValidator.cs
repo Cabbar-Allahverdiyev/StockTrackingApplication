@@ -17,7 +17,7 @@ namespace Business.Constants.Messages
             RuleFor(b => b.BarcodeNumber).Length(13);
             RuleFor(b => b.BarcodeNumber).NotEmpty();
 
-            RuleFor(b => b.Balance).NotEmpty();
+           // RuleFor(b => b.Balance).NotEmpty();
            
             //RuleFor(b=>b.InterestAdvantage).NotEmpty();
             //RuleFor(b=>b.InterestAdvantage).GreaterThan(0);
