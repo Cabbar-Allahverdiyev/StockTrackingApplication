@@ -15,7 +15,7 @@ namespace DataAccess.Concrete.EntityFramework
     {
         public List<BonusCardForFormsDto> GetBonusCardDetails(Expression<Func<BonusCardForFormsDto, bool>> filter = null)
         {
-            using (StockTrackingProjectContext context=new StockTrackingProjectContext())
+            using (StockTrackingProjectContext context = new StockTrackingProjectContext())
             {
                 var result = from bonuses in context.BonusCards
                              join customers in context.Customers on bonuses.CustomerId equals customers.Id
@@ -29,6 +29,26 @@ namespace DataAccess.Concrete.EntityFramework
                                  MusteriGuzesti = bonuses.InterestAdvantage
                              };
                 return filter == null ? result.ToList() : result.Where(filter).ToList();
+            }
+        }
+
+        public BonusCardForFormsDto GetBonusCardForFormsDto(Expression<Func<BonusCardForFormsDto, bool>> filter)
+        {
+            using (StockTrackingProjectContext context = new StockTrackingProjectContext())
+            {
+                var result = from bonuses in context.BonusCards
+                             join customers in context.Customers
+                             on bonuses.CustomerId equals customers.Id
+                             select new BonusCardForFormsDto
+                             {
+                                 BonusCardId = bonuses.Id,
+                                 BarkodNomresi = bonuses.BarcodeNumber,
+                                 Ad = customers.FirstName,
+                                 Soyad = customers.LastName,
+                                 Balans = bonuses.Balance,
+                                 MusteriGuzesti = bonuses.InterestAdvantage
+                             };
+                return result.SingleOrDefault(filter);
             }
         }
     }

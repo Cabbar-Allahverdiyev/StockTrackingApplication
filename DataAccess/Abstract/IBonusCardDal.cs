@@ -11,5 +11,8 @@ namespace DataAccess.Abstract
     public interface IBonusCardDal : IEntityRepository<BonusCard>
     {
         List<BonusCardForFormsDto> GetBonusCardDetails(Expression<Func<BonusCardForFormsDto, bool>> filter = null);
+        BonusCardForFormsDto GetBonusCardForFormsDto(Expression<Func<BonusCardForFormsDto, bool>> filter);
+                                          
+
     }
 }
