@@ -21,6 +21,7 @@ using System.Reflection;
 using Business.Abstract;
 using System.Linq;
 using Entities.DTOs.ProductDtos;
+using Entities.DTOs.BonusCardDtos;
 
 namespace WindowsForm.Forms
 {
@@ -37,6 +38,7 @@ namespace WindowsForm.Forms
         ICustomerService _customerService;
         ISaleWinFormService _saleWinFormService;
         IDebtService _debtService;
+        IBonusCardService _bonusCardService;
 
         MyControl myControl = new MyControl();
 
@@ -48,7 +50,7 @@ namespace WindowsForm.Forms
                             , ICustomerService customerService
                             , ISaleWinFormService saleWinFormService
                             , IDebtService debtService
-                            )
+                            , IBonusCardService bonusCardService)
         {
             _productService = productService;
             _cartService = cartService;
@@ -58,6 +60,7 @@ namespace WindowsForm.Forms
             _categoryService = categoryService;
             _brandService = brandService;
             _supplierService = supplierService;
+            _bonusCardService = bonusCardService;
 
             InitializeComponent();
             TotalPriceLabelWrite();
@@ -464,6 +467,20 @@ namespace WindowsForm.Forms
             TextBoxController.ClearAllTextBoxesAndCmboBoxesByGroupBox(groupBoxFilter);
         }
 
+        private void buttonBonusCardSelect_Click(object sender, EventArgs e)
+        {
+            BonusCardSelectForm bonusCardSelectForm = new BonusCardSelectForm(_bonusCardService);
+            bonusCardSelectForm.ShowDialog();
+            IDataResult<BonusCardForFormsDto> getBonusCard = _bonusCardService.GetBonusCardForFormsDetailById(BonusCardSelectForm.BonusCardId);
+            if (!getBonusCard.Success)
+            {
+                FormsMessage.WarningMessage(getBonusCard.Message);
+                return;
+            }
+
+            textBoxBonusCardCustomerName.Text = getBonusCard.Data.Ad + " " + getBonusCard.Data.Soyad;
+        }
+
         //Text Changed -------------------->
         private void textBoxMiqdar_TextChanged(object sender, EventArgs e)
         {
@@ -480,7 +497,7 @@ namespace WindowsForm.Forms
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-                       List<ProductViewDashboardDetailDto> data = _productService.GetAllProductViewDasboardDetails().Data;
+            List<ProductViewDashboardDetailDto> data = _productService.GetAllProductViewDasboardDetails().Data;
             detailsSearch.GetDataWriteGridView(data, textBoxAxtar.Text, dataGridViewProductList);
         }
 
@@ -624,7 +641,7 @@ namespace WindowsForm.Forms
         private void CartListRefesh()
         {
             dataGridViewCartList.DataSource = _cartService.GetAllCartViewDetailsByUserId(staticUserId).Data;
-                        myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "AlisQiymeti", Color.Yellow);
+            myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "AlisQiymeti", Color.Yellow);
             myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "Qiymet", Color.Green);
             myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "Cem", Color.Red);
         }
@@ -642,7 +659,7 @@ namespace WindowsForm.Forms
             decimal tolalPrice = 0;
             decimal price;
             List<Cart> carts = _cartService.GetAllByUserId(staticUserId).Data;
-                        foreach (Cart cart in carts)
+            foreach (Cart cart in carts)
             {
                 price = cart.TotalPrice;
                 tolalPrice += price;
@@ -734,7 +751,7 @@ namespace WindowsForm.Forms
                     {
                         FormsMessage.WarningMessage(cartUpdated.Message);
                         return;
-                    }                   
+                    }
                 }
                 else
                 {

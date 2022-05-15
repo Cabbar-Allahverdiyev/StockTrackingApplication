@@ -99,19 +99,22 @@ namespace WindowsForm.Forms
             this.dataGridViewProductList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.dataGridViewProductList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewProductList.Location = new System.Drawing.Point(263, 45);
+            this.dataGridViewProductList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridViewProductList.Name = "dataGridViewProductList";
             this.dataGridViewProductList.ReadOnly = true;
             this.dataGridViewProductList.RowTemplate.Height = 25;
             this.dataGridViewProductList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewProductList.Size = new System.Drawing.Size(806, 346);
+            this.dataGridViewProductList.Size = new System.Drawing.Size(806, 332);
             this.dataGridViewProductList.TabIndex = 1;
             this.dataGridViewProductList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewSalesForm_CellDoubleClick);
             // 
             // ButtonSalesFormSil
             // 
             this.ButtonSalesFormSil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonSalesFormSil.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ButtonSalesFormSil.Image = ((System.Drawing.Image)(resources.GetObject("ButtonSalesFormSil.Image")));
             this.ButtonSalesFormSil.Location = new System.Drawing.Point(150, 396);
+            this.ButtonSalesFormSil.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ButtonSalesFormSil.Name = "ButtonSalesFormSil";
             this.ButtonSalesFormSil.Size = new System.Drawing.Size(88, 28);
             this.ButtonSalesFormSil.TabIndex = 2;
@@ -125,9 +128,10 @@ namespace WindowsForm.Forms
             this.ButonSalesFormSatisIptal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ButonSalesFormSatisIptal.FlatAppearance.BorderSize = 0;
             this.ButonSalesFormSatisIptal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButonSalesFormSatisIptal.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ButonSalesFormSatisIptal.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ButonSalesFormSatisIptal.Image = ((System.Drawing.Image)(resources.GetObject("ButonSalesFormSatisIptal.Image")));
             this.ButonSalesFormSatisIptal.Location = new System.Drawing.Point(1075, 45);
+            this.ButonSalesFormSatisIptal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ButonSalesFormSatisIptal.Name = "ButonSalesFormSatisIptal";
             this.ButonSalesFormSatisIptal.Size = new System.Drawing.Size(75, 45);
             this.ButonSalesFormSatisIptal.TabIndex = 3;
@@ -147,9 +151,11 @@ namespace WindowsForm.Forms
             this.groupBoxMusteri.Controls.Add(this.label4);
             this.groupBoxMusteri.Controls.Add(this.label3);
             this.groupBoxMusteri.Controls.Add(this.label2);
-            this.groupBoxMusteri.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBoxMusteri.Location = new System.Drawing.Point(13, 37);
+            this.groupBoxMusteri.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBoxMusteri.Location = new System.Drawing.Point(13, 36);
+            this.groupBoxMusteri.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBoxMusteri.Name = "groupBoxMusteri";
+            this.groupBoxMusteri.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBoxMusteri.Size = new System.Drawing.Size(244, 188);
             this.groupBoxMusteri.TabIndex = 8;
             this.groupBoxMusteri.TabStop = false;
@@ -158,7 +164,9 @@ namespace WindowsForm.Forms
             // textBoxCustomerId
             // 
             this.textBoxCustomerId.Enabled = false;
+            this.textBoxCustomerId.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxCustomerId.Location = new System.Drawing.Point(78, 24);
+            this.textBoxCustomerId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxCustomerId.Name = "textBoxCustomerId";
             this.textBoxCustomerId.Size = new System.Drawing.Size(160, 22);
             this.textBoxCustomerId.TabIndex = 39;
@@ -166,9 +174,11 @@ namespace WindowsForm.Forms
             // buttonSec
             // 
             this.buttonSec.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSec.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonSec.Image = global::WindowsForm.Properties.Resources.choose_page_16px;
             this.buttonSec.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonSec.Location = new System.Drawing.Point(55, 151);
+            this.buttonSec.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSec.Name = "buttonSec";
             this.buttonSec.Size = new System.Drawing.Size(88, 28);
             this.buttonSec.TabIndex = 38;
@@ -180,9 +190,11 @@ namespace WindowsForm.Forms
             // buttonBorcElaveEt
             // 
             this.buttonBorcElaveEt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBorcElaveEt.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonBorcElaveEt.Image = global::WindowsForm.Properties.Resources.payment_history_16px_3;
             this.buttonBorcElaveEt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonBorcElaveEt.Location = new System.Drawing.Point(149, 151);
+            this.buttonBorcElaveEt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonBorcElaveEt.Name = "buttonBorcElaveEt";
             this.buttonBorcElaveEt.Size = new System.Drawing.Size(88, 28);
             this.buttonBorcElaveEt.TabIndex = 36;
@@ -194,7 +206,9 @@ namespace WindowsForm.Forms
             // textBoxTelefon
             // 
             this.textBoxTelefon.Enabled = false;
+            this.textBoxTelefon.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxTelefon.Location = new System.Drawing.Point(77, 119);
+            this.textBoxTelefon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxTelefon.Name = "textBoxTelefon";
             this.textBoxTelefon.Size = new System.Drawing.Size(160, 22);
             this.textBoxTelefon.TabIndex = 5;
@@ -202,7 +216,9 @@ namespace WindowsForm.Forms
             // textBoxSoyad
             // 
             this.textBoxSoyad.Enabled = false;
+            this.textBoxSoyad.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxSoyad.Location = new System.Drawing.Point(77, 87);
+            this.textBoxSoyad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxSoyad.Name = "textBoxSoyad";
             this.textBoxSoyad.Size = new System.Drawing.Size(160, 22);
             this.textBoxSoyad.TabIndex = 4;
@@ -210,7 +226,9 @@ namespace WindowsForm.Forms
             // textBoxAd
             // 
             this.textBoxAd.Enabled = false;
+            this.textBoxAd.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxAd.Location = new System.Drawing.Point(77, 56);
+            this.textBoxAd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxAd.Name = "textBoxAd";
             this.textBoxAd.Size = new System.Drawing.Size(160, 22);
             this.textBoxAd.TabIndex = 3;
@@ -218,27 +236,30 @@ namespace WindowsForm.Forms
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(14, 122);
+            this.label4.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(14, 121);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 17);
+            this.label4.Size = new System.Drawing.Size(53, 14);
             this.label4.TabIndex = 2;
             this.label4.Text = "Telefon :";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.Location = new System.Drawing.Point(20, 91);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 17);
+            this.label3.Size = new System.Drawing.Size(48, 14);
             this.label3.TabIndex = 1;
             this.label3.Text = "Soyad :";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(40, 59);
+            this.label2.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(40, 60);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(31, 17);
+            this.label2.Size = new System.Drawing.Size(28, 14);
             this.label2.TabIndex = 0;
             this.label2.Text = "Ad :";
             // 
@@ -265,7 +286,9 @@ namespace WindowsForm.Forms
             this.groupBoxMehsul.Controls.Add(this.label7);
             this.groupBoxMehsul.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBoxMehsul.Location = new System.Drawing.Point(13, 232);
+            this.groupBoxMehsul.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBoxMehsul.Name = "groupBoxMehsul";
+            this.groupBoxMehsul.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBoxMehsul.Size = new System.Drawing.Size(244, 488);
             this.groupBoxMehsul.TabIndex = 9;
             this.groupBoxMehsul.TabStop = false;
@@ -274,9 +297,11 @@ namespace WindowsForm.Forms
             // buttonDuzelt
             // 
             this.buttonDuzelt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDuzelt.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonDuzelt.Image = global::WindowsForm.Properties.Resources.editBlack_16px_2;
             this.buttonDuzelt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonDuzelt.Location = new System.Drawing.Point(57, 396);
+            this.buttonDuzelt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonDuzelt.Name = "buttonDuzelt";
             this.buttonDuzelt.Size = new System.Drawing.Size(88, 28);
             this.buttonDuzelt.TabIndex = 21;
@@ -291,8 +316,9 @@ namespace WindowsForm.Forms
             this.buttonBarkodNoAxtar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBarkodNoAxtar.Image = global::WindowsForm.Properties.Resources.searchFerqliBlack_16px;
             this.buttonBarkodNoAxtar.Location = new System.Drawing.Point(6, 162);
+            this.buttonBarkodNoAxtar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonBarkodNoAxtar.Name = "buttonBarkodNoAxtar";
-            this.buttonBarkodNoAxtar.Size = new System.Drawing.Size(18, 20);
+            this.buttonBarkodNoAxtar.Size = new System.Drawing.Size(18, 19);
             this.buttonBarkodNoAxtar.TabIndex = 20;
             this.buttonBarkodNoAxtar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonBarkodNoAxtar.UseVisualStyleBackColor = true;
@@ -301,7 +327,8 @@ namespace WindowsForm.Forms
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(6, 25);
+            this.pictureBox1.Location = new System.Drawing.Point(6, 26);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(231, 78);
             this.pictureBox1.TabIndex = 19;
@@ -310,9 +337,10 @@ namespace WindowsForm.Forms
             // buttonTemizle
             // 
             this.buttonTemizle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonTemizle.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonTemizle.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonTemizle.Image = ((System.Drawing.Image)(resources.GetObject("buttonTemizle.Image")));
             this.buttonTemizle.Location = new System.Drawing.Point(57, 363);
+            this.buttonTemizle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTemizle.Name = "buttonTemizle";
             this.buttonTemizle.Size = new System.Drawing.Size(88, 28);
             this.buttonTemizle.TabIndex = 16;
@@ -324,9 +352,11 @@ namespace WindowsForm.Forms
             // buttoElaveEt
             // 
             this.buttoElaveEt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttoElaveEt.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttoElaveEt.Image = ((System.Drawing.Image)(resources.GetObject("buttoElaveEt.Image")));
             this.buttoElaveEt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttoElaveEt.Location = new System.Drawing.Point(150, 363);
+            this.buttoElaveEt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttoElaveEt.Name = "buttoElaveEt";
             this.buttoElaveEt.Size = new System.Drawing.Size(88, 28);
             this.buttoElaveEt.TabIndex = 18;
@@ -338,7 +368,9 @@ namespace WindowsForm.Forms
             // textBoxProductId
             // 
             this.textBoxProductId.Enabled = false;
+            this.textBoxProductId.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxProductId.Location = new System.Drawing.Point(100, 128);
+            this.textBoxProductId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxProductId.Name = "textBoxProductId";
             this.textBoxProductId.Size = new System.Drawing.Size(138, 22);
             this.textBoxProductId.TabIndex = 14;
@@ -346,7 +378,9 @@ namespace WindowsForm.Forms
             // textBoxMaxQiymet
             // 
             this.textBoxMaxQiymet.Enabled = false;
+            this.textBoxMaxQiymet.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxMaxQiymet.Location = new System.Drawing.Point(100, 228);
+            this.textBoxMaxQiymet.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxMaxQiymet.Name = "textBoxMaxQiymet";
             this.textBoxMaxQiymet.Size = new System.Drawing.Size(138, 22);
             this.textBoxMaxQiymet.TabIndex = 13;
@@ -355,23 +389,28 @@ namespace WindowsForm.Forms
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(15, 228);
+            this.label10.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label10.Location = new System.Drawing.Point(19, 232);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(79, 17);
+            this.label10.Size = new System.Drawing.Size(72, 14);
             this.label10.TabIndex = 12;
             this.label10.Text = "Max qiymət:";
             // 
             // textBoxCem
             // 
             this.textBoxCem.Enabled = false;
+            this.textBoxCem.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxCem.Location = new System.Drawing.Point(100, 330);
+            this.textBoxCem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxCem.Name = "textBoxCem";
             this.textBoxCem.Size = new System.Drawing.Size(138, 22);
             this.textBoxCem.TabIndex = 9;
             // 
             // textBoxQiymet
             // 
+            this.textBoxQiymet.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxQiymet.Location = new System.Drawing.Point(100, 262);
+            this.textBoxQiymet.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxQiymet.Name = "textBoxQiymet";
             this.textBoxQiymet.Size = new System.Drawing.Size(138, 22);
             this.textBoxQiymet.TabIndex = 8;
@@ -381,14 +420,18 @@ namespace WindowsForm.Forms
             // textBoxMehsulAdi
             // 
             this.textBoxMehsulAdi.Enabled = false;
+            this.textBoxMehsulAdi.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxMehsulAdi.Location = new System.Drawing.Point(100, 194);
+            this.textBoxMehsulAdi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxMehsulAdi.Name = "textBoxMehsulAdi";
             this.textBoxMehsulAdi.Size = new System.Drawing.Size(138, 22);
             this.textBoxMehsulAdi.TabIndex = 6;
             // 
             // textBoxMiqdar
             // 
+            this.textBoxMiqdar.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxMiqdar.Location = new System.Drawing.Point(100, 296);
+            this.textBoxMiqdar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxMiqdar.Name = "textBoxMiqdar";
             this.textBoxMiqdar.Size = new System.Drawing.Size(138, 22);
             this.textBoxMiqdar.TabIndex = 7;
@@ -397,7 +440,9 @@ namespace WindowsForm.Forms
             // 
             // textBoxBarkodNo
             // 
+            this.textBoxBarkodNo.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxBarkodNo.Location = new System.Drawing.Point(100, 160);
+            this.textBoxBarkodNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxBarkodNo.Name = "textBoxBarkodNo";
             this.textBoxBarkodNo.Size = new System.Drawing.Size(138, 22);
             this.textBoxBarkodNo.TabIndex = 5;
@@ -407,45 +452,50 @@ namespace WindowsForm.Forms
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(56, 333);
+            this.label9.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label9.Location = new System.Drawing.Point(60, 336);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(38, 17);
+            this.label9.Size = new System.Drawing.Size(36, 14);
             this.label9.TabIndex = 4;
             this.label9.Text = "Cəm:";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(41, 265);
+            this.label8.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(45, 268);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(53, 17);
+            this.label8.Size = new System.Drawing.Size(48, 14);
             this.label8.TabIndex = 3;
             this.label8.Text = "Qiymət:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(21, 194);
+            this.label6.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(25, 198);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(73, 17);
+            this.label6.Size = new System.Drawing.Size(70, 14);
             this.label6.TabIndex = 1;
             this.label6.Text = "Məhsul adı:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(25, 163);
+            this.label5.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(29, 166);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(69, 17);
+            this.label5.Size = new System.Drawing.Size(65, 14);
             this.label5.TabIndex = 0;
             this.label5.Text = "BarkodNo:";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(41, 300);
+            this.label7.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.Location = new System.Drawing.Point(45, 304);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(53, 17);
+            this.label7.Size = new System.Drawing.Size(48, 14);
             this.label7.TabIndex = 2;
             this.label7.Text = "Miqdar:";
             // 
@@ -454,9 +504,10 @@ namespace WindowsForm.Forms
             this.ButtonSalesFormSatisEtmek.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ButtonSalesFormSatisEtmek.FlatAppearance.BorderSize = 0;
             this.ButtonSalesFormSatisEtmek.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonSalesFormSatisEtmek.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ButtonSalesFormSatisEtmek.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ButtonSalesFormSatisEtmek.Image = ((System.Drawing.Image)(resources.GetObject("ButtonSalesFormSatisEtmek.Image")));
             this.ButtonSalesFormSatisEtmek.Location = new System.Drawing.Point(1075, 539);
+            this.ButtonSalesFormSatisEtmek.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ButtonSalesFormSatisEtmek.Name = "ButtonSalesFormSatisEtmek";
             this.ButtonSalesFormSatisEtmek.Size = new System.Drawing.Size(75, 45);
             this.ButtonSalesFormSatisEtmek.TabIndex = 10;
@@ -469,10 +520,10 @@ namespace WindowsForm.Forms
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Verdana", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Helvetica", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(834, 661);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(136, 23);
+            this.label1.Size = new System.Drawing.Size(128, 22);
             this.label1.TabIndex = 12;
             this.label1.Text = "Ümumi Cəm:";
             // 
@@ -480,11 +531,11 @@ namespace WindowsForm.Forms
             // 
             this.LabelSalesFormUmuniCem_qiymet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.LabelSalesFormUmuniCem_qiymet.AutoSize = true;
-            this.LabelSalesFormUmuniCem_qiymet.Font = new System.Drawing.Font("Verdana", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LabelSalesFormUmuniCem_qiymet.Font = new System.Drawing.Font("Helvetica", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.LabelSalesFormUmuniCem_qiymet.ForeColor = System.Drawing.Color.Red;
             this.LabelSalesFormUmuniCem_qiymet.Location = new System.Drawing.Point(960, 661);
             this.LabelSalesFormUmuniCem_qiymet.Name = "LabelSalesFormUmuniCem_qiymet";
-            this.LabelSalesFormUmuniCem_qiymet.Size = new System.Drawing.Size(26, 23);
+            this.LabelSalesFormUmuniCem_qiymet.Size = new System.Drawing.Size(21, 22);
             this.LabelSalesFormUmuniCem_qiymet.TabIndex = 13;
             this.LabelSalesFormUmuniCem_qiymet.Text = "#";
             // 
@@ -497,12 +548,13 @@ namespace WindowsForm.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewCartList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.dataGridViewCartList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewCartList.Location = new System.Drawing.Point(263, 432);
+            this.dataGridViewCartList.Location = new System.Drawing.Point(263, 431);
+            this.dataGridViewCartList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridViewCartList.Name = "dataGridViewCartList";
             this.dataGridViewCartList.ReadOnly = true;
             this.dataGridViewCartList.RowTemplate.Height = 25;
             this.dataGridViewCartList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewCartList.Size = new System.Drawing.Size(806, 224);
+            this.dataGridViewCartList.Size = new System.Drawing.Size(806, 225);
             this.dataGridViewCartList.TabIndex = 15;
             this.dataGridViewCartList.DoubleClick += new System.EventHandler(this.dataGridViewCartList_DoubleClick);
             // 
@@ -510,7 +562,8 @@ namespace WindowsForm.Forms
             // 
             this.textBoxAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxAxtar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxAxtar.Location = new System.Drawing.Point(670, 14);
+            this.textBoxAxtar.Location = new System.Drawing.Point(670, 15);
+            this.textBoxAxtar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxAxtar.Name = "textBoxAxtar";
             this.textBoxAxtar.Size = new System.Drawing.Size(138, 22);
             this.textBoxAxtar.TabIndex = 18;
@@ -523,7 +576,8 @@ namespace WindowsForm.Forms
             this.pictureBoxRefresh.ErrorImage = global::WindowsForm.Properties.Resources.exitWhite;
             this.pictureBoxRefresh.Image = global::WindowsForm.Properties.Resources.refreshBlack_16px_;
             this.pictureBoxRefresh.InitialImage = global::WindowsForm.Properties.Resources.exitWhite;
-            this.pictureBoxRefresh.Location = new System.Drawing.Point(814, 14);
+            this.pictureBoxRefresh.Location = new System.Drawing.Point(814, 15);
+            this.pictureBoxRefresh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxRefresh.Name = "pictureBoxRefresh";
             this.pictureBoxRefresh.Size = new System.Drawing.Size(25, 28);
             this.pictureBoxRefresh.TabIndex = 32;
@@ -533,9 +587,11 @@ namespace WindowsForm.Forms
             // checkBoxBarkodNo
             // 
             this.checkBoxBarkodNo.AutoSize = true;
+            this.checkBoxBarkodNo.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.checkBoxBarkodNo.Location = new System.Drawing.Point(263, 392);
+            this.checkBoxBarkodNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBoxBarkodNo.Name = "checkBoxBarkodNo";
-            this.checkBoxBarkodNo.Size = new System.Drawing.Size(90, 21);
+            this.checkBoxBarkodNo.Size = new System.Drawing.Size(79, 18);
             this.checkBoxBarkodNo.TabIndex = 35;
             this.checkBoxBarkodNo.Text = "Avtomatik";
             this.checkBoxBarkodNo.UseVisualStyleBackColor = true;
@@ -545,8 +601,9 @@ namespace WindowsForm.Forms
             // 
             this.comboBoxCategoryList.FormattingEnabled = true;
             this.comboBoxCategoryList.Location = new System.Drawing.Point(81, 15);
+            this.comboBoxCategoryList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxCategoryList.Name = "comboBoxCategoryList";
-            this.comboBoxCategoryList.Size = new System.Drawing.Size(121, 25);
+            this.comboBoxCategoryList.Size = new System.Drawing.Size(121, 22);
             this.comboBoxCategoryList.TabIndex = 36;
             // 
             // groupBoxFilter
@@ -561,9 +618,12 @@ namespace WindowsForm.Forms
             this.groupBoxFilter.Controls.Add(this.comboBoxSupplierList);
             this.groupBoxFilter.Controls.Add(this.comboBoxBrandList);
             this.groupBoxFilter.Controls.Add(this.comboBoxCategoryList);
+            this.groupBoxFilter.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBoxFilter.Location = new System.Drawing.Point(261, -1);
+            this.groupBoxFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBoxFilter.Name = "groupBoxFilter";
-            this.groupBoxFilter.Size = new System.Drawing.Size(889, 43);
+            this.groupBoxFilter.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBoxFilter.Size = new System.Drawing.Size(889, 42);
             this.groupBoxFilter.TabIndex = 37;
             this.groupBoxFilter.TabStop = false;
             // 
@@ -574,6 +634,7 @@ namespace WindowsForm.Forms
             this.buttonAxtar.Image = global::WindowsForm.Properties.Resources.searchFerqliBlack_16px;
             this.buttonAxtar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonAxtar.Location = new System.Drawing.Point(641, 16);
+            this.buttonAxtar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonAxtar.Name = "buttonAxtar";
             this.buttonAxtar.Size = new System.Drawing.Size(23, 19);
             this.buttonAxtar.TabIndex = 40;
@@ -586,7 +647,7 @@ namespace WindowsForm.Forms
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(387, 18);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(75, 17);
+            this.label14.Size = new System.Drawing.Size(70, 14);
             this.label14.TabIndex = 41;
             this.label14.Text = "Tedarükçü :";
             // 
@@ -595,7 +656,7 @@ namespace WindowsForm.Forms
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(208, 18);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(51, 17);
+            this.label13.Size = new System.Drawing.Size(47, 14);
             this.label13.TabIndex = 40;
             this.label13.Text = "Marka :";
             // 
@@ -604,58 +665,66 @@ namespace WindowsForm.Forms
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(6, 18);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(79, 17);
+            this.label11.Size = new System.Drawing.Size(72, 14);
             this.label11.TabIndex = 39;
             this.label11.Text = "Kateqoriya :";
             // 
             // comboBoxSupplierList
             // 
             this.comboBoxSupplierList.FormattingEnabled = true;
-            this.comboBoxSupplierList.Location = new System.Drawing.Point(460, 14);
+            this.comboBoxSupplierList.Location = new System.Drawing.Point(460, 15);
+            this.comboBoxSupplierList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxSupplierList.Name = "comboBoxSupplierList";
-            this.comboBoxSupplierList.Size = new System.Drawing.Size(121, 25);
+            this.comboBoxSupplierList.Size = new System.Drawing.Size(121, 22);
             this.comboBoxSupplierList.TabIndex = 38;
             // 
             // comboBoxBrandList
             // 
             this.comboBoxBrandList.FormattingEnabled = true;
-            this.comboBoxBrandList.Location = new System.Drawing.Point(260, 14);
+            this.comboBoxBrandList.Location = new System.Drawing.Point(260, 15);
+            this.comboBoxBrandList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxBrandList.Name = "comboBoxBrandList";
-            this.comboBoxBrandList.Size = new System.Drawing.Size(121, 25);
+            this.comboBoxBrandList.Size = new System.Drawing.Size(121, 22);
             this.comboBoxBrandList.TabIndex = 37;
             // 
             // textBoxBonusCardCustomerName
             // 
             this.textBoxBonusCardCustomerName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxBonusCardCustomerName.Enabled = false;
-            this.textBoxBonusCardCustomerName.Location = new System.Drawing.Point(806, 404);
+            this.textBoxBonusCardCustomerName.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxBonusCardCustomerName.Location = new System.Drawing.Point(777, 399);
+            this.textBoxBonusCardCustomerName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxBonusCardCustomerName.Name = "textBoxBonusCardCustomerName";
-            this.textBoxBonusCardCustomerName.Size = new System.Drawing.Size(138, 22);
+            this.textBoxBonusCardCustomerName.Size = new System.Drawing.Size(167, 22);
             this.textBoxBonusCardCustomerName.TabIndex = 38;
+            this.textBoxBonusCardCustomerName.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // buttonBonusCardSelect
             // 
             this.buttonBonusCardSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonBonusCardSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBonusCardSelect.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonBonusCardSelect.Image = global::WindowsForm.Properties.Resources.bonus_card_16px_2;
             this.buttonBonusCardSelect.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonBonusCardSelect.Location = new System.Drawing.Point(950, 402);
+            this.buttonBonusCardSelect.Location = new System.Drawing.Point(950, 397);
+            this.buttonBonusCardSelect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonBonusCardSelect.Name = "buttonBonusCardSelect";
-            this.buttonBonusCardSelect.Size = new System.Drawing.Size(119, 24);
+            this.buttonBonusCardSelect.Size = new System.Drawing.Size(126, 29);
             this.buttonBonusCardSelect.TabIndex = 39;
             this.buttonBonusCardSelect.Text = "Bonus kart seç";
             this.buttonBonusCardSelect.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonBonusCardSelect.UseVisualStyleBackColor = true;
+            this.buttonBonusCardSelect.Click += new System.EventHandler(this.buttonBonusCardSelect_Click);
             // 
             // labelBonusValue
             // 
             this.labelBonusValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelBonusValue.AutoSize = true;
-            this.labelBonusValue.Font = new System.Drawing.Font("Verdana", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelBonusValue.Font = new System.Drawing.Font("Helvetica", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelBonusValue.ForeColor = System.Drawing.Color.Green;
-            this.labelBonusValue.Location = new System.Drawing.Point(1075, 401);
+            this.labelBonusValue.Location = new System.Drawing.Point(1082, 399);
             this.labelBonusValue.Name = "labelBonusValue";
-            this.labelBonusValue.Size = new System.Drawing.Size(26, 23);
+            this.labelBonusValue.Size = new System.Drawing.Size(21, 22);
             this.labelBonusValue.TabIndex = 40;
             this.labelBonusValue.Text = "#";
             // 
@@ -679,6 +748,7 @@ namespace WindowsForm.Forms
             this.Controls.Add(this.ButonSalesFormSatisIptal);
             this.Controls.Add(this.dataGridViewProductList);
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "SalesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Satış səhifəsi";
