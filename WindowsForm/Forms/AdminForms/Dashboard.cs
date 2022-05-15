@@ -33,6 +33,7 @@ namespace WindowsForm.Forms
         IDebtService _debtService;
         ISaleWinFormService _saleWinFormService;
         ISupplierService _supplierService;
+        IBonusCardService _bonusCardService;
         //OperationClaimForFormsManager _operationClaimManager=new OperationClaimForFormsManager(new EfOperationClaimForFormsDal());
         //UserOperationClaimForFormsManager _userOperationClaimForFormsManager = new UserOperationClaimForFormsManager(new EfUserOperationClaimForFormsDal());
         private Form activateForm;
@@ -49,7 +50,7 @@ namespace WindowsForm.Forms
             , ICustomerBalanceService customerBalanceService
             , ICustomerPaymentService customerPaymentService
             , ICartService cartService
-            , IDebtService debtService, ISaleWinFormService saleWinFormService, ISupplierService supplierService)
+            , IDebtService debtService, ISaleWinFormService saleWinFormService, ISupplierService supplierService, IBonusCardService bonusCardService)
         {
             _userService = userService;
             _operationClaimService = operationClaimService;
@@ -64,6 +65,8 @@ namespace WindowsForm.Forms
             _debtService = debtService;
             _saleWinFormService = saleWinFormService;
             _supplierService = supplierService;
+            _bonusCardService = bonusCardService;
+
 
             InitializeComponent();
             this.Padding = new Padding();
@@ -265,7 +268,8 @@ namespace WindowsForm.Forms
                                         , _cartService
                                         , _customerService
                                         , _saleWinFormService
-                                        , _debtService), sender);
+                                        , _debtService
+                                        ,_bonusCardService), sender);
             //OpenChildForm(new SalesForm(new CategoryManager(new EfCategoryDal())
             //                            , new BrandManager(new EfBrandDal())
             //                            , new SupplierManager(new EfSupplierDal())
@@ -334,7 +338,8 @@ namespace WindowsForm.Forms
                                                     , _debtService
                                                     , _saleWinFormService
                                                     , _supplierService
-                                                    , _brandService));
+                                                    , _brandService
+                                                    ,_bonusCardService));
 
 
         }
@@ -526,6 +531,12 @@ namespace WindowsForm.Forms
 
         }
 
+        //Bonus Kart__________________________>
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.BonusCardAddForm(_bonusCardService,_customerService),sender);
+
+        }
 
 
         private void CollapseMenu()
@@ -612,7 +623,9 @@ namespace WindowsForm.Forms
             labelTitle.Text = childForm.Text;
         }
 
-       
+        
+
+
 
 
 
