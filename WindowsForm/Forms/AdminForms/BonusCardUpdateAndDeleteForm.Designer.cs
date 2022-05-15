@@ -58,7 +58,7 @@ namespace WindowsForm.Forms.AdminForms
             // textBoxAxtar
             // 
             this.textBoxAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxAxtar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxAxtar.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxAxtar.Location = new System.Drawing.Point(663, 14);
             this.textBoxAxtar.Name = "textBoxAxtar";
             this.textBoxAxtar.Size = new System.Drawing.Size(138, 22);
@@ -94,7 +94,7 @@ namespace WindowsForm.Forms.AdminForms
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(8, 154);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(61, 17);
+            this.label4.Size = new System.Drawing.Size(53, 14);
             this.label4.TabIndex = 2;
             this.label4.Text = "Movcud ";
             // 
@@ -103,7 +103,7 @@ namespace WindowsForm.Forms.AdminForms
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(21, 130);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 17);
+            this.label3.Size = new System.Drawing.Size(48, 14);
             this.label3.TabIndex = 1;
             this.label3.Text = "Soyad :";
             // 
@@ -112,7 +112,7 @@ namespace WindowsForm.Forms.AdminForms
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(41, 94);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(31, 17);
+            this.label2.Size = new System.Drawing.Size(28, 14);
             this.label2.TabIndex = 0;
             this.label2.Text = "Ad :";
             // 
@@ -134,7 +134,7 @@ namespace WindowsForm.Forms.AdminForms
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(17, 58);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 17);
+            this.label1.Size = new System.Drawing.Size(52, 14);
             this.label1.TabIndex = 40;
             this.label1.Text = "Barkod :";
             // 
@@ -178,7 +178,7 @@ namespace WindowsForm.Forms.AdminForms
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(19, 199);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 17);
+            this.label6.Size = new System.Drawing.Size(51, 14);
             this.label6.TabIndex = 43;
             this.label6.Text = "Güzəşt :";
             // 
@@ -187,7 +187,7 @@ namespace WindowsForm.Forms.AdminForms
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(17, 173);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(48, 17);
+            this.label5.Size = new System.Drawing.Size(48, 14);
             this.label5.TabIndex = 42;
             this.label5.Text = "Bonus :";
             // 
@@ -239,7 +239,7 @@ namespace WindowsForm.Forms.AdminForms
             this.groupBoxMusteri.Controls.Add(this.label4);
             this.groupBoxMusteri.Controls.Add(this.label3);
             this.groupBoxMusteri.Controls.Add(this.label2);
-            this.groupBoxMusteri.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBoxMusteri.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBoxMusteri.Location = new System.Drawing.Point(11, 39);
             this.groupBoxMusteri.Name = "groupBoxMusteri";
             this.groupBoxMusteri.Size = new System.Drawing.Size(262, 324);
@@ -249,6 +249,7 @@ namespace WindowsForm.Forms.AdminForms
             // buttonSil
             // 
             this.buttonSil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSil.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonSil.Image = global::WindowsForm.Properties.Resources.icons8_trash_16;
             this.buttonSil.Location = new System.Drawing.Point(169, 268);
             this.buttonSil.Name = "buttonSil";
@@ -262,6 +263,7 @@ namespace WindowsForm.Forms.AdminForms
             // buttonTemizle
             // 
             this.buttonTemizle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTemizle.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonTemizle.Image = global::WindowsForm.Properties.Resources.TemizleBlack;
             this.buttonTemizle.Location = new System.Drawing.Point(78, 236);
             this.buttonTemizle.Name = "buttonTemizle";
@@ -275,6 +277,7 @@ namespace WindowsForm.Forms.AdminForms
             // buttonUpdate
             // 
             this.buttonUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUpdate.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonUpdate.Image = global::WindowsForm.Properties.Resources.icons8_synchronize_16;
             this.buttonUpdate.Location = new System.Drawing.Point(169, 236);
             this.buttonUpdate.Name = "buttonUpdate";

@@ -82,11 +82,11 @@ namespace WindowsForm.Forms.UserForms
             this.musteriOdenisleriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myDMProduct = new WindowsForm.MyControls.MyDropdownMenu(this.components);
             this.məhsulToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.markaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tədarükçüToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sıralaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.əlavəEtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.markaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.əlavəEtToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tədarükçüToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.əlavəEtToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.panelTitleBar.SuspendLayout();
             this.panelLogo.SuspendLayout();
@@ -110,19 +110,20 @@ namespace WindowsForm.Forms.UserForms
             this.buttonExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonExit.Image = ((System.Drawing.Image)(resources.GetObject("buttonExit.Image")));
             this.buttonExit.Location = new System.Drawing.Point(1323, 0);
+            this.buttonExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Size = new System.Drawing.Size(35, 23);
+            this.buttonExit.Size = new System.Drawing.Size(35, 19);
             this.buttonExit.TabIndex = 2;
             this.buttonExit.UseVisualStyleBackColor = false;
             // 
             // labelTitle
             // 
             this.labelTitle.AutoSize = true;
-            this.labelTitle.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelTitle.Font = new System.Drawing.Font("Helvetica", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelTitle.ForeColor = System.Drawing.Color.Black;
-            this.labelTitle.Location = new System.Drawing.Point(6, 16);
+            this.labelTitle.Location = new System.Drawing.Point(6, 13);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(108, 23);
+            this.labelTitle.Size = new System.Drawing.Size(118, 24);
             this.labelTitle.TabIndex = 0;
             this.labelTitle.Text = "Əsas Səhifə";
             // 
@@ -132,13 +133,14 @@ namespace WindowsForm.Forms.UserForms
             this.btnExit.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnExit.FlatAppearance.BorderSize = 0;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnExit.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnExit.ForeColor = System.Drawing.Color.White;
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
-            this.btnExit.Location = new System.Drawing.Point(0, 626);
+            this.btnExit.Location = new System.Drawing.Point(0, 516);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnExit.Name = "btnExit";
             this.btnExit.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnExit.Size = new System.Drawing.Size(180, 68);
+            this.btnExit.Size = new System.Drawing.Size(180, 56);
             this.btnExit.TabIndex = 15;
             this.btnExit.Tag = "Exit";
             this.btnExit.Text = "   Çıxış";
@@ -153,13 +155,14 @@ namespace WindowsForm.Forms.UserForms
             this.buttonOther.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonOther.FlatAppearance.BorderSize = 0;
             this.buttonOther.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonOther.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonOther.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonOther.ForeColor = System.Drawing.Color.White;
             this.buttonOther.Image = ((System.Drawing.Image)(resources.GetObject("buttonOther.Image")));
-            this.buttonOther.Location = new System.Drawing.Point(0, 544);
+            this.buttonOther.Location = new System.Drawing.Point(0, 448);
+            this.buttonOther.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonOther.Name = "buttonOther";
             this.buttonOther.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.buttonOther.Size = new System.Drawing.Size(180, 68);
+            this.buttonOther.Size = new System.Drawing.Size(180, 56);
             this.buttonOther.TabIndex = 14;
             this.buttonOther.Tag = "Suppliers";
             this.buttonOther.Text = "   Əlavələr";
@@ -174,13 +177,14 @@ namespace WindowsForm.Forms.UserForms
             this.buttonUsers.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonUsers.FlatAppearance.BorderSize = 0;
             this.buttonUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonUsers.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonUsers.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonUsers.ForeColor = System.Drawing.Color.White;
             this.buttonUsers.Image = ((System.Drawing.Image)(resources.GetObject("buttonUsers.Image")));
-            this.buttonUsers.Location = new System.Drawing.Point(0, 476);
+            this.buttonUsers.Location = new System.Drawing.Point(0, 392);
+            this.buttonUsers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonUsers.Name = "buttonUsers";
             this.buttonUsers.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.buttonUsers.Size = new System.Drawing.Size(180, 68);
+            this.buttonUsers.Size = new System.Drawing.Size(180, 56);
             this.buttonUsers.TabIndex = 13;
             this.buttonUsers.Tag = "İstifadəçilər";
             this.buttonUsers.Text = "   İstifadəçilər";
@@ -195,13 +199,14 @@ namespace WindowsForm.Forms.UserForms
             this.buttonCategories.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonCategories.FlatAppearance.BorderSize = 0;
             this.buttonCategories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCategories.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonCategories.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonCategories.ForeColor = System.Drawing.Color.White;
             this.buttonCategories.Image = ((System.Drawing.Image)(resources.GetObject("buttonCategories.Image")));
-            this.buttonCategories.Location = new System.Drawing.Point(0, 408);
+            this.buttonCategories.Location = new System.Drawing.Point(0, 336);
+            this.buttonCategories.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonCategories.Name = "buttonCategories";
             this.buttonCategories.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.buttonCategories.Size = new System.Drawing.Size(180, 68);
+            this.buttonCategories.Size = new System.Drawing.Size(180, 56);
             this.buttonCategories.TabIndex = 12;
             this.buttonCategories.Tag = "Kategoriyalar";
             this.buttonCategories.Text = "   Kategoriyalar";
@@ -216,13 +221,14 @@ namespace WindowsForm.Forms.UserForms
             this.buttonStatistic.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonStatistic.FlatAppearance.BorderSize = 0;
             this.buttonStatistic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonStatistic.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonStatistic.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonStatistic.ForeColor = System.Drawing.Color.White;
             this.buttonStatistic.Image = ((System.Drawing.Image)(resources.GetObject("buttonStatistic.Image")));
-            this.buttonStatistic.Location = new System.Drawing.Point(0, 340);
+            this.buttonStatistic.Location = new System.Drawing.Point(0, 280);
+            this.buttonStatistic.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonStatistic.Name = "buttonStatistic";
             this.buttonStatistic.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.buttonStatistic.Size = new System.Drawing.Size(180, 68);
+            this.buttonStatistic.Size = new System.Drawing.Size(180, 56);
             this.buttonStatistic.TabIndex = 11;
             this.buttonStatistic.Tag = "Statistika";
             this.buttonStatistic.Text = "   Statistika";
@@ -237,13 +243,14 @@ namespace WindowsForm.Forms.UserForms
             this.buttonScan.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonScan.FlatAppearance.BorderSize = 0;
             this.buttonScan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonScan.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonScan.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonScan.ForeColor = System.Drawing.Color.White;
             this.buttonScan.Image = ((System.Drawing.Image)(resources.GetObject("buttonScan.Image")));
-            this.buttonScan.Location = new System.Drawing.Point(0, 272);
+            this.buttonScan.Location = new System.Drawing.Point(0, 224);
+            this.buttonScan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonScan.Name = "buttonScan";
             this.buttonScan.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.buttonScan.Size = new System.Drawing.Size(180, 68);
+            this.buttonScan.Size = new System.Drawing.Size(180, 56);
             this.buttonScan.TabIndex = 10;
             this.buttonScan.Tag = "Skan";
             this.buttonScan.Text = "   Skan";
@@ -258,13 +265,14 @@ namespace WindowsForm.Forms.UserForms
             this.buttonSales.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonSales.FlatAppearance.BorderSize = 0;
             this.buttonSales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSales.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonSales.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonSales.ForeColor = System.Drawing.Color.White;
             this.buttonSales.Image = ((System.Drawing.Image)(resources.GetObject("buttonSales.Image")));
-            this.buttonSales.Location = new System.Drawing.Point(0, 204);
+            this.buttonSales.Location = new System.Drawing.Point(0, 168);
+            this.buttonSales.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSales.Name = "buttonSales";
             this.buttonSales.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.buttonSales.Size = new System.Drawing.Size(180, 68);
+            this.buttonSales.Size = new System.Drawing.Size(180, 56);
             this.buttonSales.TabIndex = 9;
             this.buttonSales.Tag = "Satışlar";
             this.buttonSales.Text = "   Satışlar";
@@ -283,8 +291,9 @@ namespace WindowsForm.Forms.UserForms
             this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
             this.button5.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button5.Location = new System.Drawing.Point(1268, 0);
+            this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(27, 23);
+            this.button5.Size = new System.Drawing.Size(27, 19);
             this.button5.TabIndex = 4;
             this.button5.UseVisualStyleBackColor = false;
             // 
@@ -296,8 +305,9 @@ namespace WindowsForm.Forms.UserForms
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
             this.button4.Location = new System.Drawing.Point(1292, 0);
+            this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(35, 23);
+            this.button4.Size = new System.Drawing.Size(35, 19);
             this.button4.TabIndex = 3;
             this.button4.UseVisualStyleBackColor = false;
             // 
@@ -314,10 +324,12 @@ namespace WindowsForm.Forms.UserForms
             this.panelTitleBar.Controls.Add(this.buttonExit);
             this.panelTitleBar.Controls.Add(this.labelTitle);
             this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTitleBar.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.panelTitleBar.ForeColor = System.Drawing.Color.Black;
             this.panelTitleBar.Location = new System.Drawing.Point(180, 0);
+            this.panelTitleBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelTitleBar.Name = "panelTitleBar";
-            this.panelTitleBar.Size = new System.Drawing.Size(754, 68);
+            this.panelTitleBar.Size = new System.Drawing.Size(754, 56);
             this.panelTitleBar.TabIndex = 4;
             this.panelTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDown);
             // 
@@ -327,7 +339,7 @@ namespace WindowsForm.Forms.UserForms
             this.labelFirstName.AutoSize = true;
             this.labelFirstName.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelFirstName.ForeColor = System.Drawing.Color.Black;
-            this.labelFirstName.Location = new System.Drawing.Point(649, 24);
+            this.labelFirstName.Location = new System.Drawing.Point(649, 20);
             this.labelFirstName.Name = "labelFirstName";
             this.labelFirstName.Size = new System.Drawing.Size(0, 16);
             this.labelFirstName.TabIndex = 9;
@@ -338,7 +350,7 @@ namespace WindowsForm.Forms.UserForms
             this.labelLastName.AutoSize = true;
             this.labelLastName.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelLastName.ForeColor = System.Drawing.Color.Black;
-            this.labelLastName.Location = new System.Drawing.Point(649, 40);
+            this.labelLastName.Location = new System.Drawing.Point(649, 33);
             this.labelLastName.Name = "labelLastName";
             this.labelLastName.Size = new System.Drawing.Size(0, 16);
             this.labelLastName.TabIndex = 8;
@@ -353,8 +365,9 @@ namespace WindowsForm.Forms.UserForms
             this.buttonMinimized.Image = ((System.Drawing.Image)(resources.GetObject("buttonMinimized.Image")));
             this.buttonMinimized.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonMinimized.Location = new System.Drawing.Point(649, 0);
+            this.buttonMinimized.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonMinimized.Name = "buttonMinimized";
-            this.buttonMinimized.Size = new System.Drawing.Size(35, 23);
+            this.buttonMinimized.Size = new System.Drawing.Size(35, 19);
             this.buttonMinimized.TabIndex = 7;
             this.buttonMinimized.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonMinimized.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
@@ -369,8 +382,9 @@ namespace WindowsForm.Forms.UserForms
             this.buttonMaximized.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMaximized.Image = ((System.Drawing.Image)(resources.GetObject("buttonMaximized.Image")));
             this.buttonMaximized.Location = new System.Drawing.Point(684, 0);
+            this.buttonMaximized.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonMaximized.Name = "buttonMaximized";
-            this.buttonMaximized.Size = new System.Drawing.Size(35, 23);
+            this.buttonMaximized.Size = new System.Drawing.Size(35, 19);
             this.buttonMaximized.TabIndex = 6;
             this.buttonMaximized.UseVisualStyleBackColor = false;
             this.buttonMaximized.Click += new System.EventHandler(this.buttonMaximized_Click);
@@ -383,8 +397,9 @@ namespace WindowsForm.Forms.UserForms
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
             this.btnClose.Location = new System.Drawing.Point(719, 0);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(35, 23);
+            this.btnClose.Size = new System.Drawing.Size(35, 19);
             this.btnClose.TabIndex = 5;
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -397,13 +412,14 @@ namespace WindowsForm.Forms.UserForms
             this.buttonProducts.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonProducts.FlatAppearance.BorderSize = 0;
             this.buttonProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonProducts.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonProducts.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonProducts.ForeColor = System.Drawing.Color.White;
             this.buttonProducts.Image = ((System.Drawing.Image)(resources.GetObject("buttonProducts.Image")));
-            this.buttonProducts.Location = new System.Drawing.Point(0, 136);
+            this.buttonProducts.Location = new System.Drawing.Point(0, 112);
+            this.buttonProducts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonProducts.Name = "buttonProducts";
             this.buttonProducts.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.buttonProducts.Size = new System.Drawing.Size(180, 68);
+            this.buttonProducts.Size = new System.Drawing.Size(180, 56);
             this.buttonProducts.TabIndex = 8;
             this.buttonProducts.Tag = "Məhsullar";
             this.buttonProducts.Text = "   Məhsullar";
@@ -418,13 +434,14 @@ namespace WindowsForm.Forms.UserForms
             this.buttonHome.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonHome.FlatAppearance.BorderSize = 0;
             this.buttonHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonHome.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonHome.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonHome.ForeColor = System.Drawing.Color.White;
             this.buttonHome.Image = ((System.Drawing.Image)(resources.GetObject("buttonHome.Image")));
-            this.buttonHome.Location = new System.Drawing.Point(0, 68);
+            this.buttonHome.Location = new System.Drawing.Point(0, 56);
+            this.buttonHome.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonHome.Name = "buttonHome";
             this.buttonHome.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.buttonHome.Size = new System.Drawing.Size(180, 68);
+            this.buttonHome.Size = new System.Drawing.Size(180, 56);
             this.buttonHome.TabIndex = 1;
             this.buttonHome.Tag = "Əsas sahifə";
             this.buttonHome.Text = "   Əsas sahifə";
@@ -440,8 +457,9 @@ namespace WindowsForm.Forms.UserForms
             this.panelLogo.Controls.Add(this.pictureBoxLogo);
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
+            this.panelLogo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(180, 68);
+            this.panelLogo.Size = new System.Drawing.Size(180, 56);
             this.panelLogo.TabIndex = 0;
             // 
             // buttonMenu
@@ -452,16 +470,18 @@ namespace WindowsForm.Forms.UserForms
             this.buttonMenu.IconColor = System.Drawing.Color.White;
             this.buttonMenu.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.buttonMenu.IconSize = 32;
-            this.buttonMenu.Location = new System.Drawing.Point(134, 11);
+            this.buttonMenu.Location = new System.Drawing.Point(134, 9);
+            this.buttonMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonMenu.Name = "buttonMenu";
-            this.buttonMenu.Size = new System.Drawing.Size(40, 45);
+            this.buttonMenu.Size = new System.Drawing.Size(40, 37);
             this.buttonMenu.TabIndex = 1;
             this.buttonMenu.UseVisualStyleBackColor = true;
             this.buttonMenu.Click += new System.EventHandler(this.buttonMenu_Click);
             // 
             // pictureBoxLogo
             // 
-            this.pictureBoxLogo.Location = new System.Drawing.Point(22, 4);
+            this.pictureBoxLogo.Location = new System.Drawing.Point(22, 3);
+            this.pictureBoxLogo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxLogo.Name = "pictureBoxLogo";
             this.pictureBoxLogo.Size = new System.Drawing.Size(58, 60);
             this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -483,8 +503,9 @@ namespace WindowsForm.Forms.UserForms
             this.panelMenu.Controls.Add(this.panelLogo);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
+            this.panelMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(180, 694);
+            this.panelMenu.Size = new System.Drawing.Size(180, 572);
             this.panelMenu.TabIndex = 3;
             // 
             // myDMCategory
@@ -529,9 +550,10 @@ namespace WindowsForm.Forms.UserForms
             // 
             this.panelDesktopPane.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.panelDesktopPane.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDesktopPane.Location = new System.Drawing.Point(180, 68);
+            this.panelDesktopPane.Location = new System.Drawing.Point(180, 56);
+            this.panelDesktopPane.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelDesktopPane.Name = "panelDesktopPane";
-            this.panelDesktopPane.Size = new System.Drawing.Size(754, 626);
+            this.panelDesktopPane.Size = new System.Drawing.Size(754, 516);
             this.panelDesktopPane.TabIndex = 5;
             // 
             // myDMSales
@@ -716,7 +738,7 @@ namespace WindowsForm.Forms.UserForms
             this.myDMProduct.MenuItemTextColor = System.Drawing.Color.DimGray;
             this.myDMProduct.Name = "myDMProduct";
             this.myDMProduct.PrimaryColor = System.Drawing.Color.MediumSlateBlue;
-            this.myDMProduct.Size = new System.Drawing.Size(181, 92);
+            this.myDMProduct.Size = new System.Drawing.Size(130, 70);
             // 
             // məhsulToolStripMenuItem
             // 
@@ -724,64 +746,65 @@ namespace WindowsForm.Forms.UserForms
             this.sıralaToolStripMenuItem,
             this.əlavəEtToolStripMenuItem});
             this.məhsulToolStripMenuItem.Name = "məhsulToolStripMenuItem";
-            this.məhsulToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.məhsulToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.məhsulToolStripMenuItem.Text = "Məhsul";
-            // 
-            // markaToolStripMenuItem
-            // 
-            this.markaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.əlavəEtToolStripMenuItem1});
-            this.markaToolStripMenuItem.Name = "markaToolStripMenuItem";
-            this.markaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.markaToolStripMenuItem.Text = "Marka";
-            // 
-            // tədarükçüToolStripMenuItem
-            // 
-            this.tədarükçüToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.əlavəEtToolStripMenuItem2});
-            this.tədarükçüToolStripMenuItem.Name = "tədarükçüToolStripMenuItem";
-            this.tədarükçüToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.tədarükçüToolStripMenuItem.Text = "Tədarükçü";
             // 
             // sıralaToolStripMenuItem
             // 
             this.sıralaToolStripMenuItem.Name = "sıralaToolStripMenuItem";
-            this.sıralaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sıralaToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.sıralaToolStripMenuItem.Text = "Sırala";
             this.sıralaToolStripMenuItem.Click += new System.EventHandler(this.sıralaToolStripMenuItem_Click);
             // 
             // əlavəEtToolStripMenuItem
             // 
             this.əlavəEtToolStripMenuItem.Name = "əlavəEtToolStripMenuItem";
-            this.əlavəEtToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.əlavəEtToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.əlavəEtToolStripMenuItem.Text = "Əlavə et";
             this.əlavəEtToolStripMenuItem.Click += new System.EventHandler(this.əlavəEtToolStripMenuItem_Click);
+            // 
+            // markaToolStripMenuItem
+            // 
+            this.markaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.əlavəEtToolStripMenuItem1});
+            this.markaToolStripMenuItem.Name = "markaToolStripMenuItem";
+            this.markaToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.markaToolStripMenuItem.Text = "Marka";
             // 
             // əlavəEtToolStripMenuItem1
             // 
             this.əlavəEtToolStripMenuItem1.Name = "əlavəEtToolStripMenuItem1";
-            this.əlavəEtToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.əlavəEtToolStripMenuItem1.Size = new System.Drawing.Size(117, 22);
             this.əlavəEtToolStripMenuItem1.Text = "Əlavə et";
             this.əlavəEtToolStripMenuItem1.Click += new System.EventHandler(this.əlavəEtToolStripMenuItem1_Click);
+            // 
+            // tədarükçüToolStripMenuItem
+            // 
+            this.tədarükçüToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.əlavəEtToolStripMenuItem2});
+            this.tədarükçüToolStripMenuItem.Name = "tədarükçüToolStripMenuItem";
+            this.tədarükçüToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.tədarükçüToolStripMenuItem.Text = "Tədarükçü";
             // 
             // əlavəEtToolStripMenuItem2
             // 
             this.əlavəEtToolStripMenuItem2.Name = "əlavəEtToolStripMenuItem2";
-            this.əlavəEtToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.əlavəEtToolStripMenuItem2.Size = new System.Drawing.Size(117, 22);
             this.əlavəEtToolStripMenuItem2.Text = "Əlavə et";
             this.əlavəEtToolStripMenuItem2.Click += new System.EventHandler(this.əlavəEtToolStripMenuItem2_Click);
             // 
             // UserDashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(934, 694);
+            this.ClientSize = new System.Drawing.Size(934, 572);
             this.Controls.Add(this.panelDesktopPane);
             this.Controls.Add(this.panelTitleBar);
             this.Controls.Add(this.panelMenu);
-            this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(900, 448);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MinimumSize = new System.Drawing.Size(900, 376);
             this.Name = "UserDashboard";
             this.Text = "Əsas Səhifə";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

@@ -63,13 +63,13 @@ namespace WindowsForm.Forms
             this.label13 = new System.Windows.Forms.Label();
             this.buttonTetbiqEt = new System.Windows.Forms.Button();
             this.groupBoxProducts = new System.Windows.Forms.GroupBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.labelPurchasePriceOfAllProduct = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.labelPriceOfAllProduct = new System.Windows.Forms.Label();
             this.labelCountOfAllProduct = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSaleList)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).BeginInit();
@@ -98,6 +98,7 @@ namespace WindowsForm.Forms
             // buttonAxtar
             // 
             this.buttonAxtar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAxtar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonAxtar.Image = global::WindowsForm.Properties.Resources.searchFerqliBlack_16px;
             this.buttonAxtar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonAxtar.Location = new System.Drawing.Point(167, 118);
@@ -110,26 +111,29 @@ namespace WindowsForm.Forms
             // 
             // comboBoxDays
             // 
+            this.comboBoxDays.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboBoxDays.FormattingEnabled = true;
             this.comboBoxDays.Location = new System.Drawing.Point(73, 21);
             this.comboBoxDays.Name = "comboBoxDays";
-            this.comboBoxDays.Size = new System.Drawing.Size(169, 25);
+            this.comboBoxDays.Size = new System.Drawing.Size(169, 22);
             this.comboBoxDays.TabIndex = 22;
             // 
             // comboBoxMonths
             // 
+            this.comboBoxMonths.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboBoxMonths.FormattingEnabled = true;
             this.comboBoxMonths.Location = new System.Drawing.Point(73, 54);
             this.comboBoxMonths.Name = "comboBoxMonths";
-            this.comboBoxMonths.Size = new System.Drawing.Size(169, 25);
+            this.comboBoxMonths.Size = new System.Drawing.Size(169, 22);
             this.comboBoxMonths.TabIndex = 24;
             // 
             // comboBoxYears
             // 
+            this.comboBoxYears.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboBoxYears.FormattingEnabled = true;
             this.comboBoxYears.Location = new System.Drawing.Point(73, 87);
             this.comboBoxYears.Name = "comboBoxYears";
-            this.comboBoxYears.Size = new System.Drawing.Size(169, 25);
+            this.comboBoxYears.Size = new System.Drawing.Size(169, 22);
             this.comboBoxYears.TabIndex = 26;
             // 
             // groupBox1
@@ -156,47 +160,49 @@ namespace WindowsForm.Forms
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label5.Location = new System.Drawing.Point(114, 167);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(46, 17);
+            this.label5.Size = new System.Drawing.Size(41, 14);
             this.label5.TabIndex = 37;
             this.label5.Text = "Alver :";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(119, 188);
+            this.label4.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(116, 188);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 17);
+            this.label4.Size = new System.Drawing.Size(39, 14);
             this.label4.TabIndex = 36;
             this.label4.Text = "Gəlir :";
             // 
             // labelIncome
             // 
             this.labelIncome.AutoSize = true;
-            this.labelIncome.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelIncome.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelIncome.ForeColor = System.Drawing.Color.Red;
-            this.labelIncome.Location = new System.Drawing.Point(166, 184);
+            this.labelIncome.Location = new System.Drawing.Point(161, 188);
             this.labelIncome.Name = "labelIncome";
-            this.labelIncome.Size = new System.Drawing.Size(22, 21);
+            this.labelIncome.Size = new System.Drawing.Size(14, 14);
             this.labelIncome.TabIndex = 35;
             this.labelIncome.Text = "#";
             // 
             // labelTotal
             // 
             this.labelTotal.AutoSize = true;
-            this.labelTotal.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelTotal.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelTotal.ForeColor = System.Drawing.Color.Red;
-            this.labelTotal.Location = new System.Drawing.Point(166, 163);
+            this.labelTotal.Location = new System.Drawing.Point(161, 167);
             this.labelTotal.Name = "labelTotal";
-            this.labelTotal.Size = new System.Drawing.Size(22, 21);
+            this.labelTotal.Size = new System.Drawing.Size(14, 14);
             this.labelTotal.TabIndex = 34;
             this.labelTotal.Text = "#";
             // 
             // buttonTemizle
             // 
             this.buttonTemizle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonTemizle.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonTemizle.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonTemizle.Image = ((System.Drawing.Image)(resources.GetObject("buttonTemizle.Image")));
             this.buttonTemizle.Location = new System.Drawing.Point(73, 118);
             this.buttonTemizle.Name = "buttonTemizle";
@@ -210,27 +216,30 @@ namespace WindowsForm.Forms
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(47, 90);
+            this.label3.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(49, 90);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(20, 17);
+            this.label3.Size = new System.Drawing.Size(19, 14);
             this.label3.TabIndex = 29;
             this.label3.Text = "İl :";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(38, 57);
+            this.label2.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(40, 57);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 17);
+            this.label2.Size = new System.Drawing.Size(27, 14);
             this.label2.TabIndex = 28;
             this.label2.Text = "Ay :";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 24);
+            this.label1.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(31, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 17);
+            this.label1.Size = new System.Drawing.Size(36, 14);
             this.label1.TabIndex = 27;
             this.label1.Text = "Gün :";
             // 
@@ -264,7 +273,7 @@ namespace WindowsForm.Forms
             // textBoxAxtar
             // 
             this.textBoxAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxAxtar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxAxtar.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxAxtar.Location = new System.Drawing.Point(731, 15);
             this.textBoxAxtar.Name = "textBoxAxtar";
             this.textBoxAxtar.Size = new System.Drawing.Size(138, 22);
@@ -297,6 +306,7 @@ namespace WindowsForm.Forms
             // checkBoxSatisLegvEdilsin
             // 
             this.checkBoxSatisLegvEdilsin.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBoxSatisLegvEdilsin.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.checkBoxSatisLegvEdilsin.Location = new System.Drawing.Point(6, 186);
             this.checkBoxSatisLegvEdilsin.Name = "checkBoxSatisLegvEdilsin";
             this.checkBoxSatisLegvEdilsin.Size = new System.Drawing.Size(134, 21);
@@ -307,6 +317,7 @@ namespace WindowsForm.Forms
             // textBoxTarix
             // 
             this.textBoxTarix.Enabled = false;
+            this.textBoxTarix.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxTarix.Location = new System.Drawing.Point(105, 158);
             this.textBoxTarix.Name = "textBoxTarix";
             this.textBoxTarix.Size = new System.Drawing.Size(137, 22);
@@ -315,15 +326,17 @@ namespace WindowsForm.Forms
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(59, 158);
+            this.label10.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label10.Location = new System.Drawing.Point(62, 161);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(40, 17);
+            this.label10.Size = new System.Drawing.Size(39, 14);
             this.label10.TabIndex = 38;
             this.label10.Text = "Tarix :";
             // 
             // textBoxSatIici
             // 
             this.textBoxSatIici.Enabled = false;
+            this.textBoxSatIici.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxSatIici.Location = new System.Drawing.Point(105, 130);
             this.textBoxSatIici.Name = "textBoxSatIici";
             this.textBoxSatIici.Size = new System.Drawing.Size(137, 22);
@@ -332,15 +345,17 @@ namespace WindowsForm.Forms
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(51, 130);
+            this.label9.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label9.Location = new System.Drawing.Point(54, 133);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(48, 17);
+            this.label9.Size = new System.Drawing.Size(43, 14);
             this.label9.TabIndex = 36;
             this.label9.Text = "Satıcı :";
             // 
             // textBoxUmumiDeyer
             // 
             this.textBoxUmumiDeyer.Enabled = false;
+            this.textBoxUmumiDeyer.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxUmumiDeyer.Location = new System.Drawing.Point(105, 102);
             this.textBoxUmumiDeyer.Name = "textBoxUmumiDeyer";
             this.textBoxUmumiDeyer.Size = new System.Drawing.Size(137, 22);
@@ -349,15 +364,17 @@ namespace WindowsForm.Forms
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 102);
+            this.label8.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(9, 105);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(93, 17);
+            this.label8.Size = new System.Drawing.Size(91, 14);
             this.label8.TabIndex = 36;
             this.label8.Text = "Ümumi Dəyəri :";
             // 
             // textBoxMiqdar
             // 
             this.textBoxMiqdar.Enabled = false;
+            this.textBoxMiqdar.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxMiqdar.Location = new System.Drawing.Point(105, 74);
             this.textBoxMiqdar.Name = "textBoxMiqdar";
             this.textBoxMiqdar.Size = new System.Drawing.Size(137, 22);
@@ -366,15 +383,17 @@ namespace WindowsForm.Forms
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(43, 74);
+            this.label7.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.Location = new System.Drawing.Point(46, 77);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(56, 17);
+            this.label7.Size = new System.Drawing.Size(51, 14);
             this.label7.TabIndex = 34;
             this.label7.Text = "Miqdar :";
             // 
             // textBoxMehsul
             // 
             this.textBoxMehsul.Enabled = false;
+            this.textBoxMehsul.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxMehsul.Location = new System.Drawing.Point(105, 46);
             this.textBoxMehsul.Name = "textBoxMehsul";
             this.textBoxMehsul.Size = new System.Drawing.Size(137, 22);
@@ -383,15 +402,17 @@ namespace WindowsForm.Forms
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(45, 46);
+            this.label6.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(48, 49);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(54, 17);
+            this.label6.Size = new System.Drawing.Size(53, 14);
             this.label6.TabIndex = 32;
             this.label6.Text = "Məhsul :";
             // 
             // textBoxSaleId
             // 
             this.textBoxSaleId.Enabled = false;
+            this.textBoxSaleId.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxSaleId.Location = new System.Drawing.Point(105, 18);
             this.textBoxSaleId.Name = "textBoxSaleId";
             this.textBoxSaleId.Size = new System.Drawing.Size(137, 22);
@@ -400,15 +421,17 @@ namespace WindowsForm.Forms
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(48, 18);
+            this.label13.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label13.Location = new System.Drawing.Point(51, 21);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(51, 17);
+            this.label13.Size = new System.Drawing.Size(48, 14);
             this.label13.TabIndex = 27;
             this.label13.Text = "SaleId :";
             // 
             // buttonTetbiqEt
             // 
             this.buttonTetbiqEt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTetbiqEt.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonTetbiqEt.Image = global::WindowsForm.Properties.Resources.ok_16px;
             this.buttonTetbiqEt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonTetbiqEt.Location = new System.Drawing.Point(140, 213);
@@ -435,23 +458,34 @@ namespace WindowsForm.Forms
             this.groupBoxProducts.TabStop = false;
             this.groupBoxProducts.Enter += new System.EventHandler(this.groupBoxProducts_Enter);
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label16.Location = new System.Drawing.Point(71, 79);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(83, 14);
+            this.label16.TabIndex = 44;
+            this.label16.Text = " maya dəyəri :";
+            // 
             // label15
             // 
             this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label15.Location = new System.Drawing.Point(41, 62);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(118, 17);
+            this.label15.Size = new System.Drawing.Size(115, 14);
             this.label15.TabIndex = 43;
             this.label15.Text = "Bütün məhsulların   ";
             // 
             // labelPurchasePriceOfAllProduct
             // 
             this.labelPurchasePriceOfAllProduct.AutoSize = true;
-            this.labelPurchasePriceOfAllProduct.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelPurchasePriceOfAllProduct.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelPurchasePriceOfAllProduct.ForeColor = System.Drawing.Color.Red;
-            this.labelPurchasePriceOfAllProduct.Location = new System.Drawing.Point(164, 75);
+            this.labelPurchasePriceOfAllProduct.Location = new System.Drawing.Point(159, 79);
             this.labelPurchasePriceOfAllProduct.Name = "labelPurchasePriceOfAllProduct";
-            this.labelPurchasePriceOfAllProduct.Size = new System.Drawing.Size(22, 21);
+            this.labelPurchasePriceOfAllProduct.Size = new System.Drawing.Size(14, 14);
             this.labelPurchasePriceOfAllProduct.TabIndex = 42;
             this.labelPurchasePriceOfAllProduct.Text = "#";
             this.labelPurchasePriceOfAllProduct.Click += new System.EventHandler(this.labelOurchasePriceOfAllProduct_Click);
@@ -459,51 +493,44 @@ namespace WindowsForm.Forms
             // label11
             // 
             this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label11.Location = new System.Drawing.Point(12, 24);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(147, 17);
+            this.label11.Size = new System.Drawing.Size(141, 14);
             this.label11.TabIndex = 41;
             this.label11.Text = "Bütün məhsullar (ədəd) :";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label14.Location = new System.Drawing.Point(6, 41);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(153, 17);
+            this.label14.Size = new System.Drawing.Size(149, 14);
             this.label14.TabIndex = 40;
             this.label14.Text = "Bütün məhsulların dəyəri :";
             // 
             // labelPriceOfAllProduct
             // 
             this.labelPriceOfAllProduct.AutoSize = true;
-            this.labelPriceOfAllProduct.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelPriceOfAllProduct.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelPriceOfAllProduct.ForeColor = System.Drawing.Color.Red;
-            this.labelPriceOfAllProduct.Location = new System.Drawing.Point(164, 41);
+            this.labelPriceOfAllProduct.Location = new System.Drawing.Point(159, 45);
             this.labelPriceOfAllProduct.Name = "labelPriceOfAllProduct";
-            this.labelPriceOfAllProduct.Size = new System.Drawing.Size(22, 21);
+            this.labelPriceOfAllProduct.Size = new System.Drawing.Size(14, 14);
             this.labelPriceOfAllProduct.TabIndex = 39;
             this.labelPriceOfAllProduct.Text = "#";
             // 
             // labelCountOfAllProduct
             // 
             this.labelCountOfAllProduct.AutoSize = true;
-            this.labelCountOfAllProduct.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelCountOfAllProduct.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelCountOfAllProduct.ForeColor = System.Drawing.Color.Red;
-            this.labelCountOfAllProduct.Location = new System.Drawing.Point(164, 20);
+            this.labelCountOfAllProduct.Location = new System.Drawing.Point(159, 24);
             this.labelCountOfAllProduct.Name = "labelCountOfAllProduct";
-            this.labelCountOfAllProduct.Size = new System.Drawing.Size(22, 21);
+            this.labelCountOfAllProduct.Size = new System.Drawing.Size(14, 14);
             this.labelCountOfAllProduct.TabIndex = 38;
             this.labelCountOfAllProduct.Text = "#";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(71, 79);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(88, 17);
-            this.label16.TabIndex = 44;
-            this.label16.Text = " maya dəyəri :";
             // 
             // FormSalesList
             // 

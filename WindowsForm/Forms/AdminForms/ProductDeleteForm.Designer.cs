@@ -69,18 +69,19 @@ namespace WindowsForm.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewProductList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.dataGridViewProductList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewProductList.Location = new System.Drawing.Point(356, 37);
+            this.dataGridViewProductList.Location = new System.Drawing.Point(283, 37);
             this.dataGridViewProductList.Name = "dataGridViewProductList";
             this.dataGridViewProductList.ReadOnly = true;
             this.dataGridViewProductList.RowTemplate.Height = 25;
             this.dataGridViewProductList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewProductList.Size = new System.Drawing.Size(432, 459);
+            this.dataGridViewProductList.Size = new System.Drawing.Size(505, 459);
             this.dataGridViewProductList.TabIndex = 1;
             this.dataGridViewProductList.DoubleClick += new System.EventHandler(this.dataGridViewFormPrdouctList_DoubleClick);
             // 
             // buttonSil
             // 
             this.buttonSil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSil.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonSil.Image = global::WindowsForm.Properties.Resources.icons8_trash_16;
             this.buttonSil.Location = new System.Drawing.Point(175, 320);
             this.buttonSil.Name = "buttonSil";
@@ -94,7 +95,7 @@ namespace WindowsForm.Forms
             // textBoxAxtar
             // 
             this.textBoxAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxAxtar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxAxtar.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxAxtar.Location = new System.Drawing.Point(612, 9);
             this.textBoxAxtar.Name = "textBoxAxtar";
             this.textBoxAxtar.Size = new System.Drawing.Size(145, 22);
@@ -125,16 +126,16 @@ namespace WindowsForm.Forms
             this.GroupBoxVarOlanMehsul.Controls.Add(this.textBoxVarOlanMehsulAdi);
             this.GroupBoxVarOlanMehsul.Controls.Add(this.label13);
             this.GroupBoxVarOlanMehsul.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.GroupBoxVarOlanMehsul.Location = new System.Drawing.Point(12, 45);
+            this.GroupBoxVarOlanMehsul.Location = new System.Drawing.Point(12, 31);
             this.GroupBoxVarOlanMehsul.Name = "GroupBoxVarOlanMehsul";
             this.GroupBoxVarOlanMehsul.Size = new System.Drawing.Size(265, 373);
             this.GroupBoxVarOlanMehsul.TabIndex = 9;
             this.GroupBoxVarOlanMehsul.TabStop = false;
-            this.GroupBoxVarOlanMehsul.Text = "Var olan mehsul";
             // 
             // buttonTemizle
             // 
             this.buttonTemizle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTemizle.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonTemizle.Image = global::WindowsForm.Properties.Resources.TemizleBlack;
             this.buttonTemizle.Location = new System.Drawing.Point(84, 320);
             this.buttonTemizle.Name = "buttonTemizle";

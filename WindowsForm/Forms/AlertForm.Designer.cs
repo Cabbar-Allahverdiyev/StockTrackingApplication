@@ -42,10 +42,11 @@ namespace WindowsForm.Forms
             // labelMessage
             // 
             this.labelMessage.AutoSize = true;
+            this.labelMessage.Font = new System.Drawing.Font("Helvetica", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelMessage.ForeColor = System.Drawing.Color.White;
             this.labelMessage.Location = new System.Drawing.Point(63, 24);
             this.labelMessage.Name = "labelMessage";
-            this.labelMessage.Size = new System.Drawing.Size(115, 21);
+            this.labelMessage.Size = new System.Drawing.Size(103, 19);
             this.labelMessage.TabIndex = 0;
             this.labelMessage.Text = "Message text";
             // 

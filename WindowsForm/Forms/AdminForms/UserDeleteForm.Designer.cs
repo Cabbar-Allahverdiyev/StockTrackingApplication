@@ -62,19 +62,19 @@ namespace WindowsForm.Forms
             this.dataGridViewUserListed.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewUserListed.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridViewUserListed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewUserListed.Location = new System.Drawing.Point(403, 40);
+            this.dataGridViewUserListed.Location = new System.Drawing.Point(282, 40);
             this.dataGridViewUserListed.Name = "dataGridViewUserListed";
             this.dataGridViewUserListed.ReadOnly = true;
             this.dataGridViewUserListed.RowTemplate.Height = 25;
             this.dataGridViewUserListed.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewUserListed.Size = new System.Drawing.Size(486, 413);
+            this.dataGridViewUserListed.Size = new System.Drawing.Size(607, 413);
             this.dataGridViewUserListed.TabIndex = 1;
             this.dataGridViewUserListed.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUserListed_CellDoubleClick);
             // 
             // textBoxAdres
             // 
             this.textBoxAdres.Enabled = false;
-            this.textBoxAdres.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxAdres.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxAdres.Location = new System.Drawing.Point(72, 156);
             this.textBoxAdres.Name = "textBoxAdres";
             this.textBoxAdres.Size = new System.Drawing.Size(176, 22);
@@ -83,7 +83,7 @@ namespace WindowsForm.Forms
             // textBoxTelefon
             // 
             this.textBoxTelefon.Enabled = false;
-            this.textBoxTelefon.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxTelefon.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxTelefon.Location = new System.Drawing.Point(72, 128);
             this.textBoxTelefon.Name = "textBoxTelefon";
             this.textBoxTelefon.Size = new System.Drawing.Size(176, 22);
@@ -92,7 +92,7 @@ namespace WindowsForm.Forms
             // textBoxEmail
             // 
             this.textBoxEmail.Enabled = false;
-            this.textBoxEmail.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxEmail.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxEmail.Location = new System.Drawing.Point(72, 100);
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(176, 22);
@@ -101,7 +101,7 @@ namespace WindowsForm.Forms
             // textBoxSoyad
             // 
             this.textBoxSoyad.Enabled = false;
-            this.textBoxSoyad.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxSoyad.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxSoyad.Location = new System.Drawing.Point(72, 72);
             this.textBoxSoyad.Name = "textBoxSoyad";
             this.textBoxSoyad.Size = new System.Drawing.Size(176, 22);
@@ -110,7 +110,7 @@ namespace WindowsForm.Forms
             // textBoxAd
             // 
             this.textBoxAd.Enabled = false;
-            this.textBoxAd.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxAd.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxAd.Location = new System.Drawing.Point(72, 44);
             this.textBoxAd.Name = "textBoxAd";
             this.textBoxAd.Size = new System.Drawing.Size(176, 22);
@@ -119,50 +119,50 @@ namespace WindowsForm.Forms
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label7.Location = new System.Drawing.Point(18, 159);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(45, 17);
+            this.label7.Size = new System.Drawing.Size(42, 14);
             this.label7.TabIndex = 34;
             this.label7.Text = "Adres:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.Location = new System.Drawing.Point(9, 131);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 17);
+            this.label4.Size = new System.Drawing.Size(50, 14);
             this.label4.TabIndex = 33;
             this.label4.Text = "Telefon:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.Location = new System.Drawing.Point(24, 103);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 17);
+            this.label3.Size = new System.Drawing.Size(41, 14);
             this.label3.TabIndex = 32;
             this.label3.Text = "Email:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(18, 75);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 17);
+            this.label2.Size = new System.Drawing.Size(45, 14);
             this.label2.TabIndex = 31;
             this.label2.Text = "Soyad:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(38, 47);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(28, 17);
+            this.label1.Size = new System.Drawing.Size(25, 14);
             this.label1.TabIndex = 30;
             this.label1.Text = "Ad:";
             // 
@@ -181,7 +181,7 @@ namespace WindowsForm.Forms
             // textBoxAxtar
             // 
             this.textBoxAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxAxtar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxAxtar.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxAxtar.Location = new System.Drawing.Point(685, 12);
             this.textBoxAxtar.Name = "textBoxAxtar";
             this.textBoxAxtar.Size = new System.Drawing.Size(173, 22);
@@ -191,7 +191,7 @@ namespace WindowsForm.Forms
             // textBoxUserId
             // 
             this.textBoxUserId.Enabled = false;
-            this.textBoxUserId.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxUserId.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxUserId.Location = new System.Drawing.Point(72, 16);
             this.textBoxUserId.Name = "textBoxUserId";
             this.textBoxUserId.Size = new System.Drawing.Size(176, 22);
@@ -212,6 +212,7 @@ namespace WindowsForm.Forms
             this.groupBox1.Controls.Add(this.textBoxTelefon);
             this.groupBox1.Controls.Add(this.textBoxSoyad);
             this.groupBox1.Controls.Add(this.textBoxEmail);
+            this.groupBox1.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBox1.Location = new System.Drawing.Point(12, 40);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(264, 239);
@@ -221,8 +222,9 @@ namespace WindowsForm.Forms
             // buttonTemizle
             // 
             this.buttonTemizle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonTemizle.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonTemizle.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonTemizle.Image = global::WindowsForm.Properties.Resources.TemizleBlack;
+            this.buttonTemizle.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonTemizle.Location = new System.Drawing.Point(72, 184);
             this.buttonTemizle.Name = "buttonTemizle";
             this.buttonTemizle.Size = new System.Drawing.Size(85, 26);
@@ -235,8 +237,9 @@ namespace WindowsForm.Forms
             // buttonSil
             // 
             this.buttonSil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSil.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonSil.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonSil.Image = global::WindowsForm.Properties.Resources.icons8_trash_16;
+            this.buttonSil.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonSil.Location = new System.Drawing.Point(163, 184);
             this.buttonSil.Name = "buttonSil";
             this.buttonSil.Size = new System.Drawing.Size(85, 26);

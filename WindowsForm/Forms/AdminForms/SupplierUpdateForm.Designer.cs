@@ -107,6 +107,7 @@ namespace WindowsForm.Forms
             // buttonSil
             // 
             this.buttonSil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSil.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonSil.Image = global::WindowsForm.Properties.Resources.icons8_trash_16;
             this.buttonSil.Location = new System.Drawing.Point(204, 306);
             this.buttonSil.Name = "buttonSil";
@@ -129,6 +130,7 @@ namespace WindowsForm.Forms
             // buttonTemizle
             // 
             this.buttonTemizle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTemizle.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonTemizle.Image = global::WindowsForm.Properties.Resources.TemizleBlack;
             this.buttonTemizle.Location = new System.Drawing.Point(113, 274);
             this.buttonTemizle.Name = "buttonTemizle";
@@ -143,7 +145,7 @@ namespace WindowsForm.Forms
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(45, 48);
+            this.label1.Location = new System.Drawing.Point(45, 49);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 17);
             this.label1.TabIndex = 1;
@@ -152,6 +154,7 @@ namespace WindowsForm.Forms
             // buttonSupplierYenile
             // 
             this.buttonSupplierYenile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSupplierYenile.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonSupplierYenile.Image = global::WindowsForm.Properties.Resources.icons8_synchronize_16;
             this.buttonSupplierYenile.Location = new System.Drawing.Point(204, 274);
             this.buttonSupplierYenile.Name = "buttonSupplierYenile";
@@ -166,7 +169,7 @@ namespace WindowsForm.Forms
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(77, 84);
+            this.label2.Location = new System.Drawing.Point(77, 85);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(28, 17);
             this.label2.TabIndex = 4;
@@ -184,7 +187,7 @@ namespace WindowsForm.Forms
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(8, 116);
+            this.label3.Location = new System.Drawing.Point(8, 117);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(97, 17);
             this.label3.TabIndex = 6;
@@ -210,7 +213,7 @@ namespace WindowsForm.Forms
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(52, 248);
+            this.label7.Location = new System.Drawing.Point(52, 249);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(54, 17);
             this.label7.TabIndex = 14;
@@ -220,7 +223,7 @@ namespace WindowsForm.Forms
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(62, 183);
+            this.label4.Location = new System.Drawing.Point(62, 184);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(45, 17);
             this.label4.TabIndex = 8;
@@ -246,7 +249,7 @@ namespace WindowsForm.Forms
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(63, 215);
+            this.label6.Location = new System.Drawing.Point(63, 216);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(42, 17);
             this.label6.TabIndex = 12;
@@ -256,7 +259,7 @@ namespace WindowsForm.Forms
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(63, 150);
+            this.label5.Location = new System.Drawing.Point(63, 151);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(43, 17);
             this.label5.TabIndex = 10;
@@ -287,7 +290,7 @@ namespace WindowsForm.Forms
             // textBoxAxtar
             // 
             this.textBoxAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxAxtar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxAxtar.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxAxtar.Location = new System.Drawing.Point(828, 16);
             this.textBoxAxtar.Name = "textBoxAxtar";
             this.textBoxAxtar.Size = new System.Drawing.Size(143, 22);

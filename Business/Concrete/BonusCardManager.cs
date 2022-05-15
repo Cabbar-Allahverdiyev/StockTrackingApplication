@@ -124,7 +124,7 @@ namespace Business.Concrete
 
 
         //Dtos
-        public IDataResult<List<BonusCardForFormsDto>> GetBonusCardForFormsDetails()
+        public IDataResult<List<BonusCardForFormsDto>> GetAllBonusCardForFormsDetail()
         {
             List<BonusCardForFormsDto> get = _bonusCardDal.GetBonusCardDetails();
             if (get == null)
@@ -132,6 +132,16 @@ namespace Business.Concrete
                 return new ErrorDataResult<List<BonusCardForFormsDto>>(BonusCardMessages.NotFound);
             }
             return new SuccessDataResult<List<BonusCardForFormsDto>>(get, BonusCardMessages.Found);
+        }
+
+        public IDataResult<BonusCardForFormsDto> GetBonusCardForFormsDetailById(int cardId)
+        {
+            BonusCardForFormsDto get = _bonusCardDal.GetBonusCardForFormsDto(b => b.BonusCardId == cardId);
+            if (get == null)
+            {
+                return new ErrorDataResult<BonusCardForFormsDto>(BonusCardMessages.NotFound);
+            }
+            return new SuccessDataResult<BonusCardForFormsDto>(get, BonusCardMessages.Found);
         }
     }
 }

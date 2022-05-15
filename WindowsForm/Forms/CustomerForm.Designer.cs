@@ -70,6 +70,7 @@ namespace WindowsForm.Forms
             this.buttonTemizle.Text = "Təmizlə";
             this.buttonTemizle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonTemizle.UseVisualStyleBackColor = true;
+            this.buttonTemizle.Click += new System.EventHandler(this.buttonTemizle_Click);
             // 
             // buttonEalveEt
             // 

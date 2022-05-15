@@ -126,7 +126,7 @@ namespace WindowsForm.Forms.UserForms
             this.groupBoxMehsul.Controls.Add(this.label6);
             this.groupBoxMehsul.Controls.Add(this.label5);
             this.groupBoxMehsul.Controls.Add(this.label7);
-            this.groupBoxMehsul.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBoxMehsul.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBoxMehsul.Location = new System.Drawing.Point(13, 202);
             this.groupBoxMehsul.Name = "groupBoxMehsul";
             this.groupBoxMehsul.Size = new System.Drawing.Size(244, 434);
@@ -137,6 +137,7 @@ namespace WindowsForm.Forms.UserForms
             // buttonDuzelt
             // 
             this.buttonDuzelt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDuzelt.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonDuzelt.Image = global::WindowsForm.Properties.Resources.editBlack_16px_2;
             this.buttonDuzelt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonDuzelt.Location = new System.Drawing.Point(57, 354);
@@ -151,6 +152,7 @@ namespace WindowsForm.Forms.UserForms
             // ButtonSalesFormSil
             // 
             this.ButtonSalesFormSil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonSalesFormSil.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ButtonSalesFormSil.Image = ((System.Drawing.Image)(resources.GetObject("ButtonSalesFormSil.Image")));
             this.ButtonSalesFormSil.Location = new System.Drawing.Point(148, 354);
             this.ButtonSalesFormSil.Name = "ButtonSalesFormSil";
@@ -186,7 +188,7 @@ namespace WindowsForm.Forms.UserForms
             // buttonTemizle
             // 
             this.buttonTemizle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonTemizle.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonTemizle.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonTemizle.Image = ((System.Drawing.Image)(resources.GetObject("buttonTemizle.Image")));
             this.buttonTemizle.Location = new System.Drawing.Point(57, 325);
             this.buttonTemizle.Name = "buttonTemizle";
@@ -200,6 +202,7 @@ namespace WindowsForm.Forms.UserForms
             // buttoElaveEt
             // 
             this.buttoElaveEt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttoElaveEt.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttoElaveEt.Image = ((System.Drawing.Image)(resources.GetObject("buttoElaveEt.Image")));
             this.buttoElaveEt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttoElaveEt.Location = new System.Drawing.Point(150, 325);
@@ -214,6 +217,7 @@ namespace WindowsForm.Forms.UserForms
             // textBoxProductId
             // 
             this.textBoxProductId.Enabled = false;
+            this.textBoxProductId.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxProductId.Location = new System.Drawing.Point(100, 118);
             this.textBoxProductId.Name = "textBoxProductId";
             this.textBoxProductId.Size = new System.Drawing.Size(138, 22);
@@ -222,6 +226,7 @@ namespace WindowsForm.Forms.UserForms
             // textBoxMaxQiymet
             // 
             this.textBoxMaxQiymet.Enabled = false;
+            this.textBoxMaxQiymet.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxMaxQiymet.Location = new System.Drawing.Point(100, 206);
             this.textBoxMaxQiymet.Name = "textBoxMaxQiymet";
             this.textBoxMaxQiymet.Size = new System.Drawing.Size(138, 22);
@@ -231,15 +236,17 @@ namespace WindowsForm.Forms.UserForms
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(15, 206);
+            this.label10.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label10.Location = new System.Drawing.Point(23, 208);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(79, 17);
+            this.label10.Size = new System.Drawing.Size(72, 14);
             this.label10.TabIndex = 12;
             this.label10.Text = "Max qiymət:";
             // 
             // textBoxCem
             // 
             this.textBoxCem.Enabled = false;
+            this.textBoxCem.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxCem.Location = new System.Drawing.Point(100, 296);
             this.textBoxCem.Name = "textBoxCem";
             this.textBoxCem.Size = new System.Drawing.Size(138, 22);
@@ -247,6 +254,7 @@ namespace WindowsForm.Forms.UserForms
             // 
             // textBoxQiymet
             // 
+            this.textBoxQiymet.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxQiymet.Location = new System.Drawing.Point(100, 236);
             this.textBoxQiymet.Name = "textBoxQiymet";
             this.textBoxQiymet.Size = new System.Drawing.Size(138, 22);
@@ -257,6 +265,7 @@ namespace WindowsForm.Forms.UserForms
             // textBoxMehsulAdi
             // 
             this.textBoxMehsulAdi.Enabled = false;
+            this.textBoxMehsulAdi.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxMehsulAdi.Location = new System.Drawing.Point(100, 176);
             this.textBoxMehsulAdi.Name = "textBoxMehsulAdi";
             this.textBoxMehsulAdi.Size = new System.Drawing.Size(138, 22);
@@ -264,6 +273,7 @@ namespace WindowsForm.Forms.UserForms
             // 
             // textBoxMiqdar
             // 
+            this.textBoxMiqdar.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxMiqdar.Location = new System.Drawing.Point(100, 266);
             this.textBoxMiqdar.Name = "textBoxMiqdar";
             this.textBoxMiqdar.Size = new System.Drawing.Size(138, 22);
@@ -273,6 +283,7 @@ namespace WindowsForm.Forms.UserForms
             // 
             // textBoxBarkodNo
             // 
+            this.textBoxBarkodNo.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxBarkodNo.Location = new System.Drawing.Point(100, 146);
             this.textBoxBarkodNo.Name = "textBoxBarkodNo";
             this.textBoxBarkodNo.Size = new System.Drawing.Size(138, 22);
@@ -282,45 +293,50 @@ namespace WindowsForm.Forms.UserForms
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(56, 299);
+            this.label9.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label9.Location = new System.Drawing.Point(58, 298);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(38, 17);
+            this.label9.Size = new System.Drawing.Size(36, 14);
             this.label9.TabIndex = 4;
             this.label9.Text = "Cəm:";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(41, 239);
+            this.label8.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(47, 238);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(53, 17);
+            this.label8.Size = new System.Drawing.Size(48, 14);
             this.label8.TabIndex = 3;
             this.label8.Text = "Qiymət:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(21, 176);
+            this.label6.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(25, 178);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(73, 17);
+            this.label6.Size = new System.Drawing.Size(70, 14);
             this.label6.TabIndex = 1;
             this.label6.Text = "Məhsul adı:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(25, 149);
+            this.label5.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(29, 149);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(69, 17);
+            this.label5.Size = new System.Drawing.Size(65, 14);
             this.label5.TabIndex = 0;
             this.label5.Text = "BarkodNo:";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(41, 270);
+            this.label7.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.Location = new System.Drawing.Point(47, 268);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(53, 17);
+            this.label7.Size = new System.Drawing.Size(48, 14);
             this.label7.TabIndex = 2;
             this.label7.Text = "Miqdar:";
             // 
@@ -329,7 +345,7 @@ namespace WindowsForm.Forms.UserForms
             this.ButtonSalesFormSatisEtmek.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ButtonSalesFormSatisEtmek.FlatAppearance.BorderSize = 0;
             this.ButtonSalesFormSatisEtmek.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonSalesFormSatisEtmek.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ButtonSalesFormSatisEtmek.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ButtonSalesFormSatisEtmek.Image = ((System.Drawing.Image)(resources.GetObject("ButtonSalesFormSatisEtmek.Image")));
             this.ButtonSalesFormSatisEtmek.Location = new System.Drawing.Point(1075, 476);
             this.ButtonSalesFormSatisEtmek.Name = "ButtonSalesFormSatisEtmek";
@@ -344,10 +360,10 @@ namespace WindowsForm.Forms.UserForms
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Verdana", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Helvetica", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(834, 583);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(136, 23);
+            this.label1.Size = new System.Drawing.Size(128, 22);
             this.label1.TabIndex = 12;
             this.label1.Text = "Ümumi Cəm:";
             // 
@@ -355,11 +371,11 @@ namespace WindowsForm.Forms.UserForms
             // 
             this.LabelSalesFormUmuniCem_qiymet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.LabelSalesFormUmuniCem_qiymet.AutoSize = true;
-            this.LabelSalesFormUmuniCem_qiymet.Font = new System.Drawing.Font("Verdana", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LabelSalesFormUmuniCem_qiymet.Font = new System.Drawing.Font("Helvetica", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.LabelSalesFormUmuniCem_qiymet.ForeColor = System.Drawing.Color.Red;
             this.LabelSalesFormUmuniCem_qiymet.Location = new System.Drawing.Point(960, 583);
             this.LabelSalesFormUmuniCem_qiymet.Name = "LabelSalesFormUmuniCem_qiymet";
-            this.LabelSalesFormUmuniCem_qiymet.Size = new System.Drawing.Size(26, 23);
+            this.LabelSalesFormUmuniCem_qiymet.Size = new System.Drawing.Size(21, 22);
             this.LabelSalesFormUmuniCem_qiymet.TabIndex = 13;
             this.LabelSalesFormUmuniCem_qiymet.Text = "#";
             // 
@@ -398,10 +414,10 @@ namespace WindowsForm.Forms.UserForms
             // checkBoxBarkodNo
             // 
             this.checkBoxBarkodNo.AutoSize = true;
-            this.checkBoxBarkodNo.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxBarkodNo.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.checkBoxBarkodNo.Location = new System.Drawing.Point(263, 350);
             this.checkBoxBarkodNo.Name = "checkBoxBarkodNo";
-            this.checkBoxBarkodNo.Size = new System.Drawing.Size(90, 21);
+            this.checkBoxBarkodNo.Size = new System.Drawing.Size(79, 18);
             this.checkBoxBarkodNo.TabIndex = 37;
             this.checkBoxBarkodNo.Text = "Avtomatik";
             this.checkBoxBarkodNo.UseVisualStyleBackColor = true;
@@ -429,6 +445,7 @@ namespace WindowsForm.Forms.UserForms
             // textBoxCustomerId
             // 
             this.textBoxCustomerId.Enabled = false;
+            this.textBoxCustomerId.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxCustomerId.Location = new System.Drawing.Point(78, 21);
             this.textBoxCustomerId.Name = "textBoxCustomerId";
             this.textBoxCustomerId.Size = new System.Drawing.Size(160, 22);
@@ -437,6 +454,7 @@ namespace WindowsForm.Forms.UserForms
             // buttonSec
             // 
             this.buttonSec.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSec.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonSec.Image = global::WindowsForm.Properties.Resources.choose_page_16px;
             this.buttonSec.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonSec.Location = new System.Drawing.Point(55, 133);
@@ -451,6 +469,7 @@ namespace WindowsForm.Forms.UserForms
             // buttonBorcElaveEt
             // 
             this.buttonBorcElaveEt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBorcElaveEt.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonBorcElaveEt.Image = global::WindowsForm.Properties.Resources.payment_history_16px_3;
             this.buttonBorcElaveEt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonBorcElaveEt.Location = new System.Drawing.Point(149, 133);
@@ -465,6 +484,7 @@ namespace WindowsForm.Forms.UserForms
             // textBoxTelefon
             // 
             this.textBoxTelefon.Enabled = false;
+            this.textBoxTelefon.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxTelefon.Location = new System.Drawing.Point(77, 105);
             this.textBoxTelefon.Name = "textBoxTelefon";
             this.textBoxTelefon.Size = new System.Drawing.Size(160, 22);
@@ -473,6 +493,7 @@ namespace WindowsForm.Forms.UserForms
             // textBoxSoyad
             // 
             this.textBoxSoyad.Enabled = false;
+            this.textBoxSoyad.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxSoyad.Location = new System.Drawing.Point(77, 77);
             this.textBoxSoyad.Name = "textBoxSoyad";
             this.textBoxSoyad.Size = new System.Drawing.Size(160, 22);
@@ -481,6 +502,7 @@ namespace WindowsForm.Forms.UserForms
             // textBoxAd
             // 
             this.textBoxAd.Enabled = false;
+            this.textBoxAd.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxAd.Location = new System.Drawing.Point(77, 49);
             this.textBoxAd.Name = "textBoxAd";
             this.textBoxAd.Size = new System.Drawing.Size(160, 22);
@@ -489,27 +511,30 @@ namespace WindowsForm.Forms.UserForms
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(14, 108);
+            this.label4.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(18, 108);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 17);
+            this.label4.Size = new System.Drawing.Size(53, 14);
             this.label4.TabIndex = 2;
             this.label4.Text = "Telefon :";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(20, 80);
+            this.label3.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(23, 80);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 17);
+            this.label3.Size = new System.Drawing.Size(48, 14);
             this.label3.TabIndex = 1;
             this.label3.Text = "Soyad :";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(40, 52);
+            this.label2.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(43, 52);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(31, 17);
+            this.label2.Size = new System.Drawing.Size(28, 14);
             this.label2.TabIndex = 0;
             this.label2.Text = "Ad :";
             // 
@@ -526,6 +551,7 @@ namespace WindowsForm.Forms.UserForms
             this.groupBoxFilter.Controls.Add(this.comboBoxSupplierList);
             this.groupBoxFilter.Controls.Add(this.comboBoxBrandList);
             this.groupBoxFilter.Controls.Add(this.comboBoxCategoryList);
+            this.groupBoxFilter.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBoxFilter.Location = new System.Drawing.Point(261, -4);
             this.groupBoxFilter.Name = "groupBoxFilter";
             this.groupBoxFilter.Size = new System.Drawing.Size(848, 38);
@@ -549,7 +575,7 @@ namespace WindowsForm.Forms.UserForms
             // textBoxAxtar
             // 
             this.textBoxAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxAxtar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxAxtar.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxAxtar.Location = new System.Drawing.Point(667, 10);
             this.textBoxAxtar.Name = "textBoxAxtar";
             this.textBoxAxtar.Size = new System.Drawing.Size(138, 22);
@@ -561,7 +587,7 @@ namespace WindowsForm.Forms.UserForms
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(387, 16);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(67, 15);
+            this.label14.Size = new System.Drawing.Size(70, 14);
             this.label14.TabIndex = 41;
             this.label14.Text = "Tedarükçü :";
             // 
@@ -570,7 +596,7 @@ namespace WindowsForm.Forms.UserForms
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(208, 16);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(46, 15);
+            this.label13.Size = new System.Drawing.Size(47, 14);
             this.label13.TabIndex = 40;
             this.label13.Text = "Marka :";
             // 
@@ -590,9 +616,10 @@ namespace WindowsForm.Forms.UserForms
             // label11
             // 
             this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label11.Location = new System.Drawing.Point(6, 16);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(69, 15);
+            this.label11.Size = new System.Drawing.Size(72, 14);
             this.label11.TabIndex = 39;
             this.label11.Text = "Kateqoriya :";
             // 
@@ -601,7 +628,7 @@ namespace WindowsForm.Forms.UserForms
             this.comboBoxSupplierList.FormattingEnabled = true;
             this.comboBoxSupplierList.Location = new System.Drawing.Point(460, 12);
             this.comboBoxSupplierList.Name = "comboBoxSupplierList";
-            this.comboBoxSupplierList.Size = new System.Drawing.Size(121, 23);
+            this.comboBoxSupplierList.Size = new System.Drawing.Size(121, 22);
             this.comboBoxSupplierList.TabIndex = 38;
             // 
             // comboBoxBrandList
@@ -609,7 +636,7 @@ namespace WindowsForm.Forms.UserForms
             this.comboBoxBrandList.FormattingEnabled = true;
             this.comboBoxBrandList.Location = new System.Drawing.Point(260, 12);
             this.comboBoxBrandList.Name = "comboBoxBrandList";
-            this.comboBoxBrandList.Size = new System.Drawing.Size(121, 23);
+            this.comboBoxBrandList.Size = new System.Drawing.Size(121, 22);
             this.comboBoxBrandList.TabIndex = 37;
             // 
             // comboBoxCategoryList
@@ -617,7 +644,7 @@ namespace WindowsForm.Forms.UserForms
             this.comboBoxCategoryList.FormattingEnabled = true;
             this.comboBoxCategoryList.Location = new System.Drawing.Point(81, 13);
             this.comboBoxCategoryList.Name = "comboBoxCategoryList";
-            this.comboBoxCategoryList.Size = new System.Drawing.Size(121, 23);
+            this.comboBoxCategoryList.Size = new System.Drawing.Size(121, 22);
             this.comboBoxCategoryList.TabIndex = 36;
             // 
             // SalesFormForUser

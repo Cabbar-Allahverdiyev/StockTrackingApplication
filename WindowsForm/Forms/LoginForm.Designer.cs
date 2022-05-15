@@ -104,33 +104,33 @@ namespace WindowsForm.Forms
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(52, 286);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(196, 24);
+            this.label3.Size = new System.Drawing.Size(209, 25);
             this.label3.TabIndex = 3;
             this.label3.Text = "izlənilməsi sisteminə";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(21, 258);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(258, 24);
+            this.label2.Size = new System.Drawing.Size(245, 25);
             this.label2.TabIndex = 2;
             this.label2.Text = "Mağazadakı məhsulların";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(80, 231);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(141, 24);
+            this.label1.Size = new System.Drawing.Size(150, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "Xoş gəlmisiniz";
             // 
@@ -167,10 +167,11 @@ namespace WindowsForm.Forms
             // linkLabel2
             // 
             this.linkLabel2.AutoSize = true;
+            this.linkLabel2.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.linkLabel2.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.linkLabel2.Location = new System.Drawing.Point(211, 544);
+            this.linkLabel2.Location = new System.Drawing.Point(188, 544);
             this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(100, 17);
+            this.linkLabel2.Size = new System.Drawing.Size(98, 14);
             this.linkLabel2.TabIndex = 16;
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "+994554926939";
@@ -179,10 +180,11 @@ namespace WindowsForm.Forms
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.linkLabel1.Location = new System.Drawing.Point(208, 527);
+            this.linkLabel1.Location = new System.Drawing.Point(184, 527);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(210, 17);
+            this.linkLabel1.Size = new System.Drawing.Size(188, 14);
             this.linkLabel1.TabIndex = 15;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "cabbar.allahverdiyev@gmail.com";
@@ -191,44 +193,44 @@ namespace WindowsForm.Forms
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label10.Font = new System.Drawing.Font("Helvetica", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label10.ForeColor = System.Drawing.Color.Silver;
             this.label10.Location = new System.Drawing.Point(38, 545);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(167, 16);
+            this.label10.Size = new System.Drawing.Size(144, 12);
             this.label10.TabIndex = 14;
             this.label10.Text = "və ya bu telefona zəng edin :";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label9.Font = new System.Drawing.Font("Helvetica", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label9.ForeColor = System.Drawing.Color.Silver;
             this.label9.Location = new System.Drawing.Point(39, 528);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(161, 16);
+            this.label9.Size = new System.Drawing.Size(139, 12);
             this.label9.TabIndex = 13;
             this.label9.Text = "bu ünvana mesaj göndərin :";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label8.Font = new System.Drawing.Font("Helvetica", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label8.ForeColor = System.Drawing.Color.Silver;
             this.label8.Location = new System.Drawing.Point(39, 512);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(359, 16);
+            this.label8.Size = new System.Drawing.Size(320, 12);
             this.label8.TabIndex = 12;
             this.label8.Text = "Bu proqrama daxil olmaq barəsində və ya hər hansı bir sual üçün";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.Font = new System.Drawing.Font("Helvetica", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label7.ForeColor = System.Drawing.Color.Silver;
             this.label7.Location = new System.Drawing.Point(38, 494);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(48, 16);
+            this.label7.Size = new System.Drawing.Size(46, 12);
             this.label7.TabIndex = 6;
             this.label7.Text = "Dəstək :";
             // 
@@ -237,7 +239,7 @@ namespace WindowsForm.Forms
             this.buttonSifreniUnutmusunuz.BackColor = System.Drawing.SystemColors.Control;
             this.buttonSifreniUnutmusunuz.FlatAppearance.BorderSize = 0;
             this.buttonSifreniUnutmusunuz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSifreniUnutmusunuz.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonSifreniUnutmusunuz.Font = new System.Drawing.Font("Helvetica", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonSifreniUnutmusunuz.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.buttonSifreniUnutmusunuz.Location = new System.Drawing.Point(182, 350);
             this.buttonSifreniUnutmusunuz.Name = "buttonSifreniUnutmusunuz";
@@ -250,7 +252,7 @@ namespace WindowsForm.Forms
             // 
             this.buttonDaxilOl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.buttonDaxilOl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDaxilOl.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonDaxilOl.Font = new System.Drawing.Font("Helvetica", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonDaxilOl.ForeColor = System.Drawing.Color.White;
             this.buttonDaxilOl.Location = new System.Drawing.Point(15, 340);
             this.buttonDaxilOl.Name = "buttonDaxilOl";

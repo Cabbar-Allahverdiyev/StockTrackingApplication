@@ -40,6 +40,7 @@ namespace WindowsForm.Forms
         IDebtService _debtService;
         ISaleWinFormService _saleWinFormService;
         ISupplierService _supplierService;
+        IBonusCardService _bonusCardService;
 
         MacAddressManager _macAddressManager = new MacAddressManager(new EfMacAddressDal());
 
@@ -57,7 +58,8 @@ namespace WindowsForm.Forms
             , IDebtService debtService
             , ISaleWinFormService saleWinFormService
             , ISupplierService supplierService
-            , IBrandService brandService)
+            , IBrandService brandService
+, IBonusCardService bonusCardService)
         {
             _userOperationClaimForFormsService = userOperationClaimForFormsService;
             _userService = userService;
@@ -72,9 +74,9 @@ namespace WindowsForm.Forms
             _saleWinFormService = saleWinFormService;
             _supplierService = supplierService;
             _brandService = brandService;
+            _bonusCardService = bonusCardService;
             InitializeComponent();
             this.BackColor = Color.FromArgb(41, 128, 185);
-            
         }
 
         //Click------------------------------->
@@ -142,6 +144,7 @@ namespace WindowsForm.Forms
                                                     , _debtService
                                                     , _saleWinFormService
                                                     , _supplierService
+                                                    ,_bonusCardService
                                                     );
                     this.Hide();
                     dashboard.Show();
@@ -160,7 +163,8 @@ namespace WindowsForm.Forms
                                                                 , _cartService
                                                                 , _debtService
                                                                 , _saleWinFormService
-                                                                , _supplierService);
+                                                                , _supplierService
+                                                                ,_bonusCardService);
                 this.Hide();
                 userDashboard.Show();
 

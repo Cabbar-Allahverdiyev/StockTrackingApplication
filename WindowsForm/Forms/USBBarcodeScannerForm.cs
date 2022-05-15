@@ -168,7 +168,7 @@ namespace WindowsForm.Forms
             printDialog.Document = printDoc;
 
 
-            PaperSize paperSize = new PaperSize("abcd", 60, 27);
+            //PaperSize paperSize = new PaperSize("abcd", 60, 27);
 
             //printDialog.PrinterSettings.DefaultPageSettings.PaperSize = paperSize;
 
@@ -187,6 +187,11 @@ namespace WindowsForm.Forms
             pictureBox1.DrawToBitmap(bmp, new Rectangle(0, 0, pictureBox1.Width, pictureBox1.Height));
             e.Graphics.DrawImage(bmp, 0, 0);
             bmp.Dispose();
+        }
+
+        private void USBBarcodeScannerForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

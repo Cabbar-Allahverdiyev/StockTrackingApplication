@@ -33,6 +33,7 @@ namespace WindowsForm.Forms.UserForms
         IDebtService _debtService;
         ISaleWinFormService _saleWinFormService;
         ISupplierService _supplierService;
+        IBonusCardService _bonusCardService;
 
         private Form activateForm;
         private Size formSize;
@@ -50,7 +51,7 @@ namespace WindowsForm.Forms.UserForms
             , ICustomerBalanceService customerBalanceService
             , ICustomerPaymentService customerPaymentService
             , ICartService cartService
-            , IDebtService debtService, ISaleWinFormService saleWinFormService, ISupplierService supplierService)
+            , IDebtService debtService, ISaleWinFormService saleWinFormService, ISupplierService supplierService, IBonusCardService bonusCardService)
         {
             _userService = userService;
             _operationClaimService = operationClaimService;
@@ -65,7 +66,8 @@ namespace WindowsForm.Forms.UserForms
             _debtService = debtService;
             _saleWinFormService = saleWinFormService;
             _supplierService = supplierService;
-                        
+            _bonusCardService = bonusCardService;
+
             InitializeComponent();
             this.Padding = new Padding();
             CollapseMenu();
@@ -249,7 +251,8 @@ namespace WindowsForm.Forms.UserForms
                                         , _cartService
                                         , _customerService
                                         , _saleWinFormService
-                                        , _debtService), sender);
+                                        , _debtService
+                                        ,_bonusCardService), sender);
         }
 
         private void buttonProducts_Click(object sender, EventArgs e)
@@ -308,7 +311,8 @@ namespace WindowsForm.Forms.UserForms
                                                     , _debtService
                                                     , _saleWinFormService
                                                     , _supplierService
-                                                    , _brandService));
+                                                    , _brandService
+                                                    ,_bonusCardService));
         }
 
         //Dropdown menu---------------------------------->

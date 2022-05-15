@@ -71,7 +71,7 @@ namespace WindowsForm.Forms.AdminForms
             // textBoxAxtar
             // 
             this.textBoxAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxAxtar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxAxtar.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxAxtar.Location = new System.Drawing.Point(340, 12);
             this.textBoxAxtar.Name = "textBoxAxtar";
             this.textBoxAxtar.Size = new System.Drawing.Size(173, 22);
@@ -98,7 +98,7 @@ namespace WindowsForm.Forms.AdminForms
             // buttonElaveEt
             // 
             this.buttonElaveEt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonElaveEt.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonElaveEt.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonElaveEt.Image = global::WindowsForm.Properties.Resources.elaveEtBlack;
             this.buttonElaveEt.Location = new System.Drawing.Point(154, 95);
             this.buttonElaveEt.Name = "buttonElaveEt";
@@ -112,16 +112,16 @@ namespace WindowsForm.Forms.AdminForms
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(16, 70);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 17);
+            this.label1.Size = new System.Drawing.Size(36, 14);
             this.label1.TabIndex = 36;
             this.label1.Text = "Mac :";
             // 
             // textBoxMacAddress
             // 
-            this.textBoxMacAddress.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxMacAddress.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxMacAddress.Location = new System.Drawing.Point(63, 67);
             this.textBoxMacAddress.Name = "textBoxMacAddress";
             this.textBoxMacAddress.Size = new System.Drawing.Size(176, 22);
@@ -130,6 +130,7 @@ namespace WindowsForm.Forms.AdminForms
             // buttonSil
             // 
             this.buttonSil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSil.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonSil.Image = global::WindowsForm.Properties.Resources.icons8_trash_16;
             this.buttonSil.Location = new System.Drawing.Point(63, 95);
             this.buttonSil.Name = "buttonSil";
@@ -143,7 +144,7 @@ namespace WindowsForm.Forms.AdminForms
             // textBoxId
             // 
             this.textBoxId.Enabled = false;
-            this.textBoxId.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxId.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxId.Location = new System.Drawing.Point(63, 39);
             this.textBoxId.Name = "textBoxId";
             this.textBoxId.Size = new System.Drawing.Size(176, 22);

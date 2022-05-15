@@ -38,6 +38,7 @@ namespace WindowsForm.Forms.UserForms
         ICategoryService _categoryService;
         IBrandService _brandService;
         ISupplierService _supplierService;
+        IBonusCardService _bonusCardService;
 
         MyControl myControl = new MyControl();
 
@@ -49,7 +50,7 @@ namespace WindowsForm.Forms.UserForms
                             , ICustomerService customerService
                             , ISaleWinFormService saleWinFormService
                             , IDebtService debtService
-                            )
+, IBonusCardService bonusCardService)
         {
             _productService = productService;
             _cartService = cartService;
@@ -60,6 +61,8 @@ namespace WindowsForm.Forms.UserForms
             _categoryService = categoryService;
             _brandService = brandService;
             _supplierService = supplierService;
+            _bonusCardService = bonusCardService;
+
             InitializeComponent();
             TotalPriceLabelWrite();
             UserAuthorization.QrCodeIsSuccess = false;
@@ -69,8 +72,6 @@ namespace WindowsForm.Forms.UserForms
 
             BarcodeScanner barcodeScanner = new BarcodeScanner(textBoxBarkodNo);
             barcodeScanner.BarcodeScanned += BarcodeScanner_BarcodeScanned;
-
-
         }
 
         private void SalesForm_Load(object sender, EventArgs e)
@@ -470,7 +471,7 @@ namespace WindowsForm.Forms.UserForms
         private void buttonAxtar_Click(object sender, EventArgs e)
         {
             SalesForm salesForm = new SalesForm(_categoryService, _brandService, _supplierService, _productService, _cartService
-               , _customerService, _saleWinFormService, _debtService);
+               , _customerService, _saleWinFormService, _debtService,_bonusCardService);
 
             salesForm.ComboBoxSelectedValue(dataGridViewProductList, comboBoxCategoryList.Text, comboBoxSupplierList.Text, comboBoxBrandList.Text);
         }

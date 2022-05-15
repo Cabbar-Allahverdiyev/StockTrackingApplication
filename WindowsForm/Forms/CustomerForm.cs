@@ -11,6 +11,7 @@ using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
+using WindowsForm.Core.Controllers.Concrete;
 using WindowsForm.Core.Controllers.Concrete.ValidatorControllers;
 using WindowsForm.Utilities.Search.Concrete.CustomerSearch;
 
@@ -51,6 +52,7 @@ namespace WindowsForm.Forms
                     return;
                 }
                 FormsMessage.SuccessMessage(result.Message);
+                TextBoxController.ClearAllTextBoxesByGroupBox(groupBox1);
                 CustomerRefresh();
             }
             catch (Exception ex)
@@ -76,6 +78,11 @@ namespace WindowsForm.Forms
         {
             CustomerDtoSearch customerDtoSearch = new CustomerDtoSearch();
             customerDtoSearch.GetDataWriteGridView(_customerService.GetCustomerDetails().Data, textBoxAxtar.Text, dataGridViewList);
+        }
+
+        private void buttonTemizle_Click(object sender, EventArgs e)
+        {
+            TextBoxController.ClearAllTextBoxesByGroupBox(groupBox1);
         }
     }
 }

@@ -44,17 +44,18 @@ namespace WindowsForm.Forms
             // 
             // textBoxBarcodeNumber
             // 
-            this.textBoxBarcodeNumber.Location = new System.Drawing.Point(254, 106);
+            this.textBoxBarcodeNumber.Location = new System.Drawing.Point(154, 21);
             this.textBoxBarcodeNumber.Name = "textBoxBarcodeNumber";
-            this.textBoxBarcodeNumber.Size = new System.Drawing.Size(193, 23);
+            this.textBoxBarcodeNumber.Size = new System.Drawing.Size(220, 22);
             this.textBoxBarcodeNumber.TabIndex = 1;
             this.textBoxBarcodeNumber.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // buttonScan
             // 
-            this.buttonScan.Location = new System.Drawing.Point(173, 135);
+            this.buttonScan.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonScan.Location = new System.Drawing.Point(62, 48);
             this.buttonScan.Name = "buttonScan";
-            this.buttonScan.Size = new System.Drawing.Size(75, 23);
+            this.buttonScan.Size = new System.Drawing.Size(86, 21);
             this.buttonScan.TabIndex = 5;
             this.buttonScan.Text = "Skan et";
             this.buttonScan.UseVisualStyleBackColor = true;
@@ -62,9 +63,10 @@ namespace WindowsForm.Forms
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(138, 164);
+            this.buttonSave.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonSave.Location = new System.Drawing.Point(22, 75);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(110, 23);
+            this.buttonSave.Size = new System.Drawing.Size(126, 21);
             this.buttonSave.TabIndex = 6;
             this.buttonSave.Text = "Yaddaşa yaz";
             this.buttonSave.UseVisualStyleBackColor = true;
@@ -72,9 +74,10 @@ namespace WindowsForm.Forms
             // 
             // buttonGenerate
             // 
-            this.buttonGenerate.Location = new System.Drawing.Point(453, 164);
+            this.buttonGenerate.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonGenerate.Location = new System.Drawing.Point(382, 75);
             this.buttonGenerate.Name = "buttonGenerate";
-            this.buttonGenerate.Size = new System.Drawing.Size(107, 23);
+            this.buttonGenerate.Size = new System.Drawing.Size(122, 21);
             this.buttonGenerate.TabIndex = 7;
             this.buttonGenerate.Text = "Barkod yarat";
             this.buttonGenerate.UseVisualStyleBackColor = true;
@@ -82,9 +85,10 @@ namespace WindowsForm.Forms
             // 
             // buttonLoad
             // 
-            this.buttonLoad.Location = new System.Drawing.Point(138, 193);
+            this.buttonLoad.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonLoad.Location = new System.Drawing.Point(22, 102);
             this.buttonLoad.Name = "buttonLoad";
-            this.buttonLoad.Size = new System.Drawing.Size(111, 23);
+            this.buttonLoad.Size = new System.Drawing.Size(127, 21);
             this.buttonLoad.TabIndex = 8;
             this.buttonLoad.Text = "Yaddaşdan yüklə";
             this.buttonLoad.UseVisualStyleBackColor = true;
@@ -92,18 +96,19 @@ namespace WindowsForm.Forms
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(254, 135);
+            this.pictureBox1.Location = new System.Drawing.Point(154, 48);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(193, 103);
+            this.pictureBox1.Size = new System.Drawing.Size(221, 96);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
             // 
             // buttonRandom
             // 
-            this.buttonRandom.Location = new System.Drawing.Point(453, 106);
+            this.buttonRandom.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonRandom.Location = new System.Drawing.Point(382, 21);
             this.buttonRandom.Name = "buttonRandom";
-            this.buttonRandom.Size = new System.Drawing.Size(107, 52);
+            this.buttonRandom.Size = new System.Drawing.Size(122, 49);
             this.buttonRandom.TabIndex = 10;
             this.buttonRandom.Text = "Təsadüfi rəqəm yarat";
             this.buttonRandom.UseVisualStyleBackColor = true;
@@ -111,9 +116,10 @@ namespace WindowsForm.Forms
             // 
             // buttonQrCode
             // 
-            this.buttonQrCode.Location = new System.Drawing.Point(453, 193);
+            this.buttonQrCode.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonQrCode.Location = new System.Drawing.Point(382, 102);
             this.buttonQrCode.Name = "buttonQrCode";
-            this.buttonQrCode.Size = new System.Drawing.Size(107, 23);
+            this.buttonQrCode.Size = new System.Drawing.Size(122, 21);
             this.buttonQrCode.TabIndex = 11;
             this.buttonQrCode.Text = "QR yarat";
             this.buttonQrCode.UseVisualStyleBackColor = true;
@@ -121,9 +127,10 @@ namespace WindowsForm.Forms
             // 
             // buttonPrint
             // 
-            this.buttonPrint.Location = new System.Drawing.Point(485, 222);
+            this.buttonPrint.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonPrint.Location = new System.Drawing.Point(418, 129);
             this.buttonPrint.Name = "buttonPrint";
-            this.buttonPrint.Size = new System.Drawing.Size(75, 23);
+            this.buttonPrint.Size = new System.Drawing.Size(86, 21);
             this.buttonPrint.TabIndex = 12;
             this.buttonPrint.Text = "Çap et";
             this.buttonPrint.UseVisualStyleBackColor = true;
@@ -131,16 +138,16 @@ namespace WindowsForm.Forms
             // 
             // textBoxInfo
             // 
-            this.textBoxInfo.Location = new System.Drawing.Point(122, 106);
+            this.textBoxInfo.Location = new System.Drawing.Point(3, 21);
             this.textBoxInfo.Name = "textBoxInfo";
-            this.textBoxInfo.Size = new System.Drawing.Size(127, 23);
+            this.textBoxInfo.Size = new System.Drawing.Size(145, 22);
             this.textBoxInfo.TabIndex = 13;
             // 
             // USBBarcodeScannerForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(914, 420);
             this.Controls.Add(this.textBoxInfo);
             this.Controls.Add(this.buttonPrint);
             this.Controls.Add(this.buttonQrCode);
@@ -151,6 +158,7 @@ namespace WindowsForm.Forms
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonScan);
             this.Controls.Add(this.textBoxBarcodeNumber);
+            this.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "USBBarcodeScannerForm";
             this.Text = "BarcodeScannerForm";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

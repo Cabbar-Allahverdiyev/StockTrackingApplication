@@ -78,7 +78,7 @@ namespace WindowsForm.Forms.AdminForms
             // textBoxAxtar
             // 
             this.textBoxAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxAxtar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxAxtar.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxAxtar.Location = new System.Drawing.Point(728, 12);
             this.textBoxAxtar.Name = "textBoxAxtar";
             this.textBoxAxtar.Size = new System.Drawing.Size(135, 22);
@@ -123,6 +123,7 @@ namespace WindowsForm.Forms.AdminForms
             // buttonDuzelt
             // 
             this.buttonDuzelt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDuzelt.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonDuzelt.Image = global::WindowsForm.Properties.Resources.editBlack_16px_2;
             this.buttonDuzelt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonDuzelt.Location = new System.Drawing.Point(108, 148);
@@ -136,6 +137,7 @@ namespace WindowsForm.Forms.AdminForms
             // ButtonSalesFormSil
             // 
             this.ButtonSalesFormSil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonSalesFormSil.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ButtonSalesFormSil.Image = ((System.Drawing.Image)(resources.GetObject("ButtonSalesFormSil.Image")));
             this.ButtonSalesFormSil.Location = new System.Drawing.Point(201, 148);
             this.ButtonSalesFormSil.Name = "ButtonSalesFormSil";
@@ -148,6 +150,7 @@ namespace WindowsForm.Forms.AdminForms
             // buttonTemizle
             // 
             this.buttonTemizle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTemizle.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonTemizle.Image = global::WindowsForm.Properties.Resources.TemizleBlack;
             this.buttonTemizle.Location = new System.Drawing.Point(108, 117);
             this.buttonTemizle.Name = "buttonTemizle";
@@ -160,6 +163,7 @@ namespace WindowsForm.Forms.AdminForms
             // buttonElaveEt
             // 
             this.buttonElaveEt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonElaveEt.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonElaveEt.Image = global::WindowsForm.Properties.Resources.elaveEtBlack;
             this.buttonElaveEt.Location = new System.Drawing.Point(201, 117);
             this.buttonElaveEt.Name = "buttonElaveEt";
@@ -173,48 +177,54 @@ namespace WindowsForm.Forms.AdminForms
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.Location = new System.Drawing.Point(29, 89);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 17);
+            this.label3.Size = new System.Drawing.Size(70, 14);
             this.label3.TabIndex = 21;
             this.label3.Text = "Səlahiyyət :";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(33, 56);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 17);
+            this.label2.Size = new System.Drawing.Size(61, 14);
             this.label2.TabIndex = 22;
             this.label2.Text = "Istifadeci :";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(77, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(25, 17);
+            this.label1.Size = new System.Drawing.Size(23, 14);
             this.label1.TabIndex = 23;
             this.label1.Text = "Id :";
             // 
             // comboBoxIstifadeci
             // 
+            this.comboBoxIstifadeci.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboBoxIstifadeci.FormattingEnabled = true;
             this.comboBoxIstifadeci.Location = new System.Drawing.Point(108, 53);
             this.comboBoxIstifadeci.Name = "comboBoxIstifadeci";
-            this.comboBoxIstifadeci.Size = new System.Drawing.Size(181, 25);
+            this.comboBoxIstifadeci.Size = new System.Drawing.Size(181, 22);
             this.comboBoxIstifadeci.TabIndex = 2;
             // 
             // comboBoxSelahiyyet
             // 
+            this.comboBoxSelahiyyet.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboBoxSelahiyyet.FormattingEnabled = true;
             this.comboBoxSelahiyyet.Location = new System.Drawing.Point(108, 86);
             this.comboBoxSelahiyyet.Name = "comboBoxSelahiyyet";
-            this.comboBoxSelahiyyet.Size = new System.Drawing.Size(181, 25);
+            this.comboBoxSelahiyyet.Size = new System.Drawing.Size(181, 22);
             this.comboBoxSelahiyyet.TabIndex = 3;
             // 
             // textBoxId
             // 
+            this.textBoxId.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxId.Location = new System.Drawing.Point(108, 21);
             this.textBoxId.Name = "textBoxId";
             this.textBoxId.Size = new System.Drawing.Size(181, 22);

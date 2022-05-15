@@ -87,7 +87,7 @@ namespace WindowsForm.Forms
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
             BonusCardSearch bonusCardSearch = new BonusCardSearch();
-            bonusCardSearch.GetDataWriteGridView(_bonusCardService.GetBonusCardForFormsDetails().Data
+            bonusCardSearch.GetDataWriteGridView(_bonusCardService.GetAllBonusCardForFormsDetail().Data
                 , textBoxAxtar.Text, dataGridViewList);
         }
 
@@ -106,7 +106,7 @@ namespace WindowsForm.Forms
         //Elave
         private void BonusCardRefresh()
         {
-            dataGridViewList.DataSource = _bonusCardService.GetBonusCardForFormsDetails().Data;
+            dataGridViewList.DataSource = _bonusCardService.GetAllBonusCardForFormsDetail().Data;
         }
 
         private void BarcodeScanner_BarcodeScanned(object sender, BarcodeScannerEventArgs e)
