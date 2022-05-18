@@ -85,9 +85,9 @@ namespace Business.Concrete
         }
 
         [CacheRemoveAspect("IBonusCardService.Get")]
-        public IResult IncreaseBalance(int customerId, decimal value)
+        public IResult IncreaseBalance(int cardId, decimal value)
         {
-            IDataResult<BonusCard> getBonusCard = GetByCustomerId(customerId);
+            IDataResult<BonusCard> getBonusCard = GetById(cardId);
             if (!getBonusCard.Success)
             {
                 return new ErrorResult(BonusCardMessages.ThisCustomerDoesNotHaveABonusCard);
@@ -104,9 +104,9 @@ namespace Business.Concrete
             return new SuccessResult(BonusCardMessages.IncreaseBalance(customer.FirstName));
         }
 
-        public IResult ReduceBalance(int customerId, decimal value)
+        public IResult ReduceBalance(int  cardId, decimal value)
         {
-            IDataResult<BonusCard> getBonusCard = GetByCustomerId(customerId);
+            IDataResult<BonusCard> getBonusCard = GetById(cardId);
             if (!getBonusCard.Success)
             {
                 return new ErrorResult(BonusCardMessages.ThisCustomerDoesNotHaveABonusCard);

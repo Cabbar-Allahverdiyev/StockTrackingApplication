@@ -14,7 +14,7 @@ namespace Business.Constants.Messages
         public static string IsNotUpdating = "Bonus kartı yenilənə bilmədi";
         public static string GetAll = "Bonus kartları sıralandi";
         public static string Found = "Bonus kartı tapıldı";
-        public static string NotFound = "Belə bir Bonus kartı yoxdur";
+        public static string NotFound = "Belə bir Bonus kart yoxdur";
 
         public static string ThisCustomerDoesNotHaveABonusCard = "Bu Müştəriyə aid bonus kart yoxdur";
         public static string ThisCustomerAlreadyExistsABonusCard = "Bu müştərinin artıq başqa bonus kartı var";
@@ -22,8 +22,8 @@ namespace Business.Constants.Messages
         public static string IncreaseBalance(string customerName) => $"{customerName} balansı artırıldı";
         public static string NotIncreaseBalance (string customerName)=> $"{customerName} balansı artırıla bilmədi !";
 
-        public static string ReduceBalance(string customerName) => $"{customerName} balansı azaldı";
-        public static string NotReduceBalance(string customerName) => $"{customerName} balansı azaldıla bilmədi";
+        public static string ReduceBalance(string customerName) => $"{customerName}'in bonus kartının  balansı azaldı";
+        public static string NotReduceBalance(string customerName) => $"{customerName}'in bonus kartının balansı azaldıla bilmədi";
 
     }
 }
