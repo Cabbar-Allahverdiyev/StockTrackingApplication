@@ -139,11 +139,14 @@
   <data name="succces-dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\succces-dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="elaveEt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\elaveEt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="services_caramel_120px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\services_caramel_120px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="new_moon_120px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\new_moon_120px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8_shortcuts_128px (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8_shortcuts_128px (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cancel_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cancel_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -202,20 +205,20 @@
   <data name="bunch_of_keys_blue_padding_24px_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bunch_of_keys_blue_padding_24px_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8_search_16px_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Wwwroot\Images\Icons\icons8_search_16px_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="success_light_italik" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\success_light_italik.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="searchBlack" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\searchBlack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="bonus_card_16px_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bonus_card_16px_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="shortcuts_120px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\shortcuts_120px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="elaveEt" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\elaveEt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8_search_16px_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Wwwroot\Images\Icons\icons8_search_16px_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="error" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\error.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -250,13 +253,13 @@
   <data name="icons8-synchronize-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-synchronize-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8_shortcuts_128px (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8_shortcuts_128px (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="new_moon_120px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\new_moon_120px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="errorCloud_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\errorCloud_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="bonus_card_16px_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bonus_card_16px_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="tapsat_274px_yanlarBos_png" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tapsat_274px_yanlarBos_png.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

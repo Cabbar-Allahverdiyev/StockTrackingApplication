@@ -136,7 +136,7 @@ namespace WindowsForm.Forms
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::WindowsForm.Properties.Resources.shortcuts_256px;
+            this.pictureBox1.Image = global::WindowsForm.Properties.Resources.tapsat_274px_yanlarBos_png;
             this.pictureBox1.Location = new System.Drawing.Point(23, -1);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(256, 256);

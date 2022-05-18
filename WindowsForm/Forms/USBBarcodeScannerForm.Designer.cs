@@ -160,7 +160,7 @@ namespace WindowsForm.Forms
             this.Controls.Add(this.textBoxBarcodeNumber);
             this.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "USBBarcodeScannerForm";
-            this.Text = "BarcodeScannerForm";
+            this.Text = "Barkod səhifəsi";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

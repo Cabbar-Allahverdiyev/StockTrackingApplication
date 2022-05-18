@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Utilities.Search.Concrete.BonusCardSearch;
 
 namespace WindowsForm.Forms
@@ -37,6 +38,11 @@ namespace WindowsForm.Forms
         //Click
         private void buttonSec_Click(object sender, EventArgs e)
         {
+            if (textBoxBonusCardId.Text=="")
+            {
+                FormsMessage.WarningMessage(FormsTextMessages.BonusCardIdBlank);
+                return;
+            }
             BonusCardId = int.Parse(textBoxBonusCardId.Text);
             this.Hide();
         }

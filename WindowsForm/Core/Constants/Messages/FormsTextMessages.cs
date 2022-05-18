@@ -11,6 +11,7 @@ namespace WindowsForm.Core.Constants.Messages
         public static string UnitPriceGreaterThanZero = "'Qiymət' bölməsi 0 ola bilməz";
 
         public static string CustomerPaymentIdBlank = "'Id' bölməsi boşdur zəhmət olmasa bir dəyər seçin";
+        public static string BonusCardIdBlank = "'Id' bölməsi boşdur zəhmət olmasa bir dəyər seçin";
         public static string QuantityIsBlank = "'Miqdar' bölməsi boşdur zəhmət olmasa bir dəyər yazın";
         public static string SectionsIsBlank = "Hansısa bölmədə dəyər seçilməyib";
        // public static string

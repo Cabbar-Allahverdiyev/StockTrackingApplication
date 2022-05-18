@@ -493,6 +493,16 @@ namespace WindowsForm.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
+        internal static System.Drawing.Bitmap tapsat_274px_yanlarBos_png {
+            get {
+                object obj = ResourceManager.GetObject("tapsat_274px_yanlarBos_png", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
         internal static System.Drawing.Bitmap TemizleBlack {
             get {
                 object obj = ResourceManager.GetObject("TemizleBlack", resourceCulture);

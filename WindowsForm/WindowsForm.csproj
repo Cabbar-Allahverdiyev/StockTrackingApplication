@@ -4,8 +4,15 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <ApplicationIcon>shortcuts_ico_128px.ico</ApplicationIcon>
+    <ApplicationIcon>tapsat_128px_ico.ico</ApplicationIcon>
     <RootNamespace>WindowsForm</RootNamespace>
+    <Nullable>enable</Nullable>
+    <Authors>Cabbar Allahverdiyev</Authors>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningLevel>5</WarningLevel>
   </PropertyGroup>
 
   <ItemGroup>

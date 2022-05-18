@@ -79,7 +79,7 @@ namespace WindowsForm.Forms
             this.comboBoxBrandList = new System.Windows.Forms.ComboBox();
             this.textBoxBonusCardCustomerName = new System.Windows.Forms.TextBox();
             this.buttonBonusCardSelect = new System.Windows.Forms.Button();
-            this.labelBonusValue = new System.Windows.Forms.Label();
+            this.buttonTemizleBonusCard = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductList)).BeginInit();
             this.groupBoxMusteri.SuspendLayout();
             this.groupBoxMehsul.SuspendLayout();
@@ -504,12 +504,12 @@ namespace WindowsForm.Forms
             this.ButtonSalesFormSatisEtmek.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ButtonSalesFormSatisEtmek.FlatAppearance.BorderSize = 0;
             this.ButtonSalesFormSatisEtmek.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonSalesFormSatisEtmek.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ButtonSalesFormSatisEtmek.Font = new System.Drawing.Font("Helvetica", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ButtonSalesFormSatisEtmek.Image = ((System.Drawing.Image)(resources.GetObject("ButtonSalesFormSatisEtmek.Image")));
-            this.ButtonSalesFormSatisEtmek.Location = new System.Drawing.Point(1075, 539);
+            this.ButtonSalesFormSatisEtmek.Location = new System.Drawing.Point(1075, 617);
             this.ButtonSalesFormSatisEtmek.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ButtonSalesFormSatisEtmek.Name = "ButtonSalesFormSatisEtmek";
-            this.ButtonSalesFormSatisEtmek.Size = new System.Drawing.Size(75, 45);
+            this.ButtonSalesFormSatisEtmek.Size = new System.Drawing.Size(98, 39);
             this.ButtonSalesFormSatisEtmek.TabIndex = 10;
             this.ButtonSalesFormSatisEtmek.Text = "  Sat";
             this.ButtonSalesFormSatisEtmek.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -518,10 +518,10 @@ namespace WindowsForm.Forms
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Helvetica", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(834, 661);
+            this.label1.Location = new System.Drawing.Point(261, 658);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(128, 22);
             this.label1.TabIndex = 12;
@@ -529,11 +529,11 @@ namespace WindowsForm.Forms
             // 
             // LabelSalesFormUmuniCem_qiymet
             // 
-            this.LabelSalesFormUmuniCem_qiymet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.LabelSalesFormUmuniCem_qiymet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.LabelSalesFormUmuniCem_qiymet.AutoSize = true;
             this.LabelSalesFormUmuniCem_qiymet.Font = new System.Drawing.Font("Helvetica", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.LabelSalesFormUmuniCem_qiymet.ForeColor = System.Drawing.Color.Red;
-            this.LabelSalesFormUmuniCem_qiymet.Location = new System.Drawing.Point(960, 661);
+            this.LabelSalesFormUmuniCem_qiymet.Location = new System.Drawing.Point(387, 658);
             this.LabelSalesFormUmuniCem_qiymet.Name = "LabelSalesFormUmuniCem_qiymet";
             this.LabelSalesFormUmuniCem_qiymet.Size = new System.Drawing.Size(21, 22);
             this.LabelSalesFormUmuniCem_qiymet.TabIndex = 13;
@@ -692,7 +692,7 @@ namespace WindowsForm.Forms
             this.textBoxBonusCardCustomerName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxBonusCardCustomerName.Enabled = false;
             this.textBoxBonusCardCustomerName.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxBonusCardCustomerName.Location = new System.Drawing.Point(777, 399);
+            this.textBoxBonusCardCustomerName.Location = new System.Drawing.Point(676, 391);
             this.textBoxBonusCardCustomerName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxBonusCardCustomerName.Name = "textBoxBonusCardCustomerName";
             this.textBoxBonusCardCustomerName.Size = new System.Drawing.Size(167, 22);
@@ -706,7 +706,7 @@ namespace WindowsForm.Forms
             this.buttonBonusCardSelect.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonBonusCardSelect.Image = global::WindowsForm.Properties.Resources.bonus_card_16px_2;
             this.buttonBonusCardSelect.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonBonusCardSelect.Location = new System.Drawing.Point(950, 397);
+            this.buttonBonusCardSelect.Location = new System.Drawing.Point(849, 386);
             this.buttonBonusCardSelect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonBonusCardSelect.Name = "buttonBonusCardSelect";
             this.buttonBonusCardSelect.Size = new System.Drawing.Size(126, 29);
@@ -716,17 +716,21 @@ namespace WindowsForm.Forms
             this.buttonBonusCardSelect.UseVisualStyleBackColor = true;
             this.buttonBonusCardSelect.Click += new System.EventHandler(this.buttonBonusCardSelect_Click);
             // 
-            // labelBonusValue
+            // buttonTemizleBonusCard
             // 
-            this.labelBonusValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelBonusValue.AutoSize = true;
-            this.labelBonusValue.Font = new System.Drawing.Font("Helvetica", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelBonusValue.ForeColor = System.Drawing.Color.Green;
-            this.labelBonusValue.Location = new System.Drawing.Point(1082, 399);
-            this.labelBonusValue.Name = "labelBonusValue";
-            this.labelBonusValue.Size = new System.Drawing.Size(21, 22);
-            this.labelBonusValue.TabIndex = 40;
-            this.labelBonusValue.Text = "#";
+            this.buttonTemizleBonusCard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTemizleBonusCard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTemizleBonusCard.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonTemizleBonusCard.Image = ((System.Drawing.Image)(resources.GetObject("buttonTemizleBonusCard.Image")));
+            this.buttonTemizleBonusCard.Location = new System.Drawing.Point(981, 387);
+            this.buttonTemizleBonusCard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonTemizleBonusCard.Name = "buttonTemizleBonusCard";
+            this.buttonTemizleBonusCard.Size = new System.Drawing.Size(88, 28);
+            this.buttonTemizleBonusCard.TabIndex = 40;
+            this.buttonTemizleBonusCard.Text = "Təmizlə";
+            this.buttonTemizleBonusCard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonTemizleBonusCard.UseVisualStyleBackColor = true;
+            this.buttonTemizleBonusCard.Click += new System.EventHandler(this.buttonTemizleBonusCard_Click);
             // 
             // SalesForm
             // 
@@ -734,7 +738,7 @@ namespace WindowsForm.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(1174, 726);
-            this.Controls.Add(this.labelBonusValue);
+            this.Controls.Add(this.buttonTemizleBonusCard);
             this.Controls.Add(this.buttonBonusCardSelect);
             this.Controls.Add(this.textBoxBonusCardCustomerName);
             this.Controls.Add(this.groupBoxFilter);
@@ -820,5 +824,6 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.TextBox textBoxBonusCardCustomerName;
         private System.Windows.Forms.Button buttonBonusCardSelect;
         private System.Windows.Forms.Label labelBonusValue;
+        private System.Windows.Forms.Button buttonTemizleBonusCard;
     }
 }

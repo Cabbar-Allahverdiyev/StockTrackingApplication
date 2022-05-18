@@ -69,12 +69,12 @@ namespace WindowsForm.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewFormPrdouctList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.dataGridViewFormPrdouctList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewFormPrdouctList.Location = new System.Drawing.Point(362, 42);
+            this.dataGridViewFormPrdouctList.Location = new System.Drawing.Point(279, 42);
             this.dataGridViewFormPrdouctList.Name = "dataGridViewFormPrdouctList";
             this.dataGridViewFormPrdouctList.ReadOnly = true;
             this.dataGridViewFormPrdouctList.RowTemplate.Height = 25;
             this.dataGridViewFormPrdouctList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewFormPrdouctList.Size = new System.Drawing.Size(504, 443);
+            this.dataGridViewFormPrdouctList.Size = new System.Drawing.Size(587, 443);
             this.dataGridViewFormPrdouctList.TabIndex = 0;
             this.dataGridViewFormPrdouctList.DoubleClick += new System.EventHandler(this.dataGridViewFormPrdouctList_DoubleClick);
             // 
