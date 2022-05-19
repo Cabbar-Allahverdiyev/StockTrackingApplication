@@ -1,5 +1,5 @@
-﻿using Business.ValidationRules.FluentValidation;
-using Entities.Concrete;
+﻿using Core.CrossCuttingConcerns.Validation;
+using FluentValidation;
 using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
@@ -8,16 +8,18 @@ using WindowsForm.Core.Constants.Messages;
 
 namespace WindowsForm.Core.Controllers.Concrete.ValidatorControllers
 {
-   public  class BrandValidationTool
+    public static class FormValidationTool
     {
-        public  bool IsValid(Brand brand)
+        public static bool IsValid(IValidator validator, object entity)
         {
-            BrandValidator validationRules = new BrandValidator();
-            ValidationResult results = validationRules.Validate(brand);
-
-            if (results.IsValid == false)
+           
+            try
             {
-                foreach (ValidationFailure failure in results.Errors)
+                ValidationTool.Validate(validator, entity);
+            }
+            catch (ValidationException ex)
+            {
+                foreach (ValidationFailure failure in ex.Errors)
                 {
                     FormsMessage.WarningMessage(failure.ErrorMessage);
 

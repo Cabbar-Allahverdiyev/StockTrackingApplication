@@ -51,6 +51,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Core\Controllers\Abstract\" />
     <Folder Include="Utilities\Helpers\" />
     <Folder Include="Wwwroot\" />
   </ItemGroup>

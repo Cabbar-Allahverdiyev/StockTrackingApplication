@@ -1,5 +1,4 @@
-﻿using Business.Concrete;
-using Business.Constants.Messages;
+﻿using Business.Constants.Messages;
 using Core.Utilities.Results;
 using Entities.Concrete;
 using Entities.DTOs.CartDtos;
@@ -12,7 +11,7 @@ using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.Concrete;
-using WindowsForm.Core.Controllers.ValidatorControllers;
+using WindowsForm.Core.Controllers.Concrete.ValidatorControllers;
 using USB_Barcode_Scanner;
 using WindowsForm.Utilities.Search.Concrete.ProductSearch;
 using WindowsForm.MyControls;
@@ -22,6 +21,7 @@ using Business.Abstract;
 using System.Linq;
 using Entities.DTOs.ProductDtos;
 using Entities.DTOs.BonusCardDtos;
+using Business.ValidationRules.FluentValidation;
 
 namespace WindowsForm.Forms
 {
@@ -86,9 +86,7 @@ namespace WindowsForm.Forms
             SupplierWriteComboBox();
             ProductListRefesh();
         }
-
-        CartValidationTool cartValidationTool = new CartValidationTool();
-        SaleValidationTool saleValidationTool = new SaleValidationTool();
+               
         ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
 
         private void ButtonX_Click(object sender, EventArgs e)
@@ -305,7 +303,7 @@ namespace WindowsForm.Forms
                 cart.Quantity = int.Parse(textBoxMiqdar.Text);
                 cart.TotalPrice = decimal.Parse(textBoxCem.Text);
                 cart.UserId = staticUserId;
-                if (!cartValidationTool.IsValid(cart))
+                if (!FormValidationTool.IsValid(new CartValidator(),cart))
                 {
                     return;
                 }
@@ -423,7 +421,7 @@ namespace WindowsForm.Forms
                         saleWinForm.SoldPrice = cart.SoldPrice;
                         saleWinForm.Quantity = cart.Quantity;
 
-                        if (!saleValidationTool.IsValid(saleWinForm))
+                        if (!FormValidationTool.IsValid(new SaleWinFormValidator(),saleWinForm))
                         {
                             return;
                         }
@@ -475,6 +473,7 @@ namespace WindowsForm.Forms
                 ProductListRefesh();
                 GroupBoxMehsulControlClear();
                 TotalPriceLabelWrite();
+                buttonTemizleBonusCard_Click(sender, e);
             }
             catch (Exception ex)
             {
@@ -762,7 +761,7 @@ namespace WindowsForm.Forms
                 cart.SoldPrice = result.Data.UnitPrice;
                 cart.TotalPrice = cart.Quantity * cart.SoldPrice;
 
-                if (!cartValidationTool.IsValid(cart))
+                if (!FormValidationTool.IsValid(new CartValidator(), cart))
                 {
                     return;
                 }

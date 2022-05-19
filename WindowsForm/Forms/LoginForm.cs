@@ -27,6 +27,8 @@ namespace WindowsForm.Forms
 {
     public partial class LoginForm : Form
     {
+        public static int UserId { get; set; }
+
         IUserService _userService;
         IUserOperationClaimForFormsService _userOperationClaimForFormsService;
         IOperationClaimForFormsService _operationClaimService;
@@ -44,7 +46,7 @@ namespace WindowsForm.Forms
 
         MacAddressManager _macAddressManager = new MacAddressManager(new EfMacAddressDal());
 
-        public static int UserId;
+        
 
         public LoginForm(IUserOperationClaimForFormsService userOperationClaimForFormsService
             , IUserService userService
@@ -379,5 +381,7 @@ namespace WindowsForm.Forms
                 return;
             }
         }
+
+      
     }
 }

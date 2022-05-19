@@ -77,6 +77,9 @@ namespace WindowsForm.Forms.UserForms
             this.comboBoxSupplierList = new System.Windows.Forms.ComboBox();
             this.comboBoxBrandList = new System.Windows.Forms.ComboBox();
             this.comboBoxCategoryList = new System.Windows.Forms.ComboBox();
+            this.buttonTemizleBonusCard = new System.Windows.Forms.Button();
+            this.buttonBonusCardSelect = new System.Windows.Forms.Button();
+            this.textBoxBonusCardCustomerName = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductList)).BeginInit();
             this.groupBoxMehsul.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -91,8 +94,7 @@ namespace WindowsForm.Forms.UserForms
             // 
             this.dataGridViewProductList.AllowUserToAddRows = false;
             this.dataGridViewProductList.AllowUserToDeleteRows = false;
-            this.dataGridViewProductList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dataGridViewProductList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewProductList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.dataGridViewProductList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -101,7 +103,7 @@ namespace WindowsForm.Forms.UserForms
             this.dataGridViewProductList.ReadOnly = true;
             this.dataGridViewProductList.RowTemplate.Height = 25;
             this.dataGridViewProductList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewProductList.Size = new System.Drawing.Size(806, 305);
+            this.dataGridViewProductList.Size = new System.Drawing.Size(806, 301);
             this.dataGridViewProductList.TabIndex = 1;
             this.dataGridViewProductList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewSalesForm_CellDoubleClick);
             // 
@@ -140,9 +142,9 @@ namespace WindowsForm.Forms.UserForms
             this.buttonDuzelt.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonDuzelt.Image = global::WindowsForm.Properties.Resources.editBlack_16px_2;
             this.buttonDuzelt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonDuzelt.Location = new System.Drawing.Point(57, 354);
+            this.buttonDuzelt.Location = new System.Drawing.Point(55, 359);
             this.buttonDuzelt.Name = "buttonDuzelt";
-            this.buttonDuzelt.Size = new System.Drawing.Size(88, 23);
+            this.buttonDuzelt.Size = new System.Drawing.Size(88, 28);
             this.buttonDuzelt.TabIndex = 39;
             this.buttonDuzelt.Text = "Düzəlt";
             this.buttonDuzelt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -154,9 +156,9 @@ namespace WindowsForm.Forms.UserForms
             this.ButtonSalesFormSil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonSalesFormSil.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ButtonSalesFormSil.Image = ((System.Drawing.Image)(resources.GetObject("ButtonSalesFormSil.Image")));
-            this.ButtonSalesFormSil.Location = new System.Drawing.Point(148, 354);
+            this.ButtonSalesFormSil.Location = new System.Drawing.Point(149, 359);
             this.ButtonSalesFormSil.Name = "ButtonSalesFormSil";
-            this.ButtonSalesFormSil.Size = new System.Drawing.Size(88, 23);
+            this.ButtonSalesFormSil.Size = new System.Drawing.Size(88, 28);
             this.ButtonSalesFormSil.TabIndex = 35;
             this.ButtonSalesFormSil.Text = "Sil";
             this.ButtonSalesFormSil.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -190,9 +192,9 @@ namespace WindowsForm.Forms.UserForms
             this.buttonTemizle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTemizle.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonTemizle.Image = ((System.Drawing.Image)(resources.GetObject("buttonTemizle.Image")));
-            this.buttonTemizle.Location = new System.Drawing.Point(57, 325);
+            this.buttonTemizle.Location = new System.Drawing.Point(56, 325);
             this.buttonTemizle.Name = "buttonTemizle";
-            this.buttonTemizle.Size = new System.Drawing.Size(88, 23);
+            this.buttonTemizle.Size = new System.Drawing.Size(88, 28);
             this.buttonTemizle.TabIndex = 16;
             this.buttonTemizle.Text = "Təmizlə";
             this.buttonTemizle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -207,7 +209,7 @@ namespace WindowsForm.Forms.UserForms
             this.buttoElaveEt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttoElaveEt.Location = new System.Drawing.Point(150, 325);
             this.buttoElaveEt.Name = "buttoElaveEt";
-            this.buttoElaveEt.Size = new System.Drawing.Size(88, 23);
+            this.buttoElaveEt.Size = new System.Drawing.Size(88, 28);
             this.buttoElaveEt.TabIndex = 18;
             this.buttoElaveEt.Text = "Əlavə et";
             this.buttoElaveEt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -345,11 +347,11 @@ namespace WindowsForm.Forms.UserForms
             this.ButtonSalesFormSatisEtmek.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ButtonSalesFormSatisEtmek.FlatAppearance.BorderSize = 0;
             this.ButtonSalesFormSatisEtmek.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonSalesFormSatisEtmek.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ButtonSalesFormSatisEtmek.Font = new System.Drawing.Font("Helvetica", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ButtonSalesFormSatisEtmek.Image = ((System.Drawing.Image)(resources.GetObject("ButtonSalesFormSatisEtmek.Image")));
-            this.ButtonSalesFormSatisEtmek.Location = new System.Drawing.Point(1075, 476);
+            this.ButtonSalesFormSatisEtmek.Location = new System.Drawing.Point(1075, 483);
             this.ButtonSalesFormSatisEtmek.Name = "ButtonSalesFormSatisEtmek";
-            this.ButtonSalesFormSatisEtmek.Size = new System.Drawing.Size(75, 40);
+            this.ButtonSalesFormSatisEtmek.Size = new System.Drawing.Size(100, 40);
             this.ButtonSalesFormSatisEtmek.TabIndex = 10;
             this.ButtonSalesFormSatisEtmek.Text = "  Sat";
             this.ButtonSalesFormSatisEtmek.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -358,10 +360,10 @@ namespace WindowsForm.Forms.UserForms
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Helvetica", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(834, 583);
+            this.label1.Location = new System.Drawing.Point(261, 582);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(128, 22);
             this.label1.TabIndex = 12;
@@ -369,11 +371,11 @@ namespace WindowsForm.Forms.UserForms
             // 
             // LabelSalesFormUmuniCem_qiymet
             // 
-            this.LabelSalesFormUmuniCem_qiymet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.LabelSalesFormUmuniCem_qiymet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.LabelSalesFormUmuniCem_qiymet.AutoSize = true;
             this.LabelSalesFormUmuniCem_qiymet.Font = new System.Drawing.Font("Helvetica", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.LabelSalesFormUmuniCem_qiymet.ForeColor = System.Drawing.Color.Red;
-            this.LabelSalesFormUmuniCem_qiymet.Location = new System.Drawing.Point(960, 583);
+            this.LabelSalesFormUmuniCem_qiymet.Location = new System.Drawing.Point(387, 582);
             this.LabelSalesFormUmuniCem_qiymet.Name = "LabelSalesFormUmuniCem_qiymet";
             this.LabelSalesFormUmuniCem_qiymet.Size = new System.Drawing.Size(21, 22);
             this.LabelSalesFormUmuniCem_qiymet.TabIndex = 13;
@@ -647,12 +649,60 @@ namespace WindowsForm.Forms.UserForms
             this.comboBoxCategoryList.Size = new System.Drawing.Size(121, 22);
             this.comboBoxCategoryList.TabIndex = 36;
             // 
+            // buttonTemizleBonusCard
+            // 
+            this.buttonTemizleBonusCard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTemizleBonusCard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTemizleBonusCard.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonTemizleBonusCard.Image = ((System.Drawing.Image)(resources.GetObject("buttonTemizleBonusCard.Image")));
+            this.buttonTemizleBonusCard.Location = new System.Drawing.Point(978, 346);
+            this.buttonTemizleBonusCard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonTemizleBonusCard.Name = "buttonTemizleBonusCard";
+            this.buttonTemizleBonusCard.Size = new System.Drawing.Size(88, 25);
+            this.buttonTemizleBonusCard.TabIndex = 43;
+            this.buttonTemizleBonusCard.Text = "Təmizlə";
+            this.buttonTemizleBonusCard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonTemizleBonusCard.UseVisualStyleBackColor = true;
+            this.buttonTemizleBonusCard.Click += new System.EventHandler(this.buttonTemizleBonusCard_Click);
+            // 
+            // buttonBonusCardSelect
+            // 
+            this.buttonBonusCardSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonBonusCardSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBonusCardSelect.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonBonusCardSelect.Image = global::WindowsForm.Properties.Resources.bonus_card_16px_2;
+            this.buttonBonusCardSelect.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonBonusCardSelect.Location = new System.Drawing.Point(846, 346);
+            this.buttonBonusCardSelect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonBonusCardSelect.Name = "buttonBonusCardSelect";
+            this.buttonBonusCardSelect.Size = new System.Drawing.Size(126, 25);
+            this.buttonBonusCardSelect.TabIndex = 42;
+            this.buttonBonusCardSelect.Text = "Bonus kart seç";
+            this.buttonBonusCardSelect.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonBonusCardSelect.UseVisualStyleBackColor = true;
+            this.buttonBonusCardSelect.Click += new System.EventHandler(this.buttonBonusCardSelect_Click);
+            // 
+            // textBoxBonusCardCustomerName
+            // 
+            this.textBoxBonusCardCustomerName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxBonusCardCustomerName.Enabled = false;
+            this.textBoxBonusCardCustomerName.Font = new System.Drawing.Font("Helvetica", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxBonusCardCustomerName.Location = new System.Drawing.Point(673, 346);
+            this.textBoxBonusCardCustomerName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxBonusCardCustomerName.Name = "textBoxBonusCardCustomerName";
+            this.textBoxBonusCardCustomerName.Size = new System.Drawing.Size(167, 25);
+            this.textBoxBonusCardCustomerName.TabIndex = 41;
+            this.textBoxBonusCardCustomerName.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // SalesFormForUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(1174, 641);
+            this.Controls.Add(this.buttonTemizleBonusCard);
+            this.Controls.Add(this.buttonBonusCardSelect);
+            this.Controls.Add(this.textBoxBonusCardCustomerName);
             this.Controls.Add(this.groupBoxFilter);
             this.Controls.Add(this.groupBoxMusteri);
             this.Controls.Add(this.checkBoxBarkodNo);
@@ -731,5 +781,8 @@ namespace WindowsForm.Forms.UserForms
         private System.Windows.Forms.ComboBox comboBoxCategoryList;
         private System.Windows.Forms.Button buttonAxtar;
         private System.Windows.Forms.TextBox textBoxAxtar;
+        private System.Windows.Forms.Button buttonTemizleBonusCard;
+        private System.Windows.Forms.Button buttonBonusCardSelect;
+        private System.Windows.Forms.TextBox textBoxBonusCardCustomerName;
     }
 }

@@ -1,8 +1,7 @@
 ﻿using Business.Abstract;
-using Business.Concrete;
 using Business.Constants.Messages;
+using Business.ValidationRules.FluentValidation;
 using Core.Utilities.Results;
-using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.Concrete;
-using WindowsForm.Core.Controllers.ValidatorControllers;
+using WindowsForm.Core.Controllers.Concrete.ValidatorControllers;
 using WindowsForm.MyControls;
 using WindowsForm.Utilities.Search.Concrete.CategorySearch;
 
@@ -31,8 +30,6 @@ namespace WindowsForm.Forms
             myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
         }
 
-        //CategoryManager _categoryService = new CategoryManager(new EfCategoryDal());
-        CategoryValidationTool validationTool = new CategoryValidationTool();
         CategorySearch search = new CategorySearch();
 
         private void FormCategory_Load(object sender, EventArgs e)
@@ -49,7 +46,8 @@ namespace WindowsForm.Forms
                 Category category = new Category();
                 category.CategoryName = TextBoxFormCategoryKategoriya.Text;
 
-                if (!validationTool.IsValid(category))
+
+                if (!FormValidationTool.IsValid(new CategoryValidator(), category))
                 {
                     return;
                 }
@@ -92,7 +90,7 @@ namespace WindowsForm.Forms
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
             List<Category> data = _categoryService.GetAll().Data;
-            search.GetDataWriteGridView(data,textBoxAxtar.Text, DataGridViewFormCategory);
+            search.GetDataWriteGridView(data, textBoxAxtar.Text, DataGridViewFormCategory);
         }
 
         //Elave metodlar------->

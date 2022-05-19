@@ -106,7 +106,7 @@ namespace WindowsForm.Forms
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(52, 286);
+            this.label3.Location = new System.Drawing.Point(49, 271);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(209, 25);
             this.label3.TabIndex = 3;
@@ -117,7 +117,7 @@ namespace WindowsForm.Forms
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(21, 258);
+            this.label2.Location = new System.Drawing.Point(28, 243);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(245, 25);
             this.label2.TabIndex = 2;
@@ -128,7 +128,7 @@ namespace WindowsForm.Forms
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(80, 231);
+            this.label1.Location = new System.Drawing.Point(82, 296);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(150, 25);
             this.label1.TabIndex = 1;
@@ -137,7 +137,7 @@ namespace WindowsForm.Forms
             // pictureBox1
             // 
             this.pictureBox1.Image = global::WindowsForm.Properties.Resources.tapsat_274px_yanlarBos_png;
-            this.pictureBox1.Location = new System.Drawing.Point(23, -1);
+            this.pictureBox1.Location = new System.Drawing.Point(17, -1);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(256, 256);
             this.pictureBox1.TabIndex = 0;

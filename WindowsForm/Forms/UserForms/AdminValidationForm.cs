@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.FormsAuthorization.User;
 using WindowsForm.Core.Constants.Messages;
+using WindowsForm.MyControls;
 
 namespace WindowsForm.Forms.UserForms
 {
@@ -16,6 +17,13 @@ namespace WindowsForm.Forms.UserForms
         public AdminValidationForm()
         {
             InitializeComponent();
+
+        }
+
+        private void AdminValidationForm_Load(object sender, EventArgs e)
+        {
+            MyControl myControl = new MyControl() ;
+            myControl.MakeAsteriskPasswordCharacterAndMaxLengthFourTen(textBox1);
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
@@ -35,5 +43,7 @@ namespace WindowsForm.Forms.UserForms
                 }
             }
         }
+
+       
     }
 }

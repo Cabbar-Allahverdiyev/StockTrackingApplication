@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Constants.Messages;
+using Business.ValidationRules.FluentValidation;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.Concrete;
-using WindowsForm.Core.Controllers.ValidatorControllers;
+using WindowsForm.Core.Controllers.Concrete.ValidatorControllers;
 using WindowsForm.Utilities.Search.Concrete.CategorySearch;
 
 namespace WindowsForm.Forms
@@ -20,7 +21,6 @@ namespace WindowsForm.Forms
     {
         //CategoryManager _categoryService = new CategoryManager(new EfCategoryDal());
         ICategoryService _categoryService;
-        CategoryValidationTool validationTool = new CategoryValidationTool();
         CategorySearch search = new CategorySearch();
 
         public CategoryUpdateAndDeleteForm(ICategoryService categoryService)
@@ -40,7 +40,7 @@ namespace WindowsForm.Forms
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
             List<Category> data = _categoryService.GetAll().Data;
-            search.GetDataWriteGridView(data,textBoxAxtar.Text, dataGridViewCategoryList);
+            search.GetDataWriteGridView(data, textBoxAxtar.Text, dataGridViewCategoryList);
         }
 
         private void buttonTemizle_Click(object sender, EventArgs e)
@@ -55,8 +55,7 @@ namespace WindowsForm.Forms
                 Category category = new Category();
                 category.Id = int.Parse(textBoxId.Text);
                 category.CategoryName = textBoxCategory.Text;
-
-                if (!validationTool.IsValid(category))
+                if (!FormValidationTool.IsValid(new CategoryValidator(), category))
                 {
                     return;
                 }
@@ -85,7 +84,7 @@ namespace WindowsForm.Forms
             {
                 Category category = new Category();
                 category.Id = int.Parse(textBoxId.Text);
-               
+
                 var categryDeleted = _categoryService.Delete(category);
                 if (!categryDeleted.Success)
                 {
@@ -123,6 +122,6 @@ namespace WindowsForm.Forms
         {
             TextBoxController.ClearAllTextBoxesByGroupBox(groupBox1);
         }
-        
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Constants.Messages;
+using Business.ValidationRules.FluentValidation;
 using Core.Utilities.Results;
 using Entities.Concrete;
 using System;
@@ -29,8 +30,6 @@ namespace WindowsForm.Forms
             myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
         }
 
-       // BrandManager _brandService = new BrandManager(new EfBrandDal());
-        BrandValidationTool validationTool = new BrandValidationTool();
         BrandSearch brandSearch = new BrandSearch();
 
         private void FormBrand_Load(object sender, EventArgs e)
@@ -45,11 +44,10 @@ namespace WindowsForm.Forms
                 Brand brand = new Brand();
                 brand.BrandName = TextBoxFormBrandMarkaAdi.Text;
 
-                if (!validationTool.IsValid(brand))
+                if (!FormValidationTool.IsValid(new BrandValidator(), brand))
                 {
                     return;
                 }
-
 
                 IResult brandAdd = _brandService.Add(brand);
                 if (brandAdd.Success)
@@ -79,7 +77,7 @@ namespace WindowsForm.Forms
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
             List<Brand> data = _brandService.GetAll().Data;
-            brandSearch.GetDataWriteGridView(data,textBoxAxtar.Text, dataGridViewBrandsListed);
+            brandSearch.GetDataWriteGridView(data, textBoxAxtar.Text, dataGridViewBrandsListed);
         }
 
         private void pictureBoxRefresh_Click(object sender, EventArgs e)

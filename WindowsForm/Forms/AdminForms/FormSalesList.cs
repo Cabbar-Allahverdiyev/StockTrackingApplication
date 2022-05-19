@@ -15,7 +15,7 @@ using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.Concrete;
-using WindowsForm.Core.Controllers.ValidatorControllers;
+using WindowsForm.Core.Controllers.Concrete.ValidatorControllers;
 using WindowsForm.MyControls;
 using WindowsForm.Utilities.Search.Concrete.SaleSearch;
 
@@ -23,21 +23,18 @@ namespace WindowsForm.Forms
 {
     public partial class FormSalesList : Form
     {
-       // SaleWinFormManager _saleWinFormService = new SaleWinFormManager(new EfSaleWinFormDal(), new ProductManager(new EfProductDal()));
-        //ProductManager _productService = new ProductManager(new EfProductDal());
 
-        IProductService _productService;      
-        ISaleWinFormService _saleWinFormService;       
+        IProductService _productService;
+        ISaleWinFormService _saleWinFormService;
 
         MyControl myControl = new MyControl();
-        // SaleValidationTool saleValidationTool = new SaleValidationTool();
-
+        
         public FormSalesList(IProductService productService, ISaleWinFormService saleWinFormService)
         {
             _productService = productService;
             _saleWinFormService = saleWinFormService;
             InitializeComponent();
-           
+
         }
 
         private void FormSalesList_Load(object sender, EventArgs e)
@@ -243,21 +240,21 @@ namespace WindowsForm.Forms
         private void CalculateCountOfAllProduct()
         {
             List<Product> result = _productService.GetAll().Data;
-            int total=0;
+            int total = 0;
             foreach (Product product in result)
             {
                 total += product.UnitsInStock;
             }
             labelCountOfAllProduct.Text = total.ToString();
         }
-        
+
         private void CalculateUnitPriceOfAllProduct()
         {
             List<Product> result = _productService.GetAll().Data;
             decimal total = 0;
             foreach (Product product in result)
             {
-                total += product.UnitPrice*product.UnitsInStock;
+                total += product.UnitPrice * product.UnitsInStock;
             }
             labelPriceOfAllProduct.Text = total.ToString();
         }
@@ -267,7 +264,7 @@ namespace WindowsForm.Forms
             decimal total = 0;
             foreach (Product product in result)
             {
-                total += product.PurchasePrice*product.UnitsInStock;
+                total += product.PurchasePrice * product.UnitsInStock;
             }
             labelPurchasePriceOfAllProduct.Text = total.ToString();
         }

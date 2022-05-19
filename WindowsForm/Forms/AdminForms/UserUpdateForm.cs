@@ -1,8 +1,7 @@
 ﻿using Business.Abstract;
-using Business.Concrete;
 using Business.Constants.Messages;
+using Business.ValidationRules.FluentValidation;
 using Core.Entities.Concrete;
-using DataAccess.Concrete.EntityFramework;
 using Entities.DTOs.UserDtos;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.Concrete;
-using WindowsForm.Core.Controllers.ValidatorControllers;
+using WindowsForm.Core.Controllers.Concrete.ValidatorControllers;
 using WindowsForm.MyControls;
 using WindowsForm.Utilities.Search.Concrete.UserSearch;
 
@@ -24,7 +23,7 @@ namespace WindowsForm.Forms
     {
       //  UserManager _userService = new UserManager(new EfUserDal());
         IUserService _userService;
-        UserValidationTool validationTool = new UserValidationTool();
+       
 
         public UserUpdateForm(IUserService userService)
         {
@@ -64,7 +63,7 @@ namespace WindowsForm.Forms
                 user.PhoneNumber = textBoxTelefon.Text;
                 user.Address = textBoxAdres.Text;
 
-                if (!validationTool.IsValid(user))
+                if (!FormValidationTool.IsValid(new UserValidator(),user))
                 {
                     return;
                 }

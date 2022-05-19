@@ -342,40 +342,7 @@ namespace WindowsForm.Forms.UserForms
         {
             OpenChildForm(new SupplierForm(_supplierService),sender);
         }
-        //private void məhsulSilToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    // OpenChildForm(new ProductDeleteForm(), sender);
-        //}
-
-        //private void məhsullarıSıralaToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    OpenChildForm(new FormProductList(_productService,_brandService,_categoryService,_supplierService), sender);
-        //}
-
-        //private void məhsulYeniləToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    //OpenChildForm(new ProductUpdateForm(), sender);
-        //}
-
-        //private void məhsulƏlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    OpenChildForm(new FormProductAdd(_productService,_brandService,_categoryService,_supplierService), sender);
-        //}
-
-        //private void markalarToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    OpenChildForm(new FormBrand(_brandService), sender);
-        //}
-
-
-
-        //private void markalarIYeniləVəSilToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    OpenChildForm(new CategoryUpdateAndDeleteForm(_categoryService), sender);
-        //}
-
-
-
+        
         //Sales-------------------------------------------->
         private void satislariSiralaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -454,7 +421,7 @@ namespace WindowsForm.Forms.UserForms
             // OpenChildForm(new(), sender);
         }
 
-        //Supplier---------------------->
+        //Elaveler ---------------------->
     
 
         private void tedarukToolStripMenuItem_Click(object sender, EventArgs e)
@@ -472,6 +439,12 @@ namespace WindowsForm.Forms.UserForms
             OpenChildForm(new CustomerPaymentForm(_userService,_customerPaymentService,_customerService), sender);
         }
 
+        //Bonus Kart______________>
+        private void əlavəEtToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new BonusCardAddForm(_bonusCardService,_customerService), sender);
+
+        }
 
         //solid prinsiplerine uygu hala sal
         private void CollapseMenu()
@@ -548,13 +521,6 @@ namespace WindowsForm.Forms.UserForms
             labelTitle.Text = childForm.Text;
         }
 
-
-
-
-
-
-
-
-
+        
     }
 }

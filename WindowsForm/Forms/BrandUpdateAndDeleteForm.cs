@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Constants.Messages;
+using Business.ValidationRules.FluentValidation;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -18,9 +19,8 @@ namespace WindowsForm.Forms
 {
     public partial class BrandUpdateAndDeleteForm : Form
     {
-       // BrandManager _brandService = new BrandManager(new EfBrandDal());
+        // BrandManager _brandService = new BrandManager(new EfBrandDal());
         IBrandService _brandService;
-        BrandValidationTool validationTool = new BrandValidationTool();
         BrandSearch brandSearch = new BrandSearch();
 
         public BrandUpdateAndDeleteForm(IBrandService brandService)
@@ -28,7 +28,7 @@ namespace WindowsForm.Forms
             _brandService = brandService;
             InitializeComponent();
             BrandRefresh();
-           
+
         }
         //Click-------------------------->
         private void buttonTemizle_Click(object sender, EventArgs e)
@@ -44,7 +44,7 @@ namespace WindowsForm.Forms
                 brand.Id = int.Parse(textBoxId.Text);
                 brand.BrandName = textBoxBrand.Text;
 
-                if (!validationTool.IsValid(brand))
+                if (!FormValidationTool.IsValid(new BrandValidator(), brand))
                 {
                     return;
                 }
@@ -67,7 +67,7 @@ namespace WindowsForm.Forms
             }
         }
 
-        
+
 
         private void buttonSil_Click(object sender, EventArgs e)
         {
@@ -114,14 +114,14 @@ namespace WindowsForm.Forms
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
             List<Brand> data = _brandService.GetAll().Data;
-            brandSearch.GetDataWriteGridView(data,textBoxAxtar.Text, dataGridViewBrandList);
+            brandSearch.GetDataWriteGridView(data, textBoxAxtar.Text, dataGridViewBrandList);
         }
 
 
         //Elave metodlar---------------------------->
         private void BrandRefresh()
         {
-           dataGridViewBrandList.DataSource= _brandService.GetAll().Data;
+            dataGridViewBrandList.DataSource = _brandService.GetAll().Data;
         }
 
         private void TextBoxClear()
@@ -134,6 +134,6 @@ namespace WindowsForm.Forms
 
         }
 
-       
+
     }
 }

@@ -19,21 +19,15 @@ using WindowsForm.Utilities.Search.Concrete.CustomerPaymentSearch;
 using System.Reflection;
 using Entities.DTOs.CustomerPaymentDtos;
 using Business.Abstract;
+using Business.ValidationRules;
 
 namespace WindowsForm.Forms
 {
     public partial class CustomerPaymentForm : Form
     {
-        //CustomerPaymentManager _paymentService = new CustomerPaymentManager(new EfCustomerPaymentDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()));
-        //CustomerManager _customerService = new CustomerManager(new EfCustomerDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()));
         IUserService _userService;
         ICustomerPaymentService _paymentService;
         ICustomerService _customerService;
-
-        CustomerPaymentValidationTool validationTool = new CustomerPaymentValidationTool();
-
-
-
 
         public CustomerPaymentForm(IUserService userService, ICustomerPaymentService paymentService, ICustomerService customerService)
         {
@@ -54,7 +48,7 @@ namespace WindowsForm.Forms
                 customerPayment.CustomerId = Convert.ToInt32(textBoxCustomerIdInPaymentAdd.Text);
                 customerPayment.Value = decimal.Parse(textBoxMeblegInPaymentAdd.Text);
 
-                if (!validationTool.IsValid(customerPayment))
+                if (!FormValidationTool.IsValid(new CustomerPaymentValidator(), customerPayment))
                 {
                     return;
                 }

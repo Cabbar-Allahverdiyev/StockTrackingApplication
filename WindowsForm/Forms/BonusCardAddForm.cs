@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Constants.Messages;
 using Core.Utilities.Results;
 using Entities.Concrete;
 using System;
@@ -66,9 +67,7 @@ namespace WindowsForm.Forms
             BonusCard bonusCard = new BonusCard();
             bonusCard.CustomerId = int.Parse(textBoxMusteriId.Text);
             bonusCard.BarcodeNumber = textBoxBarkod.Text;
-
-            BonusCardValidationTool bonusCardValidationTool = new BonusCardValidationTool();
-            if (!bonusCardValidationTool.IsValid(bonusCard))
+            if (!FormValidationTool.IsValid(new BonusCardValidator(), bonusCard))
             {
                 return;
             }

@@ -1,7 +1,5 @@
-﻿using Business.Concrete;
-using Business.Constants.Messages;
+﻿using Business.Constants.Messages;
 using Core.Utilities.Results;
-using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using Entities.DTOs.CartDtos;
 using System;
@@ -14,7 +12,7 @@ using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.Concrete;
-using WindowsForm.Core.Controllers.ValidatorControllers;
+using WindowsForm.Core.Controllers.Concrete.ValidatorControllers;
 using USB_Barcode_Scanner;
 using WindowsForm.Utilities.Search.Concrete.ProductSearch;
 using WindowsForm.MyControls;
@@ -22,13 +20,17 @@ using WindowsForm.Core.Constants.SelectionItem;
 using WindowsForm.Core.Constants.FormsAuthorization.User;
 using Business.Abstract;
 using Entities.DTOs.ProductDtos;
+using Entities.DTOs.BonusCardDtos;
+using Business.ValidationRules.FluentValidation;
 
 namespace WindowsForm.Forms.UserForms
 {
     public partial class SalesFormForUser : Form
     {
         int staticUserId = LoginForm.UserId;
-        private int _cartId = 0;
+        private int CartId { get; set; }
+        private int BonusCardId { get; set; }
+
         //public static bool QrCodeIsSuccess = false;
         IProductService _productService;
         ICartService _cartService;
@@ -50,7 +52,7 @@ namespace WindowsForm.Forms.UserForms
                             , ICustomerService customerService
                             , ISaleWinFormService saleWinFormService
                             , IDebtService debtService
-, IBonusCardService bonusCardService)
+                            , IBonusCardService bonusCardService)
         {
             _productService = productService;
             _cartService = cartService;
@@ -72,6 +74,9 @@ namespace WindowsForm.Forms.UserForms
 
             BarcodeScanner barcodeScanner = new BarcodeScanner(textBoxBarkodNo);
             barcodeScanner.BarcodeScanned += BarcodeScanner_BarcodeScanned;
+            CartId = 0;
+            BonusCardId = 0;
+            BonusCardSelectForm.BonusCardId = 0;
         }
 
         private void SalesForm_Load(object sender, EventArgs e)
@@ -84,8 +89,8 @@ namespace WindowsForm.Forms.UserForms
             GroupBoxMehsulControlClear();
         }
 
-        CartValidationTool cartValidationTool = new CartValidationTool();
-        SaleValidationTool saleValidationTool = new SaleValidationTool();
+        //CartValidationTool cartValidationTool = new CartValidationTool();
+        //SaleValidationTool saleValidationTool = new SaleValidationTool();
         ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
 
         private void ButtonX_Click(object sender, EventArgs e)
@@ -116,7 +121,7 @@ namespace WindowsForm.Forms.UserForms
                 cart.Quantity = int.Parse(textBoxMiqdar.Text);
                 cart.TotalPrice = decimal.Parse(textBoxCem.Text);
                 cart.UserId = staticUserId;
-                if (!cartValidationTool.IsValid(cart))
+                if (!FormValidationTool.IsValid(new CartValidator(),cart))
                 {
                     return;
                 }
@@ -357,9 +362,11 @@ namespace WindowsForm.Forms.UserForms
                 IDataResult<List<Cart>> carts = _cartService.GetAllByUserId(staticUserId);
                 IResult saleWinFormAdded;
                 IResult productUpdated;
+                IResult bonusCardIncreased;
                 List<string> messages = new List<string>();
                 string resultMessage = "";
                 string newResultMessage = "";
+                decimal totalPrice = 0;
                 if (carts.Data.Count != 0)
                 {
                     foreach (Cart cart in carts.Data)
@@ -373,7 +380,7 @@ namespace WindowsForm.Forms.UserForms
                         saleWinForm.SoldPrice = cart.SoldPrice;
                         saleWinForm.Quantity = cart.Quantity;
 
-                        if (!saleValidationTool.IsValid(saleWinForm))
+                        if (!FormValidationTool.IsValid(new SaleWinFormValidator(),saleWinForm))
                         {
                             return;
                         }
@@ -386,12 +393,28 @@ namespace WindowsForm.Forms.UserForms
 
                         }
                         messages.Add(product.ProductName + " : " + saleWinFormAdded.Message + " & " + productUpdated.Message);
-
+                        totalPrice += saleWinForm.SoldPrice * saleWinForm.Quantity;
 
                     }
                     foreach (string message in messages)
                     {
                         resultMessage += $" {message} {newResultMessage} |";
+                    }
+
+                    if (BonusCardId != 0)
+                    {
+                        bonusCardIncreased = _bonusCardService.IncreaseBalance(BonusCardId
+                            , totalPrice);
+                        if (!bonusCardIncreased.Success)
+                        {
+                            FormsMessage.WarningMessage(bonusCardIncreased.Message);
+
+                        }
+                        else
+                        {
+                            FormsMessage.SuccessMessage(bonusCardIncreased.Message);
+                        }
+
                     }
                     FormsMessage.SuccessMessage(resultMessage);
                 }
@@ -405,6 +428,7 @@ namespace WindowsForm.Forms.UserForms
                 ProductListRefesh();
                 GroupBoxMehsulControlClear();
                 TotalPriceLabelWrite();
+                buttonTemizleBonusCard_Click(sender, e);
             }
             catch (Exception ex)
             {
@@ -413,6 +437,28 @@ namespace WindowsForm.Forms.UserForms
                 return;
             }
 
+        }
+
+        private void buttonTemizleBonusCard_Click(object sender, EventArgs e)
+        {
+            BonusCardId = 0;
+            textBoxBonusCardCustomerName.Text = "";
+        }
+
+        private void buttonBonusCardSelect_Click(object sender, EventArgs e)
+        {
+
+            BonusCardSelectForm bonusCardSelectForm = new BonusCardSelectForm(_bonusCardService);
+            bonusCardSelectForm.ShowDialog();
+            IDataResult<BonusCardForFormsDto> getBonusCard =
+                _bonusCardService.GetBonusCardForFormsDetailById(BonusCardSelectForm.BonusCardId);
+            if (!getBonusCard.Success)
+            {
+                FormsMessage.WarningMessage(getBonusCard.Message);
+                return;
+            }
+            BonusCardId = BonusCardSelectForm.BonusCardId;
+            textBoxBonusCardCustomerName.Text = getBonusCard.Data.Ad + " " + getBonusCard.Data.Soyad;
         }
 
         private void pictureBoxRefresh_Click(object sender, EventArgs e)
@@ -435,7 +481,7 @@ namespace WindowsForm.Forms.UserForms
                     FormsMessage.WarningMessage(FormsTextMessages.UnitPriceGreaterThanZero);
                     return;
                 }
-                Cart cart = _cartService.GetById(_cartId).Data;
+                Cart cart = _cartService.GetById(CartId).Data;
 
                 if (textBoxMiqdar.Text == "")
                 {
@@ -471,7 +517,7 @@ namespace WindowsForm.Forms.UserForms
         private void buttonAxtar_Click(object sender, EventArgs e)
         {
             SalesForm salesForm = new SalesForm(_categoryService, _brandService, _supplierService, _productService, _cartService
-               , _customerService, _saleWinFormService, _debtService,_bonusCardService);
+               , _customerService, _saleWinFormService, _debtService, _bonusCardService);
 
             salesForm.ComboBoxSelectedValue(dataGridViewProductList, comboBoxCategoryList.Text, comboBoxSupplierList.Text, comboBoxBrandList.Text);
         }
@@ -523,7 +569,7 @@ namespace WindowsForm.Forms.UserForms
             try
             {
                 GroupBoxMehsulControlClear();
-                _cartId = 0;
+                CartId = 0;
                 if (dataGridViewCartList.CurrentRow == null)
                 {
                     FormsMessage.WarningMessage(BaseMessages.SelectedValueIsNull);
@@ -531,7 +577,7 @@ namespace WindowsForm.Forms.UserForms
                 }
 
                 textBoxProductId.Text = dataGridViewCartList.CurrentRow.Cells["ProductId"].Value.ToString();
-                _cartId = int.Parse(dataGridViewCartList.CurrentRow.Cells["Id"].Value.ToString());
+                CartId = int.Parse(dataGridViewCartList.CurrentRow.Cells["Id"].Value.ToString());
 
                 CartDto cartDto = _cartService.GetCartDtoDetailByProductId(Convert.ToInt32(textBoxProductId.Text)).Data;
                 textBoxBarkodNo.Text = cartDto.BarcodeNumber.ToString();
@@ -736,7 +782,7 @@ namespace WindowsForm.Forms.UserForms
             cart.SoldPrice = result.Data.UnitPrice;
             cart.TotalPrice = cart.Quantity * cart.SoldPrice;
 
-            if (!cartValidationTool.IsValid(cart))
+            if (!FormValidationTool.IsValid(new CartValidator(),cart))
             {
                 return;
             }
@@ -800,6 +846,6 @@ namespace WindowsForm.Forms.UserForms
             comboBoxSupplierList.Text = "";
         }
 
-
+     
     }
 }

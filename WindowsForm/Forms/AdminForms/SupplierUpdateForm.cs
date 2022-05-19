@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
 using Business.Constants.Messages;
+using Business.ValidationRules.FluentValidation;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
@@ -13,7 +14,7 @@ using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.Concrete;
-using WindowsForm.Core.Controllers.ValidatorControllers;
+using WindowsForm.Core.Controllers.Concrete.ValidatorControllers;
 using WindowsForm.Utilities.Search.Concrete.SupplierSearch;
 
 namespace WindowsForm.Forms
@@ -21,8 +22,6 @@ namespace WindowsForm.Forms
     public partial class SupplierUpdateForm : Form
     {
         ISupplierService _suplierService;
-       // SupplierManager _suplierService = new SupplierManager(new EfSupplierDal());
-        SupplierValidationTool validationTool = new SupplierValidationTool();
         SupplierSearch search = new SupplierSearch();
 
         public SupplierUpdateForm(ISupplierService supplierService)
@@ -49,7 +48,7 @@ namespace WindowsForm.Forms
             try
             {
                 Supplier supplier = new Supplier();
-                supplier.Id =int.Parse(textBoxSupplierId.Text);
+                supplier.Id = int.Parse(textBoxSupplierId.Text);
                 supplier.CompanyName = textBoxSirketAdi.Text;
                 supplier.ContactName = textBoxAd.Text;
                 supplier.City = textBoxSeher.Text;
@@ -58,7 +57,8 @@ namespace WindowsForm.Forms
                 supplier.Phone = textBoxTelefon.Text;
                 supplier.WhenWillCome = textBoxNeZamanGelir.Text;
 
-                if (!validationTool.IsValid(supplier))
+
+                if (!FormValidationTool.IsValid(new SupplierValidator(), supplier))
                 {
                     return;
                 }
@@ -128,7 +128,7 @@ namespace WindowsForm.Forms
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
             List<Supplier> data = _suplierService.GetAll().Data;
-            search.GetDataWriteGridView(data,textBoxAxtar.Text, dataGridViewSupplierListed);
+            search.GetDataWriteGridView(data, textBoxAxtar.Text, dataGridViewSupplierListed);
         }
 
         //elave ---------------------------->

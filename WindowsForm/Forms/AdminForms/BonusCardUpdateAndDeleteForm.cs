@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Constants.Messages;
 using Core.Utilities.Results;
 using Entities.Concrete;
 using System;
@@ -46,10 +47,10 @@ namespace WindowsForm.Forms.AdminForms
         {
             BonusCard bonusCard = new BonusCard();
             bonusCard.Id = int.Parse(textBoxBonusCardId.Text);
-            DialogResult dialogResult = MessageBox.Show("Bonus kartı yeniləmək isdədiyinzdən əminmisiniz?","Diqqət",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+            DialogResult dialogResult = MessageBox.Show("Bonus kartı yeniləmək isdədiyinzdən əminmisiniz?", "Diqqət", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             //switch (dialogResult)
             //{
-             
+
             //    case DialogResult.Yes:
             //        IResult result = _bonusCardService.Update(bonusCard);
             //        if (!result.Success)
@@ -64,7 +65,7 @@ namespace WindowsForm.Forms.AdminForms
             //    default:
             //        break;
             //}
-            if (dialogResult==DialogResult.Yes)
+            if (dialogResult == DialogResult.Yes)
             {
                 IDataResult<BonusCard> getCard = _bonusCardService.GetById(bonusCard.Id);
                 if (!getCard.Success)
@@ -73,10 +74,8 @@ namespace WindowsForm.Forms.AdminForms
                     return;
                 }
                 bonusCard = getCard.Data;
-                bonusCard.InterestAdvantage=decimal.Parse(textBoxGuzest.Text);
-
-                BonusCardValidationTool bonusCardValidationTool = new BonusCardValidationTool();
-                if (!bonusCardValidationTool.IsValid(bonusCard))
+                bonusCard.InterestAdvantage = decimal.Parse(textBoxGuzest.Text);
+                if (!FormValidationTool.IsValid(new BonusCardValidator(), bonusCard))
                 {
                     return;
                 }
@@ -97,7 +96,7 @@ namespace WindowsForm.Forms.AdminForms
             BonusCard bonusCard = new BonusCard();
             bonusCard.Id = int.Parse(textBoxBonusCardId.Text);
             DialogResult dialogResult = MessageBox.Show("Bonus kartı silmək isdədiyinzdən əminmisiniz?", "Diqqət", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-           
+
             if (dialogResult == DialogResult.Yes)
             {
                 IResult result = _bonusCardService.Delete(bonusCard);
@@ -119,7 +118,7 @@ namespace WindowsForm.Forms.AdminForms
             bonusCardSearch.GetDataWriteGridView(_bonusCardService.GetAllBonusCardForFormsDetail().Data
                 , textBoxAxtar.Text, dataGridViewList);
         }
-       
+
 
         //Cell Double Click
         private void dataGridViewList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

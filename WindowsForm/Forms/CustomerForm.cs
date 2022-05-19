@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Constants.Messages;
+using Business.ValidationRules.FluentValidation;
 using Core.Utilities.Results;
 using Entities.Concrete;
 using System;
@@ -20,8 +21,7 @@ namespace WindowsForm.Forms
     public partial class CustomerForm : Form
     {
         ICustomerService _customerService;
-        //CustomerManager _customerService = new CustomerManager(new EfCustomerDal(),new CustomerBalanceManager(new EfCustomerBalanceDal()));
-        CustomerValidationTool validationTool = new CustomerValidationTool();
+
         public CustomerForm(ICustomerService customerService)
         {
             _customerService = customerService;
@@ -40,7 +40,7 @@ namespace WindowsForm.Forms
                 customer.Email = textBoxEmail.Text;
                 customer.Address = textBoxAdres.Text;
 
-                if (!validationTool.IsValid(customer))
+                if (!FormValidationTool.IsValid(new CustomerValidator(), customer))
                 {
                     return;
                 }
@@ -61,7 +61,7 @@ namespace WindowsForm.Forms
                 FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
                 return;
             }
-          
+
         }
 
         private void CustomerForm_Load(object sender, EventArgs e)

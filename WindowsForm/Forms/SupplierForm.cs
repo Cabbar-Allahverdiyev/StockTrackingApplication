@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
 using Business.Constants.Messages;
+using Business.ValidationRules.FluentValidation;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
@@ -13,7 +14,7 @@ using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.Concrete;
-using WindowsForm.Core.Controllers.ValidatorControllers;
+using WindowsForm.Core.Controllers.Concrete.ValidatorControllers;
 using WindowsForm.MyControls;
 using WindowsForm.Utilities.Search.Concrete.SupplierSearch;
 
@@ -22,8 +23,6 @@ namespace WindowsForm.Forms
     public partial class SupplierForm : Form
     {
         ISupplierService _suplierService;
-        //SupplierManager _suplierService = new SupplierManager(new EfSupplierDal());
-        SupplierValidationTool validationTool = new SupplierValidationTool();
         SupplierSearch search = new SupplierSearch();
         public SupplierForm(ISupplierService suplierService)
         {
@@ -69,7 +68,7 @@ namespace WindowsForm.Forms
                 supplier.Phone = textBoxTelefon.Text;
                 supplier.WhenWillCome = textBoxNeZamanGelir.Text;
 
-                if (!validationTool.IsValid(supplier))
+                if (!FormValidationTool.IsValid(new SupplierValidator(), supplier))
                 {
                     return;
                 }
@@ -104,7 +103,7 @@ namespace WindowsForm.Forms
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             List<Supplier> data = _suplierService.GetAll().Data;
-            search.GetDataWriteGridView(data,textBoxAxtar.Text, dataGridViewSupplierListed);
+            search.GetDataWriteGridView(data, textBoxAxtar.Text, dataGridViewSupplierListed);
         }
 
         private void SupplierRefresh()

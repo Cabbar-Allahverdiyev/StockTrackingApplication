@@ -14,7 +14,7 @@ using Business.ValidationRules.FluentValidation;
 using FluentValidation.Results;
 using Business.Constants.Messages;
 using WindowsForm.Core.Constants.Messages;
-using WindowsForm.Core.Controllers.ValidatorControllers;
+using WindowsForm.Core.Controllers.Concrete.ValidatorControllers;
 using WindowsForm.Utilities.Search.Concrete.ProductSearch;
 using WindowsForm.Core.Controllers.Concrete;
 using WindowsForm.MyControls;
@@ -27,7 +27,7 @@ namespace WindowsForm.Forms
     public partial class ProductUpdateForm : Form
     {
         Product product = new Product();
-        ProductValidationTool validationTool = new ProductValidationTool();
+        //ProductValidationTool validationTool = new ProductValidationTool();
         ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
         IProductService _productService;
         IBrandService _brandService;
@@ -97,7 +97,7 @@ namespace WindowsForm.Forms
                 }
                 product.Description = TextBoxAciqlama.Text;
 
-                if (!validationTool.IsValid(product))
+                if (!FormValidationTool.IsValid(new ProductValidator(),product))
                 {
                     return;
                 }

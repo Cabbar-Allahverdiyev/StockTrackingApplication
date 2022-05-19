@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
 using Business.Constants.Messages;
+using Business.ValidationRules.FluentValidation;
 using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
@@ -15,7 +16,7 @@ using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.Concrete;
-using WindowsForm.Core.Controllers.ValidatorControllers;
+using WindowsForm.Core.Controllers.Concrete.ValidatorControllers;
 using WindowsForm.MyControls;
 using WindowsForm.Utilities.Search.Concrete.ProductSearch;
 
@@ -46,14 +47,6 @@ namespace WindowsForm.Forms
 
         }
 
-
-        //ProductManager _productManager = new ProductManager(new EfProductDal());
-        //CategoryManager _categoryManager = new CategoryManager(new EfCategoryDal());
-        //BrandManager _brandManager = new BrandManager(new EfBrandDal());
-        //SupplierManager _supplierManager = new SupplierManager(new EfSupplierDal());
-
-        ProductValidationTool validationTool = new ProductValidationTool();
-
         USBBarcodeScannerForm usbBarcodeScannerForm = new USBBarcodeScannerForm();
         ProductViewDashboardDetailsSearch detailSearch = new ProductViewDashboardDetailsSearch();
 
@@ -64,7 +57,7 @@ namespace WindowsForm.Forms
             BrandGetComboBoxYeni();
             SupplierGetComboBox();
             TextBoxController.ClearAllTextBoxesAndCmboBoxesByGroupBox(GroupBoxFormProductAddYeniMehsul);
-            //GroupBoxYeniMehsulControlClear();
+
         }
 
         //Click---------------------------------------->
@@ -88,7 +81,8 @@ namespace WindowsForm.Forms
                 product.QuantityPerUnit = textBoxKemiyyet.Text;
                 product.Description = textBoxAciqlama.Text;
 
-                if (!validationTool.IsValid(product))
+
+                if (!FormValidationTool.IsValid(new ProductValidator(), product))
                 { return; }
 
                 IResult productAdd = _productService.Add(product);

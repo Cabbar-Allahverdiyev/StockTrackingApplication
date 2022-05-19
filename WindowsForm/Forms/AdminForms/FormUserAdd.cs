@@ -1,8 +1,7 @@
 ﻿using Business.Abstract;
-using Business.Concrete;
 using Business.Constants.Messages;
+using Business.ValidationRules.FluentValidation;
 using Core.Entities.Concrete;
-using DataAccess.Concrete.EntityFramework;
 using Entities.DTOs.UserDtos;
 using System;
 using System.Collections.Generic;
@@ -15,7 +14,7 @@ using System.Windows.Forms;
 using WindowsForm.Core.Constants.FormsAuthorization.User;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.Concrete;
-using WindowsForm.Core.Controllers.ValidatorControllers;
+using WindowsForm.Core.Controllers.Concrete.ValidatorControllers;
 using WindowsForm.Forms.AdminForms;
 using WindowsForm.MyControls;
 
@@ -28,7 +27,7 @@ namespace WindowsForm.Forms
         IOperationClaimForFormsService _operationClaimForFormsService;
         IUserOperationClaimForFormsService _userOperationClaimForFormsService;
 
-        UserValidationTool validationTool = new UserValidationTool();
+
         MyControl myControl = new MyControl();
         public FormUserAdd(IUserService userService, IOperationClaimForFormsService operationClaimForFormsService, IUserOperationClaimForFormsService userOperationClaimForFormsService)
         {
@@ -68,7 +67,7 @@ namespace WindowsForm.Forms
                 user.Address = userForRegisterDto.Address;
                 user.PhoneNumber = userForRegisterDto.PhoneNumber;
 
-                if (!validationTool.IsValid(user))
+                if (!FormValidationTool.IsValid(new UserValidator(),user))
                 {
                     return;
                 }

@@ -1,8 +1,6 @@
 ﻿using Business.Abstract;
-using Business.Concrete;
 using Business.Constants.Messages;
 using Core.Utilities.Results;
-using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using Entities.DTOs.SaleWinFormDtos;
 using System;
@@ -16,7 +14,6 @@ using System.Windows.Forms;
 using WindowsForm.Core.Constants.FormsAuthorization.User;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.Concrete;
-using WindowsForm.Core.Controllers.ValidatorControllers;
 using WindowsForm.MyControls;
 using WindowsForm.Utilities.Search.Concrete.SaleSearch;
 
@@ -24,7 +21,6 @@ namespace WindowsForm.Forms.UserForms
 {
     public partial class FormSalesListForUser : Form
     {
-        //SaleWinFormManager _saleWinFormService = new SaleWinFormManager(new EfSaleWinFormDal(), new ProductManager(new EfProductDal()));
         ISaleWinFormService _saleWinFormService;
         MyControl myControl = new MyControl();
 

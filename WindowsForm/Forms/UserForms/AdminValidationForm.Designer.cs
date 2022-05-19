@@ -51,6 +51,7 @@ namespace WindowsForm.Forms.UserForms
             this.Name = "AdminValidationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminValidationForm";
+            this.Load += new System.EventHandler(this.AdminValidationForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
