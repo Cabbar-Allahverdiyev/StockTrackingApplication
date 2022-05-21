@@ -8,10 +8,10 @@ namespace Business.Abstract
 {
    public  interface IMacAddressService
     {
-        IDataResult<List<MacAddress>> GetAll();
-        IResult Add(MacAddress macAddress);
-        IResult Update(MacAddress macAddress);
-        IResult Delete(MacAddress macAddress);
-        IDataResult<MacAddress> GetById(int id);
+        IDataResult<List<MacAddres>> GetAll();
+        IResult Add(MacAddres macAddress);
+        IResult Update(MacAddres macAddress);
+        IResult Delete(MacAddres macAddress);
+        IDataResult<MacAddres> GetById(int id);
     }
 }

@@ -28,8 +28,8 @@ namespace WindowsForm.Forms.AdminForms
             {
                 return;
             }
-            MacAddress macAddress = new MacAddress() ;
-            macAddress.Address = textBoxMacAddress.Text;
+            MacAddres macAddress = new MacAddres() ;
+            macAddress.Addres = textBoxMacAddress.Text;
             IResult macAdded = macAddressManager.Add(macAddress);
             if (!macAdded.Success)
             {
@@ -46,7 +46,7 @@ namespace WindowsForm.Forms.AdminForms
             {
                 return;
             }
-            MacAddress macAddress = new MacAddress();
+            MacAddres macAddress = new MacAddres();
             macAddress.Id = int.Parse(textBoxId.Text);
             IResult macDeleted = macAddressManager.Delete(macAddress);
             if (!macDeleted.Success)
@@ -65,6 +65,11 @@ namespace WindowsForm.Forms.AdminForms
         private void dataGridViewListed_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             textBoxId.Text = dataGridViewListed.CurrentRow.Cells["Id"].Value.ToString();
+        }
+
+        private void MacAddressForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

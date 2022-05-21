@@ -31,7 +31,8 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Debt> Debts { get; set; }
         public DbSet<OperationClaimForForms> OperationClaimsForForms { get; set; }
         public DbSet<UserOperationClaimForForms> UserOperationClaimsForForms { get; set; }
-        public DbSet<MacAddress> MacAddresses { get; set; }
+        public DbSet<MacAddres> MacAddresses { get; set; }
+        public DbSet<FormSetting> FormSettings { get; set; }
 
         public DbSet<BarcodeNumber> BarcodeNumbers { get; set; }
     }

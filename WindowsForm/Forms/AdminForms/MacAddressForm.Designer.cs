@@ -167,6 +167,7 @@ namespace WindowsForm.Forms.AdminForms
             this.Name = "MacAddressForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MacAddressForm";
+            this.Load += new System.EventHandler(this.MacAddressForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListed)).EndInit();
             this.ResumeLayout(false);

@@ -18,35 +18,35 @@ namespace Business.Concrete
             _macAddressDal = macAddressDal;
         }
 
-        public IResult Add(MacAddress macAddress)
+        public IResult Add(MacAddres macAddress)
         {
             _macAddressDal.Add(macAddress);
             return new SuccessResult(MacAddressMessaeges.Added);
         }
 
-        public IResult Delete(MacAddress macAddress)
+        public IResult Delete(MacAddres macAddress)
         {
             _macAddressDal.Delete(macAddress);
             return new SuccessResult(MacAddressMessaeges.Deleted);
         }
 
-        public IDataResult<List<MacAddress>> GetAll()
+        public IDataResult<List<MacAddres>> GetAll()
         {
-            List<MacAddress> get = _macAddressDal.GetAll();
-            return new SuccessDataResult<List<MacAddress>>(get, MacAddressMessaeges.GetAll);
+            List<MacAddres> get = _macAddressDal.GetAll();
+            return new SuccessDataResult<List<MacAddres>>(get, MacAddressMessaeges.GetAll);
         }
 
-        public IDataResult<MacAddress> GetById(int id)
+        public IDataResult<MacAddres> GetById(int id)
         {
-             MacAddress  get=_macAddressDal.Get(m=>m.Id==id);
+             MacAddres  get=_macAddressDal.Get(m=>m.Id==id);
             if (get==null)
             {
-                return new ErrorDataResult<MacAddress>(MacAddressMessaeges.NotFound);
+                return new ErrorDataResult<MacAddres>(MacAddressMessaeges.NotFound);
             }
-            return new SuccessDataResult<MacAddress>(get,MacAddressMessaeges.Found);
+            return new SuccessDataResult<MacAddres>(get,MacAddressMessaeges.Found);
         }
 
-        public IResult Update(MacAddress macAddress)
+        public IResult Update(MacAddres macAddress)
         {
             _macAddressDal.Update(macAddress);
             return new SuccessResult(MacAddressMessaeges.Updated);

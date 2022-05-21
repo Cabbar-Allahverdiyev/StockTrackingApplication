@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DataAccess.Abstract
 {
-    public interface IMacAddressDal : IEntityRepository<MacAddres>
+    public interface IFormSettingDal :IEntityRepository<FormSetting>
     {
     }
 }

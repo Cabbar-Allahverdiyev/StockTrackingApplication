@@ -5,9 +5,10 @@ using System.Text;
 
 namespace Entities.Concrete
 {
-    public class MacAddress : IEntity
+    public class FormSetting:IEntity
     {
         public int Id { get; set; }
-        public string Address { get; set; }
+        public string Name { get; set; }
+        public string Value { get; set; }
     }
 }

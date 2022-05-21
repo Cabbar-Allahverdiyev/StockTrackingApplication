@@ -7,8 +7,7 @@ using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-   public  class EfMacAddressDal : EfEntityRepositoryBase<MacAddres, StockTrackingProjectContext>
-                               , IMacAddressDal
+    public class EfFormSettingDal:EfEntityRepositoryBase<FormSetting,StockTrackingProjectContext>,IFormSettingDal
     {
     }
 }
