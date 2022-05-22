@@ -29,7 +29,6 @@ namespace WindowsForm.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductUpdateForm));
             this.GroupBoxVarOlanMehsul = new System.Windows.Forms.GroupBox();
             this.buttonTemizle = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
@@ -176,7 +175,7 @@ namespace WindowsForm.Forms
             // 
             this.buttonYenile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonYenile.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonYenile.Image = ((System.Drawing.Image)(resources.GetObject("buttonYenile.Image")));
+            this.buttonYenile.Image = global::WindowsForm.Properties.Resources.icons8_synchronize_16;
             this.buttonYenile.Location = new System.Drawing.Point(190, 316);
             this.buttonYenile.Name = "buttonYenile";
             this.buttonYenile.Size = new System.Drawing.Size(85, 25);

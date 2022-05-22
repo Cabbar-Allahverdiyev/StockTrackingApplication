@@ -353,6 +353,16 @@ namespace WindowsForm.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
+        internal static System.Drawing.Bitmap save_all_16px {
+            get {
+                object obj = ResourceManager.GetObject("save_all_16px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
         internal static System.Drawing.Bitmap searchBlack {
             get {
                 object obj = ResourceManager.GetObject("searchBlack", resourceCulture);

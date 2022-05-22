@@ -36,6 +36,9 @@ namespace WindowsForm.Core.Constants.Messages
             Alert(resultMessage, AlertForm.EnumType.Warning);
         }
 
-        
+        internal static void SuccessMessage(object save)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

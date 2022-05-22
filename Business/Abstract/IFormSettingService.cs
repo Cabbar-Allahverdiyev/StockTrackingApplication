@@ -13,5 +13,6 @@ namespace Business.Abstract
         IResult Update(FormSetting formSetting);
         IResult Delete(FormSetting formSetting);
         IDataResult<FormSetting> GetById(int id);
+        IDataResult<FormSetting> GetByName(string name);
     }
 }

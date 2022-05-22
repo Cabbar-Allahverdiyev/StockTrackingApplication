@@ -41,27 +41,27 @@ namespace WindowsForm
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //UserManager userManager = new UserManager(new EfUserDal());
-            //UserOperationClaimForFormsManager userOperationClaimForFormsManager = new UserOperationClaimForFormsManager(new EfUserOperationClaimForFormsDal());
-            //OperationClaimForFormsManager operationClaimForFormsManager = new OperationClaimForFormsManager(new EfOperationClaimForFormsDal());
-            //ProductManager productManager = new ProductManager(new EfProductDal());
-            //BrandManager brandManager = new BrandManager(new EfBrandDal());
-            //CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
-            //CustomerBalanceManager customerBalanceManager = new CustomerBalanceManager(new EfCustomerBalanceDal());
-            //CustomerManager customerManager = new CustomerManager(new EfCustomerDal(), customerBalanceManager);
-            //CustomerPaymentManager customerPaymentManager = new CustomerPaymentManager(new EfCustomerPaymentDal(), customerBalanceManager);
-            //CartManager cartManager = new CartManager(new EfCartDal());
-            //SaleWinFormManager saleManager = new SaleWinFormManager(new EfSaleWinFormDal(), productManager);
-            //DebtManager debtManager = new DebtManager(new EfDebtDal(), customerBalanceManager);
-            //SupplierManager supplierManager = new SupplierManager(new EfSupplierDal());
-            //BonusCardManager bonusCardManager = new BonusCardManager(new EfBonusCardDal(), customerManager);
+            UserManager userManager = new UserManager(new EfUserDal());
+            UserOperationClaimForFormsManager userOperationClaimForFormsManager = new UserOperationClaimForFormsManager(new EfUserOperationClaimForFormsDal());
+            OperationClaimForFormsManager operationClaimForFormsManager = new OperationClaimForFormsManager(new EfOperationClaimForFormsDal());
+            ProductManager productManager = new ProductManager(new EfProductDal());
+            BrandManager brandManager = new BrandManager(new EfBrandDal());
+            CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
+            CustomerBalanceManager customerBalanceManager = new CustomerBalanceManager(new EfCustomerBalanceDal());
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal(), customerBalanceManager);
+            CustomerPaymentManager customerPaymentManager = new CustomerPaymentManager(new EfCustomerPaymentDal(), customerBalanceManager);
+            CartManager cartManager = new CartManager(new EfCartDal());
+            SaleWinFormManager saleManager = new SaleWinFormManager(new EfSaleWinFormDal(), productManager);
+            DebtManager debtManager = new DebtManager(new EfDebtDal(), customerBalanceManager);
+            SupplierManager supplierManager = new SupplierManager(new EfSupplierDal());
+            BonusCardManager bonusCardManager = new BonusCardManager(new EfBonusCardDal(), customerManager);
 
             FormSettingManager formSettingManager = new FormSettingManager(new EfFormSettingDal());
-             Application.Run(new Forms.SettingForms.SettingForm(formSettingManager));
-            
-            //Application.Run(new Forms.LoginForm(userOperationClaimForFormsManager, userManager, operationClaimForFormsManager, productManager
-            //    , categoryManager, customerManager, customerBalanceManager, customerPaymentManager, cartManager, debtManager, saleManager, supplierManager
-            //    , brandManager, bonusCardManager));
+            //Application.Run(new Forms.SettingForms.BonusCardSettingForm(formSettingManager));
+
+            Application.Run(new Forms.LoginForm(userOperationClaimForFormsManager, userManager, operationClaimForFormsManager, productManager
+                , categoryManager, customerManager, customerBalanceManager, customerPaymentManager, cartManager, debtManager, saleManager, supplierManager
+                , brandManager, bonusCardManager));
 
 
 

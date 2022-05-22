@@ -12,7 +12,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    public class FormSettingManager:IFormSettingService
+    public class FormSettingManager : IFormSettingService
     {
         IFormSettingDal _formSettingDal;
 
@@ -60,6 +60,17 @@ namespace Business.Concrete
         {
             _formSettingDal.Update(formSetting);
             return new SuccessResult(FormSettingMessaeges.Updated);
+        }
+
+        [CacheAspect]
+        public IDataResult<FormSetting> GetByName(string name)
+        {
+            FormSetting formSetting = _formSettingDal.Get(s => s.Name == name);
+            if (formSetting==null)
+            {
+                return new ErrorDataResult<FormSetting>(FormSettingMessaeges.NotFound);
+            }
+            return new SuccessDataResult<FormSetting>(formSetting,FormSettingMessaeges.Found);  
         }
     }
 }

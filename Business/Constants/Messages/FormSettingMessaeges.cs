@@ -15,5 +15,7 @@ namespace Business.Constants.Messages
         public static string GetAll = "Parametrlər sıralandi";
         public static string Found = "Parametr tapıldı";
         public static string NotFound = "Belə bir Parametr yoxdur";
+
+        public static string SaveSuccess = "Bütün paramterlər müvəffəqiyyətlə yaddaşa yazıldı";
     }
 }
