@@ -80,6 +80,8 @@ namespace WindowsForm.Forms.UserForms
             this.buttonTemizleBonusCard = new System.Windows.Forms.Button();
             this.buttonBonusCardSelect = new System.Windows.Forms.Button();
             this.textBoxBonusCardCustomerName = new System.Windows.Forms.TextBox();
+            this.checkBoxBonusCard = new System.Windows.Forms.CheckBox();
+            this.textBoxBonusCardSelect = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductList)).BeginInit();
             this.groupBoxMehsul.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -103,7 +105,7 @@ namespace WindowsForm.Forms.UserForms
             this.dataGridViewProductList.ReadOnly = true;
             this.dataGridViewProductList.RowTemplate.Height = 25;
             this.dataGridViewProductList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewProductList.Size = new System.Drawing.Size(806, 301);
+            this.dataGridViewProductList.Size = new System.Drawing.Size(806, 316);
             this.dataGridViewProductList.TabIndex = 1;
             this.dataGridViewProductList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewSalesForm_CellDoubleClick);
             // 
@@ -129,7 +131,7 @@ namespace WindowsForm.Forms.UserForms
             this.groupBoxMehsul.Controls.Add(this.label5);
             this.groupBoxMehsul.Controls.Add(this.label7);
             this.groupBoxMehsul.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBoxMehsul.Location = new System.Drawing.Point(13, 202);
+            this.groupBoxMehsul.Location = new System.Drawing.Point(13, 245);
             this.groupBoxMehsul.Name = "groupBoxMehsul";
             this.groupBoxMehsul.Size = new System.Drawing.Size(244, 434);
             this.groupBoxMehsul.TabIndex = 9;
@@ -349,7 +351,7 @@ namespace WindowsForm.Forms.UserForms
             this.ButtonSalesFormSatisEtmek.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonSalesFormSatisEtmek.Font = new System.Drawing.Font("Helvetica", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ButtonSalesFormSatisEtmek.Image = ((System.Drawing.Image)(resources.GetObject("ButtonSalesFormSatisEtmek.Image")));
-            this.ButtonSalesFormSatisEtmek.Location = new System.Drawing.Point(1075, 483);
+            this.ButtonSalesFormSatisEtmek.Location = new System.Drawing.Point(1075, 568);
             this.ButtonSalesFormSatisEtmek.Name = "ButtonSalesFormSatisEtmek";
             this.ButtonSalesFormSatisEtmek.Size = new System.Drawing.Size(100, 40);
             this.ButtonSalesFormSatisEtmek.TabIndex = 10;
@@ -363,7 +365,7 @@ namespace WindowsForm.Forms.UserForms
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Helvetica", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(261, 582);
+            this.label1.Location = new System.Drawing.Point(261, 667);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(128, 22);
             this.label1.TabIndex = 12;
@@ -375,7 +377,7 @@ namespace WindowsForm.Forms.UserForms
             this.LabelSalesFormUmuniCem_qiymet.AutoSize = true;
             this.LabelSalesFormUmuniCem_qiymet.Font = new System.Drawing.Font("Helvetica", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.LabelSalesFormUmuniCem_qiymet.ForeColor = System.Drawing.Color.Red;
-            this.LabelSalesFormUmuniCem_qiymet.Location = new System.Drawing.Point(387, 582);
+            this.LabelSalesFormUmuniCem_qiymet.Location = new System.Drawing.Point(387, 667);
             this.LabelSalesFormUmuniCem_qiymet.Name = "LabelSalesFormUmuniCem_qiymet";
             this.LabelSalesFormUmuniCem_qiymet.Size = new System.Drawing.Size(21, 22);
             this.LabelSalesFormUmuniCem_qiymet.TabIndex = 13;
@@ -390,12 +392,12 @@ namespace WindowsForm.Forms.UserForms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewCartList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.dataGridViewCartList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewCartList.Location = new System.Drawing.Point(263, 381);
+            this.dataGridViewCartList.Location = new System.Drawing.Point(263, 413);
             this.dataGridViewCartList.Name = "dataGridViewCartList";
             this.dataGridViewCartList.ReadOnly = true;
             this.dataGridViewCartList.RowTemplate.Height = 25;
             this.dataGridViewCartList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewCartList.Size = new System.Drawing.Size(806, 198);
+            this.dataGridViewCartList.Size = new System.Drawing.Size(806, 251);
             this.dataGridViewCartList.TabIndex = 15;
             this.dataGridViewCartList.DoubleClick += new System.EventHandler(this.dataGridViewCartList_DoubleClick);
             // 
@@ -417,7 +419,7 @@ namespace WindowsForm.Forms.UserForms
             // 
             this.checkBoxBarkodNo.AutoSize = true;
             this.checkBoxBarkodNo.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBoxBarkodNo.Location = new System.Drawing.Point(263, 350);
+            this.checkBoxBarkodNo.Location = new System.Drawing.Point(263, 393);
             this.checkBoxBarkodNo.Name = "checkBoxBarkodNo";
             this.checkBoxBarkodNo.Size = new System.Drawing.Size(79, 18);
             this.checkBoxBarkodNo.TabIndex = 37;
@@ -655,7 +657,7 @@ namespace WindowsForm.Forms.UserForms
             this.buttonTemizleBonusCard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTemizleBonusCard.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonTemizleBonusCard.Image = ((System.Drawing.Image)(resources.GetObject("buttonTemizleBonusCard.Image")));
-            this.buttonTemizleBonusCard.Location = new System.Drawing.Point(978, 346);
+            this.buttonTemizleBonusCard.Location = new System.Drawing.Point(978, 383);
             this.buttonTemizleBonusCard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTemizleBonusCard.Name = "buttonTemizleBonusCard";
             this.buttonTemizleBonusCard.Size = new System.Drawing.Size(88, 25);
@@ -672,7 +674,7 @@ namespace WindowsForm.Forms.UserForms
             this.buttonBonusCardSelect.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonBonusCardSelect.Image = global::WindowsForm.Properties.Resources.bonus_card_16px_2;
             this.buttonBonusCardSelect.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonBonusCardSelect.Location = new System.Drawing.Point(846, 346);
+            this.buttonBonusCardSelect.Location = new System.Drawing.Point(846, 383);
             this.buttonBonusCardSelect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonBonusCardSelect.Name = "buttonBonusCardSelect";
             this.buttonBonusCardSelect.Size = new System.Drawing.Size(126, 25);
@@ -687,19 +689,47 @@ namespace WindowsForm.Forms.UserForms
             this.textBoxBonusCardCustomerName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxBonusCardCustomerName.Enabled = false;
             this.textBoxBonusCardCustomerName.Font = new System.Drawing.Font("Helvetica", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxBonusCardCustomerName.Location = new System.Drawing.Point(673, 346);
+            this.textBoxBonusCardCustomerName.Location = new System.Drawing.Point(673, 383);
             this.textBoxBonusCardCustomerName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxBonusCardCustomerName.Name = "textBoxBonusCardCustomerName";
             this.textBoxBonusCardCustomerName.Size = new System.Drawing.Size(167, 25);
             this.textBoxBonusCardCustomerName.TabIndex = 41;
             this.textBoxBonusCardCustomerName.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // checkBoxBonusCard
+            // 
+            this.checkBoxBonusCard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxBonusCard.AutoSize = true;
+            this.checkBoxBonusCard.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxBonusCard.Location = new System.Drawing.Point(846, 361);
+            this.checkBoxBonusCard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.checkBoxBonusCard.Name = "checkBoxBonusCard";
+            this.checkBoxBonusCard.Size = new System.Drawing.Size(79, 18);
+            this.checkBoxBonusCard.TabIndex = 45;
+            this.checkBoxBonusCard.Text = "Avtomatik";
+            this.checkBoxBonusCard.UseVisualStyleBackColor = true;
+            this.checkBoxBonusCard.CheckedChanged += new System.EventHandler(this.checkBoxBonusCard_CheckedChanged);
+            // 
+            // textBoxBonusCardSelect
+            // 
+            this.textBoxBonusCardSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxBonusCardSelect.Font = new System.Drawing.Font("Helvetica", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxBonusCardSelect.Location = new System.Drawing.Point(846, 383);
+            this.textBoxBonusCardSelect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxBonusCardSelect.Name = "textBoxBonusCardSelect";
+            this.textBoxBonusCardSelect.Size = new System.Drawing.Size(126, 25);
+            this.textBoxBonusCardSelect.TabIndex = 44;
+            this.textBoxBonusCardSelect.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxBonusCardSelect.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxBonusCardSelect_KeyPress);
+            // 
             // SalesFormForUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
-            this.ClientSize = new System.Drawing.Size(1174, 641);
+            this.ClientSize = new System.Drawing.Size(1174, 726);
+            this.Controls.Add(this.checkBoxBonusCard);
+            this.Controls.Add(this.textBoxBonusCardSelect);
             this.Controls.Add(this.buttonTemizleBonusCard);
             this.Controls.Add(this.buttonBonusCardSelect);
             this.Controls.Add(this.textBoxBonusCardCustomerName);
@@ -784,5 +814,7 @@ namespace WindowsForm.Forms.UserForms
         private System.Windows.Forms.Button buttonTemizleBonusCard;
         private System.Windows.Forms.Button buttonBonusCardSelect;
         private System.Windows.Forms.TextBox textBoxBonusCardCustomerName;
+        private System.Windows.Forms.CheckBox checkBoxBonusCard;
+        private System.Windows.Forms.TextBox textBoxBonusCardSelect;
     }
 }

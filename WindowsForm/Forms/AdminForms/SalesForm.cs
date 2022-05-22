@@ -85,8 +85,10 @@ namespace WindowsForm.Forms
             BrandWriteComboBox();
             SupplierWriteComboBox();
             ProductListRefesh();
+            buttonBonusCardSelect.Visible = false;
+
         }
-               
+
         ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
 
         private void ButtonX_Click(object sender, EventArgs e)
@@ -171,6 +173,7 @@ namespace WindowsForm.Forms
         private void buttonTemizleBonusCard_Click(object sender, EventArgs e)
         {
             BonusCardId = 0;
+            textBoxBonusCardSelect.Text = "";
             textBoxBonusCardCustomerName.Text = "";
         }
         private void ButonSalesFormSatisIptal_Click(object sender, EventArgs e)
@@ -303,7 +306,7 @@ namespace WindowsForm.Forms
                 cart.Quantity = int.Parse(textBoxMiqdar.Text);
                 cart.TotalPrice = decimal.Parse(textBoxCem.Text);
                 cart.UserId = staticUserId;
-                if (!FormValidationTool.IsValid(new CartValidator(),cart))
+                if (!FormValidationTool.IsValid(new CartValidator(), cart))
                 {
                     return;
                 }
@@ -421,7 +424,7 @@ namespace WindowsForm.Forms
                         saleWinForm.SoldPrice = cart.SoldPrice;
                         saleWinForm.Quantity = cart.Quantity;
 
-                        if (!FormValidationTool.IsValid(new SaleWinFormValidator(),saleWinForm))
+                        if (!FormValidationTool.IsValid(new SaleWinFormValidator(), saleWinForm))
                         {
                             return;
                         }
@@ -456,7 +459,7 @@ namespace WindowsForm.Forms
                         {
                             FormsMessage.SuccessMessage(bonusCardIncreased.Message);
                         }
-                        
+
                     }
                     FormsMessage.SuccessMessage(resultMessage);
 
@@ -510,6 +513,11 @@ namespace WindowsForm.Forms
             textBoxBonusCardCustomerName.Text = getBonusCard.Data.Ad + " " + getBonusCard.Data.Soyad;
         }
 
+        private void buttonBarkodNoAxtar_Click(object sender, EventArgs e)
+        {
+            FindByBarcodeNumberAndAddToCart(textBoxBarkodNo.Text);
+        }
+
         //Text Changed -------------------->
         private void textBoxMiqdar_TextChanged(object sender, EventArgs e)
         {
@@ -530,6 +538,36 @@ namespace WindowsForm.Forms
             detailsSearch.GetDataWriteGridView(data, textBoxAxtar.Text, dataGridViewProductList);
         }
 
+        //Checked changed--------------------------->
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxBarkodNo.Checked == false)
+            {
+                checkBoxBarkodNo.Text = "Avtomatik";
+                buttonBarkodNoAxtar.Visible = false;
+            }
+            else
+            {
+                checkBoxBarkodNo.Text = "Manual";
+                buttonBarkodNoAxtar.Visible = true;
+            }
+        }
+
+        private void checkBoxBonusCard_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxBonusCard.Checked == false)
+            {
+                checkBoxBonusCard.Text = "Avtomatik";
+                buttonBonusCardSelect.Visible = false;
+                textBoxBonusCardSelect.Visible = true;
+            }
+            else
+            {
+                checkBoxBonusCard.Text = "Manual";
+                buttonBonusCardSelect.Visible = true;
+                textBoxBonusCardSelect.Visible = false;
+            }
+        }
 
 
         //Double Click----------------------------------->
@@ -595,6 +633,32 @@ namespace WindowsForm.Forms
             }
         }
 
+        private void textBoxBonusCardSelect_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                MyControl.MakeTextBoxNumberBox(e);
+                string barcodeNumber = textBoxBonusCardSelect.Text;
+                if (barcodeNumber.Length >= 13)
+                {
+                    IDataResult<BonusCardForFormsDto> getBonusCard = _bonusCardService.GetBonusCardForFormsDetailByBarcodeNumber(barcodeNumber);
+                    if (!getBonusCard.Success)
+                    {
+                        FormsMessage.WarningMessage(getBonusCard.Message);
+                        return;
+                    }
+                    BonusCardId =getBonusCard.Data.BonusCardId;
+                    textBoxBonusCardCustomerName.Text = getBonusCard.Data.Ad + " " + getBonusCard.Data.Soyad;
+                    FormsMessage.SuccessMessage(getBonusCard.Message);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
+                return;
+            }
+        }
 
         private void textBoxMaxQiymet_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -713,29 +777,14 @@ namespace WindowsForm.Forms
             }
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxBarkodNo.Checked == false)
-            {
-                checkBoxBarkodNo.Text = "Avtomatik";
-                buttonBarkodNoAxtar.Visible = false;
-            }
-            else
-            {
-                checkBoxBarkodNo.Text = "Manual";
-                buttonBarkodNoAxtar.Visible = true;
-            }
-        }
+
 
         private void textBoxBarkodNo_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void buttonBarkodNoAxtar_Click(object sender, EventArgs e)
-        {
-            FindByBarcodeNumberAndAddToCart(textBoxBarkodNo.Text);
-        }
+
 
         private void FindByBarcodeNumberAndAddToCart(string barcodeNumber)
         {
@@ -886,6 +935,6 @@ namespace WindowsForm.Forms
             }
         }
 
-        
+
     }
 }

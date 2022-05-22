@@ -73,10 +73,22 @@ namespace Business.Concrete
         }
 
         //Elave--------------->
+        
         public  IDataResult<BonusCard> GetByCustomerId(int customerId)
         {
 
             BonusCard get = _bonusCardDal.Get(b => b.CustomerId == customerId);
+            if (get == null)
+            {
+                return new ErrorDataResult<BonusCard>(BonusCardMessages.NotFound);
+            }
+            return new SuccessDataResult<BonusCard>(get, BonusCardMessages.Found);
+        }
+
+        [CacheAspect]
+        public IDataResult<BonusCard> GetByBarcodeNumber(string barcodeNumber)
+        {
+            BonusCard get = _bonusCardDal.Get(b => b.BarcodeNumber == barcodeNumber);
             if (get == null)
             {
                 return new ErrorDataResult<BonusCard>(BonusCardMessages.NotFound);
@@ -137,6 +149,16 @@ namespace Business.Concrete
         public IDataResult<BonusCardForFormsDto> GetBonusCardForFormsDetailById(int cardId)
         {
             BonusCardForFormsDto get = _bonusCardDal.GetBonusCardForFormsDto(b => b.BonusCardId == cardId);
+            if (get == null)
+            {
+                return new ErrorDataResult<BonusCardForFormsDto>(BonusCardMessages.NotFound);
+            }
+            return new SuccessDataResult<BonusCardForFormsDto>(get, BonusCardMessages.Found);
+        }
+
+        public IDataResult<BonusCardForFormsDto> GetBonusCardForFormsDetailByBarcodeNumber(string barcodeNumber)
+        {
+            BonusCardForFormsDto get = _bonusCardDal.GetBonusCardForFormsDto(b => b.BarkodNomresi == barcodeNumber);
             if (get == null)
             {
                 return new ErrorDataResult<BonusCardForFormsDto>(BonusCardMessages.NotFound);

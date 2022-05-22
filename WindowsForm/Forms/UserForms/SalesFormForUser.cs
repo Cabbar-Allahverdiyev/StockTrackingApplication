@@ -31,7 +31,6 @@ namespace WindowsForm.Forms.UserForms
         private int CartId { get; set; }
         private int BonusCardId { get; set; }
 
-        //public static bool QrCodeIsSuccess = false;
         IProductService _productService;
         ICartService _cartService;
         ICustomerService _customerService;
@@ -43,6 +42,7 @@ namespace WindowsForm.Forms.UserForms
         IBonusCardService _bonusCardService;
 
         MyControl myControl = new MyControl();
+        ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
 
         public SalesFormForUser(ICategoryService categoryService
                             , IBrandService brandService
@@ -89,9 +89,6 @@ namespace WindowsForm.Forms.UserForms
             GroupBoxMehsulControlClear();
         }
 
-        //CartValidationTool cartValidationTool = new CartValidationTool();
-        //SaleValidationTool saleValidationTool = new SaleValidationTool();
-        ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
 
         private void ButtonX_Click(object sender, EventArgs e)
         {
@@ -442,6 +439,7 @@ namespace WindowsForm.Forms.UserForms
         private void buttonTemizleBonusCard_Click(object sender, EventArgs e)
         {
             BonusCardId = 0;
+            textBoxBonusCardSelect.Text = "";
             textBoxBonusCardCustomerName.Text = "";
         }
 
@@ -560,6 +558,23 @@ namespace WindowsForm.Forms.UserForms
         }
 
 
+        private void checkBoxBonusCard_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxBonusCard.Checked == false)
+            {
+                checkBoxBonusCard.Text = "Avtomatik";
+                buttonBonusCardSelect.Visible = false;
+                textBoxBonusCardSelect.Visible = true;
+            }
+            else
+            {
+                checkBoxBonusCard.Text = "Manual";
+                buttonBonusCardSelect.Visible = true;
+                textBoxBonusCardSelect.Visible = false;
+            }
+        }
+
+
 
         //Double Click----------------------------------->
 
@@ -629,6 +644,33 @@ namespace WindowsForm.Forms.UserForms
                 if (barcodeNumber.Length >= 13)
                 {
                     FindByBarcodeNumberAndAddToCart(barcodeNumber);
+                }
+            }
+            catch (Exception ex)
+            {
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
+                return;
+            }
+        }
+
+        private void textBoxBonusCardSelect_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                MyControl.MakeTextBoxNumberBox(e);
+                string barcodeNumber = textBoxBonusCardSelect.Text;
+                if (barcodeNumber.Length >= 13)
+                {
+                    IDataResult<BonusCardForFormsDto> getBonusCard = _bonusCardService.GetBonusCardForFormsDetailByBarcodeNumber(barcodeNumber);
+                    if (!getBonusCard.Success)
+                    {
+                        FormsMessage.WarningMessage(getBonusCard.Message);
+                        return;
+                    }
+                    BonusCardId = getBonusCard.Data.BonusCardId;
+                    textBoxBonusCardCustomerName.Text = getBonusCard.Data.Ad + " " + getBonusCard.Data.Soyad;
+                    FormsMessage.SuccessMessage(getBonusCard.Message);
+
                 }
             }
             catch (Exception ex)
@@ -846,6 +888,6 @@ namespace WindowsForm.Forms.UserForms
             comboBoxSupplierList.Text = "";
         }
 
-     
+        
     }
 }

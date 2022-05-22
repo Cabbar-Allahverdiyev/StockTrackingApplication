@@ -80,6 +80,8 @@ namespace WindowsForm.Forms
             this.textBoxBonusCardCustomerName = new System.Windows.Forms.TextBox();
             this.buttonBonusCardSelect = new System.Windows.Forms.Button();
             this.buttonTemizleBonusCard = new System.Windows.Forms.Button();
+            this.textBoxBonusCardSelect = new System.Windows.Forms.TextBox();
+            this.checkBoxBonusCard = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductList)).BeginInit();
             this.groupBoxMusteri.SuspendLayout();
             this.groupBoxMehsul.SuspendLayout();
@@ -103,7 +105,7 @@ namespace WindowsForm.Forms
             this.dataGridViewProductList.ReadOnly = true;
             this.dataGridViewProductList.RowTemplate.Height = 25;
             this.dataGridViewProductList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewProductList.Size = new System.Drawing.Size(806, 332);
+            this.dataGridViewProductList.Size = new System.Drawing.Size(806, 319);
             this.dataGridViewProductList.TabIndex = 1;
             this.dataGridViewProductList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewSalesForm_CellDoubleClick);
             // 
@@ -731,12 +733,40 @@ namespace WindowsForm.Forms
             this.buttonTemizleBonusCard.UseVisualStyleBackColor = true;
             this.buttonTemizleBonusCard.Click += new System.EventHandler(this.buttonTemizleBonusCard_Click);
             // 
+            // textBoxBonusCardSelect
+            // 
+            this.textBoxBonusCardSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxBonusCardSelect.Font = new System.Drawing.Font("Helvetica", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxBonusCardSelect.Location = new System.Drawing.Point(849, 390);
+            this.textBoxBonusCardSelect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxBonusCardSelect.Name = "textBoxBonusCardSelect";
+            this.textBoxBonusCardSelect.Size = new System.Drawing.Size(126, 25);
+            this.textBoxBonusCardSelect.TabIndex = 41;
+            this.textBoxBonusCardSelect.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxBonusCardSelect.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxBonusCardSelect_KeyPress);
+            // 
+            // checkBoxBonusCard
+            // 
+            this.checkBoxBonusCard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxBonusCard.AutoSize = true;
+            this.checkBoxBonusCard.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxBonusCard.Location = new System.Drawing.Point(849, 368);
+            this.checkBoxBonusCard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.checkBoxBonusCard.Name = "checkBoxBonusCard";
+            this.checkBoxBonusCard.Size = new System.Drawing.Size(79, 18);
+            this.checkBoxBonusCard.TabIndex = 42;
+            this.checkBoxBonusCard.Text = "Avtomatik";
+            this.checkBoxBonusCard.UseVisualStyleBackColor = true;
+            this.checkBoxBonusCard.CheckedChanged += new System.EventHandler(this.checkBoxBonusCard_CheckedChanged);
+            // 
             // SalesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(1174, 726);
+            this.Controls.Add(this.checkBoxBonusCard);
+            this.Controls.Add(this.textBoxBonusCardSelect);
             this.Controls.Add(this.buttonTemizleBonusCard);
             this.Controls.Add(this.buttonBonusCardSelect);
             this.Controls.Add(this.textBoxBonusCardCustomerName);
@@ -824,5 +854,7 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.Button buttonBonusCardSelect;
         private System.Windows.Forms.Label labelBonusValue;
         private System.Windows.Forms.Button buttonTemizleBonusCard;
+        private System.Windows.Forms.TextBox textBoxBonusCardSelect;
+        private System.Windows.Forms.CheckBox checkBoxBonusCard;
     }
 }
