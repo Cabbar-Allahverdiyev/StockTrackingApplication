@@ -34,6 +34,7 @@ namespace WindowsForm.Forms
         ISaleWinFormService _saleWinFormService;
         ISupplierService _supplierService;
         IBonusCardService _bonusCardService;
+        IFormSettingService _formSettingService;
         //OperationClaimForFormsManager _operationClaimManager=new OperationClaimForFormsManager(new EfOperationClaimForFormsDal());
         //UserOperationClaimForFormsManager _userOperationClaimForFormsManager = new UserOperationClaimForFormsManager(new EfUserOperationClaimForFormsDal());
         private Form activateForm;
@@ -50,7 +51,7 @@ namespace WindowsForm.Forms
             , ICustomerBalanceService customerBalanceService
             , ICustomerPaymentService customerPaymentService
             , ICartService cartService
-            , IDebtService debtService, ISaleWinFormService saleWinFormService, ISupplierService supplierService, IBonusCardService bonusCardService)
+            , IDebtService debtService, ISaleWinFormService saleWinFormService, ISupplierService supplierService, IBonusCardService bonusCardService, IFormSettingService formSettingService)
         {
             _userService = userService;
             _operationClaimService = operationClaimService;
@@ -66,6 +67,7 @@ namespace WindowsForm.Forms
             _saleWinFormService = saleWinFormService;
             _supplierService = supplierService;
             _bonusCardService = bonusCardService;
+            _formSettingService = formSettingService;
 
 
             InitializeComponent();
@@ -270,17 +272,7 @@ namespace WindowsForm.Forms
                                         , _saleWinFormService
                                         , _debtService
                                         ,_bonusCardService), sender);
-            //OpenChildForm(new SalesForm(new CategoryManager(new EfCategoryDal())
-            //                            , new BrandManager(new EfBrandDal())
-            //                            , new SupplierManager(new EfSupplierDal())
-            //                            , new ProductManager(new EfProductDal())
-            //                            , new CartManager(new EfCartDal())
-            //                            , new CustomerManager(new EfCustomerDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()))
-            //                            , new SaleWinFormManager(new EfSaleWinFormDal(), new ProductManager(new EfProductDal()))
-            //                            , new DebtManager(new EfDebtDal(), new CustomerBalanceManager(new EfCustomerBalanceDal()))
-            //                            ), sender);
-
-
+            
         }
 
         private void buttonProducts_Click(object sender, EventArgs e)
@@ -324,6 +316,11 @@ namespace WindowsForm.Forms
             Open_DropdownMenu(myDMOther, sender);
         }
 
+        private void buttonSettings_Click(object sender, EventArgs e)
+        {
+            Open_DropdownMenu(myDMSettings, sender);
+        }
+
         private void btnExit_Click(object sender, EventArgs e)
         {
             myControl.CloseYesNo(this, new LoginForm(_userOperationClaimService
@@ -339,7 +336,8 @@ namespace WindowsForm.Forms
                                                     , _saleWinFormService
                                                     , _supplierService
                                                     , _brandService
-                                                    ,_bonusCardService));
+                                                    ,_bonusCardService
+                                                    ,_formSettingService));
 
 
         }
@@ -389,46 +387,7 @@ namespace WindowsForm.Forms
         {
             OpenChildForm(new SupplierUpdateForm(_supplierService), sender);
         }
-        //private void məhsulSilToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    OpenChildForm(new ProductDeleteForm(_productService,_brandService,_categoryService,_supplierService), sender);
-        //}
-
-        //private void məhsullarıSıralaToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    OpenChildForm(new FormProductList(_productService,_brandService,_categoryService,_supplierService), sender);
-        //}
-
-        //private void məhsulYeniləToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    OpenChildForm(new ProductUpdateForm(_productService,_brandService,_categoryService,_supplierService), sender);
-        //}
-
-        //private void məhsulƏlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    OpenChildForm(new FormProductAdd(_productService, _brandService, _categoryService, _supplierService), sender);
-        //}
-        //////////
-        //private void markalarToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    OpenChildForm(new FormBrand(_brandService), sender);
-        //}
-
-        //private void markalarıYeniləVəSilToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    OpenChildForm(new BrandUpdateAndDeleteForm(_brandService), sender);
-        //}
-
-        //private void tedarukculeriElaveEtToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    OpenChildForm(new SupplierForm(_supplierService), sender);
-
-        //}
-
-        //private void tedarukculeriYenileVeSilToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    OpenChildForm(new SupplierUpdateForm(_supplierService), sender);
-        //}
+       
         //Sales-------------------------------------------->
         private void satislariSiralaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -538,6 +497,12 @@ namespace WindowsForm.Forms
 
         }
 
+        //Parametrler --------------------------->
+        private void bonusKartToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.SettingForms.BonusCardSettingForm(_formSettingService), sender);
+        }
+
 
         private void CollapseMenu()
         {
@@ -623,7 +588,13 @@ namespace WindowsForm.Forms
             labelTitle.Text = childForm.Text;
         }
 
-        
+       
+
+
+
+
+
+
 
 
 

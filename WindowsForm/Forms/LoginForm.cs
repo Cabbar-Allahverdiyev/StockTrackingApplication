@@ -43,10 +43,11 @@ namespace WindowsForm.Forms
         ISaleWinFormService _saleWinFormService;
         ISupplierService _supplierService;
         IBonusCardService _bonusCardService;
+        IFormSettingService _formSettingService;
 
         MacAddressManager _macAddressManager = new MacAddressManager(new EfMacAddressDal());
 
-        
+
 
         public LoginForm(IUserOperationClaimForFormsService userOperationClaimForFormsService
             , IUserService userService
@@ -61,7 +62,7 @@ namespace WindowsForm.Forms
             , ISaleWinFormService saleWinFormService
             , ISupplierService supplierService
             , IBrandService brandService
-, IBonusCardService bonusCardService)
+, IBonusCardService bonusCardService, IFormSettingService formSettingService)
         {
             _userOperationClaimForFormsService = userOperationClaimForFormsService;
             _userService = userService;
@@ -77,6 +78,7 @@ namespace WindowsForm.Forms
             _supplierService = supplierService;
             _brandService = brandService;
             _bonusCardService = bonusCardService;
+            _formSettingService = formSettingService;
             InitializeComponent();
             this.BackColor = Color.FromArgb(41, 128, 185);
         }
@@ -104,7 +106,7 @@ namespace WindowsForm.Forms
             {
                 // string thisComputerMacAddress = "28924A521735"; //Murad IphoneShop
                 //string thisComputerMacAddress = "E8039AB2FF83"; //Menim
-                string thisComputerMacAddress = _macAddressManager.GetAll().Data.SingleOrDefault().Addres;
+                string thisComputerMacAddress = _macAddressManager.GetAll().Data.SingleOrDefault().Address;
                 if (thisComputerMacAddress != GetMacAddress())
                 {
                     FormsMessage.ErrorMessage("Əlaqə vasitələri səhifənin aşağısındadır");
@@ -147,6 +149,7 @@ namespace WindowsForm.Forms
                                                     , _saleWinFormService
                                                     , _supplierService
                                                     ,_bonusCardService
+                                                    ,_formSettingService
                                                     );
                     this.Hide();
                     dashboard.Show();
@@ -166,7 +169,8 @@ namespace WindowsForm.Forms
                                                                 , _debtService
                                                                 , _saleWinFormService
                                                                 , _supplierService
-                                                                ,_bonusCardService);
+                                                                ,_bonusCardService
+                                                                ,_formSettingService);
                 this.Hide();
                 userDashboard.Show();
 

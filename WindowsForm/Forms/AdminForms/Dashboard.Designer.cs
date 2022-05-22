@@ -54,6 +54,7 @@ namespace WindowsForm.Forms
             this.buttonMenu = new FontAwesome.Sharp.IconButton();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.buttonSettings = new System.Windows.Forms.Button();
             this.myDMCategory = new WindowsForm.MyControls.MyDropdownMenu(this.components);
             this.kateqoriyalariSiralaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.elaveEtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -93,6 +94,8 @@ namespace WindowsForm.Forms
             this.tədarükçüToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.əlavəEtToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.yeniləVəSilToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.myDMSettings = new WindowsForm.MyControls.MyDropdownMenu(this.components);
+            this.bonusKartToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panelTitleBar.SuspendLayout();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
@@ -104,6 +107,7 @@ namespace WindowsForm.Forms
             this.myDMScan.SuspendLayout();
             this.myDMOther.SuspendLayout();
             this.myDMProduct.SuspendLayout();
+            this.myDMSettings.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonExit
@@ -141,7 +145,7 @@ namespace WindowsForm.Forms
             this.btnExit.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnExit.ForeColor = System.Drawing.Color.White;
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
-            this.btnExit.Location = new System.Drawing.Point(0, 516);
+            this.btnExit.Location = new System.Drawing.Point(0, 642);
             this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnExit.Name = "btnExit";
             this.btnExit.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
@@ -496,6 +500,7 @@ namespace WindowsForm.Forms
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.panelMenu.Controls.Add(this.buttonSettings);
             this.panelMenu.Controls.Add(this.btnExit);
             this.panelMenu.Controls.Add(this.buttonOther);
             this.panelMenu.Controls.Add(this.buttonUsers);
@@ -510,8 +515,30 @@ namespace WindowsForm.Forms
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(180, 572);
+            this.panelMenu.Size = new System.Drawing.Size(180, 698);
             this.panelMenu.TabIndex = 3;
+            // 
+            // buttonSettings
+            // 
+            this.buttonSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.buttonSettings.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonSettings.FlatAppearance.BorderSize = 0;
+            this.buttonSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSettings.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonSettings.ForeColor = System.Drawing.Color.White;
+            this.buttonSettings.Image = ((System.Drawing.Image)(resources.GetObject("buttonSettings.Image")));
+            this.buttonSettings.Location = new System.Drawing.Point(0, 504);
+            this.buttonSettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonSettings.Name = "buttonSettings";
+            this.buttonSettings.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.buttonSettings.Size = new System.Drawing.Size(180, 56);
+            this.buttonSettings.TabIndex = 16;
+            this.buttonSettings.Tag = "Əlavələr";
+            this.buttonSettings.Text = "  Parametrlər";
+            this.buttonSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonSettings.UseVisualStyleBackColor = false;
+            this.buttonSettings.Click += new System.EventHandler(this.buttonSettings_Click);
             // 
             // myDMCategory
             // 
@@ -562,7 +589,7 @@ namespace WindowsForm.Forms
             this.panelDesktopPane.Location = new System.Drawing.Point(180, 56);
             this.panelDesktopPane.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelDesktopPane.Name = "panelDesktopPane";
-            this.panelDesktopPane.Size = new System.Drawing.Size(754, 516);
+            this.panelDesktopPane.Size = new System.Drawing.Size(754, 642);
             this.panelDesktopPane.TabIndex = 5;
             // 
             // myDMSales
@@ -841,11 +868,29 @@ namespace WindowsForm.Forms
             this.yeniləVəSilToolStripMenuItem1.Text = "Yenilə və sil";
             this.yeniləVəSilToolStripMenuItem1.Click += new System.EventHandler(this.yeniləVəSilToolStripMenuItem1_Click);
             // 
+            // myDMSettings
+            // 
+            this.myDMSettings.IsMainMenu = false;
+            this.myDMSettings.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bonusKartToolStripMenuItem1});
+            this.myDMSettings.MenuItemHeight = 25;
+            this.myDMSettings.MenuItemTextColor = System.Drawing.Color.DimGray;
+            this.myDMSettings.Name = "myDMSettings";
+            this.myDMSettings.PrimaryColor = System.Drawing.Color.MediumSlateBlue;
+            this.myDMSettings.Size = new System.Drawing.Size(131, 26);
+            // 
+            // bonusKartToolStripMenuItem1
+            // 
+            this.bonusKartToolStripMenuItem1.Name = "bonusKartToolStripMenuItem1";
+            this.bonusKartToolStripMenuItem1.Size = new System.Drawing.Size(130, 22);
+            this.bonusKartToolStripMenuItem1.Text = "Bonus kart";
+            this.bonusKartToolStripMenuItem1.Click += new System.EventHandler(this.bonusKartToolStripMenuItem1_Click);
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(934, 572);
+            this.ClientSize = new System.Drawing.Size(934, 698);
             this.Controls.Add(this.panelDesktopPane);
             this.Controls.Add(this.panelTitleBar);
             this.Controls.Add(this.panelMenu);
@@ -871,6 +916,7 @@ namespace WindowsForm.Forms
             this.myDMScan.ResumeLayout(false);
             this.myDMOther.ResumeLayout(false);
             this.myDMProduct.ResumeLayout(false);
+            this.myDMSettings.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -947,5 +993,8 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.ToolStripMenuItem yeniləVəSilToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem bonusKartToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.Button buttonSettings;
+        private MyControls.MyDropdownMenu myDMSettings;
+        private System.Windows.Forms.ToolStripMenuItem bonusKartToolStripMenuItem1;
     }
 }

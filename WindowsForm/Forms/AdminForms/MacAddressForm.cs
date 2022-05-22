@@ -29,7 +29,7 @@ namespace WindowsForm.Forms.AdminForms
                 return;
             }
             MacAddres macAddress = new MacAddres() ;
-            macAddress.Addres = textBoxMacAddress.Text;
+            macAddress.Address = textBoxMacAddress.Text;
             IResult macAdded = macAddressManager.Add(macAddress);
             if (!macAdded.Success)
             {

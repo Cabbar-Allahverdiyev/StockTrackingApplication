@@ -8,6 +8,6 @@ namespace Entities.Concrete
     public class MacAddres : IEntity
     {
         public int Id { get; set; }
-        public string Addres { get; set; }
+        public string Address { get; set; }
     }
 }

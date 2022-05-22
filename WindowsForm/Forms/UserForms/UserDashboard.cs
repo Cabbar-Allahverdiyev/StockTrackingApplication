@@ -20,7 +20,7 @@ namespace WindowsForm.Forms.UserForms
     public partial class UserDashboard : Form
     {
         IUserService _userService;
-      
+
         IOperationClaimForFormsService _operationClaimService;
         IUserOperationClaimForFormsService _userOperationClaimService;
         IProductService _productService;
@@ -34,6 +34,7 @@ namespace WindowsForm.Forms.UserForms
         ISaleWinFormService _saleWinFormService;
         ISupplierService _supplierService;
         IBonusCardService _bonusCardService;
+        IFormSettingService _formSettingService;
 
         private Form activateForm;
         private Size formSize;
@@ -51,7 +52,11 @@ namespace WindowsForm.Forms.UserForms
             , ICustomerBalanceService customerBalanceService
             , ICustomerPaymentService customerPaymentService
             , ICartService cartService
-            , IDebtService debtService, ISaleWinFormService saleWinFormService, ISupplierService supplierService, IBonusCardService bonusCardService)
+            , IDebtService debtService
+            , ISaleWinFormService saleWinFormService
+            , ISupplierService supplierService
+            , IBonusCardService bonusCardService
+            , IFormSettingService formSettingService)
         {
             _userService = userService;
             _operationClaimService = operationClaimService;
@@ -67,6 +72,7 @@ namespace WindowsForm.Forms.UserForms
             _saleWinFormService = saleWinFormService;
             _supplierService = supplierService;
             _bonusCardService = bonusCardService;
+            _formSettingService = formSettingService;
 
             InitializeComponent();
             this.Padding = new Padding();
@@ -81,7 +87,7 @@ namespace WindowsForm.Forms.UserForms
 
         private void UserDashboard_Load(object sender, EventArgs e)
         {
-            buttonHome_Click(sender,e);
+            buttonHome_Click(sender, e);
         }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -252,7 +258,7 @@ namespace WindowsForm.Forms.UserForms
                                         , _customerService
                                         , _saleWinFormService
                                         , _debtService
-                                        ,_bonusCardService), sender);
+                                        , _bonusCardService), sender);
         }
 
         private void buttonProducts_Click(object sender, EventArgs e)
@@ -299,7 +305,7 @@ namespace WindowsForm.Forms.UserForms
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            myControl.CloseYesNo(this,new LoginForm(_userOperationClaimService
+            myControl.CloseYesNo(this, new LoginForm(_userOperationClaimService
                                                     , _userService
                                                     , _operationClaimService
                                                     , _productService
@@ -312,7 +318,8 @@ namespace WindowsForm.Forms.UserForms
                                                     , _saleWinFormService
                                                     , _supplierService
                                                     , _brandService
-                                                    ,_bonusCardService));
+                                                    , _bonusCardService
+                                                    , _formSettingService));
         }
 
         //Dropdown menu---------------------------------->
@@ -340,9 +347,9 @@ namespace WindowsForm.Forms.UserForms
         //Supplier_________________>
         private void əlavəEtToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new SupplierForm(_supplierService),sender);
+            OpenChildForm(new SupplierForm(_supplierService), sender);
         }
-        
+
         //Sales-------------------------------------------->
         private void satislariSiralaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -422,7 +429,7 @@ namespace WindowsForm.Forms.UserForms
         }
 
         //Elaveler ---------------------->
-    
+
 
         private void tedarukToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -436,13 +443,13 @@ namespace WindowsForm.Forms.UserForms
 
         private void musteriOdenisleriToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new CustomerPaymentForm(_userService,_customerPaymentService,_customerService), sender);
+            OpenChildForm(new CustomerPaymentForm(_userService, _customerPaymentService, _customerService), sender);
         }
 
         //Bonus Kart______________>
         private void əlavəEtToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new BonusCardAddForm(_bonusCardService,_customerService), sender);
+            OpenChildForm(new BonusCardAddForm(_bonusCardService, _customerService), sender);
 
         }
 
@@ -499,7 +506,7 @@ namespace WindowsForm.Forms.UserForms
             {
                 if (dropdownMenu.Visible)
                     //ctrl.BackColor = Color.FromArgb(159, 161, 224);
-                    ctrl.BackColor = Color.FromArgb(149,192,220);
+                    ctrl.BackColor = Color.FromArgb(149, 192, 220);
                 else ctrl.BackColor = Color.FromArgb(41, 128, 185);
             }
         }
@@ -521,6 +528,6 @@ namespace WindowsForm.Forms.UserForms
             labelTitle.Text = childForm.Text;
         }
 
-        
+
     }
 }

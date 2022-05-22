@@ -61,7 +61,7 @@ namespace WindowsForm
 
             Application.Run(new Forms.LoginForm(userOperationClaimForFormsManager, userManager, operationClaimForFormsManager, productManager
                 , categoryManager, customerManager, customerBalanceManager, customerPaymentManager, cartManager, debtManager, saleManager, supplierManager
-                , brandManager, bonusCardManager));
+                , brandManager, bonusCardManager,formSettingManager));
 
 
 
