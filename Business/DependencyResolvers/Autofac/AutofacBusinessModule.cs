@@ -56,6 +56,8 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<SupplierManager>().As<ISupplierService>().SingleInstance();
             builder.RegisterType<EfSupplierDal>().As<ISupplierDal>().SingleInstance();
 
+            //yeni elavelei yukle mes bonus card
+
             builder.RegisterType<AuthManager>().As<IAuthService>();
 
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();

@@ -223,6 +223,7 @@ namespace WindowsForm.Forms
             // 
             // buttonAxtar
             // 
+            this.buttonAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonAxtar.FlatAppearance.BorderSize = 0;
             this.buttonAxtar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAxtar.Image = global::WindowsForm.Properties.Resources.searchFerqliBlack_16px;
