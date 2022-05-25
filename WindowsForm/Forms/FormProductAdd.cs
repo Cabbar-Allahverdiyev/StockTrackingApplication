@@ -134,7 +134,7 @@ namespace WindowsForm.Forms
         //Text Changed --------------------------------->
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            List<ProductViewDashboardDetailDto> data = _productService.GetAllProductViewDasboardDetails().Data;
+            List<ProductViewDashboardDetailDto> data = _productService.GetAllProductViewDasboardDetail().Data;
             detailSearch.GetDataWriteGridView(data, textBoxAxtar.Text, dataGridViewProductList);
         }
 
@@ -192,7 +192,7 @@ namespace WindowsForm.Forms
 
         private void ProductRefresh()
         {
-            dataGridViewProductList.DataSource = _productService.GetAllProductViewDasboardDetails().Data;
+            dataGridViewProductList.DataSource = _productService.GetAllProductViewDasboardDetail().Data;
         }
 
 

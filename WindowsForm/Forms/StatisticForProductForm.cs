@@ -84,7 +84,7 @@ namespace WindowsForm.Forms
 
         private void ProductListRefresh()
         {
-            dataGridViewProductList.DataSource =  _productService.GetAllProductViewDasboardDetails().Data;
+            dataGridViewProductList.DataSource =  _productService.GetAllProductViewDasboardDetail().Data;
         }
 
      

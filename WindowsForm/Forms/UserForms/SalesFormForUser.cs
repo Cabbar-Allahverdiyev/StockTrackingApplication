@@ -537,7 +537,7 @@ namespace WindowsForm.Forms.UserForms
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            List<ProductViewDashboardDetailDto> data = _productService.GetAllProductViewDasboardDetails().Data;
+            List<ProductViewDashboardDetailDto> data = _productService.GetAllProductViewDasboardDetail().Data;
             detailsSearch.GetDataWriteGridView(data, textBoxAxtar.Text, dataGridViewProductList);
         }
 
@@ -764,7 +764,7 @@ namespace WindowsForm.Forms.UserForms
 
         private void ProductListRefesh()
         {
-            dataGridViewProductList.DataSource = _productService.GetAllProductViewDasboardDetails().Data;
+            dataGridViewProductList.DataSource = _productService.GetAllProductViewDasboardDetail().Data;
             myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewProductList, "AlisQiymet", Color.Yellow);
             myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewProductList, "Qiymet", Color.Green);
         }
@@ -809,7 +809,7 @@ namespace WindowsForm.Forms.UserForms
             IResult cartAdded;
             IResult cartUpdated;
 
-            IDataResult<Product> result = _productService.GetByProductBarcodeNumber(barcodeNumber);
+            IDataResult<Product> result = _productService.GetByBarcodeNumber(barcodeNumber);
             if (result.Success == false)
             {
                 FormsMessage.WarningMessage(result.Message);

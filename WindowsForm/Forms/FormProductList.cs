@@ -113,7 +113,7 @@ namespace WindowsForm.Forms
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            List<ProductViewDashboardDetailDto> data = _productService.GetAllProductViewDasboardDetails().Data;
+            List<ProductViewDashboardDetailDto> data = _productService.GetAllProductViewDasboardDetail().Data;
             detailsSearch.GetDataWriteGridView(data, textBoxAxtar.Text, dataGridViewFormPrdouctList);
             //detailsSearch.SearchBySelectedValueOfComboBoxAndWriteToDataGridView(data,textBoxAxtar
             //    , dataGridViewFormPrdouctList, comboBoxProperty);
@@ -161,7 +161,7 @@ namespace WindowsForm.Forms
 
         private void ProductRefresh()
         {
-            dataGridViewFormPrdouctList.DataSource = _productService.GetAllProductViewDasboardDetails().Data;
+            dataGridViewFormPrdouctList.DataSource = _productService.GetAllProductViewDasboardDetail().Data;
         }
     }
 }

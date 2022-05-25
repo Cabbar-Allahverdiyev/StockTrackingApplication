@@ -196,7 +196,7 @@ namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate
             {
                 Random random = new Random();
                 string randomText = CalculateEan13("978", "0201", random.Next(0, 99999).ToString());
-                result = _productService.GetByProductBarcodeNumber(randomText);
+                result = _productService.GetByBarcodeNumber(randomText);
                 if (result.Success)
                 {
                     return new ErrorDataResult<string>(ProductMessages.BarcodeNumberAvailable);

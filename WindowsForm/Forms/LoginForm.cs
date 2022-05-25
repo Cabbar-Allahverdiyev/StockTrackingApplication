@@ -62,7 +62,8 @@ namespace WindowsForm.Forms
             , ISaleWinFormService saleWinFormService
             , ISupplierService supplierService
             , IBrandService brandService
-, IBonusCardService bonusCardService, IFormSettingService formSettingService)
+            , IBonusCardService bonusCardService
+            , IFormSettingService formSettingService)
         {
             _userOperationClaimForFormsService = userOperationClaimForFormsService;
             _userService = userService;
