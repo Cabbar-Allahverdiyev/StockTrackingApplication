@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Linq;
 using System.Text;
+using Entities.DTOs.ProductDtos.ForAPI;
 
 namespace DataAccess.Concrete.EntityFramework
 {
@@ -30,7 +31,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  TedarikciSirket = s.CompanyName,
                                  TedarikEdenInsan = s.ContactName,
                                  TedarikciNeZamanGelir = s.WhenWillCome,
-                                 StokdakiVahid = p.UnitsInStock ,
+                                 StokdakiVahid = p.UnitsInStock,
                                  SifaristekiVahid = p.UnitsOnOrder,
                                  YeniSifarisEdedi = p.ReorderLevel,
                                  AlisQiymeti = p.PurchasePrice,
@@ -108,7 +109,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  MehsulAdi = p.ProductName,
                                  BarcodeNomresi = p.BarcodeNumber
                              };
-                return context.Set<ProductCompactDetailDto>().SingleOrDefault(filter);
+                return result.SingleOrDefault(filter);
 
             }
         }
@@ -116,7 +117,7 @@ namespace DataAccess.Concrete.EntityFramework
         {
             using (StockTrackingProjectContext context = new StockTrackingProjectContext())
             {
-                var result = from p in context.Products.Where(p=>p.Id==productId)
+                var result = from p in context.Products.Where(p => p.Id == productId)
                              join c in context.Categories on p.CategoryId equals c.Id
                              join b in context.Brands on p.BrandId equals b.Id
                              join s in context.Suppliers on p.SupplierId equals s.Id
@@ -142,11 +143,75 @@ namespace DataAccess.Concrete.EntityFramework
                              };
 
                 return result.SingleOrDefault();
-                
+
 
             }
         }
 
-       
+        public ProductDetailDto GetProductDetail(Expression<Func<ProductDetailDto, bool>> filter)
+        {
+            using (StockTrackingProjectContext context = new StockTrackingProjectContext())
+            {
+                var result = from p in context.Products
+                             join c in context.Categories on p.CategoryId equals c.Id
+                             join b in context.Brands on p.BrandId equals b.Id
+                             join s in context.Suppliers on p.SupplierId equals s.Id
+                             select new ProductDetailDto
+                             {
+                                 Id = p.Id,
+                                 CategoryName = c.CategoryName,
+                                 BrandName = b.BrandName,
+                                 SupplierName = s.CompanyName,
+                                 SupplierContactName = s.ContactName,
+                                 UnitsInStock = p.UnitsInStock,
+                                 UnitsOnOrder = p.UnitsOnOrder,
+                                 ReorderLevel = p.ReorderLevel,
+                                 PurchasePrice = p.PurchasePrice,
+                                 UnitPrice = p.UnitPrice,
+                                 ProductName = p.ProductName,
+                                 BarcodeNumber = p.BarcodeNumber,
+                                 QuantityPerUnit = p.QuantityPerUnit,
+                                 Description = p.Description,
+                                 LastModifiedDate = p.LastModifiedDate,
+                                 Discontinued = p.Discontinued
+
+                             };
+                return result.SingleOrDefault(filter);
+
+            }
+        }
+
+        public List<ProductDetailDto> GetAllProductDetail(Expression<Func<ProductDetailDto, bool>> filter = null)
+        {
+            using (StockTrackingProjectContext context = new StockTrackingProjectContext())
+            {
+                var result = from p in context.Products
+                             join c in context.Categories on p.CategoryId equals c.Id
+                             join b in context.Brands on p.BrandId equals b.Id
+                             join s in context.Suppliers on p.SupplierId equals s.Id
+                             select new ProductDetailDto
+                             {
+                                 Id = p.Id,
+                                 CategoryName = c.CategoryName,
+                                 BrandName = b.BrandName,
+                                 SupplierName = s.CompanyName,
+                                 SupplierContactName = s.ContactName,
+                                 UnitsInStock = p.UnitsInStock,
+                                 UnitsOnOrder = p.UnitsOnOrder,
+                                 ReorderLevel = p.ReorderLevel,
+                                 PurchasePrice = p.PurchasePrice,
+                                 UnitPrice = p.UnitPrice,
+                                 ProductName = p.ProductName,
+                                 BarcodeNumber = p.BarcodeNumber,
+                                 QuantityPerUnit = p.QuantityPerUnit,
+                                 Description = p.Description,
+                                 LastModifiedDate = p.LastModifiedDate,
+                                 Discontinued = p.Discontinued
+
+                             };
+                return filter == null ? result.ToList() : result.Where(filter).ToList();
+
+            }
+        }
     }
 }

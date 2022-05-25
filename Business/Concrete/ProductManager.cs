@@ -8,6 +8,7 @@ using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs.ProductDtos;
+using Entities.DTOs.ProductDtos.ForAPI;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -78,7 +79,7 @@ namespace Business.Concrete
         }
 
         [CacheAspect]
-        public IDataResult<Product> GetByProductBarcodeNumber(string barodeNumber)
+        public IDataResult<Product> GetByBarcodeNumber(string barodeNumber)
         {
             Product get = _productDal.Get(p => p.BarcodeNumber== barodeNumber);
             if (get == null)
@@ -90,9 +91,29 @@ namespace Business.Concrete
 
 
 
-        //DTOs------------------------------------>
+        //DTOs____APi------------------------------------>
+        public IDataResult<List<ProductDetailDto>> GetAllProductDetail()
+        {
+            List<ProductDetailDto> get = _productDal.GetAllProductDetail();
+            if (get.Count==0)
+            {
+                return new ErrorDataResult<List<ProductDetailDto>>(ProductMessages.ProductNotFound);
+            }
+            return new SuccessDataResult<List<ProductDetailDto>>(get, ProductMessages.ProductGetAll);
+        }
+
+        public IDataResult<ProductDetailDto> GetProductDetailById(int id)
+        {
+            ProductDetailDto get = _productDal.GetProductDetail(p => p.Id == id);
+            if (get == null)
+            {
+                return new ErrorDataResult<ProductDetailDto>(ProductMessages.ProductNotFound);
+            }
+            return new SuccessDataResult<ProductDetailDto>(get, ProductMessages.ProductFound);
+        }
+        //DTOs___________WInForms------------------------------------>
         [CacheAspect]
-        public IDataResult<List<ProductViewDetailDto>> GetProductViewDetails()
+        public IDataResult<List<ProductViewDetailDto>> GetAllProductViewDetail()
         {
             List<ProductViewDetailDto> get = _productDal.GetProductViewDetails();
             if (get == null)
@@ -103,7 +124,7 @@ namespace Business.Concrete
         }
 
         [CacheAspect]
-        public IDataResult<List<ProductViewDashboardDetailDto>> GetAllProductViewDasboardDetails()
+        public IDataResult<List<ProductViewDashboardDetailDto>> GetAllProductViewDasboardDetail()
         {
             List<ProductViewDashboardDetailDto> get = _productDal.GetProductViewDashboardDetails();
             if (get == null)
@@ -124,7 +145,7 @@ namespace Business.Concrete
         }
 
         [CacheAspect]
-        public IDataResult<List<ProductCompactDetailDto>> GetProductCompactDetails()
+        public IDataResult<List<ProductCompactDetailDto>> GetAllProductCompactDetail()
         {
             List<ProductCompactDetailDto> get = _productDal.GetProductCompactDetails();
             if (get == null)
@@ -136,7 +157,7 @@ namespace Business.Concrete
         }
 
         [CacheAspect]
-        public IDataResult<List<ProductCompactDetailDto>> GetByPrdouctNameCompactDetails(string productName)
+        public IDataResult<List<ProductCompactDetailDto>> GetAllCompactDetailByPrdouctName(string productName)
         {
             List<ProductCompactDetailDto> get = _productDal.GetProductCompactDetails(p => p.MehsulAdi == productName);
             if (get == null)
@@ -194,6 +215,8 @@ namespace Business.Concrete
             }
             return new SuccessResult();
         }
+
+        
 
 
 
