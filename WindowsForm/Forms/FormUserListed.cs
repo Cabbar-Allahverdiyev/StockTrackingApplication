@@ -25,7 +25,7 @@ namespace WindowsForm.Forms
             _userService = userService;
             InitializeComponent();
             MyControl myControl = new MyControl();
-            myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
+            MyControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
         }
 
         private void FormUserListed_Load(object sender, EventArgs e)

@@ -217,7 +217,7 @@ namespace WindowsForm.Forms
             this.dataGridViewList.ReadOnly = true;
             this.dataGridViewList.RowTemplate.Height = 25;
             this.dataGridViewList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewList.Size = new System.Drawing.Size(542, 346);
+            this.dataGridViewList.Size = new System.Drawing.Size(542, 421);
             this.dataGridViewList.TabIndex = 10;
             this.dataGridViewList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewList_CellDoubleClick);
             // 
@@ -264,7 +264,7 @@ namespace WindowsForm.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
-            this.ClientSize = new System.Drawing.Size(816, 510);
+            this.ClientSize = new System.Drawing.Size(816, 483);
             this.Controls.Add(this.buttonAxtar);
             this.Controls.Add(this.pictureBoxRefresh);
             this.Controls.Add(this.textBoxAxtar);

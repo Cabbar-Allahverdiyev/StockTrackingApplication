@@ -28,11 +28,10 @@ namespace WindowsForm.Forms
         {
             _userService = userService;
             InitializeComponent();
-            MyControl myControl = new MyControl();
-            myControl.WritePlaceholdersForTextBoxAddress(textBoxAdres);
-            myControl.WritePlaceholdersForTextBoxPhoneNumberAndMaxLengthTen(textBoxTelefon);
-            myControl.WritePlaceholdersForTextBoxEmail(textBoxEmail);
-            myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
+           MyControl.WritePlaceholdersForTextBoxAddress(textBoxAdres);
+            MyControl.WritePlaceholdersForTextBoxPhoneNumberAndMaxLengthTen(textBoxTelefon);
+            MyControl.WritePlaceholdersForTextBoxEmail(textBoxEmail);
+            MyControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
         }
         private void UserDeleteForm_Load(object sender, EventArgs e)
         {

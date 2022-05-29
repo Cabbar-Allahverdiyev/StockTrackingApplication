@@ -29,11 +29,10 @@ namespace WindowsForm.Forms
         {
             _userService = userService;
             InitializeComponent();
-            MyControl myControl = new MyControl();
-            myControl.MakeAsteriskPasswordCharacterAndMaxLengthFourTen(textBoxYeniSİfre, textBoxSifreTexrari);
-            myControl.WritePlaceholdersForTextBoxEmail(textBoxEmail);
-            myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
-            myControl.WritePlaceholdersForTextBoxAddress(textBoxAdres);
+            MyControl.MakeAsteriskPasswordCharacterAndMaxLengthFourTen(textBoxYeniSİfre, textBoxSifreTexrari);
+            MyControl.WritePlaceholdersForTextBoxEmail(textBoxEmail);
+            MyControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
+            MyControl.WritePlaceholdersForTextBoxAddress(textBoxAdres);
             UserRefresh();
         }
 

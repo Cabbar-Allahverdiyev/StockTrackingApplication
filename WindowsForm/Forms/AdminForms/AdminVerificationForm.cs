@@ -1,9 +1,7 @@
 ﻿using Business.Abstract;
-using Business.Concrete;
 using Business.Constants.Messages;
 using Core.Entities.Concrete;
 using Core.Utilities.Results;
-using DataAccess.Concrete.EntityFramework;
 using Entities.DTOs.UserDtos;
 using System;
 using System.Collections.Generic;
@@ -80,8 +78,7 @@ namespace WindowsForm.Forms.AdminForms
 
         private void AdminVerificationForm_Load(object sender, EventArgs e)
         {
-            MyControl myControl = new MyControl();
-            myControl.MakeAsteriskPasswordCharacterAndMaxLengthFourTen(textBoxPassword);
+            MyControl.MakeAsteriskPasswordCharacterAndMaxLengthFourTen(textBoxPassword);
         }
     }
 }

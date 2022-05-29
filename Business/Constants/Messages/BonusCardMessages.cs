@@ -20,10 +20,11 @@ namespace Business.Constants.Messages
         public static string ThisCustomerAlreadyExistsABonusCard = "Bu müştərinin artıq başqa bonus kartı var";
 
         public static string IncreaseBalance(string customerName) => $"{customerName} balansı artırıldı";
-        public static string NotIncreaseBalance (string customerName)=> $"{customerName} balansı artırıla bilmədi !";
+        public static string NotIncreaseBalance(string customerName) => $"{customerName} balansı artırıla bilmədi !";
 
         public static string ReduceBalance(string customerName) => $"{customerName}'in bonus kartının  balansı azaldı";
         public static string NotReduceBalance(string customerName) => $"{customerName}'in bonus kartının balansı azaldıla bilmədi";
 
+        public static string IncreasedBalanceIsBlank = "Məbləğ boş olduğu üçün bonus kartın balansı artırıla bilmədi !";
     }
 }

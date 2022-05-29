@@ -24,7 +24,6 @@ namespace WindowsForm.Forms
         ISupplierService _supplierService;
 
         ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
-        MyControl myControl = new MyControl();
         Product product = new Product();
 
         public FormProductList(IProductService productService
@@ -37,7 +36,7 @@ namespace WindowsForm.Forms
             _categoryService = categoryService;
             _supplierService = supplierService;
             InitializeComponent();
-            myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
+            MyControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
         }
 
 

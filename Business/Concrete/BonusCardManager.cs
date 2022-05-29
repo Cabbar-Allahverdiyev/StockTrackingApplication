@@ -116,6 +116,7 @@ namespace Business.Concrete
             return new SuccessResult(BonusCardMessages.IncreaseBalance(customer.FirstName));
         }
 
+        [CacheRemoveAspect("IBonusCardService.Get")]
         public IResult ReduceBalance(int  cardId, decimal value)
         {
             IDataResult<BonusCard> getBonusCard = GetById(cardId);

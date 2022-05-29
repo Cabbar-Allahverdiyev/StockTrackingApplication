@@ -40,10 +40,10 @@ namespace WindowsForm.Forms
             _categoryService = categoryService;
             _supplierService = supplierService;
             InitializeComponent();
-            MyControl myControl = new MyControl();
-            myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
-            myControl.WritePlaceholdersForTextBoxBarcodeNo(textBoxBarkodNo);
-            myControl.WritePlaceholdersForTextBoxQuantityPerUnit(textBoxKemiyyet);
+           
+            MyControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
+            MyControl.WritePlaceholdersForTextBoxBarcodeNo(textBoxBarkodNo);
+            MyControl.WritePlaceholdersForTextBoxQuantityPerUnit(textBoxKemiyyet);
 
         }
 

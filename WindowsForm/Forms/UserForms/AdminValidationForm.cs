@@ -22,8 +22,7 @@ namespace WindowsForm.Forms.UserForms
 
         private void AdminValidationForm_Load(object sender, EventArgs e)
         {
-            MyControl myControl = new MyControl() ;
-            myControl.MakeAsteriskPasswordCharacterAndMaxLengthFourTen(textBox1);
+            MyControl.MakeAsteriskPasswordCharacterAndMaxLengthFourTen(textBox1);
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)

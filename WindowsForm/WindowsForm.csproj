@@ -27,6 +27,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="BonusCardSystem\Forms\BonusCardDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="BonusCardSystem\Forms\BonusCardSystemLoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\UserForms\FormSalesListForUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -51,6 +57,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="BonusCardSystem\Forms\AdminForms\" />
+    <Folder Include="BonusCardSystem\Forms\UserForms\" />
     <Folder Include="Core\Controllers\Abstract\" />
     <Folder Include="Utilities\Helpers\" />
     <Folder Include="Wwwroot\" />

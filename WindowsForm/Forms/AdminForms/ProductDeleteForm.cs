@@ -35,8 +35,7 @@ namespace WindowsForm.Forms
         ISupplierService _supplierService;
 
         ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
-        MyControl myControl = new MyControl();
-
+        
         public ProductDeleteForm(IProductService productService
                                 , IBrandService brandService
                                 , ICategoryService categoryService
@@ -47,7 +46,7 @@ namespace WindowsForm.Forms
             _categoryService = categoryService;
             _supplierService = supplierService;
             InitializeComponent();
-            myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
+            MyControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
         }
 
         private void ProductDeleteForm_Load(object sender, EventArgs e)

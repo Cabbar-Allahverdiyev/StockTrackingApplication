@@ -41,8 +41,6 @@ namespace WindowsForm.Forms
         IDebtService _debtService;
         IBonusCardService _bonusCardService;
 
-        MyControl myControl = new MyControl();
-
         public SalesForm(ICategoryService categoryService
                             , IBrandService brandService
                             , ISupplierService supplierService
@@ -65,10 +63,9 @@ namespace WindowsForm.Forms
 
             InitializeComponent();
             TotalPriceLabelWrite();
-            myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
+            MyControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
             BarcodeScanner barcodeScanner = new BarcodeScanner(textBoxBarkodNo);
             barcodeScanner.BarcodeScanned += BarcodeScanner_BarcodeScanned;
-
 
             CartId = 0;
             BonusCardId = 0;
@@ -647,7 +644,7 @@ namespace WindowsForm.Forms
                         FormsMessage.WarningMessage(getBonusCard.Message);
                         return;
                     }
-                    BonusCardId =getBonusCard.Data.BonusCardId;
+                    BonusCardId = getBonusCard.Data.BonusCardId;
                     textBoxBonusCardCustomerName.Text = getBonusCard.Data.Ad + " " + getBonusCard.Data.Soyad;
                     FormsMessage.SuccessMessage(getBonusCard.Message);
 
@@ -734,16 +731,16 @@ namespace WindowsForm.Forms
         private void CartListRefesh()
         {
             dataGridViewCartList.DataSource = _cartService.GetAllCartViewDetailsByUserId(staticUserId).Data;
-            myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "AlisQiymeti", Color.Yellow);
-            myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "Qiymet", Color.Green);
-            myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "Cem", Color.Red);
+            MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "AlisQiymeti", Color.Yellow);
+            MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "Qiymet", Color.Green);
+            MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "Cem", Color.Red);
         }
 
         private void ProductListRefesh()
         {
             dataGridViewProductList.DataSource = _productService.GetAllProductViewDasboardDetail().Data;
-            myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewProductList, "AlisQiymet", Color.Yellow);
-            myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewProductList, "Qiymet", Color.Green);
+            MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewProductList, "AlisQiymet", Color.Yellow);
+            MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewProductList, "Qiymet", Color.Green);
         }
 
 
@@ -935,6 +932,9 @@ namespace WindowsForm.Forms
             }
         }
 
+        private void textBoxBonusCardSelect_TextChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }

@@ -28,11 +28,10 @@ namespace WindowsForm.Forms
         {
             _suplierService = suplierService;
             InitializeComponent();
-            MyControl myControl = new MyControl();
-            myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
-            myControl.WritePlaceholdersForTextBoxAddress(textBoxAdres);
-            myControl.WritePlaceholdersForTextBoxEmail(textBoxEmail);
-            myControl.WritePlaceholdersForTextBoxPhoneNumberAndMaxLengthTen(textBoxTelefon);
+            MyControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
+            MyControl.WritePlaceholdersForTextBoxAddress(textBoxAdres);
+            MyControl.WritePlaceholdersForTextBoxEmail(textBoxEmail);
+            MyControl.WritePlaceholdersForTextBoxPhoneNumberAndMaxLengthTen(textBoxTelefon);
         }
 
         private void SupplierForm_Load(object sender, EventArgs e)

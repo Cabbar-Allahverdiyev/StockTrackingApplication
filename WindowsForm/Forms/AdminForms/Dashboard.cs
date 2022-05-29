@@ -19,7 +19,6 @@ namespace WindowsForm.Forms
 {
     public partial class Dashboard : Form
     {
-        MyControl myControl = new MyControl();
         IUserService _userService;
         IOperationClaimForFormsService _operationClaimService;
         IUserOperationClaimForFormsService _userOperationClaimService;
@@ -323,7 +322,7 @@ namespace WindowsForm.Forms
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            myControl.CloseYesNo(this, new LoginForm(_userOperationClaimService
+            MyControl.CloseYesNo(this, new LoginForm(_userOperationClaimService
                                                     , _userService
                                                     , _operationClaimService
                                                     , _productService

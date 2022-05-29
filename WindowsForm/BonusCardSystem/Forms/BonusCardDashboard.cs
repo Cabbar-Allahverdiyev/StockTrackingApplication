@@ -1,8 +1,6 @@
 ﻿using Business.Abstract;
-using Business.Concrete;
 using Core.Entities.Concrete;
 using Core.Utilities.Results;
-using DataAccess.Concrete.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,14 +11,15 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Controllers.Concrete;
+using WindowsForm.BonusCardSystem.Forms;
+using WindowsForm.Forms.SettingForms;
 using WindowsForm.MyControls;
 
-namespace WindowsForm.Forms.UserForms
+namespace WindowsForm.BonusCardSystem.Forms
 {
-    public partial class UserDashboard : Form
+    public partial class BonusCardDashboard : Form
     {
         IUserService _userService;
-
         IOperationClaimForFormsService _operationClaimService;
         IUserOperationClaimForFormsService _userOperationClaimService;
         IProductService _productService;
@@ -35,12 +34,13 @@ namespace WindowsForm.Forms.UserForms
         ISupplierService _supplierService;
         IBonusCardService _bonusCardService;
         IFormSettingService _formSettingService;
-
-        private Form activateForm;
+        //OperationClaimForFormsManager _operationClaimManager=new OperationClaimForFormsManager(new EfOperationClaimForFormsDal());
+        //UserOperationClaimForFormsManager _userOperationClaimForFormsManager = new UserOperationClaimForFormsManager(new EfUserOperationClaimForFormsDal());
+        private Form? activateForm;
+        //private Button currentButton;
         private Size formSize;
-        // UserManager _userService = new UserManager(new EfUserDal());
 
-        public UserDashboard(IUserService userService
+        public BonusCardDashboard(IUserService userService
             , IOperationClaimForFormsService operationClaimService
             , IUserOperationClaimForFormsService userOperationClaimForFormsService
             , IProductService productService
@@ -50,11 +50,7 @@ namespace WindowsForm.Forms.UserForms
             , ICustomerBalanceService customerBalanceService
             , ICustomerPaymentService customerPaymentService
             , ICartService cartService
-            , IDebtService debtService
-            , ISaleWinFormService saleWinFormService
-            , ISupplierService supplierService
-            , IBonusCardService bonusCardService
-            , IFormSettingService formSettingService)
+            , IDebtService debtService, ISaleWinFormService saleWinFormService, ISupplierService supplierService, IBonusCardService bonusCardService, IFormSettingService formSettingService)
         {
             _userService = userService;
             _operationClaimService = operationClaimService;
@@ -72,27 +68,38 @@ namespace WindowsForm.Forms.UserForms
             _bonusCardService = bonusCardService;
             _formSettingService = formSettingService;
 
+
             InitializeComponent();
             this.Padding = new Padding();
             CollapseMenu();
             this.BackColor = Color.FromArgb(41, 128, 185);
-            DisableButton();
-            IDataResult<User> getUser = _userService.GetById(LoginForm.UserId);
+            //user dashboard formdada var
+            IDataResult<User> getUser = _userService.GetById(BonusCardSystemLoginForm.UserId);
             labelFirstName.Text = getUser.Data.FirstName;
             labelLastName.Text = getUser.Data.LastName;
+
+            DisableButton();
+
             //WM_NCCALCSIZE
         }
 
-        private void UserDashboard_Load(object sender, EventArgs e)
-        {
-            buttonHome_Click(sender, e);
-        }
+
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
+
+        private void Dashboard_Load(object sender, EventArgs e)
+        {
+            buttonHome_Click(sender, e);
+        }
+
+        private void labelTitle_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void panelTitleBar_MouseDown(object sender, MouseEventArgs e)
         {
@@ -197,8 +204,11 @@ namespace WindowsForm.Forms.UserForms
             {
                 if (previousBtn.GetType() == typeof(Button))
                 {
-
+                    //bura yeiden bax
                     previousBtn.BackColor = Color.FromArgb(41, 128, 185);
+                    //previousBtn.BackColor = Color.FromArgb(152, 161, 155);
+                    // previousBtn.BackColor = Color.FromArgb(152, 158, 161);
+                    // previousBtn.ForeColor = Color.Gainsboro;
                     previousBtn.ForeColor = Color.White;
                     previousBtn.Font = new Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
                 }
@@ -234,6 +244,10 @@ namespace WindowsForm.Forms.UserForms
             btnClose.BackColor = Color.FromArgb(253, 33, 45);
         }
 
+        private void btnClose_MouseHover(object sender, EventArgs e)
+        {
+
+        }
 
         private void btnClose_MouseLeave(object sender, EventArgs e)
         {
@@ -248,31 +262,29 @@ namespace WindowsForm.Forms.UserForms
 
         private void buttonHome_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new SalesFormForUser(_categoryService
-                                        , _brandService
-                                        , _supplierService
-                                        , _productService
-                                        , _cartService
-                                        , _customerService
-                                        , _saleWinFormService
-                                        , _debtService
-                                        , _bonusCardService), sender);
+            //OpenChildForm(new SalesForm(_categoryService
+            //                            , _brandService
+            //                            , _supplierService
+            //                            , _productService
+            //                            , _cartService
+            //                            , _customerService
+            //                            , _saleWinFormService
+            //                            , _debtService
+            //                            ,_bonusCardService), sender);
+
+            bonusƏlavəEtToolStripMenuItem_Click(sender,e);
+
         }
 
         private void buttonProducts_Click(object sender, EventArgs e)
         {
             Open_DropdownMenu(myDMProduct, sender);
-            // myDMProduct.Show(buttonProducts, buttonProducts.Width, 0);
-
         }
 
 
         private void buttonSales_Click(object sender, EventArgs e)
         {
             Open_DropdownMenu(myDMSales, sender);
-            // myDMSales.Show(buttonSales, myDMSales.Width - buttonProducts.Width, buttonSales.Height);
-
-
         }
 
         private void buttonCategories_Click(object sender, EventArgs e)
@@ -300,10 +312,14 @@ namespace WindowsForm.Forms.UserForms
             Open_DropdownMenu(myDMOther, sender);
         }
 
+        private void buttonSettings_Click(object sender, EventArgs e)
+        {
+            Open_DropdownMenu(myDMSettings, sender);
+        }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            MyControl.CloseYesNo(this, new LoginForm(_userOperationClaimService
+            MyControl.CloseYesNo(this, new BonusCardSystemLoginForm(_userOperationClaimService
                                                     , _userService
                                                     , _operationClaimService
                                                     , _productService
@@ -318,77 +334,103 @@ namespace WindowsForm.Forms.UserForms
                                                     , _brandService
                                                     , _bonusCardService
                                                     , _formSettingService));
+
+
         }
 
         //Dropdown menu---------------------------------->
         //Product--------------------------------------->
 
-
-        private void sıralaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void sıralaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormProductList(_productService, _brandService, _categoryService, _supplierService), sender);
-
+           // OpenChildForm(new FormProductList(_productService, _brandService, _categoryService, _supplierService), sender);
         }
 
-        private void əlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new FormProductAdd(_productService, _brandService, _categoryService, _supplierService), sender);
 
-        }
-
-        //Brand__________________>
-        private void əlavəEtToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new FormBrand(_brandService), sender);
-        }
-
-        //Supplier_________________>
         private void əlavəEtToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new SupplierForm(_supplierService), sender);
+            //OpenChildForm(new FormProductAdd(_productService, _brandService, _categoryService, _supplierService), sender);
+        }
+
+        private void yeniləToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //OpenChildForm(new ProductUpdateForm(_productService, _brandService, _categoryService, _supplierService), sender);
+        }
+
+        private void silToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //OpenChildForm(new ProductDeleteForm(_productService, _brandService, _categoryService, _supplierService), sender);
+        }
+
+        //Brand_______________________>
+        private void əlavəEtToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            //OpenChildForm(new FormBrand(_brandService), sender);
+        }
+
+        private void yeniləVəSilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //OpenChildForm(new BrandUpdateAndDeleteForm(_brandService), sender);
+        }
+
+        //Supplier_____________________>
+        private void əlavəEtToolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            //OpenChildForm(new SupplierForm(_supplierService), sender);
+        }
+
+        private void yeniləVəSilToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //OpenChildForm(new SupplierUpdateForm(_supplierService), sender);
         }
 
         //Sales-------------------------------------------->
         private void satislariSiralaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormSalesListForUser(_saleWinFormService), sender);
+            //OpenChildForm(new FormSalesList(_productService, _saleWinFormService), sender);
         }
 
         //Istifadeci--------------------------------------------->
         private void istifadəçiləriSıralaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormUserListed(_userService), sender);
+            OpenChildForm(new WindowsForm.Forms.FormUserListed(_userService), sender);
         }
 
         private void istifadəçiƏlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //OpenChildForm(new FormUserAdd(), sender);
+            OpenChildForm(new WindowsForm.Forms.FormUserAdd(_userService, _operationClaimService, _userOperationClaimService), sender);
         }
 
         private void istifadəçiləriYeniləToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //OpenChildForm(new UserUpdateForm(), sender);
+            OpenChildForm(new WindowsForm.Forms.UserUpdateForm(_userService), sender);
         }
 
         private void istifadəçiSilToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //OpenChildForm(new UserDeleteForm(), sender);
+            OpenChildForm(new WindowsForm.Forms.UserDeleteForm(_userService), sender);
         }
 
         //Categories------------------------------------------>
 
         private void kateqoriyalariSiralaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //OpenChildForm(new FormCategory(), sender);
+            //OpenChildForm(new FormCategory(_categoryService), sender);
+        }
+
+        private void yenileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //OpenChildForm(new CategoryUpdateAndDeleteForm(_categoryService), sender);
         }
 
         private void elaveEtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormCategory(_categoryService), sender);
+            //OpenChildForm(new FormCategory(_categoryService), sender);
         }
-        private void yenileToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void silToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new CategoryUpdateAndDeleteForm(_categoryService), sender);
+            //OpenChildForm(new CategoryUpdateAndDeleteForm(_categoryService), sender);
         }
 
 
@@ -396,12 +438,12 @@ namespace WindowsForm.Forms.UserForms
 
         private void kameraToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //OpenChildForm(new CameraBarcodeScanner(), sender);
+            OpenChildForm(new WindowsForm.Forms.CameraBarcodeScanner(), sender);
         }
 
         private void lazerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new USBBarcodeScannerForm(), sender);
+            OpenChildForm(new WindowsForm.Forms.USBBarcodeScannerForm(), sender);
         }
 
 
@@ -426,32 +468,45 @@ namespace WindowsForm.Forms.UserForms
             // OpenChildForm(new(), sender);
         }
 
-        //Elaveler ---------------------->
-
-
-        private void tedarukToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new SupplierForm(_supplierService), sender);
-        }
-
+        //Others--------------------------------->
         private void musterilerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new CustomerForm(_customerService), sender);
+            OpenChildForm(new WindowsForm.Forms.CustomerForm(_customerService), sender);
         }
 
         private void musteriOdenisleriToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new CustomerPaymentForm(_userService, _customerPaymentService, _customerService), sender);
+            //OpenChildForm(new CustomerPaymentForm(_userService, _customerPaymentService, _customerService), sender);
+
         }
 
-        //Bonus Kart______________>
-        private void əlavəEtToolStripMenuItem3_Click(object sender, EventArgs e)
+        private void selahiyyetlerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new BonusCardAddForm(_bonusCardService, _customerService), sender);
+            OpenChildForm(new WindowsForm.Forms.AdminForms.OperationClaimForm(_userService, _operationClaimService, _userOperationClaimService), sender);
 
         }
 
-        //solid prinsiplerine uygu hala sal
+        //Bonus Kart__________________________>
+        //Kart elave et
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new WindowsForm.Forms.BonusCardAddForm(_bonusCardService, _customerService), sender);
+
+        }
+
+        //Bonus Elave et
+        private void bonusƏlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new HomeForm(_bonusCardService), sender);
+        }
+
+        //Parametrler --------------------------->
+        private void bonusKartToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new BonusCardSettingForm(_formSettingService), sender);
+        }
+
+
         private void CollapseMenu()
         {
             if (this.panelMenu.Width > 200) //Collapse Menu
@@ -506,8 +561,18 @@ namespace WindowsForm.Forms.UserForms
                     //ctrl.BackColor = Color.FromArgb(159, 161, 224);
                     ctrl.BackColor = Color.FromArgb(149, 192, 220);
                 else ctrl.BackColor = Color.FromArgb(41, 128, 185);
+
+                //if (dropdownMenu.Visible)
+                //    ctrl.BackColor = Color.FromArgb(72, 52, 182);
+                //else ctrl.BackColor = Color.FromArgb(98, 102, 244);
+                //ctrl.BackColor = Color.FromArgb(72, 52, 182);
+                //else ctrl.BackColor = Color.FromArgb(24, 24, 36);
             }
         }
+
+
+
+
 
         private void OpenChildForm(Form childForm, object btnSender)
         {
@@ -525,6 +590,85 @@ namespace WindowsForm.Forms.UserForms
             childForm.Show();
             labelTitle.Text = childForm.Text;
         }
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //private void ActivateButton(object btnSender)
+        //{
+        //    if (btnSender != null)
+        //    {
+        //        if (currentButton.Equals((MyDropdownMenu)btnSender))
+        //        {
+        //            DisableButton();
+        //            //Color color = SelectThemeColor();
+        //            currentButton = (Button)btnSender;
+        //            //currentButton.BackColor = color;
+        //           // currentButton.ForeColor = Color.White;
+        //           // currentButton.Font = new System.Drawing.Font("Segoe UI", 11.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+        //            //panelTitleBar.BackColor = color;
+        //           // panelLogo.BackColor = ThemeColor.ChangeColorBrightness(color, -0.3);
+        //            //ThemeColor.PrimaryColor = color;
+        //            //ThemeColor.SecondaryColor = ThemeColor.ChangeColorBrightness(color, -0.3);
+        //            buttonCloseChildForm.Visible = true;
+
+        //        }
+        //    }
+        //}
+
+
+
+
 
 
     }

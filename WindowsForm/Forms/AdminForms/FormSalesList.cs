@@ -27,7 +27,7 @@ namespace WindowsForm.Forms
         IProductService _productService;
         ISaleWinFormService _saleWinFormService;
 
-        MyControl myControl = new MyControl();
+        
         
         public FormSalesList(IProductService productService, ISaleWinFormService saleWinFormService)
         {
@@ -274,9 +274,9 @@ namespace WindowsForm.Forms
         {
             dataGridViewSaleList.DataSource = _saleWinFormService.GetAllSaleWinFormDtoDetails().Data;
 
-            myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewSaleList, "AlisQiymeti", Color.Yellow);
-            myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewSaleList, "SatilanQiymet", Color.Green);
-            myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewSaleList, "Cem", Color.Red);
+            MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewSaleList, "AlisQiymeti", Color.Yellow);
+            MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewSaleList, "SatilanQiymet", Color.Green);
+            MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewSaleList, "Cem", Color.Red);
         }
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)

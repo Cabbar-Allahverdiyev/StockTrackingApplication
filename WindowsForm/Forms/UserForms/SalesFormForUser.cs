@@ -41,7 +41,6 @@ namespace WindowsForm.Forms.UserForms
         ISupplierService _supplierService;
         IBonusCardService _bonusCardService;
 
-        MyControl myControl = new MyControl();
         ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
 
         public SalesFormForUser(ICategoryService categoryService
@@ -69,7 +68,7 @@ namespace WindowsForm.Forms.UserForms
             TotalPriceLabelWrite();
             UserAuthorization.QrCodeIsSuccess = false;
 
-            myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
+            MyControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
             //myControl.WritePlaceholdersForTextBoxSearchByProductName(textBoxAxtarBarcodeNumber);
 
             BarcodeScanner barcodeScanner = new BarcodeScanner(textBoxBarkodNo);
@@ -118,7 +117,7 @@ namespace WindowsForm.Forms.UserForms
                 cart.Quantity = int.Parse(textBoxMiqdar.Text);
                 cart.TotalPrice = decimal.Parse(textBoxCem.Text);
                 cart.UserId = staticUserId;
-                if (!FormValidationTool.IsValid(new CartValidator(),cart))
+                if (!FormValidationTool.IsValid(new CartValidator(), cart))
                 {
                     return;
                 }
@@ -377,7 +376,7 @@ namespace WindowsForm.Forms.UserForms
                         saleWinForm.SoldPrice = cart.SoldPrice;
                         saleWinForm.Quantity = cart.Quantity;
 
-                        if (!FormValidationTool.IsValid(new SaleWinFormValidator(),saleWinForm))
+                        if (!FormValidationTool.IsValid(new SaleWinFormValidator(), saleWinForm))
                         {
                             return;
                         }
@@ -757,16 +756,16 @@ namespace WindowsForm.Forms.UserForms
         {
             dataGridViewCartList.DataSource = _cartService.GetAllCartViewDetailsByUserId(staticUserId).Data;
 
-            myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "AlisQiymeti", Color.Yellow);
-            myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "Qiymet", Color.Green);
-            myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "Cem", Color.Red);
+            MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "AlisQiymeti", Color.Yellow);
+            MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "Qiymet", Color.Green);
+            MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "Cem", Color.Red);
         }
 
         private void ProductListRefesh()
         {
             dataGridViewProductList.DataSource = _productService.GetAllProductViewDasboardDetail().Data;
-            myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewProductList, "AlisQiymet", Color.Yellow);
-            myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewProductList, "Qiymet", Color.Green);
+            MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewProductList, "AlisQiymet", Color.Yellow);
+            MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewProductList, "Qiymet", Color.Green);
         }
 
 
@@ -824,7 +823,7 @@ namespace WindowsForm.Forms.UserForms
             cart.SoldPrice = result.Data.UnitPrice;
             cart.TotalPrice = cart.Quantity * cart.SoldPrice;
 
-            if (!FormValidationTool.IsValid(new CartValidator(),cart))
+            if (!FormValidationTool.IsValid(new CartValidator(), cart))
             {
                 return;
             }
@@ -888,6 +887,6 @@ namespace WindowsForm.Forms.UserForms
             comboBoxSupplierList.Text = "";
         }
 
-        
+
     }
 }

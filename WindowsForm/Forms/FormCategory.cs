@@ -27,7 +27,7 @@ namespace WindowsForm.Forms
             _categoryService = categoryService;
             InitializeComponent();
             MyControl myControl = new MyControl();
-            myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
+            MyControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
         }
 
         CategorySearch search = new CategorySearch();

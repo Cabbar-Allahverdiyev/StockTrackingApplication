@@ -13,6 +13,7 @@ namespace Entities.DTOs.CustomerDtos
         public string Address { get; set; }
         public decimal Debt { get; set; }
         public decimal Balance { get; set; }
+        public decimal BonusCardBalance { get; set; }
         public DateTime CustomerCreatedDate { get; set; }
         public int CustomerId { get; set; }
       

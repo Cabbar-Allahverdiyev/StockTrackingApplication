@@ -22,7 +22,7 @@ namespace WindowsForm.Forms.UserForms
     public partial class FormSalesListForUser : Form
     {
         ISaleWinFormService _saleWinFormService;
-        MyControl myControl = new MyControl();
+        
 
         public FormSalesListForUser(ISaleWinFormService saleWinFormService)
         {
@@ -219,9 +219,9 @@ namespace WindowsForm.Forms.UserForms
         private void SaleListRefesh()
         {
             dataGridViewSaleList.DataSource = _saleWinFormService.GetAllSaleWinFormDtoDetails().Data;
-            myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewSaleList, "AlisQiymeti", Color.Yellow);
-            myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewSaleList, "SatilanQiymet", Color.Green);
-            myControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewSaleList, "Cem", Color.Red);
+            MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewSaleList, "AlisQiymeti", Color.Yellow);
+            MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewSaleList, "SatilanQiymet", Color.Green);
+            MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewSaleList, "Cem", Color.Red);
         }
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)

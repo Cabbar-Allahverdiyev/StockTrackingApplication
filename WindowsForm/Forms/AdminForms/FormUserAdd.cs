@@ -36,10 +36,10 @@ namespace WindowsForm.Forms
             _userOperationClaimForFormsService = userOperationClaimForFormsService;
             InitializeComponent();
 
-            myControl.MakeAsteriskPasswordCharacterAndMaxLengthFourTen(textBoxSifre, textBoxSifreTekrari);
-            myControl.WritePlaceholdersForTextBoxPhoneNumberAndMaxLengthTen(textBoxTelefonNomresi);
-            myControl.WritePlaceholdersForTextBoxEmail(textBoxEmail);
-            myControl.WritePlaceholdersForTextBoxAddress(textBoxAdres);
+            MyControl.MakeAsteriskPasswordCharacterAndMaxLengthFourTen(textBoxSifre, textBoxSifreTekrari);
+            MyControl.WritePlaceholdersForTextBoxPhoneNumberAndMaxLengthTen(textBoxTelefonNomresi);
+            MyControl.WritePlaceholdersForTextBoxEmail(textBoxEmail);
+            MyControl.WritePlaceholdersForTextBoxAddress(textBoxAdres);
            
         }
 
@@ -113,22 +113,22 @@ namespace WindowsForm.Forms
 
         private void label5_MouseDown(object sender, MouseEventArgs e)
         {
-            myControl.NotAAsteriks(textBoxSifre);
+            MyControl.NotAAsteriks(textBoxSifre);
         }
 
         private void label6_MouseDown(object sender, MouseEventArgs e)
         {
-            myControl.NotAAsteriks(textBoxSifreTekrari);
+            MyControl.NotAAsteriks(textBoxSifreTekrari);
         }
 
         private void label5_MouseUp(object sender, MouseEventArgs e)
         {
-            myControl.MakeAsteriskPasswordCharacterAndMaxLengthFourTen(textBoxSifre);
+            MyControl.MakeAsteriskPasswordCharacterAndMaxLengthFourTen(textBoxSifre);
         }
 
         private void label6_MouseUp(object sender, MouseEventArgs e)
         {
-            myControl.MakeAsteriskPasswordCharacterAndMaxLengthFourTen(textBoxSifreTekrari);
+            MyControl.MakeAsteriskPasswordCharacterAndMaxLengthFourTen(textBoxSifreTekrari);
         }
 
         private void label6_Click(object sender, EventArgs e)

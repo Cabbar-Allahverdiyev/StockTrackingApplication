@@ -44,8 +44,8 @@ namespace WindowsForm.Forms
             _categoryService = categoryManager;
             _supplierService = supplierManager;
             InitializeComponent();
-            myControl.WritePlaceholdersForTextBoxSearchByProductName(textBoxAxtar);
-            myControl.WritePlaceholdersForTextBoxBarcodeNo(textBoxBarkodNo);
+            MyControl.WritePlaceholdersForTextBoxSearchByProductName(textBoxAxtar);
+            MyControl.WritePlaceholdersForTextBoxBarcodeNo(textBoxBarkodNo);
         }
 
         private void ProductUpdateForm_Load(object sender, EventArgs e)

@@ -26,8 +26,7 @@ namespace WindowsForm.Forms
         {
             _brandService = brandService;
             InitializeComponent();
-            MyControl myControl = new MyControl();
-            myControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
+            MyControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
         }
 
         BrandSearch brandSearch = new BrandSearch();

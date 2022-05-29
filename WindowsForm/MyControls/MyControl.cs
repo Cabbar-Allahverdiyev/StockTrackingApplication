@@ -11,7 +11,10 @@ namespace WindowsForm.MyControls
 {
     public class MyControl
     {
-        public void MakeAsteriskPasswordCharacterAndMaxLengthFourTen(params TextBox[] textBoxesPaswords)
+        public static string meselen = "məsələn :";
+
+
+        public static void MakeAsteriskPasswordCharacterAndMaxLengthFourTen(params TextBox[] textBoxesPaswords)
         {
             foreach (TextBox textBox in textBoxesPaswords)
             {
@@ -21,7 +24,7 @@ namespace WindowsForm.MyControls
                 textBox.MaxLength = 14;
             }
         }
-        public void NotAAsteriks(params TextBox[] textBoxesPaswords)
+        public static void NotAAsteriks(params TextBox[] textBoxesPaswords)
         {
             foreach (TextBox textBox in textBoxesPaswords)
             {
@@ -32,45 +35,45 @@ namespace WindowsForm.MyControls
             }
         }
 
-        string meselen = "məsələn :";
-        public void WritePlaceholdersForTextBoxPhoneNumberAndMaxLengthTen(TextBox textBoxPhoneNumber)
+
+        public static void WritePlaceholdersForTextBoxPhoneNumberAndMaxLengthTen(TextBox textBoxPhoneNumber)
         {
-            textBoxPhoneNumber.PlaceholderText = "məsələn : 0554926939";
+            textBoxPhoneNumber.PlaceholderText = $"{meselen} : 0554926939";
             textBoxPhoneNumber.MaxLength = 10;
 
         }
 
-        public void WritePlaceholdersForTextBoxEmail(TextBox textBoxEmail)
+        public static void WritePlaceholdersForTextBoxEmail(TextBox textBoxEmail)
         {
             textBoxEmail.PlaceholderText = $"{meselen} cabbar@cabbar.com";
             textBoxEmail.MaxLength = 40;
         }
 
-        public void WritePlaceholdersForTextBoxAddress(TextBox textBoxAddress)
+        public static void WritePlaceholdersForTextBoxAddress(TextBox textBoxAddress)
         {
             textBoxAddress.PlaceholderText = $"{meselen} Yevlax";
             textBoxAddress.MaxLength = 40;
         }
 
-        public void WritePlaceholdersForTextBoxSearch(TextBox textBoxSearch)
+        public static void WritePlaceholdersForTextBoxSearch(TextBox textBoxSearch)
         {
             textBoxSearch.PlaceholderText = "Axtar";
             textBoxSearch.MaxLength = 20;
         }
 
-        public void WritePlaceholdersForTextBoxSearchByProductName(TextBox textBoxBarcodeNumber)
+        public static void WritePlaceholdersForTextBoxSearchByProductName(TextBox textBoxBarcodeNumber)
         {
             textBoxBarcodeNumber.PlaceholderText = "Axtar : Məhsul adı";
             textBoxBarcodeNumber.MaxLength = 30;
         }
 
-        public void WritePlaceholdersForTextBoxBarcodeNo(TextBox textBoxBarcodeNumber)
+        public static void WritePlaceholdersForTextBoxBarcodeNo(TextBox textBoxBarcodeNumber)
         {
             textBoxBarcodeNumber.PlaceholderText = "13 rəqəmdən az olmamalıdır !";
             textBoxBarcodeNumber.MaxLength = 30;
         }
 
-        public void WritePlaceholdersForTextBoxQuantityPerUnit(TextBox textBoxQuantityPerUnit)
+        public static void WritePlaceholdersForTextBoxQuantityPerUnit(TextBox textBoxQuantityPerUnit)
         {
             textBoxQuantityPerUnit.PlaceholderText = $"{meselen} 1 qutu , 1x və.s";
             textBoxQuantityPerUnit.MaxLength = 20;
@@ -97,14 +100,14 @@ namespace WindowsForm.MyControls
             }
         }
 
-        public void WriteProductPropertiesInComboBox(ComboBox comboBox)
+        public static void WriteProductPropertiesInComboBox(ComboBox comboBox)
         {
             comboBox.Items.Add("Barkod");
             comboBox.Items.Add("Məhsul");
 
         }
 
-        public void CloseYesNo(Form formToHide,Form formToShow)
+        public static void CloseYesNo(Form formToHide, Form formToShow)
         {
             MessageBoxButtons messageButtons = MessageBoxButtons.YesNo;
             string title = "Çıxış pəncərəsi";
@@ -122,7 +125,7 @@ namespace WindowsForm.MyControls
             }
         }
 
-        public void MakeDataGridViewCurrentRowRedColor(DataGridView dataGridView,int rowIndex)
+        public static void MakeDataGridViewCurrentRowRedColor(DataGridView dataGridView, int rowIndex)
         {
             dataGridView.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
             //foreach (DataGridViewRow row in dataGridView.Rows)
@@ -132,11 +135,11 @@ namespace WindowsForm.MyControls
             //    {
             //        row.DefaultCellStyle.BackColor = Color.Red;
             //    }
-               
+
             //}
         }
 
-        public void MakeDataGridViewCurrentRowGreenColor(DataGridView dataGridView, int rowIndex)
+        public static void MakeDataGridViewCurrentRowGreenColor(DataGridView dataGridView, int rowIndex)
         {
             foreach (DataGridViewRow row in dataGridView.Rows)
             {
@@ -147,17 +150,9 @@ namespace WindowsForm.MyControls
             }
         }
 
-        public void MakeDataGridViewCurrentColumnCurrentColor(DataGridView dataGridView, string columnName,Color color)
+        public static void MakeDataGridViewCurrentColumnCurrentColor(DataGridView dataGridView, string columnName, Color color)
         {
             dataGridView.Columns[columnName].DefaultCellStyle.BackColor = color;
-            //foreach (DataGridViewColumn col in dataGridView.Columns)
-            //{
-            //    if (row.Index==rowIndex)
-            //    {
-            //        row.DefaultCellStyle.BackColor = Color.Yellow;
-            //    }
-                
-            //}
         }
 
     }
