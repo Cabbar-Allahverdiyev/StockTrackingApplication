@@ -37,6 +37,7 @@ namespace WindowsForm.BonusCardSystem.Forms
 
         }
 
+        //Key press----------------------------->
         private void textBoxBonusCardSelect_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (textBoxBonusCardSelect.Text.Length == 13)
@@ -53,6 +54,13 @@ namespace WindowsForm.BonusCardSystem.Forms
             } 
         }
 
+        private void textBoxValue_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MyControl.MakeTextBoxDecimalBox(sender, e);
+        }
+
+
+        //Click ---------------------------->
         private void buttonBonusCardSelect_Click(object sender, EventArgs e)
         {
             WindowsForm.Forms.BonusCardSelectForm bonusCardSelectForm = new WindowsForm.Forms.BonusCardSelectForm(_bonusCardService);
@@ -138,29 +146,17 @@ namespace WindowsForm.BonusCardSystem.Forms
             }
         }
 
+        //elave ----------------------?
         private void BarcodeScanner_BarcodeScanned(object sender, BarcodeScannerEventArgs e)
         {
             textBoxBonusCardSelect.Text = e.Barcode;
-        }
-
-        private void textBoxGuzest_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void textBoxValue_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            MyControl.MakeTextBoxDecimalBox(sender, e);
-        }
-
-        private void HomeForm_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void BonusCardRefresh()
         {
             dataGridViewList.DataSource = _bonusCardService.GetAllBonusCardForFormsDetail().Data;
         }
+
+        
     }
 }

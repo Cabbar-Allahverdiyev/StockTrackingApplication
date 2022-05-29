@@ -195,12 +195,12 @@ namespace WindowsForm.BonusCardSystem.Forms
             // buttonElaveEt
             // 
             this.buttonElaveEt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonElaveEt.Image = global::WindowsForm.Properties.Resources.elaveEtBlack;
+            this.buttonElaveEt.Image = global::WindowsForm.Properties.Resources.bonus_card_16px;
             this.buttonElaveEt.Location = new System.Drawing.Point(168, 133);
             this.buttonElaveEt.Name = "buttonElaveEt";
             this.buttonElaveEt.Size = new System.Drawing.Size(85, 27);
             this.buttonElaveEt.TabIndex = 48;
-            this.buttonElaveEt.Text = "Əlavə et";
+            this.buttonElaveEt.Text = " Tətbiq et";
             this.buttonElaveEt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonElaveEt.UseVisualStyleBackColor = true;
             this.buttonElaveEt.Click += new System.EventHandler(this.buttonElaveEt_Click);
@@ -279,6 +279,7 @@ namespace WindowsForm.BonusCardSystem.Forms
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(135, 22);
             this.textBox1.TabIndex = 59;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // dataGridViewList
             // 
