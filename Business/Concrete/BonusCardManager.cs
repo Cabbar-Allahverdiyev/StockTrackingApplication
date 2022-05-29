@@ -2,6 +2,7 @@
 using Business.Constants.Messages;
 using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -99,11 +100,14 @@ namespace Business.Concrete
         [CacheRemoveAspect("IBonusCardService.Get")]
         public IResult IncreaseBalance(int cardId, decimal value)
         {
-            IDataResult<BonusCard> getBonusCard = GetById(cardId);
-            if (!getBonusCard.Success)
+            IResult rules=BusinessRules.Run(BonusCardIdExist(cardId)
+                                            , ValueGreaterThanZero(value));
+            if (rules != null)
             {
-                return new ErrorResult(BonusCardMessages.ThisCustomerDoesNotHaveABonusCard);
+                return new ErrorResult(rules.Message);
             }
+            IDataResult<BonusCard> getBonusCard = GetById(cardId);
+           
             BonusCard bonusCard = getBonusCard.Data;
             bonusCard.Balance += value;
             Customer customer = _customerService.GetById(bonusCard.CustomerId).Data;
@@ -114,6 +118,25 @@ namespace Business.Concrete
             }
            
             return new SuccessResult(BonusCardMessages.IncreaseBalance(customer.FirstName));
+        }
+
+        private IResult ValueGreaterThanZero(decimal value)
+        {
+            if (value<=0)
+            {
+                return new ErrorResult(BonusCardMessages.ThisCustomerDoesNotHaveABonusCard);
+            }
+            return new SuccessResult();
+        }
+
+        private IResult BonusCardIdExist(int cardId)
+        {
+            IDataResult<BonusCard> getBonusCard = GetById(cardId);
+            if (!getBonusCard.Success)
+            {
+                return new ErrorResult(BonusCardMessages.ThisCustomerDoesNotHaveABonusCard);
+            }
+            return new SuccessResult();
         }
 
         [CacheRemoveAspect("IBonusCardService.Get")]

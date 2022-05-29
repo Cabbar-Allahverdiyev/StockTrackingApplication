@@ -12,16 +12,16 @@ using USB_Barcode_Scanner;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.Concrete;
 using WindowsForm.MyControls;
-using USB_Barcode_Scanner;
 using Entities.Concrete;
 using Business.Constants.Messages;
 using System.Reflection;
+using WindowsForm.Utilities.Search.Concrete.BonusCardSearch;
 
 namespace WindowsForm.BonusCardSystem.Forms
 {
     public partial class HomeForm : Form
     {
-        private int BonusCardId{ get; set; }
+        private int BonusCardId { get; set; }
 
         IBonusCardService _bonusCardService;
 
@@ -33,7 +33,7 @@ namespace WindowsForm.BonusCardSystem.Forms
             BonusCardRefresh();
             BarcodeScanner barcodeScanner = new BarcodeScanner(textBoxBonusCardSelect);
             barcodeScanner.BarcodeScanned += BarcodeScanner_BarcodeScanned;
-            BonusCardId =0;
+            BonusCardId = 0;
 
         }
 
@@ -51,7 +51,7 @@ namespace WindowsForm.BonusCardSystem.Forms
                 BonusCardId = getBonusCard.Data.BonusCardId;
                 textBoxCustomer.Text = getBonusCard.Data.Ad + " " + getBonusCard.Data.Soyad;
                 textBoxGuzest.Text = getBonusCard.Data.MusteriGuzesti.ToString();
-            } 
+            }
         }
 
         private void textBoxValue_KeyPress(object sender, KeyPressEventArgs e)
@@ -67,7 +67,7 @@ namespace WindowsForm.BonusCardSystem.Forms
             bonusCardSelectForm.ShowDialog();
             if (WindowsForm.Forms.BonusCardSelectForm.BonusCardId == 0)
             {
-                FormsMessage.WarningMessage(FormsTextMessages.IdBlank) ;
+                FormsMessage.WarningMessage(FormsTextMessages.IdBlank);
                 return;
             }
             IDataResult<BonusCardForFormsDto> getBonusCard = _bonusCardService.GetBonusCardForFormsDetailById(WindowsForm.Forms.BonusCardSelectForm.BonusCardId);
@@ -79,7 +79,7 @@ namespace WindowsForm.BonusCardSystem.Forms
             BonusCardId = WindowsForm.Forms.BonusCardSelectForm.BonusCardId;
             textBoxCustomer.Text = getBonusCard.Data.Ad + " " + getBonusCard.Data.Soyad;
             textBoxGuzest.Text = getBonusCard.Data.MusteriGuzesti.ToString();
-            
+
         }
 
         private void buttonElaveEt_Click(object sender, EventArgs e)
@@ -110,17 +110,18 @@ namespace WindowsForm.BonusCardSystem.Forms
                 }
                 FormsMessage.SuccessMessage(result.Message);
                 BonusCardRefresh();
+                ClearGroupBoxMusteri();
             }
             catch (Exception ex)
             {
                 FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
             }
-            
+
         }
 
         private void buttonTemizleBonusCard_Click(object sender, EventArgs e)
         {
-            TextBoxController.ClearAllTextBoxesByGroupBox(groupBoxMusteri);
+            ClearGroupBoxMusteri();
         }
 
 
@@ -157,6 +158,40 @@ namespace WindowsForm.BonusCardSystem.Forms
             dataGridViewList.DataSource = _bonusCardService.GetAllBonusCardForFormsDetail().Data;
         }
 
-        
+        private void ClearGroupBoxMusteri()
+        {
+            TextBoxController.ClearAllTextBoxesByGroupBox(groupBoxMusteri);
+        }
+
+        private void dataGridViewList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                BonusCardId = dataGridViewList.CurrentRow.Cells["BonusCardId"].Value.ToString() == ""
+                    ? 0
+                    : int.Parse(dataGridViewList.CurrentRow.Cells["BonusCardId"].Value.ToString());
+
+                IDataResult<BonusCardForFormsDto> getBonusCard = _bonusCardService
+                    .GetBonusCardForFormsDetailById(BonusCardId);
+                if (!getBonusCard.Success)
+                {
+                    FormsMessage.WarningMessage(getBonusCard.Message);
+                    return;
+                }
+                textBoxCustomer.Text = getBonusCard.Data.Ad + " " + getBonusCard.Data.Soyad;
+                textBoxGuzest.Text = getBonusCard.Data.MusteriGuzesti.ToString();
+            }
+            catch (Exception ex)
+            {
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
+            }
+        }
+
+        private void textBoxAxtar_TextChanged(object sender, EventArgs e)
+        {
+            BonusCardSearch bonusCardSearch = new BonusCardSearch();
+            bonusCardSearch.GetDataWriteGridView(_bonusCardService.GetAllBonusCardForFormsDetail().Data
+                , textBoxAxtar.Text, dataGridViewList);
+        }
     }
 }

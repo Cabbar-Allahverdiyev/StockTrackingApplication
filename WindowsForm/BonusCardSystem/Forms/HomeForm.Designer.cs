@@ -30,7 +30,6 @@ namespace WindowsForm.BonusCardSystem.Forms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeForm));
-            this.textBoxAxtar = new System.Windows.Forms.TextBox();
             this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
             this.checkBoxBonusCard = new System.Windows.Forms.CheckBox();
             this.textBoxBonusCardSelect = new System.Windows.Forms.TextBox();
@@ -48,22 +47,13 @@ namespace WindowsForm.BonusCardSystem.Forms
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxAxtar = new System.Windows.Forms.TextBox();
             this.dataGridViewList = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).BeginInit();
             this.groupBoxMusteri.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewList)).BeginInit();
             this.SuspendLayout();
-            // 
-            // textBoxAxtar
-            // 
-            this.textBoxAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxAxtar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxAxtar.Location = new System.Drawing.Point(2038, 11);
-            this.textBoxAxtar.Name = "textBoxAxtar";
-            this.textBoxAxtar.Size = new System.Drawing.Size(138, 22);
-            this.textBoxAxtar.TabIndex = 50;
             // 
             // pictureBoxRefresh
             // 
@@ -224,7 +214,6 @@ namespace WindowsForm.BonusCardSystem.Forms
             this.textBoxGuzest.Name = "textBoxGuzest";
             this.textBoxGuzest.Size = new System.Drawing.Size(53, 22);
             this.textBoxGuzest.TabIndex = 44;
-            this.textBoxGuzest.TextChanged += new System.EventHandler(this.textBoxGuzest_TextChanged);
             // 
             // label6
             // 
@@ -271,15 +260,15 @@ namespace WindowsForm.BonusCardSystem.Forms
             this.label12.TabIndex = 60;
             this.label12.Text = "     ";
             // 
-            // textBox1
+            // textBoxAxtar
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(759, 9);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(135, 22);
-            this.textBox1.TabIndex = 59;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBoxAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxAxtar.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxAxtar.Location = new System.Drawing.Point(759, 9);
+            this.textBoxAxtar.Name = "textBoxAxtar";
+            this.textBoxAxtar.Size = new System.Drawing.Size(135, 22);
+            this.textBoxAxtar.TabIndex = 59;
+            this.textBoxAxtar.TextChanged += new System.EventHandler(this.textBoxAxtar_TextChanged);
             // 
             // dataGridViewList
             // 
@@ -297,6 +286,7 @@ namespace WindowsForm.BonusCardSystem.Forms
             this.dataGridViewList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewList.Size = new System.Drawing.Size(568, 421);
             this.dataGridViewList.TabIndex = 62;
+            this.dataGridViewList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewList_CellDoubleClick);
             // 
             // HomeForm
             // 
@@ -307,14 +297,12 @@ namespace WindowsForm.BonusCardSystem.Forms
             this.Controls.Add(this.dataGridViewList);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.groupBoxMusteri);
             this.Controls.Add(this.textBoxAxtar);
+            this.Controls.Add(this.groupBoxMusteri);
             this.Controls.Add(this.pictureBoxRefresh);
             this.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "HomeForm";
             this.Text = "HomeForm";
-            this.Load += new System.EventHandler(this.HomeForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).EndInit();
             this.groupBoxMusteri.ResumeLayout(false);
             this.groupBoxMusteri.PerformLayout();
@@ -327,7 +315,7 @@ namespace WindowsForm.BonusCardSystem.Forms
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBoxAxtar;
+        //private System.Windows.Forms.TextBox textBoxAxtar;
         private System.Windows.Forms.PictureBox pictureBoxRefresh;
         private System.Windows.Forms.CheckBox checkBoxBonusCard;
         private System.Windows.Forms.TextBox textBoxBonusCardSelect;
@@ -343,7 +331,7 @@ namespace WindowsForm.BonusCardSystem.Forms
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxAxtar;
         private System.Windows.Forms.TextBox textBoxCustomer;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridViewList;

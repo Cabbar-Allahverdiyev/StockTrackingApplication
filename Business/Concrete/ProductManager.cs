@@ -34,7 +34,7 @@ namespace Business.Concrete
 
             if (result != null)
             {
-                return new ErrorDataResult<Product>(result.Message);
+                return new ErrorResult(result.Message);
             }
             product.Discontinued = false;
             product.LastModifiedDate = DateTime.Now;
