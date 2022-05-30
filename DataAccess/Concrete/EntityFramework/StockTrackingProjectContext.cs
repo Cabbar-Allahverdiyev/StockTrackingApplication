@@ -1,5 +1,6 @@
 ﻿using Core.Entities.Concrete;
 using Entities.Concrete;
+using Entities.Concrete.ForForms;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,7 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<UserOperationClaimForForms> UserOperationClaimsForForms { get; set; }
         public DbSet<MacAddres> MacAddresses { get; set; }
         public DbSet<FormSetting> FormSettings { get; set; }
+        public DbSet<BonusCardOperation> BonusCardOperations { get; set; }
 
         public DbSet<BarcodeNumber> BarcodeNumbers { get; set; }
     }

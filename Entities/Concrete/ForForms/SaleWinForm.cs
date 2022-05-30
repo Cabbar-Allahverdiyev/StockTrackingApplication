@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Entities.Concrete
+namespace Entities.Concrete.ForForms    
 {
     public class SaleWinForm:IEntity
     {

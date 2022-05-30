@@ -1,5 +1,5 @@
 ﻿using Core.DataAccess;
-using Entities.Concrete;
+using Entities.Concrete.ForForms;
 using Entities.DTOs.UserOperationClaimDtos;
 using System;
 using System.Collections.Generic;

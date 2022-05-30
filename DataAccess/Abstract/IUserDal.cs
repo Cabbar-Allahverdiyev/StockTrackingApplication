@@ -2,10 +2,12 @@
 using Core.Entities.Concrete;
 using Entities.Concrete;
 using Entities.DTOs.UserDtos;
+using Entities.Concrete.ForForms;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
+
 
 namespace DataAccess.Abstract
 {

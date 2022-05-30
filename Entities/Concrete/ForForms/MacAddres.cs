@@ -3,12 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Entities.Concrete
+namespace Entities.Concrete.ForForms
 {
-    public class FormSetting:IEntity
+    public class MacAddres : IEntity
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Value { get; set; }
+        public string Address { get; set; }
     }
 }

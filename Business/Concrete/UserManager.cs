@@ -4,6 +4,7 @@ using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
 using Core.Entities.Concrete;
+using Entities.Concrete.ForForms;
 using Core.Utilities;
 using Core.Utilities.Business;
 using Core.Utilities.Results;

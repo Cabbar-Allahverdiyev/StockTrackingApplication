@@ -1,6 +1,6 @@
 ﻿using Core.DataAccess.EntityFramework;
 using DataAccess.Abstract;
-using Entities.Concrete;
+using Entities.Concrete.ForForms;
 using Entities.DTOs.SaleWinFormDtos;
 using Entities.DTOs.ProductDtos;
 using System;

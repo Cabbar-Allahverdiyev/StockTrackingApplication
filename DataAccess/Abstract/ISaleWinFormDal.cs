@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
+using Entities.Concrete.ForForms;
 
 namespace DataAccess.Abstract
 {

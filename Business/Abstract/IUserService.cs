@@ -1,7 +1,7 @@
 ﻿using Core.Entities.Concrete;
 using Core.Utilities;
 using Core.Utilities.Results;
-using Entities.Concrete;
+using Entities.Concrete.ForForms;
 using Entities.DTOs.UserDtos;
 using System;
 using System.Collections.Generic;

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Linq;
 using System.Text;
-using Entities.Concrete;
+using Entities.Concrete.ForForms;
 
 namespace DataAccess.Concrete.EntityFramework
 {
