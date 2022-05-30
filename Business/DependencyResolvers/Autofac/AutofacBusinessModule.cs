@@ -56,6 +56,9 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<SupplierManager>().As<ISupplierService>().SingleInstance();
             builder.RegisterType<EfSupplierDal>().As<ISupplierDal>().SingleInstance();
 
+            builder.RegisterType<BonusCardOperationManager>().As<IBonusCardOperationService>().SingleInstance();
+            builder.RegisterType<EfBonusCardOperationDal>().As<IBonusCardOperationDal>().SingleInstance();
+
             //yeni elavelei yukle mes bonus card
 
             builder.RegisterType<AuthManager>().As<IAuthService>();
