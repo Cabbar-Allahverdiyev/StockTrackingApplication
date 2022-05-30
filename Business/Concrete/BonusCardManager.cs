@@ -17,11 +17,16 @@ namespace Business.Concrete
     {
 
         IBonusCardDal _bonusCardDal;
+
         ICustomerService _customerService;
-        public BonusCardManager(IBonusCardDal bonusCardDal, ICustomerService customerService)
+        IBonusCardOperationService _bonusCardOperationService;
+        public BonusCardManager(IBonusCardDal bonusCardDal
+                                , ICustomerService customerService
+                                ,IBonusCardOperationService bonusCardOperationService)
         {
             _bonusCardDal = bonusCardDal;
             _customerService = customerService;
+            _bonusCardOperationService = bonusCardOperationService;
         }
         //CRUD
         [ValidationAspect(typeof(BonusCardValidator))]
@@ -73,7 +78,7 @@ namespace Business.Concrete
             return new SuccessDataResult<BonusCard>(get, BonusCardMessages.Found);
         }
 
-        //Elave--------------->
+        // --------------->
         
         public  IDataResult<BonusCard> GetByCustomerId(int customerId)
         {
@@ -98,7 +103,7 @@ namespace Business.Concrete
         }
 
         [CacheRemoveAspect("IBonusCardService.Get")]
-        public IResult IncreaseBalance(int cardId, decimal value)
+        public IResult IncreaseBalance(int cardId,int userId, decimal value)
         {
             IResult rules=BusinessRules.Run(BonusCardIdExist(cardId)
                                             , ValueGreaterThanZero(value));
@@ -116,31 +121,18 @@ namespace Business.Concrete
             {
                 return new ErrorResult(BonusCardMessages.NotIncreaseBalance(customer.FirstName));
             }
-           
+            IResult bonusCardOperationAdded = _bonusCardOperationService.IncreasedBalance(bonusCard,userId,value);
+            if (!bonusCardOperationAdded.Success)
+            {
+                return new ErrorResult(bonusCardOperationAdded.Message);
+            }
             return new SuccessResult(BonusCardMessages.IncreaseBalance(customer.FirstName));
         }
 
-        private IResult ValueGreaterThanZero(decimal value)
-        {
-            if (value<=0)
-            {
-                return new ErrorResult(BonusCardMessages.ThisCustomerDoesNotHaveABonusCard);
-            }
-            return new SuccessResult();
-        }
 
-        private IResult BonusCardIdExist(int cardId)
-        {
-            IDataResult<BonusCard> getBonusCard = GetById(cardId);
-            if (!getBonusCard.Success)
-            {
-                return new ErrorResult(BonusCardMessages.ThisCustomerDoesNotHaveABonusCard);
-            }
-            return new SuccessResult();
-        }
 
         [CacheRemoveAspect("IBonusCardService.Get")]
-        public IResult ReduceBalance(int  cardId, decimal value)
+        public IResult ReduceBalance(int  cardId,int userId, decimal value)
         {
             IDataResult<BonusCard> getBonusCard = GetById(cardId);
             if (!getBonusCard.Success)
@@ -154,6 +146,11 @@ namespace Business.Concrete
             if (!result.Success)
             {
                 return new ErrorResult(BonusCardMessages.NotReduceBalance(customer.FirstName));
+            }
+            IResult bonusCardOperationAdded = _bonusCardOperationService.ReducedBalance(bonusCard, userId, value);
+            if (!bonusCardOperationAdded.Success)
+            {
+                return new ErrorResult(bonusCardOperationAdded.Message);
             }
             return new SuccessResult(BonusCardMessages.ReduceBalance(customer.FirstName));
         }
@@ -188,6 +185,26 @@ namespace Business.Concrete
                 return new ErrorDataResult<BonusCardForFormsDto>(BonusCardMessages.NotFound);
             }
             return new SuccessDataResult<BonusCardForFormsDto>(get, BonusCardMessages.Found);
+        }
+
+        //Elave
+        private IResult ValueGreaterThanZero(decimal value)
+        {
+            if (value<=0)
+            {
+                return new ErrorResult(BonusCardMessages.ThisCustomerDoesNotHaveABonusCard);
+            }
+            return new SuccessResult();
+        }
+
+        private IResult BonusCardIdExist(int cardId)
+        {
+            IDataResult<BonusCard> getBonusCard = GetById(cardId);
+            if (!getBonusCard.Success)
+            {
+                return new ErrorResult(BonusCardMessages.ThisCustomerDoesNotHaveABonusCard);
+            }
+            return new SuccessResult();
         }
     }
 }
