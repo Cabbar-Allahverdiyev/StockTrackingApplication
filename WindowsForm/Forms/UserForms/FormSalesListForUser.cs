@@ -1,7 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants.Messages;
 using Core.Utilities.Results;
-using Entities.Concrete;
+using Entities.Concrete.ForForms;
 using Entities.DTOs.SaleWinFormDtos;
 using System;
 using System.Collections.Generic;

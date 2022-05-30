@@ -96,10 +96,10 @@ namespace WindowsForm.BonusCardSystem.Forms
             this.buttonTemizleBonusCard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTemizleBonusCard.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonTemizleBonusCard.Image = ((System.Drawing.Image)(resources.GetObject("buttonTemizleBonusCard.Image")));
-            this.buttonTemizleBonusCard.Location = new System.Drawing.Point(74, 133);
+            this.buttonTemizleBonusCard.Location = new System.Drawing.Point(78, 133);
             this.buttonTemizleBonusCard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTemizleBonusCard.Name = "buttonTemizleBonusCard";
-            this.buttonTemizleBonusCard.Size = new System.Drawing.Size(88, 27);
+            this.buttonTemizleBonusCard.Size = new System.Drawing.Size(95, 27);
             this.buttonTemizleBonusCard.TabIndex = 55;
             this.buttonTemizleBonusCard.Text = "Təmizlə";
             this.buttonTemizleBonusCard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -166,9 +166,9 @@ namespace WindowsForm.BonusCardSystem.Forms
             // textBoxValue
             // 
             this.textBoxValue.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxValue.Location = new System.Drawing.Point(77, 105);
+            this.textBoxValue.Location = new System.Drawing.Point(78, 106);
             this.textBoxValue.Name = "textBoxValue";
-            this.textBoxValue.Size = new System.Drawing.Size(175, 22);
+            this.textBoxValue.Size = new System.Drawing.Size(55, 22);
             this.textBoxValue.TabIndex = 59;
             this.textBoxValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxValue_KeyPress);
             // 
@@ -185,10 +185,11 @@ namespace WindowsForm.BonusCardSystem.Forms
             // buttonElaveEt
             // 
             this.buttonElaveEt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonElaveEt.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonElaveEt.Image = global::WindowsForm.Properties.Resources.bonus_card_16px;
-            this.buttonElaveEt.Location = new System.Drawing.Point(168, 133);
+            this.buttonElaveEt.Location = new System.Drawing.Point(179, 133);
             this.buttonElaveEt.Name = "buttonElaveEt";
-            this.buttonElaveEt.Size = new System.Drawing.Size(85, 27);
+            this.buttonElaveEt.Size = new System.Drawing.Size(95, 27);
             this.buttonElaveEt.TabIndex = 48;
             this.buttonElaveEt.Text = " Tətbiq et";
             this.buttonElaveEt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
