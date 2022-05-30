@@ -11,7 +11,7 @@ namespace DataAccess.Abstract
     public interface IBonusCardOperationDal:IEntityRepository<BonusCardOperation>
     {
         List<BonusCardOperationForFormsDto> GetAllBonusCardOperationForFormsDto(Expression<Func<BonusCardOperationForFormsDto,bool>> filter=null);
-        List<BonusCardOperationForFormsDto> GetBonusCardOperationForFormsDto(Expression<Func<BonusCardOperationForFormsDto,bool>> filter);
+        BonusCardOperationForFormsDto GetBonusCardOperationForFormsDto(Expression<Func<BonusCardOperationForFormsDto,bool>> filter);
         List<BonusCardOperationForFormsDto> GetAllBonusCardOperationForFormsDtoByIncreasedBalance(Expression<Func<BonusCardOperationForFormsDto,bool>> filter=null);
         List<BonusCardOperationForFormsDto> GetAllBonusCardOperationForFormsDtoByReducedBalance(Expression<Func<BonusCardOperationForFormsDto,bool>> filter=null);
     }
