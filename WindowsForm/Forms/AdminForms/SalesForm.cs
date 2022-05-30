@@ -28,7 +28,7 @@ namespace WindowsForm.Forms
 {
     public partial class SalesForm : Form
     {
-        int staticUserId = LoginForm.UserId;
+        private int UserId = LoginForm.UserId;
         private int CartId { get; set; }
         private int BonusCardId { get; set; }
 
@@ -218,7 +218,7 @@ namespace WindowsForm.Forms
                 int customerId = int.Parse(textBoxCustomerId.Text);
 
                 Debt debt = new Debt();
-                IDataResult<List<Cart>> carts = _cartService.GetAllByUserId(staticUserId);
+                IDataResult<List<Cart>> carts = _cartService.GetAllByUserId(UserId);
                 IResult debtAdded;
                 IResult productUpdated;
                 List<string> messages = new List<string>();
@@ -303,7 +303,7 @@ namespace WindowsForm.Forms
                 cart.SoldPrice = textBoxQiymet.Text == "" ? decimal.Parse(textBoxMaxQiymet.Text) : decimal.Parse(textBoxQiymet.Text);
                 cart.Quantity = int.Parse(textBoxMiqdar.Text);
                 cart.TotalPrice = decimal.Parse(textBoxCem.Text);
-                cart.UserId = staticUserId;
+                cart.UserId = UserId;
                 if (!FormValidationTool.IsValid(new CartValidator(), cart))
                 {
                     return;
@@ -401,7 +401,7 @@ namespace WindowsForm.Forms
             try
             {
                 SaleWinForm saleWinForm = new SaleWinForm();
-                IDataResult<List<Cart>> carts = _cartService.GetAllByUserId(staticUserId);
+                IDataResult<List<Cart>> carts = _cartService.GetAllByUserId(UserId);
                 IResult saleWinFormAdded;
                 IResult productUpdated;
                 IResult bonusCardIncreased;
@@ -447,6 +447,7 @@ namespace WindowsForm.Forms
                     if (BonusCardId != 0)
                     {
                         bonusCardIncreased = _bonusCardService.IncreaseBalance(BonusCardId
+                            ,UserId
                             , totalPrice);
                         if (!bonusCardIncreased.Success)
                         {
@@ -725,13 +726,13 @@ namespace WindowsForm.Forms
         private void RemoveCart()
         {
             Cart cart = new Cart();
-            cart.UserId = staticUserId;
+            cart.UserId = UserId;
             _cartService.ByUserIdAllRemove(cart.UserId);
         }
 
         private void CartListRefesh()
         {
-            dataGridViewCartList.DataSource = _cartService.GetAllCartViewDetailsByUserId(staticUserId).Data;
+            dataGridViewCartList.DataSource = _cartService.GetAllCartViewDetailsByUserId(UserId).Data;
             MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "AlisQiymeti", Color.Yellow);
             MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "Qiymet", Color.Green);
             MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "Cem", Color.Red);
@@ -749,7 +750,7 @@ namespace WindowsForm.Forms
         {
             decimal tolalPrice = 0;
             decimal price;
-            List<Cart> carts = _cartService.GetAllByUserId(staticUserId).Data;
+            List<Cart> carts = _cartService.GetAllByUserId(UserId).Data;
             foreach (Cart cart in carts)
             {
                 price = cart.TotalPrice;
@@ -803,7 +804,7 @@ namespace WindowsForm.Forms
                 // GroupBoxMehsulControlClear();
                 Cart cart = new Cart();
                 cart.ProductId = result.Data.Id;
-                cart.UserId = staticUserId; //sonra dinamiklesdir
+                cart.UserId = UserId; //sonra dinamiklesdir
                 cart.Quantity = 1;
                 cart.SoldPrice = result.Data.UnitPrice;
                 cart.TotalPrice = cart.Quantity * cart.SoldPrice;

@@ -1,5 +1,5 @@
 ﻿
-namespace WindowsForm.Forms
+namespace WindowsForm.Forms.AdminForms
 {
     partial class FormSalesList
     {

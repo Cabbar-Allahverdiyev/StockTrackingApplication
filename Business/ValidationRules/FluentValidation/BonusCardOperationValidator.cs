@@ -11,7 +11,12 @@ namespace Business.ValidationRules.FluentValidation
     {
         public BonusCardOperationValidator()
         {
-            
+            RuleFor(o => o.BonusCardId).NotEmpty();
+            RuleFor(o => o.Value).NotEmpty();
+            RuleFor(o => o.Value).GreaterThan(0);
+            RuleFor(o => o.UserId).NotEmpty();
+
+
         }
     }
 }

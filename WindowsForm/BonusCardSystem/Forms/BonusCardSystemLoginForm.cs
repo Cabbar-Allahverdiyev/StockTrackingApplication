@@ -42,6 +42,7 @@ namespace WindowsForm.BonusCardSystem.Forms
         IDebtService _debtService;
         ISaleWinFormService _saleWinFormService;
         ISupplierService _supplierService;
+        IBonusCardOperationService _bonusCardOperationService;
         IBonusCardService _bonusCardService;
         IFormSettingService _formSettingService;
 
@@ -63,7 +64,7 @@ namespace WindowsForm.BonusCardSystem.Forms
             , ISupplierService supplierService
             , IBrandService brandService
             , IBonusCardService bonusCardService
-            , IFormSettingService formSettingService)
+            , IFormSettingService formSettingService, IBonusCardOperationService bonusCardOperationService)
         {
             _userOperationClaimForFormsService = userOperationClaimForFormsService;
             _userService = userService;
@@ -78,6 +79,7 @@ namespace WindowsForm.BonusCardSystem.Forms
             _saleWinFormService = saleWinFormService;
             _supplierService = supplierService;
             _brandService = brandService;
+            _bonusCardOperationService = bonusCardOperationService;
             _bonusCardService = bonusCardService;
             _formSettingService = formSettingService;
             InitializeComponent();
@@ -151,6 +153,7 @@ namespace WindowsForm.BonusCardSystem.Forms
                                                     , _supplierService
                                                     ,_bonusCardService
                                                     ,_formSettingService
+                                                    ,_bonusCardOperationService
                                                     );
                     this.Hide();
                     dashboard.Show();

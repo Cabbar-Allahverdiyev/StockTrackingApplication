@@ -1,8 +1,6 @@
 ﻿using Business.Abstract;
-using Business.Concrete;
 using Business.Constants.Messages;
 using Core.Utilities.Results;
-using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using Entities.Concrete.ForForms;
 using Entities.DTOs.SaleWinFormDtos;
@@ -16,11 +14,10 @@ using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.Concrete;
-using WindowsForm.Core.Controllers.Concrete.ValidatorControllers;
 using WindowsForm.MyControls;
 using WindowsForm.Utilities.Search.Concrete.SaleSearch;
 
-namespace WindowsForm.Forms
+namespace WindowsForm.Forms.AdminForms
 {
     public partial class FormSalesList : Form
     {

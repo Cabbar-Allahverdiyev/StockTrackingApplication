@@ -15,7 +15,7 @@ using System.Windows.Forms;
 using WindowsForm.Core.Controllers.Concrete;
 using WindowsForm.MyControls;
 
-namespace WindowsForm.Forms
+namespace WindowsForm.Forms.AdminForms
 {
     public partial class Dashboard : Form
     {

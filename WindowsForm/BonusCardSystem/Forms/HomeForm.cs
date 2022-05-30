@@ -16,25 +16,30 @@ using Entities.Concrete;
 using Business.Constants.Messages;
 using System.Reflection;
 using WindowsForm.Utilities.Search.Concrete.BonusCardSearch;
+using WindowsForm.Utilities.Search.Concrete.BonusCardOperationSearch;
 
 namespace WindowsForm.BonusCardSystem.Forms
 {
     public partial class HomeForm : Form
     {
         private int BonusCardId { get; set; }
+        private int UserId { get; set; }
 
         IBonusCardService _bonusCardService;
+        IBonusCardOperationService _bonusCardOperationService;
 
-        public HomeForm(IBonusCardService bonusCardService)
+        public HomeForm(IBonusCardService bonusCardService
+                        , IBonusCardOperationService bonusCardOperationService)
         {
             _bonusCardService = bonusCardService;
+            _bonusCardOperationService = bonusCardOperationService;
             InitializeComponent();
             ChecBoxBonusCardChanged();
             BonusCardRefresh();
             BarcodeScanner barcodeScanner = new BarcodeScanner(textBoxBonusCardSelect);
             barcodeScanner.BarcodeScanned += BarcodeScanner_BarcodeScanned;
             BonusCardId = 0;
-
+            UserId = BonusCardSystemLoginForm.UserId;
         }
 
         //Key press----------------------------->
@@ -102,7 +107,7 @@ namespace WindowsForm.BonusCardSystem.Forms
                     return;
                 }
 
-                IResult result = _bonusCardService.IncreaseBalance(BonusCardId, decimal.Parse(textBoxValue.Text));
+                IResult result = _bonusCardService.IncreaseBalance(BonusCardId, UserId,decimal.Parse(textBoxValue.Text));
                 if (!result.Success)
                 {
                     FormsMessage.WarningMessage(result.Message);
@@ -133,6 +138,7 @@ namespace WindowsForm.BonusCardSystem.Forms
 
         private void ChecBoxBonusCardChanged()
         {
+            //burani refactor et umumilkde 3 sehifede isleyir
             if (checkBoxBonusCard.Checked == false)
             {
                 checkBoxBonusCard.Text = "Avtomatik";
@@ -155,7 +161,8 @@ namespace WindowsForm.BonusCardSystem.Forms
 
         private void BonusCardRefresh()
         {
-            dataGridViewList.DataSource = _bonusCardService.GetAllBonusCardForFormsDetail().Data;
+            //dataGridViewList.DataSource = _bonusCardService.GetAllBonusCardForFormsDetail().Data;
+            dataGridViewList.DataSource = _bonusCardOperationService.GetAllBonusCardOperationForFormsDto().Data;
         }
 
         private void ClearGroupBoxMusteri()
@@ -165,32 +172,32 @@ namespace WindowsForm.BonusCardSystem.Forms
 
         private void dataGridViewList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                BonusCardId = dataGridViewList.CurrentRow.Cells["BonusCardId"].Value.ToString() == ""
-                    ? 0
-                    : int.Parse(dataGridViewList.CurrentRow.Cells["BonusCardId"].Value.ToString());
+            //try
+            //{
+            //    //BonusCardId = dataGridViewList.CurrentRow.Cells["BonusCardId"].Value.ToString() == ""
+            //    //    ? 0
+            //    //    : int.Parse(dataGridViewList.CurrentRow.Cells["BonusCardId"].Value.ToString());
 
-                IDataResult<BonusCardForFormsDto> getBonusCard = _bonusCardService
-                    .GetBonusCardForFormsDetailById(BonusCardId);
-                if (!getBonusCard.Success)
-                {
-                    FormsMessage.WarningMessage(getBonusCard.Message);
-                    return;
-                }
-                textBoxCustomer.Text = getBonusCard.Data.Ad + " " + getBonusCard.Data.Soyad;
-                textBoxGuzest.Text = getBonusCard.Data.MusteriGuzesti.ToString();
-            }
-            catch (Exception ex)
-            {
-                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
-            }
+            //    //IDataResult<BonusCardForFormsDto> getBonusCard = _bonusCardService
+            //    //    .GetBonusCardForFormsDetailById(BonusCardId);
+            //    //if (!getBonusCard.Success)
+            //    //{
+            //    //    FormsMessage.WarningMessage(getBonusCard.Message);
+            //    //    return;
+            //    //}
+            //    //textBoxCustomer.Text = getBonusCard.Data.Ad + " " + getBonusCard.Data.Soyad;
+            //    //textBoxGuzest.Text = getBonusCard.Data.MusteriGuzesti.ToString();
+            //}
+            //catch (Exception ex)
+            //{
+            //    FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
+            //}
         }
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            BonusCardSearch bonusCardSearch = new BonusCardSearch();
-            bonusCardSearch.GetDataWriteGridView(_bonusCardService.GetAllBonusCardForFormsDetail().Data
+            BonusCardOperationForFormsDtoSearch bonusCardOperationSearch = new BonusCardOperationForFormsDtoSearch();
+            bonusCardOperationSearch.GetDataWriteGridView(_bonusCardOperationService.GetAllBonusCardOperationForFormsDto().Data
                 , textBoxAxtar.Text, dataGridViewList);
         }
     }

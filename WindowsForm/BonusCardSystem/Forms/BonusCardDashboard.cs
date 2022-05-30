@@ -34,23 +34,29 @@ namespace WindowsForm.BonusCardSystem.Forms
         ISupplierService _supplierService;
         IBonusCardService _bonusCardService;
         IFormSettingService _formSettingService;
+        IBonusCardOperationService _bonusCardOperationService;
         //OperationClaimForFormsManager _operationClaimManager=new OperationClaimForFormsManager(new EfOperationClaimForFormsDal());
         //UserOperationClaimForFormsManager _userOperationClaimForFormsManager = new UserOperationClaimForFormsManager(new EfUserOperationClaimForFormsDal());
-        private Form? activateForm;
+        private Form activateForm;
         //private Button currentButton;
         private Size formSize;
 
         public BonusCardDashboard(IUserService userService
-            , IOperationClaimForFormsService operationClaimService
-            , IUserOperationClaimForFormsService userOperationClaimForFormsService
-            , IProductService productService
-            , IBrandService brandService
-            , ICategoryService categoryService
-            , ICustomerService customerService
-            , ICustomerBalanceService customerBalanceService
-            , ICustomerPaymentService customerPaymentService
-            , ICartService cartService
-            , IDebtService debtService, ISaleWinFormService saleWinFormService, ISupplierService supplierService, IBonusCardService bonusCardService, IFormSettingService formSettingService)
+                                , IOperationClaimForFormsService operationClaimService
+                                , IUserOperationClaimForFormsService userOperationClaimForFormsService
+                                , IProductService productService
+                                , IBrandService brandService
+                                , ICategoryService categoryService
+                                , ICustomerService customerService
+                                , ICustomerBalanceService customerBalanceService
+                                , ICustomerPaymentService customerPaymentService
+                                , ICartService cartService
+                                , IDebtService debtService
+                                , ISaleWinFormService saleWinFormService
+                                , ISupplierService supplierService
+                                , IBonusCardService bonusCardService
+                                , IFormSettingService formSettingService
+                                , IBonusCardOperationService bonusCardOperationService)
         {
             _userService = userService;
             _operationClaimService = operationClaimService;
@@ -65,6 +71,7 @@ namespace WindowsForm.BonusCardSystem.Forms
             _debtService = debtService;
             _saleWinFormService = saleWinFormService;
             _supplierService = supplierService;
+            _bonusCardOperationService = bonusCardOperationService;
             _bonusCardService = bonusCardService;
             _formSettingService = formSettingService;
 
@@ -333,7 +340,8 @@ namespace WindowsForm.BonusCardSystem.Forms
                                                     , _supplierService
                                                     , _brandService
                                                     , _bonusCardService
-                                                    , _formSettingService));
+                                                    , _formSettingService
+                                                    ,_bonusCardOperationService));
 
 
         }
@@ -497,7 +505,7 @@ namespace WindowsForm.BonusCardSystem.Forms
         //Bonus Elave et
         private void bonusƏlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new HomeForm(_bonusCardService), sender);
+            OpenChildForm(new HomeForm(_bonusCardService,_bonusCardOperationService), sender);
         }
 
         //Parametrler --------------------------->

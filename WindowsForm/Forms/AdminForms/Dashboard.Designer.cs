@@ -1,5 +1,5 @@
 ﻿
-namespace WindowsForm.Forms
+namespace WindowsForm.Forms.AdminForms
 {
     partial class Dashboard
     {
@@ -533,7 +533,7 @@ namespace WindowsForm.Forms
             this.buttonSettings.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.buttonSettings.Size = new System.Drawing.Size(180, 56);
             this.buttonSettings.TabIndex = 16;
-            this.buttonSettings.Tag = "Əlavələr";
+            this.buttonSettings.Tag = "Parametrlər";
             this.buttonSettings.Text = "  Parametrlər";
             this.buttonSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;

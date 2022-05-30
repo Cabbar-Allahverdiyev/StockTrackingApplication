@@ -54,7 +54,8 @@ namespace WindowsForm
             SaleWinFormManager saleManager = new SaleWinFormManager(new EfSaleWinFormDal(), productManager);
             DebtManager debtManager = new DebtManager(new EfDebtDal(), customerBalanceManager);
             SupplierManager supplierManager = new SupplierManager(new EfSupplierDal());
-            BonusCardManager bonusCardManager = new BonusCardManager(new EfBonusCardDal(), customerManager);
+            BonusCardOperationManager bonusCardOperationManager = new BonusCardOperationManager(new EfBonusCardOperationDal());
+            BonusCardManager bonusCardManager = new BonusCardManager(new EfBonusCardDal(), customerManager,bonusCardOperationManager);
 
             FormSettingManager formSettingManager = new FormSettingManager(new EfFormSettingDal());
             //Application.Run(new Forms.SettingForms.BonusCardSettingForm(formSettingManager));
@@ -65,7 +66,7 @@ namespace WindowsForm
 
             Application.Run(new BonusCardSystem.Forms.BonusCardSystemLoginForm(userOperationClaimForFormsManager, userManager, operationClaimForFormsManager, productManager
                 , categoryManager, customerManager, customerBalanceManager, customerPaymentManager, cartManager, debtManager, saleManager, supplierManager
-                , brandManager, bonusCardManager, formSettingManager));
+                , brandManager, bonusCardManager, formSettingManager,bonusCardOperationManager));
 
 
 
