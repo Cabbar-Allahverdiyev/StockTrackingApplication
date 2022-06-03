@@ -24,15 +24,16 @@ namespace WindowsForm.Forms.AdminForms
 
         IProductService _productService;
         ISaleWinFormService _saleWinFormService;
+        IUserService _userService;
 
-        
-        
-        public FormSalesList(IProductService productService, ISaleWinFormService saleWinFormService)
+
+
+        public FormSalesList(IProductService productService, ISaleWinFormService saleWinFormService, IUserService userService)
         {
             _productService = productService;
             _saleWinFormService = saleWinFormService;
+            _userService = userService;
             InitializeComponent();
-
         }
 
         private void FormSalesList_Load(object sender, EventArgs e)
@@ -135,8 +136,11 @@ namespace WindowsForm.Forms.AdminForms
                         }
                     }
                     labelTotal.Text = saleTotal.ToString();
-                    if (staticUseraId == 3002 || staticUseraId == 2004)
+                    IResult getUserClaims = _userService.CheckUserOperationClaimIsBossAndAdminByUserIdForForms(staticUseraId);
+                    if (getUserClaims.Success)
                     {
+                    //    if (staticUseraId == 3002 || staticUseraId == 2004)
+                    //{
                         labelIncome.Text = incomeTotal.ToString();
                     }
                     dataGridViewSaleList.DataSource = dataMonth;
