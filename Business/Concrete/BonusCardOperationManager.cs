@@ -9,6 +9,7 @@ using Entities.Concrete;
 using Entities.DTOs.BonusCardOperationDto;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 
@@ -30,7 +31,7 @@ namespace Business.Concrete
             _bonusCardOperationDal.Add(cardOperation);
             return new SuccessResult(BonusCardOperationMessages.Added);
         }
-        
+
         [CacheRemoveAspect("IBonusCardOperationService.Get")]
         public IResult Delete(BonusCardOperation cardOperation)
         {
@@ -50,16 +51,16 @@ namespace Business.Concrete
         public IDataResult<List<BonusCardOperation>> GetAll()
         {
             List<BonusCardOperation> result = _bonusCardOperationDal.GetAll();
-            return new SuccessDataResult<List<BonusCardOperation>>(result,BonusCardMessages.GetAll);
+            return new SuccessDataResult<List<BonusCardOperation>>(result, BonusCardMessages.GetAll);
         }
 
         [CacheAspect]
         public IDataResult<BonusCardOperation> GetById(int id)
         {
-            BonusCardOperation result = _bonusCardOperationDal.Get(o=> o.Id ==id);
-            if (result==null)
+            BonusCardOperation result = _bonusCardOperationDal.Get(o => o.Id == id);
+            if (result == null)
             {
-                return new ErrorDataResult<BonusCardOperation>( BonusCardMessages.NotFound);
+                return new ErrorDataResult<BonusCardOperation>(BonusCardMessages.NotFound);
             }
             return new SuccessDataResult<BonusCardOperation>(result, BonusCardMessages.Found);
         }
@@ -92,8 +93,8 @@ namespace Business.Concrete
         public IDataResult<BonusCardOperationForFormsDto> GetBonusCardOperationForFormsDtoById(int id)
         {
             BonusCardOperationForFormsDto result = _bonusCardOperationDal
-                                                        .GetBonusCardOperationForFormsDto(o=>o.OperationId==id);
-            if (result== null)
+                                                        .GetBonusCardOperationForFormsDto(o => o.OperationId == id);
+            if (result == null)
             {
                 return new ErrorDataResult<BonusCardOperationForFormsDto>(result, BonusCardMessages.NotFound);
             }
@@ -102,10 +103,10 @@ namespace Business.Concrete
 
         public IResult IncreasedBalance(BonusCard bonusCard, int userId, decimal value)
         {
-            BonusCardOperation bonusCardOperation=new BonusCardOperation();
+            BonusCardOperation bonusCardOperation = new BonusCardOperation();
             bonusCardOperation.BonusCardId = bonusCard.Id;
             bonusCardOperation.UserId = userId;
-            bonusCardOperation.Value = value ;
+            bonusCardOperation.Value = value;
             bonusCardOperation.IsIncreasedBalance = true;
             bonusCardOperation.Status = true;
 
@@ -122,7 +123,7 @@ namespace Business.Concrete
             BonusCardOperation bonusCardOperation = new BonusCardOperation();
             bonusCardOperation.BonusCardId = bonusCard.Id;
             bonusCardOperation.UserId = userId;
-            bonusCardOperation.Value = value ;
+            bonusCardOperation.Value = value;
             bonusCardOperation.IsIncreasedBalance = false;
             bonusCardOperation.Status = true;
 
@@ -132,6 +133,32 @@ namespace Business.Concrete
                 return new ErrorResult(operationAdded.Message);
             }
             return new SuccessResult(operationAdded.Message);
+        }
+
+        public IDataResult<List<BonusCardOperationForFormsDto>> GetAllSaleWinFormDetailsSalesForMonthAndYear(int month, int year)
+        {
+            List<BonusCardOperationForFormsDto> get = _bonusCardOperationDal
+                 .GetAllBonusCardOperationForFormsDto()
+                 .Where(s => s.Tarix.Month.ToString().Contains(month.ToString()))
+                 .Where(s => s.Tarix.Year.ToString().Contains(year.ToString())).ToList();
+            ;
+            return new SuccessDataResult<List<BonusCardOperationForFormsDto>>(get, SaleMessages.Found);
+        }
+
+        public IDataResult<List<BonusCardOperationForFormsDto>> GetAllSaleWinFormDetailsSalesForYear(int year)
+        {
+            List<BonusCardOperationForFormsDto> get = _bonusCardOperationDal
+               .GetAllBonusCardOperationForFormsDto(b=>b.Tarix.Year==year);
+            return new SuccessDataResult<List<BonusCardOperationForFormsDto>>(get, SaleMessages.Found);
+        }
+
+        public IDataResult<List<BonusCardOperationForFormsDto>> GetAllSaleWinFormDetailsSalesForDayAndMonthAndYear(int day, int month, int year)
+        {
+            List<BonusCardOperationForFormsDto> get = _bonusCardOperationDal
+                .GetAllBonusCardOperationForFormsDto(s => s.Tarix.Day.ToString().Contains(day.ToString()))
+                    .Where(s => s.Tarix.Month.ToString().Contains(month.ToString()))
+                    .Where(s => s.Tarix.Year.ToString().Contains(year.ToString())).ToList();
+            return new SuccessDataResult<List<BonusCardOperationForFormsDto>>(get, SaleMessages.Found);
         }
     }
 }

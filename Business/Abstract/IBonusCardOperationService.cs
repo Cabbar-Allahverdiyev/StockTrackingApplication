@@ -22,6 +22,8 @@ namespace Business.Abstract
 
         IResult IncreasedBalance(BonusCard bonusCard, int userId, decimal value);
         IResult ReducedBalance(BonusCard bonusCard, int userId, decimal value);
-
+        IDataResult<List<BonusCardOperationForFormsDto>> GetAllSaleWinFormDetailsSalesForMonthAndYear(int month, int year);
+        IDataResult<List<BonusCardOperationForFormsDto>> GetAllSaleWinFormDetailsSalesForYear( int selectedYearItem);
+        IDataResult<List<BonusCardOperationForFormsDto>> GetAllSaleWinFormDetailsSalesForDayAndMonthAndYear(int selectedDayItem, int selectedMonthItem, int selectedYearItem);
     }
 }
