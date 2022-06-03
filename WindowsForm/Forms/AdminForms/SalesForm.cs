@@ -32,6 +32,8 @@ namespace WindowsForm.Forms
         private int CartId { get; set; }
         private int BonusCardId { get; set; }
 
+        private List<ProductViewDashboardDetailDto>_dataProduct;
+
         ICategoryService _categoryService;
         IBrandService _brandService;
         ISupplierService _supplierService;
@@ -62,6 +64,7 @@ namespace WindowsForm.Forms
             _supplierService = supplierService;
             _bonusCardService = bonusCardService;
 
+
             InitializeComponent();
             TotalPriceLabelWrite();
             MyControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
@@ -71,6 +74,8 @@ namespace WindowsForm.Forms
             CartId = 0;
             BonusCardId = 0;
             BonusCardSelectForm.BonusCardId = 0;
+
+            _dataProduct = _productService.GetAllProductViewDasboardDetail().Data;
         }
 
 
@@ -82,7 +87,6 @@ namespace WindowsForm.Forms
             CategoryWriteComboBox();
             BrandWriteComboBox();
             SupplierWriteComboBox();
-            ProductListRefesh();
             buttonBonusCardSelect.Visible = false;
 
         }
@@ -740,7 +744,8 @@ namespace WindowsForm.Forms
 
         private void ProductListRefesh()
         {
-            dataGridViewProductList.DataSource = _productService.GetAllProductViewDasboardDetail().Data;
+            _dataProduct = _productService.GetAllProductViewDasboardDetail().Data;
+            dataGridViewProductList.DataSource = _dataProduct;
             MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewProductList, "AlisQiymet", Color.Yellow);
             MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewProductList, "Qiymet", Color.Green);
         }

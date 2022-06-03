@@ -22,11 +22,16 @@ namespace WindowsForm.Forms.UserForms
     public partial class FormSalesListForUser : Form
     {
         ISaleWinFormService _saleWinFormService;
-        
+
+        SaleWinFormDetailDtoSearch _detailSearch;
+        List<SaleWinFormDto> _dataSaleWinFormDto;
 
         public FormSalesListForUser(ISaleWinFormService saleWinFormService)
         {
             _saleWinFormService = saleWinFormService;
+
+           _dataSaleWinFormDto = _saleWinFormService.GetAllSaleWinFormDtoDetails().Data;
+            _detailSearch = new SaleWinFormDetailDtoSearch();
             InitializeComponent();
         }
 
@@ -226,9 +231,8 @@ namespace WindowsForm.Forms.UserForms
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            SaleWinFormDetailDtoSearch detailSearch = new SaleWinFormDetailDtoSearch();
-            List<SaleWinFormDto> data = _saleWinFormService.GetAllSaleWinFormDtoDetails().Data;
-            detailSearch.GetDataWriteGridView(data, textBoxAxtar.Text, dataGridViewSaleList);
+           
+            _detailSearch.GetDataWriteGridView(_dataSaleWinFormDto, textBoxAxtar.Text, dataGridViewSaleList);
         }
 
         private void label12_Click(object sender, EventArgs e)
