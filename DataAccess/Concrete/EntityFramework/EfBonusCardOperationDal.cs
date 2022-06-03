@@ -28,6 +28,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  Musteri=$"{customer.FirstName} {customer.LastName}",
                                  BonusKartNomresi=bonusCard.BarcodeNumber,
                                  Mebleg=operation.Value,
+                                 Tarix=operation.Date,
                                  Status=operation.Status
 
                              };
@@ -50,6 +51,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  Musteri = $"{customer.FirstName} {customer.LastName}",
                                  BonusKartNomresi = bonusCard.BarcodeNumber,
                                  Mebleg = operation.Value,
+                                 Tarix = operation.Date,
                                  Status = operation.Status
 
                              };
@@ -73,6 +75,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  Musteri = $"{customer.FirstName} {customer.LastName}",
                                  BonusKartNomresi = bonusCard.BarcodeNumber,
                                  Mebleg = operation.Value,
+                                 Tarix = operation.Date,
                                  Status = operation.Status
 
                              };
@@ -96,6 +99,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  Musteri = $"{customer.FirstName} {customer.LastName}",
                                  BonusKartNomresi = bonusCard.BarcodeNumber,
                                  Mebleg = operation.Value,
+                                 Tarix = operation.Date,
                                  Status = operation.Status
 
                              };
