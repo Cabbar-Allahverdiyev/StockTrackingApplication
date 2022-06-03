@@ -18,7 +18,7 @@ namespace WebAPI.Controllers
             _productService = productService;
         }
 
-        [HttpPost("add")]
+        [HttpPost]
         public IActionResult Add(Product product)
         {
             var result = _productService.Add(product);
@@ -29,7 +29,7 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
 
-        [HttpPost("update")]
+        [HttpPut]
         public IActionResult Update(Product product)
         {
             var result = _productService.Update(product);
@@ -40,7 +40,7 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
 
-        [HttpPost("delete")]
+        [HttpDelete]
         public IActionResult Delete(Product product)
         {
             var result = _productService.Delete(product);
@@ -51,7 +51,7 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
 
-        [HttpGet("getall")]
+        [HttpGet]
         public IActionResult GetAll()
         {
             var result = _productService.GetAll();
@@ -73,8 +73,8 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
 
-        [HttpGet("getbybarcodenumber/{barcodeNumber}")]
-        public IActionResult GetByProductBarcodeNumber(string barcodeNumber)
+        [HttpGet("getbybarcodenumber{barcodeNumber}")]
+        public IActionResult GetByBarcodeNumber(string barcodeNumber)
         {
             var result = _productService.GetByBarcodeNumber(barcodeNumber);
             if (!result.Success)
@@ -84,7 +84,7 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
 
-        [HttpGet("getallproductdetail")]
+        [HttpGet("productdetail")]
         public IActionResult GetAllProductDetail()
         {
             var result = _productService.GetAllProductDetail();
@@ -95,7 +95,7 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
 
-        [HttpGet("getproductdetailbyid/{productId}")]
+        [HttpGet("productdetail/{productId}")]
         public IActionResult GetProductDetailById(int productId)
         {
             var result = _productService.GetProductDetailById(productId);
