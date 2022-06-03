@@ -2,6 +2,7 @@
 using Business.Concrete;
 using Business.Constants.Messages;
 using Core.Entities.Concrete;
+using Core.Utilities.IoC;
 using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
@@ -66,7 +67,7 @@ namespace WindowsForm.BonusCardSystem.Forms
             , IBonusCardService bonusCardService
             , IFormSettingService formSettingService, IBonusCardOperationService bonusCardOperationService)
         {
-            _userOperationClaimForFormsService = userOperationClaimForFormsService;
+            _userOperationClaimForFormsService =userOperationClaimForFormsService;
             _userService = userService;
             _operationClaimService = operationClaimService;
             _productService = productService;

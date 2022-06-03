@@ -54,7 +54,7 @@ namespace WindowsForm
             SaleWinFormManager saleManager = new SaleWinFormManager(new EfSaleWinFormDal(), productManager);
             DebtManager debtManager = new DebtManager(new EfDebtDal(), customerBalanceManager);
             SupplierManager supplierManager = new SupplierManager(new EfSupplierDal());
-            BonusCardOperationManager bonusCardOperationManager = new BonusCardOperationManager(new EfBonusCardOperationDal());
+            BonusCardOperationManager bonusCardOperationManager = new BonusCardOperationManager(new EfBonusCardOperationDal(),userManager);
             BonusCardManager bonusCardManager = new BonusCardManager(new EfBonusCardDal(), customerManager,bonusCardOperationManager);
 
             FormSettingManager formSettingManager = new FormSettingManager(new EfFormSettingDal());

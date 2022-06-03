@@ -390,7 +390,7 @@ namespace WindowsForm.Forms.AdminForms
         //Sales-------------------------------------------->
         private void satislariSiralaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormSalesList(_productService, _saleWinFormService), sender);
+            OpenChildForm(new FormSalesList(_productService, _saleWinFormService,_userService), sender);
         }
 
         //Istifadeci--------------------------------------------->

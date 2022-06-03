@@ -38,7 +38,9 @@ namespace WindowsForm.BonusCardSystem.Forms
             _bonusCardService = bonusCardService;
             _bonusCardOperationService = bonusCardOperationService;
             InitializeComponent();
-            ChecBoxBonusCardChanged();
+            ChecBoxBonusCardChanged(checkBoxBonusCard, textBoxBonusCardSelect, buttonBonusCardSelect);
+            ChecBoxBonusCardChanged
+              (checkBoxGroupBoxPayment, textBoxGroupBoxPaymentBonusCardSelect, buttonGroupBoxPaymentBonusCardSelect);
             BonusCardRefresh();
             BarcodeScanner barcodeScanner = new BarcodeScanner(textBoxBonusCardSelect);
             barcodeScanner.BarcodeScanned += BarcodeScanner_BarcodeScanned;
@@ -69,6 +71,23 @@ namespace WindowsForm.BonusCardSystem.Forms
                 BonusCardId = getBonusCard.Data.BonusCardId;
                 textBoxCustomer.Text = getBonusCard.Data.Ad + " " + getBonusCard.Data.Soyad;
                 textBoxGuzest.Text = getBonusCard.Data.MusteriGuzesti.ToString();
+            }
+        }
+
+        private void textBoxGroupBoxPaymentBonusCardSelect_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (textBoxBonusCardSelect.Text.Length == 13)
+            {
+                IDataResult<BonusCardForFormsDto> getBonusCard = _bonusCardService
+                    .GetBonusCardForFormsDetailByBarcodeNumber(textBoxGroupBoxPaymentBonusCardSelect.Text);
+                if (!getBonusCard.Success)
+                {
+                    FormsMessage.WarningMessage(getBonusCard.Message);
+                    return;
+                }
+                BonusCardId = getBonusCard.Data.BonusCardId;
+                textBoxGroupBoxPaymentCustomer.Text = getBonusCard.Data.Ad + " " + getBonusCard.Data.Soyad;
+                
             }
         }
 
@@ -112,6 +131,7 @@ namespace WindowsForm.BonusCardSystem.Forms
                 if (textBoxValue.Text == "")
                 {
                     FormsMessage.WarningMessage(BonusCardMessages.IncreasedBalanceIsBlank);
+                    return;
                 }
                 IDataResult<BonusCard> getBonusCard = _bonusCardService.GetById(BonusCardId);
                 if (!getBonusCard.Success)
@@ -120,7 +140,8 @@ namespace WindowsForm.BonusCardSystem.Forms
                     return;
                 }
 
-                IResult result = _bonusCardService.IncreaseBalance(BonusCardId, UserId,decimal.Parse(textBoxValue.Text));
+                decimal value=textBoxValue.Text==""? 0:decimal.Parse(textBoxValue.Text);
+                IResult result = _bonusCardService.IncreaseBalance(BonusCardId, UserId,value);
                 if (!result.Success)
                 {
                     FormsMessage.WarningMessage(result.Message);
@@ -128,7 +149,8 @@ namespace WindowsForm.BonusCardSystem.Forms
                 }
                 FormsMessage.SuccessMessage(result.Message);
                 BonusCardRefresh();
-                ClearGroupBoxMusteri();
+                ClearGroupBox(groupBoxBonus);
+                BonusCardId = 0;
             }
             catch (Exception ex)
             {
@@ -137,32 +159,73 @@ namespace WindowsForm.BonusCardSystem.Forms
 
         }
 
+        private void buttonGroupBoxPaymentOdenisEt_Click(object sender, EventArgs e)
+        {
+            if (BonusCardId == 0)
+            {
+                FormsMessage.WarningMessage(FormsTextMessages.IdBlank);
+                return;
+            }
+            if (textBoxGroupBoxPaymentValue.Text == "")
+            {
+                FormsMessage.WarningMessage(BonusCardMessages.IncreasedBalanceIsBlank);
+                return;
+            }
+            IDataResult<BonusCard> getBonusCard = _bonusCardService.GetById(BonusCardId);
+            if (!getBonusCard.Success)
+            {
+                FormsMessage.WarningMessage(getBonusCard.Message);
+                return;
+            }
+            decimal value = textBoxGroupBoxPaymentValue.Text == "" ? 0 : decimal.Parse(textBoxGroupBoxPaymentValue.Text);
+            IResult result = _bonusCardService.ReduceBalance(BonusCardId, UserId, value);
+            if (!result.Success)
+            {
+                FormsMessage.WarningMessage(result.Message);
+                return;
+            }
+            FormsMessage.SuccessMessage(result.Message);
+            BonusCardRefresh();
+            ClearGroupBox(groupBoxPayment);
+            BonusCardId = 0;
+        }
+
+        private void buttonGroupBoxTemizlePayment_Click(object sender, EventArgs e)
+        {
+            ClearGroupBox(groupBoxPayment);
+        }
+
         private void buttonTemizleBonusCard_Click(object sender, EventArgs e)
         {
-            ClearGroupBoxMusteri();
+            ClearGroupBox(groupBoxBonus);
         }
 
 
         //Check Changed ------------------------------>
         private void checkBoxBonusCard_CheckedChanged(object sender, EventArgs e)
         {
-            ChecBoxBonusCardChanged();
+            ChecBoxBonusCardChanged(checkBoxBonusCard,textBoxBonusCardSelect,buttonBonusCardSelect);
+        }
+        private void checkBoxGroupBoxPayment_CheckedChanged(object sender, EventArgs e)
+        {
+            ChecBoxBonusCardChanged
+                (checkBoxGroupBoxPayment,textBoxGroupBoxPaymentBonusCardSelect,buttonGroupBoxPaymentBonusCardSelect);
         }
 
-        private void ChecBoxBonusCardChanged()
+        private void ChecBoxBonusCardChanged(CheckBox checkBox,TextBox  textBox,Button button)
         {
             //burani refactor et umumilkde 3 sehifede isleyir
-            if (checkBoxBonusCard.Checked == false)
+            if (checkBox.Checked == false)
             {
-                checkBoxBonusCard.Text = "Avtomatik";
-                buttonBonusCardSelect.Visible = false;
-                textBoxBonusCardSelect.Visible = true;
+                checkBox.Text = "Avtomatik";
+                button.Visible = false;
+                textBox.Visible = true;
             }
             else
             {
-                checkBoxBonusCard.Text = "Manual";
-                buttonBonusCardSelect.Visible = true;
-                textBoxBonusCardSelect.Visible = false;
+                checkBox.Text = "Manual";
+                button.Visible = true;
+                textBox.Visible = false;
             }
         }
 
@@ -179,9 +242,9 @@ namespace WindowsForm.BonusCardSystem.Forms
             dataGridViewList.DataSource = _data;
         }
 
-        private void ClearGroupBoxMusteri()
+        private void ClearGroupBox(GroupBox groupBox)
         {
-            TextBoxController.ClearAllTextBoxesByGroupBox(groupBoxMusteri);
+            TextBoxController.ClearAllTextBoxesByGroupBox(groupBox);
         }
 
         private void dataGridViewList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -260,7 +323,7 @@ namespace WindowsForm.BonusCardSystem.Forms
 
                     }
 
-                    labelTotal.Text = totalBonus.ToString();
+                    labelTotalBonus.Text = totalBonus.ToString();
                     //labelIncome.Text = incomeTotal.ToString();
                     dataGridViewList.DataSource = dataMonth;
                     return;
@@ -287,7 +350,7 @@ namespace WindowsForm.BonusCardSystem.Forms
                         }
                     }
 
-                    labelTotal.Text = totalBonus.ToString();
+                    labelTotalBonus.Text = totalBonus.ToString();
                     //labelIncome.Text = incomeTotal.ToString();
                     dataGridViewList.DataSource = dataYear;
                     return;
@@ -310,11 +373,12 @@ namespace WindowsForm.BonusCardSystem.Forms
                             //}
                         }
                     }
-                    labelTotal.Text = totalBonus.ToString();
-                    //if (staticUserId == 3002 || staticUserId == 2004)
-                    //{
-                    //    labelIncome.Text = incomeTotal.ToString();
-                    //}
+                    labelTotalBonusMade.Text = totalBonus.ToString();
+
+                    //burani refactor et 
+                    labelTotalBonus.Text = CalculateTotalBonus(_bonusCardService.GetAll().Data).ToString();
+                    labelTotalBonusCardSales.Text = CalculateTotalBonusCardDto(_bonusCardOperationService.GetAllBonusCardOperationForFormsDtoByReducedBalance().Data).ToString();
+                   
                     dataGridViewList.DataSource = dataMonth;
                     return;
                 }
@@ -333,7 +397,7 @@ namespace WindowsForm.BonusCardSystem.Forms
                         //}
                     }
                 }
-                labelTotal.Text = totalBonus.ToString();
+                labelTotalBonus.Text = totalBonus.ToString();
 
                 //labelIncome.Text = incomeTotal.ToString();
 
@@ -345,5 +409,26 @@ namespace WindowsForm.BonusCardSystem.Forms
                 return;
             }
         }
+
+        private decimal CalculateTotalBonus(List<BonusCard> data)
+        {
+            decimal total = 0;
+            foreach (var item in data)
+            {
+                total += item.Balance;
+            }
+            return total;
+        }
+        private decimal CalculateTotalBonusCardDto(List<BonusCardOperationForFormsDto> data)
+        {
+            decimal total = 0;
+            foreach (var item in data)
+            {
+                total += item.Mebleg;
+            }
+            return total;
+        }
+
+       
     }
 }

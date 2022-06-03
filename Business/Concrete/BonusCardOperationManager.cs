@@ -3,6 +3,7 @@ using Business.Constants.Messages;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -18,16 +19,19 @@ namespace Business.Concrete
     public class BonusCardOperationManager : IBonusCardOperationService
     {
         IBonusCardOperationDal _bonusCardOperationDal;
+        IUserService _userService;
 
-        public BonusCardOperationManager(IBonusCardOperationDal bonusCardOperationDal)
+        public BonusCardOperationManager(IBonusCardOperationDal bonusCardOperationDal,IUserService userService)
         {
             _bonusCardOperationDal = bonusCardOperationDal;
+            _userService = userService;
         }
 
         [ValidationAspect(typeof(BonusCardOperationValidator))]
         [CacheRemoveAspect("IBonusCardOperationService.Get")]
         public IResult Add(BonusCardOperation cardOperation)
         {
+            cardOperation.Date = DateTime.Now;
             _bonusCardOperationDal.Add(cardOperation);
             return new SuccessResult(BonusCardOperationMessages.Added);
         }
@@ -103,6 +107,12 @@ namespace Business.Concrete
 
         public IResult IncreasedBalance(BonusCard bonusCard, int userId, decimal value)
         {
+            var rules=BusinessRules.Run(IsUserIdExists(userId),GreaterThanZero(value));
+            if (rules!=null)
+            {
+                return new ErrorResult(rules.Message);
+            }
+
             BonusCardOperation bonusCardOperation = new BonusCardOperation();
             bonusCardOperation.BonusCardId = bonusCard.Id;
             bonusCardOperation.UserId = userId;
@@ -118,8 +128,14 @@ namespace Business.Concrete
             return new SuccessResult(operationAdded.Message);
         }
 
+
         public IResult ReducedBalance(BonusCard bonusCard, int userId, decimal value)
         {
+            var rules = BusinessRules.Run(IsUserIdExists(userId), GreaterThanZero(value));
+            if (rules != null)
+            {
+                return new ErrorResult(rules.Message);
+            }
             BonusCardOperation bonusCardOperation = new BonusCardOperation();
             bonusCardOperation.BonusCardId = bonusCard.Id;
             bonusCardOperation.UserId = userId;
@@ -159,6 +175,24 @@ namespace Business.Concrete
                     .Where(s => s.Tarix.Month.ToString().Contains(month.ToString()))
                     .Where(s => s.Tarix.Year.ToString().Contains(year.ToString())).ToList();
             return new SuccessDataResult<List<BonusCardOperationForFormsDto>>(get, SaleMessages.Found);
+        }
+        //busines rules
+        private IResult IsUserIdExists(int userId)
+        {
+            if (_userService.GetById(userId).Success)
+            {
+                return new SuccessResult();
+            }
+            return new ErrorResult(UserMessages.UserNotAvailable);
+        }
+
+        private IResult GreaterThanZero(decimal value)
+        {
+            if (value<=0)
+            {
+                return new ErrorResult(BonusCardMessages.MustNotBeEqualToOrLessThanZero);
+            }
+            return new SuccessResult();
         }
     }
 }

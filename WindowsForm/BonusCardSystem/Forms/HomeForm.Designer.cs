@@ -33,14 +33,14 @@ namespace WindowsForm.BonusCardSystem.Forms
             this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
             this.checkBoxBonusCard = new System.Windows.Forms.CheckBox();
             this.textBoxBonusCardSelect = new System.Windows.Forms.TextBox();
-            this.buttonTemizleBonusCard = new System.Windows.Forms.Button();
+            this.buttonTemizleBonus = new System.Windows.Forms.Button();
             this.buttonBonusCardSelect = new System.Windows.Forms.Button();
-            this.groupBoxMusteri = new System.Windows.Forms.GroupBox();
+            this.groupBoxBonus = new System.Windows.Forms.GroupBox();
             this.textBoxCustomer = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxValue = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.buttonElaveEt = new System.Windows.Forms.Button();
+            this.buttonTetbiqEt = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxGuzest = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -50,10 +50,12 @@ namespace WindowsForm.BonusCardSystem.Forms
             this.textBoxAxtar = new System.Windows.Forms.TextBox();
             this.dataGridViewList = new System.Windows.Forms.DataGridView();
             this.groupBoxBonusCardSearch = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.labelTotalBonusMade = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.labelIncome = new System.Windows.Forms.Label();
-            this.labelTotal = new System.Windows.Forms.Label();
+            this.labelTotalBonusCardSales = new System.Windows.Forms.Label();
+            this.labelTotalBonus = new System.Windows.Forms.Label();
             this.buttonTemizle = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -62,11 +64,23 @@ namespace WindowsForm.BonusCardSystem.Forms
             this.comboBoxYears = new System.Windows.Forms.ComboBox();
             this.buttonAxtar = new System.Windows.Forms.Button();
             this.comboBoxMonths = new System.Windows.Forms.ComboBox();
+            this.groupBoxPayment = new System.Windows.Forms.GroupBox();
+            this.textBoxGroupBoxPaymentCustomer = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBoxGroupBoxPaymentValue = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.buttonGroupBoxTemizlePayment = new System.Windows.Forms.Button();
+            this.checkBoxGroupBoxPayment = new System.Windows.Forms.CheckBox();
+            this.textBoxGroupBoxPaymentBonusCardSelect = new System.Windows.Forms.TextBox();
+            this.buttonGroupBoxPaymentOdenisEt = new System.Windows.Forms.Button();
+            this.buttonGroupBoxPaymentBonusCardSelect = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).BeginInit();
-            this.groupBoxMusteri.SuspendLayout();
+            this.groupBoxBonus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewList)).BeginInit();
             this.groupBoxBonusCardSearch.SuspendLayout();
+            this.groupBoxPayment.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBoxRefresh
@@ -105,20 +119,20 @@ namespace WindowsForm.BonusCardSystem.Forms
             this.textBoxBonusCardSelect.TabIndex = 56;
             this.textBoxBonusCardSelect.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxBonusCardSelect_KeyPress);
             // 
-            // buttonTemizleBonusCard
+            // buttonTemizleBonus
             // 
-            this.buttonTemizleBonusCard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonTemizleBonusCard.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonTemizleBonusCard.Image = ((System.Drawing.Image)(resources.GetObject("buttonTemizleBonusCard.Image")));
-            this.buttonTemizleBonusCard.Location = new System.Drawing.Point(78, 133);
-            this.buttonTemizleBonusCard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.buttonTemizleBonusCard.Name = "buttonTemizleBonusCard";
-            this.buttonTemizleBonusCard.Size = new System.Drawing.Size(95, 27);
-            this.buttonTemizleBonusCard.TabIndex = 55;
-            this.buttonTemizleBonusCard.Text = "Təmizlə";
-            this.buttonTemizleBonusCard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonTemizleBonusCard.UseVisualStyleBackColor = true;
-            this.buttonTemizleBonusCard.Click += new System.EventHandler(this.buttonTemizleBonusCard_Click);
+            this.buttonTemizleBonus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTemizleBonus.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonTemizleBonus.Image = ((System.Drawing.Image)(resources.GetObject("buttonTemizleBonus.Image")));
+            this.buttonTemizleBonus.Location = new System.Drawing.Point(78, 133);
+            this.buttonTemizleBonus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonTemizleBonus.Name = "buttonTemizleBonus";
+            this.buttonTemizleBonus.Size = new System.Drawing.Size(100, 27);
+            this.buttonTemizleBonus.TabIndex = 55;
+            this.buttonTemizleBonus.Text = "Təmizlə";
+            this.buttonTemizleBonus.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonTemizleBonus.UseVisualStyleBackColor = true;
+            this.buttonTemizleBonus.Click += new System.EventHandler(this.buttonTemizleBonusCard_Click);
             // 
             // buttonBonusCardSelect
             // 
@@ -136,27 +150,28 @@ namespace WindowsForm.BonusCardSystem.Forms
             this.buttonBonusCardSelect.UseVisualStyleBackColor = true;
             this.buttonBonusCardSelect.Click += new System.EventHandler(this.buttonBonusCardSelect_Click);
             // 
-            // groupBoxMusteri
+            // groupBoxBonus
             // 
-            this.groupBoxMusteri.Controls.Add(this.textBoxCustomer);
-            this.groupBoxMusteri.Controls.Add(this.label2);
-            this.groupBoxMusteri.Controls.Add(this.textBoxValue);
-            this.groupBoxMusteri.Controls.Add(this.label5);
-            this.groupBoxMusteri.Controls.Add(this.buttonTemizleBonusCard);
-            this.groupBoxMusteri.Controls.Add(this.checkBoxBonusCard);
-            this.groupBoxMusteri.Controls.Add(this.textBoxBonusCardSelect);
-            this.groupBoxMusteri.Controls.Add(this.buttonElaveEt);
-            this.groupBoxMusteri.Controls.Add(this.buttonBonusCardSelect);
-            this.groupBoxMusteri.Controls.Add(this.label7);
-            this.groupBoxMusteri.Controls.Add(this.textBoxGuzest);
-            this.groupBoxMusteri.Controls.Add(this.label6);
-            this.groupBoxMusteri.Controls.Add(this.label1);
-            this.groupBoxMusteri.Font = new System.Drawing.Font("Helvetica", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBoxMusteri.Location = new System.Drawing.Point(12, 34);
-            this.groupBoxMusteri.Name = "groupBoxMusteri";
-            this.groupBoxMusteri.Size = new System.Drawing.Size(339, 185);
-            this.groupBoxMusteri.TabIndex = 58;
-            this.groupBoxMusteri.TabStop = false;
+            this.groupBoxBonus.Controls.Add(this.textBoxCustomer);
+            this.groupBoxBonus.Controls.Add(this.label2);
+            this.groupBoxBonus.Controls.Add(this.textBoxValue);
+            this.groupBoxBonus.Controls.Add(this.label5);
+            this.groupBoxBonus.Controls.Add(this.buttonTemizleBonus);
+            this.groupBoxBonus.Controls.Add(this.checkBoxBonusCard);
+            this.groupBoxBonus.Controls.Add(this.textBoxBonusCardSelect);
+            this.groupBoxBonus.Controls.Add(this.buttonTetbiqEt);
+            this.groupBoxBonus.Controls.Add(this.buttonBonusCardSelect);
+            this.groupBoxBonus.Controls.Add(this.label7);
+            this.groupBoxBonus.Controls.Add(this.textBoxGuzest);
+            this.groupBoxBonus.Controls.Add(this.label6);
+            this.groupBoxBonus.Controls.Add(this.label1);
+            this.groupBoxBonus.Font = new System.Drawing.Font("Helvetica", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBoxBonus.Location = new System.Drawing.Point(14, 257);
+            this.groupBoxBonus.Name = "groupBoxBonus";
+            this.groupBoxBonus.Size = new System.Drawing.Size(339, 185);
+            this.groupBoxBonus.TabIndex = 58;
+            this.groupBoxBonus.TabStop = false;
+            this.groupBoxBonus.Text = "Bonus";
             // 
             // textBoxCustomer
             // 
@@ -196,19 +211,19 @@ namespace WindowsForm.BonusCardSystem.Forms
             this.label5.TabIndex = 58;
             this.label5.Text = "Məbləğ :";
             // 
-            // buttonElaveEt
+            // buttonTetbiqEt
             // 
-            this.buttonElaveEt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonElaveEt.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonElaveEt.Image = global::WindowsForm.Properties.Resources.bonus_card_16px;
-            this.buttonElaveEt.Location = new System.Drawing.Point(179, 133);
-            this.buttonElaveEt.Name = "buttonElaveEt";
-            this.buttonElaveEt.Size = new System.Drawing.Size(95, 27);
-            this.buttonElaveEt.TabIndex = 48;
-            this.buttonElaveEt.Text = " Tətbiq et";
-            this.buttonElaveEt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonElaveEt.UseVisualStyleBackColor = true;
-            this.buttonElaveEt.Click += new System.EventHandler(this.buttonElaveEt_Click);
+            this.buttonTetbiqEt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTetbiqEt.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonTetbiqEt.Image = global::WindowsForm.Properties.Resources.bonus_card_16px;
+            this.buttonTetbiqEt.Location = new System.Drawing.Point(184, 133);
+            this.buttonTetbiqEt.Name = "buttonTetbiqEt";
+            this.buttonTetbiqEt.Size = new System.Drawing.Size(100, 27);
+            this.buttonTetbiqEt.TabIndex = 48;
+            this.buttonTetbiqEt.Text = " Tətbiq et";
+            this.buttonTetbiqEt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonTetbiqEt.UseVisualStyleBackColor = true;
+            this.buttonTetbiqEt.Click += new System.EventHandler(this.buttonElaveEt_Click);
             // 
             // label7
             // 
@@ -299,16 +314,18 @@ namespace WindowsForm.BonusCardSystem.Forms
             this.dataGridViewList.ReadOnly = true;
             this.dataGridViewList.RowTemplate.Height = 25;
             this.dataGridViewList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewList.Size = new System.Drawing.Size(568, 421);
+            this.dataGridViewList.Size = new System.Drawing.Size(568, 570);
             this.dataGridViewList.TabIndex = 62;
             this.dataGridViewList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewList_CellDoubleClick);
             // 
             // groupBoxBonusCardSearch
             // 
+            this.groupBoxBonusCardSearch.Controls.Add(this.label11);
+            this.groupBoxBonusCardSearch.Controls.Add(this.labelTotalBonusMade);
             this.groupBoxBonusCardSearch.Controls.Add(this.label3);
             this.groupBoxBonusCardSearch.Controls.Add(this.label4);
-            this.groupBoxBonusCardSearch.Controls.Add(this.labelIncome);
-            this.groupBoxBonusCardSearch.Controls.Add(this.labelTotal);
+            this.groupBoxBonusCardSearch.Controls.Add(this.labelTotalBonusCardSales);
+            this.groupBoxBonusCardSearch.Controls.Add(this.labelTotalBonus);
             this.groupBoxBonusCardSearch.Controls.Add(this.buttonTemizle);
             this.groupBoxBonusCardSearch.Controls.Add(this.label8);
             this.groupBoxBonusCardSearch.Controls.Add(this.label9);
@@ -318,60 +335,81 @@ namespace WindowsForm.BonusCardSystem.Forms
             this.groupBoxBonusCardSearch.Controls.Add(this.buttonAxtar);
             this.groupBoxBonusCardSearch.Controls.Add(this.comboBoxMonths);
             this.groupBoxBonusCardSearch.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBoxBonusCardSearch.Location = new System.Drawing.Point(12, 225);
+            this.groupBoxBonusCardSearch.Location = new System.Drawing.Point(12, 33);
             this.groupBoxBonusCardSearch.Name = "groupBoxBonusCardSearch";
-            this.groupBoxBonusCardSearch.Size = new System.Drawing.Size(248, 215);
+            this.groupBoxBonusCardSearch.Size = new System.Drawing.Size(274, 211);
             this.groupBoxBonusCardSearch.TabIndex = 63;
             this.groupBoxBonusCardSearch.TabStop = false;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label11.Location = new System.Drawing.Point(35, 190);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(131, 14);
+            this.label11.TabIndex = 39;
+            this.label11.Text = "Verilən cəmi bonuslar :";
+            // 
+            // labelTotalBonusMade
+            // 
+            this.labelTotalBonusMade.AutoSize = true;
+            this.labelTotalBonusMade.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelTotalBonusMade.ForeColor = System.Drawing.Color.Red;
+            this.labelTotalBonusMade.Location = new System.Drawing.Point(169, 190);
+            this.labelTotalBonusMade.Name = "labelTotalBonusMade";
+            this.labelTotalBonusMade.Size = new System.Drawing.Size(14, 14);
+            this.labelTotalBonusMade.TabIndex = 38;
+            this.labelTotalBonusMade.Text = "#";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(114, 167);
+            this.label3.Location = new System.Drawing.Point(24, 151);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 14);
+            this.label3.Size = new System.Drawing.Size(142, 14);
             this.label3.TabIndex = 37;
-            this.label3.Text = "Alver :";
+            this.label3.Text = "Sistemdə olan bonuslar :";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(116, 188);
+            this.label4.Location = new System.Drawing.Point(6, 172);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(39, 14);
+            this.label4.Size = new System.Drawing.Size(160, 14);
             this.label4.TabIndex = 36;
-            this.label4.Text = "Gəlir :";
+            this.label4.Text = "Bonus kartla edilən satışlar :";
             // 
-            // labelIncome
+            // labelTotalBonusCardSales
             // 
-            this.labelIncome.AutoSize = true;
-            this.labelIncome.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelIncome.ForeColor = System.Drawing.Color.Red;
-            this.labelIncome.Location = new System.Drawing.Point(161, 188);
-            this.labelIncome.Name = "labelIncome";
-            this.labelIncome.Size = new System.Drawing.Size(14, 14);
-            this.labelIncome.TabIndex = 35;
-            this.labelIncome.Text = "#";
+            this.labelTotalBonusCardSales.AutoSize = true;
+            this.labelTotalBonusCardSales.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelTotalBonusCardSales.ForeColor = System.Drawing.Color.Red;
+            this.labelTotalBonusCardSales.Location = new System.Drawing.Point(170, 172);
+            this.labelTotalBonusCardSales.Name = "labelTotalBonusCardSales";
+            this.labelTotalBonusCardSales.Size = new System.Drawing.Size(14, 14);
+            this.labelTotalBonusCardSales.TabIndex = 35;
+            this.labelTotalBonusCardSales.Text = "#";
             // 
-            // labelTotal
+            // labelTotalBonus
             // 
-            this.labelTotal.AutoSize = true;
-            this.labelTotal.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelTotal.ForeColor = System.Drawing.Color.Red;
-            this.labelTotal.Location = new System.Drawing.Point(161, 167);
-            this.labelTotal.Name = "labelTotal";
-            this.labelTotal.Size = new System.Drawing.Size(14, 14);
-            this.labelTotal.TabIndex = 34;
-            this.labelTotal.Text = "#";
+            this.labelTotalBonus.AutoSize = true;
+            this.labelTotalBonus.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelTotalBonus.ForeColor = System.Drawing.Color.Red;
+            this.labelTotalBonus.Location = new System.Drawing.Point(170, 151);
+            this.labelTotalBonus.Name = "labelTotalBonus";
+            this.labelTotalBonus.Size = new System.Drawing.Size(14, 14);
+            this.labelTotalBonus.TabIndex = 34;
+            this.labelTotalBonus.Text = "#";
             // 
             // buttonTemizle
             // 
             this.buttonTemizle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTemizle.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonTemizle.Image = ((System.Drawing.Image)(resources.GetObject("buttonTemizle.Image")));
-            this.buttonTemizle.Location = new System.Drawing.Point(73, 118);
+            this.buttonTemizle.Location = new System.Drawing.Point(48, 109);
             this.buttonTemizle.Name = "buttonTemizle";
             this.buttonTemizle.Size = new System.Drawing.Size(88, 25);
             this.buttonTemizle.TabIndex = 30;
@@ -384,7 +422,7 @@ namespace WindowsForm.BonusCardSystem.Forms
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(49, 90);
+            this.label8.Location = new System.Drawing.Point(24, 84);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(19, 14);
             this.label8.TabIndex = 29;
@@ -394,7 +432,7 @@ namespace WindowsForm.BonusCardSystem.Forms
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(40, 57);
+            this.label9.Location = new System.Drawing.Point(15, 51);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(27, 14);
             this.label9.TabIndex = 28;
@@ -404,7 +442,7 @@ namespace WindowsForm.BonusCardSystem.Forms
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(31, 24);
+            this.label10.Location = new System.Drawing.Point(6, 18);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(36, 14);
             this.label10.TabIndex = 27;
@@ -414,18 +452,18 @@ namespace WindowsForm.BonusCardSystem.Forms
             // 
             this.comboBoxDays.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboBoxDays.FormattingEnabled = true;
-            this.comboBoxDays.Location = new System.Drawing.Point(73, 21);
+            this.comboBoxDays.Location = new System.Drawing.Point(48, 15);
             this.comboBoxDays.Name = "comboBoxDays";
-            this.comboBoxDays.Size = new System.Drawing.Size(169, 22);
+            this.comboBoxDays.Size = new System.Drawing.Size(182, 22);
             this.comboBoxDays.TabIndex = 22;
             // 
             // comboBoxYears
             // 
             this.comboBoxYears.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboBoxYears.FormattingEnabled = true;
-            this.comboBoxYears.Location = new System.Drawing.Point(73, 87);
+            this.comboBoxYears.Location = new System.Drawing.Point(48, 81);
             this.comboBoxYears.Name = "comboBoxYears";
-            this.comboBoxYears.Size = new System.Drawing.Size(169, 22);
+            this.comboBoxYears.Size = new System.Drawing.Size(182, 22);
             this.comboBoxYears.TabIndex = 26;
             // 
             // buttonAxtar
@@ -434,9 +472,9 @@ namespace WindowsForm.BonusCardSystem.Forms
             this.buttonAxtar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonAxtar.Image = global::WindowsForm.Properties.Resources.searchFerqliBlack_16px;
             this.buttonAxtar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonAxtar.Location = new System.Drawing.Point(167, 118);
+            this.buttonAxtar.Location = new System.Drawing.Point(142, 109);
             this.buttonAxtar.Name = "buttonAxtar";
-            this.buttonAxtar.Size = new System.Drawing.Size(75, 25);
+            this.buttonAxtar.Size = new System.Drawing.Size(88, 25);
             this.buttonAxtar.TabIndex = 17;
             this.buttonAxtar.Text = "   Axtar";
             this.buttonAxtar.UseVisualStyleBackColor = true;
@@ -446,35 +484,172 @@ namespace WindowsForm.BonusCardSystem.Forms
             // 
             this.comboBoxMonths.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboBoxMonths.FormattingEnabled = true;
-            this.comboBoxMonths.Location = new System.Drawing.Point(73, 54);
+            this.comboBoxMonths.Location = new System.Drawing.Point(48, 48);
             this.comboBoxMonths.Name = "comboBoxMonths";
-            this.comboBoxMonths.Size = new System.Drawing.Size(169, 22);
+            this.comboBoxMonths.Size = new System.Drawing.Size(182, 22);
             this.comboBoxMonths.TabIndex = 24;
+            // 
+            // groupBoxPayment
+            // 
+            this.groupBoxPayment.Controls.Add(this.textBoxGroupBoxPaymentCustomer);
+            this.groupBoxPayment.Controls.Add(this.label13);
+            this.groupBoxPayment.Controls.Add(this.textBoxGroupBoxPaymentValue);
+            this.groupBoxPayment.Controls.Add(this.label14);
+            this.groupBoxPayment.Controls.Add(this.buttonGroupBoxTemizlePayment);
+            this.groupBoxPayment.Controls.Add(this.checkBoxGroupBoxPayment);
+            this.groupBoxPayment.Controls.Add(this.textBoxGroupBoxPaymentBonusCardSelect);
+            this.groupBoxPayment.Controls.Add(this.buttonGroupBoxPaymentOdenisEt);
+            this.groupBoxPayment.Controls.Add(this.buttonGroupBoxPaymentBonusCardSelect);
+            this.groupBoxPayment.Controls.Add(this.label17);
+            this.groupBoxPayment.Font = new System.Drawing.Font("Helvetica", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBoxPayment.Location = new System.Drawing.Point(12, 442);
+            this.groupBoxPayment.Name = "groupBoxPayment";
+            this.groupBoxPayment.Size = new System.Drawing.Size(339, 164);
+            this.groupBoxPayment.TabIndex = 62;
+            this.groupBoxPayment.TabStop = false;
+            this.groupBoxPayment.Text = "Ödəniş";
+            // 
+            // textBoxGroupBoxPaymentCustomer
+            // 
+            this.textBoxGroupBoxPaymentCustomer.Enabled = false;
+            this.textBoxGroupBoxPaymentCustomer.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxGroupBoxPaymentCustomer.Location = new System.Drawing.Point(78, 49);
+            this.textBoxGroupBoxPaymentCustomer.Name = "textBoxGroupBoxPaymentCustomer";
+            this.textBoxGroupBoxPaymentCustomer.Size = new System.Drawing.Size(175, 22);
+            this.textBoxGroupBoxPaymentCustomer.TabIndex = 61;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label13.Location = new System.Drawing.Point(17, 53);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(53, 14);
+            this.label13.TabIndex = 60;
+            this.label13.Text = "Musteri :";
+            // 
+            // textBoxGroupBoxPaymentValue
+            // 
+            this.textBoxGroupBoxPaymentValue.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxGroupBoxPaymentValue.Location = new System.Drawing.Point(77, 77);
+            this.textBoxGroupBoxPaymentValue.Name = "textBoxGroupBoxPaymentValue";
+            this.textBoxGroupBoxPaymentValue.Size = new System.Drawing.Size(55, 22);
+            this.textBoxGroupBoxPaymentValue.TabIndex = 59;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label14.Location = new System.Drawing.Point(16, 80);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(54, 14);
+            this.label14.TabIndex = 58;
+            this.label14.Text = "Məbləğ :";
+            // 
+            // buttonGroupBoxTemizlePayment
+            // 
+            this.buttonGroupBoxTemizlePayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGroupBoxTemizlePayment.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonGroupBoxTemizlePayment.Image = ((System.Drawing.Image)(resources.GetObject("buttonGroupBoxTemizlePayment.Image")));
+            this.buttonGroupBoxTemizlePayment.Location = new System.Drawing.Point(77, 104);
+            this.buttonGroupBoxTemizlePayment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonGroupBoxTemizlePayment.Name = "buttonGroupBoxTemizlePayment";
+            this.buttonGroupBoxTemizlePayment.Size = new System.Drawing.Size(100, 27);
+            this.buttonGroupBoxTemizlePayment.TabIndex = 55;
+            this.buttonGroupBoxTemizlePayment.Text = "Təmizlə";
+            this.buttonGroupBoxTemizlePayment.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonGroupBoxTemizlePayment.UseVisualStyleBackColor = true;
+            this.buttonGroupBoxTemizlePayment.Click += new System.EventHandler(this.buttonGroupBoxTemizlePayment_Click);
+            // 
+            // checkBoxGroupBoxPayment
+            // 
+            this.checkBoxGroupBoxPayment.AutoSize = true;
+            this.checkBoxGroupBoxPayment.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxGroupBoxPayment.Location = new System.Drawing.Point(259, 26);
+            this.checkBoxGroupBoxPayment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.checkBoxGroupBoxPayment.Name = "checkBoxGroupBoxPayment";
+            this.checkBoxGroupBoxPayment.Size = new System.Drawing.Size(79, 18);
+            this.checkBoxGroupBoxPayment.TabIndex = 57;
+            this.checkBoxGroupBoxPayment.Text = "Avtomatik";
+            this.checkBoxGroupBoxPayment.UseVisualStyleBackColor = true;
+            this.checkBoxGroupBoxPayment.CheckedChanged += new System.EventHandler(this.checkBoxGroupBoxPayment_CheckedChanged);
+            // 
+            // textBoxGroupBoxPaymentBonusCardSelect
+            // 
+            this.textBoxGroupBoxPaymentBonusCardSelect.Font = new System.Drawing.Font("Helvetica", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxGroupBoxPaymentBonusCardSelect.Location = new System.Drawing.Point(78, 21);
+            this.textBoxGroupBoxPaymentBonusCardSelect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxGroupBoxPaymentBonusCardSelect.Name = "textBoxGroupBoxPaymentBonusCardSelect";
+            this.textBoxGroupBoxPaymentBonusCardSelect.Size = new System.Drawing.Size(175, 23);
+            this.textBoxGroupBoxPaymentBonusCardSelect.TabIndex = 56;
+            this.textBoxGroupBoxPaymentBonusCardSelect.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxGroupBoxPaymentBonusCardSelect_KeyPress);
+            // 
+            // buttonGroupBoxPaymentOdenisEt
+            // 
+            this.buttonGroupBoxPaymentOdenisEt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGroupBoxPaymentOdenisEt.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonGroupBoxPaymentOdenisEt.Image = global::WindowsForm.Properties.Resources.add_payment_16px;
+            this.buttonGroupBoxPaymentOdenisEt.Location = new System.Drawing.Point(183, 104);
+            this.buttonGroupBoxPaymentOdenisEt.Name = "buttonGroupBoxPaymentOdenisEt";
+            this.buttonGroupBoxPaymentOdenisEt.Size = new System.Drawing.Size(100, 27);
+            this.buttonGroupBoxPaymentOdenisEt.TabIndex = 48;
+            this.buttonGroupBoxPaymentOdenisEt.Text = " Ödəniş et";
+            this.buttonGroupBoxPaymentOdenisEt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonGroupBoxPaymentOdenisEt.UseVisualStyleBackColor = true;
+            this.buttonGroupBoxPaymentOdenisEt.Click += new System.EventHandler(this.buttonGroupBoxPaymentOdenisEt_Click);
+            // 
+            // buttonGroupBoxPaymentBonusCardSelect
+            // 
+            this.buttonGroupBoxPaymentBonusCardSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGroupBoxPaymentBonusCardSelect.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonGroupBoxPaymentBonusCardSelect.Image = global::WindowsForm.Properties.Resources.bonus_card_16px_2;
+            this.buttonGroupBoxPaymentBonusCardSelect.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonGroupBoxPaymentBonusCardSelect.Location = new System.Drawing.Point(78, 21);
+            this.buttonGroupBoxPaymentBonusCardSelect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonGroupBoxPaymentBonusCardSelect.Name = "buttonGroupBoxPaymentBonusCardSelect";
+            this.buttonGroupBoxPaymentBonusCardSelect.Size = new System.Drawing.Size(175, 23);
+            this.buttonGroupBoxPaymentBonusCardSelect.TabIndex = 54;
+            this.buttonGroupBoxPaymentBonusCardSelect.Text = "Bonus kart seç";
+            this.buttonGroupBoxPaymentBonusCardSelect.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonGroupBoxPaymentBonusCardSelect.UseVisualStyleBackColor = true;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label17.Location = new System.Drawing.Point(20, 26);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(52, 14);
+            this.label17.TabIndex = 40;
+            this.label17.Text = "Barkod :";
             // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
-            this.ClientSize = new System.Drawing.Size(937, 494);
+            this.ClientSize = new System.Drawing.Size(937, 643);
+            this.Controls.Add(this.groupBoxPayment);
             this.Controls.Add(this.groupBoxBonusCardSearch);
             this.Controls.Add(this.dataGridViewList);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.textBoxAxtar);
-            this.Controls.Add(this.groupBoxMusteri);
+            this.Controls.Add(this.groupBoxBonus);
             this.Controls.Add(this.pictureBoxRefresh);
             this.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "HomeForm";
             this.Text = "HomeForm";
             this.Load += new System.EventHandler(this.HomeForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).EndInit();
-            this.groupBoxMusteri.ResumeLayout(false);
-            this.groupBoxMusteri.PerformLayout();
+            this.groupBoxBonus.ResumeLayout(false);
+            this.groupBoxBonus.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewList)).EndInit();
             this.groupBoxBonusCardSearch.ResumeLayout(false);
             this.groupBoxBonusCardSearch.PerformLayout();
+            this.groupBoxPayment.ResumeLayout(false);
+            this.groupBoxPayment.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -486,10 +661,10 @@ namespace WindowsForm.BonusCardSystem.Forms
         private System.Windows.Forms.PictureBox pictureBoxRefresh;
         private System.Windows.Forms.CheckBox checkBoxBonusCard;
         private System.Windows.Forms.TextBox textBoxBonusCardSelect;
-        private System.Windows.Forms.Button buttonTemizleBonusCard;
+        private System.Windows.Forms.Button buttonTemizleBonus;
         private System.Windows.Forms.Button buttonBonusCardSelect;
-        private System.Windows.Forms.GroupBox groupBoxMusteri;
-        private System.Windows.Forms.Button buttonElaveEt;
+        private System.Windows.Forms.GroupBox groupBoxBonus;
+        private System.Windows.Forms.Button buttonTetbiqEt;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBoxGuzest;
         private System.Windows.Forms.Label label6;
@@ -505,8 +680,8 @@ namespace WindowsForm.BonusCardSystem.Forms
         private System.Windows.Forms.GroupBox groupBoxBonusCardSearch;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label labelIncome;
-        private System.Windows.Forms.Label labelTotal;
+        private System.Windows.Forms.Label labelTotalBonusCardSales;
+        private System.Windows.Forms.Label labelTotalBonus;
         private System.Windows.Forms.Button buttonTemizle;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
@@ -515,5 +690,18 @@ namespace WindowsForm.BonusCardSystem.Forms
         private System.Windows.Forms.ComboBox comboBoxYears;
         private System.Windows.Forms.Button buttonAxtar;
         private System.Windows.Forms.ComboBox comboBoxMonths;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label labelTotalBonusMade;
+        private System.Windows.Forms.GroupBox groupBoxPayment;
+        private System.Windows.Forms.TextBox textBoxGroupBoxPaymentCustomer;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox textBoxGroupBoxPaymentValue;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button buttonGroupBoxTemizlePayment;
+        private System.Windows.Forms.CheckBox checkBoxGroupBoxPayment;
+        private System.Windows.Forms.TextBox textBoxGroupBoxPaymentBonusCardSelect;
+        private System.Windows.Forms.Button buttonGroupBoxPaymentOdenisEt;
+        private System.Windows.Forms.Button buttonGroupBoxPaymentBonusCardSelect;
+        private System.Windows.Forms.Label label17;
     }
 }
