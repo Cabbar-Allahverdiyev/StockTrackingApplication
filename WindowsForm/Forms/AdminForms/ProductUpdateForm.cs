@@ -34,8 +34,8 @@ namespace WindowsForm.Forms
         ICategoryService _categoryService;
         ISupplierService _supplierService;
 
+        List<ProductViewDashboardDetailDto> _dataProductViewDashboardDetail;
 
-        MyControl myControl = new MyControl();
 
         public ProductUpdateForm(IProductService productManager, IBrandService brandManager, ICategoryService categoryManager, ISupplierService supplierManager)
         {
@@ -43,6 +43,7 @@ namespace WindowsForm.Forms
             _brandService = brandManager;
             _categoryService = categoryManager;
             _supplierService = supplierManager;
+            _dataProductViewDashboardDetail= _productService.GetAllProductViewDasboardDetail().Data;
             InitializeComponent();
             MyControl.WritePlaceholdersForTextBoxSearchByProductName(textBoxAxtar);
             MyControl.WritePlaceholdersForTextBoxBarcodeNo(textBoxBarkodNo);
@@ -159,8 +160,7 @@ namespace WindowsForm.Forms
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            List<ProductViewDashboardDetailDto> data = _productService.GetAllProductViewDasboardDetail().Data;
-            detailsSearch.GetDataWriteGridView(data, textBoxAxtar.Text, dataGridViewPrdouctList);
+            detailsSearch.GetDataWriteGridView(_dataProductViewDashboardDetail, textBoxAxtar.Text, dataGridViewPrdouctList);
             //detailsSearch.SearchBySelectedValueOfComboBoxAndWriteToDataGridView(data,textBoxAxtar
             //    , dataGridViewPrdouctList, comboBoxProperty);
         }
@@ -225,7 +225,8 @@ namespace WindowsForm.Forms
 
         private void ProductRefresh()
         {
-            dataGridViewPrdouctList.DataSource = _productService.GetAllProductViewDasboardDetail().Data;
+            _dataProductViewDashboardDetail = _productService.GetAllProductViewDasboardDetail().Data;
+            dataGridViewPrdouctList.DataSource=_dataProductViewDashboardDetail;
         }
 
         private void label1_Click(object sender, EventArgs e)

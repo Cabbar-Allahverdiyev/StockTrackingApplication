@@ -2,6 +2,7 @@
 using Business.Constants.Messages;
 using Core.Utilities.Results;
 using Entities.Concrete;
+using Entities.DTOs.BonusCardDtos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,9 +20,15 @@ namespace WindowsForm.Forms.AdminForms
     public partial class BonusCardUpdateAndDeleteForm : Form
     {
         IBonusCardService _bonusCardService;
+
+        List<BonusCardForFormsDto> _dataBonusCardForFormsDetail;
+
+        BonusCardSearch bonusCardSearch;
         public BonusCardUpdateAndDeleteForm(IBonusCardService bonusCardService)
         {
             _bonusCardService = bonusCardService;
+            bonusCardSearch = new BonusCardSearch();
+            _dataBonusCardForFormsDetail = _bonusCardService.GetAllBonusCardForFormsDetail().Data;
             InitializeComponent();
         }
 
@@ -114,8 +121,8 @@ namespace WindowsForm.Forms.AdminForms
         //Text Changed
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            BonusCardSearch bonusCardSearch = new BonusCardSearch();
-            bonusCardSearch.GetDataWriteGridView(_bonusCardService.GetAllBonusCardForFormsDetail().Data
+           
+            bonusCardSearch.GetDataWriteGridView(_dataBonusCardForFormsDetail
                 , textBoxAxtar.Text, dataGridViewList);
         }
 
@@ -134,7 +141,8 @@ namespace WindowsForm.Forms.AdminForms
         //Elave
         private void BonusCardRefresh()
         {
-            dataGridViewList.DataSource = _bonusCardService.GetAllBonusCardForFormsDetail().Data;
+            _dataBonusCardForFormsDetail= _bonusCardService.GetAllBonusCardForFormsDetail().Data;
+            dataGridViewList.DataSource = _dataBonusCardForFormsDetail;// _bonusCardService.GetAllBonusCardForFormsDetail().Data;
         }
 
     }

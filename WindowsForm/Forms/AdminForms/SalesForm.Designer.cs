@@ -737,7 +737,7 @@ namespace WindowsForm.Forms
             // 
             this.textBoxBonusCardSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxBonusCardSelect.Font = new System.Drawing.Font("Helvetica", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxBonusCardSelect.Location = new System.Drawing.Point(849, 396);
+            this.textBoxBonusCardSelect.Location = new System.Drawing.Point(849, 390);
             this.textBoxBonusCardSelect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxBonusCardSelect.Name = "textBoxBonusCardSelect";
             this.textBoxBonusCardSelect.Size = new System.Drawing.Size(126, 25);

@@ -26,13 +26,16 @@ namespace WindowsForm.Forms.AdminForms
         ISaleWinFormService _saleWinFormService;
         IUserService _userService;
 
+        private List<SaleWinFormDto> _dataSaleWinFormDeatil;
 
+        SaleWinFormDetailDtoSearch detailSearch = new SaleWinFormDetailDtoSearch();
 
         public FormSalesList(IProductService productService, ISaleWinFormService saleWinFormService, IUserService userService)
         {
             _productService = productService;
             _saleWinFormService = saleWinFormService;
             _userService = userService;
+            _dataSaleWinFormDeatil = _saleWinFormService.GetAllSaleWinFormDtoDetails().Data;
             InitializeComponent();
         }
 
@@ -274,7 +277,8 @@ namespace WindowsForm.Forms.AdminForms
 
         private void SaleListRefesh()
         {
-            dataGridViewSaleList.DataSource = _saleWinFormService.GetAllSaleWinFormDtoDetails().Data;
+            _dataSaleWinFormDeatil= _saleWinFormService.GetAllSaleWinFormDtoDetails().Data;
+            dataGridViewSaleList.DataSource=_dataSaleWinFormDeatil;
 
             MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewSaleList, "AlisQiymeti", Color.Yellow);
             MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewSaleList, "SatilanQiymet", Color.Green);
@@ -283,9 +287,8 @@ namespace WindowsForm.Forms.AdminForms
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            List<SaleWinFormDto> data = _saleWinFormService.GetAllSaleWinFormDtoDetails().Data;
-            SaleWinFormDetailDtoSearch detailSearch = new SaleWinFormDetailDtoSearch();
-            detailSearch.GetDataWriteGridView(data, textBoxAxtar.Text, dataGridViewSaleList);
+            
+            detailSearch.GetDataWriteGridView(_dataSaleWinFormDeatil, textBoxAxtar.Text, dataGridViewSaleList);
         }
 
         private void label12_Click(object sender, EventArgs e)

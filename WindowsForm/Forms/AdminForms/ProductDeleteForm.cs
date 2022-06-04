@@ -34,6 +34,7 @@ namespace WindowsForm.Forms
         ICategoryService _categoryService;
         ISupplierService _supplierService;
 
+        private List<ProductViewDashboardDetailDto> _dataProductViewDashboardDetail;
         ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
         
         public ProductDeleteForm(IProductService productService
@@ -45,6 +46,7 @@ namespace WindowsForm.Forms
             _brandService = brandService;
             _categoryService = categoryService;
             _supplierService = supplierService;
+            _dataProductViewDashboardDetail = _productService.GetAllProductViewDasboardDetail().Data;
             InitializeComponent();
             MyControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
         }
@@ -120,8 +122,8 @@ namespace WindowsForm.Forms
         //Text changed -------------------------------->
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-            List<ProductViewDashboardDetailDto> data = _productService.GetAllProductViewDasboardDetail().Data;
-            detailsSearch.GetDataWriteGridView(data, textBoxAxtar.Text, dataGridViewProductList);
+             
+            detailsSearch.GetDataWriteGridView(_dataProductViewDashboardDetail, textBoxAxtar.Text, dataGridViewProductList);
             //detailsSearch.SearchBySelectedValueOfComboBoxAndWriteToDataGridView(data,textBoxAxtar, dataGridViewProductList, comboBoxProperty);
         }
 
@@ -172,8 +174,8 @@ namespace WindowsForm.Forms
 
         private void ProductRefresh()
         {
-            IDataResult<List<ProductViewDashboardDetailDto>> getProductDashboard = _productService.GetAllProductViewDasboardDetail();
-            dataGridViewProductList.DataSource = getProductDashboard.Data;
+            _dataProductViewDashboardDetail = _productService.GetAllProductViewDasboardDetail().Data;
+            dataGridViewProductList.DataSource = _dataProductViewDashboardDetail;
         }
     }
 }

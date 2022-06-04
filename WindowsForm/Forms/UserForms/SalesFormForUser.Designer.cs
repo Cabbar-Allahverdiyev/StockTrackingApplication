@@ -351,7 +351,7 @@ namespace WindowsForm.Forms.UserForms
             this.ButtonSalesFormSatisEtmek.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonSalesFormSatisEtmek.Font = new System.Drawing.Font("Helvetica", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ButtonSalesFormSatisEtmek.Image = ((System.Drawing.Image)(resources.GetObject("ButtonSalesFormSatisEtmek.Image")));
-            this.ButtonSalesFormSatisEtmek.Location = new System.Drawing.Point(1075, 568);
+            this.ButtonSalesFormSatisEtmek.Location = new System.Drawing.Point(1075, 582);
             this.ButtonSalesFormSatisEtmek.Name = "ButtonSalesFormSatisEtmek";
             this.ButtonSalesFormSatisEtmek.Size = new System.Drawing.Size(100, 40);
             this.ButtonSalesFormSatisEtmek.TabIndex = 10;
