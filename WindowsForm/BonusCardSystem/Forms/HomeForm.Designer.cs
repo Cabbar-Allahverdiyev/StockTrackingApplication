@@ -30,7 +30,6 @@ namespace WindowsForm.BonusCardSystem.Forms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeForm));
-            this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
             this.checkBoxBonusCard = new System.Windows.Forms.CheckBox();
             this.textBoxBonusCardSelect = new System.Windows.Forms.TextBox();
             this.buttonTemizleBonus = new System.Windows.Forms.Button();
@@ -45,7 +44,7 @@ namespace WindowsForm.BonusCardSystem.Forms
             this.textBoxGuzest = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
             this.label12 = new System.Windows.Forms.Label();
             this.textBoxAxtar = new System.Windows.Forms.TextBox();
             this.dataGridViewList = new System.Windows.Forms.DataGridView();
@@ -75,26 +74,12 @@ namespace WindowsForm.BonusCardSystem.Forms
             this.buttonGroupBoxPaymentOdenisEt = new System.Windows.Forms.Button();
             this.buttonGroupBoxPaymentBonusCardSelect = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).BeginInit();
             this.groupBoxBonus.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewList)).BeginInit();
             this.groupBoxBonusCardSearch.SuspendLayout();
             this.groupBoxPayment.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // pictureBoxRefresh
-            // 
-            this.pictureBoxRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBoxRefresh.ErrorImage = global::WindowsForm.Properties.Resources.exitWhite;
-            this.pictureBoxRefresh.Image = global::WindowsForm.Properties.Resources.refreshBlack_16px_;
-            this.pictureBoxRefresh.InitialImage = global::WindowsForm.Properties.Resources.exitWhite;
-            this.pictureBoxRefresh.Location = new System.Drawing.Point(2182, 11);
-            this.pictureBoxRefresh.Name = "pictureBoxRefresh";
-            this.pictureBoxRefresh.Size = new System.Drawing.Size(25, 30);
-            this.pictureBoxRefresh.TabIndex = 51;
-            this.pictureBoxRefresh.TabStop = false;
             // 
             // checkBoxBonusCard
             // 
@@ -265,18 +250,19 @@ namespace WindowsForm.BonusCardSystem.Forms
             this.label1.TabIndex = 40;
             this.label1.Text = "Barkod :";
             // 
-            // pictureBox1
+            // pictureBoxRefresh
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox1.ErrorImage = global::WindowsForm.Properties.Resources.exitWhite;
-            this.pictureBox1.Image = global::WindowsForm.Properties.Resources.refreshBlack_16px_;
-            this.pictureBox1.InitialImage = global::WindowsForm.Properties.Resources.exitWhite;
-            this.pictureBox1.Location = new System.Drawing.Point(900, 9);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox1.TabIndex = 61;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBoxRefresh.ErrorImage = global::WindowsForm.Properties.Resources.exitWhite;
+            this.pictureBoxRefresh.Image = global::WindowsForm.Properties.Resources.refreshBlack_16px_;
+            this.pictureBoxRefresh.InitialImage = global::WindowsForm.Properties.Resources.exitWhite;
+            this.pictureBoxRefresh.Location = new System.Drawing.Point(900, 9);
+            this.pictureBoxRefresh.Name = "pictureBoxRefresh";
+            this.pictureBoxRefresh.Size = new System.Drawing.Size(25, 25);
+            this.pictureBoxRefresh.TabIndex = 61;
+            this.pictureBoxRefresh.TabStop = false;
+            this.pictureBoxRefresh.Click += new System.EventHandler(this.pictureBoxRefresh_Click);
             // 
             // label12
             // 
@@ -612,6 +598,7 @@ namespace WindowsForm.BonusCardSystem.Forms
             this.buttonGroupBoxPaymentBonusCardSelect.Text = "Bonus kart seç";
             this.buttonGroupBoxPaymentBonusCardSelect.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonGroupBoxPaymentBonusCardSelect.UseVisualStyleBackColor = true;
+            this.buttonGroupBoxPaymentBonusCardSelect.Click += new System.EventHandler(this.buttonGroupBoxPaymentBonusCardSelect_Click);
             // 
             // label17
             // 
@@ -632,19 +619,17 @@ namespace WindowsForm.BonusCardSystem.Forms
             this.Controls.Add(this.groupBoxPayment);
             this.Controls.Add(this.groupBoxBonusCardSearch);
             this.Controls.Add(this.dataGridViewList);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pictureBoxRefresh);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.textBoxAxtar);
             this.Controls.Add(this.groupBoxBonus);
-            this.Controls.Add(this.pictureBoxRefresh);
             this.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "HomeForm";
             this.Text = "HomeForm";
             this.Load += new System.EventHandler(this.HomeForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).EndInit();
             this.groupBoxBonus.ResumeLayout(false);
             this.groupBoxBonus.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewList)).EndInit();
             this.groupBoxBonusCardSearch.ResumeLayout(false);
             this.groupBoxBonusCardSearch.PerformLayout();
@@ -658,7 +643,7 @@ namespace WindowsForm.BonusCardSystem.Forms
         #endregion
 
         //private System.Windows.Forms.TextBox textBoxAxtar;
-        private System.Windows.Forms.PictureBox pictureBoxRefresh;
+       // private System.Windows.Forms.PictureBox pictureBoxRefresh;
         private System.Windows.Forms.CheckBox checkBoxBonusCard;
         private System.Windows.Forms.TextBox textBoxBonusCardSelect;
         private System.Windows.Forms.Button buttonTemizleBonus;
@@ -671,7 +656,7 @@ namespace WindowsForm.BonusCardSystem.Forms
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxValue;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBoxRefresh;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textBoxAxtar;
         private System.Windows.Forms.TextBox textBoxCustomer;

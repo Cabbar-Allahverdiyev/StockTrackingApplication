@@ -13,7 +13,7 @@ namespace Entities.DTOs.BonusCardOperationDto
         public string Musteri { get; set; }
         public decimal Mebleg { get; set; }
         public DateTime Tarix { get; set; }
-        // public bool IsIncreasedBalance { get; set; }
+        public string EmeliyyatVeziyyeti { get; set; }
         public bool Status { get; set; }
     }
 }

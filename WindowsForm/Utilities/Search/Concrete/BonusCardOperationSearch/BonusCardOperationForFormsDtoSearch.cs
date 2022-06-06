@@ -17,7 +17,7 @@ namespace WindowsForm.Utilities.Search.Concrete.BonusCardOperationSearch
 
         public List<BonusCardOperationForFormsDto> Search(List<BonusCardOperationForFormsDto> data, string searchText)
         {
-            return data.Where(c => $"{c.OperationId} {c.Satici} {c.BonusKartNomresi} {c.Musteri} {c.Mebleg} {c.Status}"
+            return data.Where(o => $"{o.OperationId} {o.Satici} {o.BonusKartNomresi} {o.Musteri} {o.Mebleg} {o.Tarix} {o.EmeliyyatVeziyyeti} {o.Status}"
            .ToLower().Contains(searchText.ToLower())).ToList();
         }
     }

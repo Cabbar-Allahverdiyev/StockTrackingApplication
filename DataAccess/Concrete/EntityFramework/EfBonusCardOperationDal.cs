@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Linq;
 using System.Text;
+using DataAccess.Constants.Messages;
 
 namespace DataAccess.Concrete.EntityFramework
 {
@@ -29,6 +30,9 @@ namespace DataAccess.Concrete.EntityFramework
                                  BonusKartNomresi=bonusCard.BarcodeNumber,
                                  Mebleg=operation.Value,
                                  Tarix=operation.Date,
+                                 EmeliyyatVeziyyeti=operation.IsIncreasedBalance
+                                 ?BonusCardOperationDalMessages.BonusMade
+                                 :BonusCardOperationDalMessages.BonusCardSale,
                                  Status=operation.Status
 
                              };
@@ -52,6 +56,9 @@ namespace DataAccess.Concrete.EntityFramework
                                  BonusKartNomresi = bonusCard.BarcodeNumber,
                                  Mebleg = operation.Value,
                                  Tarix = operation.Date,
+                                 EmeliyyatVeziyyeti = operation.IsIncreasedBalance 
+                                 ? BonusCardOperationDalMessages.BonusMade
+                                 : BonusCardOperationDalMessages.BonusCardSale,
                                  Status = operation.Status
 
                              };
@@ -76,6 +83,9 @@ namespace DataAccess.Concrete.EntityFramework
                                  BonusKartNomresi = bonusCard.BarcodeNumber,
                                  Mebleg = operation.Value,
                                  Tarix = operation.Date,
+                                 EmeliyyatVeziyyeti = operation.IsIncreasedBalance 
+                                 ? BonusCardOperationDalMessages.BonusMade
+                                 : BonusCardOperationDalMessages.BonusCardSale,
                                  Status = operation.Status
 
                              };
@@ -100,6 +110,9 @@ namespace DataAccess.Concrete.EntityFramework
                                  BonusKartNomresi = bonusCard.BarcodeNumber,
                                  Mebleg = operation.Value,
                                  Tarix = operation.Date,
+                                 EmeliyyatVeziyyeti = operation.IsIncreasedBalance
+                                 ? BonusCardOperationDalMessages.BonusMade
+                                 : BonusCardOperationDalMessages.BonusCardSale,
                                  Status = operation.Status
 
                              };
