@@ -22,7 +22,7 @@ namespace Business.Concrete
         IBonusCardOperationService _bonusCardOperationService;
         public BonusCardManager(IBonusCardDal bonusCardDal
                                 , ICustomerService customerService
-                                ,IBonusCardOperationService bonusCardOperationService)
+                                , IBonusCardOperationService bonusCardOperationService)
         {
             _bonusCardDal = bonusCardDal;
             _customerService = customerService;
@@ -40,7 +40,7 @@ namespace Business.Concrete
             }
 
             bonusCard.Balance = 0;
-            bonusCard.InterestAdvantage = 5;
+            bonusCard.InterestAdvantage = 0;
             _bonusCardDal.Add(bonusCard);
             return new SuccessResult(BonusCardMessages.Added);
         }
@@ -54,7 +54,7 @@ namespace Business.Concrete
 
         [ValidationAspect(typeof(BonusCardValidator))]
         [CacheRemoveAspect("IBonusCardService.Get")]
-        public IResult Update(BonusCard bonusCard   )
+        public IResult Update(BonusCard bonusCard)
         {
             _bonusCardDal.Update(bonusCard);
             return new SuccessResult(BonusCardMessages.Updated);
@@ -64,7 +64,7 @@ namespace Business.Concrete
         public IDataResult<List<BonusCard>> GetAll()
         {
             List<BonusCard> get = _bonusCardDal.GetAll();
-            return new SuccessDataResult<List<BonusCard>>(get,BonusCardMessages .GetAll);
+            return new SuccessDataResult<List<BonusCard>>(get, BonusCardMessages.GetAll);
         }
 
         [CacheAspect]
@@ -79,8 +79,8 @@ namespace Business.Concrete
         }
 
         // --------------->
-        
-        public  IDataResult<BonusCard> GetByCustomerId(int customerId)
+
+        public IDataResult<BonusCard> GetByCustomerId(int customerId)
         {
 
             BonusCard get = _bonusCardDal.Get(b => b.CustomerId == customerId);
@@ -103,16 +103,18 @@ namespace Business.Concrete
         }
 
         [CacheRemoveAspect("IBonusCardService.Get")]
-        public IResult IncreaseBalance(int cardId,int userId, decimal value)
+        public IResult IncreaseBalance(int cardId, int userId, decimal value, decimal interestedAdvantage)
         {
-            IResult rules=BusinessRules.Run(BonusCardIdExist(cardId)
-                                            , ValueGreaterThanZero(value));
+            IResult rules = BusinessRules.Run(BonusCardIdExist(cardId)
+                                            , IsValueGreaterThanZero(value)
+                                            , IsCustomerExistsInterestedAdvantage(cardId, ref interestedAdvantage)
+                                            , CalCulateValue(ref value, interestedAdvantage));
             if (rules != null)
             {
                 return new ErrorResult(rules.Message);
             }
             IDataResult<BonusCard> getBonusCard = GetById(cardId);
-           
+
             BonusCard bonusCard = getBonusCard.Data;
             bonusCard.Balance += value;
             Customer customer = _customerService.GetById(bonusCard.CustomerId).Data;
@@ -121,7 +123,7 @@ namespace Business.Concrete
             {
                 return new ErrorResult(BonusCardMessages.NotIncreaseBalance(customer.FirstName));
             }
-            IResult bonusCardOperationAdded = _bonusCardOperationService.IncreasedBalance(bonusCard,userId,value);
+            IResult bonusCardOperationAdded = _bonusCardOperationService.IncreasedBalance(bonusCard, userId, value);
             if (!bonusCardOperationAdded.Success)
             {
                 return new ErrorResult(bonusCardOperationAdded.Message);
@@ -130,10 +132,17 @@ namespace Business.Concrete
         }
 
 
-
         [CacheRemoveAspect("IBonusCardService.Get")]
-        public IResult ReduceBalance(int  cardId,int userId, decimal value)
+        public IResult ReduceBalance(int cardId, int userId, decimal value)
         {
+
+            IResult rules = BusinessRules.Run(BonusCardIdExist(cardId)
+                                            , IsValueGreaterThanZero(value)
+                                            , IsBalanceGreaterThanOrEqualsValue(cardId, value));
+            if (rules != null)
+            {
+                return new ErrorResult(rules.Message);
+            }
             IDataResult<BonusCard> getBonusCard = GetById(cardId);
             if (!getBonusCard.Success)
             {
@@ -154,6 +163,8 @@ namespace Business.Concrete
             }
             return new SuccessResult(BonusCardMessages.ReduceBalance(customer.FirstName));
         }
+
+
 
 
         //Dtos
@@ -187,14 +198,24 @@ namespace Business.Concrete
             return new SuccessDataResult<BonusCardForFormsDto>(get, BonusCardMessages.Found);
         }
 
-        //Elave
-        private IResult ValueGreaterThanZero(decimal value)
+        //Businnes Rules
+        private IResult IsValueGreaterThanZero(decimal value)
         {
-            if (value<=0)
+            if (value <= 0)
             {
-                return new ErrorResult(BonusCardMessages.ThisCustomerDoesNotHaveABonusCard);
+                return new ErrorResult(BonusCardMessages.MustNotBeEqualToOrLessThanZero);
             }
             return new SuccessResult();
+        }
+
+        private IResult IsBalanceGreaterThanOrEqualsValue(int cardId, decimal value)
+        {
+            BonusCard getBonusCard = GetById(cardId).Data;
+            if (getBonusCard.Balance >= value)
+            {
+                return new SuccessResult();
+            }
+            return new ErrorResult(BonusCardMessages.BalanceGreaterThanOrEqualsValue);
         }
 
         private IResult BonusCardIdExist(int cardId)
@@ -206,5 +227,24 @@ namespace Business.Concrete
             }
             return new SuccessResult();
         }
+
+        private IResult IsCustomerExistsInterestedAdvantage(int cardId, ref decimal interestedAdvantage)
+        {
+            IDataResult<BonusCard> getBonusCard = GetById(cardId);
+            if (getBonusCard.Data.InterestAdvantage <= 0)
+            {
+                return new SuccessResult();
+            }
+            interestedAdvantage = getBonusCard.Data.InterestAdvantage;
+            return new SuccessResult();
+        }
+
+        private IResult CalCulateValue(ref decimal value, decimal interestedAdvantage)
+        {
+            value = value * interestedAdvantage / 100;
+            return new SuccessResult();
+        }
+
+
     }
 }

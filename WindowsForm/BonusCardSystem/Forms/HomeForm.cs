@@ -29,15 +29,18 @@ namespace WindowsForm.BonusCardSystem.Forms
 
         IBonusCardService _bonusCardService;
         IBonusCardOperationService _bonusCardOperationService;
+        IFormSettingService _formSettingService;
 
         BonusCardOperationForFormsDtoSearch _bonusCardOperationSearch;
         List<BonusCardOperationForFormsDto> _data;
 
         public HomeForm(IBonusCardService bonusCardService
-                        , IBonusCardOperationService bonusCardOperationService)
+                        , IBonusCardOperationService bonusCardOperationService
+                        , IFormSettingService formSettingService)
         {
             _bonusCardService = bonusCardService;
             _bonusCardOperationService = bonusCardOperationService;
+            _formSettingService = formSettingService;
             _bonusCardOperationSearch = new BonusCardOperationForFormsDtoSearch();
             _data = _bonusCardOperationService.GetAllBonusCardOperationForFormsDto().Data;
             InitializeComponent();
@@ -142,7 +145,12 @@ namespace WindowsForm.BonusCardSystem.Forms
                 }
 
                 decimal value = textBoxValue.Text == "" ? 0 : decimal.Parse(textBoxValue.Text);
-                IResult result = _bonusCardService.IncreaseBalance(BonusCardId, UserId, value);
+
+                decimal interestedAdvantage = decimal.Parse(
+                    _formSettingService.GetByName("textBoxIGeneralInterestRate").Data.Value
+                    );
+                   
+                IResult result = _bonusCardService.IncreaseBalance(BonusCardId, UserId, value, interestedAdvantage);
                 if (!result.Success)
                 {
                     FormsMessage.WarningMessage(result.Message);
@@ -247,12 +255,12 @@ namespace WindowsForm.BonusCardSystem.Forms
                 int selectedYearItem = comboBoxYears.SelectedItem != null ? int.Parse(comboBoxYears.SelectedItem.ToString())
                    : DateTime.Now.Year;
                 decimal totalBonus = 0;
-                decimal totalBonusSales=0;
+                decimal totalBonusSales = 0;
                 decimal totalBonusMade = 0;
                 // decimal incomeTotal = 0;
                 int staticUserId = BonusCardSystemLoginForm.UserId;
 
-                
+
                 labelTotalBonus.Text = CalculateTotalBonus(_bonusCardService.GetAll().Data).ToString();
 
                 if (comboBoxDays.SelectedItem == null && comboBoxMonths.SelectedItem != null && comboBoxYears.SelectedItem == null)
@@ -263,7 +271,7 @@ namespace WindowsForm.BonusCardSystem.Forms
                     {
                         if (item.Status == true)
                         {
-                            if (item.EmeliyyatVeziyyeti==BonusCardOperationDalMessages.BonusMade)
+                            if (item.EmeliyyatVeziyyeti == BonusCardOperationDalMessages.BonusMade)
                             {
                                 totalBonusMade += item.Mebleg;
                             }
@@ -271,7 +279,7 @@ namespace WindowsForm.BonusCardSystem.Forms
                             {
                                 totalBonusSales += item.Mebleg;
                             }
-                           
+
                         }
                     }
                     labelTotalBonusMade.Text = totalBonusMade.ToString();

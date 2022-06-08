@@ -161,23 +161,23 @@ namespace WindowsForm.BonusCardSystem.Forms
                     return;
                 }
 
-                UserDashboard userDashboard = new UserDashboard(_userService
-                                                                , _operationClaimService
-                                                                , _userOperationClaimForFormsService
-                                                                , _productService
-                                                                , _brandService
-                                                                , _categoryService
-                                                                , _customerService
-                                                                , _customerBalanceService
-                                                                , _customerPaymentService
-                                                                , _cartService
-                                                                , _debtService
-                                                                , _saleWinFormService
-                                                                , _supplierService
-                                                                ,_bonusCardService
-                                                                ,_formSettingService);
-                this.Hide();
-                userDashboard.Show();
+                //BonusCardSystemUserDashboard userDashboard = new BonusCardSystemUserDashboard(_userService
+                //                                                , _operationClaimService
+                //                                                , _userOperationClaimForFormsService
+                //                                                , _productService
+                //                                                , _brandService
+                //                                                , _categoryService
+                //                                                , _customerService
+                //                                                , _customerBalanceService
+                //                                                , _customerPaymentService
+                //                                                , _cartService
+                //                                                , _debtService
+                //                                                , _saleWinFormService
+                //                                                , _supplierService
+                //                                                ,_bonusCardService
+                //                                                ,_formSettingService);
+                //this.Hide();
+                //userDashboard.Show();
 
 
             }

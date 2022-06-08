@@ -505,7 +505,7 @@ namespace WindowsForm.BonusCardSystem.Forms
         //Bonus Elave et
         private void bonusƏlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new HomeForm(_bonusCardService,_bonusCardOperationService), sender);
+            OpenChildForm(new HomeForm(_bonusCardService,_bonusCardOperationService,_formSettingService), sender);
         }
 
         //Parametrler --------------------------->

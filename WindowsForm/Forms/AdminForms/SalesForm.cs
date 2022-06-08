@@ -43,6 +43,7 @@ namespace WindowsForm.Forms
         ISaleWinFormService _saleWinFormService;
         IDebtService _debtService;
         IBonusCardService _bonusCardService;
+        IFormSettingService _formSettingService;
 
         public SalesForm(ICategoryService categoryService
                             , IBrandService brandService
@@ -52,7 +53,8 @@ namespace WindowsForm.Forms
                             , ICustomerService customerService
                             , ISaleWinFormService saleWinFormService
                             , IDebtService debtService
-                            , IBonusCardService bonusCardService)
+                            , IBonusCardService bonusCardService
+                            , IFormSettingService formSettingService)
         {
             _productService = productService;
             _cartService = cartService;
@@ -63,8 +65,10 @@ namespace WindowsForm.Forms
             _brandService = brandService;
             _supplierService = supplierService;
             _bonusCardService = bonusCardService;
+            _formSettingService = formSettingService;
 
 
+            _dataProduct = _productService.GetAllProductViewDasboardDetail().Data;
             InitializeComponent();
             TotalPriceLabelWrite();
             MyControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
@@ -75,7 +79,6 @@ namespace WindowsForm.Forms
             BonusCardId = 0;
             BonusCardSelectForm.BonusCardId = 0;
 
-            _dataProduct = _productService.GetAllProductViewDasboardDetail().Data;
         }
 
 
@@ -450,9 +453,13 @@ namespace WindowsForm.Forms
 
                     if (BonusCardId != 0)
                     {
+                        decimal interestedAdvantage = decimal.Parse(
+                          _formSettingService.GetByName("textBoxIGeneralInterestRate").Data.Value
+                         );
                         bonusCardIncreased = _bonusCardService.IncreaseBalance(BonusCardId
                             ,UserId
-                            , totalPrice);
+                            , totalPrice
+                            ,interestedAdvantage);
                         if (!bonusCardIncreased.Success)
                         {
                             FormsMessage.WarningMessage(bonusCardIncreased.Message);

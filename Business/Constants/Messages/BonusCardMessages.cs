@@ -26,7 +26,7 @@ namespace Business.Constants.Messages
         public static string NotReduceBalance(string customerName) => $"{customerName}'in bonus kartının balansı azaldıla bilmədi";
 
         public static string IncreasedBalanceIsBlank = "Məbləğ boş olduğu üçün bonus kartın balansı artırıla bilmədi !";
-
         public static string MustNotBeEqualToOrLessThanZero = "Dəyər sıfırdan kiçik və sıfıra bərabər ola bilməz!";
+        public static string BalanceGreaterThanOrEqualsValue = "Bonus dəyəri balansdan boyük ola bilməz !";
     }
 }

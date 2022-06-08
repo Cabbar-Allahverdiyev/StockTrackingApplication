@@ -18,7 +18,7 @@ namespace Business.Abstract
         IDataResult<BonusCard> GetByCustomerId(int customerId);
         IDataResult<BonusCard> GetByBarcodeNumber(string barcodeNumber);
 
-        IResult IncreaseBalance(int cardId,int userId,decimal value);
+        IResult IncreaseBalance(int cardId,int userId,decimal value,decimal interestedAdvantage);
         IResult ReduceBalance(int cardId,int userId,decimal value);
         IDataResult<List<BonusCardForFormsDto>> GetAllBonusCardForFormsDetail();
         IDataResult<BonusCardForFormsDto> GetBonusCardForFormsDetailById(int cardId);

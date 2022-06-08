@@ -625,7 +625,7 @@ namespace WindowsForm.BonusCardSystem.Forms
             this.Controls.Add(this.groupBoxBonus);
             this.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "HomeForm";
-            this.Text = "HomeForm";
+            this.Text = "Bonus səhifəsi";
             this.Load += new System.EventHandler(this.HomeForm_Load);
             this.groupBoxBonus.ResumeLayout(false);
             this.groupBoxBonus.PerformLayout();

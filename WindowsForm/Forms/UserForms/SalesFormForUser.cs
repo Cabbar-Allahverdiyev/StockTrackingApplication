@@ -41,6 +41,7 @@ namespace WindowsForm.Forms.UserForms
         IBrandService _brandService;
         ISupplierService _supplierService;
         IBonusCardService _bonusCardService;
+        IFormSettingService _formSettingService;
 
         private List<ProductViewDashboardDetailDto> _dataProducts;
 
@@ -54,7 +55,8 @@ namespace WindowsForm.Forms.UserForms
                             , ICustomerService customerService
                             , ISaleWinFormService saleWinFormService
                             , IDebtService debtService
-                            , IBonusCardService bonusCardService)
+                            , IBonusCardService bonusCardService
+                            , IFormSettingService formSettingService)
         {
             _productService = productService;
             _cartService = cartService;
@@ -66,6 +68,7 @@ namespace WindowsForm.Forms.UserForms
             _brandService = brandService;
             _supplierService = supplierService;
             _bonusCardService = bonusCardService;
+            _formSettingService = formSettingService;
 
             _dataProducts = _productService.GetAllProductViewDasboardDetail().Data;
             InitializeComponent();
@@ -404,9 +407,13 @@ namespace WindowsForm.Forms.UserForms
 
                     if (BonusCardId != 0)
                     {
+                        decimal interestedAdvantage = decimal.Parse(
+                           _formSettingService.GetByName("textBoxIGeneralInterestRate").Data.Value
+                           );
                         bonusCardIncreased = _bonusCardService.IncreaseBalance(BonusCardId
                             ,UserId
-                            , totalPrice);
+                            , totalPrice
+                            ,interestedAdvantage);
                         if (!bonusCardIncreased.Success)
                         {
                             FormsMessage.WarningMessage(bonusCardIncreased.Message);
@@ -520,7 +527,7 @@ namespace WindowsForm.Forms.UserForms
         private void buttonAxtar_Click(object sender, EventArgs e)
         {
             SalesForm salesForm = new SalesForm(_categoryService, _brandService, _supplierService, _productService, _cartService
-               , _customerService, _saleWinFormService, _debtService, _bonusCardService);
+               , _customerService, _saleWinFormService, _debtService, _bonusCardService,_formSettingService);
 
             salesForm.ComboBoxSelectedValue(dataGridViewProductList, comboBoxCategoryList.Text, comboBoxSupplierList.Text, comboBoxBrandList.Text);
         }

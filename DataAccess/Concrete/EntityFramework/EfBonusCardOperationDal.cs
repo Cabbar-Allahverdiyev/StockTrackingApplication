@@ -22,6 +22,7 @@ namespace DataAccess.Concrete.EntityFramework
                              join bonusCard in context.BonusCards on operation.BonusCardId equals bonusCard.Id
                              join user in context.Users on operation.UserId equals user.Id
                              join customer in context.Customers on bonusCard.CustomerId equals customer.Id
+                             orderby operation.Date descending
                              select new BonusCardOperationForFormsDto
                              {
                                  OperationId=operation.Id,
@@ -74,7 +75,8 @@ namespace DataAccess.Concrete.EntityFramework
                              join bonusCard in context.BonusCards on operation.BonusCardId equals bonusCard.Id
                              join user in context.Users on operation.UserId equals user.Id
                              join customer in context.Customers on bonusCard.CustomerId equals customer.Id
-                             where operation.IsIncreasedBalance == true 
+                             where operation.IsIncreasedBalance == true
+                             orderby operation.Date descending
                              select new BonusCardOperationForFormsDto
                              {
                                  OperationId = operation.Id,
@@ -101,7 +103,8 @@ namespace DataAccess.Concrete.EntityFramework
                              join bonusCard in context.BonusCards on operation.BonusCardId equals bonusCard.Id
                              join user in context.Users on operation.UserId equals user.Id
                              join customer in context.Customers on bonusCard.CustomerId equals customer.Id
-                             where operation.IsIncreasedBalance == false   
+                             where operation.IsIncreasedBalance == false
+                             orderby operation.Date descending
                              select new BonusCardOperationForFormsDto
                              {
                                  OperationId = operation.Id,
