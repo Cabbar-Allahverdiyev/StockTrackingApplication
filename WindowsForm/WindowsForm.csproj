@@ -60,7 +60,6 @@
     <Folder Include="BonusCardSystem\Forms\AdminForms\" />
     <Folder Include="BonusCardSystem\Forms\UserForms\" />
     <Folder Include="Core\Controllers\Abstract\" />
-    <Folder Include="Utilities\Helpers\" />
     <Folder Include="Wwwroot\" />
   </ItemGroup>
 
