@@ -23,6 +23,7 @@ using System.Linq;
 using Entities.DTOs.ProductDtos;
 using Entities.DTOs.BonusCardDtos;
 using Business.ValidationRules.FluentValidation;
+using WindowsForm.Utilities.Helpers.Calculators;
 
 namespace WindowsForm.Forms
 {
@@ -453,9 +454,7 @@ namespace WindowsForm.Forms
 
                     if (BonusCardId != 0)
                     {
-                        decimal interestedAdvantage = decimal.Parse(
-                          _formSettingService.GetByName("textBoxIGeneralInterestRate").Data.Value
-                         );
+                        decimal interestedAdvantage = AdvantageCalculator.WhatIsAdvantageToday(_formSettingService);
                         bonusCardIncreased = _bonusCardService.IncreaseBalance(BonusCardId
                             ,UserId
                             , totalPrice

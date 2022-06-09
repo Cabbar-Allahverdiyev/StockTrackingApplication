@@ -19,7 +19,7 @@ namespace WindowsForm.Utilities.Search.Concrete.SaleSearch
 
         public List<SaleWinFormDto> Search(List<SaleWinFormDto> data, string searchText)
         {
-            return data.Where(s => $"{s.SaleId} {s.ProductId} {s.MehsulAdi} {s.Kateqoriya} {s.Istifadeci} {s.SatilanQiymet} {s.Miqdar} {s.Cem} {s.Tarix} {s.SatisinVeziyyeti}"
+            return data.Where(s => $"{s.SaleId} {s.ProductId} {s.MehsulAdi} {s.Kateqoriya} {s.Marka} {s.Istifadeci} {s.AlisQiymeti} {s.SatilanQiymet} {s.Miqdar} {s.Cem} {s.Tarix} {s.SatisinVeziyyeti}"
             .ToLower().Contains(searchText.ToLower())).ToList();
         }
     }
