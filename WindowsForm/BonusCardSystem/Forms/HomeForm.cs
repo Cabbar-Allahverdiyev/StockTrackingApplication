@@ -83,7 +83,7 @@ namespace WindowsForm.BonusCardSystem.Forms
 
         private void textBoxGroupBoxPaymentBonusCardSelect_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (textBoxBonusCardSelect.Text.Length == 13)
+            if (textBoxGroupBoxPaymentBonusCardSelect.Text.Length == 13)
             {
                 IDataResult<BonusCardForFormsDto> getBonusCard = _bonusCardService
                     .GetBonusCardForFormsDetailByBarcodeNumber(textBoxGroupBoxPaymentBonusCardSelect.Text);

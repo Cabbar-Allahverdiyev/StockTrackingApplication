@@ -35,6 +35,7 @@ namespace WindowsForm.Forms.UserForms
         ISupplierService _supplierService;
         IBonusCardService _bonusCardService;
         IFormSettingService _formSettingService;
+        IBonusCardOperationService _bonusCardOperationService;
 
         private Form activateForm;
         private Size formSize;
@@ -54,7 +55,7 @@ namespace WindowsForm.Forms.UserForms
             , ISaleWinFormService saleWinFormService
             , ISupplierService supplierService
             , IBonusCardService bonusCardService
-            , IFormSettingService formSettingService)
+            , IFormSettingService formSettingService, IBonusCardOperationService bonusCardOperationService)
         {
             _userService = userService;
             _operationClaimService = operationClaimService;
@@ -71,6 +72,7 @@ namespace WindowsForm.Forms.UserForms
             _supplierService = supplierService;
             _bonusCardService = bonusCardService;
             _formSettingService = formSettingService;
+            _bonusCardOperationService = bonusCardOperationService;
 
             InitializeComponent();
             this.Padding = new Padding();
@@ -318,7 +320,8 @@ namespace WindowsForm.Forms.UserForms
                                                     , _supplierService
                                                     , _brandService
                                                     , _bonusCardService
-                                                    , _formSettingService));
+                                                    , _formSettingService
+                                                    ,_bonusCardOperationService));
         }
 
         //Dropdown menu---------------------------------->
@@ -452,6 +455,11 @@ namespace WindowsForm.Forms.UserForms
 
         }
 
+        private void bonusVəÖdənişƏlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new BonusCardSystem.Forms.HomeForm(_bonusCardService, _bonusCardOperationService,_formSettingService), sender);
+
+        }
         //solid prinsiplerine uygu hala sal
         private void CollapseMenu()
         {
@@ -527,6 +535,6 @@ namespace WindowsForm.Forms.UserForms
             labelTitle.Text = childForm.Text;
         }
 
-
+        
     }
 }

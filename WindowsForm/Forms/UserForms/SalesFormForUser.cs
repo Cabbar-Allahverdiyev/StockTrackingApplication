@@ -17,21 +17,22 @@ using WindowsForm.Core.Controllers.Concrete.ValidatorControllers;
 using USB_Barcode_Scanner;
 using WindowsForm.Utilities.Search.Concrete.ProductSearch;
 using WindowsForm.MyControls;
-using WindowsForm.Core.Constants.SelectionItem;
 using WindowsForm.Core.Constants.FormsAuthorization.User;
 using Business.Abstract;
 using Entities.DTOs.ProductDtos;
 using Entities.DTOs.BonusCardDtos;
 using Business.ValidationRules.FluentValidation;
 using WindowsForm.Utilities.Helpers.Calculators;
+using WindowsForm.Utilities.Helpers.Selectors.CustomerSelectors;
 
 namespace WindowsForm.Forms.UserForms
 {
     public partial class SalesFormForUser : Form
     {
-        private int UserId { get; set; }
-        private int CartId { get; set; }
-        private int BonusCardId { get; set; }
+        private int UserId;
+        private int CartId;
+        private int BonusCardId;
+        private int CustomerId;
 
         IProductService _productService;
         ICartService _cartService;
@@ -72,6 +73,7 @@ namespace WindowsForm.Forms.UserForms
             _formSettingService = formSettingService;
 
             _dataProducts = _productService.GetAllProductViewDasboardDetail().Data;
+            UserId = LoginForm.UserId;
             InitializeComponent();
             TotalPriceLabelWrite();
             UserAuthorization.QrCodeIsSuccess = false;
@@ -84,7 +86,8 @@ namespace WindowsForm.Forms.UserForms
             CartId = 0;
             BonusCardId = 0;
             BonusCardSelectForm.BonusCardId = 0;
-            UserId = LoginForm.UserId;
+            CustomerSelectForm.CustomerId = 0;
+            CustomerId = 0;
         }
 
         private void SalesForm_Load(object sender, EventArgs e)
@@ -325,15 +328,31 @@ namespace WindowsForm.Forms.UserForms
                 return;
             }
         }
+        
 
         private void buttonSec_Click(object sender, EventArgs e)
         {
             try
             {
-                CustomerListForm customerListForm = new CustomerListForm(_customerService);
-                customerListForm.ShowDialog();
-                textBoxCustomerId.Text = SelectedCustomerForSalesForm.Id.ToString();
-                IDataResult<Customer> result = _customerService.GetById(SelectedCustomerForSalesForm.Id);
+                //CustomerListForm customerListForm = new CustomerListForm(_customerService);
+                //customerListForm.ShowDialog();
+                if (SelectForCustomerSelectForm.CustomerSelect(ref CustomerId,_customerService) is false)
+                {
+                    return;
+                }
+                //CustomerId = 0;
+                //CustomerSelectForm customerSelectForm = new CustomerSelectForm(_customerService);
+                //customerSelectForm.ShowDialog();
+                //if (CustomerSelectForm.CustomerId==0)
+                //{
+                //    FormsMessage.WarningMessage(FormsTextMessages.IdBlank);
+                //    return;
+                //}
+                //CustomerId = CustomerSelectForm.CustomerId;
+                textBoxCustomerId.Text =CustomerId.ToString();
+                   // SelectedCustomerForSalesForm.Id.ToString();
+                //IDataResult<Customer> result = _customerService.GetById(SelectedCustomerForSalesForm.Id);
+                IDataResult<Customer> result = _customerService.GetById(CustomerId);
                 if (!result.Success)
                 {
                     FormsMessage.ErrorMessage(result.Message);

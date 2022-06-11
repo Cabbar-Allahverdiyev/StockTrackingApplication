@@ -67,6 +67,7 @@ namespace WindowsForm.Forms
             BonusCard bonusCard = new BonusCard();
             bonusCard.CustomerId = int.Parse(textBoxMusteriId.Text);
             bonusCard.BarcodeNumber = textBoxBarkod.Text;
+            bonusCard.InterestAdvantage = textBoxGuzest.Text == "" ? 0 : decimal.Parse(textBoxGuzest.Text);
             if (!FormValidationTool.IsValid(new BonusCardValidator(), bonusCard))
             {
                 return;

@@ -34,6 +34,7 @@ namespace WindowsForm.Forms.AdminForms
         ISupplierService _supplierService;
         IBonusCardService _bonusCardService;
         IFormSettingService _formSettingService;
+        IBonusCardOperationService _bonusCardOperationService;
         //OperationClaimForFormsManager _operationClaimManager=new OperationClaimForFormsManager(new EfOperationClaimForFormsDal());
         //UserOperationClaimForFormsManager _userOperationClaimForFormsManager = new UserOperationClaimForFormsManager(new EfUserOperationClaimForFormsDal());
         private Form activateForm;
@@ -50,7 +51,7 @@ namespace WindowsForm.Forms.AdminForms
             , ICustomerBalanceService customerBalanceService
             , ICustomerPaymentService customerPaymentService
             , ICartService cartService
-            , IDebtService debtService, ISaleWinFormService saleWinFormService, ISupplierService supplierService, IBonusCardService bonusCardService, IFormSettingService formSettingService)
+            , IDebtService debtService, ISaleWinFormService saleWinFormService, ISupplierService supplierService, IBonusCardService bonusCardService, IFormSettingService formSettingService, IBonusCardOperationService bonusCardOperationService)
         {
             _userService = userService;
             _operationClaimService = operationClaimService;
@@ -67,6 +68,7 @@ namespace WindowsForm.Forms.AdminForms
             _supplierService = supplierService;
             _bonusCardService = bonusCardService;
             _formSettingService = formSettingService;
+            _bonusCardOperationService = bonusCardOperationService;
 
 
             InitializeComponent();
@@ -337,7 +339,8 @@ namespace WindowsForm.Forms.AdminForms
                                                     , _supplierService
                                                     , _brandService
                                                     ,_bonusCardService
-                                                    ,_formSettingService));
+                                                    ,_formSettingService
+                                                    ,_bonusCardOperationService));
 
 
         }
@@ -497,6 +500,12 @@ namespace WindowsForm.Forms.AdminForms
 
         }
 
+        private void bonusVəÖdənişƏlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new BonusCardSystem.Forms.HomeForm(_bonusCardService,_bonusCardOperationService,_formSettingService),sender);
+
+        }
+
         //Parametrler --------------------------->
         private void bonusKartToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -588,7 +597,9 @@ namespace WindowsForm.Forms.AdminForms
             labelTitle.Text = childForm.Text;
         }
 
-       
+        
+
+
 
 
 

@@ -16,7 +16,6 @@ using WindowsForm.Core.Controllers.Concrete.ValidatorControllers;
 using USB_Barcode_Scanner;
 using WindowsForm.Utilities.Search.Concrete.ProductSearch;
 using WindowsForm.MyControls;
-using WindowsForm.Core.Constants.SelectionItem;
 using System.Reflection;
 using Business.Abstract;
 using System.Linq;
@@ -29,9 +28,10 @@ namespace WindowsForm.Forms
 {
     public partial class SalesForm : Form
     {
-        private int UserId = LoginForm.UserId;
-        private int CartId { get; set; }
-        private int BonusCardId { get; set; }
+        private int UserId ;
+        private int CartId;
+        private int BonusCardId;
+        private int CustomerId;
 
         private List<ProductViewDashboardDetailDto>_dataProduct;
 
@@ -71,14 +71,15 @@ namespace WindowsForm.Forms
 
             _dataProduct = _productService.GetAllProductViewDasboardDetail().Data;
             InitializeComponent();
+            UserId = LoginForm.UserId;
             TotalPriceLabelWrite();
             MyControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
             BarcodeScanner barcodeScanner = new BarcodeScanner(textBoxBarkodNo);
             barcodeScanner.BarcodeScanned += BarcodeScanner_BarcodeScanned;
-
             CartId = 0;
             BonusCardId = 0;
             BonusCardSelectForm.BonusCardId = 0;
+            CustomerId = 0;
 
         }
 
@@ -196,10 +197,21 @@ namespace WindowsForm.Forms
 
         private void buttonSec_Click(object sender, EventArgs e)
         {
-            CustomerListForm customerListForm = new CustomerListForm(_customerService);
-            customerListForm.ShowDialog();
-            textBoxCustomerId.Text = SelectedCustomerForSalesForm.Id.ToString();
-            IDataResult<Customer> result = _customerService.GetById(SelectedCustomerForSalesForm.Id);
+            //CustomerListForm customerListForm = new CustomerListForm(_customerService);
+            //customerListForm.ShowDialog();
+            //textBoxCustomerId.Text = SelectedCustomerForSalesForm.Id.ToString();
+            //IDataResult<Customer> result = _customerService.GetById(SelectedCustomerForSalesForm.Id);
+            CustomerId = 0;
+            CustomerSelectForm customerSelectForm  = new CustomerSelectForm(_customerService);
+            customerSelectForm.ShowDialog();
+            if (CustomerSelectForm.CustomerId==0)
+            {
+                FormsMessage.WarningMessage(FormsTextMessages.IdBlank);
+                return;
+            }
+            CustomerId = CustomerSelectForm.CustomerId;
+            textBoxCustomerId.Text = CustomerId.ToString();
+            IDataResult<Customer> result = _customerService.GetById(CustomerId);
             if (!result.Success)
             {
                 FormsMessage.ErrorMessage(result.Message);
@@ -470,6 +482,7 @@ namespace WindowsForm.Forms
                         }
 
                     }
+                    TextBoxController.ClearAllTextBoxesByGroupBox(groupBoxMusteri);
                     FormsMessage.SuccessMessage(resultMessage);
 
 

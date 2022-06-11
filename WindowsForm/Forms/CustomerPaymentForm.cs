@@ -12,7 +12,6 @@ using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.Concrete;
 using WindowsForm.Core.Controllers.Concrete.ValidatorControllers;
 using WindowsForm.MyControls;
-using WindowsForm.Core.Constants.SelectionItem;
 using WindowsForm.Forms.UserForms;
 using WindowsForm.Core.Constants.FormsAuthorization.User;
 using WindowsForm.Utilities.Search.Concrete.CustomerPaymentSearch;
@@ -20,6 +19,7 @@ using System.Reflection;
 using Entities.DTOs.CustomerPaymentDtos;
 using Business.Abstract;
 using Business.ValidationRules;
+using WindowsForm.Utilities.Helpers.Selectors.CustomerSelectors;
 
 namespace WindowsForm.Forms
 {
@@ -29,11 +29,13 @@ namespace WindowsForm.Forms
         ICustomerPaymentService _paymentService;
         ICustomerService _customerService;
 
+        private int CustomerId;
         public CustomerPaymentForm(IUserService userService, ICustomerPaymentService paymentService, ICustomerService customerService)
         {
             _userService = userService;
             _paymentService = paymentService;
             _customerService = customerService;
+            CustomerId = 0;
             InitializeComponent();
             CustomerPaymentListRefresh();
             checkBoxOdenisLegvEdilsin.Checked = false;
@@ -138,11 +140,18 @@ namespace WindowsForm.Forms
         {
             try
             {
-                SelectedCustomerForSalesForm.Id = 0;
-                CustomerListForm customerListForm = new CustomerListForm(_customerService);
-                customerListForm.ShowDialog();
-                textBoxCustomerIdInPaymentAdd.Text = SelectedCustomerForSalesForm.Id.ToString();
-                IDataResult<Customer> result = _customerService.GetById(SelectedCustomerForSalesForm.Id);
+                if (SelectForCustomerSelectForm.CustomerSelect(ref CustomerId, _customerService) is false)
+                {
+                    return;
+                }
+
+                //SelectedCustomerForSalesForm.Id = 0;
+                //CustomerListForm customerListForm = new CustomerListForm(_customerService);
+                //customerListForm.ShowDialog();
+                //textBoxCustomerIdInPaymentAdd.Text = SelectedCustomerForSalesForm.Id.ToString();
+                //IDataResult<Customer> result = _customerService.GetById(SelectedCustomerForSalesForm.Id);
+                textBoxCustomerIdInPaymentAdd.Text = CustomerId.ToString();
+                IDataResult<Customer> result = _customerService.GetById(CustomerId);
                 if (!result.Success)
                 {
                     FormsMessage.ErrorMessage(result.Message);

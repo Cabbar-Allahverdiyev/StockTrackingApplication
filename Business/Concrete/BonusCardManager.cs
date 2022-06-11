@@ -33,14 +33,16 @@ namespace Business.Concrete
         [CacheRemoveAspect("IBonusCardService.Get")]
         public IResult Add(BonusCard bonusCard)
         {
-            IResult result = GetByCustomerId(bonusCard.CustomerId);
-            if (result.Success)
+           
+            var rules = BusinessRules.Run(DoesTheCustomerHaveABonusCard(bonusCard.CustomerId)
+                                        , IsThereAnotherBonusCardInThisBarcode(bonusCard.BarcodeNumber));
+            if (rules != null)
             {
-                return new ErrorResult(BonusCardMessages.ThisCustomerAlreadyExistsABonusCard);
+                return new ErrorResult(rules.Message);
             }
 
             bonusCard.Balance = 0;
-            bonusCard.InterestAdvantage = 0;
+            bonusCard.InterestAdvantage = bonusCard.InterestAdvantage == default ? 0 : bonusCard.InterestAdvantage;
             _bonusCardDal.Add(bonusCard);
             return new SuccessResult(BonusCardMessages.Added);
         }
@@ -245,6 +247,25 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
+        private IResult DoesTheCustomerHaveABonusCard(int customerId)
+        {
+            IResult result = GetByCustomerId(customerId);
+            if (result.Success)
+            {
+                return new ErrorResult(BonusCardMessages.ThisCustomerAlreadyExistsABonusCard);
+            }
+            return new SuccessResult();
+        }
+
+        private  IResult IsThereAnotherBonusCardInThisBarcode(string barcodeNumber)
+        {
+            IResult result = GetByBarcodeNumber(barcodeNumber);
+            if (result.Success)
+            {
+                return new ErrorResult(BonusCardMessages.ThisCustomerAlreadyExistsABonusCard);
+            }
+            return new SuccessResult();
+        }
 
     }
 }

@@ -59,6 +59,7 @@
   <ItemGroup>
     <Folder Include="BonusCardSystem\Forms\AdminForms\" />
     <Folder Include="BonusCardSystem\Forms\UserForms\" />
+    <Folder Include="Core\Constants\SelectionItem\" />
     <Folder Include="Core\Controllers\Abstract\" />
     <Folder Include="Wwwroot\" />
   </ItemGroup>

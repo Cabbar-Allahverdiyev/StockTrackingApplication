@@ -96,6 +96,7 @@ namespace WindowsForm.Forms.AdminForms
             this.yeniləVəSilToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.myDMSettings = new WindowsForm.MyControls.MyDropdownMenu(this.components);
             this.bonusKartToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.bonusVəÖdənişƏlavəEtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelTitleBar.SuspendLayout();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
@@ -732,42 +733,43 @@ namespace WindowsForm.Forms.AdminForms
             this.myDMOther.MenuItemTextColor = System.Drawing.Color.DimGray;
             this.myDMOther.Name = "myDMOther";
             this.myDMOther.PrimaryColor = System.Drawing.Color.MediumSlateBlue;
-            this.myDMOther.Size = new System.Drawing.Size(169, 92);
+            this.myDMOther.Size = new System.Drawing.Size(181, 114);
             // 
             // musterilerToolStripMenuItem
             // 
             this.musterilerToolStripMenuItem.Name = "musterilerToolStripMenuItem";
-            this.musterilerToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.musterilerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.musterilerToolStripMenuItem.Text = "Musteriler";
             this.musterilerToolStripMenuItem.Click += new System.EventHandler(this.musterilerToolStripMenuItem_Click);
             // 
             // musteriOdenisleriToolStripMenuItem
             // 
             this.musteriOdenisleriToolStripMenuItem.Name = "musteriOdenisleriToolStripMenuItem";
-            this.musteriOdenisleriToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.musteriOdenisleriToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.musteriOdenisleriToolStripMenuItem.Text = "Musteri odenisleri";
             this.musteriOdenisleriToolStripMenuItem.Click += new System.EventHandler(this.musteriOdenisleriToolStripMenuItem_Click);
             // 
             // selahiyyetlerToolStripMenuItem
             // 
             this.selahiyyetlerToolStripMenuItem.Name = "selahiyyetlerToolStripMenuItem";
-            this.selahiyyetlerToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.selahiyyetlerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.selahiyyetlerToolStripMenuItem.Text = "Selahiyyetler";
             this.selahiyyetlerToolStripMenuItem.Click += new System.EventHandler(this.selahiyyetlerToolStripMenuItem_Click);
             // 
             // bonusKartToolStripMenuItem
             // 
             this.bonusKartToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem2});
+            this.toolStripMenuItem2,
+            this.bonusVəÖdənişƏlavəEtToolStripMenuItem});
             this.bonusKartToolStripMenuItem.Name = "bonusKartToolStripMenuItem";
-            this.bonusKartToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.bonusKartToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.bonusKartToolStripMenuItem.Text = "Bonus Kart";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(117, 22);
-            this.toolStripMenuItem2.Text = "Əlavə et";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(203, 22);
+            this.toolStripMenuItem2.Text = "Kart Əlavə et";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // myDMProduct
@@ -886,6 +888,13 @@ namespace WindowsForm.Forms.AdminForms
             this.bonusKartToolStripMenuItem1.Text = "Bonus kart";
             this.bonusKartToolStripMenuItem1.Click += new System.EventHandler(this.bonusKartToolStripMenuItem1_Click);
             // 
+            // bonusVəÖdənişƏlavəEtToolStripMenuItem
+            // 
+            this.bonusVəÖdənişƏlavəEtToolStripMenuItem.Name = "bonusVəÖdənişƏlavəEtToolStripMenuItem";
+            this.bonusVəÖdənişƏlavəEtToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.bonusVəÖdənişƏlavəEtToolStripMenuItem.Text = "Bonus və ödəniş əlavə et";
+            this.bonusVəÖdənişƏlavəEtToolStripMenuItem.Click += new System.EventHandler(this.bonusVəÖdənişƏlavəEtToolStripMenuItem_Click);
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -996,5 +1005,6 @@ namespace WindowsForm.Forms.AdminForms
         private System.Windows.Forms.Button buttonSettings;
         private MyControls.MyDropdownMenu myDMSettings;
         private System.Windows.Forms.ToolStripMenuItem bonusKartToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem bonusVəÖdənişƏlavəEtToolStripMenuItem;
     }
 }
