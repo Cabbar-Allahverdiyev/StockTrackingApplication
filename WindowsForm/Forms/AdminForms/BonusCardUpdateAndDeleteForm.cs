@@ -53,25 +53,8 @@ namespace WindowsForm.Forms.AdminForms
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
             BonusCard bonusCard = new BonusCard();
-            bonusCard.Id = int.Parse(textBoxBonusCardId.Text);
+            bonusCard.Id = textBoxBonusCardId.Text==""?0: int.Parse(textBoxBonusCardId.Text);
             DialogResult dialogResult = MessageBox.Show("Bonus kartı yeniləmək isdədiyinzdən əminmisiniz?", "Diqqət", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            //switch (dialogResult)
-            //{
-
-            //    case DialogResult.Yes:
-            //        IResult result = _bonusCardService.Update(bonusCard);
-            //        if (!result.Success)
-            //        {
-            //            FormsMessage.WarningMessage(result.Message);
-            //            return;
-            //        }
-            //        FormsMessage.SuccessMessage(result.Message);
-            //        break;
-            //    case DialogResult.No:
-            //        break;
-            //    default:
-            //        break;
-            //}
             if (dialogResult == DialogResult.Yes)
             {
                 IDataResult<BonusCard> getCard = _bonusCardService.GetById(bonusCard.Id);
@@ -121,7 +104,7 @@ namespace WindowsForm.Forms.AdminForms
         //Text Changed
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
-           
+
             bonusCardSearch.GetDataWriteGridView(_dataBonusCardForFormsDetail
                 , textBoxAxtar.Text, dataGridViewList);
         }
@@ -141,7 +124,7 @@ namespace WindowsForm.Forms.AdminForms
         //Elave
         private void BonusCardRefresh()
         {
-            _dataBonusCardForFormsDetail= _bonusCardService.GetAllBonusCardForFormsDetail().Data;
+            _dataBonusCardForFormsDetail = _bonusCardService.GetAllBonusCardForFormsDetail().Data;
             dataGridViewList.DataSource = _dataBonusCardForFormsDetail;// _bonusCardService.GetAllBonusCardForFormsDetail().Data;
         }
 

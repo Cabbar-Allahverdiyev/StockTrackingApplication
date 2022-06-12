@@ -17,7 +17,9 @@ using System.Linq;
 using System.Net.NetworkInformation;
 using System.Reflection;
 using System.Text;
-using System.Windows.Forms; 
+using System.Windows.Forms;
+using WindowsForm.BonusCardSystem.Forms.AdminForms;
+using WindowsForm.BonusCardSystem.Forms.UserForms;
 using WindowsForm.Core.Constants.FormsAuthorization.User;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.Concrete;
@@ -67,7 +69,7 @@ namespace WindowsForm.BonusCardSystem.Forms
             , IBonusCardService bonusCardService
             , IFormSettingService formSettingService, IBonusCardOperationService bonusCardOperationService)
         {
-            _userOperationClaimForFormsService =userOperationClaimForFormsService;
+            _userOperationClaimForFormsService = userOperationClaimForFormsService;
             _userService = userService;
             _operationClaimService = operationClaimService;
             _productService = productService;
@@ -139,7 +141,7 @@ namespace WindowsForm.BonusCardSystem.Forms
                 IResult getUserClaims = _userService.CheckUserOperationClaimIsBossAndAdminByUserIdForForms(user.Id);
                 if (getUserClaims.Success)
                 {
-                    BonusCardDashboard dashboard = new BonusCardDashboard(_userService
+                    BonusCardAdminDashboard dashboard = new BonusCardAdminDashboard(_userService
                                                     , _operationClaimService
                                                     , _userOperationClaimForFormsService
                                                     , _productService
@@ -152,32 +154,33 @@ namespace WindowsForm.BonusCardSystem.Forms
                                                     , _debtService
                                                     , _saleWinFormService
                                                     , _supplierService
-                                                    ,_bonusCardService
-                                                    ,_formSettingService
-                                                    ,_bonusCardOperationService
+                                                    , _bonusCardService
+                                                    , _formSettingService
+                                                    , _bonusCardOperationService
                                                     );
                     this.Hide();
                     dashboard.Show();
                     return;
                 }
 
-                //BonusCardSystemUserDashboard userDashboard = new BonusCardSystemUserDashboard(_userService
-                //                                                , _operationClaimService
-                //                                                , _userOperationClaimForFormsService
-                //                                                , _productService
-                //                                                , _brandService
-                //                                                , _categoryService
-                //                                                , _customerService
-                //                                                , _customerBalanceService
-                //                                                , _customerPaymentService
-                //                                                , _cartService
-                //                                                , _debtService
-                //                                                , _saleWinFormService
-                //                                                , _supplierService
-                //                                                ,_bonusCardService
-                //                                                ,_formSettingService);
-                //this.Hide();
-                //userDashboard.Show();
+                BonusCardUserDashboard userDashboard = new BonusCardUserDashboard(_userService
+                                                    , _operationClaimService
+                                                    , _userOperationClaimForFormsService
+                                                    , _productService
+                                                    , _brandService
+                                                    , _categoryService
+                                                    , _customerService
+                                                    , _customerBalanceService
+                                                    , _customerPaymentService
+                                                    , _cartService
+                                                    , _debtService
+                                                    , _saleWinFormService
+                                                    , _supplierService
+                                                    , _bonusCardService
+                                                    , _formSettingService
+                                                    , _bonusCardOperationService);
+                this.Hide();
+                userDashboard.Show();
 
 
             }
@@ -383,7 +386,7 @@ namespace WindowsForm.BonusCardSystem.Forms
             UserAuthorization.IsAdminVerified = false;
             AdminVerificationForm adminVerificationForm = new AdminVerificationForm(_userService);
             adminVerificationForm.ShowDialog();
-            if (UserAuthorization.IsAdminVerified ==true)
+            if (UserAuthorization.IsAdminVerified == true)
             {
                 MacAddressForm macAddressForm = new MacAddressForm();
                 macAddressForm.ShowDialog();
@@ -391,6 +394,6 @@ namespace WindowsForm.BonusCardSystem.Forms
             }
         }
 
-      
+
     }
 }

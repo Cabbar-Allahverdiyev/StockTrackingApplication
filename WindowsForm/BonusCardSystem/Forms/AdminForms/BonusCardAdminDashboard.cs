@@ -11,13 +11,12 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Controllers.Concrete;
-using WindowsForm.BonusCardSystem.Forms;
 using WindowsForm.Forms.SettingForms;
 using WindowsForm.MyControls;
 
-namespace WindowsForm.BonusCardSystem.Forms
+namespace WindowsForm.BonusCardSystem.Forms.AdminForms
 {
-    public partial class BonusCardDashboard : Form
+    public partial class BonusCardAdminDashboard : Form
     {
         IUserService _userService;
         IOperationClaimForFormsService _operationClaimService;
@@ -41,7 +40,7 @@ namespace WindowsForm.BonusCardSystem.Forms
         //private Button currentButton;
         private Size formSize;
 
-        public BonusCardDashboard(IUserService userService
+        public BonusCardAdminDashboard(IUserService userService
                                 , IOperationClaimForFormsService operationClaimService
                                 , IUserOperationClaimForFormsService userOperationClaimForFormsService
                                 , IProductService productService
@@ -599,7 +598,13 @@ namespace WindowsForm.BonusCardSystem.Forms
             labelTitle.Text = childForm.Text;
         }
 
-        
+        private void kartıYeniləVəSilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new WindowsForm.Forms.AdminForms.BonusCardUpdateAndDeleteForm(_bonusCardService), sender);
+
+        }
+
+
 
 
 

@@ -15,12 +15,9 @@ using WindowsForm.MyControls;
 using Entities.Concrete;
 using Business.Constants.Messages;
 using System.Reflection;
-using WindowsForm.Utilities.Search.Concrete.BonusCardSearch;
 using WindowsForm.Utilities.Search.Concrete.BonusCardOperationSearch;
 using Entities.DTOs.BonusCardOperationDto;
 using DataAccess.Constants.Messages;
-using WindowsForm.Core.Constants.Messages.WeekMessgaes;
-using WindowsForm.Core.Constants.ControllerNames.SettingForm;
 using WindowsForm.Utilities.Helpers.Calculators;
 
 namespace WindowsForm.BonusCardSystem.Forms
@@ -149,7 +146,7 @@ namespace WindowsForm.BonusCardSystem.Forms
 
                 decimal value = textBoxValue.Text == "" ? 0 : decimal.Parse(textBoxValue.Text);
 
-                decimal interestedAdvantage =AdvantageCalculator.WhatIsAdvantageToday(_formSettingService);
+                decimal interestedAdvantage = AdvantageCalculator.WhatIsAdvantageToday(_formSettingService);
 
                 IResult result = _bonusCardService.IncreaseBalance(BonusCardId, UserId, value, interestedAdvantage);
                 if (!result.Success)
@@ -417,28 +414,7 @@ namespace WindowsForm.BonusCardSystem.Forms
         }
 
         private void dataGridViewList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //try
-            //{
-            //    //BonusCardId = dataGridViewList.CurrentRow.Cells["BonusCardId"].Value.ToString() == ""
-            //    //    ? 0
-            //    //    : int.Parse(dataGridViewList.CurrentRow.Cells["BonusCardId"].Value.ToString());
-
-            //    //IDataResult<BonusCardForFormsDto> getBonusCard = _bonusCardService
-            //    //    .GetBonusCardForFormsDetailById(BonusCardId);
-            //    //if (!getBonusCard.Success)
-            //    //{
-            //    //    FormsMessage.WarningMessage(getBonusCard.Message);
-            //    //    return;
-            //    //}
-            //    //textBoxCustomer.Text = getBonusCard.Data.Ad + " " + getBonusCard.Data.Soyad;
-            //    //textBoxGuzest.Text = getBonusCard.Data.MusteriGuzesti.ToString();
-            //}
-            //catch (Exception ex)
-            //{
-            //    FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
-            //}
-        }
+        { }
 
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
@@ -468,24 +444,5 @@ namespace WindowsForm.BonusCardSystem.Forms
             }
             return total;
         }
-
-        //private int SelectedDayWhichOfTheWeek(string day)
-        //{
-        //    List<string> days = WeekMessages.AzerbaijaniMessages();
-        //    for (int i = 0; i < days.Count; i++)
-        //    {
-        //        if (days[i] == day)
-        //            return i + 1;
-        //    }
-        //    return -1;
-        //}
-
-        //private decimal WhatIsAdvantageToday(int dayNow,IFormSettingService _formSettingService)
-        //{
-        //    int day = SelectedDayWhichOfTheWeek(_formSettingService.GetByName(SettingControllerName.ComboBoxWhichDays).Data.Value);
-        //    if (day == dayNow)
-        //        return decimal.Parse(_formSettingService.GetByName(SettingControllerName.TextBoxWeeklyInterestRate).Data.Value);
-        //    return decimal.Parse(_formSettingService.GetByName(SettingControllerName.TextBoxIGeneralInterestRate).Data.Value);
-        //}
     }
 }
