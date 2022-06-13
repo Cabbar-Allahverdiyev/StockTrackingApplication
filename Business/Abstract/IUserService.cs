@@ -34,7 +34,7 @@ namespace Business.Abstract
         IDataResult<UserDto> GetUserDetail(int userId);
 
         //For Forms
-        IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string password, string passwordRepeeat);
+        IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string passwordRepeeat);
         IDataResult<User> Login(UserForLoginDto userForLoginDto);
 
     }

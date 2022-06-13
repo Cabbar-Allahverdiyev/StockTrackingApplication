@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants.Messages;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Caching;
@@ -59,6 +60,7 @@ namespace Business.Concrete
         }
 
         [CacheAspect]
+        [SecuredOperation("product.add")]
         public IDataResult<List<Product>> GetAll()
         {
             List<Product> get = _productDal.GetAll();

@@ -20,6 +20,7 @@ namespace Business.Abstract
         IDataResult<List<ProductDetailDto>> GetAllProductDetail();
         IDataResult<ProductDetailDto> GetProductDetailById(int id);
        
+        //for forms
         IDataResult<List<ProductViewDetailDto>> GetAllProductViewDetail();
         IDataResult<List<ProductViewDashboardDetailDto>> GetAllProductViewDasboardDetail();
         IDataResult<List<ProductViewDashboardDetailDto>> GetProductViewDasboardDetailByBarcodeNumber(string barcodeNumber);

@@ -57,18 +57,18 @@ namespace WebAPI.Controllers
             var result = _productService.GetAll();
             if (!result.Success)
             {
-                return BadRequest(result.Message);
+                return BadRequest(result);
             }
             return Ok(result);
         }
 
-        [HttpGet("getbyid/{id}")]
+        [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
             var result = _productService.GetById(id);
             if (!result.Success)
             {
-                return BadRequest(result.Message);
+                return BadRequest(result);
             }
             return Ok(result);
         }
@@ -79,7 +79,7 @@ namespace WebAPI.Controllers
             var result = _productService.GetByBarcodeNumber(barcodeNumber);
             if (!result.Success)
             {
-                return BadRequest(result.Message);
+                return BadRequest(result);
             }
             return Ok(result);
         }
@@ -90,7 +90,7 @@ namespace WebAPI.Controllers
             var result = _productService.GetAllProductDetail();
             if (!result.Success)
             {
-                return BadRequest(result.Message);
+                return BadRequest(result);
             }
             return Ok(result);
         }
@@ -101,7 +101,7 @@ namespace WebAPI.Controllers
             var result = _productService.GetProductDetailById(productId);
             if (!result.Success)
             {
-                return BadRequest(result.Message);
+                return BadRequest(result);
             }
             return Ok(result);
         }

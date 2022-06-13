@@ -211,11 +211,11 @@ namespace Business.Concrete
       
 
 
-        public IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string password, string passwordRepeat)
+        public IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string passwordRepeat)
         {
-            IResult result = BusinessRules.Run(PasswordRepeatCompatibilityWithPassword(password, passwordRepeat)
-                                               , IsPasswordNull(password)
-                                               , IsThePasswordGreaterThanFourCharacters(password)
+            IResult result = BusinessRules.Run(PasswordRepeatCompatibilityWithPassword(userForRegisterDto.Password, passwordRepeat)
+                                               , IsPasswordNull(userForRegisterDto.Password)
+                                               , IsThePasswordGreaterThanFourCharacters(userForRegisterDto.Password)
                                                , IsThereFirstNameAndLastNameAvailable(userForRegisterDto.FirstName, userForRegisterDto.LastName)
                                                , IsEmailExists(userForRegisterDto.Email)
                                                , IsPhoneNumberExists(userForRegisterDto.PhoneNumber)
@@ -228,7 +228,7 @@ namespace Business.Concrete
 
 
             byte[] passwordHash, passwordSalt;
-            HashingHelper.CreatePasswordHash(password, out passwordHash, out passwordSalt);
+            HashingHelper.CreatePasswordHash(userForRegisterDto.Password, out passwordHash, out passwordSalt);
             var user = new User
             {
                 FirstName = userForRegisterDto.FirstName,
