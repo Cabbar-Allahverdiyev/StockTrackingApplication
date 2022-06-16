@@ -71,7 +71,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  Kemiyyet = p.QuantityPerUnit,
                                  Aciqlama = p.Description,
                                  SonDeyistirilmeTaixi = p.LastModifiedDate,
-                                 Sonlanmis = p.Discontinued
+                                 Sonlanmis = true//p.Discontinued
 
                              };
                 return filter == null ? result.ToList() : result.Where(filter).ToList();

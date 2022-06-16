@@ -71,7 +71,7 @@ namespace WindowsForm.Forms
                 {
                     return;
                 }
-                var userRegister = _userService.Register(userForRegisterDto, userForRegisterDto.Password, passwordRepeat);
+                var userRegister = _userService.Register(userForRegisterDto,  passwordRepeat);
                 if (!userRegister.Success)
                 {
                     FormsMessage.WarningMessage(userRegister.Message);
