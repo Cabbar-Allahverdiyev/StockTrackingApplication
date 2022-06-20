@@ -45,6 +45,7 @@ namespace WindowsForm.Forms.UserForms
         IBonusCardService _bonusCardService;
         IFormSettingService _formSettingService;
 
+        private MyControl _myControl;
         private List<ProductViewDashboardDetailDto> _dataProducts;
 
         ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
@@ -73,6 +74,7 @@ namespace WindowsForm.Forms.UserForms
             _formSettingService = formSettingService;
 
             _dataProducts = _productService.GetAllProductViewDasboardDetail().Data;
+            _myControl = new MyControl(_formSettingService);
             UserId = LoginForm.UserId;
             InitializeComponent();
             TotalPriceLabelWrite();
@@ -686,7 +688,7 @@ namespace WindowsForm.Forms.UserForms
         {
             try
             {
-                MyControl.MakeTextBoxNumberBox(e);
+                _myControl.MakeTextBoxNumberBox(e);
                 string barcodeNumber = textBoxBonusCardSelect.Text;
                 if (barcodeNumber.Length >= 13)
                 {
@@ -712,17 +714,17 @@ namespace WindowsForm.Forms.UserForms
 
         private void textBoxMaxQiymet_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MyControl.MakeTextBoxDecimalBox(sender, e);
+            _myControl.MakeTextBoxDecimalBox(sender, e);
         }
 
         private void textBoxQiymet_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MyControl.MakeTextBoxDecimalBox(sender, e);
+            _myControl.MakeTextBoxDecimalBox(sender, e);
         }
 
         private void textBoxMiqdar_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MyControl.MakeTextBoxNumberBox(e);
+            _myControl.MakeTextBoxNumberBox(e);
         }
 
 

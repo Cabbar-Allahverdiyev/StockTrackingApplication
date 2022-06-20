@@ -143,7 +143,7 @@ namespace WindowsForm.Forms.SettingForms
             this.Controls.Add(this.groupBoxGeneralSettingsOfTheBonusCard);
             this.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "BonusCardSettingForm";
-            this.Text = "Tənzimləmələr";
+            this.Text = "Bonus kart tənzimləmələri";
             this.Load += new System.EventHandler(this.SettingForm_Load);
             this.groupBoxGeneralSettingsOfTheBonusCard.ResumeLayout(false);
             this.groupBoxGeneralSettingsOfTheBonusCard.PerformLayout();

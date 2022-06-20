@@ -57,6 +57,7 @@ namespace DataAccess.Concrete.EntityFramework
                              join c in context.Categories on p.CategoryId equals c.Id
                              join b in context.Brands on p.BrandId equals b.Id
                              join s in context.Suppliers on p.SupplierId equals s.Id
+                             orderby p.Id
                              select new ProductViewDashboardDetailDto
                              {
                                  ProductId = p.Id,
@@ -71,7 +72,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  Kemiyyet = p.QuantityPerUnit,
                                  Aciqlama = p.Description,
                                  SonDeyistirilmeTaixi = p.LastModifiedDate,
-                                 Sonlanmis = true//p.Discontinued
+                                 Sonlanmis = p.Discontinued
 
                              };
                 return filter == null ? result.ToList() : result.Where(filter).ToList();

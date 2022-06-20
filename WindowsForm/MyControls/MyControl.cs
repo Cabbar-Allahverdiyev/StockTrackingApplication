@@ -1,16 +1,32 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
+using Business.Constants.Messages;
+using Business.ValidationRules.FluentValidation;
+using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
+using Entities.Concrete.ForForms;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using WindowsForm.Core.Constants.ControllerNames.SettingForm;
+using WindowsForm.Core.Constants.Messages;
+using WindowsForm.Core.Controllers.Concrete.ValidatorControllers;
 using WindowsForm.Forms;
 
 namespace WindowsForm.MyControls
 {
     public class MyControl
     {
+        IFormSettingService _formSettingService;
+
+        public MyControl(IFormSettingService formSettingService)
+        {
+            _formSettingService = formSettingService;
+        }
+
         public static string meselen = "məsələn :";
 
 
@@ -79,22 +95,26 @@ namespace WindowsForm.MyControls
             textBoxQuantityPerUnit.MaxLength = 20;
         }
 
-        public static void MakeTextBoxNumberBox(KeyPressEventArgs keyPressEventArgs)
+        public  void MakeTextBoxNumberBox(KeyPressEventArgs keyPressEventArgs)
         {
+            
             if (!char.IsControl(keyPressEventArgs.KeyChar) && !char.IsDigit(keyPressEventArgs.KeyChar))
             {
                 keyPressEventArgs.Handled = true;
             }
         }
 
-        public static void MakeTextBoxDecimalBox(object sender, KeyPressEventArgs keyPressEventArgs)
+        public  void MakeTextBoxDecimalBox(object sender, KeyPressEventArgs keyPressEventArgs)
         {
-            if (!char.IsControl(keyPressEventArgs.KeyChar) && !char.IsDigit(keyPressEventArgs.KeyChar) && (keyPressEventArgs.KeyChar != '.'))
+            char deciamlPoint = (_formSettingService.GetByName(SettingControllerName.DecimalPoint).Data.Value)[0];
+            if (!char.IsControl(keyPressEventArgs.KeyChar)
+                && !char.IsDigit(keyPressEventArgs.KeyChar) 
+                && (keyPressEventArgs.KeyChar != deciamlPoint))
             {
                 keyPressEventArgs.Handled = true;
             }
 
-            if ((keyPressEventArgs.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            if ((keyPressEventArgs.KeyChar == deciamlPoint) && ((sender as TextBox).Text.IndexOf(deciamlPoint) > -1))
             {
                 keyPressEventArgs.Handled = true;
             }
@@ -155,5 +175,49 @@ namespace WindowsForm.MyControls
             dataGridView.Columns[columnName].DefaultCellStyle.BackColor = color;
         }
 
+        public void SetAllParametersToControl(params Control[] controls)
+        {
+
+            foreach (Control control in controls)
+            {
+                IDataResult<FormSetting> getSettings = _formSettingService.GetByName(control.Name);
+                if (!getSettings.Success)
+                {
+                    FormsMessage.WarningMessage(getSettings.Message);
+                    return;
+                }
+                if (control.Name == getSettings.Data.Name)
+                {
+                    control.Text = getSettings.Data.Value;
+                }
+
+            }
+        }
+
+        public void UpdateAllSetting(params Control[] controls)
+        {
+            List<FormSetting> settings = _formSettingService.GetAll().Data;
+
+            foreach (Control control in controls)
+            {
+                if (control.GetType() == typeof(TextBox) || control.GetType() == typeof(ComboBox))
+                {
+                    FormSetting formSetting = settings.SingleOrDefault(s => s.Name == control.Name);
+                    formSetting.Value = control.Text;
+                    if (!FormValidationTool.IsValid(new FormSettingValidator(), formSetting))
+                    {
+                        return;
+                    }
+                    IResult result = _formSettingService.Update(formSetting);
+                    if (!result.Success)
+                    {
+                        FormsMessage.WarningMessage(control.Name + " : " + result.Message);
+                        FormsMessage.WarningMessage(control.Name + " -" + "a görə parametlər yaddaşa yazıla bilmədi");
+                        return;
+                    }
+                }
+            }
+            FormsMessage.SuccessMessage(FormSettingMessaeges.SaveSuccess);
+        }
     }
 }

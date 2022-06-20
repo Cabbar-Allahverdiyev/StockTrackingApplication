@@ -28,14 +28,19 @@ namespace WindowsForm.Forms
         IUserService _userService;
         ICustomerPaymentService _paymentService;
         ICustomerService _customerService;
+        IFormSettingService _formSettingService;
+        private MyControl _myControl;
+
 
         private int CustomerId;
-        public CustomerPaymentForm(IUserService userService, ICustomerPaymentService paymentService, ICustomerService customerService)
+        public CustomerPaymentForm(IUserService userService, ICustomerPaymentService paymentService, ICustomerService customerService, IFormSettingService formSettingService)
         {
             _userService = userService;
             _paymentService = paymentService;
             _customerService = customerService;
+            _formSettingService = formSettingService;
             CustomerId = 0;
+            _myControl = new MyControl(_formSettingService);
             InitializeComponent();
             CustomerPaymentListRefresh();
             checkBoxOdenisLegvEdilsin.Checked = false;
@@ -203,7 +208,7 @@ namespace WindowsForm.Forms
         //Key Press----------------------------------->
         private void textBoxMebleg_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MyControl.MakeTextBoxDecimalBox(sender, e);
+            _myControl.MakeTextBoxDecimalBox(sender, e);
         }
 
 

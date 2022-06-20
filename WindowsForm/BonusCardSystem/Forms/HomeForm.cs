@@ -30,6 +30,7 @@ namespace WindowsForm.BonusCardSystem.Forms
         IBonusCardService _bonusCardService;
         IBonusCardOperationService _bonusCardOperationService;
         IFormSettingService _formSettingService;
+        MyControl _myControl;
 
         BonusCardOperationForFormsDtoSearch _bonusCardOperationSearch;
         List<BonusCardOperationForFormsDto> _data;
@@ -43,6 +44,7 @@ namespace WindowsForm.BonusCardSystem.Forms
             _formSettingService = formSettingService;
             _bonusCardOperationSearch = new BonusCardOperationForFormsDtoSearch();
             _data = _bonusCardOperationService.GetAllBonusCardOperationForFormsDto().Data;
+            _myControl = new MyControl(_formSettingService);
             InitializeComponent();
             ChecBoxBonusCardChanged(checkBoxBonusCard, textBoxBonusCardSelect, buttonBonusCardSelect);
             ChecBoxBonusCardChanged
@@ -51,7 +53,7 @@ namespace WindowsForm.BonusCardSystem.Forms
             BarcodeScanner barcodeScanner = new BarcodeScanner(textBoxBonusCardSelect);
             barcodeScanner.BarcodeScanned += BarcodeScanner_BarcodeScanned;
             BonusCardId = 0;
-            UserId = BonusCardSystemLoginForm.UserId;
+            UserId = BonusCardSystemLoginForm.UserId==0?WindowsForm.Forms.LoginForm.UserId: BonusCardSystemLoginForm.UserId;
         }
 
         private void HomeForm_Load(object sender, EventArgs e)
@@ -97,7 +99,7 @@ namespace WindowsForm.BonusCardSystem.Forms
 
         private void textBoxValue_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MyControl.MakeTextBoxDecimalBox(sender, e);
+            _myControl.MakeTextBoxDecimalBox(sender, e);
         }
 
 

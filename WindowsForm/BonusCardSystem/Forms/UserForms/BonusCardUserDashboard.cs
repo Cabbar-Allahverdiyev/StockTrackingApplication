@@ -400,12 +400,12 @@ namespace WindowsForm.BonusCardSystem.Forms.UserForms
         //Istifadeci--------------------------------------------->
         private void istifadəçiləriSıralaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new WindowsForm.Forms.FormUserListed(_userService), sender);
+            OpenChildForm(new WindowsForm.Forms.FormUserListed(_userService,_formSettingService), sender);
         }
 
         private void istifadəçiƏlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new WindowsForm.Forms.FormUserAdd(_userService, _operationClaimService, _userOperationClaimService), sender);
+            OpenChildForm(new WindowsForm.Forms.FormUserAdd(_userService, _operationClaimService, _userOperationClaimService,_formSettingService), sender);
         }
 
         private void istifadəçiləriYeniləToolStripMenuItem_Click(object sender, EventArgs e)
@@ -497,7 +497,7 @@ namespace WindowsForm.BonusCardSystem.Forms.UserForms
         //Kart elave et
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new WindowsForm.Forms.BonusCardAddForm(_bonusCardService, _customerService), sender);
+            OpenChildForm(new WindowsForm.Forms.BonusCardAddForm(_bonusCardService, _customerService,_formSettingService), sender);
 
         }
 

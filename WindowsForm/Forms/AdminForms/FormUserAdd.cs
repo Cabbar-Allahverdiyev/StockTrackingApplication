@@ -26,21 +26,23 @@ namespace WindowsForm.Forms
         IUserService _userService;
         IOperationClaimForFormsService _operationClaimForFormsService;
         IUserOperationClaimForFormsService _userOperationClaimForFormsService;
+        IFormSettingService _formSettingService;
 
 
-        MyControl myControl = new MyControl();
-        public FormUserAdd(IUserService userService, IOperationClaimForFormsService operationClaimForFormsService, IUserOperationClaimForFormsService userOperationClaimForFormsService)
+        private MyControl _myControl;
+        public FormUserAdd(IUserService userService, IOperationClaimForFormsService operationClaimForFormsService, IUserOperationClaimForFormsService userOperationClaimForFormsService, IFormSettingService formSettingService)
         {
             _userService = userService;
             _operationClaimForFormsService = operationClaimForFormsService;
             _userOperationClaimForFormsService = userOperationClaimForFormsService;
+            _formSettingService = formSettingService;
+            _myControl = new MyControl(_formSettingService);
             InitializeComponent();
 
             MyControl.MakeAsteriskPasswordCharacterAndMaxLengthFourTen(textBoxSifre, textBoxSifreTekrari);
             MyControl.WritePlaceholdersForTextBoxPhoneNumberAndMaxLengthTen(textBoxTelefonNomresi);
             MyControl.WritePlaceholdersForTextBoxEmail(textBoxEmail);
             MyControl.WritePlaceholdersForTextBoxAddress(textBoxAdres);
-           
         }
 
         //Click------------------------------->
@@ -108,7 +110,7 @@ namespace WindowsForm.Forms
         //Key Press -------------------------------->
         private void textBoxTelefonNomresi_KeyPress_1(object sender, KeyPressEventArgs e)
         {
-            MyControl.MakeTextBoxNumberBox(e);
+            _myControl.MakeTextBoxNumberBox(e);
         }
 
         private void label5_MouseDown(object sender, MouseEventArgs e)

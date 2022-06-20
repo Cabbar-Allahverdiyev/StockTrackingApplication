@@ -109,7 +109,7 @@ namespace WindowsForm.Forms
             {
                 // string thisComputerMacAddress = "28924A521735"; //Murad IphoneShop
                 //string thisComputerMacAddress = "E8039AB2FF83"; //Menim
-                string thisComputerMacAddress = _macAddressManager.GetAll().Data.SingleOrDefault().Address;
+                string thisComputerMacAddress = _macAddressManager.GetAll().Data.FirstOrDefault()==null?"": _macAddressManager.GetAll().Data.FirstOrDefault().Address;
                 if (thisComputerMacAddress != GetMacAddress())
                 {
                     FormsMessage.ErrorMessage("Əlaqə vasitələri səhifənin aşağısındadır");

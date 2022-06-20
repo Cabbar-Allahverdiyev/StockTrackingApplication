@@ -336,7 +336,7 @@ namespace WindowsForm.Forms.UserForms
 
         private void əlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormProductAdd(_productService, _brandService, _categoryService, _supplierService), sender);
+            OpenChildForm(new FormProductAdd(_productService, _brandService, _categoryService, _supplierService,_formSettingService), sender);
 
         }
 
@@ -361,7 +361,7 @@ namespace WindowsForm.Forms.UserForms
         //Istifadeci--------------------------------------------->
         private void istifadəçiləriSıralaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormUserListed(_userService), sender);
+            OpenChildForm(new FormUserListed(_userService,_formSettingService), sender);
         }
 
         private void istifadəçiƏlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
@@ -445,13 +445,13 @@ namespace WindowsForm.Forms.UserForms
 
         private void musteriOdenisleriToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new CustomerPaymentForm(_userService, _customerPaymentService, _customerService), sender);
+            OpenChildForm(new CustomerPaymentForm(_userService, _customerPaymentService, _customerService,_formSettingService), sender);
         }
 
         //Bonus Kart______________>
         private void əlavəEtToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new BonusCardAddForm(_bonusCardService, _customerService), sender);
+            OpenChildForm(new BonusCardAddForm(_bonusCardService, _customerService,_formSettingService), sender);
 
         }
 

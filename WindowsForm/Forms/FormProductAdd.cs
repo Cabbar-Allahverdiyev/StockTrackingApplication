@@ -28,23 +28,26 @@ namespace WindowsForm.Forms
         IBrandService _brandService;
         ICategoryService _categoryService;
         ISupplierService _supplierService;
+        IFormSettingService _formSettingService;
+        private MyControl _myControl;
 
 
         public FormProductAdd(IProductService productService
                             , IBrandService brandService
                             , ICategoryService categoryService
-                            , ISupplierService supplierService)
+                            , ISupplierService supplierService, IFormSettingService formSettingService)
         {
             _productService = productService;
             _brandService = brandService;
             _categoryService = categoryService;
             _supplierService = supplierService;
+            _formSettingService = formSettingService;
+            _myControl = new MyControl(_formSettingService);
             InitializeComponent();
-           
+
             MyControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
             MyControl.WritePlaceholdersForTextBoxBarcodeNo(textBoxBarkodNo);
             MyControl.WritePlaceholdersForTextBoxQuantityPerUnit(textBoxKemiyyet);
-
         }
 
         USBBarcodeScannerForm usbBarcodeScannerForm = new USBBarcodeScannerForm();
@@ -141,17 +144,17 @@ namespace WindowsForm.Forms
         //Key Press---------------------------------------->
         private void textBoxMiqdar_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MyControl.MakeTextBoxNumberBox(e);
+            _myControl.MakeTextBoxNumberBox(e);
         }
 
         private void textBoxAlisQiymet_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MyControl.MakeTextBoxDecimalBox(sender, e);
+            _myControl.MakeTextBoxDecimalBox(sender, e);
         }
 
         private void textBoxSatisQiymet_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MyControl.MakeTextBoxDecimalBox(sender, e);
+            _myControl.MakeTextBoxDecimalBox(sender, e);
         }
 
 

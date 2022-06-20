@@ -147,7 +147,7 @@ namespace WindowsForm.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 420);
+            this.ClientSize = new System.Drawing.Size(554, 199);
             this.Controls.Add(this.textBoxInfo);
             this.Controls.Add(this.buttonPrint);
             this.Controls.Add(this.buttonQrCode);

@@ -46,6 +46,8 @@ namespace WindowsForm.Forms
         IBonusCardService _bonusCardService;
         IFormSettingService _formSettingService;
 
+        private MyControl _myControl;
+
         public SalesForm(ICategoryService categoryService
                             , IBrandService brandService
                             , ISupplierService supplierService
@@ -70,6 +72,7 @@ namespace WindowsForm.Forms
 
 
             _dataProduct = _productService.GetAllProductViewDasboardDetail().Data;
+            _myControl = new MyControl(_formSettingService);
             InitializeComponent();
             UserId = LoginForm.UserId;
             TotalPriceLabelWrite();
@@ -659,7 +662,7 @@ namespace WindowsForm.Forms
         {
             try
             {
-                MyControl.MakeTextBoxNumberBox(e);
+                _myControl.MakeTextBoxNumberBox(e);
                 string barcodeNumber = textBoxBonusCardSelect.Text;
                 if (barcodeNumber.Length >= 13)
                 {
@@ -684,17 +687,17 @@ namespace WindowsForm.Forms
 
         private void textBoxMaxQiymet_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MyControl.MakeTextBoxDecimalBox(sender, e);
+            _myControl.MakeTextBoxDecimalBox(sender, e);
         }
 
         private void textBoxQiymet_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MyControl.MakeTextBoxDecimalBox(sender, e);
+            _myControl.MakeTextBoxDecimalBox(sender, e);
         }
 
         private void textBoxMiqdar_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MyControl.MakeTextBoxNumberBox(e);
+            _myControl.MakeTextBoxNumberBox(e);
         }
 
 

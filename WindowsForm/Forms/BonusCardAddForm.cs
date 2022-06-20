@@ -22,12 +22,16 @@ namespace WindowsForm.Forms
     {
         IBonusCardService _bonusCardService;
         ICustomerService _customerService;
+        IFormSettingService _formSettingService;
 
+        private MyControl _myControl;
 
-        public BonusCardAddForm(IBonusCardService bonusCardService, ICustomerService customerService)
+        public BonusCardAddForm(IBonusCardService bonusCardService, ICustomerService customerService, IFormSettingService formSettingService)
         {
             _bonusCardService = bonusCardService;
             _customerService = customerService;
+            _formSettingService = formSettingService;
+            _myControl = new MyControl(_formSettingService);
             InitializeComponent();
             BarcodeScanner barcodeScanner = new BarcodeScanner(textBoxBarkod);
             barcodeScanner.BarcodeScanned += BarcodeScanner_BarcodeScanned;
@@ -95,12 +99,12 @@ namespace WindowsForm.Forms
         //Key Press
         private void textBoxGuzest_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MyControl.MakeTextBoxDecimalBox(sender, e);
+            _myControl.MakeTextBoxDecimalBox(sender, e);
         }
 
         private void textBoxBonusCardBarcode_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MyControl.MakeTextBoxDecimalBox(sender, e);
+            _myControl.MakeTextBoxDecimalBox(sender, e);
         }
 
         //Elave

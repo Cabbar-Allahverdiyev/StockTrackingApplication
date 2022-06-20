@@ -18,13 +18,16 @@ namespace WindowsForm.Forms
     {
         
         IUserService _userService;
+        IFormSettingService _formSettingService;
 
         UserDtoSearch detailSearch = new UserDtoSearch();
-        public FormUserListed(IUserService userService)
+            MyControl _myControl;
+        public FormUserListed(IUserService userService, IFormSettingService formSettingService)
         {
             _userService = userService;
+            _formSettingService = formSettingService;
+            _myControl = new MyControl(_formSettingService);
             InitializeComponent();
-            MyControl myControl = new MyControl();
             MyControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
         }
 

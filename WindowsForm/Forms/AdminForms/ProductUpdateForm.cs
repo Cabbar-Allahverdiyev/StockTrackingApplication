@@ -33,17 +33,21 @@ namespace WindowsForm.Forms
         IBrandService _brandService;
         ICategoryService _categoryService;
         ISupplierService _supplierService;
+        IFormSettingService _formSettingService;
+        private MyControl _myControl;
 
         List<ProductViewDashboardDetailDto> _dataProductViewDashboardDetail;
 
 
-        public ProductUpdateForm(IProductService productManager, IBrandService brandManager, ICategoryService categoryManager, ISupplierService supplierManager)
+        public ProductUpdateForm(IProductService productManager, IBrandService brandManager, ICategoryService categoryManager, ISupplierService supplierManager, IFormSettingService formSettingService)
         {
             _productService = productManager;
             _brandService = brandManager;
             _categoryService = categoryManager;
             _supplierService = supplierManager;
-            _dataProductViewDashboardDetail= _productService.GetAllProductViewDasboardDetail().Data;
+            _formSettingService = formSettingService;
+            _dataProductViewDashboardDetail = _productService.GetAllProductViewDasboardDetail().Data;
+            _myControl = new MyControl(_formSettingService);
             InitializeComponent();
             MyControl.WritePlaceholdersForTextBoxSearchByProductName(textBoxAxtar);
             MyControl.WritePlaceholdersForTextBoxBarcodeNo(textBoxBarkodNo);
@@ -171,17 +175,17 @@ namespace WindowsForm.Forms
         //Key Press------------------->
         private void textBoxStokaElaveEdilecekMiqdar_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MyControl.MakeTextBoxNumberBox(e);
+            _myControl.MakeTextBoxNumberBox(e);
         }
 
         private void textBoxAlisQiymet_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MyControl.MakeTextBoxDecimalBox(sender, e);
+            _myControl.MakeTextBoxDecimalBox(sender, e);
         }
 
         private void textBoxSatisQiymet_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MyControl.MakeTextBoxDecimalBox(sender, e);
+            _myControl.MakeTextBoxDecimalBox(sender, e);
         }
 
 

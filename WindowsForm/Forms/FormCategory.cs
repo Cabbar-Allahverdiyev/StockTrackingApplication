@@ -22,11 +22,14 @@ namespace WindowsForm.Forms
     public partial class FormCategory : Form
     {
         ICategoryService _categoryService;
+       // IFormSettingService _formSettingService;
+          // private  MyControl _myControl ;
         public FormCategory(ICategoryService categoryService)
         {
             _categoryService = categoryService;
+            //_formSettingService = formSettingService;
+         //   _myControl = new MyControl(_formSettingService);
             InitializeComponent();
-            MyControl myControl = new MyControl();
             MyControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
         }
 
