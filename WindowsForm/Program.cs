@@ -2,6 +2,7 @@ using Business.Abstract;
 using Business.Concrete;
 using Business.Constants.Messages;
 using Core.Utilities.Security.JWT;
+using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using System;
 using System.Collections.Generic;
@@ -41,28 +42,45 @@ namespace WindowsForm
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            UserManager userManager = new UserManager(new EfUserDal());
-            UserOperationClaimForFormsManager userOperationClaimForFormsManager = new UserOperationClaimForFormsManager(new EfUserOperationClaimForFormsDal());
-            OperationClaimForFormsManager operationClaimForFormsManager = new OperationClaimForFormsManager(new EfOperationClaimForFormsDal());
-            ProductManager productManager = new ProductManager(new EfProductDal());
-            BrandManager brandManager = new BrandManager(new EfBrandDal());
-            CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
-            CustomerBalanceManager customerBalanceManager = new CustomerBalanceManager(new EfCustomerBalanceDal());
-            CustomerManager customerManager = new CustomerManager(new EfCustomerDal(), customerBalanceManager);
-            CustomerPaymentManager customerPaymentManager = new CustomerPaymentManager(new EfCustomerPaymentDal(), customerBalanceManager);
-            CartManager cartManager = new CartManager(new EfCartDal());
-            SaleWinFormManager saleManager = new SaleWinFormManager(new EfSaleWinFormDal(), productManager);
-            DebtManager debtManager = new DebtManager(new EfDebtDal(), customerBalanceManager);
-            SupplierManager supplierManager = new SupplierManager(new EfSupplierDal());
-            BonusCardOperationManager bonusCardOperationManager = new BonusCardOperationManager(new EfBonusCardOperationDal(),userManager);
-            BonusCardManager bonusCardManager = new BonusCardManager(new EfBonusCardDal(), customerManager,bonusCardOperationManager);
+            IUserDal _userDal = new EfUserDal();
+            IUserOperationClaimForFormsDal _userOperationClaimForFormsDal=new EfUserOperationClaimForFormsDal();
+            IOperationClaimForFormsDal _operationClaimForFormsDal = new EfOperationClaimForFormsDal();
+            IProductDal _productDal = new EfProductDal();
+            IBrandDal _brandDal = new EfBrandDal();
+            ICategoryDal _categoryDal = new EfCategoryDal();
+            ICustomerBalanceDal _customerBalanceDal = new EfCustomerBalanceDal();
+            ICustomerDal _customerDal = new EfCustomerDal();
+            ICustomerPaymentDal _customerPaymentDal = new EfCustomerPaymentDal();
+            ICartDal _cartDal=new EfCartDal();
+            ISaleWinFormDal _saleWinFormDal=new EfSaleWinFormDal();
+            IDebtDal _debtDal=new EfDebtDal();
+            ISupplierDal _supplierDal=new EfSupplierDal();
+            IBonusCardOperationDal _bonusCardOperationDal=new EfBonusCardOperationDal();
+            IBonusCardDal _bonusCardDal=new EfBonusCardDal();
+            IFormSettingDal _formSettingDal=new EfFormSettingDal();
 
-            FormSettingManager formSettingManager = new FormSettingManager(new EfFormSettingDal());
+            IUserService _userService = new UserManager(_userDal);
+            IUserOperationClaimForFormsService _userOperationClaimForFormsService = new UserOperationClaimForFormsManager(_userOperationClaimForFormsDal);
+            IOperationClaimForFormsService _operationClaimForFormsService = new OperationClaimForFormsManager(_operationClaimForFormsDal);
+            IProductService _productService = new ProductManager(_productDal);
+            IBrandService _brandService = new BrandManager(_brandDal);
+            ICategoryService _categoryService = new CategoryManager(_categoryDal);
+            ICustomerBalanceService _customerBalanceService = new CustomerBalanceManager(_customerBalanceDal);
+            ICustomerService _customerService = new CustomerManager(_customerDal, _customerBalanceService,_bonusCardDal);
+            ICustomerPaymentService _customerPaymentService = new CustomerPaymentManager(_customerPaymentDal, _customerBalanceService);
+            ICartService _cartService = new CartManager(_cartDal);
+            ISaleWinFormService _saleService = new SaleWinFormManager(_saleWinFormDal, _productService);
+            IDebtService _debtService = new DebtManager(_debtDal, _customerBalanceService);
+            ISupplierService _supplierService = new SupplierManager(_supplierDal);
+            IBonusCardOperationService _bonusCardOperationService = new BonusCardOperationManager(_bonusCardOperationDal,_userService);
+            IBonusCardService _bonusCardService = new BonusCardManager(_bonusCardDal, _customerService,_bonusCardOperationService);
+
+            IFormSettingService _formSettingService = new FormSettingManager(_formSettingDal);
             //Application.Run(new Forms.SettingForms.BonusCardSettingForm(formSettingManager));
 
-            Application.Run(new Forms.LoginForm(userOperationClaimForFormsManager, userManager, operationClaimForFormsManager, productManager
-                , categoryManager, customerManager, customerBalanceManager, customerPaymentManager, cartManager, debtManager, saleManager, supplierManager
-                , brandManager, bonusCardManager, formSettingManager, bonusCardOperationManager));
+            //Application.Run(new Forms.LoginForm(userOperationClaimForFormsManager, userManager, operationClaimForFormsManager, productManager
+            //    , categoryManager, customerManager, customerBalanceManager, customerPaymentManager, cartManager, debtManager, saleManager, supplierManager
+            //    , brandManager, bonusCardManager, formSettingManager, bonusCardOperationManager));
 
             //Application.Run(new BonusCardSystem.Forms.BonusCardSystemLoginForm(userOperationClaimForFormsManager, userManager, operationClaimForFormsManager, productManager
             //    , categoryManager, customerManager, customerBalanceManager, customerPaymentManager, cartManager, debtManager, saleManager, supplierManager
@@ -70,7 +88,7 @@ namespace WindowsForm
 
             //   Application.Run(new Forms.FormUserAdd(userManager, operationClaimForFormsManager, userOperationClaimForFormsManager,formSettingManager));
 
-
+            Application.Run(new Forms.CustomerForm(_customerService));
         }
     }
 }
