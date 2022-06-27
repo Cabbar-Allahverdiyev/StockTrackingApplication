@@ -11,6 +11,7 @@ using Entities.DTOs;
 using Entities.DTOs.CustomerDtos;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Business.Concrete
@@ -20,10 +21,12 @@ namespace Business.Concrete
 
         ICustomerDal _customerDal;
         ICustomerBalanceService _balanceService;
-        public CustomerManager(ICustomerDal customerDal,ICustomerBalanceService balanceService)
+        IBonusCardDal _bonusCardDal;
+        public CustomerManager(ICustomerDal customerDal, ICustomerBalanceService balanceService, IBonusCardDal bonusCardDal)
         {
             _customerDal = customerDal;
             _balanceService = balanceService;
+            _bonusCardDal = bonusCardDal;
         }
         //CRUD
         [ValidationAspect(typeof(CustomerValidator))]
@@ -110,6 +113,15 @@ namespace Business.Concrete
         public IDataResult<List<CustomerDto>> GetCustomerDetails()
         {
             List<CustomerDto> get = _customerDal.GetCustomerDetails();
+            List<BonusCard> getCards = _bonusCardDal.GetAll();
+            foreach (var customer in get)
+            {
+                var card = getCards.SingleOrDefault(b => b.CustomerId == customer.CustomerId);
+                if ( card!= null)
+                {
+                    customer.BonusCardBalance = card.Balance;
+                }
+            }
             //if (get == null)
             //{
             //    return new ErrorDataResult<List<CustomerDto>>(CustomerMessages.NotFound);

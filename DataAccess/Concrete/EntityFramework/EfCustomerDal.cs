@@ -19,7 +19,7 @@ namespace DataAccess.Concrete.EntityFramework
             {
                 var result = from c in context.Customers
                              join cb in context.CustomerBalances on c.Id equals cb.CustomerId
-                             join bonusCard in context.BonusCards on c.Id equals bonusCard.CustomerId
+                             //join bonusCard in context.BonusCards on c.Id equals bonusCard.CustomerId
 
                              select new CustomerDto
                              {
@@ -30,9 +30,10 @@ namespace DataAccess.Concrete.EntityFramework
                                  Address = c.Address,
                                  Debt = cb.Debt,
                                  Balance = cb.Balance,
-                                 BonusCardBalance=bonusCard.Balance,
+                               // BonusCardBalance=bonusCard.Balance ,
                                  CustomerCreatedDate = c.CreatedDate
                              };
+             
                 return filter == null ? result.ToList() : result.Where(filter).ToList();
 
             }
