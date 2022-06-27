@@ -2,6 +2,7 @@
 using Business.Concrete;
 using Business.Constants.Messages;
 using Business.ValidationRules.FluentValidation;
+using Business.ValidationRules.FluentValidation.ProductValidators;
 using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
@@ -85,7 +86,7 @@ namespace WindowsForm.Forms
                 product.Description = textBoxAciqlama.Text;
 
 
-                if (!FormValidationTool.IsValid(new ProductValidator(), product))
+                if (!FormValidationTool.IsValid(new CreateProductValidator(), product))
                 { return; }
 
                 IResult productAdd = _productService.Add(product);

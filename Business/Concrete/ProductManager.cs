@@ -1,7 +1,7 @@
 ﻿using Business.Abstract;
 using Business.BusinessAspects.Autofac;
 using Business.Constants.Messages;
-using Business.ValidationRules.FluentValidation;
+using Business.ValidationRules.FluentValidation.ProductValidators;
 using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Business;
@@ -25,7 +25,7 @@ namespace Business.Concrete
         }
         //CRUD
 
-        [ValidationAspect(typeof(ProductValidator))]
+        [ValidationAspect(typeof(CreateProductValidator))]
         [CacheRemoveAspect("IProductService.Get")]
         public IResult Add(Product product)
         {
@@ -50,7 +50,7 @@ namespace Business.Concrete
             return new SuccessResult(ProductMessages.ProductDeleted);
         }
 
-        [ValidationAspect(typeof(ProductValidator))]
+        [ValidationAspect(typeof(UpdateProductValidator))]
         [CacheRemoveAspect("IProductService.Get")]
         public IResult Update(Product product)
         {

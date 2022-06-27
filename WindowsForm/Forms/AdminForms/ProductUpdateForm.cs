@@ -21,6 +21,7 @@ using WindowsForm.MyControls;
 using System.Reflection;
 using Entities.DTOs.ProductDtos;
 using Business.Abstract;
+using Business.ValidationRules.FluentValidation.ProductValidators;
 
 namespace WindowsForm.Forms
 {
@@ -102,7 +103,7 @@ namespace WindowsForm.Forms
                 }
                 product.Description = TextBoxAciqlama.Text;
 
-                if (!FormValidationTool.IsValid(new ProductValidator(),product))
+                if (!FormValidationTool.IsValid(new UpdateProductValidator(),product))
                 {
                     return;
                 }

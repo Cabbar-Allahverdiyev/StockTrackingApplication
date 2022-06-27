@@ -60,13 +60,13 @@ namespace WindowsForm
             FormSettingManager formSettingManager = new FormSettingManager(new EfFormSettingDal());
             //Application.Run(new Forms.SettingForms.BonusCardSettingForm(formSettingManager));
 
-            //Application.Run(new Forms.LoginForm(userOperationClaimForFormsManager, userManager, operationClaimForFormsManager, productManager
-            //    , categoryManager, customerManager, customerBalanceManager, customerPaymentManager, cartManager, debtManager, saleManager, supplierManager
-            //    , brandManager, bonusCardManager, formSettingManager, bonusCardOperationManager));
-
-            Application.Run(new BonusCardSystem.Forms.BonusCardSystemLoginForm(userOperationClaimForFormsManager, userManager, operationClaimForFormsManager, productManager
+            Application.Run(new Forms.LoginForm(userOperationClaimForFormsManager, userManager, operationClaimForFormsManager, productManager
                 , categoryManager, customerManager, customerBalanceManager, customerPaymentManager, cartManager, debtManager, saleManager, supplierManager
                 , brandManager, bonusCardManager, formSettingManager, bonusCardOperationManager));
+
+            //Application.Run(new BonusCardSystem.Forms.BonusCardSystemLoginForm(userOperationClaimForFormsManager, userManager, operationClaimForFormsManager, productManager
+            //    , categoryManager, customerManager, customerBalanceManager, customerPaymentManager, cartManager, debtManager, saleManager, supplierManager
+            //    , brandManager, bonusCardManager, formSettingManager, bonusCardOperationManager));
 
             //   Application.Run(new Forms.FormUserAdd(userManager, operationClaimForFormsManager, userOperationClaimForFormsManager,formSettingManager));
 

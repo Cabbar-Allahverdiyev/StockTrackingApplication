@@ -5,11 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Business.ValidationRules.FluentValidation
+namespace Business.ValidationRules.FluentValidation.ProductValidators
 {
-    public class ProductValidator : AbstractValidator<Product>, IEntityValidator
+    public class UpdateProductValidator : AbstractValidator<Product>, IEntityValidator
     {
-        public ProductValidator()
+        public UpdateProductValidator()
         {
             RuleFor(p => p.BarcodeNumber).NotEmpty();
             RuleFor(p => p.BarcodeNumber).Length(13);
@@ -35,7 +35,7 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(p => p.UnitPrice).NotEmpty();
             RuleFor(p => p.UnitPrice).GreaterThan(0);
 
-            RuleFor(p => p.UnitsInStock).NotEmpty();
+            RuleFor(p => p.UnitsInStock).GreaterThanOrEqualTo(0);
 
             RuleFor(p => p.Description).MaximumLength(500);
         }

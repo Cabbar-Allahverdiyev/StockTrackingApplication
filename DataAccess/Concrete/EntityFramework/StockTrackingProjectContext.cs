@@ -14,7 +14,7 @@ namespace DataAccess.Concrete.EntityFramework
         {
             //optionsBuilder.UseSqlServer(@"Server=DESKTOP-N8AGODS\MSSQLSERVER66;Database=StockTracking;Trusted_Connection=true");
            optionsBuilder.UseSqlServer(@"Server=(localdb)\MsSqlLocalDb;Database=StockTracking;Trusted_Connection=true"); //menim T-SQL
-           // optionsBuilder.UseNpgsql(@"Server=localhost;Database=TapSat;Port=5432;User Id=postgres;Password=Cabiw****"); //menim Postgre
+            //optionsBuilder.UseNpgsql(@"Server=localhost;Database=TapSat;Port=5432;User Id=postgres;Password=Cabiw****"); //menim Postgre
            //optionsBuilder.UseSqlServer(@"Server=DESKTOP-SN5E5RA\SQLEXPRESS01;Database=StockTracking;Trusted_Connection=true"); //Murad IphoneShop
         }
 
