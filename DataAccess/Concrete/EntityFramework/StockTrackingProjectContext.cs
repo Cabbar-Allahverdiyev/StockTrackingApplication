@@ -1,4 +1,5 @@
 ﻿using Core.Entities.Concrete;
+using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.Concrete.ForForms;
 using Microsoft.EntityFrameworkCore;
@@ -8,7 +9,7 @@ using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class StockTrackingProjectContext : DbContext
+    public class StockTrackingProjectContext : DbContext,IStockTrackingDbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
