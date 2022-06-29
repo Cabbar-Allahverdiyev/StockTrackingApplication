@@ -1,10 +1,12 @@
-﻿using DataAccess.Concrete.EfInMemory;
+﻿using DataAccess.Abstract;
+using DataAccess.Concrete.EfInMemory;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tests.UnitTests.DataAccess;
 
 namespace Tests.UnitTests.TestSetup
 {
@@ -117,6 +119,109 @@ namespace Tests.UnitTests.TestSetup
                 },
                 
             });
+        }
+
+        public static void AddSuppliers(this ISupplierDal context)
+        {
+            context.Add(new Supplier() {
+                ContactName = "Kerim",
+                CompanyName = "Superphone",
+                Address = "Gence",
+                City = "Gence",
+                Email = "",
+                IsSupplierActive = true,
+                Phone = "0554567898"
+                    , WhenWillCome = "4-6"
+            });
+            context.Add(new Supplier()
+            {
+                ContactName = "Ferit",
+                CompanyName = "ABCD",
+                Address = "Baki",
+                City = "Baki",
+                Email = "",
+                IsSupplierActive = true,
+                Phone = "0554567888",
+                WhenWillCome = "4-6"
+            });
+            context.Add(new Supplier()
+            {
+                ContactName = "Vasif",
+                CompanyName = "NGN",
+                Address = "28 may",
+                City = "Baki",
+                Email = "",
+                IsSupplierActive = true,
+                Phone = "0551234565",
+                WhenWillCome = "2-6"
+            });            
+        }
+
+        public static void AddCategories(this ICategoryDal context)
+        {
+            context.Add(new Category() { CategoryName = "Adapter" });
+            context.Add(new Category() { CategoryName = "Nausnik" });
+            context.Add(new Category() { CategoryName = "Kabro" });
+        }
+
+        public static void AddBrands(this IBrandDal context)
+        {
+            context.Add(new Brand() { BrandName = "Samsung" });
+            context.Add(new Brand() { BrandName = "Iphone" });
+            context.Add(new Brand() { BrandName = "Huawei" });
+           
+            
+        }
+
+        public static void AddProducts(this IProductDal context)
+        {
+            context.Add(new Product()
+                {
+                    ProductName="L29",
+                    BarcodeNumber="1234567891111",
+                    BrandId=2,
+                    CategoryId=2,
+                    SupplierId=1,
+                    Description="",
+                    Discontinued=true,
+                    LastModifiedDate=DateTime.Now,
+                    PurchasePrice=2,
+                    UnitPrice=4,
+                    UnitsInStock=4,
+                    QuantityPerUnit="1x"
+                });
+            context.Add(new Product()
+            {
+                ProductName = "Blutuz Nausnik",
+                BarcodeNumber = "1234567891112",
+                BrandId = 2,
+                CategoryId = 1,
+                SupplierId = 1,
+                Description = "",
+                Discontinued = true,
+                LastModifiedDate = DateTime.Now,
+                PurchasePrice = 4,
+                UnitPrice = 10,
+                UnitsInStock = 2,
+                QuantityPerUnit = "1x"
+            });
+
+            context.Add(new Product()
+            {
+                ProductName = "Adapter Typ-c",
+                BarcodeNumber = "1234567891113",
+                BrandId = 1,
+                CategoryId = 1,
+                SupplierId = 1,
+                Description = "",
+                Discontinued = true,
+                LastModifiedDate = DateTime.Now,
+                PurchasePrice = 8,
+                UnitPrice = 16,
+                UnitsInStock = 3,
+                QuantityPerUnit = "1x"
+            });
+               
         }
     }
 }

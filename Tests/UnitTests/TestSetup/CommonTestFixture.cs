@@ -1,4 +1,6 @@
-﻿using DataAccess.Abstract;
+﻿using Business.Abstract;
+using Business.Concrete;
+using DataAccess.Abstract;
 using DataAccess.Concrete.EfInMemory;
 using System;
 using System.Collections.Generic;
@@ -11,17 +13,34 @@ namespace Tests.UnitTests.TestSetup
 {
     public class CommonTestFixture
     {
-        public EfInMemoryContext Context;
+        //public EfInMemoryContext Context;
+        public IProductDal ProductDal { get; set; }
+        public ICategoryDal CategoryDal { get; set; }
+        public IBrandDal BrandDal { get; set; }
+        public ISupplierDal SupplierDal { get; set; }
+
+        public IProductService ProductService { get; set; }
+
         public CommonTestFixture()
         {
-            Context.Database.EnsureCreated();
+            ProductDal = new TestProductManager();
+            CategoryDal = new TestCategoryManager(); ;
+            BrandDal = new TestBrandManager(); ;
+            SupplierDal = new TestSupplierManager(); ;
 
-            Context.AddProducts();
-            Context.AddBrands();
-            Context.AddCategories();
-            Context.AddSuppliers();
+            ProductService = new ProductManager(ProductDal);
+            CategoryDal.AddCategories();
+            BrandDal.AddBrands();
+            SupplierDal.AddSuppliers();
+            ProductDal.AddProducts();
+            //Context.Database.EnsureCreated();
 
-            Context.SaveChanges();
+            //Context.AddProducts();
+            //Context.AddBrands();
+            //Context.AddCategories();
+            //Context.AddSuppliers();
+
+            //Context.SaveChanges();
         }
         
     }
