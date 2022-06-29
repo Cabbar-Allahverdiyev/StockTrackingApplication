@@ -54,6 +54,13 @@ namespace Business.Concrete
         [CacheRemoveAspect("IProductService.Get")]
         public IResult Update(Product product)
         {
+            IResult rules = BusinessRules.Run(IsBarcodeNumberExistsForUpdate(product),
+                                              IsProductNameExistsForUpdate(product)
+                                              );
+            if (rules != null)
+            {
+                return new ErrorResult(rules.Message);
+            }
             //product.LastModifiedDate = DateTime.Now;
             _productDal.Update(product);
             return new SuccessResult(ProductMessages.ProductUpdated);
@@ -83,7 +90,7 @@ namespace Business.Concrete
         [CacheAspect]
         public IDataResult<Product> GetByBarcodeNumber(string barodeNumber)
         {
-            Product get = _productDal.Get(p => p.BarcodeNumber== barodeNumber);
+            Product get = _productDal.Get(p => p.BarcodeNumber == barodeNumber);
             if (get == null)
             {
                 return new ErrorDataResult<Product>(ProductMessages.ProductNotFound);
@@ -107,7 +114,7 @@ namespace Business.Concrete
         public IDataResult<List<ProductDetailDto>> GetAllProductDetail()
         {
             List<ProductDetailDto> get = _productDal.GetAllProductDetail();
-            if (get.Count==0)
+            if (get.Count == 0)
             {
                 return new ErrorDataResult<List<ProductDetailDto>>(ProductMessages.ProductNotFound);
             }
@@ -148,7 +155,7 @@ namespace Business.Concrete
 
         public IDataResult<List<ProductViewDashboardDetailDto>> GetProductViewDasboardDetailByBarcodeNumber(string barcodeNumber)
         {
-            List<ProductViewDashboardDetailDto> get = _productDal.GetProductViewDashboardDetails(p => p.BarcodeNomresi==barcodeNumber);
+            List<ProductViewDashboardDetailDto> get = _productDal.GetProductViewDashboardDetails(p => p.BarcodeNomresi == barcodeNumber);
             if (get.Count == 0)
             {
                 return new ErrorDataResult<List<ProductViewDashboardDetailDto>>(ProductMessages.ProductNotFound);
@@ -204,31 +211,44 @@ namespace Business.Concrete
         //Elave Metodlar------------------------->
         private IResult IsBarcodeNumberExists(string barcodeNumber)
         {
-            List<Product> getAll = _productDal.GetAll();
-            foreach (Product product in getAll)
+            Product product = _productDal.Get(p => p.BarcodeNumber == barcodeNumber);
+            if (product != null)
             {
-                if (product.BarcodeNumber.Equals(barcodeNumber))
-                {
-                    return new ErrorResult(ProductMessages.BarcodeNumberAvailable);
-                }
+                return new ErrorResult(ProductMessages.BarcodeNumberAvailable);
+            }
+            return new SuccessResult();
+        }
+
+        private IResult IsBarcodeNumberExistsForUpdate(Product product)
+        {
+            Product getProduct = _productDal.Get(p => p.BarcodeNumber == product.BarcodeNumber);
+            if (getProduct != null && getProduct.Id != product.Id)
+            {
+                return new ErrorResult(ProductMessages.BarcodeNumberAvailable);
             }
             return new SuccessResult();
         }
 
         private IResult IsProductNameExists(string productName)
         {
-            List<Product> getAll = _productDal.GetAll();
-            foreach (Product product in getAll)
+            Product product = _productDal.Get(p => p.ProductName == productName);
+            if (product != null)
             {
-                if (product.ProductName.Equals(productName))
-                {
-                    return new ErrorResult(ProductMessages.ProductNameAvailable);
-                }
+                return new ErrorResult(ProductMessages.ProductNameAvailable);
             }
             return new SuccessResult();
         }
 
-        
+        private IResult IsProductNameExistsForUpdate(Product product)
+        {
+            Product getProduct = _productDal.Get(p => p.ProductName == product.ProductName);
+            if (getProduct != null && getProduct.Id != product.Id)
+            {
+                return new ErrorResult(ProductMessages.ProductNameAvailable);
+            }
+            return new SuccessResult();
+        }
+
 
 
 
