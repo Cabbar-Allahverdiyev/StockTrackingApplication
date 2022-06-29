@@ -13,11 +13,11 @@ namespace Tests.UnitTests.TestSetup
 {
     public class CommonTestFixture
     {
-        //public EfInMemoryContext Context;
-        public IProductDal ProductDal { get; set; }
-        public ICategoryDal CategoryDal { get; set; }
-        public IBrandDal BrandDal { get; set; }
-        public ISupplierDal SupplierDal { get; set; }
+        
+        private IProductDal ProductDal { get; set; }
+        private ICategoryDal CategoryDal { get; set; }
+        private IBrandDal BrandDal { get; set; }
+        private ISupplierDal SupplierDal { get; set; }
 
         public IProductService ProductService { get; set; }
 
@@ -33,14 +33,7 @@ namespace Tests.UnitTests.TestSetup
             BrandDal.AddBrands();
             SupplierDal.AddSuppliers();
             ProductDal.AddProducts();
-            //Context.Database.EnsureCreated();
-
-            //Context.AddProducts();
-            //Context.AddBrands();
-            //Context.AddCategories();
-            //Context.AddSuppliers();
-
-            //Context.SaveChanges();
+            
         }
         
     }

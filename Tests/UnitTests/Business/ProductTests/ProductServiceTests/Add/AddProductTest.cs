@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using Tests.UnitTests.TestSetup;
 using Xunit;
 
-namespace Tests.UnitTests.Business.ProductService.Add
+namespace Tests.UnitTests.Business.ProductServiceTests.Add
 {
     public class AddProductTest : IClassFixture<CommonTestFixture>
     {
@@ -30,13 +30,10 @@ namespace Tests.UnitTests.Business.ProductService.Add
             Product product = new Product()
             {
                 ProductName = "L30",
-                BarcodeNumber = "1234567891117",
+                BarcodeNumber = "1234567891119",
                 BrandId = 2,
                 CategoryId = 2,
                 SupplierId = 1,
-                Description = "",
-                Discontinued = true,
-                LastModifiedDate = DateTime.Now,
                 PurchasePrice = 2,
                 UnitPrice = 4,
                 UnitsInStock = 4,
@@ -66,10 +63,7 @@ namespace Tests.UnitTests.Business.ProductService.Add
                 BrandId = 2,
                 CategoryId = 2,
                 SupplierId = 1,
-                Description = "",
-                Discontinued = true,
-                LastModifiedDate = DateTime.Now,
-                PurchasePrice = 2,
+               PurchasePrice = 2,
                 UnitPrice = 4,
                 UnitsInStock = 4,
                 QuantityPerUnit = "1x"
@@ -85,6 +79,44 @@ namespace Tests.UnitTests.Business.ProductService.Add
             result.Success.Should().BeFalse();
 
             result.Message.Should().Be(ProductMessages.BarcodeNumberAvailable);
+        }
+
+        [Fact]
+        public void WhenValidInputsAreGiven_Product_ShouldBeAdded()
+        {
+            //arrange
+            Product product = new Product()
+            {
+                ProductName = "L14",
+                BarcodeNumber = "9876543210111",
+                BrandId = 2,
+                CategoryId = 2,
+                SupplierId = 1,
+                PurchasePrice = 2,
+                UnitPrice = 4,
+                UnitsInStock = 4,
+                QuantityPerUnit = "1x"
+            };
+            //act
+            IResult result = FluentActions.Invoking(() => _productService.Add(product)).Invoke();
+
+            //assert
+            IDataResult<Product> getProduct = _productService.GetByProductName(product.ProductName);
+
+            result.Should().BeOfType(typeof(SuccessResult));
+            result.Success.Should().BeTrue();
+
+            getProduct.Should().NotBeNull();
+            getProduct.Should().BeOfType(typeof(SuccessDataResult<Product>));
+            getProduct.Data.ProductName.Should().Be(product.ProductName);
+            getProduct.Data.BarcodeNumber.Should().Be(product.BarcodeNumber);
+            getProduct.Data.BrandId.Should().Be(product.BrandId);
+            getProduct.Data.CategoryId.Should().Be(product.CategoryId);
+            getProduct.Data.SupplierId.Should().Be(product.SupplierId);
+            getProduct.Data.PurchasePrice.Should().Be(product.PurchasePrice);
+            getProduct.Data.UnitPrice.Should().Be(product.UnitPrice);
+            getProduct.Data.UnitsInStock.Should().Be(product.UnitsInStock);
+            getProduct.Data.QuantityPerUnit.Should().Be(product.QuantityPerUnit);
         }
     }
 }

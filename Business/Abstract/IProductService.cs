@@ -16,6 +16,7 @@ namespace Business.Abstract
         IResult Delete(Product product);
         IDataResult<Product> GetById(int productId);
         IDataResult<Product> GetByBarcodeNumber(string barcodeNumber);
+        IDataResult<Product> GetByProductName(string productName);
 
         IDataResult<List<ProductDetailDto>> GetAllProductDetail();
         IDataResult<ProductDetailDto> GetProductDetailById(int id);
