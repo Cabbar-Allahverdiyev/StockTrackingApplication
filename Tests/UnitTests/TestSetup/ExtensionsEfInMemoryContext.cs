@@ -1,4 +1,5 @@
-﻿using DataAccess.Abstract;
+﻿using Business.Abstract;
+using DataAccess.Abstract;
 using DataAccess.Concrete.EfInMemory;
 using Entities.Concrete;
 using System;
@@ -157,11 +158,14 @@ namespace Tests.UnitTests.TestSetup
             });            
         }
 
-        public static void AddCategories(this ICategoryDal context)
+        public static void AddCategories(this ICategoryService context)
         {
-            context.Add(new Category() { CategoryName = "Adapter" });
-            context.Add(new Category() { CategoryName = "Nausnik" });
-            context.Add(new Category() { CategoryName = "Kabro" });
+            //if (context.GetAll())
+            //{
+                context.Add(new Category() { CategoryName = "Adapter" });
+                context.Add(new Category() { CategoryName = "Nausnik" });
+                context.Add(new Category() { CategoryName = "Kabro" });
+            //}
         }
 
         public static void AddBrands(this IBrandDal context)

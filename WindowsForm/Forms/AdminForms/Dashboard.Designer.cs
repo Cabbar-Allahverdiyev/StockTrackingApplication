@@ -83,6 +83,7 @@ namespace WindowsForm.Forms.AdminForms
             this.bonusKartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.bonusVəÖdənişƏlavəEtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kartıYeniləVəYaSilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myDMProduct = new WindowsForm.MyControls.MyDropdownMenu(this.components);
             this.məhsulToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.sıralaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -97,7 +98,7 @@ namespace WindowsForm.Forms.AdminForms
             this.yeniləVəSilToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.myDMSettings = new WindowsForm.MyControls.MyDropdownMenu(this.components);
             this.bonusKartToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.kartıYeniləVəYaSilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.konfiqurasiyaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelTitleBar.SuspendLayout();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
@@ -129,11 +130,11 @@ namespace WindowsForm.Forms.AdminForms
             // labelTitle
             // 
             this.labelTitle.AutoSize = true;
-            this.labelTitle.Font = new System.Drawing.Font("Helvetica", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelTitle.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelTitle.ForeColor = System.Drawing.Color.Black;
             this.labelTitle.Location = new System.Drawing.Point(6, 13);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(118, 24);
+            this.labelTitle.Size = new System.Drawing.Size(117, 23);
             this.labelTitle.TabIndex = 0;
             this.labelTitle.Text = "Əsas Səhifə";
             this.labelTitle.Click += new System.EventHandler(this.labelTitle_Click);
@@ -144,7 +145,7 @@ namespace WindowsForm.Forms.AdminForms
             this.btnExit.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnExit.FlatAppearance.BorderSize = 0;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnExit.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnExit.ForeColor = System.Drawing.Color.White;
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
             this.btnExit.Location = new System.Drawing.Point(0, 642);
@@ -166,7 +167,7 @@ namespace WindowsForm.Forms.AdminForms
             this.buttonOther.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonOther.FlatAppearance.BorderSize = 0;
             this.buttonOther.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonOther.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonOther.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonOther.ForeColor = System.Drawing.Color.White;
             this.buttonOther.Image = ((System.Drawing.Image)(resources.GetObject("buttonOther.Image")));
             this.buttonOther.Location = new System.Drawing.Point(0, 448);
@@ -188,7 +189,7 @@ namespace WindowsForm.Forms.AdminForms
             this.buttonUsers.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonUsers.FlatAppearance.BorderSize = 0;
             this.buttonUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonUsers.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonUsers.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonUsers.ForeColor = System.Drawing.Color.White;
             this.buttonUsers.Image = ((System.Drawing.Image)(resources.GetObject("buttonUsers.Image")));
             this.buttonUsers.Location = new System.Drawing.Point(0, 392);
@@ -210,7 +211,7 @@ namespace WindowsForm.Forms.AdminForms
             this.buttonCategories.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonCategories.FlatAppearance.BorderSize = 0;
             this.buttonCategories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCategories.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonCategories.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonCategories.ForeColor = System.Drawing.Color.White;
             this.buttonCategories.Image = ((System.Drawing.Image)(resources.GetObject("buttonCategories.Image")));
             this.buttonCategories.Location = new System.Drawing.Point(0, 336);
@@ -232,7 +233,7 @@ namespace WindowsForm.Forms.AdminForms
             this.buttonStatistic.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonStatistic.FlatAppearance.BorderSize = 0;
             this.buttonStatistic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonStatistic.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonStatistic.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonStatistic.ForeColor = System.Drawing.Color.White;
             this.buttonStatistic.Image = ((System.Drawing.Image)(resources.GetObject("buttonStatistic.Image")));
             this.buttonStatistic.Location = new System.Drawing.Point(0, 280);
@@ -254,7 +255,7 @@ namespace WindowsForm.Forms.AdminForms
             this.buttonScan.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonScan.FlatAppearance.BorderSize = 0;
             this.buttonScan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonScan.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonScan.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonScan.ForeColor = System.Drawing.Color.White;
             this.buttonScan.Image = ((System.Drawing.Image)(resources.GetObject("buttonScan.Image")));
             this.buttonScan.Location = new System.Drawing.Point(0, 224);
@@ -276,7 +277,7 @@ namespace WindowsForm.Forms.AdminForms
             this.buttonSales.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonSales.FlatAppearance.BorderSize = 0;
             this.buttonSales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSales.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonSales.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonSales.ForeColor = System.Drawing.Color.White;
             this.buttonSales.Image = ((System.Drawing.Image)(resources.GetObject("buttonSales.Image")));
             this.buttonSales.Location = new System.Drawing.Point(0, 168);
@@ -423,7 +424,7 @@ namespace WindowsForm.Forms.AdminForms
             this.buttonProducts.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonProducts.FlatAppearance.BorderSize = 0;
             this.buttonProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonProducts.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonProducts.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonProducts.ForeColor = System.Drawing.Color.White;
             this.buttonProducts.Image = ((System.Drawing.Image)(resources.GetObject("buttonProducts.Image")));
             this.buttonProducts.Location = new System.Drawing.Point(0, 112);
@@ -445,7 +446,7 @@ namespace WindowsForm.Forms.AdminForms
             this.buttonHome.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonHome.FlatAppearance.BorderSize = 0;
             this.buttonHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonHome.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonHome.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonHome.ForeColor = System.Drawing.Color.White;
             this.buttonHome.Image = ((System.Drawing.Image)(resources.GetObject("buttonHome.Image")));
             this.buttonHome.Location = new System.Drawing.Point(0, 56);
@@ -526,7 +527,7 @@ namespace WindowsForm.Forms.AdminForms
             this.buttonSettings.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonSettings.FlatAppearance.BorderSize = 0;
             this.buttonSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSettings.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonSettings.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonSettings.ForeColor = System.Drawing.Color.White;
             this.buttonSettings.Image = ((System.Drawing.Image)(resources.GetObject("buttonSettings.Image")));
             this.buttonSettings.Location = new System.Drawing.Point(0, 504);
@@ -734,26 +735,26 @@ namespace WindowsForm.Forms.AdminForms
             this.myDMOther.MenuItemTextColor = System.Drawing.Color.DimGray;
             this.myDMOther.Name = "myDMOther";
             this.myDMOther.PrimaryColor = System.Drawing.Color.MediumSlateBlue;
-            this.myDMOther.Size = new System.Drawing.Size(181, 114);
+            this.myDMOther.Size = new System.Drawing.Size(169, 92);
             // 
             // musterilerToolStripMenuItem
             // 
             this.musterilerToolStripMenuItem.Name = "musterilerToolStripMenuItem";
-            this.musterilerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.musterilerToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.musterilerToolStripMenuItem.Text = "Musteriler";
             this.musterilerToolStripMenuItem.Click += new System.EventHandler(this.musterilerToolStripMenuItem_Click);
             // 
             // musteriOdenisleriToolStripMenuItem
             // 
             this.musteriOdenisleriToolStripMenuItem.Name = "musteriOdenisleriToolStripMenuItem";
-            this.musteriOdenisleriToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.musteriOdenisleriToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.musteriOdenisleriToolStripMenuItem.Text = "Musteri odenisleri";
             this.musteriOdenisleriToolStripMenuItem.Click += new System.EventHandler(this.musteriOdenisleriToolStripMenuItem_Click);
             // 
             // selahiyyetlerToolStripMenuItem
             // 
             this.selahiyyetlerToolStripMenuItem.Name = "selahiyyetlerToolStripMenuItem";
-            this.selahiyyetlerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.selahiyyetlerToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.selahiyyetlerToolStripMenuItem.Text = "Selahiyyetler";
             this.selahiyyetlerToolStripMenuItem.Click += new System.EventHandler(this.selahiyyetlerToolStripMenuItem_Click);
             // 
@@ -764,7 +765,7 @@ namespace WindowsForm.Forms.AdminForms
             this.bonusVəÖdənişƏlavəEtToolStripMenuItem,
             this.kartıYeniləVəYaSilToolStripMenuItem});
             this.bonusKartToolStripMenuItem.Name = "bonusKartToolStripMenuItem";
-            this.bonusKartToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bonusKartToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.bonusKartToolStripMenuItem.Text = "Bonus Kart";
             // 
             // toolStripMenuItem2
@@ -780,6 +781,13 @@ namespace WindowsForm.Forms.AdminForms
             this.bonusVəÖdənişƏlavəEtToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
             this.bonusVəÖdənişƏlavəEtToolStripMenuItem.Text = "Bonus və ödəniş əlavə et";
             this.bonusVəÖdənişƏlavəEtToolStripMenuItem.Click += new System.EventHandler(this.bonusVəÖdənişƏlavəEtToolStripMenuItem_Click);
+            // 
+            // kartıYeniləVəYaSilToolStripMenuItem
+            // 
+            this.kartıYeniləVəYaSilToolStripMenuItem.Name = "kartıYeniləVəYaSilToolStripMenuItem";
+            this.kartıYeniləVəYaSilToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.kartıYeniləVəYaSilToolStripMenuItem.Text = "Kartı yenilə və ya sil";
+            this.kartıYeniləVəYaSilToolStripMenuItem.Click += new System.EventHandler(this.kartıYeniləVəYaSilToolStripMenuItem_Click);
             // 
             // myDMProduct
             // 
@@ -883,36 +891,37 @@ namespace WindowsForm.Forms.AdminForms
             // 
             this.myDMSettings.IsMainMenu = false;
             this.myDMSettings.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bonusKartToolStripMenuItem1});
+            this.bonusKartToolStripMenuItem1,
+            this.konfiqurasiyaToolStripMenuItem});
             this.myDMSettings.MenuItemHeight = 25;
             this.myDMSettings.MenuItemTextColor = System.Drawing.Color.DimGray;
             this.myDMSettings.Name = "myDMSettings";
             this.myDMSettings.PrimaryColor = System.Drawing.Color.MediumSlateBlue;
-            this.myDMSettings.Size = new System.Drawing.Size(131, 26);
+            this.myDMSettings.Size = new System.Drawing.Size(181, 70);
             // 
             // bonusKartToolStripMenuItem1
             // 
             this.bonusKartToolStripMenuItem1.Name = "bonusKartToolStripMenuItem1";
-            this.bonusKartToolStripMenuItem1.Size = new System.Drawing.Size(130, 22);
+            this.bonusKartToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.bonusKartToolStripMenuItem1.Text = "Bonus kart";
             this.bonusKartToolStripMenuItem1.Click += new System.EventHandler(this.bonusKartToolStripMenuItem1_Click);
             // 
-            // kartıYeniləVəYaSilToolStripMenuItem
+            // konfiqurasiyaToolStripMenuItem
             // 
-            this.kartıYeniləVəYaSilToolStripMenuItem.Name = "kartıYeniləVəYaSilToolStripMenuItem";
-            this.kartıYeniləVəYaSilToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
-            this.kartıYeniləVəYaSilToolStripMenuItem.Text = "Kartı yenilə və ya sil";
-            this.kartıYeniləVəYaSilToolStripMenuItem.Click += new System.EventHandler(this.kartıYeniləVəYaSilToolStripMenuItem_Click);
+            this.konfiqurasiyaToolStripMenuItem.Name = "konfiqurasiyaToolStripMenuItem";
+            this.konfiqurasiyaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.konfiqurasiyaToolStripMenuItem.Text = "Konfiqurasiya";
+            this.konfiqurasiyaToolStripMenuItem.Click += new System.EventHandler(this.konfiqurasiyaToolStripMenuItem_Click);
             // 
             // Dashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 698);
             this.Controls.Add(this.panelDesktopPane);
             this.Controls.Add(this.panelTitleBar);
             this.Controls.Add(this.panelMenu);
-            this.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MinimumSize = new System.Drawing.Size(900, 376);
@@ -1016,5 +1025,6 @@ namespace WindowsForm.Forms.AdminForms
         private System.Windows.Forms.ToolStripMenuItem bonusKartToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem bonusVəÖdənişƏlavəEtToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kartıYeniləVəYaSilToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem konfiqurasiyaToolStripMenuItem;
     }
 }

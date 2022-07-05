@@ -30,7 +30,7 @@ namespace Tests.UnitTests.Business.ProductServiceTests.Add
             Product product = new Product()
             {
                 ProductName = "L30",
-                BarcodeNumber = "1234567891119",
+                BarcodeNumber = "9873214563698",
                 BrandId = 2,
                 CategoryId = 2,
                 SupplierId = 1,
@@ -40,15 +40,14 @@ namespace Tests.UnitTests.Business.ProductServiceTests.Add
                 QuantityPerUnit = "1x"
             };
 
-            _productService.Add(product);
-            product.BarcodeNumber = "1234567891023";
+            var re=_productService.Add(product);
+            product.BarcodeNumber = "1234567865432";
             //act(Ise Salma)
             IResult result = FluentActions.Invoking(() => _productService.Add(product)).Invoke();
 
             //  assert(Tesdiqleme)
             result.Should().BeOfType(typeof(ErrorResult));
             result.Success.Should().BeFalse();
-            
             result.Message.Should().Be(ProductMessages.ProductNameAvailable);
         }
 
@@ -63,7 +62,7 @@ namespace Tests.UnitTests.Business.ProductServiceTests.Add
                 BrandId = 2,
                 CategoryId = 2,
                 SupplierId = 1,
-               PurchasePrice = 2,
+                PurchasePrice = 2,
                 UnitPrice = 4,
                 UnitsInStock = 4,
                 QuantityPerUnit = "1x"

@@ -9,7 +9,7 @@ namespace WindowsForm.Core.Constants.ControllerNames.SettingForm
         public static string ComboBoxWhichDays = "comboBoxWhichDays";
         public static string TextBoxIGeneralInterestRate = "textBoxIGeneralInterestRate";
         public static string TextBoxWeeklyInterestRate = "textBoxWeeklyInterestRate";
-        public static string DecimalPoint = "DecimalPoint";
+        public static string TextBoxSignsDecimalPoint = "textBoxSignsDecimalPoint";
 
     }
 }

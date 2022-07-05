@@ -14,17 +14,17 @@ namespace Business.Constants.Messages
         public static string UserIsNotDeleted = "İstifadçi silinə bilmədi";
         public static string UserUpdated = "Isifadəci yeniləndi";
         public static string UserIsNotUpdating = "İstifadəçi məlumatları yenilənə bilmədi";
-        public static string UserGetAll = "Isifadəcilər siralandi";
+        public static string UserGetAll = "Isifadəcilər siralandı";
         public static string UserFound = "İstifadəçi tapıldı";
 
         public static string UserRegistered = "Qeydiyyatdan kecdi";
-        public static string UserNotFound = "Istifadəci tapilmadi";
+        public static string UserNotFound = "İstifadəci tapilmadı";
         public static string PasswordError = "Şifrə yanlışdır";
         public static string SuccessfulLogin = "Uğurlu giriş";
         public static string UserAlreadyExists = "İstifadəçi mövcuddur";
         public static string AccessTokenCreated = "Token yaradıldı";
         public static string GetClaimsIsNull = "Əməliyyatin iddəaları yoxdur";
-        public static string UserDetailsListed = "İstifadəçilər əlavə məlumatlara görə sıralandl";
+        public static string UserDetailsListed = "İstifadəçilər əlavə məlumatlara görə sıralandı";
         public static string UserDetailsByNameListed = "İstifadəçilərin əlavə məlumatları adlara görə görə sıralandl";
 
         //BusinesRules------------->

@@ -517,6 +517,11 @@ namespace WindowsForm.Forms.AdminForms
             OpenChildForm(new Forms.SettingForms.BonusCardSettingForm(_formSettingService), sender);
         }
 
+        private void konfiqurasiyaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.SettingForms.ConfigurationSettingForm(_formSettingService), sender);
+        }
+
 
         private void CollapseMenu()
         {
@@ -602,7 +607,9 @@ namespace WindowsForm.Forms.AdminForms
             labelTitle.Text = childForm.Text;
         }
 
-       
+        
+
+
 
 
 

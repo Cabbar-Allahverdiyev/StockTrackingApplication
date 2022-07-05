@@ -106,7 +106,7 @@ namespace WindowsForm.MyControls
 
         public  void MakeTextBoxDecimalBox(object sender, KeyPressEventArgs keyPressEventArgs)
         {
-            char deciamlPoint = (_formSettingService.GetByName(SettingControllerName.DecimalPoint).Data.Value)[0];
+            char deciamlPoint = (_formSettingService.GetByName(SettingControllerName.TextBoxSignsDecimalPoint).Data.Value)[0];
            if (!char.IsControl(keyPressEventArgs.KeyChar)
                 && !char.IsDigit(keyPressEventArgs.KeyChar) 
                 && (keyPressEventArgs.KeyChar != deciamlPoint))

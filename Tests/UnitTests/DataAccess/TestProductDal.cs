@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Tests.UnitTests.DataAccess
 {
-    public class TestProductManager : EfEntityRepositoryBase<Product, EfInMemoryContext>,
+    public class TestProductDal : EfEntityRepositoryBase<Product, EfInMemoryContext>,
                                         IProductDal
     {
 

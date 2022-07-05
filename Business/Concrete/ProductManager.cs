@@ -231,7 +231,7 @@ namespace Business.Concrete
 
         private IResult IsProductNameExists(string productName)
         {
-            Product product = _productDal.Get(p => p.ProductName == productName);
+            Product product = _productDal.Get(p => p.ProductName.ToLower() == productName.ToLower());
             if (product != null)
             {
                 return new ErrorResult(ProductMessages.ProductNameAvailable);
@@ -241,7 +241,7 @@ namespace Business.Concrete
 
         private IResult IsProductNameExistsForUpdate(Product product)
         {
-            Product getProduct = _productDal.Get(p => p.ProductName == product.ProductName);
+            Product getProduct = _productDal.Get(p => p.ProductName.ToLower() == product.ProductName.ToLower());
             if (getProduct != null && getProduct.Id != product.Id)
             {
                 return new ErrorResult(ProductMessages.ProductNameAvailable);

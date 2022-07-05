@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 
 namespace Tests.UnitTests.DataAccess
 {
-    public  class TestSupplierManager : EfEntityRepositoryBase<Supplier, EfInMemoryContext>
-                                , ISupplierDal
+    public  class TestCategoryDal : EfEntityRepositoryBase<Category, EfInMemoryContext>
+                                , ICategoryDal
     {
     }
 }
