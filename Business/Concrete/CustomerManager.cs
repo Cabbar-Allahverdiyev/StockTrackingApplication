@@ -22,7 +22,8 @@ namespace Business.Concrete
         ICustomerDal _customerDal;
         ICustomerBalanceService _balanceService;
         IBonusCardDal _bonusCardDal;
-        public CustomerManager(ICustomerDal customerDal, ICustomerBalanceService balanceService, IBonusCardDal bonusCardDal)
+        public CustomerManager(ICustomerDal customerDal, ICustomerBalanceService balanceService
+                             , IBonusCardDal bonusCardDal)
         {
             _customerDal = customerDal;
             _balanceService = balanceService;
@@ -55,11 +56,22 @@ namespace Business.Concrete
             return new SuccessResult(CustomerMessages.Added);
         }
 
+       
+
         [CacheRemoveAspect("ICustomerService.Get")]
         public IResult Delete(Customer customer)
         {
+            string message = "";
+            IResult rules = BusinessRules.Run(GetBonusCardByCustomerIdAndDelete(customer,ref message)
+                                             ,GetBalanceByCustomerIdAndDelete(customer,ref message));
+            if (rules!=null)
+            {
+                return new ErrorResult(rules.Message);
+            }
+            
             _customerDal.Delete(customer);
-            return new SuccessResult(BrandMessages.BrandDeleted);
+            message += CustomerMessages.Deleted;
+            return new SuccessResult(message);
         }
 
         [ValidationAspect(typeof(BrandValidator))]
@@ -226,7 +238,33 @@ namespace Business.Concrete
             }
             return new SuccessResult();
         }
+        private IResult GetBonusCardByCustomerIdAndDelete(Customer customer, ref string message)
+        {
+            var bonusCard = _bonusCardDal.Get(b => b.CustomerId == customer.Id);
+            if (bonusCard != null)
+            {
+                _bonusCardDal.Delete(bonusCard);
+                message += BonusCardMessages.Deleted(customer.FirstName +" "+ customer.LastName) + " və ";
+            }
+            return new SuccessResult();
+        }
 
-     
+        private IResult GetBalanceByCustomerIdAndDelete(Customer customer, ref string message)
+        {
+            var balance = _balanceService.GetByCustomerId(customer.Id).Data;
+            if (balance != null)
+            {
+                IResult deletedBalance = _balanceService.Delete(balance);
+                message += deletedBalance.Message + " ";
+                if (!deletedBalance.Success)
+                {
+                    return new ErrorResult(message);
+
+                }
+            }
+            return new SuccessResult();
+        }
+
+
     }
 }

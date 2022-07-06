@@ -8,7 +8,7 @@ namespace Business.Constants.Messages
     {
         public static string Added = "Bonus kartı əlavə edildi";
         public static string NotAdded = "Bonus kartı edilə bilmədi";
-        public static string Deleted = "Bonus kartı silindi";
+        public static string Deleted(string customerFullName) => $"{customerFullName}in bonus kartı silindi";
         public static string IsNotDeleted = "Bonus kartı silinə bilmədi";
         public static string Updated = "Bonus kartı yeniləndi";
         public static string IsNotUpdating = "Bonus kartı yenilənə bilmədi";

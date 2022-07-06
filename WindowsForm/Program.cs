@@ -77,10 +77,11 @@ namespace WindowsForm
 
             IFormSettingService _formSettingService = new FormSettingManager(_formSettingDal);
             //Application.Run(new Forms.SettingForms.BonusCardSettingForm(formSettingManager));
+            //Application.Run(new Forms.DebtForm(_debtService,_customerService,_customerBalanceService));
 
-            Application.Run(new Forms.LoginForm(_userOperationClaimForFormsService, _userService, _operationClaimForFormsService, _productService
-               , _categoryService, _customerService, _customerBalanceService, _customerPaymentService, _cartService, _debtService, _saleService, _supplierService
-               , _brandService, _bonusCardService, _formSettingService, _bonusCardOperationService));
+            //Application.Run(new Forms.LoginForm(_userOperationClaimForFormsService, _userService, _operationClaimForFormsService, _productService
+            //   , _categoryService, _customerService, _customerBalanceService, _customerPaymentService, _cartService, _debtService, _saleService, _supplierService
+            //   , _brandService, _bonusCardService, _formSettingService, _bonusCardOperationService));
 
             //Application.Run(new BonusCardSystem.Forms.BonusCardSystemLoginForm(userOperationClaimForFormsManager, userManager, operationClaimForFormsManager, productManager
             //    , categoryManager, customerManager, customerBalanceManager, customerPaymentManager, cartManager, debtManager, saleManager, supplierManager

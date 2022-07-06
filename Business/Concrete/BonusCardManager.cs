@@ -51,7 +51,8 @@ namespace Business.Concrete
         public IResult Delete(BonusCard bonusCard)
         {
             _bonusCardDal.Delete(bonusCard);
-            return new SuccessResult(BonusCardMessages.Deleted);
+            Customer customer=_customerService.GetById(bonusCard.Id).Data;
+            return new SuccessResult(BonusCardMessages.Deleted(customer.FirstName+" "+customer.LastName));
         }
 
         [ValidationAspect(typeof(BonusCardValidator))]

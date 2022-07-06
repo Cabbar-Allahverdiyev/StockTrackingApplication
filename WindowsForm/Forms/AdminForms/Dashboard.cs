@@ -511,6 +511,12 @@ namespace WindowsForm.Forms.AdminForms
             OpenChildForm(new BonusCardUpdateAndDeleteForm(_bonusCardService), sender);
 
         }
+        //Nisye_____________________________>
+        private void nisyələrToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new DebtForm(_debtService,_customerService,_customerBalanceService),sender);
+        }
+
         //Parametrler --------------------------->
         private void bonusKartToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -608,6 +614,8 @@ namespace WindowsForm.Forms.AdminForms
         }
 
         
+
+
 
 
 

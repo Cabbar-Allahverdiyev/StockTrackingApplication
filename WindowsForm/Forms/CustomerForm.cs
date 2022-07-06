@@ -84,5 +84,27 @@ namespace WindowsForm.Forms
         {
             TextBoxController.ClearAllTextBoxesByGroupBox(groupBox1);
         }
+
+        private void buttonSil_Click(object sender, EventArgs e)
+        {
+            Customer customer = _customerService.GetById(int.Parse(textBoxCustomerId.Text)).Data;
+            IResult result = _customerService.Delete(customer);
+            if (!result.Success)
+            {
+                FormsMessage.ErrorMessage(result.Message);
+                return;
+            }
+            FormsMessage.SuccessMessage(result.Message);
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridViewList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textBoxCustomerId.Text = dataGridViewList.CurrentRow.Cells["CustomerId"].Value.ToString();
+        }
     }
 }

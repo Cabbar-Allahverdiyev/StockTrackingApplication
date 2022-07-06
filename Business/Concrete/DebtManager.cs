@@ -116,5 +116,15 @@ namespace Business.Concrete
             }
             return new SuccessDataResult<Debt>(get, DebtMessages.Found);
         }
+
+        public IDataResult<List<Debt>> GetAllByCustomerId(int customerId)
+        {
+            List<Debt> get = _debtDal.GetAll(d=>d.CustomerId==customerId);
+            if (get.Count ==0)
+            {
+                return new ErrorDataResult<List<Debt>>();
+            }
+            return new SuccessDataResult<List<Debt>>(get,DebtMessages.GetAllByCustomerId);
+        }
     }
 }

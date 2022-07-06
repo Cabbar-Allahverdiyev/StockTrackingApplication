@@ -15,5 +15,7 @@ namespace Business.Constants.Messages
         public static string GetAll = "Borclar sıralandi";
         public static string Found = "Borc tapıldı";
         public static string NotFound = "Belə bir Borc yoxdur";
+
+        public static string GetAllByCustomerId { get; internal set; }
     }
 }
