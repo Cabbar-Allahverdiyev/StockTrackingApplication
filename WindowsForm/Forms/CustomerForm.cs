@@ -20,11 +20,14 @@ namespace WindowsForm.Forms
 {
     public partial class CustomerForm : Form
     {
-        ICustomerService _customerService;
+        private readonly ICustomerService _customerService;
+        private readonly IDebtService _debtService;
+        public static int SelectedCustomerId { get; set; }
 
-        public CustomerForm(ICustomerService customerService)
+        public CustomerForm(ICustomerService customerService,IDebtService debtService)
         {
             _customerService = customerService;
+            _debtService = debtService;
             InitializeComponent();
             CustomerRefresh();
         }
@@ -104,7 +107,16 @@ namespace WindowsForm.Forms
 
         private void dataGridViewList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (dataGridViewList.CurrentRow.Cells["CustomerId"].Value == null) { return; }
             textBoxCustomerId.Text = dataGridViewList.CurrentRow.Cells["CustomerId"].Value.ToString();
+            SelectedCustomerId = Convert.ToInt32(dataGridViewList.CurrentRow.Cells["CustomerId"].Value.ToString());
+            CustomerDetailForm customerDetailForm = new CustomerDetailForm(_debtService, _customerService);
+            customerDetailForm.ShowDialog();
+        }
+
+        private void textBoxCustomerId_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

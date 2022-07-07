@@ -478,7 +478,7 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
         //Others--------------------------------->
         private void musterilerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new WindowsForm.Forms.CustomerForm(_customerService), sender);
+            OpenChildForm(new WindowsForm.Forms.CustomerForm(_customerService,_debtService), sender);
         }
 
         private void musteriOdenisleriToolStripMenuItem_Click(object sender, EventArgs e)

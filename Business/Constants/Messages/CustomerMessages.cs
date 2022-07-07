@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities.DTOs.CustomerDtos;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -24,5 +25,8 @@ namespace Business.Constants.Messages
         public static string EmailAvailable = "Bu emailda artıq istifadəçi mövcuddur, zəhmət olmasa başqa email sınayın";
         public static string PhoneNumberAvailable = "Bu nömrə artıq sistemdə mövcuddur";
 
+        //Dto
+        public static string CustomerDetailFound = "Müştəri məlumatları tapıldı";
+        public static string CustomerDetailNotFound = "Müştəri məlumatları tapıla bilmədi !";
     }
 }

@@ -43,11 +43,10 @@ namespace WindowsForm.Forms
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewList = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.buttonSil = new System.Windows.Forms.Button();
+            this.textBoxCustomerId = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
             this.textBoxAxtar = new System.Windows.Forms.TextBox();
-            this.textBoxCustomerId = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewList)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).BeginInit();
@@ -191,7 +190,6 @@ namespace WindowsForm.Forms
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.textBoxCustomerId);
-            this.groupBox1.Controls.Add(this.buttonSil);
             this.groupBox1.Controls.Add(this.textBoxSoyad);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.textBoxTelefonNomresi);
@@ -211,19 +209,15 @@ namespace WindowsForm.Forms
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // buttonSil
+            // textBoxCustomerId
             // 
-            this.buttonSil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSil.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonSil.Image = global::WindowsForm.Properties.Resources.icons8_trash_16;
-            this.buttonSil.Location = new System.Drawing.Point(91, 214);
-            this.buttonSil.Name = "buttonSil";
-            this.buttonSil.Size = new System.Drawing.Size(85, 26);
-            this.buttonSil.TabIndex = 34;
-            this.buttonSil.Text = "Sil";
-            this.buttonSil.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonSil.UseVisualStyleBackColor = true;
-            this.buttonSil.Click += new System.EventHandler(this.buttonSil_Click);
+            this.textBoxCustomerId.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxCustomerId.Location = new System.Drawing.Point(91, 15);
+            this.textBoxCustomerId.Name = "textBoxCustomerId";
+            this.textBoxCustomerId.Size = new System.Drawing.Size(176, 22);
+            this.textBoxCustomerId.TabIndex = 35;
+            this.textBoxCustomerId.Visible = false;
+            this.textBoxCustomerId.TextChanged += new System.EventHandler(this.textBoxCustomerId_TextChanged);
             // 
             // label12
             // 
@@ -260,18 +254,11 @@ namespace WindowsForm.Forms
             this.textBoxAxtar.TabIndex = 38;
             this.textBoxAxtar.TextChanged += new System.EventHandler(this.textBoxAxtar_TextChanged);
             // 
-            // textBoxCustomerId
-            // 
-            this.textBoxCustomerId.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxCustomerId.Location = new System.Drawing.Point(91, 15);
-            this.textBoxCustomerId.Name = "textBoxCustomerId";
-            this.textBoxCustomerId.Size = new System.Drawing.Size(176, 22);
-            this.textBoxCustomerId.TabIndex = 35;
-            // 
             // CustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(1023, 450);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.pictureBoxRefresh);
@@ -309,7 +296,6 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.PictureBox pictureBoxRefresh;
         private System.Windows.Forms.TextBox textBoxAxtar;
-        private System.Windows.Forms.Button buttonSil;
         private System.Windows.Forms.TextBox textBoxCustomerId;
     }
 }

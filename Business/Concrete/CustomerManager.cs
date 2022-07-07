@@ -36,7 +36,7 @@ namespace Business.Concrete
         {
             IResult result = BusinessRules.Run(IsThereFirstNameAndLastNameAvailable(customer.FirstName, customer.LastName)
                                                 , IsEmailExists(customer.Email)
-                                                ,IsPhoneNumberExists(customer.PhoneNumber)
+                                                , IsPhoneNumberExists(customer.PhoneNumber)
                                                 );
             if (result != null)
             {
@@ -47,28 +47,29 @@ namespace Business.Concrete
             CustomerBalance customerBalance = new CustomerBalance();
             customerBalance.Balance = 0;
             customerBalance.Debt = 0;
-           
+
             _customerDal.Add(customer);
 
             IDataResult<Customer> get = GetByPhoneNumber(customer.PhoneNumber);
             customerBalance.CustomerId = get.Data.Id;
-            _balanceService.Add(customerBalance); 
+            _balanceService.Add(customerBalance);
             return new SuccessResult(CustomerMessages.Added);
         }
 
-       
+
 
         [CacheRemoveAspect("ICustomerService.Get")]
         public IResult Delete(Customer customer)
         {
             string message = "";
-            IResult rules = BusinessRules.Run(GetBonusCardByCustomerIdAndDelete(customer,ref message)
-                                             ,GetBalanceByCustomerIdAndDelete(customer,ref message));
-            if (rules!=null)
+            IResult rules = BusinessRules.Run(//sGetBonusCardByCustomerIdAndDelete(customer,ref message)
+                                              //,GetBalanceByCustomerIdAndDelete(customer,ref message)
+                                             );
+            if (rules != null)
             {
                 return new ErrorResult(rules.Message);
             }
-            
+
             _customerDal.Delete(customer);
             message += CustomerMessages.Deleted;
             return new SuccessResult(message);
@@ -96,7 +97,7 @@ namespace Business.Concrete
         public IDataResult<List<Customer>> GetAll()
         {
             List<Customer> get = _customerDal.GetAll();
-            return new SuccessDataResult<List<Customer>>(get, CustomerMessages .GetAll);
+            return new SuccessDataResult<List<Customer>>(get, CustomerMessages.GetAll);
         }
 
         [CacheAspect]
@@ -113,7 +114,7 @@ namespace Business.Concrete
         [CacheAspect]
         public IDataResult<Customer> GetByPhoneNumber(string phoneNumber)
         {
-            Customer get = _customerDal.Get(c => c.PhoneNumber .Equals( phoneNumber));
+            Customer get = _customerDal.Get(c => c.PhoneNumber.Equals(phoneNumber));
             if (get == null)
             {
                 return new ErrorDataResult<Customer>(CustomerMessages.NotFound);
@@ -129,7 +130,7 @@ namespace Business.Concrete
             foreach (var customer in get)
             {
                 var card = getCards.SingleOrDefault(b => b.CustomerId == customer.CustomerId);
-                if ( card!= null)
+                if (card != null)
                 {
                     customer.BonusCardBalance = card.Balance;
                 }
@@ -139,6 +140,21 @@ namespace Business.Concrete
             //    return new ErrorDataResult<List<CustomerDto>>(CustomerMessages.NotFound);
             //}
             return new SuccessDataResult<List<CustomerDto>>(get, CustomerMessages.GetAll);
+        }
+
+        public IDataResult<CustomerDto> GetCustomerDetailByCustomerId(int customerId)
+        {
+            CustomerDto get = _customerDal.GetCustomerDetail(c=>c.CustomerId==customerId);
+            if (get is null)
+            {
+                return new ErrorDataResult<CustomerDto>(CustomerMessages.CustomerDetailNotFound);
+            }
+            BonusCard bonusCard = _bonusCardDal.Get(b => b.CustomerId == get.CustomerId);
+            if (bonusCard != null)
+            {
+                get.BonusCardBalance = bonusCard.Balance;
+            }
+            return new SuccessDataResult<CustomerDto>(get,CustomerMessages.CustomerDetailFound);
         }
 
         //Elave-------------------->
@@ -181,7 +197,7 @@ namespace Business.Concrete
             List<Customer> customerGetAll = _customerDal.GetAll();
             foreach (Customer customer in customerGetAll)
             {
-                if (customer.Email.ToLower().Equals(email.ToLower())&& customer.Email!="")
+                if (customer.Email.ToLower().Equals(email.ToLower()) && customer.Email != "")
                 {
                     return new ErrorResult(CustomerMessages.EmailAvailable);
                 }
@@ -244,7 +260,7 @@ namespace Business.Concrete
             if (bonusCard != null)
             {
                 _bonusCardDal.Delete(bonusCard);
-                message += BonusCardMessages.Deleted(customer.FirstName +" "+ customer.LastName) + " və ";
+                message += BonusCardMessages.Deleted(customer.FirstName + " " + customer.LastName) + " və ";
             }
             return new SuccessResult();
         }
@@ -265,6 +281,6 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-
+        
     }
 }
