@@ -24,7 +24,7 @@ namespace Tests.UnitTests.Business.CategoryTests.Commands.Delete
         [Fact]
         public void WhenAlreadyExistCategoryNameGiven_SuccessResult_ShouldBeReturnDeleted()
         {
-            Category category = new Category() { CategoryName = "WhenAlreadyExistCategoryNameGiven" };
+            Category category = new Category() { CategoryName = "WhenAlreadyExistCategoryNameGiven_SuccessResult_ShouldBeReturnDeleted" };
             IResult categoryCreated = _categoryService.Add(category);
             IDataResult<Category> dataResult = _categoryService.GetByName(category.CategoryName);
 
@@ -33,6 +33,20 @@ namespace Tests.UnitTests.Business.CategoryTests.Commands.Delete
             dataResult.Should().BeOfType(typeof(SuccessDataResult<Category>));
             result.Should().BeOfType(typeof(SuccessResult));
             result.Message.Should().Be(CategoryMessages.CategoryDeleted);
+
+        }
+
+        [Fact]
+        public void WhenCategoryIdIsNullGiven_ErrorResult_ShouldBeReturnNotDeleted()
+        {
+            Category category = new Category() {Id=0, CategoryName = "WhenCategoryIdIsNullGiven" };
+           
+
+            IResult result = FluentActions.Invoking(() => _categoryService.Delete(category)).Invoke();
+           
+           
+            result.Should().BeOfType(typeof(ErrorResult));
+            result.Message.Should().Be(CategoryMessages.CategoryIdIsEmpty);
 
         }
 

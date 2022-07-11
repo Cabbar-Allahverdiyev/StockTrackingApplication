@@ -44,7 +44,7 @@ namespace Tests.UnitTests.Business.BrandTest.BrandServiceTests.Commands.Delete
             IResult result = FluentActions.Invoking(() => _brandService.Delete(brand)).Invoke();
            
             result.Should().BeOfType(typeof(ErrorResult));
-            result.Message.Should().Be(BrandMessages.BrandIsNotDeleted);
+            result.Message.Should().Be(BrandMessages.BrandIdIsEmpty);
 
         }
     }

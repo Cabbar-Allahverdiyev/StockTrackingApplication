@@ -31,7 +31,7 @@ namespace Tests.UnitTests.Business.CategoryTests.Commands.Add
             categoryCreated.Should().BeOfType(typeof(SuccessResult));
 
             result.Should().BeOfType(typeof(ErrorResult));
-            result.Message.Should().Be(CategoryMessages.AlreadyExistsName);
+            result.Message.Should().Be(CategoryMessages.CategoryNameAvailable);
 
         }
 
