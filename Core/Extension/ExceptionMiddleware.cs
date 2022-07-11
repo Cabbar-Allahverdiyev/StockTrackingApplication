@@ -51,6 +51,20 @@ namespace Core.Extension
                 }.ToString());
             }
 
+            if (e.GetType() == typeof(UnauthorizedAccessException))
+            {
+                message = e.Message;
+                //errors = ((ValidationException)e).Errors;
+                httpContext.Response.StatusCode = 401;
+
+                return httpContext.Response.WriteAsync(new ErrorDetails
+                {
+                    StatusCode = 401,
+                    Message = message
+                    //Errors = errors
+                }.ToString());
+            }
+
             return httpContext.Response.WriteAsync(new ErrorDetails
             {
                 StatusCode = httpContext.Response.StatusCode,

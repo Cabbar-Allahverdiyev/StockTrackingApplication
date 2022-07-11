@@ -56,7 +56,7 @@ namespace WindowsForm.Forms
                 }
                 else
                 {
-                    FormsMessage.WarningMessage(BrandMessages.BrandNotAdded);
+                    FormsMessage.WarningMessage(brandAdd.Message);
                     return;
                 }
 

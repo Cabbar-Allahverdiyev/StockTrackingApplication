@@ -67,7 +67,7 @@ namespace Business.Concrete
         }
 
         [CacheAspect]
-        [SecuredOperation("product.add")]
+        [SecuredOperation("product.getall")]
         public IDataResult<List<Product>> GetAll()
         {
             List<Product> get = _productDal.GetAll();
