@@ -20,7 +20,7 @@ namespace Business.Concrete
         {
             _categoryDal = categoryDal;
         }
-       
+
         //CRUD
 
         [ValidationAspect(typeof(CreateCategoryValidator))]
@@ -30,32 +30,44 @@ namespace Business.Concrete
             IResult result = BusinessRules.Run(IsCategoryNameExists(category.CategoryName));
             if (result != null)
             {
-                return new ErrorDataResult<Category>(result.Message);
+                return new ErrorResult(result.Message);
             }
 
             _categoryDal.Add(category);
-            return new SuccessResult(ProductMessages.ProductAdded);
+            return new SuccessResult(CategoryMessages.CategoryAdded);
         }
 
         [CacheRemoveAspect("ICategoryService.Get")]
         public IResult Delete(Category category)
         {
+            IResult result = BusinessRules.Run(IsCategoryIdNull(category));
+            if (result != null)
+            {
+                return new ErrorResult(result.Message);
+            }
             _categoryDal.Delete(category);
-            return new SuccessResult(ProductMessages.ProductDeleted);
+            return new SuccessResult(CategoryMessages.CategoryDeleted);
         }
 
         [ValidationAspect(typeof(UpdateCategoryValidator))]
         [CacheRemoveAspect("ICategoryService.Get")]
         public IResult Update(Category category)
         {
+            IResult result = BusinessRules.Run(IsCategoryNameExistsForUpdate(category));
+            if (result != null)
+            {
+                return new ErrorResult(result.Message);
+            }
             _categoryDal.Update(category);
-            return new SuccessResult(ProductMessages.ProductUpdated);
+            return new SuccessResult(CategoryMessages.CategoryUpdated);
         }
+
+
         [CacheAspect]
         public IDataResult<List<Category>> GetAll()
         {
-           List<Category> get= _categoryDal.GetAll();
-            return new SuccessDataResult<List<Category>>(get,ProductMessages.ProductGetAll);
+            List<Category> get = _categoryDal.GetAll();
+            return new SuccessDataResult<List<Category>>(get, CategoryMessages.CategoryGetAll);
         }
 
         public IDataResult<Category> GetById(int categoryId)
@@ -65,7 +77,7 @@ namespace Business.Concrete
             {
                 return new ErrorDataResult<Category>(CategoryMessages.CategoryNotFound);
             }
-            return new SuccessDataResult<Category>(get,CategoryMessages.CategoryFound);
+            return new SuccessDataResult<Category>(get, CategoryMessages.CategoryFound);
         }
 
         public IDataResult<Category> GetByName(string categoryName)
@@ -82,7 +94,7 @@ namespace Business.Concrete
 
         //Elave Metodlar----------------->
 
-        
+
         private IResult IsCategoryNameExists(string categoryName)
         {
             List<Category> getAllCategories = _categoryDal.GetAll();
@@ -96,5 +108,26 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
+        private IResult IsCategoryNameExistsForUpdate(Category category)
+        {
+            Category getCategory = _categoryDal.Get(c => c.CategoryName.ToLower() == category.CategoryName.ToLower());
+            if (getCategory != null && getCategory.Id != category.Id)
+            {
+                return new ErrorResult(CategoryMessages.CategoryNameAvailable);
+            }
+            return new SuccessResult();
+        }
+
+        private IResult IsCategoryIdNull(Category category)
+        {
+            if (category.Id == 0)
+            {
+                return new ErrorResult(CategoryMessages.CategoryIdIsEmpty);
+            }
+            return new SuccessResult();
+        }
+
     }
+
+    
 }

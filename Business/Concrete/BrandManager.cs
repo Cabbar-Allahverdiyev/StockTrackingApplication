@@ -28,35 +28,42 @@ namespace Business.Concrete
         [CacheRemoveAspect("IBrandService.Get")]
         public IResult Add(Brand brand)
         {
-            IResult rule= BusinessRules.Run(
+            IResult rule = BusinessRules.Run(
                 IsBrandNameExists(brand.BrandName)
-              //  BusinessRuleForIEnttityRepository<Brand>.IsNameExists(_brandDal,b=>b.BrandName==brand.BrandName)
+                //  BusinessRuleForIEnttityRepository<Brand>.IsNameExists(_brandDal,b=>b.BrandName==brand.BrandName)
                 );
-            if (rule!=null)
+            if (rule != null)
             {
                 return new ErrorResult(rule.Message);
             }
-           // IResult result = GetAllByName(brand.BrandName);
+            // IResult result = GetAllByName(brand.BrandName);
             //if (result.Success)
             //{
-                _brandDal.Add(brand);
-                return new SuccessResult(BrandMessages.BrandAdded);
+            _brandDal.Add(brand);
+            return new SuccessResult(BrandMessages.BrandAdded);
             //}
-           // return new ErrorResult(BrandMessages.BrandNotAdded);
+            // return new ErrorResult(BrandMessages.BrandNotAdded);
         }
 
         [CacheRemoveAspect("IBrandService.Get")]
         public IResult Delete(Brand brand)
         {
+            IResult result = BusinessRules.Run(IsBrandIdNull(brand.Id));
+            if (result != null)
+            {
+                return new ErrorResult(result.Message);
+            }
             _brandDal.Delete(brand);
             return new SuccessResult(BrandMessages.BrandDeleted);
         }
+
+        
 
         [ValidationAspect(typeof(UpdateBrandValidator))]
         [CacheRemoveAspect("IBrandService.Get")]
         public IResult Update(Brand brand)
         {
-            IResult rule = BusinessRules.Run(IsBrandNameExistsForUpdate(brand)  );
+            IResult rule = BusinessRules.Run(IsBrandNameExistsForUpdate(brand));
             if (rule != null)
             {
                 return new ErrorResult(rule.Message);
@@ -69,18 +76,18 @@ namespace Business.Concrete
         public IDataResult<List<Brand>> GetAll()
         {
             List<Brand> get = _brandDal.GetAll();
-            return new SuccessDataResult<List<Brand>>(get,BrandMessages.BrandGetAll);
+            return new SuccessDataResult<List<Brand>>(get, BrandMessages.BrandGetAll);
         }
-        
+
         [CacheAspect]
         public IDataResult<List<Brand>> GetAllByName(string brandName)
         {
-            List<Brand> get = _brandDal.GetAll(b=>b.BrandName==brandName);
-            if (get.Count==0)
+            List<Brand> get = _brandDal.GetAll(b => b.BrandName == brandName);
+            if (get.Count == 0)
             {
                 return new ErrorDataResult<List<Brand>>(BrandMessages.BrandNotFound);
             }
-            return new SuccessDataResult<List<Brand>>(get,BrandMessages.BrandGetAll);
+            return new SuccessDataResult<List<Brand>>(get, BrandMessages.BrandGetAll);
         }
 
         public IDataResult<Brand> GetByName(string brandName)
@@ -104,6 +111,16 @@ namespace Business.Concrete
         }
 
         //Elave 
+
+
+        private IResult IsBrandIdNull(int id)
+        {
+            if (id == 0)
+            {
+                return new ErrorResult(BrandMessages.BrandIdIsEmpty);
+            }
+            return new SuccessResult();
+        }
 
         private IResult IsBrandNameExists(string brandName)
         {

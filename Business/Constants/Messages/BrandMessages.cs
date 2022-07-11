@@ -19,5 +19,6 @@ namespace Business.Constants.Messages
         public static string BrandNotFound = "Belə bir marka yoxdur";
         public static string AlreadyExistsName = "Belə bir marka yoxdur";
 
+        public static string BrandIdIsEmpty= "Marka ID-si boş və ya 0 ola bilməz!";
     }
 }
