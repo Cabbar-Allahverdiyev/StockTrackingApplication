@@ -1,6 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Constants.Messages;
-using Business.ValidationRules.FluentValidation;
+using Business.ValidationRules.FluentValidation.BrandValidators;
 using Core.Utilities.Results;
 using Entities.Concrete;
 using System;
@@ -43,7 +43,7 @@ namespace WindowsForm.Forms
                 Brand brand = new Brand();
                 brand.BrandName = TextBoxFormBrandMarkaAdi.Text;
 
-                if (!FormValidationTool.IsValid(new BrandValidator(), brand))
+                if (!FormValidationTool.IsValid(new CreateBrandValidator(), brand))
                 {
                     return;
                 }

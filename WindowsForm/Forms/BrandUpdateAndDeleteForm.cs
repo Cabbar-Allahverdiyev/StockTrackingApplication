@@ -1,6 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Constants.Messages;
-using Business.ValidationRules.FluentValidation;
+using Business.ValidationRules.FluentValidation.BrandValidators;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -44,7 +44,7 @@ namespace WindowsForm.Forms
                 brand.Id = int.Parse(textBoxId.Text);
                 brand.BrandName = textBoxBrand.Text;
 
-                if (!FormValidationTool.IsValid(new BrandValidator(), brand))
+                if (!FormValidationTool.IsValid(new UpdateBrandValidator(), brand))
                 {
                     return;
                 }

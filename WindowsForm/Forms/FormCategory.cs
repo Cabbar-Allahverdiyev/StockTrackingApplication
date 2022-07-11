@@ -1,6 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Constants.Messages;
-using Business.ValidationRules.FluentValidation;
+using Business.ValidationRules.FluentValidation.CategoryValidators;
 using Core.Utilities.Results;
 using Entities.Concrete;
 using System;
@@ -50,7 +50,7 @@ namespace WindowsForm.Forms
                 category.CategoryName = TextBoxFormCategoryKategoriya.Text;
 
 
-                if (!FormValidationTool.IsValid(new CategoryValidator(), category))
+                if (!FormValidationTool.IsValid(new CreateCategoryValidator(), category))
                 {
                     return;
                 }

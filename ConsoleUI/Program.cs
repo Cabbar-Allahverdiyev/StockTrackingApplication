@@ -2,6 +2,7 @@
 using Business.Concrete;
 using Core.Entities.Concrete;
 using DataAccess.Concrete.EntityFramework;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 
@@ -11,8 +12,11 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
+            BrandManager brandManager = new BrandManager(new EfBrandDal());
+            Brand brand=new Brand() { BrandName="redmi"};
+            Console.WriteLine(brandManager.Add(brand).Message);
 
-            Console.WriteLine("She said, \"You deserve a treat!\" ");
+            //Console.WriteLine("She said, \"You deserve a treat!\" ");
             // UserManager userManager = new UserManager(new EfUserDal());
             // ProductManager productManager = new ProductManager(new EfProductDal());
             //SupplierManager supplierManager = new SupplierManager(new EfSupplierDal());
