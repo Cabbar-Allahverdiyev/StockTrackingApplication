@@ -5,11 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Business.ValidationRules.FluentValidation
+namespace Business.ValidationRules.FluentValidation.CategoryValidators
 {
-    public class CategoryValidator : AbstractValidator<Category>, IEntityValidator
+    public class CreateCategoryValidator : AbstractValidator<Category>, IEntityValidator
     {
-        public CategoryValidator()
+        public CreateCategoryValidator()
         {
             RuleFor(c => c.CategoryName).NotEmpty();
             RuleFor(c => c.CategoryName).MinimumLength(2);

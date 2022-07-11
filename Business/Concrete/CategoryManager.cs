@@ -1,6 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Constants.Messages;
-using Business.ValidationRules.FluentValidation;
+using Business.ValidationRules.FluentValidation.CategoryValidators;
 using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Business;
@@ -23,11 +23,11 @@ namespace Business.Concrete
        
         //CRUD
 
-        [ValidationAspect(typeof(CategoryValidator))]
+        [ValidationAspect(typeof(CreateCategoryValidator))]
         [CacheRemoveAspect("ICategoryService.Get")]
         public IResult Add(Category category)
         {
-            IResult result = BusinessRules.Run(IsCategoryManagerExists(category.CategoryName));
+            IResult result = BusinessRules.Run(IsCategoryNameExists(category.CategoryName));
             if (result != null)
             {
                 return new ErrorDataResult<Category>(result.Message);
@@ -44,7 +44,7 @@ namespace Business.Concrete
             return new SuccessResult(ProductMessages.ProductDeleted);
         }
 
-        [ValidationAspect(typeof(CategoryValidator))]
+        [ValidationAspect(typeof(UpdateCategoryValidator))]
         [CacheRemoveAspect("ICategoryService.Get")]
         public IResult Update(Category category)
         {
@@ -58,12 +58,32 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Category>>(get,ProductMessages.ProductGetAll);
         }
 
+        public IDataResult<Category> GetById(int categoryId)
+        {
+            Category get = _categoryDal.Get(c => c.Id == categoryId);
+            if (get is null)
+            {
+                return new ErrorDataResult<Category>(CategoryMessages.CategoryNotFound);
+            }
+            return new SuccessDataResult<Category>(get,CategoryMessages.CategoryFound);
+        }
+
+        public IDataResult<Category> GetByName(string categoryName)
+        {
+            Category get = _categoryDal.Get(c => c.CategoryName == categoryName);
+            if (get is null)
+            {
+                return new ErrorDataResult<Category>(CategoryMessages.CategoryNotFound);
+            }
+            return new SuccessDataResult<Category>(get, CategoryMessages.CategoryFound);
+        }
+
 
 
         //Elave Metodlar----------------->
 
         
-        private IResult IsCategoryManagerExists(string categoryName)
+        private IResult IsCategoryNameExists(string categoryName)
         {
             List<Category> getAllCategories = _categoryDal.GetAll();
             foreach (Category category in getAllCategories)
@@ -75,6 +95,6 @@ namespace Business.Concrete
             }
             return new SuccessResult();
         }
-        
+
     }
 }

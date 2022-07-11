@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants.Messages;
 using Business.ValidationRules.FluentValidation;
+using Business.ValidationRules.FluentValidation.BrandValidators;
 using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Business;
@@ -75,7 +76,7 @@ namespace Business.Concrete
             return new SuccessResult(message);
         }
 
-        [ValidationAspect(typeof(BrandValidator))]
+        [ValidationAspect(typeof(CreateBrandValidator))]
         [CacheRemoveAspect("ICustomerService.Get")]
         public IResult Update(Customer customer)
         {
