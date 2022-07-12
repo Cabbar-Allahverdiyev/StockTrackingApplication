@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace Business.Concrete
 {
@@ -38,7 +39,7 @@ namespace Business.Concrete
                                                 , PhoneNumberFormatControl(user.PhoneNumber));
             if (result != null)
             {
-                return new ErrorDataResult<User>(result.Message);
+                return new ErrorResult(result.Message);
             }
             _userDal.Add(user);
             return new SuccessResult(UserMessages.UserAdded);
@@ -55,7 +56,7 @@ namespace Business.Concrete
 
             if (result != null)
             {
-                return new ErrorDataResult<User>(result.Message);
+                return new ErrorResult(result.Message);
             }
 
             _userDal.Update(user);
@@ -65,7 +66,12 @@ namespace Business.Concrete
         [CacheRemoveAspect("IUserService.Get")]
         public IResult Delete(User user)
         {
-           
+            IResult result = BusinessRules.Run(IsUserExist(user.Id));
+
+            if (result != null)
+            {
+                return new ErrorResult(result.Message);
+            }
             _userDal.Delete(user);
             return new SuccessResult(UserMessages.UserDeleted);
         }
@@ -103,18 +109,29 @@ namespace Business.Concrete
             return new SuccessDataResult<List<UserDto>>(get, UserMessages.UserDetailsListed);
         }
 
-        public IDataResult<List<UserDto>> GetUserDetailsByUserName(string userName)
+        public IDataResult<UserDto> GetUserDetailByMail(string mail)
         {
-            List<UserDto> get = _userDal.GetUserDetails(u => u.FirstName == userName);
+            UserDto get = _userDal.GetUserDetail(u => u.Email.ToLower() == mail.ToLower());
             if (get is null)
             {
-                return new ErrorDataResult<List<UserDto>>(UserMessages.UserNotFound);
+                return new ErrorDataResult<UserDto>(UserMessages.UserNotFound);
             }
-            return new SuccessDataResult<List<UserDto>>(get, UserMessages.UserDetailsByNameListed);
+            return new SuccessDataResult<UserDto>(get, UserMessages.UserFound);
+        }
+
+        public IDataResult<UserDto> GetUserDetailByUserName(string firstName,string lastName)
+        {
+            UserDto get = _userDal.GetUserDetail(u => u.FirstName.ToLower() == firstName.ToLower() 
+                                                & u.LastName.ToLower()==lastName.ToLower());
+            if (get is null)
+            {
+                return new ErrorDataResult<UserDto>(UserMessages.UserNotFound);
+            }
+            return new SuccessDataResult<UserDto>(get, UserMessages.UserFound);
         }
 
         [CacheAspect]
-        public IDataResult<UserDto> GetUserDetailsByUserId(int userId)
+        public IDataResult<UserDto> GetUserDetailByUserId(int userId)
         {
             var get = _userDal.GetUserDetail(u=>u.UserId==userId);
             if (get == null)
@@ -124,22 +141,11 @@ namespace Business.Concrete
             return new SuccessDataResult<UserDto>(get, UserMessages.UserFound);
         }
 
-        //public IDataResult<UserDto> GetUserDetail(int userId)
-        //{
-        //    UserDto get = _userDal.GetUserDetail(userId);
-        //    if (get == null)
-        //    {
-        //        return new ErrorDataResult<UserDto>(UserMessages.UserNotFound);
-        //    }
-        //    return new SuccessDataResult<UserDto>(get, UserMessages.UserDetailsListed);
-        //}
-
-
         //--------------------------
 
         public IDataResult<User> GetByMail(string email)
         {
-            User get = _userDal.Get(u => u.Email == email);
+            User get = _userDal.Get(u => u.Email.ToLower() == email.ToLower());
             if (get == null)
             {
                 return new ErrorDataResult<User>(UserMessages.UserNotFound);
@@ -295,7 +301,15 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-
+        private IResult IsUserExist(int userId)
+        {
+            IDataResult<User> result = GetById(userId);
+            if (!result.Success)
+            {
+                return new ErrorResult(UserMessages.UserNotFound);
+            }
+            return new SuccessResult();
+        }
 
         private IResult IsThereFirstNameAndLastNameAvailable(string firstName, string lastName)
         {
@@ -394,6 +408,6 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-       
+        
     }
 }

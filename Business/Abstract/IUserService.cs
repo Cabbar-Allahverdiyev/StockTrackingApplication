@@ -29,14 +29,13 @@ namespace Business.Abstract
 
         //DTOs
         IDataResult<List<UserDto>> GetUserDetails();
-        IDataResult<List<UserDto>> GetUserDetailsByUserName(string userName);
-        IDataResult<UserDto> GetUserDetailsByUserId(int userId);
+        IDataResult<UserDto> GetUserDetailByUserName(string firstName,string lastName);
+        IDataResult<UserDto> GetUserDetailByUserId(int userId);
+        IDataResult<UserDto> GetUserDetailByMail(string mail);
        // IDataResult<UserDto> GetUserDetail(int userId);
 
         //For Forms
-        IDataResult<User> Register(UserForRegisterDto userForRegisterDto
-            //, string passwordRepeeat
-           );
+        IDataResult<User> Register(UserForRegisterDto userForRegisterDto);
         IDataResult<User> Login(UserForLoginDto userForLoginDto);
 
     }

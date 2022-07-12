@@ -3,6 +3,7 @@ using Business.Constants.Messages;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -25,6 +26,11 @@ namespace Business.Concrete
         [CacheRemoveAspect("ISupplierService.Get")]
         public IResult Add(Supplier supplier)
         {
+            IResult rules = BusinessRules.Run(this.IsSupplierExistsByCompanyNameAndContactName(supplier));
+            if (rules != null)
+            {
+                return new ErrorResult(rules.Message);
+            }
             _supplierDal.Add(supplier);
             return new SuccessResult(SupplierMessages.SupplierAdded);
         }
@@ -32,6 +38,11 @@ namespace Business.Concrete
         [CacheRemoveAspect("ISupplierService.Get")]
         public IResult Delete(Supplier supplier)
         {
+            IResult rules = BusinessRules.Run(this.GetById(supplier.Id));
+            if (rules != null)
+            {
+                return new ErrorResult(rules.Message);
+            }
             _supplierDal.Delete(supplier);
             return new SuccessResult(SupplierMessages.SupplierDeleted);
         }
@@ -40,6 +51,11 @@ namespace Business.Concrete
         [CacheRemoveAspect("ISupplierService.Get")]
         public IResult Update(Supplier supplier)
         {
+            IResult rules = BusinessRules.Run(this.GetById(supplier.Id));
+            if (rules != null)
+            {
+                return new ErrorResult(rules.Message);
+            }
             _supplierDal.Update(supplier);
             return new SuccessResult(SupplierMessages.SupplierUpdated);
         }
@@ -48,9 +64,52 @@ namespace Business.Concrete
         public IDataResult<List<Supplier>> GetAll()
         {
             List<Supplier> get = _supplierDal.GetAll();
-            return new SuccessDataResult<List<Supplier>>(get,SupplierMessages.SupplierGetAll);
+            return new SuccessDataResult<List<Supplier>>(get, SupplierMessages.SupplierGetAll);
         }
 
-        
+        public IDataResult<Supplier> GetById(int id)
+        {
+            Supplier get = _supplierDal.Get(s => s.Id == id);
+            if (get is null)
+            {
+                return new ErrorDataResult<Supplier>(SupplierMessages.SupplierNotFound);
+            }
+            return new SuccessDataResult<Supplier>(get,SupplierMessages.SupplierFound);
+        }
+
+        public IDataResult<List<Supplier>> GetAllByCompanyName(string companyName)
+        {
+            List<Supplier> get = _supplierDal.GetAll (s => s.CompanyName.ToLower() == companyName.ToLower());
+            if (get.Count == 0)
+            {
+                return new ErrorDataResult<List<Supplier>>(SupplierMessages.CompanyNameNotFound(companyName));
+            }
+            return new SuccessDataResult<List<Supplier>>(get,SupplierMessages.GetAllByCompanyName(companyName));
+        }
+
+        public IDataResult<List<Supplier>> GetAllByContactName(string contactName)
+        {
+            List<Supplier> get = _supplierDal.GetAll(s => s.ContactName.ToLower() == contactName.ToLower());
+            if (get.Count == 0)
+            {
+                return new ErrorDataResult<List<Supplier>>(SupplierMessages.ContactNameNotFound(contactName));
+            }
+            return new SuccessDataResult<List<Supplier>>(get, SupplierMessages.GetAllByContactName(contactName));
+        }
+
+        //Business rules-------------------->
+        private IResult IsSupplierExistsByCompanyNameAndContactName(Supplier supplier)
+        {
+            Supplier getSupplier = _supplierDal.Get(s => s.ContactName.ToLower() == supplier.ContactName.ToLower()
+                                                    & s.CompanyName.ToLower() == supplier.CompanyName.ToLower());
+            if (getSupplier is null)
+            {
+                return new ErrorResult(SupplierMessages.AlreadyExistsCompanyNameAndContactName(supplier));
+            }
+            return new SuccessResult();
+
+        }
+
+       
     }
 }
