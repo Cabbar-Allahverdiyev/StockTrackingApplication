@@ -34,11 +34,11 @@ namespace DataAccess.Concrete.EntityFramework
 
 
 
-        public UserDto GetUserDetail(int userId)
+        public UserDto GetUserDetail(Expression<Func<UserDto, bool>> filter )
         {
             using (StockTrackingProjectContext context = new StockTrackingProjectContext())
             {
-                var result = from user in context.Users.Where(u => u.Id == userId)
+                var result = from user in context.Users
                              select new UserDto
                              {
                                  UserId = user.Id,
@@ -48,7 +48,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  PhoneNumber = user.PhoneNumber,
                                  Address = user.Address
                              };
-                return result.SingleOrDefault();
+                return result.SingleOrDefault(filter);
             }
         }
 

@@ -25,7 +25,9 @@ namespace Business.Concrete
         }
 
 
-        public IDataResult<User> Register(UserForRegisterDto userForRegisterDto,string passwordRepeat)
+        public IDataResult<User> Register(UserForRegisterDto userForRegisterDto
+            //,string passwordRepeat
+            )
         {
             //Bu metod artiq UserManager-de Register adi ile
             //byte[] passwordHash, passwordSalt;
@@ -43,9 +45,15 @@ namespace Business.Concrete
             //};
             //_userService.Add(user);
            
-            var userRegister=_userService.Register(userForRegisterDto, passwordRepeat);
+            var userRegister=_userService.Register(userForRegisterDto
+                //, passwordRepeat
+                );
+            if (!userRegister.Success)
+            {
+                return new ErrorDataResult<User>(userRegister.Message);
+            }
             ////buralara mutleq nezer yetir
-            return new SuccessDataResult<User>(AuthMessages.UserRegistered);
+            return new SuccessDataResult<User>(userRegister.Data,AuthMessages.UserRegistered);
         }
 
 

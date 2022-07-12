@@ -53,7 +53,7 @@ namespace WindowsForm.Forms
 
                 User user = new User();
                 UserForRegisterDto userForRegisterDto = new UserForRegisterDto();
-                string passwordRepeat;
+               
 
                 userForRegisterDto.FirstName = textBoxAd.Text;
                 userForRegisterDto.LastName = textBoxSoyad.Text;
@@ -61,7 +61,7 @@ namespace WindowsForm.Forms
                 userForRegisterDto.Address = textBoxAdres.Text;
                 userForRegisterDto.PhoneNumber = textBoxTelefonNomresi.Text;
                 userForRegisterDto.Password = textBoxSifre.Text;
-                passwordRepeat = textBoxSifreTekrari.Text;
+                userForRegisterDto.PasswordRepeat = textBoxSifreTekrari.Text;
 
                 user.FirstName = userForRegisterDto.FirstName;
                 user.LastName = userForRegisterDto.LastName;
@@ -73,7 +73,7 @@ namespace WindowsForm.Forms
                 {
                     return;
                 }
-                var userRegister = _userService.Register(userForRegisterDto,  passwordRepeat);
+                var userRegister = _userService.Register(userForRegisterDto);
                 if (!userRegister.Success)
                 {
                     FormsMessage.WarningMessage(userRegister.Message);

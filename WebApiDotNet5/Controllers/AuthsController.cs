@@ -40,14 +40,18 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("register")]
-        public IActionResult Register( UserForRegisterDto userForRegisterDto,string passwordRepeat)
+        public IActionResult Register( UserForRegisterDto userForRegisterDto
+            //,string passwordRepeat
+            )
         {
             var userExists = _authService.UserExists(userForRegisterDto.Email);
             if (!userExists.Success)
             {
                 return BadRequest(userExists);
             }
-            var registerResult = _authService.Register(userForRegisterDto,passwordRepeat);
+            var registerResult = _authService.Register(userForRegisterDto
+                //,passwordRepeat
+                );
             if (!registerResult.Success)
             {
                 return BadRequest(registerResult);

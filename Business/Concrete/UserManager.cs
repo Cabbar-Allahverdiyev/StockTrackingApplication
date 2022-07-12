@@ -65,14 +65,7 @@ namespace Business.Concrete
         [CacheRemoveAspect("IUserService.Get")]
         public IResult Delete(User user)
         {
-            if (user.Id==3002)
-            {
-                return new ErrorResult("Bu istifadəçi bu proqramı yaratdığı üçün silinə bilməz!");
-            }
-            if (user.Id==2004)
-            {
-                return new ErrorResult("Bu istifadəçi Admin olduğu üçün silinə bilməz!");
-            }
+           
             _userDal.Delete(user);
             return new SuccessResult(UserMessages.UserDeleted);
         }
@@ -121,25 +114,25 @@ namespace Business.Concrete
         }
 
         [CacheAspect]
-        public IDataResult<List<UserDto>> GetUserDetailsByUserId(int userId)
+        public IDataResult<UserDto> GetUserDetailsByUserId(int userId)
         {
-            var get = _userDal.GetUserDetails(u => u.UserId == userId);
-            if (get == null)
-            {
-                return new ErrorDataResult<List<UserDto>>(UserMessages.UserNotFound);
-            }
-            return new SuccessDataResult<List<UserDto>>(get, UserMessages.UserDetailsListed);
-        }
-
-        public IDataResult<UserDto> GetUserDetail(int userId)
-        {
-            UserDto get = _userDal.GetUserDetail(userId);
+            var get = _userDal.GetUserDetail(u=>u.UserId==userId);
             if (get == null)
             {
                 return new ErrorDataResult<UserDto>(UserMessages.UserNotFound);
             }
-            return new SuccessDataResult<UserDto>(get, UserMessages.UserDetailsListed);
+            return new SuccessDataResult<UserDto>(get, UserMessages.UserFound);
         }
+
+        //public IDataResult<UserDto> GetUserDetail(int userId)
+        //{
+        //    UserDto get = _userDal.GetUserDetail(userId);
+        //    if (get == null)
+        //    {
+        //        return new ErrorDataResult<UserDto>(UserMessages.UserNotFound);
+        //    }
+        //    return new SuccessDataResult<UserDto>(get, UserMessages.UserDetailsListed);
+        //}
 
 
         //--------------------------
@@ -211,15 +204,17 @@ namespace Business.Concrete
       
 
 
-        public IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string passwordRepeat)
+        public IDataResult<User> Register(UserForRegisterDto userForRegisterDto
+            //, string passwordRepeat
+            )
         {
-            IResult result = BusinessRules.Run(PasswordRepeatCompatibilityWithPassword(userForRegisterDto.Password, passwordRepeat)
+            IResult result = BusinessRules.Run(PasswordRepeatCompatibilityWithPassword(userForRegisterDto.Password, userForRegisterDto.PasswordRepeat)//passwordRepeat)
                                                , IsPasswordNull(userForRegisterDto.Password)
                                                , IsThePasswordGreaterThanFourCharacters(userForRegisterDto.Password)
                                                , IsThereFirstNameAndLastNameAvailable(userForRegisterDto.FirstName, userForRegisterDto.LastName)
                                                , IsEmailExists(userForRegisterDto.Email)
                                                , IsPhoneNumberExists(userForRegisterDto.PhoneNumber)
-                                               );
+                                               ); 
 
             if (result != null)
             {
