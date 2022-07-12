@@ -29,7 +29,7 @@ namespace WindowsForm.BonusCardSystem.Forms.UserForms
         ICustomerPaymentService _customerPaymentService;
         ICartService _cartService;
         IDebtService _debtService;
-        ISaleWinFormService _saleWinFormService;
+        ISaleService _saleWinFormService;
         ISupplierService _supplierService;
         IBonusCardService _bonusCardService;
         IFormSettingService _formSettingService;
@@ -51,7 +51,7 @@ namespace WindowsForm.BonusCardSystem.Forms.UserForms
                                 , ICustomerPaymentService customerPaymentService
                                 , ICartService cartService
                                 , IDebtService debtService
-                                , ISaleWinFormService saleWinFormService
+                                , ISaleService saleWinFormService
                                 , ISupplierService supplierService
                                 , IBonusCardService bonusCardService
                                 , IFormSettingService formSettingService

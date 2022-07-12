@@ -30,7 +30,7 @@ namespace WindowsForm.Forms.AdminForms
         ICustomerPaymentService _customerPaymentService;
         ICartService _cartService;
         IDebtService _debtService;
-        ISaleWinFormService _saleWinFormService;
+        ISaleService _saleWinFormService;
         ISupplierService _supplierService;
         IBonusCardService _bonusCardService;
         IFormSettingService _formSettingService;
@@ -51,7 +51,7 @@ namespace WindowsForm.Forms.AdminForms
             , ICustomerBalanceService customerBalanceService
             , ICustomerPaymentService customerPaymentService
             , ICartService cartService
-            , IDebtService debtService, ISaleWinFormService saleWinFormService, ISupplierService supplierService, IBonusCardService bonusCardService, IFormSettingService formSettingService, IBonusCardOperationService bonusCardOperationService)
+            , IDebtService debtService, ISaleService saleWinFormService, ISupplierService supplierService, IBonusCardService bonusCardService, IFormSettingService formSettingService, IBonusCardOperationService bonusCardOperationService)
         {
             _userService = userService;
             _operationClaimService = operationClaimService;

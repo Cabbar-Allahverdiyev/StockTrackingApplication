@@ -1,7 +1,6 @@
 ﻿using Business.Constants.Messages;
 using Core.Utilities.Results;
 using Entities.Concrete;
-using Entities.Concrete.ForForms;
 using Entities.DTOs.CartDtos;
 using System;
 using System.Collections.Generic;
@@ -21,8 +20,9 @@ using Business.Abstract;
 using System.Linq;
 using Entities.DTOs.ProductDtos;
 using Entities.DTOs.BonusCardDtos;
-using Business.ValidationRules.FluentValidation;
+using Business.ValidationRules.FluentValidation.SaleValidators;
 using WindowsForm.Utilities.Helpers.Calculators;
+using Business.ValidationRules.FluentValidation;
 
 namespace WindowsForm.Forms
 {
@@ -41,7 +41,7 @@ namespace WindowsForm.Forms
         IProductService _productService;
         ICartService _cartService;
         ICustomerService _customerService;
-        ISaleWinFormService _saleWinFormService;
+        ISaleService _saleService;
         IDebtService _debtService;
         IBonusCardService _bonusCardService;
         IFormSettingService _formSettingService;
@@ -54,7 +54,7 @@ namespace WindowsForm.Forms
                             , IProductService productService
                             , ICartService cartService
                             , ICustomerService customerService
-                            , ISaleWinFormService saleWinFormService
+                            , ISaleService saleWinFormService
                             , IDebtService debtService
                             , IBonusCardService bonusCardService
                             , IFormSettingService formSettingService)
@@ -62,7 +62,7 @@ namespace WindowsForm.Forms
             _productService = productService;
             _cartService = cartService;
             _customerService = customerService;
-            _saleWinFormService = saleWinFormService;
+            _saleService = saleWinFormService;
             _debtService = debtService;
             _categoryService = categoryService;
             _brandService = brandService;
@@ -423,7 +423,7 @@ namespace WindowsForm.Forms
         {
             try
             {
-                SaleWinForm saleWinForm = new SaleWinForm();
+                Sale saleWinForm = new Sale();
                 IDataResult<List<Cart>> carts = _cartService.GetAllByUserId(UserId);
                 IResult saleWinFormAdded;
                 IResult productUpdated;
@@ -445,12 +445,12 @@ namespace WindowsForm.Forms
                         saleWinForm.SoldPrice = cart.SoldPrice;
                         saleWinForm.Quantity = cart.Quantity;
 
-                        if (!FormValidationTool.IsValid(new SaleWinFormValidator(), saleWinForm))
+                        if (!FormValidationTool.IsValid(new CreateSaleValidator(), saleWinForm))
                         {
                             return;
                         }
 
-                        saleWinFormAdded = _saleWinFormService.Add(saleWinForm);
+                        saleWinFormAdded = _saleService.Add(saleWinForm);
                         productUpdated = _productService.Update(product);
 
                         if (!saleWinFormAdded.Success || !productUpdated.Success)

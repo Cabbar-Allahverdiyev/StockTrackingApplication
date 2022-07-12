@@ -1,7 +1,6 @@
 ﻿using Business.Constants.Messages;
 using Core.Utilities.Results;
 using Entities.Concrete;
-using Entities.Concrete.ForForms;
 using Entities.DTOs.CartDtos;
 using System;
 using System.Reflection;
@@ -22,6 +21,7 @@ using Business.Abstract;
 using Entities.DTOs.ProductDtos;
 using Entities.DTOs.BonusCardDtos;
 using Business.ValidationRules.FluentValidation;
+using Business.ValidationRules.FluentValidation.SaleValidators;
 using WindowsForm.Utilities.Helpers.Calculators;
 using WindowsForm.Utilities.Helpers.Selectors.CustomerSelectors;
 
@@ -37,7 +37,7 @@ namespace WindowsForm.Forms.UserForms
         IProductService _productService;
         ICartService _cartService;
         ICustomerService _customerService;
-        ISaleWinFormService _saleWinFormService;
+        ISaleService _saleWinFormService;
         IDebtService _debtService;
         ICategoryService _categoryService;
         IBrandService _brandService;
@@ -56,7 +56,7 @@ namespace WindowsForm.Forms.UserForms
                             , IProductService productService
                             , ICartService cartService
                             , ICustomerService customerService
-                            , ISaleWinFormService saleWinFormService
+                            , ISaleService saleWinFormService
                             , IDebtService debtService
                             , IBonusCardService bonusCardService
                             , IFormSettingService formSettingService)
@@ -384,7 +384,7 @@ namespace WindowsForm.Forms.UserForms
         {
             try
             {
-                SaleWinForm saleWinForm = new SaleWinForm();
+                Sale saleWinForm = new Sale();
                 IDataResult<List<Cart>> carts = _cartService.GetAllByUserId(UserId);
                 IResult saleWinFormAdded;
                 IResult productUpdated;
@@ -406,7 +406,7 @@ namespace WindowsForm.Forms.UserForms
                         saleWinForm.SoldPrice = cart.SoldPrice;
                         saleWinForm.Quantity = cart.Quantity;
 
-                        if (!FormValidationTool.IsValid(new SaleWinFormValidator(), saleWinForm))
+                        if (!FormValidationTool.IsValid(new CreateSaleValidator(), saleWinForm))
                         {
                             return;
                         }

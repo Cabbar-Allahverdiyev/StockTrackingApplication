@@ -1,7 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants.Messages;
 using Core.Utilities.Results;
-using Entities.Concrete.ForForms;
+using Entities.Concrete;
 using Entities.DTOs.SaleWinFormDtos;
 using System;
 using System.Collections.Generic;
@@ -21,12 +21,12 @@ namespace WindowsForm.Forms.UserForms
 {
     public partial class FormSalesListForUser : Form
     {
-        ISaleWinFormService _saleWinFormService;
+        ISaleService _saleWinFormService;
 
         SaleWinFormDetailDtoSearch _detailSearch;
         List<SaleWinFormDto> _dataSaleWinFormDto;
 
-        public FormSalesListForUser(ISaleWinFormService saleWinFormService)
+        public FormSalesListForUser(ISaleService saleWinFormService)
         {
             _saleWinFormService = saleWinFormService;
 
@@ -156,7 +156,7 @@ namespace WindowsForm.Forms.UserForms
             }
             try
             {
-                SaleWinForm sale = new SaleWinForm();
+                Sale sale = new Sale();
                 if (textBoxSaleId.Text == "")
                 {
                     FormsMessage.WarningMessage(FormsTextMessages.SaleIdBlank);

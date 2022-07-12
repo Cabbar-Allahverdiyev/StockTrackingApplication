@@ -52,7 +52,7 @@ namespace WindowsForm
             ICustomerDal _customerDal = new EfCustomerDal();
             ICustomerPaymentDal _customerPaymentDal = new EfCustomerPaymentDal();
             ICartDal _cartDal=new EfCartDal();
-            ISaleWinFormDal _saleWinFormDal=new EfSaleWinFormDal();
+            ISaleDal _saleWinFormDal=new EfSaleDal();
             IDebtDal _debtDal=new EfDebtDal();
             ISupplierDal _supplierDal=new EfSupplierDal();
             IBonusCardOperationDal _bonusCardOperationDal=new EfBonusCardOperationDal();
@@ -69,7 +69,7 @@ namespace WindowsForm
             ICustomerService _customerService = new CustomerManager(_customerDal, _customerBalanceService,_bonusCardDal);
             ICustomerPaymentService _customerPaymentService = new CustomerPaymentManager(_customerPaymentDal, _customerBalanceService);
             ICartService _cartService = new CartManager(_cartDal);
-            ISaleWinFormService _saleService = new SaleWinFormManager(_saleWinFormDal, _productService);
+            ISaleService _saleService = new SaleManager(_saleWinFormDal, _productService);
             IDebtService _debtService = new DebtManager(_debtDal, _customerBalanceService);
             ISupplierService _supplierService = new SupplierManager(_supplierDal);
             IBonusCardOperationService _bonusCardOperationService = new BonusCardOperationManager(_bonusCardOperationDal,_userService);

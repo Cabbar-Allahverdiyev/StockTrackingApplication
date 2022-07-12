@@ -5,7 +5,7 @@ using Entities.Concrete.ForForms;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Text; 
+using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework
 {
@@ -26,7 +26,6 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Sale> Sales { get; set; }
         public DbSet<Cart> Carts { get; set; }
-        public DbSet<SaleWinForm> SalesWinForms { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<CustomerBalance> CustomerBalances { get; set; }
         public DbSet<CustomerPayment> CustomerPayments { get; set; }
