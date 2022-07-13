@@ -1,6 +1,6 @@
 # TapSat
 
-Telefon, Texnologiya avadanlıqları, Market, Yanğın doldurma stansiyaları və s obyektlər üçün proqram.
+Telefon, Texnologiya avadanlıqları, Market, Yanacaq doldurma stansiyaları və s obyektlər üçün proqram.
 
 
 ![Logo](https://github.com/Cabbar-Allahverdiyev/TapSat/blob/master/Reaadme_Images/tap1%20(1).jpg?raw=true)
