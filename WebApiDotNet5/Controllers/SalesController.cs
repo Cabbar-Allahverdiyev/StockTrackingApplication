@@ -79,7 +79,7 @@ namespace WebApiDotNet5.Controllers
             IResult get = _saleService.CancelSale(sale);
             if (get.Success)
             {
-                return Ok(get);
+                return Ok(get); 
             }
             return BadRequest(get);
         }
