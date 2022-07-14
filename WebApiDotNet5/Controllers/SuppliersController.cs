@@ -15,7 +15,7 @@ namespace WebApiDotNet5.Controllers
 
         public SuppliersController(ISupplierService supplierService)
         {
-            _supplierService = supplierService;
+            _supplierService = supplierService; 
         }
 
         [HttpPost]
