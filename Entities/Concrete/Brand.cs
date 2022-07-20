@@ -9,7 +9,7 @@ namespace Entities.Concrete
    public class Brand:IEntity
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int Id { get; set; } 
         public string BrandName { get; set; }
     }
 }
