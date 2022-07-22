@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Linq;
+using System.Globalization;
 
 namespace Business.Concrete
 {
@@ -36,7 +37,8 @@ namespace Business.Concrete
         {
             IResult result = BusinessRules.Run(IsThereFirstNameAndLastNameAvailable(user.FirstName, user.LastName)
                                                 , IsEmailExists(user.Email)
-                                                , PhoneNumberFormatControl(user.PhoneNumber));
+                                                , PhoneNumberFormatControl(user.PhoneNumber)
+                                                , UserFullNameToTitleCase(user));
             if (result != null)
             {
                 return new ErrorResult(result.Message);
@@ -45,6 +47,8 @@ namespace Business.Concrete
             return new SuccessResult(UserMessages.UserAdded);
         }
 
+        
+
         [ValidationAspect(typeof(UserValidator))]
         [CacheRemoveAspect("IUserService.Get")]
         public IResult Update(User user)
@@ -52,6 +56,7 @@ namespace Business.Concrete
             IResult result = BusinessRules.Run(IsThereFirstNameAndLastNameAvailableForUserUpdate(user)
                                                , IsEmailExistsForUserUpdate(user), PhoneNumberFormatControl(user.PhoneNumber)
                                                , IsPhoneNumberExistsForUserUpdate(user)
+                                               , UserFullNameToTitleCase(user)
                                                );
 
             if (result != null)
@@ -94,7 +99,7 @@ namespace Business.Concrete
             {
                 return new ErrorDataResult<User>(UserMessages.UserNotFound);
             }
-            return new SuccessDataResult<User>(get,UserMessages.UserFound);
+            return new SuccessDataResult<User>(get, UserMessages.UserFound);
         }
 
         //DTOs
@@ -119,10 +124,10 @@ namespace Business.Concrete
             return new SuccessDataResult<UserDto>(get, UserMessages.UserFound);
         }
 
-        public IDataResult<UserDto> GetUserDetailByUserName(string firstName,string lastName)
+        public IDataResult<UserDto> GetUserDetailByUserName(string firstName, string lastName)
         {
-            UserDto get = _userDal.GetUserDetail(u => u.FirstName.ToLower() == firstName.ToLower() 
-                                                & u.LastName.ToLower()==lastName.ToLower());
+            UserDto get = _userDal.GetUserDetail(u => u.FirstName.ToLower() == firstName.ToLower()
+                                                & u.LastName.ToLower() == lastName.ToLower());
             if (get is null)
             {
                 return new ErrorDataResult<UserDto>(UserMessages.UserNotFound);
@@ -133,7 +138,7 @@ namespace Business.Concrete
         [CacheAspect]
         public IDataResult<UserDto> GetUserDetailByUserId(int userId)
         {
-            var get = _userDal.GetUserDetail(u=>u.UserId==userId);
+            var get = _userDal.GetUserDetail(u => u.UserId == userId);
             if (get == null)
             {
                 return new ErrorDataResult<UserDto>(UserMessages.UserNotFound);
@@ -175,7 +180,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<OperationClaimForForms>>(get);
         }
 
-       
+
 
         public IResult CheckUserOperationClaimIsBossAndAdminByUserIdForForms(int userId)
         {
@@ -183,7 +188,7 @@ namespace Business.Concrete
             IDataResult<List<OperationClaimForForms>> getClaims = GetClaimsForForms(getUser);
             foreach (OperationClaimForForms claim in getClaims.Data)
             {
-                if (claim.Name=="Boss"||claim.Name=="Admin")
+                if (claim.Name == "Boss" || claim.Name == "Admin")
                 {
                     return new SuccessResult();
                 }
@@ -205,9 +210,9 @@ namespace Business.Concrete
             }
             return new ErrorResult(UserMessages.UserDoesNotHaveBossPermission);
         }
-       
 
-      
+
+
 
 
         public IDataResult<User> Register(UserForRegisterDto userForRegisterDto
@@ -220,7 +225,8 @@ namespace Business.Concrete
                                                , IsThereFirstNameAndLastNameAvailable(userForRegisterDto.FirstName, userForRegisterDto.LastName)
                                                , IsEmailExists(userForRegisterDto.Email)
                                                , IsPhoneNumberExists(userForRegisterDto.PhoneNumber)
-                                               ); 
+
+                                               );
 
             if (result != null)
             {
@@ -275,6 +281,12 @@ namespace Business.Concrete
         }
 
         //elave metodlar
+        private IResult UserFullNameToTitleCase(User user)
+        {
+            user.FirstName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(user.FirstName);
+            user.LastName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(user.LastName);
+            return new SuccessResult();
+        }
         private IResult PasswordRepeatCompatibilityWithPassword(string password, string passwordRepeat)
         {
             if (!password.Equals(passwordRepeat))
@@ -408,6 +420,6 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-        
+
     }
 }

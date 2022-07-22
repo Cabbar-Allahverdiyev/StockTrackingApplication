@@ -11,6 +11,7 @@ using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq.Expressions;
 using System.Text;
 
@@ -30,19 +31,14 @@ namespace Business.Concrete
         {
             IResult rule = BusinessRules.Run(
                 IsBrandNameExists(brand.BrandName)
-                //  BusinessRuleForIEnttityRepository<Brand>.IsNameExists(_brandDal,b=>b.BrandName==brand.BrandName)
-                );
+                , BrandNameToTitleCase(brand));
             if (rule != null)
             {
                 return new ErrorResult(rule.Message);
             }
-            // IResult result = GetAllByName(brand.BrandName);
-            //if (result.Success)
-            //{
             _brandDal.Add(brand);
             return new SuccessResult(BrandMessages.BrandAdded);
-            //}
-            // return new ErrorResult(BrandMessages.BrandNotAdded);
+
         }
 
         [CacheRemoveAspect("IBrandService.Get")]
@@ -57,13 +53,14 @@ namespace Business.Concrete
             return new SuccessResult(BrandMessages.BrandDeleted);
         }
 
-        
+
 
         [ValidationAspect(typeof(UpdateBrandValidator))]
         [CacheRemoveAspect("IBrandService.Get")]
         public IResult Update(Brand brand)
         {
-            IResult rule = BusinessRules.Run(IsBrandNameExistsForUpdate(brand));
+            IResult rule = BusinessRules.Run(IsBrandNameExistsForUpdate(brand),
+                BrandNameToTitleCase(brand));
             if (rule != null)
             {
                 return new ErrorResult(rule.Message);
@@ -139,6 +136,12 @@ namespace Business.Concrete
             {
                 return new ErrorResult(BrandMessages.AlreadyExistsName);
             }
+            return new SuccessResult();
+        }
+
+        private IResult BrandNameToTitleCase(Brand brand)
+        {
+            brand.BrandName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(brand.BrandName);
             return new SuccessResult();
         }
     }

@@ -12,6 +12,7 @@ using Entities.DTOs;
 using Entities.DTOs.CustomerDtos;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
@@ -38,6 +39,7 @@ namespace Business.Concrete
             IResult result = BusinessRules.Run(IsThereFirstNameAndLastNameAvailable(customer.FirstName, customer.LastName)
                                                 , IsEmailExists(customer.Email)
                                                 , IsPhoneNumberExists(customer.PhoneNumber)
+                                                ,CustomerFullNameToTitleCase(customer)
                                                 );
             if (result != null)
             {
@@ -83,6 +85,7 @@ namespace Business.Concrete
             IResult result = BusinessRules.Run(IsThereFirstNameAndLastNameAvailableForUserUpdate(customer)
                                               , IsEmailExistsForUserUpdate(customer)
                                               , IsPhoneNumberExistsForUserUpdate(customer)
+                                              , CustomerFullNameToTitleCase(customer)
                                               );
 
             if (result != null)
@@ -282,6 +285,13 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-        
+        private IResult CustomerFullNameToTitleCase(Customer customer)
+        {
+            customer.FirstName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(customer.FirstName);
+            customer.LastName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(customer.LastName);
+            return new SuccessResult();
+        }
+
+
     }
 }

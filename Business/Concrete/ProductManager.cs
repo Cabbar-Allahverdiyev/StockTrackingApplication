@@ -12,6 +12,7 @@ using Entities.DTOs.ProductDtos;
 using Entities.DTOs.ProductDtos.ForAPI;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace Business.Concrete
@@ -31,6 +32,7 @@ namespace Business.Concrete
         {
             IResult result = BusinessRules.Run(IsBarcodeNumberExists(product.BarcodeNumber)
                                                , IsProductNameExists(product.ProductName)
+                                               ,ProductNameToTitleCase(product)
                                                );
 
             if (result != null)
@@ -55,7 +57,8 @@ namespace Business.Concrete
         public IResult Update(Product product)
         {
             IResult rules = BusinessRules.Run(IsBarcodeNumberExistsForUpdate(product),
-                                              IsProductNameExistsForUpdate(product)
+                                              IsProductNameExistsForUpdate(product),
+                                              ProductNameToTitleCase(product)
                                               );
             if (rules != null)
             {
@@ -249,7 +252,11 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-
+        private IResult ProductNameToTitleCase(Product  product)
+        {
+            product.ProductName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(product.ProductName);
+            return new SuccessResult();
+        }
 
 
 

@@ -13,8 +13,9 @@ namespace ConsoleUI
         static void Main(string[] args)
         {
             BrandManager brandManager = new BrandManager(new EfBrandDal());
-            Brand brand=new Brand() { BrandName="redmi"};
+            Brand brand=new Brand() { BrandName="NoKIa"};
             Console.WriteLine(brandManager.Add(brand).Message);
+            Console.WriteLine(brandManager.GetById(brand.Id).Data.BrandName);
 
             //Console.WriteLine("She said, \"You deserve a treat!\" ");
             // UserManager userManager = new UserManager(new EfUserDal());

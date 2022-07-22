@@ -9,6 +9,7 @@ using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace Business.Concrete
@@ -26,7 +27,8 @@ namespace Business.Concrete
         [CacheRemoveAspect("ISupplierService.Get")]
         public IResult Add(Supplier supplier)
         {
-            IResult rules = BusinessRules.Run(this.IsSupplierExistsByCompanyNameAndContactName(supplier));
+            IResult rules = BusinessRules.Run(this.IsSupplierExistsByCompanyNameAndContactName(supplier),
+                                              this.SupplierToTitleCase(supplier));
             if (rules != null)
             {
                 return new ErrorResult(rules.Message);
@@ -51,7 +53,8 @@ namespace Business.Concrete
         [CacheRemoveAspect("ISupplierService.Get")]
         public IResult Update(Supplier supplier)
         {
-            IResult rules = BusinessRules.Run(this.GetById(supplier.Id));
+            IResult rules = BusinessRules.Run(this.GetById(supplier.Id),
+                                              this.SupplierToTitleCase(supplier));
             if (rules != null)
             {
                 return new ErrorResult(rules.Message);
@@ -74,17 +77,17 @@ namespace Business.Concrete
             {
                 return new ErrorDataResult<Supplier>(SupplierMessages.SupplierNotFound);
             }
-            return new SuccessDataResult<Supplier>(get,SupplierMessages.SupplierFound);
+            return new SuccessDataResult<Supplier>(get, SupplierMessages.SupplierFound);
         }
 
         public IDataResult<List<Supplier>> GetAllByCompanyName(string companyName)
         {
-            List<Supplier> get = _supplierDal.GetAll (s => s.CompanyName.ToLower() == companyName.ToLower());
+            List<Supplier> get = _supplierDal.GetAll(s => s.CompanyName.ToLower() == companyName.ToLower());
             if (get.Count == 0)
             {
                 return new ErrorDataResult<List<Supplier>>(SupplierMessages.CompanyNameNotFound(companyName));
             }
-            return new SuccessDataResult<List<Supplier>>(get,SupplierMessages.GetAllByCompanyName(companyName));
+            return new SuccessDataResult<List<Supplier>>(get, SupplierMessages.GetAllByCompanyName(companyName));
         }
 
         public IDataResult<List<Supplier>> GetAllByContactName(string contactName)
@@ -110,6 +113,13 @@ namespace Business.Concrete
 
         }
 
-       
+        private IResult SupplierToTitleCase(Supplier supplier)
+        {
+            supplier.ContactName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(supplier.ContactName);
+            supplier.CompanyName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(supplier.CompanyName);
+            supplier.City = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(supplier.City);
+            return new SuccessResult();
+        }
+
     }
 }

@@ -9,6 +9,7 @@ using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace Business.Concrete
@@ -27,7 +28,8 @@ namespace Business.Concrete
         [CacheRemoveAspect("ICategoryService.Get")]
         public IResult Add(Category category)
         {
-            IResult result = BusinessRules.Run(IsCategoryNameExists(category.CategoryName));
+            IResult result = BusinessRules.Run(IsCategoryNameExists(category.CategoryName)
+                                             , CategoryNameToTitleCase(category));
             if (result != null)
             {
                 return new ErrorResult(result.Message);
@@ -53,7 +55,8 @@ namespace Business.Concrete
         [CacheRemoveAspect("ICategoryService.Get")]
         public IResult Update(Category category)
         {
-            IResult result = BusinessRules.Run(IsCategoryNameExistsForUpdate(category));
+            IResult result = BusinessRules.Run(IsCategoryNameExistsForUpdate(category)
+                                             , CategoryNameToTitleCase(category));
             if (result != null)
             {
                 return new ErrorResult(result.Message);
@@ -94,6 +97,11 @@ namespace Business.Concrete
 
         //Elave Metodlar----------------->
 
+        private IResult CategoryNameToTitleCase(Category category)
+        {
+            category.CategoryName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(category.CategoryName);
+            return new SuccessResult();
+        }
 
         private IResult IsCategoryNameExists(string categoryName)
         {
