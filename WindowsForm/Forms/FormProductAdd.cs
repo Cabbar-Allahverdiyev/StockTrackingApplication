@@ -61,6 +61,7 @@ namespace WindowsForm.Forms
             BrandGetComboBoxYeni();
             SupplierGetComboBox();
             TextBoxController.ClearAllTextBoxesAndCmboBoxesByGroupBox(GroupBoxFormProductAddYeniMehsul);
+            checkBoxIsClearTextBox.Checked = true;
 
         }
 
@@ -95,8 +96,12 @@ namespace WindowsForm.Forms
                     FormsMessage.WarningMessage(productAdd.Message);
                     return;
                 }
+                if (checkBoxIsClearTextBox.Checked)
+                {
+                    TextBoxController.ClearAllTextBoxesAndCmboBoxesByGroupBox(GroupBoxFormProductAddYeniMehsul);
 
-                TextBoxController.ClearAllTextBoxesAndCmboBoxesByGroupBox(GroupBoxFormProductAddYeniMehsul);
+                }
+
                 //GroupBoxYeniMehsulControlClear();
                 ProductRefresh();
                 FormsMessage.SuccessMessage(productAdd.Message);
@@ -199,6 +204,12 @@ namespace WindowsForm.Forms
             dataGridViewProductList.DataSource = _productService.GetAllProductViewDasboardDetail().Data;
         }
 
-
+        private void checkBoxIsClearTextBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxIsClearTextBox.Checked)
+            {
+                
+            }
+        }
     }
 }

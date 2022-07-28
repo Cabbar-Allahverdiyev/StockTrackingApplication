@@ -10,6 +10,7 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Text;
 
 namespace Business.Concrete
@@ -66,7 +67,8 @@ namespace Business.Concrete
         [CacheAspect]
         public IDataResult<List<Supplier>> GetAll()
         {
-            List<Supplier> get = _supplierDal.GetAll();
+            List<Supplier> get = _supplierDal.GetAll()
+                .OrderBy(s => s.CompanyName).ToList();
             return new SuccessDataResult<List<Supplier>>(get, SupplierMessages.SupplierGetAll);
         }
 
@@ -105,7 +107,7 @@ namespace Business.Concrete
         {
             Supplier getSupplier = _supplierDal.Get(s => s.ContactName.ToLower() == supplier.ContactName.ToLower()
                                                     & s.CompanyName.ToLower() == supplier.CompanyName.ToLower());
-            if (getSupplier is null)
+            if (getSupplier != null)
             {
                 return new ErrorResult(SupplierMessages.AlreadyExistsCompanyNameAndContactName(supplier));
             }

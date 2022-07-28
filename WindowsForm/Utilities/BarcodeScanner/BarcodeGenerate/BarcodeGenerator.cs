@@ -70,8 +70,9 @@ namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate
         private static void RenderBarcodeInfoToGraphics(Graphics g, string code, string info, Rectangle rect)
         {
             // Constants to make numbers a little less magical
-            const int barcodeHeight = 50;
-            const int marginTop = 20;
+            
+             const int barcodeHeight = 30;//50;
+            const int marginTop = 5;//20;
             const string codeFontFamilyName = "Courier New";
             const int codeFontEmSize = 10;
             const int marginCodeFromCode = 10;
@@ -91,8 +92,9 @@ namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate
             using (var img = BarcodeDrawFactory.Code128WithChecksum.Draw(code, barcodeHeight))
             {
                 // daw the barcode image
-                g.DrawImage(img,
-                    new Point(rect.X + (rect.Width / 2 - img.Width / 2), rect.Y + marginTop));
+                
+                g.DrawImage(img,                                //img
+                    new Point(rect.X + ((rect.Width) / 2 - img.Width / 2), rect.Y + marginTop));
             }
 
             // now draw the code under the bar code

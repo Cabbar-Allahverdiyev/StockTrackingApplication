@@ -28,6 +28,10 @@ namespace WindowsForm.Forms
             barcodeScanner.BarcodeScanned += BarcodeScanner_BarcodeScanned;
         }
 
+        private void USBBarcodeScannerForm_Load_1(object sender, EventArgs e)
+        {
+        }
+
         BarcodeGenerator barcodeGenerator = new BarcodeGenerator(new ProductManager(new EfProductDal()));
 
         private void BarcodeScanner_BarcodeScanned(object sender, BarcodeScannerEventArgs e)
@@ -193,5 +197,12 @@ namespace WindowsForm.Forms
         {
 
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
     }
 }

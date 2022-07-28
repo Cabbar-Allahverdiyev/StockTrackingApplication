@@ -12,6 +12,7 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
@@ -72,14 +73,15 @@ namespace Business.Concrete
         [CacheAspect]
         public IDataResult<List<Brand>> GetAll()
         {
-            List<Brand> get = _brandDal.GetAll();
+            List<Brand> get = _brandDal.GetAll().OrderBy(b=>b.BrandName).ToList();
             return new SuccessDataResult<List<Brand>>(get, BrandMessages.BrandGetAll);
         }
 
         [CacheAspect]
         public IDataResult<List<Brand>> GetAllByName(string brandName)
         {
-            List<Brand> get = _brandDal.GetAll(b => b.BrandName == brandName);
+            List<Brand> get = _brandDal.GetAll(b => b.BrandName == brandName)
+                .OrderBy(b => b.BrandName).ToList();
             if (get.Count == 0)
             {
                 return new ErrorDataResult<List<Brand>>(BrandMessages.BrandNotFound);

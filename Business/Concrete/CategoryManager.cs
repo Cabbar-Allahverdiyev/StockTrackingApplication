@@ -10,6 +10,7 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Text;
 
 namespace Business.Concrete
@@ -69,7 +70,8 @@ namespace Business.Concrete
         [CacheAspect]
         public IDataResult<List<Category>> GetAll()
         {
-            List<Category> get = _categoryDal.GetAll();
+            List<Category> get = _categoryDal.GetAll()
+                .OrderBy(c => c.CategoryName).ToList();
             return new SuccessDataResult<List<Category>>(get, CategoryMessages.CategoryGetAll);
         }
 
