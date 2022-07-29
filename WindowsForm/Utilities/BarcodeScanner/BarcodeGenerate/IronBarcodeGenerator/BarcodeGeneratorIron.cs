@@ -27,11 +27,14 @@ namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate.IronBarcodeGenera
             {
                 return new ErrorDataResult<Image>(BarcodeNumberMessages.BarcodeNumberLengthLessThan13NotGenerated);
             }
-            GeneratedBarcode barcode = BarcodeWriter.CreateBarcode(barcodeText, BarcodeEncoding.EAN13)
-           .ResizeTo(width, height).SetMargins(5);
+            GeneratedBarcode barcode = BarcodeWriter.CreateBarcode(barcodeText, BarcodeEncoding.EAN13,width,height)
+           .ResizeTo(width, height)
+           .SetMargins(2);
             barcode.AddBarcodeValueTextBelowBarcode();
+            //new Font(new FontFamily("MS Sans Serif"), 20, FontStyle.Regular, GraphicsUnit.World)
+            //    , Color.DarkSlateBlue);
             barcode.AddAnnotationTextAboveBarcode(info
-                , new Font(new FontFamily("Arial"), 10, FontStyle.Regular, GraphicsUnit.Pixel)
+                , new Font(new FontFamily("Arial"), 12, FontStyle.Regular, GraphicsUnit.Pixel)
                 , Color.DarkSlateBlue);
             Image img = barcode.ToBitmap();
             return new SuccessDataResult<Image>(img, BarcodeNumberMessages.BarcodeNumberGenerated);

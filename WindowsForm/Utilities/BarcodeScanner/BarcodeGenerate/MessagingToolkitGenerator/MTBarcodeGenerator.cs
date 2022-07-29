@@ -7,7 +7,6 @@ using System.Drawing;
 using Business.Constants.Messages;
 using Core.Utilities.Results;
 using Business.Abstract;
-using Entities.Concrete;
 using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
 using Zen.Barcode;
