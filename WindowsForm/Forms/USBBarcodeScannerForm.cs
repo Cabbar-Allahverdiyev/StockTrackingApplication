@@ -21,7 +21,7 @@ namespace WindowsForm.Forms
         public USBBarcodeScannerForm(IBarcodeGenerator barcodeGenerator)
         {
             InitializeComponent();
-            textBoxInfo.Visible = false;
+            textBoxInfo.Visible = true;
             BarcodeNumber = null;
             BarcodeScanner barcodeScanner = new BarcodeScanner(textBoxBarcodeNumber);
             barcodeScanner.BarcodeScanned += BarcodeScanner_BarcodeScanned;
@@ -41,7 +41,7 @@ namespace WindowsForm.Forms
 
         private void buttonScan_Click(object sender, EventArgs e)
         {
-            IDataResult<string> result = _barcodeGenerator.InmemoryScanItAndConvertString(pictureBox1);
+            IDataResult<string> result = _barcodeGenerator.InmemoryScanItAndConvertString(pictureBox1.Image);
             if (!result.Success)
             {
                 FormsMessage.WarningMessage(result.Message);
@@ -57,15 +57,18 @@ namespace WindowsForm.Forms
             try
             {
                 IDataResult<string> barcodeCreated;
-                IDataResult<Image> result = _barcodeGenerator.GenerateBarcode(textBoxBarcodeNumber.Text, textBoxInfo.Text, pictureBox1);
+                IDataResult<Image> result = _barcodeGenerator.GenerateBarcode(textBoxBarcodeNumber.Text,
+                                                                                textBoxInfo.Text,
+                                                                                   pictureBox1.Width,
+                                                                                pictureBox1.Height);
                 if (!result.Success)
                 {
                     FormsMessage.WarningMessage(result.Message);
                     //MessageBox.Show(result.Message);
                     return;
                 }
-                //pictureBox1.Image = result.Data;
-                barcodeCreated = _barcodeGenerator.InmemoryScanItAndConvertString(pictureBox1);
+                pictureBox1.Image = result.Data;
+                barcodeCreated = _barcodeGenerator.InmemoryScanItAndConvertString(pictureBox1.Image);
                 if (!barcodeCreated.Success)
                 {
                     FormsMessage.WarningMessage(barcodeCreated.Message);
@@ -102,7 +105,7 @@ namespace WindowsForm.Forms
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            IResult result = _barcodeGenerator.Save(pictureBox1);
+            IResult result = _barcodeGenerator.Save(pictureBox1.Image);
             if (!result.Success)
             {
                 FormsMessage.WarningMessage(result.Message);

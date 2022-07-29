@@ -4,6 +4,7 @@ using Core.Utilities.Results;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Drawing.Imaging;
 using System.Text;
 using System.Windows.Forms;
@@ -68,9 +69,9 @@ namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate
             int checkSum = (10 - (sum % 10)) % 10;
             return $"{temp}{checkSum}";
         }
-        public IResult Save(PictureBox barcodePicture)
+        public IResult Save(Image img)
         {
-            if (barcodePicture.Image == null)
+            if (img == null)
             {
                 return new ErrorResult(BarcodeNumberMessages.SaveFailed); //sekil yoxdu
             }
@@ -79,7 +80,7 @@ namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate
                 saveDialog.Filter = "PNG|*.png"; //burada 'File' sozu silinib eger lazim olsa Png nin yanina sadece File yaz 
                 if (saveDialog.ShowDialog() == DialogResult.OK)
                 {
-                    barcodePicture.Image.Save(saveDialog.FileName, ImageFormat.Png);
+                    img.Save(saveDialog.FileName, ImageFormat.Png);
                     return new SuccessResult(BarcodeNumberMessages.Save);
                 }
                 return new ErrorResult(BarcodeNumberMessages.SaveFailed);

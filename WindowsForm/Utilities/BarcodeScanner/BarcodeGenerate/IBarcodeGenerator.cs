@@ -9,11 +9,10 @@ namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate
 {
     public interface IBarcodeGenerator:IBarcodeGeneratorBase
     {
-        IDataResult<Image> GenerateBarcode(string barcodeText, string info, PictureBox pictureBox);
+        IDataResult<Image> GenerateBarcode(string barcodeText, string info, int width, int height);
         IDataResult<Image> GenerateQRCode(string text);
-        IDataResult<string> InmemoryScanItAndConvertString(PictureBox barcodePicture);
-        IResult Save(PictureBox barcodePicture);
-        IResult Load(PictureBox barcodePicture);
+        IDataResult<string> InmemoryScanItAndConvertString(Image img);
+        
 
     }
 }

@@ -16,7 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BarCode" Version="2022.7.7345" />
+    <PackageReference Include="BarCode" Version="2021.12.21" />
     <PackageReference Include="FontAwesome.Sharp" Version="5.15.3" />
     <PackageReference Include="MessagingToolkit.Barcode" Version="1.7.0.2" />
     <PackageReference Include="Zen.Barcode.Rendering.Framework" Version="3.1.10729.1" />

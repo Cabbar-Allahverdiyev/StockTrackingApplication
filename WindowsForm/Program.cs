@@ -85,7 +85,8 @@ namespace WindowsForm
 
             //Application.Run(new Forms.LoginForm(_userOperationClaimForFormsService, _userService, _operationClaimForFormsService, _productService
             //   , _categoryService, _customerService, _customerBalanceService, _customerPaymentService, _cartService, _debtService, _saleService, _supplierService
-            //   , _brandService, _bonusCardService, _formSettingService, _bonusCardOperationService));
+            //   , _brandService, _bonusCardService, _formSettingService, _bonusCardOperationService
+            //   ,_barcodeGenerator));
 
             //Application.Run(new BonusCardSystem.Forms.BonusCardSystemLoginForm(userOperationClaimForFormsManager, userManager, operationClaimForFormsManager, productManager
             //    , categoryManager, customerManager, customerBalanceManager, customerPaymentManager, cartManager, debtManager, saleManager, supplierManager
@@ -94,7 +95,10 @@ namespace WindowsForm
             //Application.Run(new Forms.FormUserAdd(_userService,_operationClaimForFormsService,_userOperationClaimForFormsService,_formSettingService));
 
             //Application.Run(new Forms.FormProductAdd(_productService,_brandService,_categoryService,_supplierService,_formSettingService));
+
             Application.Run(new Forms.USBBarcodeScannerForm(_barcodeGenerator));
+
+
         }
     }
 }

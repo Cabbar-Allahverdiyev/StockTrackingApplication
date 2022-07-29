@@ -27,9 +27,9 @@ namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate.MessagingToolkitG
 
         }
 
-        public IDataResult<Image> GenerateBarcode(string barcodeText, string info, PictureBox pictureBox)
+        public IDataResult<Image> GenerateBarcode(string barcodeText, string info, int width, int height)
         {
-            pictureBox.Image?.Dispose();
+           // pictureBox.Image?.Dispose();
 
             if (barcodeText.Length > 13)
             {
@@ -40,18 +40,18 @@ namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate.MessagingToolkitG
                 return new ErrorDataResult<Image>(BarcodeNumberMessages.BarcodeNumberLengthLessThan13NotGenerated);
             }
             // create a 24 bit image that is the size of your picture box
-            var img = new Bitmap(pictureBox.Width, pictureBox.Height, PixelFormat.Format24bppRgb);
+            Image img = new Bitmap(width, height, PixelFormat.Format24bppRgb);
             // wrap it in a graphics object
             using (var g = Graphics.FromImage(img))
             {
                 // send that graphics object to the rendering code
                 RenderBarcodeInfoToGraphics(g, barcodeText, info,
-                    new Rectangle(0, 0, pictureBox.Width, pictureBox.Height));
+                    new Rectangle(0, 0, width, height));
             }
 
             // set the new image in the picture box
-            pictureBox.Image = img;
-            return new SuccessDataResult<Image>(pictureBox.Image, BarcodeNumberMessages.BarcodeNumberGenerated);
+            
+            return new SuccessDataResult<Image>(img, BarcodeNumberMessages.BarcodeNumberGenerated);
 
 
 
@@ -148,14 +148,14 @@ namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate.MessagingToolkitG
         }
 
 
-        public IDataResult<string> InmemoryScanItAndConvertString(PictureBox barcodePicture)
+        public IDataResult<string> InmemoryScanItAndConvertString(Image img)
         {
             scanner = new BarcodeDecoder();
-            if (barcodePicture.Image == null)
+            if (img == null)
             {
                 return new ErrorDataResult<string>(BarcodeNumberMessages.ScanFailed);
             }
-            MessagingToolkit.Barcode.Result result = scanner.Decode(new Bitmap(barcodePicture.Image));
+            MessagingToolkit.Barcode.Result result = scanner.Decode(new Bitmap(img));
             return new SuccessDataResult<string>(result.Text, BarcodeNumberMessages.Scanned);
         }
 

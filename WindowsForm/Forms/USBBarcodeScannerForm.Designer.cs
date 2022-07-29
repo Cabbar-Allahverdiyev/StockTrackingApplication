@@ -39,23 +39,25 @@ namespace WindowsForm.Forms
             this.buttonQrCode = new System.Windows.Forms.Button();
             this.buttonPrint = new System.Windows.Forms.Button();
             this.textBoxInfo = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxBarcodeNumber
             // 
-            this.textBoxBarcodeNumber.Location = new System.Drawing.Point(154, 21);
+            this.textBoxBarcodeNumber.Location = new System.Drawing.Point(139, 10);
             this.textBoxBarcodeNumber.Name = "textBoxBarcodeNumber";
-            this.textBoxBarcodeNumber.Size = new System.Drawing.Size(220, 22);
+            this.textBoxBarcodeNumber.Size = new System.Drawing.Size(128, 22);
             this.textBoxBarcodeNumber.TabIndex = 1;
             this.textBoxBarcodeNumber.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // buttonScan
             // 
             this.buttonScan.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonScan.Location = new System.Drawing.Point(62, 48);
+            this.buttonScan.Location = new System.Drawing.Point(12, 120);
             this.buttonScan.Name = "buttonScan";
-            this.buttonScan.Size = new System.Drawing.Size(86, 21);
+            this.buttonScan.Size = new System.Drawing.Size(121, 21);
             this.buttonScan.TabIndex = 5;
             this.buttonScan.Text = "Skan et";
             this.buttonScan.UseVisualStyleBackColor = true;
@@ -64,9 +66,9 @@ namespace WindowsForm.Forms
             // buttonSave
             // 
             this.buttonSave.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonSave.Location = new System.Drawing.Point(22, 75);
+            this.buttonSave.Location = new System.Drawing.Point(12, 147);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(126, 21);
+            this.buttonSave.Size = new System.Drawing.Size(121, 21);
             this.buttonSave.TabIndex = 6;
             this.buttonSave.Text = "Yaddaşa yaz";
             this.buttonSave.UseVisualStyleBackColor = true;
@@ -75,7 +77,7 @@ namespace WindowsForm.Forms
             // buttonGenerate
             // 
             this.buttonGenerate.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonGenerate.Location = new System.Drawing.Point(382, 75);
+            this.buttonGenerate.Location = new System.Drawing.Point(12, 66);
             this.buttonGenerate.Name = "buttonGenerate";
             this.buttonGenerate.Size = new System.Drawing.Size(122, 21);
             this.buttonGenerate.TabIndex = 7;
@@ -86,9 +88,9 @@ namespace WindowsForm.Forms
             // buttonLoad
             // 
             this.buttonLoad.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonLoad.Location = new System.Drawing.Point(22, 102);
+            this.buttonLoad.Location = new System.Drawing.Point(12, 174);
             this.buttonLoad.Name = "buttonLoad";
-            this.buttonLoad.Size = new System.Drawing.Size(127, 21);
+            this.buttonLoad.Size = new System.Drawing.Size(122, 21);
             this.buttonLoad.TabIndex = 8;
             this.buttonLoad.Text = "Yaddaşdan yüklə";
             this.buttonLoad.UseVisualStyleBackColor = true;
@@ -96,7 +98,7 @@ namespace WindowsForm.Forms
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(154, 48);
+            this.pictureBox1.Location = new System.Drawing.Point(139, 147);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(111, 74);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -107,9 +109,9 @@ namespace WindowsForm.Forms
             // buttonRandom
             // 
             this.buttonRandom.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonRandom.Location = new System.Drawing.Point(382, 21);
+            this.buttonRandom.Location = new System.Drawing.Point(12, 10);
             this.buttonRandom.Name = "buttonRandom";
-            this.buttonRandom.Size = new System.Drawing.Size(122, 49);
+            this.buttonRandom.Size = new System.Drawing.Size(122, 51);
             this.buttonRandom.TabIndex = 10;
             this.buttonRandom.Text = "Təsadüfi rəqəm yarat";
             this.buttonRandom.UseVisualStyleBackColor = true;
@@ -118,7 +120,7 @@ namespace WindowsForm.Forms
             // buttonQrCode
             // 
             this.buttonQrCode.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonQrCode.Location = new System.Drawing.Point(382, 102);
+            this.buttonQrCode.Location = new System.Drawing.Point(12, 93);
             this.buttonQrCode.Name = "buttonQrCode";
             this.buttonQrCode.Size = new System.Drawing.Size(122, 21);
             this.buttonQrCode.TabIndex = 11;
@@ -129,9 +131,9 @@ namespace WindowsForm.Forms
             // buttonPrint
             // 
             this.buttonPrint.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonPrint.Location = new System.Drawing.Point(418, 129);
+            this.buttonPrint.Location = new System.Drawing.Point(12, 201);
             this.buttonPrint.Name = "buttonPrint";
-            this.buttonPrint.Size = new System.Drawing.Size(86, 21);
+            this.buttonPrint.Size = new System.Drawing.Size(121, 21);
             this.buttonPrint.TabIndex = 12;
             this.buttonPrint.Text = "Çap et";
             this.buttonPrint.UseVisualStyleBackColor = true;
@@ -139,16 +141,36 @@ namespace WindowsForm.Forms
             // 
             // textBoxInfo
             // 
-            this.textBoxInfo.Location = new System.Drawing.Point(3, 21);
+            this.textBoxInfo.Location = new System.Drawing.Point(139, 38);
             this.textBoxInfo.Name = "textBoxInfo";
-            this.textBoxInfo.Size = new System.Drawing.Size(145, 22);
+            this.textBoxInfo.Size = new System.Drawing.Size(128, 22);
             this.textBoxInfo.TabIndex = 13;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(273, 41);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(68, 14);
+            this.label1.TabIndex = 14;
+            this.label1.Text = ": Məlumat";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(273, 13);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(60, 14);
+            this.label2.TabIndex = 15;
+            this.label2.Text = ": Barkod";
             // 
             // USBBarcodeScannerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(554, 199);
+            this.ClientSize = new System.Drawing.Size(640, 367);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxInfo);
             this.Controls.Add(this.buttonPrint);
             this.Controls.Add(this.buttonQrCode);
@@ -180,5 +202,7 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.Button buttonQrCode;
         private System.Windows.Forms.Button buttonPrint;
         private System.Windows.Forms.TextBox textBoxInfo;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
