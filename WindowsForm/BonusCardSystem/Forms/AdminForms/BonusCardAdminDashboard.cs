@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using WindowsForm.Core.Controllers.Concrete;
 using WindowsForm.Forms.SettingForms;
 using WindowsForm.MyControls;
+using WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate;
 
 namespace WindowsForm.BonusCardSystem.Forms.AdminForms
 {
@@ -34,6 +35,7 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
         IBonusCardService _bonusCardService;
         IFormSettingService _formSettingService;
         IBonusCardOperationService _bonusCardOperationService;
+        IBarcodeGenerator _barcodeGenerator;
         //OperationClaimForFormsManager _operationClaimManager=new OperationClaimForFormsManager(new EfOperationClaimForFormsDal());
         //UserOperationClaimForFormsManager _userOperationClaimForFormsManager = new UserOperationClaimForFormsManager(new EfUserOperationClaimForFormsDal());
         private Form activateForm;
@@ -55,7 +57,8 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
                                 , ISupplierService supplierService
                                 , IBonusCardService bonusCardService
                                 , IFormSettingService formSettingService
-                                , IBonusCardOperationService bonusCardOperationService)
+                                , IBonusCardOperationService bonusCardOperationService
+                                ,IBarcodeGenerator barcodeGenerator)
         {
             _userService = userService;
             _operationClaimService = operationClaimService;
@@ -73,7 +76,7 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
             _bonusCardOperationService = bonusCardOperationService;
             _bonusCardService = bonusCardService;
             _formSettingService = formSettingService;
-
+            _barcodeGenerator = barcodeGenerator;
 
             InitializeComponent();
             this.Padding = new Padding();
@@ -340,7 +343,8 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
                                                     , _brandService
                                                     , _bonusCardService
                                                     , _formSettingService
-                                                    ,_bonusCardOperationService));
+                                                    ,_bonusCardOperationService
+                                                    , _barcodeGenerator  ));
 
 
         }
@@ -450,7 +454,7 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
 
         private void lazerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new WindowsForm.Forms.USBBarcodeScannerForm(), sender);
+            OpenChildForm(new WindowsForm.Forms.USBBarcodeScannerForm(_barcodeGenerator), sender);
         }
 
 

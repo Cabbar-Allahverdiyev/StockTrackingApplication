@@ -12,19 +12,19 @@ using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
 using Zen.Barcode;
 
-namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate
+namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate.MessagingToolkitGenerator
 {
-    public class BarcodeGenerator
+    public class MTBarcodeGenerator : BarcodeGeneratorBase, IBarcodeGenerator
     {
         BarcodeEncoder generator;
         BarcodeDecoder scanner;
 
-        OpenFileDialog openDialog;
-        IProductService _productService;
+        //OpenFileDialog openDialog;
 
-        public BarcodeGenerator(IProductService productService)
+
+        public MTBarcodeGenerator(IProductService productService) : base(productService)
         {
-            _productService = productService;
+
         }
 
         public IDataResult<Image> GenerateBarcode(string barcodeText, string info, PictureBox pictureBox)
@@ -70,8 +70,8 @@ namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate
         private static void RenderBarcodeInfoToGraphics(Graphics g, string code, string info, Rectangle rect)
         {
             // Constants to make numbers a little less magical
-            
-             const int barcodeHeight = 30;//50;
+
+            const int barcodeHeight = 30;//50;
             const int marginTop = 5;//20;
             const string codeFontFamilyName = "Courier New";
             const int codeFontEmSize = 10;
@@ -92,9 +92,9 @@ namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate
             using (var img = BarcodeDrawFactory.Code128WithChecksum.Draw(code, barcodeHeight))
             {
                 // daw the barcode image
-                
+
                 g.DrawImage(img,                                //img
-                    new Point(rect.X + ((rect.Width) / 2 - img.Width / 2), rect.Y + marginTop));
+                    new Point(rect.X + (rect.Width / 2 - img.Width / 2), rect.Y + marginTop));
             }
 
             // now draw the code under the bar code
@@ -159,87 +159,41 @@ namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate
             return new SuccessDataResult<string>(result.Text, BarcodeNumberMessages.Scanned);
         }
 
-        public IResult Save(PictureBox barcodePicture)
-        {
-            if (barcodePicture.Image == null)
-            {
-                return new ErrorResult(BarcodeNumberMessages.SaveFailed); //sekil yoxdu
-            }
-            using (SaveFileDialog saveDialog = new SaveFileDialog())
-            {
-                saveDialog.Filter = "PNG|*.png"; //burada 'File' sozu silinib eger lazim olsa Png nin yanina sadece File yaz 
-                if (saveDialog.ShowDialog() == DialogResult.OK)
-                {
-                    barcodePicture.Image.Save(saveDialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
-                    return new SuccessResult(BarcodeNumberMessages.Save);
-                }
-                return new ErrorResult(BarcodeNumberMessages.SaveFailed);
+        //public IResult Save(PictureBox barcodePicture)
+        //{
+        //    if (barcodePicture.Image == null)
+        //    {
+        //        return new ErrorResult(BarcodeNumberMessages.SaveFailed); //sekil yoxdu
+        //    }
+        //    using (SaveFileDialog saveDialog = new SaveFileDialog())
+        //    {
+        //        saveDialog.Filter = "PNG|*.png"; //burada 'File' sozu silinib eger lazim olsa Png nin yanina sadece File yaz 
+        //        if (saveDialog.ShowDialog() == DialogResult.OK)
+        //        {
+        //            barcodePicture.Image.Save(saveDialog.FileName, ImageFormat.Png);
+        //            return new SuccessResult(BarcodeNumberMessages.Save);
+        //        }
+        //        return new ErrorResult(BarcodeNumberMessages.SaveFailed);
 
-            }
+        //    }
 
-        }
+        //}
 
-        public IResult Load(PictureBox barcodePicture)
-        {
-            openDialog = new OpenFileDialog();
-            openDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            if (openDialog.ShowDialog() == DialogResult.OK)
-            {
-                barcodePicture.Load(openDialog.FileName);
-                return new SuccessResult(BarcodeNumberMessages.Load);
-            }
-            return new ErrorResult(BarcodeNumberMessages.LoadFailed);
-        }
-
-        public IDataResult<string> RandomBarcodeNumberGenerator()
-        {
-            IDataResult<Product> result;
-            string randomText = "";
-            do
-            {
-                Random random = new Random();
-                 randomText = CalculateEan13("476", "0201", random.Next(0, 99999).ToString());
-                if (randomText.Length < 13)
-                {
-
-                }
-                result = _productService.GetByBarcodeNumber(randomText);
-                if (result.Success)
-                {
-                    return new ErrorDataResult<string>(ProductMessages.BarcodeNumberAvailable);
+        //public IResult Load(PictureBox barcodePicture)
+        //{
+        //    openDialog = new OpenFileDialog();
+        //    openDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+        //    if (openDialog.ShowDialog() == DialogResult.OK)
+        //    {
+        //        barcodePicture.Load(openDialog.FileName);
+        //        return new SuccessResult(BarcodeNumberMessages.Load);
+        //    }
+        //    return new ErrorResult(BarcodeNumberMessages.LoadFailed);
+        //}
 
 
-                }
-                if (randomText.Length<13)
-                {
-                    return RandomBarcodeNumberGenerator();
-                }
-                return new SuccessDataResult<string>(randomText, BarcodeNumberMessages.RandomBarcodeNumberGenerated);
-            } while (!result.Success);
-
-        }
 
 
-        public string CalculateEan13(string country, string manufacturer, string product)
-        {
-            string temp = $"{country}{manufacturer}{product}";
-            int sum = 0;
-            int digit = 0;
-            for (int i = temp.Length; i >= 1; i--)
-            {
-                digit = Convert.ToInt32(temp.Substring(i - 1, 1));
 
-                if (i % 2 == 0)
-                {
-                    sum += digit * 3;
-                }
-                else
-                {
-                    sum += digit * 1;
-                }
-            }
-            int checkSum = (10 - (sum % 10)) % 10;
-            return $"{temp}{checkSum}";
-        }
     }
 }

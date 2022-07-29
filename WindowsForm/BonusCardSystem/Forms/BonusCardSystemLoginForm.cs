@@ -2,21 +2,14 @@
 using Business.Concrete;
 using Business.Constants.Messages;
 using Core.Entities.Concrete;
-using Core.Utilities.IoC;
 using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
-using Entities.Concrete;
 using Entities.DTOs.UserDtos;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Reflection;
-using System.Text;
 using System.Windows.Forms;
 using WindowsForm.BonusCardSystem.Forms.AdminForms;
 using WindowsForm.BonusCardSystem.Forms.UserForms;
@@ -24,7 +17,7 @@ using WindowsForm.Core.Constants.FormsAuthorization.User;
 using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.Concrete;
 using WindowsForm.Forms.AdminForms;
-using WindowsForm.Forms.UserForms;
+using WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate;
 
 namespace WindowsForm.BonusCardSystem.Forms
 {
@@ -48,6 +41,8 @@ namespace WindowsForm.BonusCardSystem.Forms
         IBonusCardOperationService _bonusCardOperationService;
         IBonusCardService _bonusCardService;
         IFormSettingService _formSettingService;
+        IBarcodeGenerator _barcodeGenerator;
+
 
         MacAddressManager _macAddressManager = new MacAddressManager(new EfMacAddressDal());
 
@@ -67,7 +62,9 @@ namespace WindowsForm.BonusCardSystem.Forms
             , ISupplierService supplierService
             , IBrandService brandService
             , IBonusCardService bonusCardService
-            , IFormSettingService formSettingService, IBonusCardOperationService bonusCardOperationService)
+            , IFormSettingService formSettingService
+            , IBonusCardOperationService bonusCardOperationService,
+            IBarcodeGenerator barcodeGenerator)
         {
             _userOperationClaimForFormsService = userOperationClaimForFormsService;
             _userService = userService;
@@ -85,6 +82,7 @@ namespace WindowsForm.BonusCardSystem.Forms
             _bonusCardOperationService = bonusCardOperationService;
             _bonusCardService = bonusCardService;
             _formSettingService = formSettingService;
+            _barcodeGenerator = barcodeGenerator;
             InitializeComponent();
             this.BackColor = Color.FromArgb(41, 128, 185);
         }
@@ -157,6 +155,7 @@ namespace WindowsForm.BonusCardSystem.Forms
                                                     , _bonusCardService
                                                     , _formSettingService
                                                     , _bonusCardOperationService
+                                                    ,_barcodeGenerator
                                                     );
                     this.Hide();
                     dashboard.Show();
@@ -178,7 +177,8 @@ namespace WindowsForm.BonusCardSystem.Forms
                                                     , _supplierService
                                                     , _bonusCardService
                                                     , _formSettingService
-                                                    , _bonusCardOperationService);
+                                                    , _bonusCardOperationService
+                                                    , _barcodeGenerator);
                 this.Hide();
                 userDashboard.Show();
 

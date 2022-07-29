@@ -19,6 +19,7 @@ using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.Concrete;
 using WindowsForm.Core.Controllers.Concrete.ValidatorControllers;
 using WindowsForm.MyControls;
+using WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate;
 using WindowsForm.Utilities.Search.Concrete.ProductSearch;
 
 namespace WindowsForm.Forms
@@ -30,29 +31,37 @@ namespace WindowsForm.Forms
         ICategoryService _categoryService;
         ISupplierService _supplierService;
         IFormSettingService _formSettingService;
+        private readonly IBarcodeGenerator _barcodeGenerator;
+
         private MyControl _myControl;
 
 
         public FormProductAdd(IProductService productService
                             , IBrandService brandService
                             , ICategoryService categoryService
-                            , ISupplierService supplierService, IFormSettingService formSettingService)
+                            , ISupplierService supplierService
+                            , IFormSettingService formSettingService
+                            , IBarcodeGenerator barcodeGenerator)
         {
             _productService = productService;
             _brandService = brandService;
             _categoryService = categoryService;
             _supplierService = supplierService;
             _formSettingService = formSettingService;
+            _barcodeGenerator = barcodeGenerator;
             _myControl = new MyControl(_formSettingService);
             InitializeComponent();
+
+            usbBarcodeScannerForm= new USBBarcodeScannerForm(_barcodeGenerator);
+             detailSearch= new ProductViewDashboardDetailsSearch();
 
             MyControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
             MyControl.WritePlaceholdersForTextBoxBarcodeNo(textBoxBarkodNo);
             MyControl.WritePlaceholdersForTextBoxQuantityPerUnit(textBoxKemiyyet);
         }
 
-        USBBarcodeScannerForm usbBarcodeScannerForm = new USBBarcodeScannerForm();
-        ProductViewDashboardDetailsSearch detailSearch = new ProductViewDashboardDetailsSearch();
+        private readonly USBBarcodeScannerForm usbBarcodeScannerForm;
+        private readonly ProductViewDashboardDetailsSearch detailSearch;
 
         private void FormProductAdd_Load(object sender, EventArgs e)
         {
@@ -208,7 +217,7 @@ namespace WindowsForm.Forms
         {
             if (checkBoxIsClearTextBox.Checked)
             {
-                
+
             }
         }
     }

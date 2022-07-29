@@ -7,8 +7,6 @@ using System.Windows.Forms;
 using USB_Barcode_Scanner;
 using WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate;
 using Core.Utilities.Results;
-using Business.Concrete;
-using DataAccess.Concrete.EntityFramework;
 using WindowsForm.Core.Constants.Messages;
 using Business.Constants.Messages;
 using System.Reflection;
@@ -19,20 +17,22 @@ namespace WindowsForm.Forms
     public partial class USBBarcodeScannerForm : Form
     {
         public static string BarcodeNumber { get; set; }
-        public USBBarcodeScannerForm()
+        private readonly IBarcodeGenerator _barcodeGenerator;
+        public USBBarcodeScannerForm(IBarcodeGenerator barcodeGenerator)
         {
             InitializeComponent();
             textBoxInfo.Visible = false;
             BarcodeNumber = null;
             BarcodeScanner barcodeScanner = new BarcodeScanner(textBoxBarcodeNumber);
             barcodeScanner.BarcodeScanned += BarcodeScanner_BarcodeScanned;
+            _barcodeGenerator = barcodeGenerator;
         }
 
         private void USBBarcodeScannerForm_Load_1(object sender, EventArgs e)
         {
         }
 
-        BarcodeGenerator barcodeGenerator = new BarcodeGenerator(new ProductManager(new EfProductDal()));
+       
 
         private void BarcodeScanner_BarcodeScanned(object sender, BarcodeScannerEventArgs e)
         {
@@ -41,7 +41,7 @@ namespace WindowsForm.Forms
 
         private void buttonScan_Click(object sender, EventArgs e)
         {
-            IDataResult<string> result = barcodeGenerator.InmemoryScanItAndConvertString(pictureBox1);
+            IDataResult<string> result = _barcodeGenerator.InmemoryScanItAndConvertString(pictureBox1);
             if (!result.Success)
             {
                 FormsMessage.WarningMessage(result.Message);
@@ -57,7 +57,7 @@ namespace WindowsForm.Forms
             try
             {
                 IDataResult<string> barcodeCreated;
-                IDataResult<Image> result = barcodeGenerator.GenerateBarcode(textBoxBarcodeNumber.Text, textBoxInfo.Text, pictureBox1);
+                IDataResult<Image> result = _barcodeGenerator.GenerateBarcode(textBoxBarcodeNumber.Text, textBoxInfo.Text, pictureBox1);
                 if (!result.Success)
                 {
                     FormsMessage.WarningMessage(result.Message);
@@ -65,7 +65,7 @@ namespace WindowsForm.Forms
                     return;
                 }
                 //pictureBox1.Image = result.Data;
-                barcodeCreated = barcodeGenerator.InmemoryScanItAndConvertString(pictureBox1);
+                barcodeCreated = _barcodeGenerator.InmemoryScanItAndConvertString(pictureBox1);
                 if (!barcodeCreated.Success)
                 {
                     FormsMessage.WarningMessage(barcodeCreated.Message);
@@ -90,7 +90,7 @@ namespace WindowsForm.Forms
 
         private void buttonQrCode_Click(object sender, EventArgs e)
         {
-            IDataResult<Image> result = barcodeGenerator.GenerateQRCode(textBoxBarcodeNumber.Text);
+            IDataResult<Image> result = _barcodeGenerator.GenerateQRCode(textBoxBarcodeNumber.Text);
             if (!result.Success)
             {
                 FormsMessage.WarningMessage(result.Message);
@@ -102,7 +102,7 @@ namespace WindowsForm.Forms
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            IResult result = barcodeGenerator.Save(pictureBox1);
+            IResult result = _barcodeGenerator.Save(pictureBox1);
             if (!result.Success)
             {
                 FormsMessage.WarningMessage(result.Message);
@@ -114,7 +114,7 @@ namespace WindowsForm.Forms
 
         private void buttonLoad_Click(object sender, EventArgs e)
         {
-            IResult result = barcodeGenerator.Load(pictureBox1);
+            IResult result = _barcodeGenerator.Load(pictureBox1);
             if (!result.Success)
             {
                 FormsMessage.WarningMessage(result.Message);
@@ -126,7 +126,7 @@ namespace WindowsForm.Forms
 
         private void buttonRandom_Click(object sender, EventArgs e)
         {
-            IDataResult<string> result = barcodeGenerator.RandomBarcodeNumberGenerator();
+            IDataResult<string> result = _barcodeGenerator.RandomBarcodeNumberGenerator();
             if (!result.Success)
             {
                 FormsMessage.WarningMessage(result.Message);

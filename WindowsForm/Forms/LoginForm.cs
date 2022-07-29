@@ -22,6 +22,7 @@ using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Core.Controllers.Concrete;
 using WindowsForm.Forms.AdminForms;
 using WindowsForm.Forms.UserForms;
+using WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate;
 
 namespace WindowsForm.Forms
 {
@@ -45,6 +46,8 @@ namespace WindowsForm.Forms
         IBonusCardService _bonusCardService;
         IFormSettingService _formSettingService;
         IBonusCardOperationService _bonusCardOperationService;
+        private readonly IBarcodeGenerator _barcodeGenerator;
+
 
         MacAddressManager _macAddressManager = new MacAddressManager(new EfMacAddressDal());
 
@@ -64,7 +67,9 @@ namespace WindowsForm.Forms
             , ISupplierService supplierService
             , IBrandService brandService
             , IBonusCardService bonusCardService
-            , IFormSettingService formSettingService, IBonusCardOperationService bonusCardOperationService)
+            , IFormSettingService formSettingService
+            , IBonusCardOperationService bonusCardOperationService
+            ,IBarcodeGenerator barcodeGenerator)
         {
             _userOperationClaimForFormsService = userOperationClaimForFormsService;
             _userService = userService;
@@ -82,6 +87,7 @@ namespace WindowsForm.Forms
             _bonusCardService = bonusCardService;
             _formSettingService = formSettingService;
             _bonusCardOperationService = bonusCardOperationService;
+            _barcodeGenerator=barcodeGenerator;
             InitializeComponent();
             this.BackColor = Color.FromArgb(41, 128, 185);
         }
@@ -154,7 +160,7 @@ namespace WindowsForm.Forms
                                                     ,_bonusCardService
                                                     ,_formSettingService
                                                     ,_bonusCardOperationService
-                                                    );
+                                                    , _barcodeGenerator);
                     this.Hide();
                     dashboard.Show();
                     return;
@@ -175,7 +181,8 @@ namespace WindowsForm.Forms
                                                                 , _supplierService
                                                                 ,_bonusCardService
                                                                 ,_formSettingService
-                                                                ,_bonusCardOperationService);
+                                                                ,_bonusCardOperationService
+                                                                , _barcodeGenerator);
                 this.Hide();
                 userDashboard.Show();
 

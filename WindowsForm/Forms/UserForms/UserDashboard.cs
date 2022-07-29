@@ -14,6 +14,7 @@ using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Controllers.Concrete;
 using WindowsForm.MyControls;
+using WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate;
 
 namespace WindowsForm.Forms.UserForms
 {
@@ -36,6 +37,8 @@ namespace WindowsForm.Forms.UserForms
         IBonusCardService _bonusCardService;
         IFormSettingService _formSettingService;
         IBonusCardOperationService _bonusCardOperationService;
+        IBarcodeGenerator _barcodeGenerator;
+
 
         private Form activateForm;
         private Size formSize;
@@ -55,7 +58,10 @@ namespace WindowsForm.Forms.UserForms
             , ISaleService saleWinFormService
             , ISupplierService supplierService
             , IBonusCardService bonusCardService
-            , IFormSettingService formSettingService, IBonusCardOperationService bonusCardOperationService)
+            , IFormSettingService formSettingService
+            , IBonusCardOperationService bonusCardOperationService
+            ,IBarcodeGenerator barcodeGenerator)
+            
         {
             _userService = userService;
             _operationClaimService = operationClaimService;
@@ -73,7 +79,7 @@ namespace WindowsForm.Forms.UserForms
             _bonusCardService = bonusCardService;
             _formSettingService = formSettingService;
             _bonusCardOperationService = bonusCardOperationService;
-
+            _barcodeGenerator = barcodeGenerator;
             InitializeComponent();
             this.Padding = new Padding();
             CollapseMenu();
@@ -321,7 +327,8 @@ namespace WindowsForm.Forms.UserForms
                                                     , _brandService
                                                     , _bonusCardService
                                                     , _formSettingService
-                                                    ,_bonusCardOperationService));
+                                                    ,_bonusCardOperationService
+                                                    , _barcodeGenerator));
         }
 
         //Dropdown menu---------------------------------->
@@ -336,7 +343,7 @@ namespace WindowsForm.Forms.UserForms
 
         private void əlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormProductAdd(_productService, _brandService, _categoryService, _supplierService,_formSettingService), sender);
+            OpenChildForm(new FormProductAdd(_productService, _brandService, _categoryService, _supplierService,_formSettingService,_barcodeGenerator), sender);
 
         }
 
@@ -405,7 +412,7 @@ namespace WindowsForm.Forms.UserForms
 
         private void lazerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new USBBarcodeScannerForm(), sender);
+            OpenChildForm(new USBBarcodeScannerForm(_barcodeGenerator), sender);
         }
 
 
