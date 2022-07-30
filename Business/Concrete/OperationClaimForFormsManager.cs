@@ -64,6 +64,16 @@ namespace Business.Concrete
             return new SuccessDataResult<OperationClaimForForms>(get, OperationClaimForFormsMessages.Found);
         }
 
+        public IDataResult<OperationClaimForForms> GetByName(string claimName)
+        {
+            OperationClaimForForms get = _operationClaimForFormsDal.Get(c => c.Name.ToLower() == claimName.ToLower());
+            if (get == null)
+            {
+                return new ErrorDataResult<OperationClaimForForms>(OperationClaimForFormsMessages.NotFound);
+            }
+            return new SuccessDataResult<OperationClaimForForms>(get, OperationClaimForFormsMessages.Found);
+
+        }
 
         [CacheAspect]
         public IDataResult<List<OperationClaimForForms>> GetAllByName(string claimName)
@@ -88,5 +98,6 @@ namespace Business.Concrete
             return new SuccessDataResult<List<OperationClaimForForms>>(get, OperationClaimForFormsMessages.GetAll);
         }
 
+       
     }
 }

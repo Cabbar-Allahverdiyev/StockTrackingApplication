@@ -83,7 +83,7 @@ namespace WindowsForm.Forms
             this.GroupBoxVarOlanMehsul.Controls.Add(this.label12);
             this.GroupBoxVarOlanMehsul.Controls.Add(this.textBoxMehsulAdi);
             this.GroupBoxVarOlanMehsul.Controls.Add(this.label13);
-            this.GroupBoxVarOlanMehsul.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.GroupBoxVarOlanMehsul.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.GroupBoxVarOlanMehsul.Location = new System.Drawing.Point(21, 45);
             this.GroupBoxVarOlanMehsul.Name = "GroupBoxVarOlanMehsul";
             this.GroupBoxVarOlanMehsul.Size = new System.Drawing.Size(281, 410);
@@ -108,56 +108,56 @@ namespace WindowsForm.Forms
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label17.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label17.Location = new System.Drawing.Point(25, 291);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(61, 14);
+            this.label17.Size = new System.Drawing.Size(61, 15);
             this.label17.TabIndex = 27;
             this.label17.Text = "Açıqlama:";
             // 
             // TextBoxAciqlama
             // 
-            this.TextBoxAciqlama.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TextBoxAciqlama.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TextBoxAciqlama.Location = new System.Drawing.Point(96, 288);
             this.TextBoxAciqlama.Name = "TextBoxAciqlama";
-            this.TextBoxAciqlama.Size = new System.Drawing.Size(179, 22);
+            this.TextBoxAciqlama.Size = new System.Drawing.Size(179, 21);
             this.TextBoxAciqlama.TabIndex = 26;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label15.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label15.Location = new System.Drawing.Point(30, 127);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(59, 14);
+            this.label15.Size = new System.Drawing.Size(59, 15);
             this.label15.TabIndex = 25;
             this.label15.Text = "Tedarikçi:";
             // 
             // comboBoxTedarikci
             // 
-            this.comboBoxTedarikci.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comboBoxTedarikci.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboBoxTedarikci.FormattingEnabled = true;
             this.comboBoxTedarikci.Location = new System.Drawing.Point(96, 124);
             this.comboBoxTedarikci.Name = "comboBoxTedarikci";
-            this.comboBoxTedarikci.Size = new System.Drawing.Size(177, 22);
+            this.comboBoxTedarikci.Size = new System.Drawing.Size(177, 23);
             this.comboBoxTedarikci.TabIndex = 24;
             // 
             // comboBoxMarka
             // 
-            this.comboBoxMarka.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comboBoxMarka.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboBoxMarka.FormattingEnabled = true;
             this.comboBoxMarka.Location = new System.Drawing.Point(96, 91);
             this.comboBoxMarka.Name = "comboBoxMarka";
-            this.comboBoxMarka.Size = new System.Drawing.Size(177, 22);
+            this.comboBoxMarka.Size = new System.Drawing.Size(177, 23);
             this.comboBoxMarka.TabIndex = 23;
             // 
             // comboBoxKateqoriya
             // 
-            this.comboBoxKateqoriya.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comboBoxKateqoriya.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboBoxKateqoriya.FormattingEnabled = true;
             this.comboBoxKateqoriya.Location = new System.Drawing.Point(96, 58);
             this.comboBoxKateqoriya.Name = "comboBoxKateqoriya";
-            this.comboBoxKateqoriya.Size = new System.Drawing.Size(177, 22);
+            this.comboBoxKateqoriya.Size = new System.Drawing.Size(177, 23);
             this.comboBoxKateqoriya.TabIndex = 22;
             // 
             // LabelMiqdarVB
@@ -188,114 +188,113 @@ namespace WindowsForm.Forms
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label7.Location = new System.Drawing.Point(9, 258);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(79, 14);
+            this.label7.Size = new System.Drawing.Size(80, 15);
             this.label7.TabIndex = 20;
             this.label7.Text = "Satiş qiyməti:";
             // 
             // textBoxSatisQiymet
             // 
-            this.textBoxSatisQiymet.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxSatisQiymet.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxSatisQiymet.Location = new System.Drawing.Point(96, 255);
             this.textBoxSatisQiymet.Name = "textBoxSatisQiymet";
-            this.textBoxSatisQiymet.Size = new System.Drawing.Size(179, 22);
+            this.textBoxSatisQiymet.Size = new System.Drawing.Size(179, 21);
             this.textBoxSatisQiymet.TabIndex = 15;
             this.textBoxSatisQiymet.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSatisQiymet_KeyPress);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label8.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label8.Location = new System.Drawing.Point(17, 226);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(72, 14);
+            this.label8.Size = new System.Drawing.Size(72, 15);
             this.label8.TabIndex = 19;
             this.label8.Text = "Aliş qiyməti:";
             // 
             // textBoxAlisQiymet
             // 
-            this.textBoxAlisQiymet.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxAlisQiymet.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxAlisQiymet.Location = new System.Drawing.Point(96, 222);
             this.textBoxAlisQiymet.Name = "textBoxAlisQiymet";
-            this.textBoxAlisQiymet.Size = new System.Drawing.Size(179, 22);
+            this.textBoxAlisQiymet.Size = new System.Drawing.Size(179, 21);
             this.textBoxAlisQiymet.TabIndex = 7;
             this.textBoxAlisQiymet.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAlisQiymet_KeyPress);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label9.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label9.Location = new System.Drawing.Point(4, 192);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(83, 14);
+            this.label9.Size = new System.Drawing.Size(83, 15);
             this.label9.TabIndex = 18;
             this.label9.Text = "Əlavə miqdar:";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label10.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label10.Location = new System.Drawing.Point(21, 160);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(70, 14);
+            this.label10.Size = new System.Drawing.Size(70, 15);
             this.label10.TabIndex = 17;
             this.label10.Text = "Məhsul adı:";
             // 
             // textBoxStokaElaveEdilecekMiqdar
             // 
-            this.textBoxStokaElaveEdilecekMiqdar.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxStokaElaveEdilecekMiqdar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxStokaElaveEdilecekMiqdar.Location = new System.Drawing.Point(96, 189);
             this.textBoxStokaElaveEdilecekMiqdar.Name = "textBoxStokaElaveEdilecekMiqdar";
-            this.textBoxStokaElaveEdilecekMiqdar.Size = new System.Drawing.Size(179, 22);
+            this.textBoxStokaElaveEdilecekMiqdar.Size = new System.Drawing.Size(179, 21);
             this.textBoxStokaElaveEdilecekMiqdar.TabIndex = 6;
             this.textBoxStokaElaveEdilecekMiqdar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxStokaElaveEdilecekMiqdar_KeyPress);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label11.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label11.Location = new System.Drawing.Point(46, 94);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(44, 14);
+            this.label11.Size = new System.Drawing.Size(43, 15);
             this.label11.TabIndex = 16;
             this.label11.Text = "Marka:";
             // 
             // textBoxBarkodNo
             // 
-            this.textBoxBarkodNo.Enabled = false;
-            this.textBoxBarkodNo.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxBarkodNo.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxBarkodNo.Location = new System.Drawing.Point(96, 25);
             this.textBoxBarkodNo.Name = "textBoxBarkodNo";
-            this.textBoxBarkodNo.Size = new System.Drawing.Size(179, 22);
+            this.textBoxBarkodNo.Size = new System.Drawing.Size(179, 21);
             this.textBoxBarkodNo.TabIndex = 2;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label12.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label12.Location = new System.Drawing.Point(18, 61);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(69, 14);
+            this.label12.Size = new System.Drawing.Size(68, 15);
             this.label12.TabIndex = 15;
             this.label12.Text = "Kategoriya:";
             // 
             // textBoxMehsulAdi
             // 
-            this.textBoxMehsulAdi.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxMehsulAdi.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxMehsulAdi.Location = new System.Drawing.Point(96, 156);
             this.textBoxMehsulAdi.Name = "textBoxMehsulAdi";
-            this.textBoxMehsulAdi.Size = new System.Drawing.Size(179, 22);
+            this.textBoxMehsulAdi.Size = new System.Drawing.Size(179, 21);
             this.textBoxMehsulAdi.TabIndex = 5;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label13.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label13.Location = new System.Drawing.Point(25, 28);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(65, 14);
+            this.label13.Size = new System.Drawing.Size(65, 15);
             this.label13.TabIndex = 14;
             this.label13.Text = "BarkodNo:";
             // 
@@ -320,10 +319,10 @@ namespace WindowsForm.Forms
             // textBoxAxtar
             // 
             this.textBoxAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxAxtar.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxAxtar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxAxtar.Location = new System.Drawing.Point(745, 12);
             this.textBoxAxtar.Name = "textBoxAxtar";
-            this.textBoxAxtar.Size = new System.Drawing.Size(145, 22);
+            this.textBoxAxtar.Size = new System.Drawing.Size(145, 21);
             this.textBoxAxtar.TabIndex = 8;
             this.textBoxAxtar.TextChanged += new System.EventHandler(this.textBoxAxtar_TextChanged);
             // 
@@ -345,18 +344,18 @@ namespace WindowsForm.Forms
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Image = global::WindowsForm.Properties.Resources.searchFerqliBlack_16px;
             this.label1.Location = new System.Drawing.Point(716, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(23, 17);
+            this.label1.Size = new System.Drawing.Size(22, 15);
             this.label1.TabIndex = 34;
             this.label1.Text = "     ";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // ProductUpdateForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(933, 544);
@@ -365,7 +364,7 @@ namespace WindowsForm.Forms
             this.Controls.Add(this.textBoxAxtar);
             this.Controls.Add(this.dataGridViewPrdouctList);
             this.Controls.Add(this.GroupBoxVarOlanMehsul);
-            this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "ProductUpdateForm";
             this.Text = "Məhsul yeniləmə səhifəsi";
             this.Load += new System.EventHandler(this.ProductUpdateForm_Load);

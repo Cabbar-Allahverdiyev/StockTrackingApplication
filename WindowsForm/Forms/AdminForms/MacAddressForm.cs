@@ -1,4 +1,5 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
 using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete.ForForms;
@@ -15,20 +16,32 @@ namespace WindowsForm.Forms.AdminForms
 {
     public partial class MacAddressForm : Form
     {
-        MacAddressManager macAddressManager=new MacAddressManager(new EfMacAddressDal());
-        public MacAddressForm()
+        MacAddressManager macAddressManager = new MacAddressManager(new EfMacAddressDal());
+        IUserService _userService;
+        IUserOperationClaimForFormsService _userOperationClaimService;
+        IFormSettingService _formSettingService;
+        IOperationClaimForFormsService _operationClaimService;
+        public MacAddressForm(IUserService userService,
+            IUserOperationClaimForFormsService userOperationClaimService,
+            IFormSettingService formSettingService,
+            IOperationClaimForFormsService operationClaimService)
         {
+            _userService = userService;
+            _userOperationClaimService = userOperationClaimService;
+            _formSettingService = formSettingService;
+
             InitializeComponent();
             dataGridViewListed.DataSource = macAddressManager.GetAll().Data;
+            _operationClaimService = operationClaimService;
         }
 
         private void buttonElaveEt_Click(object sender, EventArgs e)
         {
-            if (textBoxMacAddress.Text=="")
+            if (textBoxMacAddress.Text == "")
             {
                 return;
             }
-            MacAddres macAddress = new MacAddres() ;
+            MacAddres macAddress = new MacAddres();
             macAddress.Address = textBoxMacAddress.Text;
             IResult macAdded = macAddressManager.Add(macAddress);
             if (!macAdded.Success)
@@ -39,7 +52,7 @@ namespace WindowsForm.Forms.AdminForms
             dataGridViewListed.DataSource = macAddressManager.GetAll().Data;
         }
 
-       
+
         private void buttonSil_Click(object sender, EventArgs e)
         {
             if (textBoxId.Text == "")
@@ -69,6 +82,14 @@ namespace WindowsForm.Forms.AdminForms
 
         private void MacAddressForm_Load(object sender, EventArgs e)
         {
+
+        }
+
+        private void buttonUserAdd_Click(object sender, EventArgs e)
+        {
+            FormUserAdd formUserAdd = new FormUserAdd(_userService, _operationClaimService,_userOperationClaimService, _formSettingService);
+            formUserAdd.ShowDialog();
+            
 
         }
     }

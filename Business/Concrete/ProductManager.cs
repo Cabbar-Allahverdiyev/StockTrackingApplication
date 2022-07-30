@@ -3,6 +3,7 @@ using Business.BusinessAspects.Autofac;
 using Business.Constants.Messages;
 using Business.ValidationRules.FluentValidation.ProductValidators;
 using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Business;
 using Core.Utilities.Results;
@@ -26,6 +27,8 @@ namespace Business.Concrete
         }
         //CRUD
 
+        
+        [TransactionScopeAspect]
         [ValidationAspect(typeof(CreateProductValidator))]
         [CacheRemoveAspect("IProductService.Get")]
         public IResult Add(Product product)

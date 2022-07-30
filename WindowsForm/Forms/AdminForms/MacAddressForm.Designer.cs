@@ -38,6 +38,7 @@ namespace WindowsForm.Forms.AdminForms
             this.textBoxMacAddress = new System.Windows.Forms.TextBox();
             this.buttonSil = new System.Windows.Forms.Button();
             this.textBoxId = new System.Windows.Forms.TextBox();
+            this.buttonUserAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListed)).BeginInit();
             this.SuspendLayout();
@@ -46,11 +47,11 @@ namespace WindowsForm.Forms.AdminForms
             // 
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label12.Image = global::WindowsForm.Properties.Resources.searchFerqliBlack_16px;
             this.label12.Location = new System.Drawing.Point(311, 15);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(23, 17);
+            this.label12.Size = new System.Drawing.Size(22, 15);
             this.label12.TabIndex = 41;
             this.label12.Text = "     ";
             // 
@@ -71,10 +72,10 @@ namespace WindowsForm.Forms.AdminForms
             // textBoxAxtar
             // 
             this.textBoxAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxAxtar.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxAxtar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxAxtar.Location = new System.Drawing.Point(340, 12);
             this.textBoxAxtar.Name = "textBoxAxtar";
-            this.textBoxAxtar.Size = new System.Drawing.Size(173, 22);
+            this.textBoxAxtar.Size = new System.Drawing.Size(173, 21);
             this.textBoxAxtar.TabIndex = 39;
             // 
             // dataGridViewListed
@@ -112,19 +113,19 @@ namespace WindowsForm.Forms.AdminForms
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(16, 70);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(36, 14);
+            this.label1.Size = new System.Drawing.Size(35, 15);
             this.label1.TabIndex = 36;
             this.label1.Text = "Mac :";
             // 
             // textBoxMacAddress
             // 
-            this.textBoxMacAddress.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxMacAddress.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxMacAddress.Location = new System.Drawing.Point(63, 67);
             this.textBoxMacAddress.Name = "textBoxMacAddress";
-            this.textBoxMacAddress.Size = new System.Drawing.Size(176, 22);
+            this.textBoxMacAddress.Size = new System.Drawing.Size(176, 21);
             this.textBoxMacAddress.TabIndex = 35;
             // 
             // buttonSil
@@ -144,17 +145,32 @@ namespace WindowsForm.Forms.AdminForms
             // textBoxId
             // 
             this.textBoxId.Enabled = false;
-            this.textBoxId.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxId.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxId.Location = new System.Drawing.Point(63, 39);
             this.textBoxId.Name = "textBoxId";
-            this.textBoxId.Size = new System.Drawing.Size(176, 22);
+            this.textBoxId.Size = new System.Drawing.Size(176, 21);
             this.textBoxId.TabIndex = 45;
+            // 
+            // buttonUserAdd
+            // 
+            this.buttonUserAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUserAdd.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonUserAdd.Image = global::WindowsForm.Properties.Resources.elaveEtBlack;
+            this.buttonUserAdd.Location = new System.Drawing.Point(12, 412);
+            this.buttonUserAdd.Name = "buttonUserAdd";
+            this.buttonUserAdd.Size = new System.Drawing.Size(148, 26);
+            this.buttonUserAdd.TabIndex = 46;
+            this.buttonUserAdd.Text = "Istifadəçi əlavə et";
+            this.buttonUserAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonUserAdd.UseVisualStyleBackColor = true;
+            this.buttonUserAdd.Click += new System.EventHandler(this.buttonUserAdd_Click);
             // 
             // MacAddressForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(556, 450);
+            this.Controls.Add(this.buttonUserAdd);
             this.Controls.Add(this.textBoxId);
             this.Controls.Add(this.buttonSil);
             this.Controls.Add(this.label12);
@@ -186,5 +202,6 @@ namespace WindowsForm.Forms.AdminForms
         private System.Windows.Forms.TextBox textBoxMacAddress;
         private System.Windows.Forms.Button buttonSil;
         private System.Windows.Forms.TextBox textBoxId;
+        private System.Windows.Forms.Button buttonUserAdd;
     }
 }

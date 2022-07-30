@@ -388,7 +388,10 @@ namespace WindowsForm.BonusCardSystem.Forms
             adminVerificationForm.ShowDialog();
             if (UserAuthorization.IsAdminVerified == true)
             {
-                MacAddressForm macAddressForm = new MacAddressForm();
+                MacAddressForm macAddressForm = new MacAddressForm(_userService,
+                                                            _userOperationClaimForFormsService,
+                                                            _formSettingService,
+                                                            _operationClaimService);
                 macAddressForm.ShowDialog();
                 return;
             }

@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants.Messages;
 using Core.Aspects.Autofac.Caching;
+using Core.Entities.Concrete;
 using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -15,11 +16,17 @@ namespace Business.Concrete
 {
     public class UserOperationClaimForFormsManager : IUserOperationClaimForFormsService
     {
+        IUserService _userService;
         IUserOperationClaimForFormsDal _userOperationClaimForFormsDal;
+        IOperationClaimForFormsService _operationClaimService;
 
-        public UserOperationClaimForFormsManager(IUserOperationClaimForFormsDal userOperationClaimForFormsDal)
+        public UserOperationClaimForFormsManager(IUserOperationClaimForFormsDal userOperationClaimForFormsDal,
+            IUserService userService,
+            IOperationClaimForFormsService operationClaimService)
         {
             _userOperationClaimForFormsDal = userOperationClaimForFormsDal;
+            _userService = userService;
+            _operationClaimService = operationClaimService;
         }
 
         [CacheRemoveAspect("IUserOperationClaimForFormsService.Get")]
@@ -35,9 +42,17 @@ namespace Business.Concrete
         }
 
         [CacheRemoveAspect("IUserOperationClaimForFormsService.Get")]
-        public IResult Delete(UserOperationClaimForForms operationClaim)
+        public IResult Delete(int id)
         {
-            _userOperationClaimForFormsDal.Delete(operationClaim);
+
+            UserOperationClaimForForms claim = null;
+            IResult rule = BusinessRules.Run(UserClaimIsExist(id,out claim),
+                                             IsNotUserBoss(claim));
+            if (rule != null)
+            {
+                return new ErrorResult(rule.Message);
+            }
+            _userOperationClaimForFormsDal.Delete(claim);
             return new SuccessResult(UserOperationClaimForFormsMessages.Deleted);
         }
 
@@ -99,17 +114,40 @@ namespace Business.Concrete
         //elave
         private IResult NotChangeTheBoss(UserOperationClaimForForms operationClaim)
         {
-            if (operationClaim.UserId == 3002)
-            {
-                return new ErrorResult(UserOperationClaimForFormsMessages.NotAdded);
-            }
-            if (operationClaim.OperationClaimId == 4)
+            //if (operationClaim.UserId !=
+            //    _userService.GetUserDetailByUserName("Cabbar","Allahverdiyev").Data.UserId)
+            //{
+            //    return new ErrorResult(UserOperationClaimForFormsMessages.NotAdded);
+            //}
+            if (operationClaim.OperationClaimId == _operationClaimService.GetByName("Boss").Data.Id
+                && operationClaim.UserId !=
+                _userService.GetUserDetailByUserName("Cabbar", "Allahverdiyev").Data.UserId)
             {
                 return new ErrorResult(UserOperationClaimForFormsMessages.NotAdded);
             }
             return new SuccessResult();
         }
 
-       
+       private IResult IsNotUserBoss(UserOperationClaimForForms operationClaim)
+        {
+            if (operationClaim.OperationClaimId==_operationClaimService
+                .GetByName("Boss").Data.Id)                
+            {
+                return new ErrorResult(UserOperationClaimForFormsMessages.UserIsBoss);
+            }
+            return new SuccessResult();
+
+        }
+        private IResult UserClaimIsExist(int userClaimId,out UserOperationClaimForForms userOperationClaim)
+        {
+            IDataResult<UserOperationClaimForForms> userClaim = GetById(userClaimId);
+            if (userClaim.Success)
+            {
+                userOperationClaim = userClaim.Data;
+                return new SuccessResult();
+            }
+            userOperationClaim = null;
+            return new ErrorResult(UserOperationClaimForFormsMessages.NotFound);
+        }
     }
 }

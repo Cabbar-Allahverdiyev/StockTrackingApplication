@@ -147,5 +147,10 @@ namespace WindowsForm.Forms
             }
             operationClaimForm.ShowDialog();
         }
+
+        private void FormUserAdd_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

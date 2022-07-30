@@ -388,16 +388,29 @@ namespace WindowsForm.Forms
         private void label5_DoubleClick(object sender, EventArgs e)
         {
             UserAuthorization.IsAdminVerified = false;
+            UserAuthorization.IsBossVerified = false;
             AdminVerificationForm adminVerificationForm = new AdminVerificationForm(_userService);
             adminVerificationForm.ShowDialog();
-            if (UserAuthorization.IsAdminVerified ==true)
+            if (UserAuthorization.IsBossVerified ==true)
             {
-                MacAddressForm macAddressForm = new MacAddressForm();
+                MacAddressForm macAddressForm = new MacAddressForm(_userService,
+                                                                    _userOperationClaimForFormsService,
+                                                                    _formSettingService,
+                                                                    _operationClaimService
+                                                                    );
                 macAddressForm.ShowDialog();
                 return;
             }
         }
 
-      
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_DoubleClick(object sender, EventArgs e)
+        {
+
+        }
     }
 }

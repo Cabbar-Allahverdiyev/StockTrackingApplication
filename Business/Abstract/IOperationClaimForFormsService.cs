@@ -13,6 +13,7 @@ namespace Business.Abstract
         IResult Update(OperationClaimForForms operationClaim);
         IResult Delete(OperationClaimForForms operationClaim);
         IDataResult<OperationClaimForForms> GetById(int id);
+        IDataResult<OperationClaimForForms> GetByName(string claimName);
         IDataResult<List<OperationClaimForForms>> GetAllButTheBoss();
 
 

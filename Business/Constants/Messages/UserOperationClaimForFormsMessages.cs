@@ -15,5 +15,6 @@ namespace Business.Constants.Messages
         public static string GetAll = "İstifadəçilərin əməliyyat iddiaları sıralandi";
         public static string Found = "İstifadəçinin əməliyyat iddiası tapıldı";
         public static string NotFound = "Belə bir İstifadəçinin əməliyyat iddiası yoxdur";
+        public static string UserIsBoss = "Bu  İstifadəçinin əməliyyat iddiası Boss-dur";
     }
 }

@@ -23,6 +23,10 @@ namespace WindowsForm.Forms.AdminForms
         IOperationClaimForFormsService _operationClaimService;
         IUserOperationClaimForFormsService _useroperationClaimService;
 
+        private string DataGridViewId = "Id";
+        private string DataGridVievUserFirstName = "FirstName";
+        private string DataGridViewClaimName = "ClaimName";
+
         public OperationClaimForm(IUserService userService
                                 , IOperationClaimForFormsService operationClaimService
                                 , IUserOperationClaimForFormsService useroperationClaimService)
@@ -38,9 +42,9 @@ namespace WindowsForm.Forms.AdminForms
                 FormsMessage.WarningMessage(AuthMessages.AuthorizationDenied);
                 return;
             }
-            
+
             InitializeComponent();
-            
+
         }
 
         private void OperationClaimForm_Load(object sender, EventArgs e)
@@ -64,7 +68,7 @@ namespace WindowsForm.Forms.AdminForms
 
         private void WriteClaimsOnComboBox()
         {
-            List<OperationClaimForForms> claims = _operationClaimService.GetAllButTheBoss().Data;
+            List<OperationClaimForForms> claims = _operationClaimService.GetAll().Data;
 
             comboBoxSelahiyyet.DataSource = claims;
             comboBoxSelahiyyet.DisplayMember = "Name";
@@ -73,13 +77,14 @@ namespace WindowsForm.Forms.AdminForms
 
         private void RefreshUserClaims()
         {
-            dataGridViewUserClaims.DataSource = _useroperationClaimService.GetAllUserOperationClaimDtoDetails().Data;
-            
+            dataGridViewUserClaims.DataSource =
+                _useroperationClaimService.GetAllUserOperationClaimDtoDetails().Data;
+
         }
 
         private void buttonElaveEt_Click(object sender, EventArgs e)
         {
-            if (comboBoxIstifadeci.Text==""||comboBoxSelahiyyet.Text=="")
+            if (comboBoxIstifadeci.Text == "" || comboBoxSelahiyyet.Text == "")
             {
                 FormsMessage.WarningMessage(FormsTextMessages.SectionsIsBlank);
                 return;
@@ -88,7 +93,7 @@ namespace WindowsForm.Forms.AdminForms
             userOperationClaim.UserId = Convert.ToInt32(comboBoxIstifadeci.SelectedValue);
             userOperationClaim.OperationClaimId = Convert.ToInt32(comboBoxSelahiyyet.SelectedValue);
             //validation yaz
-            IResult  userClaimAdded= _useroperationClaimService.Add(userOperationClaim);
+            IResult userClaimAdded = _useroperationClaimService.Add(userOperationClaim);
             if (!userClaimAdded.Success)
             {
                 FormsMessage.WarningMessage(userClaimAdded.Message);
@@ -97,6 +102,38 @@ namespace WindowsForm.Forms.AdminForms
             FormsMessage.SuccessMessage(userClaimAdded.Message);
             RefreshUserClaims();
             ComboBoxController.ClearAllComboBoxByGroupBox(groupBoxOperationClaim);
+        }
+
+        private void ButtonSalesFormSil_Click(object sender, EventArgs e)
+        {
+            if (textBoxId.Text == "")
+            {
+                FormsMessage.WarningMessage(FormsTextMessages.IdBlank);
+                return;
+            }
+
+            IResult result= _useroperationClaimService.Delete(int.Parse(textBoxId.Text));
+            if (result.Success)
+            {
+                FormsMessage.SuccessMessage(result.Message);
+                RefreshUserClaims();
+                return;
+            }
+            FormsMessage.WarningMessage(result.Message);
+            
+        }
+
+        private void dataGridViewUserClaims_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            textBoxId.Text = dataGridViewUserClaims.CurrentRow.Cells[DataGridViewId].Value.ToString();
+            comboBoxIstifadeci.Text = dataGridViewUserClaims.CurrentRow.Cells[DataGridVievUserFirstName].Value.ToString();
+            comboBoxSelahiyyet.Text = dataGridViewUserClaims.CurrentRow.Cells[DataGridViewClaimName].Value.ToString();
+        }
+
+        private void pictureBoxRefresh_Click(object sender, EventArgs e)
+        {
+            RefreshUserClaims();
         }
     }
 }

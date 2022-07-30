@@ -5,8 +5,10 @@ using IronBarCode;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Text;
 using System.Windows.Forms;
+using Zen.Barcode;
 
 namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate.IronBarcodeGenerator
 {
@@ -27,7 +29,7 @@ namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate.IronBarcodeGenera
             {
                 return new ErrorDataResult<Image>(BarcodeNumberMessages.BarcodeNumberLengthLessThan13NotGenerated);
             }
-            GeneratedBarcode barcode = BarcodeWriter.CreateBarcode(barcodeText, BarcodeEncoding.EAN13,width,height)
+            GeneratedBarcode barcode = BarcodeWriter.CreateBarcode(barcodeText, BarcodeEncoding.EAN13, width, height)
            .ResizeTo(width, height)
            .SetMargins(2);
             barcode.AddBarcodeValueTextBelowBarcode();
@@ -51,6 +53,7 @@ namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate.IronBarcodeGenera
             //barcode.AddAnnotationTextAboveBarcode(info
             //    , new Font(new FontFamily("Arial"), 10, FontStyle.Regular, GraphicsUnit.Pixel)
             //    , Color.DarkSlateBlue);
+
             Image img = barcode.ToBitmap();
             return new SuccessDataResult<Image>(img, BarcodeNumberMessages.QRCodeGenerated);
         }
@@ -63,6 +66,49 @@ namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate.IronBarcodeGenera
 
         }
 
+        private static void RenderBarcodeInfoToGraphics(Graphics g, string code, string info, Rectangle rect)
+        {
+            const int barcodeHeight = 30;//50;
+            const int marginTop = 5;//20;
+            const string codeFontFamilyName = "Courier New";
+            const int codeFontEmSize = 10;
+            const int marginCodeFromCode = 10;
+            const string infoFontFamilyName = "Arial";
+            const int infoFontEmSize = 12;
+            const int marginInfoFromCode = 10;
+
+            g.Clear(Color.White);
+            g.InterpolationMode = InterpolationMode.NearestNeighbor;
+            using (var img = BarcodeDrawFactory.Code128WithChecksum.Draw(code, barcodeHeight))
+            {
+                g.DrawImage(img,
+                    new Point(rect.X + (rect.Width / 2 - img.Width / 2), rect.Y + marginTop));
+            }
+            using (var br = new SolidBrush(Color.Black))
+            {
+                var yPos = rect.Y + marginTop + barcodeHeight + marginCodeFromCode;
+                var sf = new StringFormat
+                {
+                    Alignment = StringAlignment.Center,
+                    LineAlignment = StringAlignment.Near
+                };
+                var codeTextHeight = 0;
+                using (var font =
+                    new Font(codeFontFamilyName, codeFontEmSize, FontStyle.Regular))
+                {
+                    codeTextHeight = (int)Math.Round(g.MeasureString(code, font).Height);
+                    g.DrawString(code, font, br,
+                                new Rectangle(rect.X, yPos, rect.Width, 0), sf);
+                }
+                using (var font =
+                    new Font(infoFontFamilyName, infoFontEmSize, FontStyle.Regular))
+                {
+                    g.DrawString(info, font, br,
+                        new Rectangle(rect.X,
+                            yPos + codeTextHeight + marginInfoFromCode, rect.Width, 0), sf);
+                }
+            }
+        }
 
     }
 }
