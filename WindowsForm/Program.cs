@@ -14,6 +14,7 @@ using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate;
 using WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate.IronBarcodeGenerator;
 using WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate.MessagingToolkitGenerator;
+using WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate.NetBarcodes;
 
 namespace WindowsForm
 {
@@ -83,7 +84,7 @@ namespace WindowsForm
             IBonusCardService _bonusCardService = new BonusCardManager(_bonusCardDal, _customerService, _bonusCardOperationService);
 
             IFormSettingService _formSettingService = new FormSettingManager(_formSettingDal);
-            IBarcodeGenerator _barcodeGenerator = new BarcodeGeneratorIron(_productService);
+            IBarcodeGenerator _barcodeGenerator = new NetBarcodeGenerator(_productService);
             //Application.Run(new Forms.SettingForms.BonusCardSettingForm(formSettingManager));
             //Application.Run(new Forms.DebtForm(_debtService,_customerService,_customerBalanceService));
 
@@ -100,7 +101,7 @@ namespace WindowsForm
 
             //Application.Run(new Forms.FormProductAdd(_productService,_brandService,_categoryService,_supplierService,_formSettingService));
 
-            Application.Run(new Forms.USBBarcodeScannerForm(_barcodeGenerator));
+            //Application.Run(new Forms.USBBarcodeScannerForm(_barcodeGenerator));
 
 
         }
