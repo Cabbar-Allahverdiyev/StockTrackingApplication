@@ -1,19 +1,10 @@
 using Business.Abstract;
 using Business.Concrete;
-using Business.Constants.Messages;
-using Core.Utilities.Security.JWT;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate;
-using WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate.IronBarcodeGenerator;
-using WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate.MessagingToolkitGenerator;
 using WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate.NetBarcodes;
 
 namespace WindowsForm
@@ -101,7 +92,7 @@ namespace WindowsForm
 
             //Application.Run(new Forms.FormProductAdd(_productService,_brandService,_categoryService,_supplierService,_formSettingService));
 
-            //Application.Run(new Forms.USBBarcodeScannerForm(_barcodeGenerator));
+            //Application.Run(new Forms.USBBarcodeScannerForm(_barcodeGenerator,_formSettingService));
 
 
         }

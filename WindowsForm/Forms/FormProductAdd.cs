@@ -52,7 +52,7 @@ namespace WindowsForm.Forms
             _myControl = new MyControl(_formSettingService);
             InitializeComponent();
 
-            usbBarcodeScannerForm= new USBBarcodeScannerForm(_barcodeGenerator);
+            usbBarcodeScannerForm= new USBBarcodeScannerForm(_barcodeGenerator,_formSettingService);
              detailSearch= new ProductViewDashboardDetailsSearch();
 
             MyControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);

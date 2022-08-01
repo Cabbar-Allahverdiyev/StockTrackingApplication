@@ -412,7 +412,7 @@ namespace WindowsForm.Forms.UserForms
 
         private void lazerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new USBBarcodeScannerForm(_barcodeGenerator), sender);
+            OpenChildForm(new USBBarcodeScannerForm(_barcodeGenerator,_formSettingService), sender);
         }
 
 

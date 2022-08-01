@@ -11,28 +11,39 @@ using WindowsForm.Core.Constants.Messages;
 using Business.Constants.Messages;
 using System.Reflection;
 using System.Drawing.Printing;
+using System.Threading.Tasks;
+using Business.Abstract;
 
 namespace WindowsForm.Forms
 {
     public partial class USBBarcodeScannerForm : Form
     {
-        public static string BarcodeNumber { get; set; }
         private readonly IBarcodeGenerator _barcodeGenerator;
-        public USBBarcodeScannerForm(IBarcodeGenerator barcodeGenerator)
+        private readonly IFormSettingService _formSettingService;
+        public static string? BarcodeNumber { get; set; }
+        private int width;
+        private int height;
+        public USBBarcodeScannerForm(IBarcodeGenerator barcodeGenerator, IFormSettingService formSettingService)
         {
+            _barcodeGenerator = barcodeGenerator;
+            _formSettingService = formSettingService;
             InitializeComponent();
             textBoxInfo.Visible = true;
             BarcodeNumber = null;
             BarcodeScanner barcodeScanner = new BarcodeScanner(textBoxBarcodeNumber);
             barcodeScanner.BarcodeScanned += BarcodeScanner_BarcodeScanned;
-            _barcodeGenerator = barcodeGenerator;
+           
         }
 
         private void USBBarcodeScannerForm_Load_1(object sender, EventArgs e)
         {
+            width = pictureBox1.Width;
+            height = pictureBox1.Height;
+            trackBarWith.Value = _formSettingService.GetUsbBarCodeScannerFormTrackBarValues().Data.Width;
+            trackBarHeight.Value = _formSettingService.GetUsbBarCodeScannerFormTrackBarValues().Data.Height;
         }
 
-       
+
 
         private void BarcodeScanner_BarcodeScanned(object sender, BarcodeScannerEventArgs e)
         {
@@ -41,26 +52,39 @@ namespace WindowsForm.Forms
 
         private void buttonScan_Click(object sender, EventArgs e)
         {
-            IDataResult<string> result = _barcodeGenerator.InmemoryScanItAndConvertString(pictureBox1.Image);
-            if (!result.Success)
+            try
             {
-                FormsMessage.WarningMessage(result.Message);
-                // MessageBox.Show(result.Message);
+                IDataResult<string> result = _barcodeGenerator.InmemoryScanItAndConvertString(pictureBox1.Image);
+                if (!result.Success)
+                {
+                    FormsMessage.WarningMessage(result.Message);
+                    // MessageBox.Show(result.Message);
+                    return;
+                }
+                textBoxBarcodeNumber.Text = result.Data;
+                FormsMessage.SuccessMessage(result.Message);
+            }
+            catch (Exception ex)
+            {
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod()?.Name, ex));
                 return;
             }
-            textBoxBarcodeNumber.Text = result.Data;
-            FormsMessage.SuccessMessage(result.Message);
+
         }
 
         private void buttonGenerate_Click(object sender, EventArgs e)
         {
             try
             {
+                //trackBarWith.Value = 0;
+                //trackBarHeight.Value = 0;
+                //pictureBox1.Width = width;
+                //pictureBox1.Height = height;
                 IDataResult<string> barcodeCreated;
                 IDataResult<Image> result = _barcodeGenerator.GenerateBarcode(textBoxBarcodeNumber.Text,
                                                                                 textBoxInfo.Text,
-                                                                                   pictureBox1.Width,
-                                                                                pictureBox1.Height);
+                                                                                  width,
+                                                                                height);
                 if (!result.Success)
                 {
                     FormsMessage.WarningMessage(result.Message);
@@ -81,12 +105,15 @@ namespace WindowsForm.Forms
                     textBoxBarcodeNumber.Text = barcodeCreated.Data;
                     buttonGenerate_Click(sender, e);
                 }
+
+                pictureBox1.Width += trackBarWith.Value * 10;
+                pictureBox1.Height += trackBarHeight.Value * 10;
                 FormsMessage.SuccessMessage(result.Message);
             }
             catch (Exception ex)
             {
 
-                FormsMessage.ErrorMessage(BarcodeNumberMessages.QRCodeNotGenerated + " : " + BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
+                FormsMessage.ErrorMessage(BarcodeNumberMessages.QRCodeNotGenerated + " : " + BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod()?.Name, ex));
                 return;
             }
         }
@@ -144,41 +171,13 @@ namespace WindowsForm.Forms
 
         }
 
-       
+
         private void buttonPrint_Click(object sender, EventArgs e)
         {
-            //var doc = new PrintDocument();
-            //doc.PrintPage += (s, printArgs) =>
-            //{
-            //    // send that graphics object to the rendering code using the size
-            //    // of the media defined in the print arguments
-            //    RenderBarcodeInfoToGraphics(printArgs.Graphics, textBoxBarcodeNumber.Text,
-            //        textBoxInfo.Text, printArgs.PageBounds);
-            //};
-
-            //// save yourself some paper and render to a print-preview first
-            //using (var printPrvDlg = new PrintPreviewDialog { Document = doc })
-            //{
-            //    printPrvDlg.ShowDialog();
-            //}
-
-            //// finally show the print dialog so the user can select a printer
-            //// and a paper size (along with other miscellaneous settings)
-            //using (var pd = new PrintDialog { Document = doc })
-            //{
-            //    if (pd.ShowDialog() == DialogResult.OK) { doc.Print(); }
-            //}
-
             PrintDialog printDialog = new PrintDialog();
             PrintDocument printDoc = new PrintDocument();
             printDoc.PrintPage += PrintPicture;
             printDialog.Document = printDoc;
-
-
-            //PaperSize paperSize = new PaperSize("abcd", 60, 27);
-
-            //printDialog.PrinterSettings.DefaultPageSettings.PaperSize = paperSize;
-
             if (printDialog.ShowDialog() == DialogResult.OK)
             {
 
@@ -192,20 +191,24 @@ namespace WindowsForm.Forms
             Bitmap bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
 
             pictureBox1.DrawToBitmap(bmp, new Rectangle(0, 0, pictureBox1.Width, pictureBox1.Height));
-            e.Graphics.DrawImage(bmp, 0, 0);
+            e.Graphics?.DrawImage(bmp, 0, 0);
             bmp.Dispose();
         }
 
-        private void USBBarcodeScannerForm_Load(object sender, EventArgs e)
-        {
+        //scroll---------------------->
 
+        private void trackBarWith_Scroll(object sender, EventArgs e)
+        {
+            pictureBox1.Width = trackBarWith.Value * 10 + width;
+            _formSettingService.UpdateUsbBarCodeScannerFormTrackBarValues(trackBarWith.Value,
+                                                                          trackBarHeight.Value);
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void trackBarHeight_Scroll(object sender, EventArgs e)
         {
-
+            pictureBox1.Height = trackBarHeight.Value * 10 + height;
+            _formSettingService.UpdateUsbBarCodeScannerFormTrackBarValues(trackBarWith.Value,
+                                                                          trackBarHeight.Value);
         }
-
-        
     }
 }

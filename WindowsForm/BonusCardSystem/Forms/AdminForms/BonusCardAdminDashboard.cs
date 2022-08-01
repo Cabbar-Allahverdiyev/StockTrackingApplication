@@ -454,7 +454,8 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
 
         private void lazerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new WindowsForm.Forms.USBBarcodeScannerForm(_barcodeGenerator), sender);
+            OpenChildForm(new WindowsForm.Forms.USBBarcodeScannerForm(_barcodeGenerator
+                , _formSettingService), sender);
         }
 
 

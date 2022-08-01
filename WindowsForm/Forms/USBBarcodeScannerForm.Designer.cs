@@ -41,7 +41,11 @@ namespace WindowsForm.Forms
             this.textBoxInfo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.trackBarWith = new System.Windows.Forms.TrackBar();
+            this.trackBarHeight = new System.Windows.Forms.TrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarWith)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarHeight)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxBarcodeNumber
@@ -98,13 +102,12 @@ namespace WindowsForm.Forms
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(140, 67);
+            this.pictureBox1.Location = new System.Drawing.Point(194, 117);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(111, 74);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // buttonRandom
             // 
@@ -164,11 +167,31 @@ namespace WindowsForm.Forms
             this.label2.TabIndex = 15;
             this.label2.Text = ": Barkod";
             // 
+            // trackBarWith
+            // 
+            this.trackBarWith.Location = new System.Drawing.Point(184, 66);
+            this.trackBarWith.Name = "trackBarWith";
+            this.trackBarWith.Size = new System.Drawing.Size(162, 45);
+            this.trackBarWith.TabIndex = 16;
+            this.trackBarWith.Scroll += new System.EventHandler(this.trackBarWith_Scroll);
+            // 
+            // trackBarHeight
+            // 
+            this.trackBarHeight.Location = new System.Drawing.Point(143, 108);
+            this.trackBarHeight.Name = "trackBarHeight";
+            this.trackBarHeight.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trackBarHeight.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.trackBarHeight.Size = new System.Drawing.Size(45, 162);
+            this.trackBarHeight.TabIndex = 17;
+            this.trackBarHeight.Scroll += new System.EventHandler(this.trackBarHeight_Scroll);
+            // 
             // USBBarcodeScannerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 367);
+            this.Controls.Add(this.trackBarHeight);
+            this.Controls.Add(this.trackBarWith);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxInfo);
@@ -186,6 +209,8 @@ namespace WindowsForm.Forms
             this.Text = "Barkod səhifəsi";
             this.Load += new System.EventHandler(this.USBBarcodeScannerForm_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarWith)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarHeight)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -204,5 +229,7 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.TextBox textBoxInfo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TrackBar trackBarWith;
+        private System.Windows.Forms.TrackBar trackBarHeight;
     }
 }
