@@ -8,6 +8,7 @@ using DataAccess.Abstract;
 using Entities.Concrete.ForForms;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 
 namespace Business.Concrete
@@ -16,9 +17,12 @@ namespace Business.Concrete
     {
         IFormSettingDal _formSettingDal;
 
+        private readonly string UsbBarCodeScannerFormTrackBarValues;
+
         public FormSettingManager(IFormSettingDal formSettingDal)
         {
             _formSettingDal = formSettingDal;
+            UsbBarCodeScannerFormTrackBarValues = "UsbBarCodeScannerFormTrackBarValues";
         }
 
         [ValidationAspect(typeof(FormSettingValidator))]
@@ -71,6 +75,32 @@ namespace Business.Concrete
                 return new ErrorDataResult<FormSetting>(FormSettingMessaeges.NotFound);
             }
             return new SuccessDataResult<FormSetting>(formSetting,FormSettingMessaeges.Found);  
+        }
+
+        public IDataResult<Size> GetUsbBarCodeScannerFormTrackBarValues()
+        {
+            FormSetting formSetting = _formSettingDal.Get(s => s.Name == UsbBarCodeScannerFormTrackBarValues);
+            if (formSetting == null)
+            {
+                return new ErrorDataResult<Size>(FormSettingMessaeges.NotFound);
+            }
+            int width = Convert.ToInt32(formSetting.Value.Split(",")[0]);
+            int height = Convert.ToInt32(formSetting.Value.Split(",")[1]);
+            return new SuccessDataResult<Size>(new Size() { Width=width,Height=height},
+                                               FormSettingMessaeges.Found);
+        }
+
+        public IResult UpdateUsbBarCodeScannerFormTrackBarValues(int width,int height)
+        {
+            string values = string.Join(',', width.ToString(), height.ToString());
+            FormSetting formSetting = _formSettingDal.Get(s => s.Name == UsbBarCodeScannerFormTrackBarValues);
+            formSetting.Value = values;
+            IResult result = this.Update(formSetting);
+            if (result.Success)
+            {
+                return new SuccessResult(result.Message);
+            }
+            return new ErrorResult(result.Message);
         }
     }
 }

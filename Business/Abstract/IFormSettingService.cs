@@ -2,6 +2,7 @@
 using Entities.Concrete.ForForms;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 
 namespace Business.Abstract
@@ -14,5 +15,8 @@ namespace Business.Abstract
         IResult Delete(FormSetting formSetting);
         IDataResult<FormSetting> GetById(int id);
         IDataResult<FormSetting> GetByName(string name);
+
+        IDataResult<Size> GetUsbBarCodeScannerFormTrackBarValues();
+        IResult UpdateUsbBarCodeScannerFormTrackBarValues(int width, int height);
     }
 }
