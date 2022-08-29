@@ -13,5 +13,6 @@ namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate
         string CalculateEan13(string country, string manufacturer, string product);
         IResult Load(PictureBox barcodePicture);
         IResult Save(Image ımage);
+        IResult ThanMoreOneSave(List<Image> images);
     }
 }

@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate
 {
-    public class BarcodeGeneratorBase
+    public class BarcodeGeneratorBase : IBarcodeGeneratorBase
     {
         private readonly IProductService _productService;
         private OpenFileDialog openDialog;
@@ -85,6 +85,50 @@ namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate
                 }
                 return new ErrorResult(BarcodeNumberMessages.SaveFailed);
 
+            }
+
+        }
+
+        public IResult ThanMoreOneSave(List<Image> images)
+        {
+
+            using (SaveFileDialog saveDialog = new SaveFileDialog())
+            {
+                saveDialog.Filter = "PNG|*.png";
+                List<string> errorMessages = new List<string>();
+                if (saveDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = saveDialog.FileName;
+                    int firstIndex = filePath.LastIndexOf('\\') + 1;
+                    int lastIndex = filePath.LastIndexOf('.');
+
+
+                    //fileName = fileName.Substring((filePath.LastIndexOf('/') + 1), filePath.Length);
+                    ////filePath.Remove((filePath.LastIndexOf('/') + 1),filePath.Length);
+                    //filePath = filePath + fileName+".png";
+                    for (int i = 0; i < images.Count; i++)
+                    {
+                        string fileName = filePath.Substring(firstIndex, lastIndex - firstIndex) + $"{i + 1}"
+                            + filePath.Substring(lastIndex);
+                        string path = filePath.Remove(firstIndex);
+                        path += fileName;
+                        string fileFullName = path;
+                        Image img = images[i];
+                        if (img == null)
+                        {
+                            errorMessages.Add(BarcodeNumberMessages.SaveFailed + (fileName));
+                        }
+                        img.Save(fileFullName,
+                            ImageFormat.Png);
+                        //img.Save($"Barcode_Images/{i}.png",ImageFormat.Png);
+                        //return new SuccessResult(BarcodeNumberMessages.Save);
+                    }
+                }
+                if (errorMessages.Count == 0)
+                {
+                    return new SuccessResult(BarcodeNumberMessages.SavedBarcodeThanMoreOne(images.Count));
+                }
+                return new ErrorResult(BarcodeNumberMessages.SaveFailed);
             }
 
         }

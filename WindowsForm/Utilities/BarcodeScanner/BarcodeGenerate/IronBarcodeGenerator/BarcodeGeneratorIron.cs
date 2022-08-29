@@ -110,5 +110,14 @@ namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate.IronBarcodeGenera
             }
         }
 
+        public IDataResult<Image> GenerateBarcodeCode128(string text, int width, int height)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Image>> GenerateBarcodeCode128ThanMoreOne(string text, int width, int height, int count)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

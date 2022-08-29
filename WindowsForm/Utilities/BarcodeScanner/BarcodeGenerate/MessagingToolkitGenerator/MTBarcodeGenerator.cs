@@ -114,6 +114,25 @@ namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate.MessagingToolkitG
             return new SuccessDataResult<string>(result.Text, BarcodeNumberMessages.Scanned);
         }
 
+        public IDataResult<Image> GenerateBarcodeCode128(string barcodeText, int width, int height)
+        {
+            generator = new BarcodeEncoder();
+            generator.IncludeLabel = true;
+            generator.CustomLabel = barcodeText;
+            if (barcodeText != "")
+            {
+                //pictureBox.Image = 
+                Image result = new Bitmap(generator.Encode(BarcodeFormat.Code128, barcodeText));
+                return new SuccessDataResult<Image>(result, BarcodeNumberMessages.BarcodeNumberGenerated);
+            }
+            return new ErrorDataResult<Image>(BarcodeNumberMessages.QRCodeNotGenerated);
+        }
+
+        public IDataResult<List<Image>> GenerateBarcodeCode128ThanMoreOne(string text, int width, int height, int count)
+        {
+            throw new NotImplementedException();
+        }
+
         //public IResult Save(PictureBox barcodePicture)
         //{
         //    if (barcodePicture.Image == null)
