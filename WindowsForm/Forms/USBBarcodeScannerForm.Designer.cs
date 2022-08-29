@@ -104,7 +104,7 @@ namespace WindowsForm.Forms
             // 
             this.pictureBox1.Location = new System.Drawing.Point(194, 117);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(111, 74);
+            this.pictureBox1.Size = new System.Drawing.Size(111, 60);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
@@ -189,6 +189,7 @@ namespace WindowsForm.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(640, 367);
             this.Controls.Add(this.trackBarHeight);
             this.Controls.Add(this.trackBarWith);

@@ -35,6 +35,8 @@ namespace WindowsForm.Forms
 
         private MyControl _myControl;
 
+        private  USBBarcodeScannerForm usbBarcodeScannerForm;
+        private readonly ProductViewDashboardDetailsSearch detailSearch;
 
         public FormProductAdd(IProductService productService
                             , IBrandService brandService
@@ -59,9 +61,6 @@ namespace WindowsForm.Forms
             MyControl.WritePlaceholdersForTextBoxBarcodeNo(textBoxBarkodNo);
             MyControl.WritePlaceholdersForTextBoxQuantityPerUnit(textBoxKemiyyet);
         }
-
-        private readonly USBBarcodeScannerForm usbBarcodeScannerForm;
-        private readonly ProductViewDashboardDetailsSearch detailSearch;
 
         private void FormProductAdd_Load(object sender, EventArgs e)
         {
@@ -130,6 +129,7 @@ namespace WindowsForm.Forms
 
         private void buttonBarcodeGenerate_Click(object sender, EventArgs e)
         {
+            usbBarcodeScannerForm = new USBBarcodeScannerForm(_barcodeGenerator, _formSettingService);
             USBBarcodeScannerForm.BarcodeNumber = null;
             usbBarcodeScannerForm.ShowDialog();
             if (USBBarcodeScannerForm.BarcodeNumber == null)
