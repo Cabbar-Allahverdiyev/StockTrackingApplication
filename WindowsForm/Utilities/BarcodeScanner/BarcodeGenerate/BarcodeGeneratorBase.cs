@@ -102,10 +102,6 @@ namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate
                     int firstIndex = filePath.LastIndexOf('\\') + 1;
                     int lastIndex = filePath.LastIndexOf('.');
 
-
-                    //fileName = fileName.Substring((filePath.LastIndexOf('/') + 1), filePath.Length);
-                    ////filePath.Remove((filePath.LastIndexOf('/') + 1),filePath.Length);
-                    //filePath = filePath + fileName+".png";
                     for (int i = 0; i < images.Count; i++)
                     {
                         string fileName = filePath.Substring(firstIndex, lastIndex - firstIndex) + $"{i + 1}"
@@ -120,8 +116,6 @@ namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate
                         }
                         img.Save(fileFullName,
                             ImageFormat.Png);
-                        //img.Save($"Barcode_Images/{i}.png",ImageFormat.Png);
-                        //return new SuccessResult(BarcodeNumberMessages.Save);
                     }
                 }
                 if (errorMessages.Count == 0)

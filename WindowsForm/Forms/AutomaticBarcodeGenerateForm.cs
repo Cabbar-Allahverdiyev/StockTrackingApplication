@@ -74,7 +74,10 @@ namespace WindowsForm.Forms
                                             .GenerateBarcodeCode128ThanMoreOne(textBoxBarcodeNumber.Text,
                                                                                pictureBox1.Width,
                                                                                pictureBox1.Height,
-                                                                               int.Parse(numericUpDownCount.Value.ToString()));
+                                                                               int.Parse(
+                                                                                   numericUpDownCount
+                                                                                   .Value.ToString()
+                                                                                   ));
             if (!barcodes.Success)
             {
                 FormsMessage.ErrorMessage(barcodes.Message);
@@ -86,14 +89,7 @@ namespace WindowsForm.Forms
                 FormsMessage.ErrorMessage(result.Message);
                 return;
             }
-
-            //if (pictureBox1.Image != null)
-            //{
-            //    Image img = pictureBox1.Image;
-            //    img.Save("Barcode_Images/1", ImageFormat.Png);
-            //    FormsMessage.SuccessMessage(BarcodeNumberMessages.Save);
-            //}
-            // FormsMessage.ErrorMessage(BarcodeNumberMessages.SaveFailed);
+            FormsMessage.SuccessMessage(result.Message);
         }
 
         private void buttonGenerate_Click(object sender, EventArgs e)

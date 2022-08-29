@@ -115,13 +115,33 @@ namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate.NetBarcodes
             {
                 return new ErrorDataResult<List<System.Drawing.Image>>(BarcodeNumberMessages.CountQreaterThanZero);
             }
+
+            int firstIndex = 0;
+            char[] reversedChar = text.ToCharArray().Reverse().ToArray();
+            for (int i = reversedChar.Length - 1; i >= 0; i--)
+            {
+                char number = reversedChar[i];
+                if (char.IsDigit(number) && int.Parse(number.ToString()) != 0)
+                {
+                    firstIndex = text.LastIndexOf(number);
+                }
+            }
+
+            int barcodeNumber = int.Parse(text.Substring(firstIndex));
+            string barcodeValue = "";
+
+
             List<System.Drawing.Image> images = new List<System.Drawing.Image>();
             for (int i = 0; i < count; i++)
             {
-                IDataResult<System.Drawing.Image> result = this.GenerateBarcodeCode128(text,width,height);
+                barcodeValue = text.Remove(firstIndex);
+                barcodeValue += barcodeNumber;
+
+                IDataResult<System.Drawing.Image> result = this.GenerateBarcodeCode128(barcodeValue,width,height);
                 if (result.Success)
                 {
                     images.Add(result.Data);
+                    barcodeNumber++;
                 }
             }
             return new SuccessDataResult<List<System.Drawing.Image>>
