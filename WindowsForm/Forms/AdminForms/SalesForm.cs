@@ -23,6 +23,7 @@ using Entities.DTOs.BonusCardDtos;
 using Business.ValidationRules.FluentValidation.SaleValidators;
 using WindowsForm.Utilities.Helpers.Calculators;
 using Business.ValidationRules.FluentValidation;
+using WindowsForm.BonusCardSystem.CommonMethods;
 
 namespace WindowsForm.Forms
 {
@@ -47,6 +48,7 @@ namespace WindowsForm.Forms
         IFormSettingService _formSettingService;
 
         private MyControl _myControl;
+        private BonusCardCommonMethod _bonusCardCommonMethod;
 
         public SalesForm(ICategoryService categoryService
                             , IBrandService brandService
@@ -57,7 +59,8 @@ namespace WindowsForm.Forms
                             , ISaleService saleWinFormService
                             , IDebtService debtService
                             , IBonusCardService bonusCardService
-                            , IFormSettingService formSettingService)
+                            , IFormSettingService formSettingService
+                            )
         {
             _productService = productService;
             _cartService = cartService;
@@ -83,7 +86,7 @@ namespace WindowsForm.Forms
             BonusCardId = 0;
             BonusCardSelectForm.BonusCardId = 0;
             CustomerId = 0;
-
+            _bonusCardCommonMethod = new BonusCardCommonMethod(_bonusCardService,_myControl,_formSettingService);
         }
 
 
@@ -660,29 +663,34 @@ namespace WindowsForm.Forms
 
         private void textBoxBonusCardSelect_KeyPress(object sender, KeyPressEventArgs e)
         {
-            try
-            {
-                _myControl.MakeTextBoxNumberBox(e);
-                string barcodeNumber = textBoxBonusCardSelect.Text;
-                if (barcodeNumber.Length >= 13)
-                {
-                    IDataResult<BonusCardForFormsDto> getBonusCard = _bonusCardService.GetBonusCardForFormsDetailByBarcodeNumber(barcodeNumber);
-                    if (!getBonusCard.Success)
-                    {
-                        FormsMessage.WarningMessage(getBonusCard.Message);
-                        return;
-                    }
-                    BonusCardId = getBonusCard.Data.BonusCardId;
-                    textBoxBonusCardCustomerName.Text = getBonusCard.Data.Ad + " " + getBonusCard.Data.Soyad;
-                    FormsMessage.SuccessMessage(getBonusCard.Message);
+            _bonusCardCommonMethod.BonusCardSelectByTextBox(textBoxBonusCardSelect,
+                                                            textBoxBonusCardCustomerName,
+                                                            ref BonusCardId,
+                                                             e,
+                                                             out _);
+            //try
+            //{
+            //    _myControl.MakeTextBoxNumberBox(e);
+            //    string barcodeNumber = textBoxBonusCardSelect.Text;
+            //    if (barcodeNumber.Length >= 13)
+            //    {
+            //        IDataResult<BonusCardForFormsDto> getBonusCard = _bonusCardService.GetBonusCardForFormsDetailByBarcodeNumber(barcodeNumber);
+            //        if (!getBonusCard.Success)
+            //        {
+            //            FormsMessage.WarningMessage(getBonusCard.Message);
+            //            return;
+            //        }
+            //        BonusCardId = getBonusCard.Data.BonusCardId;
+            //        textBoxBonusCardCustomerName.Text = getBonusCard.Data.Ad + " " + getBonusCard.Data.Soyad;
+            //        FormsMessage.SuccessMessage(getBonusCard.Message);
 
-                }
-            }
-            catch (Exception ex)
-            {
-                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
-                return;
-            }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
+            //    return;
+            //}
         }
 
         private void textBoxMaxQiymet_KeyPress(object sender, KeyPressEventArgs e)
@@ -962,6 +970,11 @@ namespace WindowsForm.Forms
         }
 
         private void textBoxBonusCardSelect_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxBonusCardCustomerName_TextChanged(object sender, EventArgs e)
         {
 
         }

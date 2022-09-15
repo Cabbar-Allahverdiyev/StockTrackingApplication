@@ -46,6 +46,7 @@ namespace WindowsForm.Forms
         IBonusCardService _bonusCardService;
         IFormSettingService _formSettingService;
         IBonusCardOperationService _bonusCardOperationService;
+        ILoggerService _loggerService;
         private readonly IBarcodeGenerator _barcodeGenerator;
 
 
@@ -69,7 +70,8 @@ namespace WindowsForm.Forms
             , IBonusCardService bonusCardService
             , IFormSettingService formSettingService
             , IBonusCardOperationService bonusCardOperationService
-            ,IBarcodeGenerator barcodeGenerator)
+            , IBarcodeGenerator barcodeGenerator,
+ILoggerService loggerService)
         {
             _userOperationClaimForFormsService = userOperationClaimForFormsService;
             _userService = userService;
@@ -87,9 +89,10 @@ namespace WindowsForm.Forms
             _bonusCardService = bonusCardService;
             _formSettingService = formSettingService;
             _bonusCardOperationService = bonusCardOperationService;
-            _barcodeGenerator=barcodeGenerator;
+            _barcodeGenerator = barcodeGenerator;
             InitializeComponent();
             this.BackColor = Color.FromArgb(41, 128, 185);
+            _loggerService = loggerService;
         }
 
         //Click------------------------------->
@@ -160,7 +163,8 @@ namespace WindowsForm.Forms
                                                     ,_bonusCardService
                                                     ,_formSettingService
                                                     ,_bonusCardOperationService
-                                                    , _barcodeGenerator);
+                                                    , _barcodeGenerator
+                                                    ,_loggerService);
                     this.Hide();
                     dashboard.Show();
                     return;
@@ -182,7 +186,8 @@ namespace WindowsForm.Forms
                                                                 ,_bonusCardService
                                                                 ,_formSettingService
                                                                 ,_bonusCardOperationService
-                                                                , _barcodeGenerator);
+                                                                , _barcodeGenerator
+                                                                ,_loggerService);
                 this.Hide();
                 userDashboard.Show();
 

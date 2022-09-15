@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using USB_Barcode_Scanner;
@@ -68,23 +69,32 @@ namespace WindowsForm.Forms
 
         private void buttonElaveEt_Click(object sender, EventArgs e)
         {
-            BonusCard bonusCard = new BonusCard();
-            bonusCard.CustomerId = int.Parse(textBoxMusteriId.Text);
-            bonusCard.BarcodeNumber = textBoxBarkod.Text;
-            bonusCard.InterestAdvantage = textBoxGuzest.Text == "" ? 0 : decimal.Parse(textBoxGuzest.Text);
-            if (!FormValidationTool.IsValid(new BonusCardValidator(), bonusCard))
+            try
             {
+                BonusCard bonusCard = new BonusCard();
+                bonusCard.CustomerId = int.Parse(textBoxMusteriId.Text);
+                bonusCard.BarcodeNumber = textBoxBarkod.Text;
+                bonusCard.InterestAdvantage = textBoxGuzest.Text == "" ? 0 : decimal.Parse(textBoxGuzest.Text);
+                if (!FormValidationTool.IsValid(new BonusCardValidator(), bonusCard))
+                {
+                    return;
+                }
+                IResult result = _bonusCardService.Add(bonusCard);
+                if (!result.Success)
+                {
+                    FormsMessage.WarningMessage(result.Message);
+                    return;
+                }
+                FormsMessage.SuccessMessage(result.Message);
+                BonusCardRefresh();
+                TextBoxController.ClearAllTextBoxesByGroupBox(groupBoxMusteri);
+            }
+            catch (Exception ex)
+            {
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
                 return;
             }
-            IResult result = _bonusCardService.Add(bonusCard);
-            if (!result.Success)
-            {
-                FormsMessage.WarningMessage(result.Message);
-                return;
-            }
-            FormsMessage.SuccessMessage(result.Message);
-            BonusCardRefresh();
-            TextBoxController.ClearAllTextBoxesByGroupBox(groupBoxMusteri);
+
         }
 
         //Text Changed

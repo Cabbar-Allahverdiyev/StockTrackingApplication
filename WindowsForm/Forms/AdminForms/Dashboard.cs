@@ -37,6 +37,7 @@ namespace WindowsForm.Forms.AdminForms
         IFormSettingService _formSettingService;
         IBonusCardOperationService _bonusCardOperationService;
         IBarcodeGenerator _barcodeGenerator;
+        ILoggerService _loggerService;
 
         //OperationClaimForFormsManager _operationClaimManager=new OperationClaimForFormsManager(new EfOperationClaimForFormsDal());
         //UserOperationClaimForFormsManager _userOperationClaimForFormsManager = new UserOperationClaimForFormsManager(new EfUserOperationClaimForFormsDal());
@@ -60,7 +61,8 @@ namespace WindowsForm.Forms.AdminForms
             , IBonusCardService bonusCardService
             , IFormSettingService formSettingService
             , IBonusCardOperationService bonusCardOperationService
-            ,IBarcodeGenerator barcodeGenerator)
+            , IBarcodeGenerator barcodeGenerator,
+              ILoggerService loggerService)
         {
             _userService = userService;
             _operationClaimService = operationClaimService;
@@ -90,6 +92,7 @@ namespace WindowsForm.Forms.AdminForms
             labelLastName.Text = getUser.Data.LastName;
 
             DisableButton();
+            _loggerService = loggerService;
 
             //WM_NCCALCSIZE
         }
@@ -350,7 +353,7 @@ namespace WindowsForm.Forms.AdminForms
                                                     ,_bonusCardService
                                                     ,_formSettingService
                                                     ,_bonusCardOperationService
-                                                    , _barcodeGenerator));
+                                                    , _barcodeGenerator, _loggerService));
 
 
         }
@@ -371,7 +374,8 @@ namespace WindowsForm.Forms.AdminForms
 
         private void yeniləToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new ProductUpdateForm(_productService, _brandService, _categoryService, _supplierService,_formSettingService), sender);
+            OpenChildForm(new ProductUpdateForm(_productService,
+                _brandService, _categoryService, _supplierService,_formSettingService,_loggerService), sender);
         }
 
         private void silToolStripMenuItem1_Click(object sender, EventArgs e)

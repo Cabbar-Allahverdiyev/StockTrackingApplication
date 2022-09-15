@@ -24,6 +24,7 @@ using Business.ValidationRules.FluentValidation;
 using Business.ValidationRules.FluentValidation.SaleValidators;
 using WindowsForm.Utilities.Helpers.Calculators;
 using WindowsForm.Utilities.Helpers.Selectors.CustomerSelectors;
+using WindowsForm.BonusCardSystem.CommonMethods;
 
 namespace WindowsForm.Forms.UserForms
 {
@@ -47,6 +48,7 @@ namespace WindowsForm.Forms.UserForms
 
         private MyControl _myControl;
         private List<ProductViewDashboardDetailDto> _dataProducts;
+        private BonusCardCommonMethod _bonusCardCommonMethod;
 
         ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
 
@@ -90,6 +92,8 @@ namespace WindowsForm.Forms.UserForms
             BonusCardSelectForm.BonusCardId = 0;
             CustomerSelectForm.CustomerId = 0;
             CustomerId = 0;
+
+            _bonusCardCommonMethod = new BonusCardCommonMethod(_bonusCardService,_myControl,_formSettingService);
         }
 
         private void SalesForm_Load(object sender, EventArgs e)
@@ -686,29 +690,34 @@ namespace WindowsForm.Forms.UserForms
 
         private void textBoxBonusCardSelect_KeyPress(object sender, KeyPressEventArgs e)
         {
-            try
-            {
-                _myControl.MakeTextBoxNumberBox(e);
-                string barcodeNumber = textBoxBonusCardSelect.Text;
-                if (barcodeNumber.Length >= 13)
-                {
-                    IDataResult<BonusCardForFormsDto> getBonusCard = _bonusCardService.GetBonusCardForFormsDetailByBarcodeNumber(barcodeNumber);
-                    if (!getBonusCard.Success)
-                    {
-                        FormsMessage.WarningMessage(getBonusCard.Message);
-                        return;
-                    }
-                    BonusCardId = getBonusCard.Data.BonusCardId;
-                    textBoxBonusCardCustomerName.Text = getBonusCard.Data.Ad + " " + getBonusCard.Data.Soyad;
-                    FormsMessage.SuccessMessage(getBonusCard.Message);
+            _bonusCardCommonMethod.BonusCardSelectByTextBox(textBoxBonusCardSelect,
+                                                           textBoxBonusCardCustomerName,
+                                                           ref BonusCardId,
+                                                            e,
+                                                            out _);
+            //try
+            //{
+            //    _myControl.MakeTextBoxNumberBox(e);
+            //    string barcodeNumber = textBoxBonusCardSelect.Text;
+            //    if (barcodeNumber.Length >= 13)
+            //    {
+            //        IDataResult<BonusCardForFormsDto> getBonusCard = _bonusCardService.GetBonusCardForFormsDetailByBarcodeNumber(barcodeNumber);
+            //        if (!getBonusCard.Success)
+            //        {
+            //            FormsMessage.WarningMessage(getBonusCard.Message);
+            //            return;
+            //        }
+            //        BonusCardId = getBonusCard.Data.BonusCardId;
+            //        textBoxBonusCardCustomerName.Text = getBonusCard.Data.Ad + " " + getBonusCard.Data.Soyad;
+            //        FormsMessage.SuccessMessage(getBonusCard.Message);
 
-                }
-            }
-            catch (Exception ex)
-            {
-                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
-                return;
-            }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
+            //    return;
+            //}
         }
 
 

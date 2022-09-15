@@ -19,18 +19,20 @@ using WindowsForm.Utilities.Search.Concrete.BonusCardOperationSearch;
 using Entities.DTOs.BonusCardOperationDto;
 using DataAccess.Constants.Messages;
 using WindowsForm.Utilities.Helpers.Calculators;
+using WindowsForm.BonusCardSystem.CommonMethods;
 
 namespace WindowsForm.BonusCardSystem.Forms
 {
     public partial class HomeForm : Form
     {
-        private int BonusCardId { get; set; }
+        private int BonusCardId;
         private int UserId { get; set; }
 
         IBonusCardService _bonusCardService;
         IBonusCardOperationService _bonusCardOperationService;
         IFormSettingService _formSettingService;
         MyControl _myControl;
+        private readonly BonusCardCommonMethod _bonusCardCommonMethod;
 
         BonusCardOperationForFormsDtoSearch _bonusCardOperationSearch;
         List<BonusCardOperationForFormsDto> _data;
@@ -53,7 +55,8 @@ namespace WindowsForm.BonusCardSystem.Forms
             BarcodeScanner barcodeScanner = new BarcodeScanner(textBoxBonusCardSelect);
             barcodeScanner.BarcodeScanned += BarcodeScanner_BarcodeScanned;
             BonusCardId = 0;
-            UserId = BonusCardSystemLoginForm.UserId==0?WindowsForm.Forms.LoginForm.UserId: BonusCardSystemLoginForm.UserId;
+            UserId = BonusCardSystemLoginForm.UserId == 0 ? WindowsForm.Forms.LoginForm.UserId : BonusCardSystemLoginForm.UserId;
+            _bonusCardCommonMethod = new BonusCardCommonMethod(_bonusCardService,_myControl,_formSettingService);
         }
 
         private void HomeForm_Load(object sender, EventArgs e)
@@ -66,18 +69,34 @@ namespace WindowsForm.BonusCardSystem.Forms
         //Key press----------------------------->
         private void textBoxBonusCardSelect_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (textBoxBonusCardSelect.Text.Length == 13)
+            BonusCardForFormsDto getBonusCardData = new BonusCardForFormsDto();
+            try
             {
-                IDataResult<BonusCardForFormsDto> getBonusCard = _bonusCardService.GetBonusCardForFormsDetailByBarcodeNumber(textBoxBonusCardSelect.Text);
-                if (!getBonusCard.Success)
-                {
-                    FormsMessage.WarningMessage(getBonusCard.Message);
-                    return;
-                }
-                BonusCardId = getBonusCard.Data.BonusCardId;
-                textBoxCustomer.Text = getBonusCard.Data.Ad + " " + getBonusCard.Data.Soyad;
-                textBoxGuzest.Text = getBonusCard.Data.MusteriGuzesti.ToString();
+                _bonusCardCommonMethod.BonusCardSelectByTextBox(textBoxBonusCardSelect,
+                                                          textBoxCustomer,
+                                                          ref BonusCardId,
+                                                           e,
+                                                           out getBonusCardData);
             }
+            catch (Exception)
+            {
+
+                return;
+            }
+           
+              textBoxGuzest.Text = getBonusCardData.MusteriGuzesti.ToString();
+
+            //if (textBoxBonusCardSelect.Text.Length == 13)
+            //{
+            //    IDataResult<BonusCardForFormsDto> getBonusCard = _bonusCardService.GetBonusCardForFormsDetailByBarcodeNumber(textBoxBonusCardSelect.Text);
+            //    if (!getBonusCard.Success)
+            //    {
+            //        FormsMessage.WarningMessage(getBonusCard.Message);
+            //        return;
+            //    }
+            //    BonusCardId = getBonusCard.Data.BonusCardId;
+            //    textBoxCustomer.Text = getBonusCard.Data.Ad + " " + getBonusCard.Data.Soyad;
+            //}
         }
 
         private void textBoxGroupBoxPaymentBonusCardSelect_KeyPress(object sender, KeyPressEventArgs e)

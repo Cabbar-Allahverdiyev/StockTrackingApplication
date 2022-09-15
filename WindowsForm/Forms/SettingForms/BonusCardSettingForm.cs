@@ -33,13 +33,13 @@ namespace WindowsForm.Forms.SettingForms
         //Load--------------------------------->
         private void SettingForm_Load(object sender, EventArgs e)
         {
-            _myControl.SetAllParametersToControl(textBoxIGeneralInterestRate, textBoxWeeklyInterestRate);
+            _myControl.SetAllParametersToControl(textBoxIGeneralInterestRate, textBoxWeeklyInterestRate, textBoxBonusCardBarcodeLenth);
             WriteDaysOfWeekInComboBox(comboBoxWhichDays);
         }
         //Click---------------------------------->
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            _myControl.UpdateAllSetting(textBoxWeeklyInterestRate, textBoxIGeneralInterestRate, comboBoxWhichDays);
+            _myControl.UpdateAllSetting(textBoxWeeklyInterestRate, textBoxIGeneralInterestRate, comboBoxWhichDays, textBoxBonusCardBarcodeLenth);
         }
         //Text Changed---------------------------------->
 
@@ -66,10 +66,20 @@ namespace WindowsForm.Forms.SettingForms
                 comboBox.Text = _formSettingService.GetByName(comboBox.Name).Data.Value;
             }
         }
+
+        private void groupBoxBonuCardVisualParams_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxIGeneralInterestRate_TextChanged(object sender, EventArgs e)
+        {
+
+        }
         //private void UpdateAllSetting(params Control[] controls)
         //{
         //    List<FormSetting> settings = _formSettingService.GetAll().Data;
-           
+
         //    foreach (Control control in controls)
         //    {
         //        if (control.GetType() == typeof(TextBox) || control.GetType() == typeof(ComboBox))
@@ -92,6 +102,6 @@ namespace WindowsForm.Forms.SettingForms
         //    FormsMessage.SuccessMessage(FormSettingMessaeges.SaveSuccess);
         //}
 
-        
+
     }
 }

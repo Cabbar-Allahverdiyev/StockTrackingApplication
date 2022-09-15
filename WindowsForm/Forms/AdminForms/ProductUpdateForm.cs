@@ -22,6 +22,7 @@ using System.Reflection;
 using Entities.DTOs.ProductDtos;
 using Business.Abstract;
 using Business.ValidationRules.FluentValidation.ProductValidators;
+using Entities.Concrete.ForForms;
 
 namespace WindowsForm.Forms
 {
@@ -35,12 +36,18 @@ namespace WindowsForm.Forms
         ICategoryService _categoryService;
         ISupplierService _supplierService;
         IFormSettingService _formSettingService;
+        ILoggerService _loggerService;
         private MyControl _myControl;
 
         List<ProductViewDashboardDetailDto> _dataProductViewDashboardDetail;
 
 
-        public ProductUpdateForm(IProductService productManager, IBrandService brandManager, ICategoryService categoryManager, ISupplierService supplierManager, IFormSettingService formSettingService)
+        public ProductUpdateForm(IProductService productManager,
+                                 IBrandService brandManager,
+                                 ICategoryService categoryManager,
+                                 ISupplierService supplierManager,
+                                 IFormSettingService formSettingService,
+                                 ILoggerService loggerService)
         {
             _productService = productManager;
             _brandService = brandManager;
@@ -49,6 +56,7 @@ namespace WindowsForm.Forms
             _formSettingService = formSettingService;
             _dataProductViewDashboardDetail = _productService.GetAllProductViewDasboardDetail().Data;
             _myControl = new MyControl(_formSettingService);
+            _loggerService = loggerService;
             InitializeComponent();
             MyControl.WritePlaceholdersForTextBoxSearchByProductName(textBoxAxtar);
             MyControl.WritePlaceholdersForTextBoxBarcodeNo(textBoxBarkodNo);
@@ -116,6 +124,7 @@ namespace WindowsForm.Forms
                     FormsMessage.WarningMessage(productUpdated.Message);
                     return;
                 }
+                _loggerService.Add(new Log { Value= $"[Updated] {product.Id}/{product.BarcodeNumber}/{product.ProductName} : {newUnitInStock} qədər dəyişdirildi {DateTime.Now}" });
                 FormsMessage.SuccessMessage(productUpdated.Message);
                 GroupBoxVarOlanMehsulControlClear();
                 ProductRefresh();
