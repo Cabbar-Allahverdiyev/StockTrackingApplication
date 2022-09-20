@@ -4,6 +4,7 @@ using Business.Constants.Messages;
 using Business.ValidationRules.FluentValidation;
 using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
+using DataAccess.Constants.Messages;
 using Entities.Concrete.ForForms;
 using System;
 using System.Collections.Generic;
@@ -173,6 +174,21 @@ namespace WindowsForm.MyControls
         public static void MakeDataGridViewCurrentColumnCurrentColor(DataGridView dataGridView, string columnName, Color color)
         {
             dataGridView.Columns[columnName].DefaultCellStyle.BackColor = color;
+        }
+
+        public static void MakeDataGridViewCurrentCellCurrentColor(DataGridView dataGridView, string rowName, Color color)
+        {
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                if (row.Cells["EmeliyyatVeziyyeti"].Value.ToString() == BonusCardOperationDalMessages.BonusCardSale)
+                   row.DefaultCellStyle.BackColor  = color;
+            }
+            //for (int i = 0; i < dataGridView.Rows.Count; i++)
+            //{
+            //    if(dataGridView.Rows[i].Cells["EmeliyyatVeziyyeti"].Value.ToString()== BonusCardOperationDalMessages.BonusCardSale)
+            //        dataGridView.Rows[i].DefaultCellStyle.ForeColor = color;
+            //}
+            //dataGridView.DefaultCellStyle.BackColor= color;
         }
 
         public void SetAllParametersToControl(params Control[] controls)

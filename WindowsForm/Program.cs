@@ -96,7 +96,7 @@ namespace WindowsForm
                                                                                _customerBalanceService,
                                                                                _customerPaymentService,
                                                                                _cartService,
-                                                                               _debtService,    
+                                                                               _debtService,
                                                                                _saleService,
                                                                                _supplierService,
                                                                                _brandService,
@@ -105,7 +105,7 @@ namespace WindowsForm
                                                                                _bonusCardOperationService,
                                                                                _barcodeGenerator));
 
-            //Application.Run(new Forms.FormUserAdd(_userService,_operationClaimForFormsService,_userOperationClaimForFormsService,_formSettingService));
+           // Application.Run(new BonusCardSystem.Forms.HomeForm(_bonusCardService,_bonusCardOperationService,_formSettingService));
 
             //Application.Run(new Forms.FormProductAdd(_productService,_brandService,_categoryService,_supplierService,_formSettingService));
 

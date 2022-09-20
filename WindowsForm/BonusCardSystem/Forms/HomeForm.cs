@@ -51,12 +51,12 @@ namespace WindowsForm.BonusCardSystem.Forms
             ChecBoxBonusCardChanged(checkBoxBonusCard, textBoxBonusCardSelect, buttonBonusCardSelect);
             ChecBoxBonusCardChanged
               (checkBoxGroupBoxPayment, textBoxGroupBoxPaymentBonusCardSelect, buttonGroupBoxPaymentBonusCardSelect);
-            BonusCardRefresh();
+            
             BarcodeScanner barcodeScanner = new BarcodeScanner(textBoxBonusCardSelect);
             barcodeScanner.BarcodeScanned += BarcodeScanner_BarcodeScanned;
             BonusCardId = 0;
             UserId = BonusCardSystemLoginForm.UserId == 0 ? WindowsForm.Forms.LoginForm.UserId : BonusCardSystemLoginForm.UserId;
-            _bonusCardCommonMethod = new BonusCardCommonMethod(_bonusCardService,_myControl,_formSettingService);
+            _bonusCardCommonMethod = new BonusCardCommonMethod(_bonusCardService, _myControl, _formSettingService);
         }
 
         private void HomeForm_Load(object sender, EventArgs e)
@@ -64,6 +64,17 @@ namespace WindowsForm.BonusCardSystem.Forms
             ComboBoxController.WriteDaysInComboBox(comboBoxDays);
             ComboBoxController.WriteMonthsInComboBox(comboBoxMonths);
             ComboBoxController.WriteYearsInComboBox(comboBoxYears);
+
+            labelTotalBonus.Text = CalculateTotalBonus(_bonusCardService.GetAll().Data).ToString();
+            CalculateTotalBonusCardOperation(_bonusCardOperationService.GetAll().Data) ;
+            BonusCardRefresh();
+            //foreach (DataGridViewRow row in dataGridViewList.Rows)
+            //{
+            //    if (row.Cells["EmeliyyatVeziyyeti"].Value.ToString() == BonusCardOperationDalMessages.BonusCardSale)
+            //    { row.DefaultCellStyle.BackColor = Color.Red;
+            //       // dataGridViewList.AlternatingRowsDefaultCellStyle.BackColor = Color.Red;
+            //      }
+            //}
         }
 
         //Key press----------------------------->
@@ -84,8 +95,8 @@ namespace WindowsForm.BonusCardSystem.Forms
 
                 return;
             }
-           
-              //textBoxGuzest.Text = getBonusCardData.MusteriGuzesti.ToString();
+
+            //textBoxGuzest.Text = getBonusCardData.MusteriGuzesti.ToString();
 
             //if (textBoxBonusCardSelect.Text.Length == 13)
             //{
@@ -102,7 +113,7 @@ namespace WindowsForm.BonusCardSystem.Forms
 
         private void textBoxGroupBoxPaymentBonusCardSelect_KeyPress(object sender, KeyPressEventArgs e)
         {
-           
+
             try
             {
                 _bonusCardCommonMethod.BonusCardSelectByTextBox(textBoxGroupBoxPaymentBonusCardSelect,
@@ -110,7 +121,7 @@ namespace WindowsForm.BonusCardSystem.Forms
                                                           ref BonusCardId,
                                                            e,
                                                            out _);
-                
+
             }
             catch (Exception)
             {
@@ -196,6 +207,8 @@ namespace WindowsForm.BonusCardSystem.Forms
                 BonusCardRefresh();
                 ClearGroupBox(groupBoxBonus);
                 BonusCardId = 0;
+                labelTotalBonus.Text = CalculateTotalBonus(_bonusCardService.GetAll().Data).ToString();
+                CalculateTotalBonusCardOperation(_bonusCardOperationService.GetAll().Data);
             }
             catch (Exception ex)
             {
@@ -233,6 +246,8 @@ namespace WindowsForm.BonusCardSystem.Forms
             BonusCardRefresh();
             ClearGroupBox(groupBoxPayment);
             BonusCardId = 0;
+            labelTotalBonus.Text = CalculateTotalBonus(_bonusCardService.GetAll().Data).ToString();
+            CalculateTotalBonusCardOperation(_bonusCardOperationService.GetAll().Data);
         }
 
 
@@ -252,6 +267,8 @@ namespace WindowsForm.BonusCardSystem.Forms
         {
             _data = _bonusCardOperationService.GetAllBonusCardOperationForFormsDto().Data;
             dataGridViewList.DataSource = _data;
+            labelTotalBonus.Text = CalculateTotalBonus(_bonusCardService.GetAll().Data).ToString();
+            CalculateTotalBonusCardOperation(_bonusCardOperationService.GetAll().Data);
         }
 
         private void buttonTemizle_Click(object sender, EventArgs e)
@@ -298,8 +315,8 @@ namespace WindowsForm.BonusCardSystem.Forms
                 // decimal incomeTotal = 0;
                 int staticUserId = BonusCardSystemLoginForm.UserId;
 
+                //labelTotalBonus.Text = CalculateTotalBonus(_bonusCardService.GetAll().Data).ToString();
 
-                labelTotalBonus.Text = CalculateTotalBonus(_bonusCardService.GetAll().Data).ToString();
 
                 if (comboBoxDays.SelectedItem == null && comboBoxMonths.SelectedItem != null && comboBoxYears.SelectedItem == null)
                 {
@@ -320,8 +337,8 @@ namespace WindowsForm.BonusCardSystem.Forms
 
                         }
                     }
-                    labelTotalBonusMade.Text = totalBonusMade.ToString();
-                    labelTotalBonusCardSales.Text = totalBonusSales.ToString();
+                    labelGBTotalBonusMade.Text = totalBonusMade.ToString();
+                    labelGBTotalBonusCardSales.Text = totalBonusSales.ToString();
                     dataGridViewList.DataSource = dataMonth;
                     return;
                 }
@@ -342,8 +359,8 @@ namespace WindowsForm.BonusCardSystem.Forms
                         }
                     }
 
-                    labelTotalBonusMade.Text = totalBonusMade.ToString();
-                    labelTotalBonusCardSales.Text = totalBonusSales.ToString();
+                    labelGBTotalBonusMade.Text = totalBonusMade.ToString();
+                    labelGBTotalBonusCardSales.Text = totalBonusSales.ToString();
                     dataGridViewList.DataSource = dataYear;
                     return;
                 }
@@ -366,8 +383,8 @@ namespace WindowsForm.BonusCardSystem.Forms
                             }
                         }
                     }
-                    labelTotalBonusMade.Text = totalBonusMade.ToString();
-                    labelTotalBonusCardSales.Text = totalBonusSales.ToString();
+                    labelGBTotalBonusMade.Text = totalBonusMade.ToString();
+                    labelGBTotalBonusCardSales.Text = totalBonusSales.ToString();
 
                     //burani refactor et 
                     //labelTotalBonus.Text = CalculateTotalBonus(_bonusCardService.GetAll().Data).ToString();
@@ -393,8 +410,8 @@ namespace WindowsForm.BonusCardSystem.Forms
                         }
                     }
                 }
-                labelTotalBonusMade.Text = totalBonusMade.ToString();
-                labelTotalBonusCardSales.Text = totalBonusSales.ToString();
+                labelGBTotalBonusMade.Text = totalBonusMade.ToString();
+                labelGBTotalBonusCardSales.Text = totalBonusSales.ToString();
 
                 //labelIncome.Text = incomeTotal.ToString();
 
@@ -446,6 +463,8 @@ namespace WindowsForm.BonusCardSystem.Forms
             //dataGridViewList.DataSource = _bonusCardService.GetAllBonusCardForFormsDetail().Data;
             _data = _bonusCardOperationService.GetAllBonusCardOperationForFormsDto().Data;
             dataGridViewList.DataSource = _data;
+            MyControl.MakeDataGridViewCurrentCellCurrentColor(dataGridViewList, "EmeliyyatVeziyyeti", Color.Green);
+        //    MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewList, "Qiymet", Color.Green);
         }
 
         private void ClearGroupBox(GroupBox groupBox)
@@ -475,14 +494,24 @@ namespace WindowsForm.BonusCardSystem.Forms
             return total;
         }
 
-        private decimal CalculateTotalBonusCardDto(List<BonusCardOperationForFormsDto> data)
+        private void CalculateTotalBonusCardOperation(List<BonusCardOperation> data)
         {
-            decimal total = 0;
+            decimal madeTotal = 0;
+            decimal saleTotal = 0;
+            decimal saleActiveTotal = 0;
             foreach (var item in data)
             {
-                total += item.Mebleg;
+                if (item.IsIncreasedBalance == true) madeTotal += item.Value;
+                if (item.IsIncreasedBalance == false) saleTotal += item.Value;
+                if (item.IsIncreasedBalance == false && item.Status) saleActiveTotal += item.Value;
             }
-            return total;
+            labelTotalMadeBonus.Text = madeTotal.ToString();
+            labelTotalBonusCardSales.Text = saleTotal.ToString();
+            labelTotalActiveBonusCardSales.Text = saleActiveTotal.ToString();
+            //return total;
+
         }
+
+      
     }
 }
