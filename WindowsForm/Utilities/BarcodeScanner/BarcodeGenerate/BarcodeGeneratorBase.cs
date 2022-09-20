@@ -104,7 +104,7 @@ namespace WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate
 
                     for (int i = 0; i < images.Count; i++)
                     {
-                        string fileName = filePath.Substring(firstIndex, lastIndex - firstIndex) + $"{i + 1}"
+                        string fileName = filePath.Substring(firstIndex, lastIndex - firstIndex) + $"{i }"
                             + filePath.Substring(lastIndex);
                         string path = filePath.Remove(firstIndex);
                         path += fileName;

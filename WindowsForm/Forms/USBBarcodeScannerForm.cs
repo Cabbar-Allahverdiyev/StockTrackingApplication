@@ -18,11 +18,12 @@ namespace WindowsForm.Forms
 {
     public partial class USBBarcodeScannerForm : Form
     {
-        private readonly IBarcodeGenerator _barcodeGenerator;
-        private readonly IFormSettingService _formSettingService;
         public static string? BarcodeNumber { get; set; }
         private int width;
         private int height;
+
+        private readonly IBarcodeGenerator _barcodeGenerator;
+        private readonly IFormSettingService _formSettingService;
         public USBBarcodeScannerForm(IBarcodeGenerator barcodeGenerator, IFormSettingService formSettingService)
         {
             _barcodeGenerator = barcodeGenerator;
@@ -41,6 +42,8 @@ namespace WindowsForm.Forms
             height = pictureBox1.Height;
             trackBarWith.Value = _formSettingService.GetUsbBarCodeScannerFormTrackBarValues().Data.Width;
             trackBarHeight.Value = _formSettingService.GetUsbBarCodeScannerFormTrackBarValues().Data.Height;
+            pictureBox1.Width = width + trackBarWith.Value * 10;
+            pictureBox1.Height = height + trackBarHeight.Value * 10;
         }
 
 
@@ -83,8 +86,8 @@ namespace WindowsForm.Forms
                 IDataResult<string> barcodeCreated;
                 IDataResult<Image> result = _barcodeGenerator.GenerateBarcode(textBoxBarcodeNumber.Text,
                                                                                 textBoxInfo.Text,
-                                                                                  width,
-                                                                                height);
+                                                                                  pictureBox1.Width,
+                                                                                pictureBox1.Height);
                 if (!result.Success)
                 {
                     FormsMessage.WarningMessage(result.Message);
@@ -106,8 +109,9 @@ namespace WindowsForm.Forms
                     buttonGenerate_Click(sender, e);
                 }
 
-                pictureBox1.Width += trackBarWith.Value * 10;
-                pictureBox1.Height += trackBarHeight.Value * 10;
+
+                pictureBox1.Width = trackBarWith.Value * 10+width;
+                pictureBox1.Height = trackBarHeight.Value * 10+ height;
                 FormsMessage.SuccessMessage(result.Message);
             }
             catch (Exception ex)
@@ -200,6 +204,7 @@ namespace WindowsForm.Forms
         private void trackBarWith_Scroll(object sender, EventArgs e)
         {
             pictureBox1.Width = trackBarWith.Value * 10 + width;
+            //width = pictureBox1.Width;
             _formSettingService.UpdateUsbBarCodeScannerFormTrackBarValues(trackBarWith.Value,
                                                                           trackBarHeight.Value);
         }
@@ -207,6 +212,7 @@ namespace WindowsForm.Forms
         private void trackBarHeight_Scroll(object sender, EventArgs e)
         {
             pictureBox1.Height = trackBarHeight.Value * 10 + height;
+           // height=pictureBox1.Height;  
             _formSettingService.UpdateUsbBarCodeScannerFormTrackBarValues(trackBarWith.Value,
                                                                           trackBarHeight.Value);
         }

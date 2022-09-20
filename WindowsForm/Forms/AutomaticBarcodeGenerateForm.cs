@@ -63,7 +63,7 @@ namespace WindowsForm.Forms
 
         private void trackBarHeight_Scroll(object sender, EventArgs e)
         {
-            pictureBox1.Height = trackBarHeight.Value * 10 + height;
+            pictureBox1.Height = trackBarHeight.Value * 2 + height;
             _formSettingService.UpdateUsbBarCodeScannerFormTrackBarValues(trackBarWith.Value,
                                                                           trackBarHeight.Value);
         }
@@ -75,8 +75,7 @@ namespace WindowsForm.Forms
                                                                                pictureBox1.Width,
                                                                                pictureBox1.Height,
                                                                                int.Parse(
-                                                                                   numericUpDownCount
-                                                                                   .Value.ToString()
+                                                                                   textBoxCount.Text.ToString()
                                                                                    ));
             if (!barcodes.Success)
             {

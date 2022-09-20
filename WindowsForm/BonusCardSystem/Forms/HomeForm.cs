@@ -77,6 +77,7 @@ namespace WindowsForm.BonusCardSystem.Forms
                                                           ref BonusCardId,
                                                            e,
                                                            out getBonusCardData);
+                textBoxGuzest.Text = getBonusCardData.MusteriGuzesti.ToString();
             }
             catch (Exception)
             {
@@ -84,7 +85,7 @@ namespace WindowsForm.BonusCardSystem.Forms
                 return;
             }
            
-              textBoxGuzest.Text = getBonusCardData.MusteriGuzesti.ToString();
+              //textBoxGuzest.Text = getBonusCardData.MusteriGuzesti.ToString();
 
             //if (textBoxBonusCardSelect.Text.Length == 13)
             //{
@@ -101,19 +102,35 @@ namespace WindowsForm.BonusCardSystem.Forms
 
         private void textBoxGroupBoxPaymentBonusCardSelect_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (textBoxGroupBoxPaymentBonusCardSelect.Text.Length == 13)
+           
+            try
             {
-                IDataResult<BonusCardForFormsDto> getBonusCard = _bonusCardService
-                    .GetBonusCardForFormsDetailByBarcodeNumber(textBoxGroupBoxPaymentBonusCardSelect.Text);
-                if (!getBonusCard.Success)
-                {
-                    FormsMessage.WarningMessage(getBonusCard.Message);
-                    return;
-                }
-                BonusCardId = getBonusCard.Data.BonusCardId;
-                textBoxGroupBoxPaymentCustomer.Text = getBonusCard.Data.Ad + " " + getBonusCard.Data.Soyad;
-
+                _bonusCardCommonMethod.BonusCardSelectByTextBox(textBoxGroupBoxPaymentBonusCardSelect,
+                                                          textBoxGroupBoxPaymentCustomer,
+                                                          ref BonusCardId,
+                                                           e,
+                                                           out _);
+                
             }
+            catch (Exception)
+            {
+
+                return;
+            }
+
+            //if (textBoxGroupBoxPaymentBonusCardSelect.Text.Length == 13)
+            //{
+            //    IDataResult<BonusCardForFormsDto> getBonusCard = _bonusCardService
+            //        .GetBonusCardForFormsDetailByBarcodeNumber(textBoxGroupBoxPaymentBonusCardSelect.Text);
+            //    if (!getBonusCard.Success)
+            //    {
+            //        FormsMessage.WarningMessage(getBonusCard.Message);
+            //        return;
+            //    }
+            //    BonusCardId = getBonusCard.Data.BonusCardId;
+            //    textBoxGroupBoxPaymentCustomer.Text = getBonusCard.Data.Ad + " " + getBonusCard.Data.Soyad;
+
+            //}
         }
 
         private void textBoxValue_KeyPress(object sender, KeyPressEventArgs e)
@@ -222,11 +239,13 @@ namespace WindowsForm.BonusCardSystem.Forms
         private void buttonGroupBoxTemizlePayment_Click(object sender, EventArgs e)
         {
             ClearGroupBox(groupBoxPayment);
+            BonusCardId = 0;
         }
 
         private void buttonTemizleBonusCard_Click(object sender, EventArgs e)
         {
             ClearGroupBox(groupBoxBonus);
+            BonusCardId = 0;
         }
 
         private void pictureBoxRefresh_Click(object sender, EventArgs e)

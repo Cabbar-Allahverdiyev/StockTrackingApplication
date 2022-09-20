@@ -39,12 +39,11 @@
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonScan = new System.Windows.Forms.Button();
             this.textBoxBarcodeNumber = new System.Windows.Forms.TextBox();
-            this.numericUpDownCount = new System.Windows.Forms.NumericUpDown();
             this.buttonPrint = new System.Windows.Forms.Button();
+            this.textBoxCount = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarWith)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCount)).BeginInit();
             this.SuspendLayout();
             // 
             // trackBarHeight
@@ -79,9 +78,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(273, 43);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 15);
+            this.label1.Size = new System.Drawing.Size(31, 15);
             this.label1.TabIndex = 28;
-            this.label1.Text = ": Məlumat";
+            this.label1.Text = ": Say";
             // 
             // buttonQrCode
             // 
@@ -153,13 +152,6 @@
             this.textBoxBarcodeNumber.Size = new System.Drawing.Size(128, 23);
             this.textBoxBarcodeNumber.TabIndex = 18;
             // 
-            // numericUpDownCount
-            // 
-            this.numericUpDownCount.Location = new System.Drawing.Point(215, 41);
-            this.numericUpDownCount.Name = "numericUpDownCount";
-            this.numericUpDownCount.Size = new System.Drawing.Size(52, 23);
-            this.numericUpDownCount.TabIndex = 32;
-            // 
             // buttonPrint
             // 
             this.buttonPrint.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -170,13 +162,20 @@
             this.buttonPrint.Text = "Çap et";
             this.buttonPrint.UseVisualStyleBackColor = true;
             // 
+            // textBoxCount
+            // 
+            this.textBoxCount.Location = new System.Drawing.Point(223, 39);
+            this.textBoxCount.Name = "textBoxCount";
+            this.textBoxCount.Size = new System.Drawing.Size(44, 23);
+            this.textBoxCount.TabIndex = 32;
+            // 
             // AutomaticBarcodeGenerateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.numericUpDownCount);
+            this.Controls.Add(this.textBoxCount);
             this.Controls.Add(this.trackBarHeight);
             this.Controls.Add(this.trackBarWith);
             this.Controls.Add(this.label2);
@@ -195,7 +194,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarHeight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarWith)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCount)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -214,7 +212,7 @@
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonScan;
         private System.Windows.Forms.TextBox textBoxBarcodeNumber;
-        private System.Windows.Forms.NumericUpDown numericUpDownCount;
         private System.Windows.Forms.Button buttonPrint;
+        private System.Windows.Forms.TextBox textBoxCount;
     }
 }

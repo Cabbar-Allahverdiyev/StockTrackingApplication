@@ -26,7 +26,7 @@ namespace WindowsForm.BonusCardSystem.CommonMethods
             _bonusCardService = bonusCardService;
             _myControl = myControl;
             _formSettingService = formSettingService;
-            BonusCardBarcodeLenth = "BonusCardBarcodeLenth";
+            BonusCardBarcodeLenth = "textBoxBonusCardBarcodeLenth";
         }
 
         public void BonusCardSelectByTextBox(TextBox textBoxBonusCardSelect,
