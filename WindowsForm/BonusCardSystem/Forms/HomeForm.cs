@@ -51,7 +51,7 @@ namespace WindowsForm.BonusCardSystem.Forms
             ChecBoxBonusCardChanged(checkBoxBonusCard, textBoxBonusCardSelect, buttonBonusCardSelect);
             ChecBoxBonusCardChanged
               (checkBoxGroupBoxPayment, textBoxGroupBoxPaymentBonusCardSelect, buttonGroupBoxPaymentBonusCardSelect);
-            
+
             BarcodeScanner barcodeScanner = new BarcodeScanner(textBoxBonusCardSelect);
             barcodeScanner.BarcodeScanned += BarcodeScanner_BarcodeScanned;
             BonusCardId = 0;
@@ -66,7 +66,7 @@ namespace WindowsForm.BonusCardSystem.Forms
             ComboBoxController.WriteYearsInComboBox(comboBoxYears);
 
             labelTotalBonus.Text = CalculateTotalBonus(_bonusCardService.GetAll().Data).ToString();
-            CalculateTotalBonusCardOperation(_bonusCardOperationService.GetAll().Data) ;
+            CalculateTotalBonusCardOperation(_bonusCardOperationService.GetAll().Data);
             BonusCardRefresh();
             //foreach (DataGridViewRow row in dataGridViewList.Rows)
             //{
@@ -269,6 +269,7 @@ namespace WindowsForm.BonusCardSystem.Forms
             dataGridViewList.DataSource = _data;
             labelTotalBonus.Text = CalculateTotalBonus(_bonusCardService.GetAll().Data).ToString();
             CalculateTotalBonusCardOperation(_bonusCardOperationService.GetAll().Data);
+            BonusCardRefresh();
         }
 
         private void buttonTemizle_Click(object sender, EventArgs e)
@@ -460,11 +461,12 @@ namespace WindowsForm.BonusCardSystem.Forms
 
         private void BonusCardRefresh()
         {
-            //dataGridViewList.DataSource = _bonusCardService.GetAllBonusCardForFormsDetail().Data;
             _data = _bonusCardOperationService.GetAllBonusCardOperationForFormsDto().Data;
             dataGridViewList.DataSource = _data;
+            labelTotalBonus.Text = CalculateTotalBonus(_bonusCardService.GetAll().Data).ToString();
+            CalculateTotalBonusCardOperation(_bonusCardOperationService.GetAll().Data);
             MyControl.MakeDataGridViewCurrentCellCurrentColor(dataGridViewList, "EmeliyyatVeziyyeti", Color.Green);
-        //    MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewList, "Qiymet", Color.Green);
+            //    MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewList, "Qiymet", Color.Green);
         }
 
         private void ClearGroupBox(GroupBox groupBox)
@@ -512,6 +514,6 @@ namespace WindowsForm.BonusCardSystem.Forms
 
         }
 
-      
+
     }
 }

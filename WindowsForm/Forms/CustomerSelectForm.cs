@@ -46,7 +46,7 @@ namespace WindowsForm.Forms
         //Cell Double Click
         private void dataGridViewList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            textBoxCustomerId.Text = dataGridViewList.CurrentRow.Cells["Id"].Value.ToString();
+            textBoxCustomerId.Text = dataGridViewList.CurrentRow.Cells["CustomerId"].Value.ToString();
             textBoxAd.Text = dataGridViewList.CurrentRow.Cells["FirstName"].Value.ToString();
             textBoxSoyad.Text = dataGridViewList.CurrentRow.Cells["LastName"].Value.ToString();
         }
@@ -54,7 +54,8 @@ namespace WindowsForm.Forms
         //Elave
         private void CustomerListRefresh()
         {
-            dataGridViewList.DataSource = _customerService.GetAll().Data;
+            dataGridViewList.DataSource = _customerService.GetCustomerDetails().Data;
+                                         //_customerService.GetAll().Data;
         }
     }
 }

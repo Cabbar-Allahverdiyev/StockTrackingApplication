@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Constants.Messages;
@@ -52,53 +53,71 @@ namespace WindowsForm.Forms.AdminForms
 
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
-            BonusCard bonusCard = new BonusCard();
-            bonusCard.Id = textBoxBonusCardId.Text==""?0: int.Parse(textBoxBonusCardId.Text);
-            DialogResult dialogResult = MessageBox.Show("Bonus kartı yeniləmək isdədiyinzdən əminmisiniz?", "Diqqət", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (dialogResult == DialogResult.Yes)
+            try
             {
-                IDataResult<BonusCard> getCard = _bonusCardService.GetById(bonusCard.Id);
-                if (!getCard.Success)
+                BonusCard bonusCard = new BonusCard();
+                bonusCard.Id = textBoxBonusCardId.Text == "" ? 0 : int.Parse(textBoxBonusCardId.Text);
+                DialogResult dialogResult = MessageBox.Show("Bonus kartı yeniləmək isdədiyinzdən əminmisiniz?", "Diqqət", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    FormsMessage.WarningMessage(getCard.Message);
-                    return;
+                    IDataResult<BonusCard> getCard = _bonusCardService.GetById(bonusCard.Id);
+                    if (!getCard.Success)
+                    {
+                        FormsMessage.WarningMessage(getCard.Message);
+                        return;
+                    }
+                    bonusCard = getCard.Data;
+                    bonusCard.InterestAdvantage = decimal.Parse(textBoxGuzest.Text);
+                    if (!FormValidationTool.IsValid(new BonusCardValidator(), bonusCard))
+                    {
+                        return;
+                    }
+                    IResult result = _bonusCardService.Update(bonusCard);
+                    if (!result.Success)
+                    {
+                        FormsMessage.WarningMessage(result.Message);
+                        return;
+                    }
+                    FormsMessage.SuccessMessage(result.Message);
+                    BonusCardRefresh();
+                    TextBoxController.ClearAllTextBoxesByGroupBox(groupBoxMusteri);
                 }
-                bonusCard = getCard.Data;
-                bonusCard.InterestAdvantage = decimal.Parse(textBoxGuzest.Text);
-                if (!FormValidationTool.IsValid(new BonusCardValidator(), bonusCard))
-                {
-                    return;
-                }
-                IResult result = _bonusCardService.Update(bonusCard);
-                if (!result.Success)
-                {
-                    FormsMessage.WarningMessage(result.Message);
-                    return;
-                }
-                FormsMessage.SuccessMessage(result.Message);
-                BonusCardRefresh();
-                TextBoxController.ClearAllTextBoxesByGroupBox(groupBoxMusteri);
             }
+            catch (Exception ex)
+            {
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
+                return;
+            }
+            
         }
 
         private void buttonSil_Click(object sender, EventArgs e)
         {
-            BonusCard bonusCard = new BonusCard();
-            bonusCard.Id = int.Parse(textBoxBonusCardId.Text);
-            DialogResult dialogResult = MessageBox.Show("Bonus kartı silmək isdədiyinzdən əminmisiniz?", "Diqqət", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-            if (dialogResult == DialogResult.Yes)
+            try
             {
-                IResult result = _bonusCardService.Delete(bonusCard);
-                if (!result.Success)
+                BonusCard bonusCard = new BonusCard();
+                bonusCard.Id = int.Parse(textBoxBonusCardId.Text);
+                DialogResult dialogResult = MessageBox.Show("Bonus kartı silmək isdədiyinzdən əminmisiniz?", "Diqqət", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (dialogResult == DialogResult.Yes)
                 {
-                    FormsMessage.WarningMessage(result.Message);
-                    return;
+                    IResult result = _bonusCardService.Delete(bonusCard);
+                    if (!result.Success)
+                    {
+                        FormsMessage.WarningMessage(result.Message);
+                        return;
+                    }
+                    FormsMessage.SuccessMessage(result.Message);
                 }
-                FormsMessage.SuccessMessage(result.Message);
+                BonusCardRefresh();
+                TextBoxController.ClearAllTextBoxesByGroupBox(groupBoxMusteri);
             }
-            BonusCardRefresh();
-            TextBoxController.ClearAllTextBoxesByGroupBox(groupBoxMusteri);
+            catch (Exception ex)
+            {
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage(this.Name, MethodBase.GetCurrentMethod().Name, ex));
+                return;
+            }
+            
         }
 
         //Text Changed

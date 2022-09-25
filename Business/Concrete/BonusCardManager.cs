@@ -6,6 +6,7 @@ using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.Concrete.ForForms;
 using Entities.DTOs.BonusCardDtos;
 using System;
 using System.Collections.Generic;
@@ -20,22 +21,27 @@ namespace Business.Concrete
 
         ICustomerService _customerService;
         IBonusCardOperationService _bonusCardOperationService;
-        public BonusCardManager(IBonusCardDal bonusCardDal
-                                , ICustomerService customerService
-                                , IBonusCardOperationService bonusCardOperationService)
+        IFormSettingService _formSettingService;
+        public BonusCardManager(IBonusCardDal bonusCardDal,
+                                ICustomerService customerService,
+                                IBonusCardOperationService bonusCardOperationService,
+                                IFormSettingService formSettingService)
         {
             _bonusCardDal = bonusCardDal;
             _customerService = customerService;
             _bonusCardOperationService = bonusCardOperationService;
+            _formSettingService = formSettingService;
         }
         //CRUD
         [ValidationAspect(typeof(BonusCardValidator))]
         [CacheRemoveAspect("IBonusCardService.Get")]
         public IResult Add(BonusCard bonusCard)
         {
-           
-            var rules = BusinessRules.Run(DoesTheCustomerHaveABonusCard(bonusCard.CustomerId)
-                                        , IsThereAnotherBonusCardInThisBarcode(bonusCard.BarcodeNumber));
+
+            var rules = BusinessRules.Run(DoesTheCustomerHaveABonusCard(bonusCard.CustomerId),
+                                          IsThereAnotherBonusCardInThisBarcode(bonusCard.BarcodeNumber),
+                                          IsBarcodeNumberLenthVerified(bonusCard.BarcodeNumber)
+                                        );
             if (rules != null)
             {
                 return new ErrorResult(rules.Message);
@@ -50,9 +56,16 @@ namespace Business.Concrete
         [CacheRemoveAspect("IBonusCardService.Get")]
         public IResult Delete(BonusCard bonusCard)
         {
-            _bonusCardDal.Delete(bonusCard);
-            Customer customer=_customerService.GetById(bonusCard.Id).Data;
-            return new SuccessResult(BonusCardMessages.Deleted(customer.FirstName+" "+customer.LastName));
+            var rules = BusinessRules.Run(GetById(bonusCard.Id));
+            if (rules != null)
+            {
+                return new ErrorResult(rules.Message);
+            }
+            IDataResult<BonusCard> result =GetById(bonusCard.Id);
+            
+            _bonusCardDal.Delete(result.Data);
+            Customer customer = _customerService.GetById(result.Data.CustomerId).Data;
+            return new SuccessResult(BonusCardMessages.Deleted(customer.FirstName + " " + customer.LastName));
         }
 
         [ValidationAspect(typeof(BonusCardValidator))]
@@ -258,7 +271,7 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-        private  IResult IsThereAnotherBonusCardInThisBarcode(string barcodeNumber)
+        private IResult IsThereAnotherBonusCardInThisBarcode(string barcodeNumber)
         {
             IResult result = GetByBarcodeNumber(barcodeNumber);
             if (result.Success)
@@ -266,6 +279,22 @@ namespace Business.Concrete
                 return new ErrorResult(BonusCardMessages.ThisCustomerAlreadyExistsABonusCard);
             }
             return new SuccessResult();
+        }
+
+        private IResult IsBarcodeNumberLenthVerified(string barcodeNumber)
+        {
+            IDataResult<FormSetting> result = _formSettingService.GetByName("textBoxBonusCardBarcodeLenth");
+            if (result.Success)
+            {
+                if (int.Parse(result.Data.Value) == barcodeNumber.Length)
+                {
+                    return new SuccessResult();
+                }
+                return new ErrorResult(BonusCardMessages
+                    .BarcodeNumberEqualSettingValue(int.Parse(result.Data.Value)));
+            }
+            return new ErrorResult(result.Message);
+
         }
 
     }
