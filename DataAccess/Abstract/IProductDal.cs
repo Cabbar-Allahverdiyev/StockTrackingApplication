@@ -26,5 +26,6 @@ namespace DataAccess.Abstract
         //for api ----------------------->
         ProductDetailDto GetProductDetail(Expression<Func<ProductDetailDto, bool>> filter);
         List<ProductDetailDto> GetAllProductDetail(Expression<Func<ProductDetailDto, bool>> filter=null);
+        List<ExcelDto> GetAllProductExcelDetail(Expression<Func<ExcelDto, bool>> filter = null);
     }
 }

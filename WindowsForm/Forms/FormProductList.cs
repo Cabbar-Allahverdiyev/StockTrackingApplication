@@ -13,6 +13,7 @@ using WindowsForm.MyControls;
 using WindowsForm.Core.Controllers.Concrete;
 using Entities.DTOs.ProductDtos;
 using Business.Abstract;
+using WindowsForm.Utilities.Helpers.OfficeHelpers;
 
 namespace WindowsForm.Forms
 {
@@ -22,6 +23,7 @@ namespace WindowsForm.Forms
         IBrandService _brandService;
         ICategoryService _categoryService;
         ISupplierService _supplierService;
+       private readonly ExcelHelper _excelHelper;
 
         ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
         Product product = new Product();
@@ -35,6 +37,7 @@ namespace WindowsForm.Forms
             _brandService = brandService;
             _categoryService = categoryService;
             _supplierService = supplierService;
+            _excelHelper = new ExcelHelper(_productService);
             InitializeComponent();
             MyControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
         }
@@ -49,7 +52,10 @@ namespace WindowsForm.Forms
             GroupBoxVarOlanMehsulControlClear();
         }
 
-
+        private void buttonToExcel_Click(object sender, EventArgs e)
+        {
+            _excelHelper.CreateExcel();
+        }
 
         private void dataGridViewFormPrdouctList_DoubleClick(object sender, EventArgs e)
         {
@@ -162,5 +168,7 @@ namespace WindowsForm.Forms
         {
             dataGridViewFormPrdouctList.DataSource = _productService.GetAllProductViewDasboardDetail().Data;
         }
+
+        
     }
 }

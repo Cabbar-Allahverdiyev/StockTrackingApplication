@@ -54,6 +54,7 @@ namespace WindowsForm.Forms
             this.textBoxAxtar = new System.Windows.Forms.TextBox();
             this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.buttonToExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFormPrdouctList)).BeginInit();
             this.GroupBoxVarOlanMehsul.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProductImage)).BeginInit();
@@ -74,7 +75,7 @@ namespace WindowsForm.Forms
             this.dataGridViewFormPrdouctList.ReadOnly = true;
             this.dataGridViewFormPrdouctList.RowTemplate.Height = 25;
             this.dataGridViewFormPrdouctList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewFormPrdouctList.Size = new System.Drawing.Size(587, 443);
+            this.dataGridViewFormPrdouctList.Size = new System.Drawing.Size(587, 434);
             this.dataGridViewFormPrdouctList.TabIndex = 0;
             this.dataGridViewFormPrdouctList.DoubleClick += new System.EventHandler(this.dataGridViewFormPrdouctList_DoubleClick);
             // 
@@ -104,7 +105,7 @@ namespace WindowsForm.Forms
             this.GroupBoxVarOlanMehsul.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.GroupBoxVarOlanMehsul.Location = new System.Drawing.Point(0, 0);
             this.GroupBoxVarOlanMehsul.Name = "GroupBoxVarOlanMehsul";
-            this.GroupBoxVarOlanMehsul.Size = new System.Drawing.Size(273, 520);
+            this.GroupBoxVarOlanMehsul.Size = new System.Drawing.Size(273, 574);
             this.GroupBoxVarOlanMehsul.TabIndex = 2;
             this.GroupBoxVarOlanMehsul.TabStop = false;
             // 
@@ -320,12 +321,25 @@ namespace WindowsForm.Forms
             this.label1.TabIndex = 34;
             this.label1.Text = "     ";
             // 
+            // buttonToExcel
+            // 
+            this.buttonToExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonToExcel.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonToExcel.Location = new System.Drawing.Point(753, 482);
+            this.buttonToExcel.Name = "buttonToExcel";
+            this.buttonToExcel.Size = new System.Drawing.Size(113, 23);
+            this.buttonToExcel.TabIndex = 29;
+            this.buttonToExcel.Text = "Excel-ə yaz";
+            this.buttonToExcel.UseVisualStyleBackColor = true;
+            this.buttonToExcel.Click += new System.EventHandler(this.buttonToExcel_Click);
+            // 
             // FormProductList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
-            this.ClientSize = new System.Drawing.Size(878, 520);
+            this.ClientSize = new System.Drawing.Size(878, 574);
+            this.Controls.Add(this.buttonToExcel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBoxRefresh);
             this.Controls.Add(this.textBoxAxtar);
@@ -372,5 +386,6 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.PictureBox pictureBoxRefresh;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonToExcel;
     }
 }

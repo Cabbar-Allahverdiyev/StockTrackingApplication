@@ -214,5 +214,25 @@ namespace DataAccess.Concrete.EntityFramework
 
             }
         }
+
+        public List<ExcelDto> GetAllProductExcelDetail(Expression<Func<ExcelDto, bool>> filter = null)
+        {
+            using (StockTrackingProjectContext context = new StockTrackingProjectContext())
+            {
+                var result = from p in context.Products
+                             select new ExcelDto
+                             {
+                                 Id = p.Id,
+                                 UnitsInStock = p.UnitsInStock,
+                                 PurchasePrice = p.PurchasePrice,
+                                 UnitPrice = p.UnitPrice,
+                                 ProductName = p.ProductName,
+                                 BarcodeNumber = p.BarcodeNumber,
+                                 Description = p.Description,
+                             };
+                return filter == null ? result.ToList() : result.Where(filter).ToList();
+
+            }
+        }
     }
 }

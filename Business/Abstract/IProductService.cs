@@ -28,11 +28,13 @@ namespace Business.Abstract
         IDataResult<List<ProductCompactDetailDto>> GetAllProductCompactDetail();
         IDataResult<List<ProductCompactDetailDto>> GetAllCompactDetailByPrdouctName(string productName);
         IDataResult<ProductViewDetailDto> GetProductViewDetailByProductId(int productId);
+
+        IDataResult<List<ExcelDto>> GetAllByForExcelDto();
         //IDataResult<List<ProductViewDashboardDetailDto>> GetAllProductViewDashboardDetailByTopSelling();
         //IDataResult<List<ProductViewDashboardDetailDto>> GetAllProductViewDashboardDetailByDecreasingProducts();
         //IDataResult<List<ProductViewDashboardDetailDto>> GetAllProductViewDashboardDetailByProductsThatNeverSell();
         //IDataResult<List<ProductViewDashboardDetailDto>> GetAllProductViewDashboardDetailByFinishedProducts();
-      
+
 
 
 

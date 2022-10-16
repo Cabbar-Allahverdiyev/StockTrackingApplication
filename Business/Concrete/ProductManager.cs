@@ -148,6 +148,16 @@ namespace Business.Concrete
             return new SuccessDataResult<List<ProductViewDetailDto>>(get, ProductMessages.ProductGetAll);
         }
 
+        public IDataResult<List<ExcelDto>> GetAllByForExcelDto()
+        {
+            List<ExcelDto> get = _productDal.GetAllProductExcelDetail();
+            if (get == null)
+            {
+                return new ErrorDataResult<List<ExcelDto>>(ProductMessages.ProductNotFound);
+            }
+            return new SuccessDataResult<List<ExcelDto>>(get, ProductMessages.ProductGetAll);
+        }
+
         [CacheAspect]
         public IDataResult<List<ProductViewDashboardDetailDto>> GetAllProductViewDasboardDetail()
         {
@@ -260,6 +270,8 @@ namespace Business.Concrete
             product.ProductName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(product.ProductName);
             return new SuccessResult();
         }
+
+       
 
 
 
