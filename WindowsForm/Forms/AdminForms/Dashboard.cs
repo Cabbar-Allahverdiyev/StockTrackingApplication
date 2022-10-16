@@ -284,9 +284,9 @@ namespace WindowsForm.Forms.AdminForms
                                         , _customerService
                                         , _saleWinFormService
                                         , _debtService
-                                        ,_bonusCardService
-                                        ,_formSettingService), sender);
-            
+                                        , _bonusCardService
+                                        , _formSettingService), sender);
+
         }
 
         private void buttonProducts_Click(object sender, EventArgs e)
@@ -350,9 +350,9 @@ namespace WindowsForm.Forms.AdminForms
                                                     , _saleWinFormService
                                                     , _supplierService
                                                     , _brandService
-                                                    ,_bonusCardService
-                                                    ,_formSettingService
-                                                    ,_bonusCardOperationService
+                                                    , _bonusCardService
+                                                    , _formSettingService
+                                                    , _bonusCardOperationService
                                                     , _barcodeGenerator, _loggerService));
 
 
@@ -363,19 +363,24 @@ namespace WindowsForm.Forms.AdminForms
 
         private void sıralaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormProductList(_productService, _brandService, _categoryService, _supplierService), sender);
+            OpenChildForm(new FormProductList(_productService,
+                                                _brandService,
+                                                _categoryService,
+                                                _supplierService,
+                                                _formSettingService,
+                                                _barcodeGenerator), sender);
         }
 
 
         private void əlavəEtToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormProductAdd(_productService, _brandService, _categoryService, _supplierService,_formSettingService,_barcodeGenerator), sender);
+            OpenChildForm(new FormProductAdd(_productService, _brandService, _categoryService, _supplierService, _formSettingService, _barcodeGenerator), sender);
         }
 
         private void yeniləToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             OpenChildForm(new ProductUpdateForm(_productService,
-                _brandService, _categoryService, _supplierService,_formSettingService,_loggerService), sender);
+                _brandService, _categoryService, _supplierService, _formSettingService, _loggerService), sender);
         }
 
         private void silToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -404,22 +409,22 @@ namespace WindowsForm.Forms.AdminForms
         {
             OpenChildForm(new SupplierUpdateForm(_supplierService), sender);
         }
-       
+
         //Sales-------------------------------------------->
         private void satislariSiralaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormSalesList(_productService, _saleWinFormService,_userService), sender);
+            OpenChildForm(new FormSalesList(_productService, _saleWinFormService, _userService), sender);
         }
 
         //Istifadeci--------------------------------------------->
         private void istifadəçiləriSıralaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormUserListed(_userService,_formSettingService), sender);
+            OpenChildForm(new FormUserListed(_userService, _formSettingService), sender);
         }
 
         private void istifadəçiƏlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormUserAdd(_userService, _operationClaimService, _userOperationClaimService,_formSettingService), sender);
+            OpenChildForm(new FormUserAdd(_userService, _operationClaimService, _userOperationClaimService, _formSettingService), sender);
         }
 
         private void istifadəçiləriYeniləToolStripMenuItem_Click(object sender, EventArgs e)
@@ -464,7 +469,7 @@ namespace WindowsForm.Forms.AdminForms
 
         private void lazerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new USBBarcodeScannerForm(_barcodeGenerator,_formSettingService), sender);
+            OpenChildForm(new USBBarcodeScannerForm(_barcodeGenerator, _formSettingService), sender);
         }
 
 
@@ -492,12 +497,12 @@ namespace WindowsForm.Forms.AdminForms
         //Others--------------------------------->
         private void musterilerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new CustomerForm(_customerService,_debtService), sender);
+            OpenChildForm(new CustomerForm(_customerService, _debtService), sender);
         }
 
         private void musteriOdenisleriToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new CustomerPaymentForm(_userService, _customerPaymentService, _customerService,_formSettingService), sender);
+            OpenChildForm(new CustomerPaymentForm(_userService, _customerPaymentService, _customerService, _formSettingService), sender);
 
         }
 
@@ -510,13 +515,13 @@ namespace WindowsForm.Forms.AdminForms
         //Bonus Kart__________________________>
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.BonusCardAddForm(_bonusCardService,_customerService,_formSettingService),sender);
+            OpenChildForm(new Forms.BonusCardAddForm(_bonusCardService, _customerService, _formSettingService), sender);
 
         }
 
         private void bonusVəÖdənişƏlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new BonusCardSystem.Forms.HomeForm(_bonusCardService,_bonusCardOperationService,_formSettingService),sender);
+            OpenChildForm(new BonusCardSystem.Forms.HomeForm(_bonusCardService, _bonusCardOperationService, _formSettingService), sender);
 
         }
 
@@ -528,7 +533,7 @@ namespace WindowsForm.Forms.AdminForms
         //Nisye_____________________________>
         private void nisyələrToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new DebtForm(_debtService,_customerService,_customerBalanceService),sender);
+            OpenChildForm(new DebtForm(_debtService, _customerService, _customerBalanceService), sender);
         }
 
         //Parametrler --------------------------->
@@ -627,7 +632,7 @@ namespace WindowsForm.Forms.AdminForms
             labelTitle.Text = childForm.Text;
         }
 
-        
+
 
 
 

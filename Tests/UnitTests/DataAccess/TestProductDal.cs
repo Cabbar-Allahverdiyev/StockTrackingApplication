@@ -216,6 +216,11 @@ namespace Tests.UnitTests.DataAccess
 
             }
         }
+
+        public List<ExcelDto> GetAllProductExcelDetail(Expression<Func<ExcelDto, bool>> filter = null)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

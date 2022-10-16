@@ -31,6 +31,7 @@ namespace WindowsForm.Forms
         {
             this.dataGridViewFormPrdouctList = new System.Windows.Forms.DataGridView();
             this.GroupBoxVarOlanMehsul = new System.Windows.Forms.GroupBox();
+            this.buttonBarcodeGenerate = new System.Windows.Forms.Button();
             this.pictureBoxProductImage = new System.Windows.Forms.PictureBox();
             this.label17 = new System.Windows.Forms.Label();
             this.TextBoxVarOlanAciqlama = new System.Windows.Forms.TextBox();
@@ -45,7 +46,7 @@ namespace WindowsForm.Forms
             this.textBoxVarOlanAlisQiymet = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBoxVarOlanStokaElaveEdilecekMiqdar = new System.Windows.Forms.TextBox();
+            this.textBoxStokdakiMiqdar = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.textBoxVarOlanBarkodNo = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -70,17 +71,18 @@ namespace WindowsForm.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewFormPrdouctList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.dataGridViewFormPrdouctList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewFormPrdouctList.Location = new System.Drawing.Point(279, 42);
+            this.dataGridViewFormPrdouctList.Location = new System.Drawing.Point(302, 42);
             this.dataGridViewFormPrdouctList.Name = "dataGridViewFormPrdouctList";
             this.dataGridViewFormPrdouctList.ReadOnly = true;
             this.dataGridViewFormPrdouctList.RowTemplate.Height = 25;
             this.dataGridViewFormPrdouctList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewFormPrdouctList.Size = new System.Drawing.Size(587, 434);
+            this.dataGridViewFormPrdouctList.Size = new System.Drawing.Size(564, 434);
             this.dataGridViewFormPrdouctList.TabIndex = 0;
             this.dataGridViewFormPrdouctList.DoubleClick += new System.EventHandler(this.dataGridViewFormPrdouctList_DoubleClick);
             // 
             // GroupBoxVarOlanMehsul
             // 
+            this.GroupBoxVarOlanMehsul.Controls.Add(this.buttonBarcodeGenerate);
             this.GroupBoxVarOlanMehsul.Controls.Add(this.pictureBoxProductImage);
             this.GroupBoxVarOlanMehsul.Controls.Add(this.label17);
             this.GroupBoxVarOlanMehsul.Controls.Add(this.TextBoxVarOlanAciqlama);
@@ -95,7 +97,7 @@ namespace WindowsForm.Forms
             this.GroupBoxVarOlanMehsul.Controls.Add(this.textBoxVarOlanAlisQiymet);
             this.GroupBoxVarOlanMehsul.Controls.Add(this.label9);
             this.GroupBoxVarOlanMehsul.Controls.Add(this.label10);
-            this.GroupBoxVarOlanMehsul.Controls.Add(this.textBoxVarOlanStokaElaveEdilecekMiqdar);
+            this.GroupBoxVarOlanMehsul.Controls.Add(this.textBoxStokdakiMiqdar);
             this.GroupBoxVarOlanMehsul.Controls.Add(this.label11);
             this.GroupBoxVarOlanMehsul.Controls.Add(this.textBoxVarOlanBarkodNo);
             this.GroupBoxVarOlanMehsul.Controls.Add(this.label12);
@@ -105,16 +107,28 @@ namespace WindowsForm.Forms
             this.GroupBoxVarOlanMehsul.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.GroupBoxVarOlanMehsul.Location = new System.Drawing.Point(0, 0);
             this.GroupBoxVarOlanMehsul.Name = "GroupBoxVarOlanMehsul";
-            this.GroupBoxVarOlanMehsul.Size = new System.Drawing.Size(273, 574);
+            this.GroupBoxVarOlanMehsul.Size = new System.Drawing.Size(296, 574);
             this.GroupBoxVarOlanMehsul.TabIndex = 2;
             this.GroupBoxVarOlanMehsul.TabStop = false;
+            // 
+            // buttonBarcodeGenerate
+            // 
+            this.buttonBarcodeGenerate.FlatAppearance.BorderSize = 0;
+            this.buttonBarcodeGenerate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBarcodeGenerate.Image = global::WindowsForm.Properties.Resources.refresh_barcode_16px;
+            this.buttonBarcodeGenerate.Location = new System.Drawing.Point(263, 193);
+            this.buttonBarcodeGenerate.Name = "buttonBarcodeGenerate";
+            this.buttonBarcodeGenerate.Size = new System.Drawing.Size(27, 26);
+            this.buttonBarcodeGenerate.TabIndex = 29;
+            this.buttonBarcodeGenerate.UseVisualStyleBackColor = true;
+            this.buttonBarcodeGenerate.Click += new System.EventHandler(this.buttonBarcodeGenerate_Click);
             // 
             // pictureBoxProductImage
             // 
             this.pictureBoxProductImage.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBoxProductImage.Location = new System.Drawing.Point(3, 18);
             this.pictureBoxProductImage.Name = "pictureBoxProductImage";
-            this.pictureBoxProductImage.Size = new System.Drawing.Size(267, 169);
+            this.pictureBoxProductImage.Size = new System.Drawing.Size(290, 169);
             this.pictureBoxProductImage.TabIndex = 28;
             this.pictureBoxProductImage.TabStop = false;
             // 
@@ -181,6 +195,7 @@ namespace WindowsForm.Forms
             this.LabelMiqdarVB.Size = new System.Drawing.Size(19, 21);
             this.LabelMiqdarVB.TabIndex = 21;
             this.LabelMiqdarVB.Text = "#";
+            this.LabelMiqdarVB.Visible = false;
             // 
             // label7
             // 
@@ -234,13 +249,13 @@ namespace WindowsForm.Forms
             this.label10.TabIndex = 17;
             this.label10.Text = "Mehsul adi:";
             // 
-            // textBoxVarOlanStokaElaveEdilecekMiqdar
+            // textBoxStokdakiMiqdar
             // 
-            this.textBoxVarOlanStokaElaveEdilecekMiqdar.Enabled = false;
-            this.textBoxVarOlanStokaElaveEdilecekMiqdar.Location = new System.Drawing.Point(110, 339);
-            this.textBoxVarOlanStokaElaveEdilecekMiqdar.Name = "textBoxVarOlanStokaElaveEdilecekMiqdar";
-            this.textBoxVarOlanStokaElaveEdilecekMiqdar.Size = new System.Drawing.Size(150, 22);
-            this.textBoxVarOlanStokaElaveEdilecekMiqdar.TabIndex = 6;
+            this.textBoxStokdakiMiqdar.Enabled = false;
+            this.textBoxStokdakiMiqdar.Location = new System.Drawing.Point(110, 339);
+            this.textBoxStokdakiMiqdar.Name = "textBoxStokdakiMiqdar";
+            this.textBoxStokdakiMiqdar.Size = new System.Drawing.Size(150, 22);
+            this.textBoxStokdakiMiqdar.TabIndex = 6;
             // 
             // label11
             // 
@@ -378,7 +393,7 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.TextBox textBoxVarOlanAlisQiymet;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBoxVarOlanStokaElaveEdilecekMiqdar;
+        private System.Windows.Forms.TextBox textBoxStokdakiMiqdar;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBoxVarOlanBarkodNo;
         private System.Windows.Forms.Label label12;
@@ -387,5 +402,6 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.PictureBox pictureBoxRefresh;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonToExcel;
+        private System.Windows.Forms.Button buttonBarcodeGenerate;
     }
 }

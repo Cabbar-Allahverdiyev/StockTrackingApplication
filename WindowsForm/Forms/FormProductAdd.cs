@@ -220,5 +220,10 @@ namespace WindowsForm.Forms
 
             }
         }
+
+        private void GroupBoxFormProductAddYeniMehsul_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -14,6 +14,7 @@ using WindowsForm.Core.Controllers.Concrete;
 using Entities.DTOs.ProductDtos;
 using Business.Abstract;
 using WindowsForm.Utilities.Helpers.OfficeHelpers;
+using WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate;
 
 namespace WindowsForm.Forms
 {
@@ -23,7 +24,10 @@ namespace WindowsForm.Forms
         IBrandService _brandService;
         ICategoryService _categoryService;
         ISupplierService _supplierService;
+        IFormSettingService _formSettingService;
+        IBarcodeGenerator _barcodeGenerator;
        private readonly ExcelHelper _excelHelper;
+        private USBBarcodeScannerForm _usbBarcodeScannerForm;
 
         ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
         Product product = new Product();
@@ -31,13 +35,18 @@ namespace WindowsForm.Forms
         public FormProductList(IProductService productService
             , IBrandService brandService
             , ICategoryService categoryService
-            , ISupplierService supplierService)
+            , ISupplierService supplierService,
+            IFormSettingService formSettingService,
+            IBarcodeGenerator barcodeGenerator)
         {
             _productService = productService;
             _brandService = brandService;
             _categoryService = categoryService;
             _supplierService = supplierService;
+            _formSettingService = formSettingService;
+            _barcodeGenerator = barcodeGenerator;
             _excelHelper = new ExcelHelper(_productService);
+            _usbBarcodeScannerForm = new USBBarcodeScannerForm(_barcodeGenerator, _formSettingService);
             InitializeComponent();
             MyControl.WritePlaceholdersForTextBoxSearch(textBoxAxtar);
         }
@@ -72,16 +81,17 @@ namespace WindowsForm.Forms
             product.UnitsInStock = productViewDetailByProductId.Data.StokdakiVahid;
             product.QuantityPerUnit = productViewDetailByProductId.Data.Kemiyyet;
 
-            textBoxVarOlanBarkodNo.Text = dataGridViewFormPrdouctList.CurrentRow.Cells["BarcodeNomresi"].Value.ToString();
-            textBoxVarOlanMehsulAdi.Text = dataGridViewFormPrdouctList.CurrentRow.Cells["MehsulAdi"].Value.ToString();
+            textBoxVarOlanBarkodNo.Text = productViewDetailByProductId.Data.BarcodeNomresi;// dataGridViewFormPrdouctList.CurrentRow.Cells["BarcodeNomresi"].Value.ToString();
+            textBoxVarOlanMehsulAdi.Text = productViewDetailByProductId.Data.MehsulAdi;//dataGridViewFormPrdouctList.CurrentRow.Cells["MehsulAdi"].Value.ToString();
             textBoxVarOlanAlisQiymet.Text = productViewDetailByProductId.Data.AlisQiymeti.ToString();
             textBoxVarOlanSatisQiymet.Text = productViewDetailByProductId.Data.Qiymet.ToString();
             comboBoxVarOlanKateqoriya.Text = productViewDetailByProductId.Data.Kateqoriya;
             comboBoxVarOlanMarka.Text = productViewDetailByProductId.Data.Marka;
             comboBoxVarOlanTedarikci.Text = productViewDetailByProductId.Data.TedarikciSirket;
+            textBoxStokdakiMiqdar.Text = productViewDetailByProductId.Data.StokdakiVahid.ToString();
             textBoxVarOlanMehsulAdi.Text = productViewDetailByProductId.Data.MehsulAdi;
             TextBoxVarOlanAciqlama.Text = productViewDetailByProductId.Data.Aciqlama;
-            LabelMiqdarVB.Text = productViewDetailByProductId.Data.StokdakiVahid.ToString();
+            //LabelMiqdarVB.Text = productViewDetailByProductId.Data.StokdakiVahid.ToString();
         }
 
         //elave metodlar------------------->
@@ -169,6 +179,18 @@ namespace WindowsForm.Forms
             dataGridViewFormPrdouctList.DataSource = _productService.GetAllProductViewDasboardDetail().Data;
         }
 
-        
+        private void buttonBarcodeGenerate_Click(object sender, EventArgs e)
+        {
+            _usbBarcodeScannerForm = new USBBarcodeScannerForm(_barcodeGenerator, _formSettingService);
+            USBBarcodeScannerForm.BarcodeNumber = textBoxVarOlanBarkodNo.Text;
+            _usbBarcodeScannerForm.ShowDialog();
+            if (USBBarcodeScannerForm.BarcodeNumber == null || USBBarcodeScannerForm.BarcodeNumber == "")
+            {
+                FormsMessage.WarningMessage(BarcodeNumberMessages.BarcodeNumberNotSelected);
+                return;
+            }
+            //textBoxBarkodNo.Text = USBBarcodeScannerForm.BarcodeNumber;
+            FormsMessage.SuccessMessage(BarcodeNumberMessages.BarcodeNumberSelected);
+        }
     }
 }

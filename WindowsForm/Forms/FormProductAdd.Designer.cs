@@ -99,6 +99,7 @@ namespace WindowsForm.Forms
             this.GroupBoxFormProductAddYeniMehsul.Size = new System.Drawing.Size(313, 619);
             this.GroupBoxFormProductAddYeniMehsul.TabIndex = 0;
             this.GroupBoxFormProductAddYeniMehsul.TabStop = false;
+            this.GroupBoxFormProductAddYeniMehsul.Enter += new System.EventHandler(this.GroupBoxFormProductAddYeniMehsul_Enter);
             // 
             // checkBoxIsClearTextBox
             // 

@@ -38,6 +38,7 @@ namespace WindowsForm.Forms
 
         private void USBBarcodeScannerForm_Load_1(object sender, EventArgs e)
         {
+            textBoxBarcodeNumber.Text = BarcodeNumber;
             width = pictureBox1.Width;
             height = pictureBox1.Height;
             trackBarWith.Value = _formSettingService.GetUsbBarCodeScannerFormTrackBarValues().Data.Width;
