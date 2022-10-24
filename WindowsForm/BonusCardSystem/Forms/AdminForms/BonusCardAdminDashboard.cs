@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 using WindowsForm.Core.Controllers.Concrete;
+using WindowsForm.Forms;
 using WindowsForm.Forms.SettingForms;
 using WindowsForm.MyControls;
 using WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate;
@@ -58,7 +59,7 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
                                 , IBonusCardService bonusCardService
                                 , IFormSettingService formSettingService
                                 , IBonusCardOperationService bonusCardOperationService
-                                ,IBarcodeGenerator barcodeGenerator)
+                                , IBarcodeGenerator barcodeGenerator)
         {
             _userService = userService;
             _operationClaimService = operationClaimService;
@@ -281,19 +282,19 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
             //                            , _debtService
             //                            ,_bonusCardService), sender);
 
-            bonusƏlavəEtToolStripMenuItem_Click(sender,e);
+            bonusƏlavəEtToolStripMenuItem_Click(sender, e);
 
         }
 
-        private void buttonProducts_Click(object sender, EventArgs e)
+
+        private void buttonCustomers_Click(object sender, EventArgs e)
         {
-            Open_DropdownMenu(myDMProduct, sender);
+            Open_DropdownMenu(myDMCustomers, sender);
         }
 
-
-        private void buttonSales_Click(object sender, EventArgs e)
+        private void buttonBonusCard_Click(object sender, EventArgs e)
         {
-            Open_DropdownMenu(myDMSales, sender);
+            Open_DropdownMenu(myDMBonusCard, sender);
         }
 
         private void buttonCategories_Click(object sender, EventArgs e)
@@ -343,73 +344,46 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
                                                     , _brandService
                                                     , _bonusCardService
                                                     , _formSettingService
-                                                    ,_bonusCardOperationService
-                                                    , _barcodeGenerator  ));
+                                                    , _bonusCardOperationService
+                                                    , _barcodeGenerator));
 
 
         }
 
         //Dropdown menu---------------------------------->
-        //Product--------------------------------------->
+        //Customers--------------------------------------->
 
-        private void sıralaToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void müştərilərToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           // OpenChildForm(new FormProductList(_productService, _brandService, _categoryService, _supplierService), sender);
+            OpenChildForm(new WindowsForm.Forms.CustomerForm(_customerService, _debtService), sender);
         }
 
-
-        private void əlavəEtToolStripMenuItem2_Click(object sender, EventArgs e)
+        private void müştəriÖdənişləriToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //OpenChildForm(new FormProductAdd(_productService, _brandService, _categoryService, _supplierService), sender);
+            //OpenChildForm(new CustomerPaymentForm(_userService, _customerPaymentService, _customerService,_formSettingService), sender);
         }
 
-        private void yeniləToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            //OpenChildForm(new ProductUpdateForm(_productService, _brandService, _categoryService, _supplierService), sender);
-        }
+        //Bonus Card--------------------------------------->
 
-        private void silToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            //OpenChildForm(new ProductDeleteForm(_productService, _brandService, _categoryService, _supplierService), sender);
-        }
 
         //Brand_______________________>
-        private void əlavəEtToolStripMenuItem3_Click(object sender, EventArgs e)
-        {
-            //OpenChildForm(new FormBrand(_brandService), sender);
-        }
 
-        private void yeniləVəSilToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //OpenChildForm(new BrandUpdateAndDeleteForm(_brandService), sender);
-        }
 
         //Supplier_____________________>
-        private void əlavəEtToolStripMenuItem4_Click(object sender, EventArgs e)
-        {
-            //OpenChildForm(new SupplierForm(_supplierService), sender);
-        }
 
-        private void yeniləVəSilToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            //OpenChildForm(new SupplierUpdateForm(_supplierService), sender);
-        }
 
         //Sales-------------------------------------------->
-        private void satislariSiralaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //OpenChildForm(new FormSalesList(_productService, _saleWinFormService), sender);
-        }
+
 
         //Istifadeci--------------------------------------------->
         private void istifadəçiləriSıralaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new WindowsForm.Forms.FormUserListed(_userService,_formSettingService), sender);
+            OpenChildForm(new WindowsForm.Forms.FormUserListed(_userService, _formSettingService), sender);
         }
 
         private void istifadəçiƏlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new WindowsForm.Forms.FormUserAdd(_userService, _operationClaimService, _userOperationClaimService,_formSettingService), sender);
+            OpenChildForm(new WindowsForm.Forms.FormUserAdd(_userService, _operationClaimService, _userOperationClaimService, _formSettingService), sender);
         }
 
         private void istifadəçiləriYeniləToolStripMenuItem_Click(object sender, EventArgs e)
@@ -424,25 +398,7 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
 
         //Categories------------------------------------------>
 
-        private void kateqoriyalariSiralaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //OpenChildForm(new FormCategory(_categoryService), sender);
-        }
 
-        private void yenileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //OpenChildForm(new CategoryUpdateAndDeleteForm(_categoryService), sender);
-        }
-
-        private void elaveEtToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //OpenChildForm(new FormCategory(_categoryService), sender);
-        }
-
-        private void silToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //OpenChildForm(new CategoryUpdateAndDeleteForm(_categoryService), sender);
-        }
 
 
         //Scan------------------------------------------------->
@@ -481,14 +437,17 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
         }
 
         //Others--------------------------------->
+
+
         private void musterilerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new WindowsForm.Forms.CustomerForm(_customerService,_debtService), sender);
+            OpenChildForm(new WindowsForm.Forms.CustomerForm(_customerService, _debtService), sender);
         }
 
         private void musteriOdenisleriToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //OpenChildForm(new CustomerPaymentForm(_userService, _customerPaymentService, _customerService), sender);
+
 
         }
 
@@ -499,18 +458,42 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
         }
 
         //Bonus Kart__________________________>
+
+        private void bonusƏlavəEtToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new HomeForm(_bonusCardService, _bonusCardOperationService, _formSettingService), sender);
+        }
+
+        private void kartƏlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new WindowsForm.Forms.BonusCardAddForm(_bonusCardService, _customerService, _formSettingService), sender);
+        }
+
+        private void bonusKartYeniləVəSilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new WindowsForm.Forms.AdminForms.BonusCardUpdateAndDeleteForm(_bonusCardService), sender);
+        }
         //Kart elave et
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new WindowsForm.Forms.BonusCardAddForm(_bonusCardService, _customerService,_formSettingService), sender);
+            OpenChildForm(new WindowsForm.Forms.BonusCardAddForm(_bonusCardService, _customerService, _formSettingService), sender);
+
+
+        }
+        //yenile ve sil
+        private void kartıYeniləVəSilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new WindowsForm.Forms.AdminForms.BonusCardUpdateAndDeleteForm(_bonusCardService), sender);
 
         }
 
         //Bonus Elave et
         private void bonusƏlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new HomeForm(_bonusCardService,_bonusCardOperationService,_formSettingService), sender);
+            OpenChildForm(new HomeForm(_bonusCardService, _bonusCardOperationService, _formSettingService), sender);
+
         }
+
 
         //Parametrler --------------------------->
         private void bonusKartToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -603,10 +586,8 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
             labelTitle.Text = childForm.Text;
         }
 
-        private void kartıYeniləVəSilToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new WindowsForm.Forms.AdminForms.BonusCardUpdateAndDeleteForm(_bonusCardService), sender);
+        
 
-        }
+       
     }
 }

@@ -285,21 +285,19 @@ namespace WindowsForm.BonusCardSystem.Forms.UserForms
 
         }
 
-        private void buttonProducts_Click(object sender, EventArgs e)
+        private void buttonCustomers_Click(object sender, EventArgs e)
         {
-            Open_DropdownMenu(myDMProduct, sender);
+            Open_DropdownMenu(myDMCustomers, sender);
+        }
+
+        private void buttonBonusCard_Click(object sender, EventArgs e)
+        {
+            Open_DropdownMenu(myDMBonusCard, sender);
         }
 
 
-        private void buttonSales_Click(object sender, EventArgs e)
-        {
-            Open_DropdownMenu(myDMSales, sender);
-        }
 
-        private void buttonCategories_Click(object sender, EventArgs e)
-        {
-            Open_DropdownMenu(myDMCategory, sender);
-        }
+
 
         private void buttonScan_Click(object sender, EventArgs e)
         {
@@ -350,7 +348,7 @@ namespace WindowsForm.BonusCardSystem.Forms.UserForms
         }
 
         //Dropdown menu---------------------------------->
-        //Product--------------------------------------->
+        //Customers--------------------------------------->
 
         private void sıralaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -373,33 +371,17 @@ namespace WindowsForm.BonusCardSystem.Forms.UserForms
             //OpenChildForm(new ProductDeleteForm(_productService, _brandService, _categoryService, _supplierService), sender);
         }
 
-        //Brand_______________________>
-        private void əlavəEtToolStripMenuItem3_Click(object sender, EventArgs e)
+        //Bonus Card
+        private void bonusƏlavəEtToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            //OpenChildForm(new FormBrand(_brandService), sender);
+            OpenChildForm(new HomeForm(_bonusCardService, _bonusCardOperationService, _formSettingService), sender);
         }
 
-        private void yeniləVəSilToolStripMenuItem_Click(object sender, EventArgs e)
+        private void kartƏlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //OpenChildForm(new BrandUpdateAndDeleteForm(_brandService), sender);
+            OpenChildForm(new WindowsForm.Forms.BonusCardAddForm(_bonusCardService, _customerService, _formSettingService), sender);
         }
 
-        //Supplier_____________________>
-        private void əlavəEtToolStripMenuItem4_Click(object sender, EventArgs e)
-        {
-            //OpenChildForm(new SupplierForm(_supplierService), sender);
-        }
-
-        private void yeniləVəSilToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            //OpenChildForm(new SupplierUpdateForm(_supplierService), sender);
-        }
-
-        //Sales-------------------------------------------->
-        private void satislariSiralaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //OpenChildForm(new FormSalesList(_productService, _saleWinFormService), sender);
-        }
 
         //Istifadeci--------------------------------------------->
         private void istifadəçiləriSıralaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -480,6 +462,17 @@ namespace WindowsForm.BonusCardSystem.Forms.UserForms
         }
 
         //Others--------------------------------->
+
+        private void müştərilərToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new WindowsForm.Forms.CustomerForm(_customerService, _debtService), sender);
+        }
+
+        private void müştəriÖdənişləriToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void musterilerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenChildForm(new WindowsForm.Forms.CustomerForm(_customerService, _debtService), sender);
@@ -505,6 +498,7 @@ namespace WindowsForm.BonusCardSystem.Forms.UserForms
 
         }
 
+       
         //Bonus Elave et
         private void bonusƏlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -601,6 +595,12 @@ namespace WindowsForm.BonusCardSystem.Forms.UserForms
             childForm.Show();
             labelTitle.Text = childForm.Text;
         }
+
+       
+
+
+
+
 
 
 

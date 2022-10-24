@@ -36,10 +36,9 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
             this.btnExit = new System.Windows.Forms.Button();
             this.buttonOther = new System.Windows.Forms.Button();
             this.buttonUsers = new System.Windows.Forms.Button();
-            this.buttonCategories = new System.Windows.Forms.Button();
             this.buttonStatistic = new System.Windows.Forms.Button();
             this.buttonScan = new System.Windows.Forms.Button();
-            this.buttonSales = new System.Windows.Forms.Button();
+            this.buttonBonusCard = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.panelTitleBar = new System.Windows.Forms.Panel();
@@ -48,7 +47,7 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
             this.buttonMinimized = new System.Windows.Forms.Button();
             this.buttonMaximized = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.buttonProducts = new System.Windows.Forms.Button();
+            this.buttonCustomers = new System.Windows.Forms.Button();
             this.buttonHome = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.buttonMenu = new FontAwesome.Sharp.IconButton();
@@ -83,6 +82,7 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
             this.bonusKartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.bonusƏlavəEtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kartıYeniləVəSilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myDMProduct = new WindowsForm.MyControls.MyDropdownMenu(this.components);
             this.məhsulToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.sıralaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -97,7 +97,13 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
             this.yeniləVəSilToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.myDMSettings = new WindowsForm.MyControls.MyDropdownMenu(this.components);
             this.bonusKartToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.kartıYeniləVəSilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.myDMCustomers = new WindowsForm.MyControls.MyDropdownMenu(this.components);
+            this.müştərilərToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.müştəriÖdənişləriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.myDMBonusCard = new WindowsForm.MyControls.MyDropdownMenu(this.components);
+            this.bonusƏlavəEtToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.kartƏlavəEtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bonusKartYeniləVəSilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelTitleBar.SuspendLayout();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
@@ -110,6 +116,8 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
             this.myDMOther.SuspendLayout();
             this.myDMProduct.SuspendLayout();
             this.myDMSettings.SuspendLayout();
+            this.myDMCustomers.SuspendLayout();
+            this.myDMBonusCard.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonExit
@@ -129,11 +137,11 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
             // labelTitle
             // 
             this.labelTitle.AutoSize = true;
-            this.labelTitle.Font = new System.Drawing.Font("Helvetica", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelTitle.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelTitle.ForeColor = System.Drawing.Color.Black;
             this.labelTitle.Location = new System.Drawing.Point(6, 13);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(118, 24);
+            this.labelTitle.Size = new System.Drawing.Size(117, 23);
             this.labelTitle.TabIndex = 0;
             this.labelTitle.Text = "Əsas Səhifə";
             this.labelTitle.Click += new System.EventHandler(this.labelTitle_Click);
@@ -144,7 +152,7 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
             this.btnExit.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnExit.FlatAppearance.BorderSize = 0;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnExit.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnExit.ForeColor = System.Drawing.Color.White;
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
             this.btnExit.Location = new System.Drawing.Point(0, 642);
@@ -166,10 +174,10 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
             this.buttonOther.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonOther.FlatAppearance.BorderSize = 0;
             this.buttonOther.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonOther.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonOther.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonOther.ForeColor = System.Drawing.Color.White;
             this.buttonOther.Image = ((System.Drawing.Image)(resources.GetObject("buttonOther.Image")));
-            this.buttonOther.Location = new System.Drawing.Point(0, 448);
+            this.buttonOther.Location = new System.Drawing.Point(0, 392);
             this.buttonOther.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonOther.Name = "buttonOther";
             this.buttonOther.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
@@ -188,10 +196,10 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
             this.buttonUsers.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonUsers.FlatAppearance.BorderSize = 0;
             this.buttonUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonUsers.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonUsers.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonUsers.ForeColor = System.Drawing.Color.White;
             this.buttonUsers.Image = ((System.Drawing.Image)(resources.GetObject("buttonUsers.Image")));
-            this.buttonUsers.Location = new System.Drawing.Point(0, 392);
+            this.buttonUsers.Location = new System.Drawing.Point(0, 336);
             this.buttonUsers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonUsers.Name = "buttonUsers";
             this.buttonUsers.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
@@ -204,35 +212,13 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
             this.buttonUsers.UseVisualStyleBackColor = false;
             this.buttonUsers.Click += new System.EventHandler(this.buttonUsers_Click);
             // 
-            // buttonCategories
-            // 
-            this.buttonCategories.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.buttonCategories.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonCategories.FlatAppearance.BorderSize = 0;
-            this.buttonCategories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCategories.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonCategories.ForeColor = System.Drawing.Color.White;
-            this.buttonCategories.Image = ((System.Drawing.Image)(resources.GetObject("buttonCategories.Image")));
-            this.buttonCategories.Location = new System.Drawing.Point(0, 336);
-            this.buttonCategories.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.buttonCategories.Name = "buttonCategories";
-            this.buttonCategories.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.buttonCategories.Size = new System.Drawing.Size(180, 56);
-            this.buttonCategories.TabIndex = 12;
-            this.buttonCategories.Tag = "Kateqoriyalar";
-            this.buttonCategories.Text = "   Kateqoriyalar";
-            this.buttonCategories.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonCategories.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonCategories.UseVisualStyleBackColor = false;
-            this.buttonCategories.Click += new System.EventHandler(this.buttonCategories_Click);
-            // 
             // buttonStatistic
             // 
             this.buttonStatistic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.buttonStatistic.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonStatistic.FlatAppearance.BorderSize = 0;
             this.buttonStatistic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonStatistic.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonStatistic.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonStatistic.ForeColor = System.Drawing.Color.White;
             this.buttonStatistic.Image = ((System.Drawing.Image)(resources.GetObject("buttonStatistic.Image")));
             this.buttonStatistic.Location = new System.Drawing.Point(0, 280);
@@ -254,7 +240,7 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
             this.buttonScan.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonScan.FlatAppearance.BorderSize = 0;
             this.buttonScan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonScan.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonScan.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonScan.ForeColor = System.Drawing.Color.White;
             this.buttonScan.Image = ((System.Drawing.Image)(resources.GetObject("buttonScan.Image")));
             this.buttonScan.Location = new System.Drawing.Point(0, 224);
@@ -270,27 +256,27 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
             this.buttonScan.UseVisualStyleBackColor = false;
             this.buttonScan.Click += new System.EventHandler(this.buttonScan_Click);
             // 
-            // buttonSales
+            // buttonBonusCard
             // 
-            this.buttonSales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.buttonSales.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonSales.FlatAppearance.BorderSize = 0;
-            this.buttonSales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSales.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonSales.ForeColor = System.Drawing.Color.White;
-            this.buttonSales.Image = ((System.Drawing.Image)(resources.GetObject("buttonSales.Image")));
-            this.buttonSales.Location = new System.Drawing.Point(0, 168);
-            this.buttonSales.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.buttonSales.Name = "buttonSales";
-            this.buttonSales.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.buttonSales.Size = new System.Drawing.Size(180, 56);
-            this.buttonSales.TabIndex = 9;
-            this.buttonSales.Tag = "Satışlar";
-            this.buttonSales.Text = "   Satışlar";
-            this.buttonSales.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonSales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonSales.UseVisualStyleBackColor = false;
-            this.buttonSales.Click += new System.EventHandler(this.buttonSales_Click);
+            this.buttonBonusCard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.buttonBonusCard.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonBonusCard.FlatAppearance.BorderSize = 0;
+            this.buttonBonusCard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBonusCard.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonBonusCard.ForeColor = System.Drawing.Color.White;
+            this.buttonBonusCard.Image = global::WindowsForm.Properties.Resources.bonus_gift_card_32px;
+            this.buttonBonusCard.Location = new System.Drawing.Point(0, 168);
+            this.buttonBonusCard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonBonusCard.Name = "buttonBonusCard";
+            this.buttonBonusCard.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.buttonBonusCard.Size = new System.Drawing.Size(180, 56);
+            this.buttonBonusCard.TabIndex = 9;
+            this.buttonBonusCard.Tag = "Bonus kart";
+            this.buttonBonusCard.Text = "   Bonus kart";
+            this.buttonBonusCard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonBonusCard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonBonusCard.UseVisualStyleBackColor = false;
+            this.buttonBonusCard.Click += new System.EventHandler(this.buttonBonusCard_Click);
             // 
             // button5
             // 
@@ -417,27 +403,27 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
             this.btnClose.MouseHover += new System.EventHandler(this.btnClose_MouseHover);
             this.btnClose.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnClose_MouseMove);
             // 
-            // buttonProducts
+            // buttonCustomers
             // 
-            this.buttonProducts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.buttonProducts.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonProducts.FlatAppearance.BorderSize = 0;
-            this.buttonProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonProducts.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonProducts.ForeColor = System.Drawing.Color.White;
-            this.buttonProducts.Image = ((System.Drawing.Image)(resources.GetObject("buttonProducts.Image")));
-            this.buttonProducts.Location = new System.Drawing.Point(0, 112);
-            this.buttonProducts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.buttonProducts.Name = "buttonProducts";
-            this.buttonProducts.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.buttonProducts.Size = new System.Drawing.Size(180, 56);
-            this.buttonProducts.TabIndex = 8;
-            this.buttonProducts.Tag = "Məhsullar";
-            this.buttonProducts.Text = "   Məhsullar";
-            this.buttonProducts.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonProducts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonProducts.UseVisualStyleBackColor = false;
-            this.buttonProducts.Click += new System.EventHandler(this.buttonProducts_Click);
+            this.buttonCustomers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.buttonCustomers.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonCustomers.FlatAppearance.BorderSize = 0;
+            this.buttonCustomers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCustomers.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonCustomers.ForeColor = System.Drawing.Color.White;
+            this.buttonCustomers.Image = global::WindowsForm.Properties.Resources.member_32px;
+            this.buttonCustomers.Location = new System.Drawing.Point(0, 112);
+            this.buttonCustomers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonCustomers.Name = "buttonCustomers";
+            this.buttonCustomers.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.buttonCustomers.Size = new System.Drawing.Size(180, 56);
+            this.buttonCustomers.TabIndex = 8;
+            this.buttonCustomers.Tag = "Müştərilər";
+            this.buttonCustomers.Text = "   Müştərilər";
+            this.buttonCustomers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonCustomers.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonCustomers.UseVisualStyleBackColor = false;
+            this.buttonCustomers.Click += new System.EventHandler(this.buttonCustomers_Click);
             // 
             // buttonHome
             // 
@@ -445,7 +431,7 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
             this.buttonHome.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonHome.FlatAppearance.BorderSize = 0;
             this.buttonHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonHome.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonHome.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonHome.ForeColor = System.Drawing.Color.White;
             this.buttonHome.Image = ((System.Drawing.Image)(resources.GetObject("buttonHome.Image")));
             this.buttonHome.Location = new System.Drawing.Point(0, 56);
@@ -506,11 +492,10 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
             this.panelMenu.Controls.Add(this.btnExit);
             this.panelMenu.Controls.Add(this.buttonOther);
             this.panelMenu.Controls.Add(this.buttonUsers);
-            this.panelMenu.Controls.Add(this.buttonCategories);
             this.panelMenu.Controls.Add(this.buttonStatistic);
             this.panelMenu.Controls.Add(this.buttonScan);
-            this.panelMenu.Controls.Add(this.buttonSales);
-            this.panelMenu.Controls.Add(this.buttonProducts);
+            this.panelMenu.Controls.Add(this.buttonBonusCard);
+            this.panelMenu.Controls.Add(this.buttonCustomers);
             this.panelMenu.Controls.Add(this.buttonHome);
             this.panelMenu.Controls.Add(this.panelLogo);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
@@ -526,10 +511,10 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
             this.buttonSettings.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonSettings.FlatAppearance.BorderSize = 0;
             this.buttonSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSettings.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonSettings.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonSettings.ForeColor = System.Drawing.Color.White;
             this.buttonSettings.Image = ((System.Drawing.Image)(resources.GetObject("buttonSettings.Image")));
-            this.buttonSettings.Location = new System.Drawing.Point(0, 504);
+            this.buttonSettings.Location = new System.Drawing.Point(0, 448);
             this.buttonSettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSettings.Name = "buttonSettings";
             this.buttonSettings.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
@@ -561,28 +546,24 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
             this.kateqoriyalariSiralaToolStripMenuItem.Name = "kateqoriyalariSiralaToolStripMenuItem";
             this.kateqoriyalariSiralaToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.kateqoriyalariSiralaToolStripMenuItem.Text = "Kateqoriyalari sirala";
-            this.kateqoriyalariSiralaToolStripMenuItem.Click += new System.EventHandler(this.kateqoriyalariSiralaToolStripMenuItem_Click);
             // 
             // elaveEtToolStripMenuItem
             // 
             this.elaveEtToolStripMenuItem.Name = "elaveEtToolStripMenuItem";
             this.elaveEtToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.elaveEtToolStripMenuItem.Text = "Elave et";
-            this.elaveEtToolStripMenuItem.Click += new System.EventHandler(this.elaveEtToolStripMenuItem_Click);
             // 
             // yenileToolStripMenuItem
             // 
             this.yenileToolStripMenuItem.Name = "yenileToolStripMenuItem";
             this.yenileToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.yenileToolStripMenuItem.Text = "Yenilə və sil";
-            this.yenileToolStripMenuItem.Click += new System.EventHandler(this.yenileToolStripMenuItem_Click);
             // 
             // silToolStripMenuItem
             // 
             this.silToolStripMenuItem.Name = "silToolStripMenuItem";
             this.silToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.silToolStripMenuItem.Text = "Sil";
-            this.silToolStripMenuItem.Click += new System.EventHandler(this.silToolStripMenuItem_Click);
             // 
             // panelDesktopPane
             // 
@@ -610,7 +591,6 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
             this.satislariSiralaToolStripMenuItem.Name = "satislariSiralaToolStripMenuItem";
             this.satislariSiralaToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.satislariSiralaToolStripMenuItem.Text = "Satislari sirala";
-            this.satislariSiralaToolStripMenuItem.Click += new System.EventHandler(this.satislariSiralaToolStripMenuItem_Click);
             // 
             // myDMUser
             // 
@@ -734,26 +714,26 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
             this.myDMOther.MenuItemTextColor = System.Drawing.Color.DimGray;
             this.myDMOther.Name = "myDMOther";
             this.myDMOther.PrimaryColor = System.Drawing.Color.MediumSlateBlue;
-            this.myDMOther.Size = new System.Drawing.Size(181, 114);
+            this.myDMOther.Size = new System.Drawing.Size(169, 92);
             // 
             // musterilerToolStripMenuItem
             // 
             this.musterilerToolStripMenuItem.Name = "musterilerToolStripMenuItem";
-            this.musterilerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.musterilerToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.musterilerToolStripMenuItem.Text = "Musteriler";
             this.musterilerToolStripMenuItem.Click += new System.EventHandler(this.musterilerToolStripMenuItem_Click);
             // 
             // musteriOdenisleriToolStripMenuItem
             // 
             this.musteriOdenisleriToolStripMenuItem.Name = "musteriOdenisleriToolStripMenuItem";
-            this.musteriOdenisleriToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.musteriOdenisleriToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.musteriOdenisleriToolStripMenuItem.Text = "Musteri odenisleri";
             this.musteriOdenisleriToolStripMenuItem.Click += new System.EventHandler(this.musteriOdenisleriToolStripMenuItem_Click);
             // 
             // selahiyyetlerToolStripMenuItem
             // 
             this.selahiyyetlerToolStripMenuItem.Name = "selahiyyetlerToolStripMenuItem";
-            this.selahiyyetlerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.selahiyyetlerToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.selahiyyetlerToolStripMenuItem.Text = "Selahiyyetler";
             this.selahiyyetlerToolStripMenuItem.Click += new System.EventHandler(this.selahiyyetlerToolStripMenuItem_Click);
             // 
@@ -764,22 +744,29 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
             this.bonusƏlavəEtToolStripMenuItem,
             this.kartıYeniləVəSilToolStripMenuItem});
             this.bonusKartToolStripMenuItem.Name = "bonusKartToolStripMenuItem";
-            this.bonusKartToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bonusKartToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.bonusKartToolStripMenuItem.Text = "Bonus Kart";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(161, 22);
             this.toolStripMenuItem2.Text = "Kart əlavə et";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // bonusƏlavəEtToolStripMenuItem
             // 
             this.bonusƏlavəEtToolStripMenuItem.Name = "bonusƏlavəEtToolStripMenuItem";
-            this.bonusƏlavəEtToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bonusƏlavəEtToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.bonusƏlavəEtToolStripMenuItem.Text = "Bonus əlavə et";
             this.bonusƏlavəEtToolStripMenuItem.Click += new System.EventHandler(this.bonusƏlavəEtToolStripMenuItem_Click);
+            // 
+            // kartıYeniləVəSilToolStripMenuItem
+            // 
+            this.kartıYeniləVəSilToolStripMenuItem.Name = "kartıYeniləVəSilToolStripMenuItem";
+            this.kartıYeniləVəSilToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.kartıYeniləVəSilToolStripMenuItem.Text = "Kartı yenilə və sil";
+            this.kartıYeniləVəSilToolStripMenuItem.Click += new System.EventHandler(this.kartıYeniləVəSilToolStripMenuItem_Click);
             // 
             // myDMProduct
             // 
@@ -810,28 +797,24 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
             this.sıralaToolStripMenuItem1.Name = "sıralaToolStripMenuItem1";
             this.sıralaToolStripMenuItem1.Size = new System.Drawing.Size(117, 22);
             this.sıralaToolStripMenuItem1.Text = "Sırala";
-            this.sıralaToolStripMenuItem1.Click += new System.EventHandler(this.sıralaToolStripMenuItem1_Click);
             // 
             // əlavəEtToolStripMenuItem2
             // 
             this.əlavəEtToolStripMenuItem2.Name = "əlavəEtToolStripMenuItem2";
             this.əlavəEtToolStripMenuItem2.Size = new System.Drawing.Size(117, 22);
             this.əlavəEtToolStripMenuItem2.Text = "Əlavə et";
-            this.əlavəEtToolStripMenuItem2.Click += new System.EventHandler(this.əlavəEtToolStripMenuItem2_Click);
             // 
             // yeniləToolStripMenuItem1
             // 
             this.yeniləToolStripMenuItem1.Name = "yeniləToolStripMenuItem1";
             this.yeniləToolStripMenuItem1.Size = new System.Drawing.Size(117, 22);
             this.yeniləToolStripMenuItem1.Text = "Yenilə";
-            this.yeniləToolStripMenuItem1.Click += new System.EventHandler(this.yeniləToolStripMenuItem1_Click);
             // 
             // silToolStripMenuItem1
             // 
             this.silToolStripMenuItem1.Name = "silToolStripMenuItem1";
             this.silToolStripMenuItem1.Size = new System.Drawing.Size(117, 22);
             this.silToolStripMenuItem1.Text = "Sil";
-            this.silToolStripMenuItem1.Click += new System.EventHandler(this.silToolStripMenuItem1_Click);
             // 
             // markaToolStripMenuItem1
             // 
@@ -847,14 +830,12 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
             this.əlavəEtToolStripMenuItem3.Name = "əlavəEtToolStripMenuItem3";
             this.əlavəEtToolStripMenuItem3.Size = new System.Drawing.Size(134, 22);
             this.əlavəEtToolStripMenuItem3.Text = "Əlavə et";
-            this.əlavəEtToolStripMenuItem3.Click += new System.EventHandler(this.əlavəEtToolStripMenuItem3_Click);
             // 
             // yeniləVəSilToolStripMenuItem
             // 
             this.yeniləVəSilToolStripMenuItem.Name = "yeniləVəSilToolStripMenuItem";
             this.yeniləVəSilToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.yeniləVəSilToolStripMenuItem.Text = "Yenilə və sil";
-            this.yeniləVəSilToolStripMenuItem.Click += new System.EventHandler(this.yeniləVəSilToolStripMenuItem_Click);
             // 
             // tədarükçüToolStripMenuItem
             // 
@@ -870,14 +851,12 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
             this.əlavəEtToolStripMenuItem4.Name = "əlavəEtToolStripMenuItem4";
             this.əlavəEtToolStripMenuItem4.Size = new System.Drawing.Size(134, 22);
             this.əlavəEtToolStripMenuItem4.Text = "Əlavə et";
-            this.əlavəEtToolStripMenuItem4.Click += new System.EventHandler(this.əlavəEtToolStripMenuItem4_Click);
             // 
             // yeniləVəSilToolStripMenuItem1
             // 
             this.yeniləVəSilToolStripMenuItem1.Name = "yeniləVəSilToolStripMenuItem1";
             this.yeniləVəSilToolStripMenuItem1.Size = new System.Drawing.Size(134, 22);
             this.yeniləVəSilToolStripMenuItem1.Text = "Yenilə və sil";
-            this.yeniləVəSilToolStripMenuItem1.Click += new System.EventHandler(this.yeniləVəSilToolStripMenuItem1_Click);
             // 
             // myDMSettings
             // 
@@ -897,22 +876,75 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
             this.bonusKartToolStripMenuItem1.Text = "Bonus kart";
             this.bonusKartToolStripMenuItem1.Click += new System.EventHandler(this.bonusKartToolStripMenuItem1_Click);
             // 
-            // kartıYeniləVəSilToolStripMenuItem
+            // myDMCustomers
             // 
-            this.kartıYeniləVəSilToolStripMenuItem.Name = "kartıYeniləVəSilToolStripMenuItem";
-            this.kartıYeniləVəSilToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.kartıYeniləVəSilToolStripMenuItem.Text = "Kartı yenilə və sil";
-            this.kartıYeniləVəSilToolStripMenuItem.Click += new System.EventHandler(this.kartıYeniləVəSilToolStripMenuItem_Click);
+            this.myDMCustomers.IsMainMenu = false;
+            this.myDMCustomers.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.müştərilərToolStripMenuItem,
+            this.müştəriÖdənişləriToolStripMenuItem});
+            this.myDMCustomers.MenuItemHeight = 25;
+            this.myDMCustomers.MenuItemTextColor = System.Drawing.Color.DimGray;
+            this.myDMCustomers.Name = "myDMCustomers";
+            this.myDMCustomers.PrimaryColor = System.Drawing.Color.MediumSlateBlue;
+            this.myDMCustomers.Size = new System.Drawing.Size(169, 48);
+            // 
+            // müştərilərToolStripMenuItem
+            // 
+            this.müştərilərToolStripMenuItem.Name = "müştərilərToolStripMenuItem";
+            this.müştərilərToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.müştərilərToolStripMenuItem.Text = "Müştərilər";
+            this.müştərilərToolStripMenuItem.Click += new System.EventHandler(this.müştərilərToolStripMenuItem_Click);
+            // 
+            // müştəriÖdənişləriToolStripMenuItem
+            // 
+            this.müştəriÖdənişləriToolStripMenuItem.Name = "müştəriÖdənişləriToolStripMenuItem";
+            this.müştəriÖdənişləriToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.müştəriÖdənişləriToolStripMenuItem.Text = "Müştəri ödənişləri";
+            this.müştəriÖdənişləriToolStripMenuItem.Click += new System.EventHandler(this.müştəriÖdənişləriToolStripMenuItem_Click);
+            // 
+            // myDMBonusCard
+            // 
+            this.myDMBonusCard.IsMainMenu = false;
+            this.myDMBonusCard.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bonusƏlavəEtToolStripMenuItem1,
+            this.kartƏlavəEtToolStripMenuItem,
+            this.bonusKartYeniləVəSilToolStripMenuItem});
+            this.myDMBonusCard.MenuItemHeight = 25;
+            this.myDMBonusCard.MenuItemTextColor = System.Drawing.Color.DimGray;
+            this.myDMBonusCard.Name = "myDMBanusCard";
+            this.myDMBonusCard.PrimaryColor = System.Drawing.Color.MediumSlateBlue;
+            this.myDMBonusCard.Size = new System.Drawing.Size(194, 70);
+            // 
+            // bonusƏlavəEtToolStripMenuItem1
+            // 
+            this.bonusƏlavəEtToolStripMenuItem1.Name = "bonusƏlavəEtToolStripMenuItem1";
+            this.bonusƏlavəEtToolStripMenuItem1.Size = new System.Drawing.Size(193, 22);
+            this.bonusƏlavəEtToolStripMenuItem1.Text = "Bonus əlavə et";
+            this.bonusƏlavəEtToolStripMenuItem1.Click += new System.EventHandler(this.bonusƏlavəEtToolStripMenuItem1_Click);
+            // 
+            // kartƏlavəEtToolStripMenuItem
+            // 
+            this.kartƏlavəEtToolStripMenuItem.Name = "kartƏlavəEtToolStripMenuItem";
+            this.kartƏlavəEtToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.kartƏlavəEtToolStripMenuItem.Text = "Kart əlavə et";
+            this.kartƏlavəEtToolStripMenuItem.Click += new System.EventHandler(this.kartƏlavəEtToolStripMenuItem_Click);
+            // 
+            // bonusKartYeniləVəSilToolStripMenuItem
+            // 
+            this.bonusKartYeniləVəSilToolStripMenuItem.Name = "bonusKartYeniləVəSilToolStripMenuItem";
+            this.bonusKartYeniləVəSilToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.bonusKartYeniləVəSilToolStripMenuItem.Text = "Bonus kart yenilə və sil";
+            this.bonusKartYeniləVəSilToolStripMenuItem.Click += new System.EventHandler(this.bonusKartYeniləVəSilToolStripMenuItem_Click);
             // 
             // BonusCardAdminDashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 698);
             this.Controls.Add(this.panelDesktopPane);
             this.Controls.Add(this.panelTitleBar);
             this.Controls.Add(this.panelMenu);
-            this.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MinimumSize = new System.Drawing.Size(900, 376);
@@ -935,6 +967,8 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
             this.myDMOther.ResumeLayout(false);
             this.myDMProduct.ResumeLayout(false);
             this.myDMSettings.ResumeLayout(false);
+            this.myDMCustomers.ResumeLayout(false);
+            this.myDMBonusCard.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -946,14 +980,13 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button buttonOther;
         private System.Windows.Forms.Button buttonUsers;
-        private System.Windows.Forms.Button buttonCategories;
         private System.Windows.Forms.Button buttonStatistic;
         private System.Windows.Forms.Button buttonScan;
-        private System.Windows.Forms.Button buttonSales;
+        private System.Windows.Forms.Button buttonBonusCard;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Panel panelTitleBar;
-        private System.Windows.Forms.Button buttonProducts;
+        private System.Windows.Forms.Button buttonCustomers;
         private System.Windows.Forms.Button buttonHome;
         private System.Windows.Forms.Panel panelLogo;
         private FontAwesome.Sharp.IconButton buttonMenu;
@@ -989,7 +1022,7 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
         private System.Windows.Forms.Label labelFirstName;
         private System.Windows.Forms.Label labelLastName;
         private System.Windows.Forms.ToolStripMenuItem selahiyyetlerToolStripMenuItem;
-        private MyControls.MyDropdownMenu myDropdownMenu1;
+        private MyControls.MyDropdownMenu myDMCustomers;
         private System.Windows.Forms.ToolStripMenuItem məhsulToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sıralaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem əlavəEtToolStripMenuItem;
@@ -1016,5 +1049,11 @@ namespace WindowsForm.BonusCardSystem.Forms.AdminForms
         private System.Windows.Forms.ToolStripMenuItem bonusKartToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem bonusƏlavəEtToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kartıYeniləVəSilToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem müştərilərToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem müştəriÖdənişləriToolStripMenuItem;
+        private MyControls.MyDropdownMenu myDMBonusCard;
+        private System.Windows.Forms.ToolStripMenuItem bonusƏlavəEtToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem kartƏlavəEtToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bonusKartYeniləVəSilToolStripMenuItem;
     }
 }
