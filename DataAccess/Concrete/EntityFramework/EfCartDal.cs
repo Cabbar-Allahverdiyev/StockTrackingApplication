@@ -15,13 +15,13 @@ namespace DataAccess.Concrete.EntityFramework
                                , ICartDal
     {
 
-       
+
         public CartAddDto GetCartAddDetailByBarcodeNumber(string barcodeNumber)
         {
             using (StockTrackingProjectContext context = new StockTrackingProjectContext())
             {
                 var result = from c in context.Carts
-                             join p in context.Products.Where(product => product.BarcodeNumber .Equals( barcodeNumber)) on c.ProductId equals p.Id
+                             join p in context.Products.Where(product => product.BarcodeNumber.Equals(barcodeNumber)) on c.ProductId equals p.Id
                              select new CartAddDto
                              {
                                  CartId = c.Id,
@@ -78,7 +78,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  ProductId = c.ProductId,
                                  ProductName = p.ProductName,
                                  BarcodeNumber = p.BarcodeNumber,
-                                 UnitPrice=p.UnitPrice,
+                                 UnitPrice = p.UnitPrice,
                                  UserId = c.UserId,
                                  FirstName = u.FirstName,
                                  LastName = u.LastName,
@@ -103,22 +103,48 @@ namespace DataAccess.Concrete.EntityFramework
                              join p in context.Products on c.ProductId equals p.Id
                              join u in context.Users on c.UserId equals u.Id
                              join category in context.Categories on p.CategoryId equals category.Id
-                             select new CartViewDto {
-                                 Id=c.Id,
-                                 ProductId=c.ProductId,
-                                 MehsulAdi=p.ProductName,
-                                 Kateqoriya=category.CategoryName,
-                                 UserId=c.UserId,
-                                 AlisQiymeti=p.PurchasePrice,
+                             select new CartViewDto
+                             {
+                                 Id = c.Id,
+                                 ProductId = c.ProductId,
+                                 MehsulAdi = p.ProductName,
+                                 Kateqoriya = category.CategoryName,
+                                 UserId = c.UserId,
+                                 AlisQiymeti = p.PurchasePrice,
                                  //Istifadeci = $"{u.FirstName} {u.LastName}",
-                                 Qiymet=c.SoldPrice,
-                                 Miqdar=c.Quantity,
-                                 Cem=c.TotalPrice,
-                                 Aciqlama=p.Description,
-                                 CartDate=c.CartDate
+                                 Qiymet = c.SoldPrice,
+                                 Miqdar = c.Quantity,
+                                 Cem = c.TotalPrice,
+                                 Aciqlama = p.Description,
+                                 CartDate = c.CartDate
                              };
 
                 return filter == null ? result.ToList() : result.Where(filter).ToList();
+            }
+        }
+
+        public List<CartDtoForReceipt> GetAllCartDtoForReceipt(Expression<Func<CartDtoForReceipt, bool>> filter = null)
+        {
+            using (StockTrackingProjectContext context = new StockTrackingProjectContext())
+            {
+                var result = from c in context.Carts
+                             join p in context.Products on c.ProductId equals p.Id
+                             select new CartDtoForReceipt
+                             {
+                                 CartId = c.Id,
+                                 ProductId = c.ProductId,
+                                 UserId = c.UserId,
+                                 ProductName = p.ProductName,
+                                 SoldPrice = c.SoldPrice,
+                                 Quantity = c.Quantity,
+                                 TotalPrice = c.TotalPrice,
+
+                             };
+
+
+
+                return filter == null ? result.ToList() : result.Where(filter).ToList();
+
             }
         }
     }
