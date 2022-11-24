@@ -148,6 +148,29 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Cart>>(carts,CartMessages.Found);
         }
 
-      
+        public IDataResult<List<CartDtoForReceipt>> GetAllCartDtoForReceiptByUserId(int userId)
+        {
+            List<CartDtoForReceipt> carts = _cartDal.GetAllCartDtoForReceipt(c => c.UserId == userId);
+            if (carts is null)
+            {
+                return new ErrorDataResult<List<CartDtoForReceipt>>(CartMessages.NotFound);
+            }
+            return new SuccessDataResult<List<CartDtoForReceipt>>(carts, CartMessages.Found);
+        }
+
+        public IDataResult<CartListDtoForReceipt> GetAllCartListDtoForReceiptByUserId(int userId)
+        {
+            IDataResult<List<CartDtoForReceipt>> carts = this.GetAllCartDtoForReceiptByUserId(userId);
+            if (!carts.Success) return new ErrorDataResult<CartListDtoForReceipt>(carts.Message);
+
+            CartListDtoForReceipt cartList = new CartListDtoForReceipt() { Carts=carts.Data};
+
+            foreach (CartDtoForReceipt cart in carts.Data)
+            {
+                cartList.Total += cart.TotalPrice;
+            }
+
+            return new SuccessDataResult<CartListDtoForReceipt>(cartList,CartMessages.Found);
+        }
     }
 }

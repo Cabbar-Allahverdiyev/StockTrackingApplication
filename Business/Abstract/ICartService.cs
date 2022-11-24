@@ -23,6 +23,8 @@ namespace Business.Abstract
         IResult ByUserIdAllRemove(int userId);
         IDataResult<List<CartViewDto>> GetAllCartViewDetailsByUserId(int userId);
         IDataResult<List<Cart>> GetAllByUserId(int userId);
+        IDataResult<List<CartDtoForReceipt>> GetAllCartDtoForReceiptByUserId(int userId);
+        IDataResult<CartListDtoForReceipt> GetAllCartListDtoForReceiptByUserId(int userId);
 
        
     }
