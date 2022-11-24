@@ -82,7 +82,7 @@ namespace WindowsForm
             IBarcodeGenerator _barcodeGenerator = new NetBarcodeGenerator(_productService);
             ILoggerService _loggerService = new LoggerManager(_logDal);
             //Application.Run(new Forms.SettingForms.BonusCardSettingForm(formSettingManager));
-            Application.Run(new Forms.ReceiptForm());
+            Application.Run(new Forms.ReceiptForm(_productService,_cartService));
 
             //Application.Run(new Forms.LoginForm(_userOperationClaimForFormsService, _userService, _operationClaimForFormsService, _productService
             //   , _categoryService, _customerService, _customerBalanceService, _customerPaymentService, _cartService, _debtService, _saleService, _supplierService
