@@ -82,6 +82,9 @@ namespace WindowsForm.Forms
             this.buttonTemizleBonusCard = new System.Windows.Forms.Button();
             this.textBoxBonusCardSelect = new System.Windows.Forms.TextBox();
             this.checkBoxBonusCard = new System.Windows.Forms.CheckBox();
+            this.checkBoxPrintReceipt = new System.Windows.Forms.CheckBox();
+            this.printDocReceipt = new System.Drawing.Printing.PrintDocument();
+            this.printPreviewDialogReceipt = new System.Windows.Forms.PrintPreviewDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductList)).BeginInit();
             this.groupBoxMusteri.SuspendLayout();
             this.groupBoxMehsul.SuspendLayout();
@@ -761,12 +764,41 @@ namespace WindowsForm.Forms
             this.checkBoxBonusCard.UseVisualStyleBackColor = true;
             this.checkBoxBonusCard.CheckedChanged += new System.EventHandler(this.checkBoxBonusCard_CheckedChanged);
             // 
+            // checkBoxPrintReceipt
+            // 
+            this.checkBoxPrintReceipt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxPrintReceipt.AutoSize = true;
+            this.checkBoxPrintReceipt.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxPrintReceipt.Location = new System.Drawing.Point(1078, 557);
+            this.checkBoxPrintReceipt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.checkBoxPrintReceipt.Name = "checkBoxPrintReceipt";
+            this.checkBoxPrintReceipt.Size = new System.Drawing.Size(84, 19);
+            this.checkBoxPrintReceipt.TabIndex = 43;
+            this.checkBoxPrintReceipt.Text = "Çek çap et";
+            this.checkBoxPrintReceipt.UseVisualStyleBackColor = true;
+            this.checkBoxPrintReceipt.CheckedChanged += new System.EventHandler(this.checkBoxPrintReceipt_CheckedChanged);
+            // 
+            // printDocReceipt
+            // 
+            this.printDocReceipt.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocReceipt_PrintPage);
+            // 
+            // printPreviewDialogReceipt
+            // 
+            this.printPreviewDialogReceipt.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialogReceipt.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialogReceipt.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialogReceipt.Enabled = true;
+            this.printPreviewDialogReceipt.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialogReceipt.Icon")));
+            this.printPreviewDialogReceipt.Name = "printPreviewDialogReceipt";
+            this.printPreviewDialogReceipt.Visible = false;
+            // 
             // SalesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(1174, 726);
+            this.Controls.Add(this.checkBoxPrintReceipt);
             this.Controls.Add(this.checkBoxBonusCard);
             this.Controls.Add(this.textBoxBonusCardSelect);
             this.Controls.Add(this.buttonTemizleBonusCard);
@@ -858,5 +890,8 @@ namespace WindowsForm.Forms
         private System.Windows.Forms.Button buttonTemizleBonusCard;
         private System.Windows.Forms.TextBox textBoxBonusCardSelect;
         private System.Windows.Forms.CheckBox checkBoxBonusCard;
+        private System.Windows.Forms.CheckBox checkBoxPrintReceipt;
+        private System.Drawing.Printing.PrintDocument printDocReceipt;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialogReceipt;
     }
 }

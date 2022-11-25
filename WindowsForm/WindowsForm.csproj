@@ -76,6 +76,7 @@
   <ItemGroup>
     <Folder Include="Core\Constants\SelectionItem\" />
     <Folder Include="Core\Controllers\Abstract\" />
+    <Folder Include="Utilities\Helpers\PrinterHelpers\" />
     <Folder Include="Wwwroot\" />
   </ItemGroup>
 

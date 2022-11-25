@@ -20,7 +20,13 @@ namespace WindowsForm.Utilities.Helpers.Receipts
 
         }
 
-        public ReceiptText(string text, string value = "", string fontType = "Arial", float fontSize = 8, FontStyle style = FontStyle.Regular, int x = 10, int y = 0)
+        public ReceiptText(string text,
+                           string value = "",
+                           string fontType = "Arial",
+                           float fontSize = 8,
+                           FontStyle style = FontStyle.Regular,
+                           int x = 10,
+                           int y = 0)
         {
             Text = text;
             Value = value;

@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using WindowsForm.Core.Controllers.Concrete;
 using WindowsForm.MyControls;
 using WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate;
+using WindowsForm.Utilities.Helpers.Receipts;
 
 namespace WindowsForm.Forms.AdminForms
 {
@@ -39,6 +40,8 @@ namespace WindowsForm.Forms.AdminForms
         IBarcodeGenerator _barcodeGenerator;
         ILoggerService _loggerService;
 
+        IReceiptOperation _receiptOperation;
+
         //OperationClaimForFormsManager _operationClaimManager=new OperationClaimForFormsManager(new EfOperationClaimForFormsDal());
         //UserOperationClaimForFormsManager _userOperationClaimForFormsManager = new UserOperationClaimForFormsManager(new EfUserOperationClaimForFormsDal());
         private Form activateForm;
@@ -62,7 +65,8 @@ namespace WindowsForm.Forms.AdminForms
             , IFormSettingService formSettingService
             , IBonusCardOperationService bonusCardOperationService
             , IBarcodeGenerator barcodeGenerator,
-              ILoggerService loggerService)
+              ILoggerService loggerService,
+              IReceiptOperation receiptOperation)
         {
             _userService = userService;
             _operationClaimService = operationClaimService;
@@ -82,6 +86,9 @@ namespace WindowsForm.Forms.AdminForms
             _bonusCardOperationService = bonusCardOperationService;
             _barcodeGenerator = barcodeGenerator;
 
+            _loggerService = loggerService;
+            _receiptOperation = receiptOperation;
+
             InitializeComponent();
             this.Padding = new Padding();
             CollapseMenu();
@@ -92,7 +99,6 @@ namespace WindowsForm.Forms.AdminForms
             labelLastName.Text = getUser.Data.LastName;
 
             DisableButton();
-            _loggerService = loggerService;
 
             //WM_NCCALCSIZE
         }
@@ -285,7 +291,9 @@ namespace WindowsForm.Forms.AdminForms
                                         , _saleWinFormService
                                         , _debtService
                                         , _bonusCardService
-                                        , _formSettingService), sender);
+                                        , _formSettingService,
+                                        _receiptOperation,
+                                        _userService), sender);
 
         }
 
@@ -353,7 +361,9 @@ namespace WindowsForm.Forms.AdminForms
                                                     , _bonusCardService
                                                     , _formSettingService
                                                     , _bonusCardOperationService
-                                                    , _barcodeGenerator, _loggerService));
+                                                    , _barcodeGenerator,
+                                                    _loggerService,
+                                                    _receiptOperation));
 
 
         }

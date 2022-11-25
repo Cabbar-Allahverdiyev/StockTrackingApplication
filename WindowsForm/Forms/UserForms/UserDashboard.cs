@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using WindowsForm.Core.Controllers.Concrete;
 using WindowsForm.MyControls;
 using WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate;
+using WindowsForm.Utilities.Helpers.Receipts;
 
 namespace WindowsForm.Forms.UserForms
 {
@@ -40,6 +41,7 @@ namespace WindowsForm.Forms.UserForms
         IBarcodeGenerator _barcodeGenerator;
         ILoggerService _loggerService;
 
+        private readonly IReceiptOperation _receiptOperation;
 
         private Form activateForm;
         private Size formSize;
@@ -62,7 +64,8 @@ namespace WindowsForm.Forms.UserForms
             , IFormSettingService formSettingService
             , IBonusCardOperationService bonusCardOperationService
             , IBarcodeGenerator barcodeGenerator
-            , ILoggerService loggerService)
+            , ILoggerService loggerService,
+            IReceiptOperation receiptOperation)
 
         {
             _userService = userService;
@@ -91,6 +94,7 @@ namespace WindowsForm.Forms.UserForms
             labelFirstName.Text = getUser.Data.FirstName;
             labelLastName.Text = getUser.Data.LastName;
             _loggerService = loggerService;
+            _receiptOperation = receiptOperation;
             //WM_NCCALCSIZE
         }
 
@@ -268,7 +272,8 @@ namespace WindowsForm.Forms.UserForms
                                         , _saleWinFormService
                                         , _debtService
                                         , _bonusCardService
-                                        , _formSettingService), sender);
+                                        , _formSettingService,
+                                        _userService), sender);
         }
 
         private void buttonProducts_Click(object sender, EventArgs e)
@@ -332,7 +337,8 @@ namespace WindowsForm.Forms.UserForms
                                                     , _formSettingService
                                                     , _bonusCardOperationService
                                                     , _barcodeGenerator
-                                                    , _loggerService));
+                                                    , _loggerService,
+                                                    _receiptOperation));
         }
 
         //Dropdown menu---------------------------------->

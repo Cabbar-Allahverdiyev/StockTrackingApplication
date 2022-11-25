@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants.Dictionaries;
+using Business.Constants.Messages;
+using Core.Entities.Concrete;
 using Core.Utilities.Results;
 using Entities.Concrete.ForForms;
 using Entities.DTOs.CartDtos;
@@ -15,7 +17,7 @@ using static Business.Constants.Enums.SettingEnums;
 
 namespace WindowsForm.Utilities.Helpers.Receipts
 {
-    public   class ReceiptOperations
+    public class ReceiptOperations : IReceiptOperation
     {
         IFormSettingService _formSettingService;
         public ReceiptOperations(IFormSettingService formSettingService)
@@ -24,26 +26,24 @@ namespace WindowsForm.Utilities.Helpers.Receipts
         }
         public IDataResult<PrintDocument> PrepareAReceipt(System.Drawing.Printing.PrintPageEventArgs e,
                                                           PrintDocument printDocReceipt,
-                                                          IDataResult<CartListDtoForReceipt> carts
-        //User user
-        //BonusCarddto kimimbir sey icinde musteri Id barkod verilen bonus qaliq bonus bonusCard
-                                                          )
+                                                          IDataResult<CartListDtoForReceipt> carts,
+                                                          ReceiptDto receiptDto)                                                          
         {
             List<FormSetting> settings = _formSettingService.GetAll().Data;
             string shopName = settings.SingleOrDefault(s => s.Name == SettingsDictionary.Settings[SettingParameter.ShopName]).Value == null ? "" : settings.SingleOrDefault(s => s.Name == SettingsDictionary.Settings[SettingParameter.ShopName]).Value,
                    address = settings.SingleOrDefault(s => s.Name == SettingsDictionary.Settings[SettingParameter.ShopAddress]).Value == null ? "" : settings.SingleOrDefault(s => s.Name == SettingsDictionary.Settings[SettingParameter.ShopAddress]).Value,
                    shopeCode = settings.SingleOrDefault(s => s.Name == SettingsDictionary.Settings[SettingParameter.ShopNumber]).Value == null ? "" : settings.SingleOrDefault(s => s.Name == SettingsDictionary.Settings[SettingParameter.ShopNumber]).Value,
                    shopNumber = "",
-                   voen = settings.SingleOrDefault(s => s.Name == SettingsDictionary.Settings[SettingParameter.Voen]).Value == null ? "" : settings.SingleOrDefault(s => s.Name ==  SettingsDictionary.Settings[SettingParameter.Voen]).Value,
-                   cashier = "",//$"{user.FirstName} {user.LastName}",
+                   voen = settings.SingleOrDefault(s => s.Name == SettingsDictionary.Settings[SettingParameter.Voen]).Value == null ? "" : settings.SingleOrDefault(s => s.Name == SettingsDictionary.Settings[SettingParameter.Voen]).Value,
+                   cashier = $"{receiptDto.UserFirstName} {receiptDto.UserLastName}",
                    bonusType = settings.SingleOrDefault(s => s.Name == SettingsDictionary.Settings[SettingParameter.BonusType]).Value == null ? "" : settings.SingleOrDefault(s => s.Name == SettingsDictionary.Settings[SettingParameter.BonusType]).Value,
-                   bonusCardNumber = "",//bonusCard.BarcodeNumber,
-                   bonusEarned = "",//bonusCard.BonusEarned,
-                   remainingBonus = "",//bonusCard.RemainingBonus,
+                   bonusCardNumber = receiptDto.BonusCardBarcode,
+                   bonusEarned = receiptDto.EarnedBonus.ToString("00.00"),
+                   remainingBonus = receiptDto.RemainingBonus.ToString(),
                    vaultModel = settings.SingleOrDefault(s => s.Name == SettingsDictionary.Settings[SettingParameter.VaultModel]).Value == null ? "" : settings.SingleOrDefault(s => s.Name == SettingsDictionary.Settings[SettingParameter.VaultModel]).Value,
                    vaultSerialNumber = settings.SingleOrDefault(s => s.Name == SettingsDictionary.Settings[SettingParameter.VaultSerialNumber]).Value == null ? "" : settings.SingleOrDefault(s => s.Name == SettingsDictionary.Settings[SettingParameter.VaultSerialNumber]).Value;
 
-            FormSetting recipeNumberSetting = settings.SingleOrDefault(s => s.Name == SettingsDictionary. Settings[SettingParameter.ReceiptNumber]);
+            FormSetting recipeNumberSetting = settings.SingleOrDefault(s => s.Name == SettingsDictionary.Settings[SettingParameter.ReceiptNumber]);
             FormSetting receiptGivenOnTheDaySetting = settings.SingleOrDefault(s => s.Name == SettingsDictionary.Settings[SettingParameter.ReceiptGivenOnTheDay]);
 
             int receiptNumber = int.Parse(recipeNumberSetting.Value);
@@ -160,14 +160,32 @@ namespace WindowsForm.Utilities.Helpers.Receipts
         public IResult PrintReceipt(PrintPreviewDialog printPreviewDialog,
                                     PrintDocument printDocReceipt)
         {
-            printPreviewDialog.Document = printDocReceipt;
-           // printPreviewDialog.ShowDialog();
-            //Aclas Printer
-            // printDocReceipt.DefaultPageSettings.PrinterSettings.PrinterName = "Aclas Printer";
-            //printDocReceipt.DefaultPageSettings.Landscape = true;
+            IDataResult<FormSetting> printerSetting = _formSettingService.GetByName(
+                        SettingsDictionary.Settings[SettingParameter.ReceiptPrinterModel]);
+            if (printerSetting.Success && printerSetting.Data.Value!="")
+            {
+                printDocReceipt.DefaultPageSettings.PrinterSettings.PrinterName = printerSetting.Data.Value;
+                try { printDocReceipt.Print(); }
+                catch (InvalidPrinterException ex)
+                {
+                    return new ErrorResult(PrinterMessages.PrinterNameIsNotFound(printerSetting.Data.Value));
+                }
+               
+            }
 
+            else this.PrintShowDialog(printDocReceipt);
+            return new SuccessResult();
+        }
 
-            //printDocReceipt.Print();
+        public void PrintShowDialog(PrintDocument printDocReceipt)
+        {
+            PrintDialog printDialog = new PrintDialog();
+            printDialog.Document = printDocReceipt;
+            if (printDialog.ShowDialog() == DialogResult.OK)
+            {
+
+                printDocReceipt.Print();
+            }
         }
     }
 }

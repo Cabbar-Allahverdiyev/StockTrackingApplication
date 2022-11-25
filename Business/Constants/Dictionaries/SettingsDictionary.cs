@@ -24,6 +24,8 @@ namespace Business.Constants.Dictionaries
             { SettingParameter.VaultSerialNumber, "textBoxVaultSerialNumber" },
             { SettingParameter.ReceiptNumber, "ReceiptNumber" },
             { SettingParameter.ReceiptGivenOnTheDay, "ReceiptGivenOnTheDay" },
+            { SettingParameter.ReceiptPrinterModel, "textBoxReceiptPrinterModel" },
+            { SettingParameter.BarcodePrinterModel, "textBoxBarcodePrinterModel" },
 
      };
     }

@@ -119,7 +119,7 @@ namespace Business.Concrete
         }
 
         [CacheRemoveAspect("IBonusCardService.Get")]
-        public IResult IncreaseBalance(int cardId, int userId, decimal value, decimal interestedAdvantage)
+        public IDataResult<decimal> IncreaseBalance(int cardId, int userId, decimal value, decimal interestedAdvantage)
         {
             IResult rules = BusinessRules.Run(BonusCardIdExist(cardId)
                                             , IsValueGreaterThanZero(value)
@@ -127,7 +127,7 @@ namespace Business.Concrete
                                             , CalCulateValue(ref value, interestedAdvantage));
             if (rules != null)
             {
-                return new ErrorResult(rules.Message);
+                return new ErrorDataResult<decimal>(rules.Message);
             }
             IDataResult<BonusCard> getBonusCard = GetById(cardId);
 
@@ -137,14 +137,14 @@ namespace Business.Concrete
             IResult result = Update(bonusCard);
             if (!result.Success)
             {
-                return new ErrorResult(BonusCardMessages.NotIncreaseBalance(customer.FirstName));
+                return new ErrorDataResult<decimal>(BonusCardMessages.NotIncreaseBalance(customer.FirstName));
             }
             IResult bonusCardOperationAdded = _bonusCardOperationService.IncreasedBalance(bonusCard, userId, value);
             if (!bonusCardOperationAdded.Success)
             {
-                return new ErrorResult(bonusCardOperationAdded.Message);
+                return new ErrorDataResult<decimal>(bonusCardOperationAdded.Message);
             }
-            return new SuccessResult(BonusCardMessages.IncreaseBalance(customer.FirstName));
+            return new SuccessDataResult<decimal>(value,BonusCardMessages.IncreaseBalance(customer.FirstName));
         }
 
 

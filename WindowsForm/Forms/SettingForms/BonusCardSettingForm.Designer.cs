@@ -41,6 +41,8 @@ namespace WindowsForm.Forms.SettingForms
             this.groupBoxBonuCardVisualParams = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxBonusCardBarcodeLenth = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBoxBonusType = new System.Windows.Forms.TextBox();
             this.groupBoxGeneralSettingsOfTheBonusCard.SuspendLayout();
             this.groupBoxWeeklySettingsOfTheBonusCard.SuspendLayout();
             this.groupBoxBonuCardVisualParams.SuspendLayout();
@@ -66,11 +68,13 @@ namespace WindowsForm.Forms.SettingForms
             // 
             // groupBoxGeneralSettingsOfTheBonusCard
             // 
+            this.groupBoxGeneralSettingsOfTheBonusCard.Controls.Add(this.label5);
+            this.groupBoxGeneralSettingsOfTheBonusCard.Controls.Add(this.textBoxBonusType);
             this.groupBoxGeneralSettingsOfTheBonusCard.Controls.Add(this.label1);
             this.groupBoxGeneralSettingsOfTheBonusCard.Controls.Add(this.textBoxIGeneralInterestRate);
             this.groupBoxGeneralSettingsOfTheBonusCard.Location = new System.Drawing.Point(12, 12);
             this.groupBoxGeneralSettingsOfTheBonusCard.Name = "groupBoxGeneralSettingsOfTheBonusCard";
-            this.groupBoxGeneralSettingsOfTheBonusCard.Size = new System.Drawing.Size(238, 49);
+            this.groupBoxGeneralSettingsOfTheBonusCard.Size = new System.Drawing.Size(238, 70);
             this.groupBoxGeneralSettingsOfTheBonusCard.TabIndex = 2;
             this.groupBoxGeneralSettingsOfTheBonusCard.TabStop = false;
             this.groupBoxGeneralSettingsOfTheBonusCard.Text = "Bonus kartın ümumi tənzimləmələri";
@@ -81,7 +85,7 @@ namespace WindowsForm.Forms.SettingForms
             this.groupBoxWeeklySettingsOfTheBonusCard.Controls.Add(this.label3);
             this.groupBoxWeeklySettingsOfTheBonusCard.Controls.Add(this.label2);
             this.groupBoxWeeklySettingsOfTheBonusCard.Controls.Add(this.textBoxWeeklyInterestRate);
-            this.groupBoxWeeklySettingsOfTheBonusCard.Location = new System.Drawing.Point(12, 68);
+            this.groupBoxWeeklySettingsOfTheBonusCard.Location = new System.Drawing.Point(12, 88);
             this.groupBoxWeeklySettingsOfTheBonusCard.Name = "groupBoxWeeklySettingsOfTheBonusCard";
             this.groupBoxWeeklySettingsOfTheBonusCard.Size = new System.Drawing.Size(262, 80);
             this.groupBoxWeeklySettingsOfTheBonusCard.TabIndex = 3;
@@ -141,7 +145,7 @@ namespace WindowsForm.Forms.SettingForms
             // 
             this.groupBoxBonuCardVisualParams.Controls.Add(this.label4);
             this.groupBoxBonuCardVisualParams.Controls.Add(this.textBoxBonusCardBarcodeLenth);
-            this.groupBoxBonuCardVisualParams.Location = new System.Drawing.Point(12, 154);
+            this.groupBoxBonuCardVisualParams.Location = new System.Drawing.Point(12, 174);
             this.groupBoxBonuCardVisualParams.Name = "groupBoxBonuCardVisualParams";
             this.groupBoxBonuCardVisualParams.Size = new System.Drawing.Size(238, 49);
             this.groupBoxBonuCardVisualParams.TabIndex = 5;
@@ -164,6 +168,22 @@ namespace WindowsForm.Forms.SettingForms
             this.textBoxBonusCardBarcodeLenth.Name = "textBoxBonusCardBarcodeLenth";
             this.textBoxBonusCardBarcodeLenth.Size = new System.Drawing.Size(53, 21);
             this.textBoxBonusCardBarcodeLenth.TabIndex = 1;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(77, 45);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 15);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Bonus tipi :";
+            // 
+            // textBoxBonusType
+            // 
+            this.textBoxBonusType.Location = new System.Drawing.Point(155, 42);
+            this.textBoxBonusType.Name = "textBoxBonusType";
+            this.textBoxBonusType.Size = new System.Drawing.Size(53, 21);
+            this.textBoxBonusType.TabIndex = 3;
             // 
             // BonusCardSettingForm
             // 
@@ -203,5 +223,7 @@ namespace WindowsForm.Forms.SettingForms
         private System.Windows.Forms.GroupBox groupBoxBonuCardVisualParams;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxBonusCardBarcodeLenth;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBoxBonusType;
     }
 }

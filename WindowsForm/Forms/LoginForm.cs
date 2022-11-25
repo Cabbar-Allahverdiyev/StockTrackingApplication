@@ -23,6 +23,7 @@ using WindowsForm.Core.Controllers.Concrete;
 using WindowsForm.Forms.AdminForms;
 using WindowsForm.Forms.UserForms;
 using WindowsForm.Utilities.BarcodeScanner.BarcodeGenerate;
+using WindowsForm.Utilities.Helpers.Receipts;
 
 namespace WindowsForm.Forms
 {
@@ -48,6 +49,7 @@ namespace WindowsForm.Forms
         IBonusCardOperationService _bonusCardOperationService;
         ILoggerService _loggerService;
         private readonly IBarcodeGenerator _barcodeGenerator;
+        private readonly IReceiptOperation _receiptOperation;
 
 
         MacAddressManager _macAddressManager = new MacAddressManager(new EfMacAddressDal());
@@ -71,7 +73,8 @@ namespace WindowsForm.Forms
             , IFormSettingService formSettingService
             , IBonusCardOperationService bonusCardOperationService
             , IBarcodeGenerator barcodeGenerator,
-ILoggerService loggerService)
+            ILoggerService loggerService,
+            IReceiptOperation receiptOperation)
         {
             _userOperationClaimForFormsService = userOperationClaimForFormsService;
             _userService = userService;
@@ -90,6 +93,7 @@ ILoggerService loggerService)
             _formSettingService = formSettingService;
             _bonusCardOperationService = bonusCardOperationService;
             _barcodeGenerator = barcodeGenerator;
+            _receiptOperation = receiptOperation;
             InitializeComponent();
             this.BackColor = Color.FromArgb(41, 128, 185);
             _loggerService = loggerService;
@@ -164,7 +168,8 @@ ILoggerService loggerService)
                                                     ,_formSettingService
                                                     ,_bonusCardOperationService
                                                     , _barcodeGenerator
-                                                    ,_loggerService);
+                                                    ,_loggerService,
+                                                    _receiptOperation);
                     this.Hide();
                     dashboard.Show();
                     return;
@@ -187,7 +192,8 @@ ILoggerService loggerService)
                                                                 ,_formSettingService
                                                                 ,_bonusCardOperationService
                                                                 , _barcodeGenerator
-                                                                ,_loggerService);
+                                                                ,_loggerService,
+                                                                _receiptOperation);
                 this.Hide();
                 userDashboard.Show();
 

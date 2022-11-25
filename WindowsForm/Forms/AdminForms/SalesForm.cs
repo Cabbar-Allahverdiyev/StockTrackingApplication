@@ -24,17 +24,20 @@ using Business.ValidationRules.FluentValidation.SaleValidators;
 using WindowsForm.Utilities.Helpers.Calculators;
 using Business.ValidationRules.FluentValidation;
 using WindowsForm.BonusCardSystem.CommonMethods;
+using Entities.Concrete.ForForms;
+using WindowsForm.Utilities.Helpers.Receipts;
 
 namespace WindowsForm.Forms
 {
     public partial class SalesForm : Form
     {
-        private int UserId ;
+        private int UserId;
         private int CartId;
         private int BonusCardId;
         private int CustomerId;
+        private ReceiptDto receiptDto;
 
-        private List<ProductViewDashboardDetailDto>_dataProduct;
+        private List<ProductViewDashboardDetailDto> _dataProduct;
 
         ICategoryService _categoryService;
         IBrandService _brandService;
@@ -46,9 +49,12 @@ namespace WindowsForm.Forms
         IDebtService _debtService;
         IBonusCardService _bonusCardService;
         IFormSettingService _formSettingService;
+        IUserService _userService;
 
         private MyControl _myControl;
         private BonusCardCommonMethod _bonusCardCommonMethod;
+        private readonly IReceiptOperation _receiptOperation;
+        IDataResult<CartListDtoForReceipt> cartsFromReceipt;
 
         public SalesForm(ICategoryService categoryService
                             , IBrandService brandService
@@ -59,9 +65,11 @@ namespace WindowsForm.Forms
                             , ISaleService saleWinFormService
                             , IDebtService debtService
                             , IBonusCardService bonusCardService
-                            , IFormSettingService formSettingService
-                            )
+                            , IFormSettingService formSettingService,
+                            IReceiptOperation receiptOperation,
+                            IUserService userService)
         {
+            _userService = userService;
             _productService = productService;
             _cartService = cartService;
             _customerService = customerService;
@@ -76,6 +84,7 @@ namespace WindowsForm.Forms
 
             _dataProduct = _productService.GetAllProductViewDasboardDetail().Data;
             _myControl = new MyControl(_formSettingService);
+            _receiptOperation = receiptOperation;
             InitializeComponent();
             UserId = LoginForm.UserId;
             TotalPriceLabelWrite();
@@ -86,7 +95,7 @@ namespace WindowsForm.Forms
             BonusCardId = 0;
             BonusCardSelectForm.BonusCardId = 0;
             CustomerId = 0;
-            _bonusCardCommonMethod = new BonusCardCommonMethod(_bonusCardService,_myControl,_formSettingService);
+            _bonusCardCommonMethod = new BonusCardCommonMethod(_bonusCardService, _myControl, _formSettingService);
         }
 
 
@@ -208,9 +217,9 @@ namespace WindowsForm.Forms
             //textBoxCustomerId.Text = SelectedCustomerForSalesForm.Id.ToString();
             //IDataResult<Customer> result = _customerService.GetById(SelectedCustomerForSalesForm.Id);
             CustomerId = 0;
-            CustomerSelectForm customerSelectForm  = new CustomerSelectForm(_customerService);
+            CustomerSelectForm customerSelectForm = new CustomerSelectForm(_customerService);
             customerSelectForm.ShowDialog();
-            if (CustomerSelectForm.CustomerId==0)
+            if (CustomerSelectForm.CustomerId == 0)
             {
                 FormsMessage.WarningMessage(FormsTextMessages.IdBlank);
                 return;
@@ -428,13 +437,15 @@ namespace WindowsForm.Forms
             {
                 Sale saleWinForm = new Sale();
                 IDataResult<List<Cart>> carts = _cartService.GetAllByUserId(UserId);
+                cartsFromReceipt = _cartService.GetAllCartListDtoForReceiptByUserId(UserId);
                 IResult saleWinFormAdded;
                 IResult productUpdated;
-                IResult bonusCardIncreased;
+                IDataResult<decimal> bonusCardIncreased = null;
                 List<string> messages = new List<string>();
                 string resultMessage = "";
                 string newResultMessage = "";
                 decimal totalPrice = 0;
+
                 if (carts.Data.Count != 0)
                 {
                     foreach (Cart cart in carts.Data)
@@ -474,9 +485,9 @@ namespace WindowsForm.Forms
                     {
                         decimal interestedAdvantage = AdvantageCalculator.WhatIsAdvantageToday(_formSettingService);
                         bonusCardIncreased = _bonusCardService.IncreaseBalance(BonusCardId
-                            ,UserId
+                            , UserId
                             , totalPrice
-                            ,interestedAdvantage);
+                            , interestedAdvantage);
                         if (!bonusCardIncreased.Success)
                         {
                             FormsMessage.WarningMessage(bonusCardIncreased.Message);
@@ -490,8 +501,6 @@ namespace WindowsForm.Forms
                     }
                     TextBoxController.ClearAllTextBoxesByGroupBox(groupBoxMusteri);
                     FormsMessage.SuccessMessage(resultMessage);
-
-
                     //GroupBoxIstifadeciControlClear();
                 }
                 else
@@ -500,6 +509,28 @@ namespace WindowsForm.Forms
                     return;
                 }
                 RemoveCart();
+               
+                if (checkBoxPrintReceipt.Checked == true)
+                {
+                    decimal? value;
+                    try {  value = bonusCardIncreased.Data; }
+                    catch (NullReferenceException)
+                    {
+                        value = 0;
+                    }
+
+                    receiptDto = new ReceiptDto(_userService, _bonusCardService,
+                                                          UserId,
+                                                          BonusCardId,
+                                                          value
+                                                         );
+                    IResult printReceipt = _receiptOperation.PrintReceipt(printPreviewDialogReceipt, printDocReceipt);
+                    if (!printReceipt.Success)
+                    {
+                        FormsMessage.WarningMessage(printReceipt.Message);
+                        return;
+                    }
+                }
                 CartListRefesh();
                 ProductListRefesh();
                 GroupBoxMehsulControlClear();
@@ -594,6 +625,19 @@ namespace WindowsForm.Forms
                 checkBoxBonusCard.Text = "Manual";
                 buttonBonusCardSelect.Visible = true;
                 textBoxBonusCardSelect.Visible = false;
+            }
+        }
+
+        private void checkBoxPrintReceipt_CheckedChanged(object sender, EventArgs e)
+        {
+            // FormSetting formSetting = _formSettingService.GetByName();
+            if (checkBoxPrintReceipt.Checked == false)
+            {
+
+            }
+            else
+            {
+
             }
         }
 
@@ -977,6 +1021,13 @@ namespace WindowsForm.Forms
         private void textBoxBonusCardCustomerName_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        //Print Page
+        private void printDocReceipt_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+           // IDataResult<CartListDtoForReceipt> carts = _cartService.GetAllCartListDtoForReceiptByUserId(UserId);
+            _receiptOperation.PrepareAReceipt(e, printDocReceipt, cartsFromReceipt, receiptDto);
         }
     }
 }

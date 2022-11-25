@@ -21,7 +21,9 @@ namespace Business.Constants.Enums
             VaultModel,
             VaultSerialNumber,
             ReceiptNumber,
-            ReceiptGivenOnTheDay
+            ReceiptGivenOnTheDay,
+            ReceiptPrinterModel,
+            BarcodePrinterModel
 
         }
     }

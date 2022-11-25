@@ -25,6 +25,7 @@ using Business.ValidationRules.FluentValidation.SaleValidators;
 using WindowsForm.Utilities.Helpers.Calculators;
 using WindowsForm.Utilities.Helpers.Selectors.CustomerSelectors;
 using WindowsForm.BonusCardSystem.CommonMethods;
+using WindowsForm.Utilities.Helpers.Receipts;
 
 namespace WindowsForm.Forms.UserForms
 {
@@ -45,10 +46,12 @@ namespace WindowsForm.Forms.UserForms
         ISupplierService _supplierService;
         IBonusCardService _bonusCardService;
         IFormSettingService _formSettingService;
+        IUserService _userService;
 
         private MyControl _myControl;
         private List<ProductViewDashboardDetailDto> _dataProducts;
         private BonusCardCommonMethod _bonusCardCommonMethod;
+        private readonly IReceiptOperation _receiptOperation;
 
         ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
 
@@ -61,8 +64,10 @@ namespace WindowsForm.Forms.UserForms
                             , ISaleService saleWinFormService
                             , IDebtService debtService
                             , IBonusCardService bonusCardService
-                            , IFormSettingService formSettingService)
+                            , IFormSettingService formSettingService,
+                            IUserService userService)
         {
+            _userService = userService;
             _productService = productService;
             _cartService = cartService;
             _customerService = customerService;
@@ -93,7 +98,7 @@ namespace WindowsForm.Forms.UserForms
             CustomerSelectForm.CustomerId = 0;
             CustomerId = 0;
 
-            _bonusCardCommonMethod = new BonusCardCommonMethod(_bonusCardService,_myControl,_formSettingService);
+            _bonusCardCommonMethod = new BonusCardCommonMethod(_bonusCardService, _myControl, _formSettingService);
         }
 
         private void SalesForm_Load(object sender, EventArgs e)
@@ -550,8 +555,18 @@ namespace WindowsForm.Forms.UserForms
 
         private void buttonAxtar_Click(object sender, EventArgs e)
         {
-            SalesForm salesForm = new SalesForm(_categoryService, _brandService, _supplierService, _productService, _cartService
-               , _customerService, _saleWinFormService, _debtService, _bonusCardService,_formSettingService);
+            SalesForm salesForm = new SalesForm(_categoryService,
+                                                _brandService,
+                                                _supplierService,
+                                                _productService,
+                                                _cartService,
+                                                _customerService,
+                                                _saleWinFormService,
+                                                _debtService,
+                                                _bonusCardService,
+                                                _formSettingService,
+                                                _receiptOperation,
+                                                _userService);
 
             salesForm.ComboBoxSelectedValue(dataGridViewProductList, comboBoxCategoryList.Text, comboBoxSupplierList.Text, comboBoxBrandList.Text);
         }

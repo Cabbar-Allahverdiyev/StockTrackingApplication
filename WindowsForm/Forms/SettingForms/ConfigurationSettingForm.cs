@@ -19,20 +19,37 @@ namespace WindowsForm.Forms.SettingForms
         {
             _formSettingService = formSettingService;
             _myControl = new MyControl(_formSettingService);
-          
-            InitializeComponent();
-        }
 
-        private void buttonSave_Click(object sender, EventArgs e)
-        {
-            _myControl.UpdateAllSetting(textBoxSignsDecimalPoint);
+            InitializeComponent();
         }
 
         private void ConfigurationSettingForm_Load(object sender, EventArgs e)
         {
             textBoxSignsDecimalPoint.MaxLength = 1;
-            _myControl.SetAllParametersToControl(textBoxSignsDecimalPoint);
+            _myControl.SetAllParametersToControl(textBoxSignsDecimalPoint,
+                                                 textBoxShopName,
+                                                 textBoxShopAddress,
+                                                 textBoxShopNumber,
+                                                 textBoxVoen,
+                                                 textBoxVaultModel,
+                                                 textBoxVaultSerialNumber,
+                                                 textBoxReceiptPrinterModel,
+                                                 textBoxBarcodePrinterModel);
 
         }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            _myControl.UpdateAllSetting(textBoxSignsDecimalPoint,
+                                         textBoxShopName,
+                                         textBoxShopAddress,
+                                         textBoxShopNumber,
+                                         textBoxVoen,
+                                         textBoxVaultModel,
+                                         textBoxVaultSerialNumber,
+                                         textBoxReceiptPrinterModel,
+                                         textBoxBarcodePrinterModel);
+        }
+
     }
 }

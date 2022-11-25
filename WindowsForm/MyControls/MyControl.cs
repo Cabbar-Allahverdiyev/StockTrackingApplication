@@ -96,21 +96,21 @@ namespace WindowsForm.MyControls
             textBoxQuantityPerUnit.MaxLength = 20;
         }
 
-        public  void MakeTextBoxNumberBox(KeyPressEventArgs keyPressEventArgs)
+        public void MakeTextBoxNumberBox(KeyPressEventArgs keyPressEventArgs)
         {
-            
+
             if (!char.IsControl(keyPressEventArgs.KeyChar) && !char.IsDigit(keyPressEventArgs.KeyChar))
             {
                 keyPressEventArgs.Handled = true;
             }
         }
 
-        public  void MakeTextBoxDecimalBox(object sender, KeyPressEventArgs keyPressEventArgs)
+        public void MakeTextBoxDecimalBox(object sender, KeyPressEventArgs keyPressEventArgs)
         {
             char deciamlPoint = (_formSettingService.GetByName(SettingControllerName.TextBoxSignsDecimalPoint).Data.Value)[0];
-           if (!char.IsControl(keyPressEventArgs.KeyChar)
-                && !char.IsDigit(keyPressEventArgs.KeyChar) 
-                && (keyPressEventArgs.KeyChar != deciamlPoint))
+            if (!char.IsControl(keyPressEventArgs.KeyChar)
+                 && !char.IsDigit(keyPressEventArgs.KeyChar)
+                 && (keyPressEventArgs.KeyChar != deciamlPoint))
             {
                 keyPressEventArgs.Handled = true;
             }
@@ -181,7 +181,7 @@ namespace WindowsForm.MyControls
             foreach (DataGridViewRow row in dataGridView.Rows)
             {
                 if (row.Cells["EmeliyyatVeziyyeti"].Value.ToString() == BonusCardOperationDalMessages.BonusCardSale)
-                   row.DefaultCellStyle.BackColor  = color;
+                    row.DefaultCellStyle.BackColor = color;
             }
             //for (int i = 0; i < dataGridView.Rows.Count; i++)
             //{
@@ -219,7 +219,18 @@ namespace WindowsForm.MyControls
                 if (control.GetType() == typeof(TextBox) || control.GetType() == typeof(ComboBox))
                 {
                     FormSetting formSetting = settings.SingleOrDefault(s => s.Name == control.Name);
-                    formSetting.Value = control.Text;
+                    try
+                    {
+                        formSetting.Value = control.Text;
+                    }
+                    catch (NullReferenceException ex)
+                    {
+                        FormSetting addedFormSetting = new FormSetting() { Name = control.Name, Value = control.Text };
+                       IResult addedSetting= _formSettingService.Add(addedFormSetting);
+                        if (!addedSetting.Success) return;
+                        formSetting = _formSettingService.GetByName(addedFormSetting.Name).Data;
+                       
+                    }
                     if (!FormValidationTool.IsValid(new FormSettingValidator(), formSetting))
                     {
                         return;
