@@ -69,9 +69,27 @@ Telefon, Texnologiya avadanlıqları, Market, Yanacaq doldurma stansiyaları və
 
 ![Məhsulların parametrləri](https://github.com/Cabbar-Allahverdiyev/TapSat/blob/master/Reaadme_Images/Mehsullarin_PAramterleri.png?raw=true)
 
+## Quraşdırıldığı obyetlər
+- NarMobile 
+  ![NarMobile_4](https://github.com/Cabbar-Allahverdiyev/TapSat/blob/master/Reaadme_Images/StoreImages/NarMobile_4.jpeg?raw=true)
+
+  ![NarMobile_4](https://github.com/Cabbar-Allahverdiyev/TapSat/blob/master/Reaadme_Images/StoreImages/NarMobile_3.jpeg?raw=true) 
+
+  ![NarMobile_4](https://github.com/Cabbar-Allahverdiyev/TapSat/blob/master/Reaadme_Images/StoreImages/NarMobile_1.jpeg?raw=true)
 
 
+- Kontakt Telecom
+  ![KontaktTelecom_3](https://github.com/Cabbar-Allahverdiyev/TapSat/blob/master/Reaadme_Images/StoreImages/KontaktTelekom_3.jpeg?raw=true)
 
+  ![KontaktTelecom_2](https://github.com/Cabbar-Allahverdiyev/TapSat/blob/master/Reaadme_Images/StoreImages/KontaktTelekom_2.jpeg?raw=true)
+
+- IphoneShop 
+  ![IphoneShop_1](https://github.com/Cabbar-Allahverdiyev/TapSat/blob/master/Reaadme_Images/StoreImages/IphoneShop_1.jpeg?raw=true)
+
+- Optika&Telefon
+  ![Asim_1](https://github.com/Cabbar-Allahverdiyev/TapSat/blob/master/Reaadme_Images/StoreImages/Asim_1.jpeg?raw=true)
+
+  ![Asim_2](https://github.com/Cabbar-Allahverdiyev/TapSat/blob/master/Reaadme_Images/StoreImages/Asim_2.jpeg?raw=true)
 
 
   
