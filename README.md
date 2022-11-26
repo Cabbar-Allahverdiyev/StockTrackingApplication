@@ -3,7 +3,7 @@
 Telefon, Texnologiya avadanlıqları, Market, Yanacaq doldurma stansiyaları və s obyektlər üçün proqram.
 
 
-![Logo](https://github.com/Cabbar-Allahverdiyev/TapSat/blob/master/Reaadme_Images/tap1%20(1).jpg?raw=true)
+![Logo](https://github.com/Cabbar-Allahverdiyev/TapSat/blob/master/Reaadme_Images/TapsatLogo.svg?raw=true)
 
     
 
