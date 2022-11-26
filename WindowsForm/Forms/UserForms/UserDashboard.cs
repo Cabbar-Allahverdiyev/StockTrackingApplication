@@ -273,7 +273,8 @@ namespace WindowsForm.Forms.UserForms
                                         , _debtService
                                         , _bonusCardService
                                         , _formSettingService,
-                                        _userService), sender);
+                                        _userService,
+                                        _receiptOperation), sender);
         }
 
         private void buttonProducts_Click(object sender, EventArgs e)

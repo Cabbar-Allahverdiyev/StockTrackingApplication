@@ -35,7 +35,7 @@ namespace WindowsForm.Forms
         private int CartId;
         private int BonusCardId;
         private int CustomerId;
-        private ReceiptDto receiptDto=new ReceiptDto();
+        private ReceiptDto receiptDto = new ReceiptDto();
 
         private List<ProductViewDashboardDetailDto> _dataProduct;
 
@@ -509,21 +509,20 @@ namespace WindowsForm.Forms
                     return;
                 }
                 RemoveCart();
-               
+
                 if (checkBoxPrintReceipt.Checked == true)
                 {
                     decimal? value;
-                    try {  value = bonusCardIncreased.Data; }
+                    try { value = bonusCardIncreased.Data; }
                     catch (NullReferenceException)
                     {
                         value = 0;
                     }
-
                     receiptDto = new ReceiptDto(_userService, _bonusCardService,
-                                                          UserId,
-                                                          BonusCardId,
-                                                          value
-                                                         );
+                                      UserId,
+                                      BonusCardId,
+                                      value
+                                     );
                     IResult printReceipt = _receiptOperation.PrintReceipt(printPreviewDialogReceipt, printDocReceipt);
                     if (!printReceipt.Success)
                     {
@@ -1026,8 +1025,13 @@ namespace WindowsForm.Forms
         //Print Page
         private void printDocReceipt_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-           // IDataResult<CartListDtoForReceipt> carts = _cartService.GetAllCartListDtoForReceiptByUserId(UserId);
+            // IDataResult<CartListDtoForReceipt> carts = _cartService.GetAllCartListDtoForReceiptByUserId(UserId);
             _receiptOperation.PrepareAReceipt(e, printDocReceipt, cartsFromReceipt, receiptDto);
+        }
+
+        private void printPreviewDialogReceipt_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

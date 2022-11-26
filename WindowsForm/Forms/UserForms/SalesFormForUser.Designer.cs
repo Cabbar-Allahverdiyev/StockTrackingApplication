@@ -82,6 +82,9 @@ namespace WindowsForm.Forms.UserForms
             this.textBoxBonusCardCustomerName = new System.Windows.Forms.TextBox();
             this.checkBoxBonusCard = new System.Windows.Forms.CheckBox();
             this.textBoxBonusCardSelect = new System.Windows.Forms.TextBox();
+            this.checkBoxPrintReceipt = new System.Windows.Forms.CheckBox();
+            this.printPreviewDialogReceipt = new System.Windows.Forms.PrintPreviewDialog();
+            this.printDocReceipt = new System.Drawing.Printing.PrintDocument();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductList)).BeginInit();
             this.groupBoxMehsul.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -130,7 +133,7 @@ namespace WindowsForm.Forms.UserForms
             this.groupBoxMehsul.Controls.Add(this.label6);
             this.groupBoxMehsul.Controls.Add(this.label5);
             this.groupBoxMehsul.Controls.Add(this.label7);
-            this.groupBoxMehsul.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBoxMehsul.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBoxMehsul.Location = new System.Drawing.Point(13, 245);
             this.groupBoxMehsul.Name = "groupBoxMehsul";
             this.groupBoxMehsul.Size = new System.Drawing.Size(244, 434);
@@ -221,47 +224,47 @@ namespace WindowsForm.Forms.UserForms
             // textBoxProductId
             // 
             this.textBoxProductId.Enabled = false;
-            this.textBoxProductId.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxProductId.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxProductId.Location = new System.Drawing.Point(100, 118);
             this.textBoxProductId.Name = "textBoxProductId";
-            this.textBoxProductId.Size = new System.Drawing.Size(138, 22);
+            this.textBoxProductId.Size = new System.Drawing.Size(138, 21);
             this.textBoxProductId.TabIndex = 14;
             // 
             // textBoxMaxQiymet
             // 
             this.textBoxMaxQiymet.Enabled = false;
-            this.textBoxMaxQiymet.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxMaxQiymet.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxMaxQiymet.Location = new System.Drawing.Point(100, 206);
             this.textBoxMaxQiymet.Name = "textBoxMaxQiymet";
-            this.textBoxMaxQiymet.Size = new System.Drawing.Size(138, 22);
+            this.textBoxMaxQiymet.Size = new System.Drawing.Size(138, 21);
             this.textBoxMaxQiymet.TabIndex = 13;
             this.textBoxMaxQiymet.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxMaxQiymet_KeyPress);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label10.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label10.Location = new System.Drawing.Point(23, 208);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(72, 14);
+            this.label10.Size = new System.Drawing.Size(70, 15);
             this.label10.TabIndex = 12;
             this.label10.Text = "Max qiymət:";
             // 
             // textBoxCem
             // 
             this.textBoxCem.Enabled = false;
-            this.textBoxCem.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxCem.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxCem.Location = new System.Drawing.Point(100, 296);
             this.textBoxCem.Name = "textBoxCem";
-            this.textBoxCem.Size = new System.Drawing.Size(138, 22);
+            this.textBoxCem.Size = new System.Drawing.Size(138, 21);
             this.textBoxCem.TabIndex = 9;
             // 
             // textBoxQiymet
             // 
-            this.textBoxQiymet.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxQiymet.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxQiymet.Location = new System.Drawing.Point(100, 236);
             this.textBoxQiymet.Name = "textBoxQiymet";
-            this.textBoxQiymet.Size = new System.Drawing.Size(138, 22);
+            this.textBoxQiymet.Size = new System.Drawing.Size(138, 21);
             this.textBoxQiymet.TabIndex = 8;
             this.textBoxQiymet.TextChanged += new System.EventHandler(this.textBoxQiymet_TextChanged);
             this.textBoxQiymet.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxQiymet_KeyPress);
@@ -269,78 +272,78 @@ namespace WindowsForm.Forms.UserForms
             // textBoxMehsulAdi
             // 
             this.textBoxMehsulAdi.Enabled = false;
-            this.textBoxMehsulAdi.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxMehsulAdi.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxMehsulAdi.Location = new System.Drawing.Point(100, 176);
             this.textBoxMehsulAdi.Name = "textBoxMehsulAdi";
-            this.textBoxMehsulAdi.Size = new System.Drawing.Size(138, 22);
+            this.textBoxMehsulAdi.Size = new System.Drawing.Size(138, 21);
             this.textBoxMehsulAdi.TabIndex = 6;
             // 
             // textBoxMiqdar
             // 
-            this.textBoxMiqdar.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxMiqdar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxMiqdar.Location = new System.Drawing.Point(100, 266);
             this.textBoxMiqdar.Name = "textBoxMiqdar";
-            this.textBoxMiqdar.Size = new System.Drawing.Size(138, 22);
+            this.textBoxMiqdar.Size = new System.Drawing.Size(138, 21);
             this.textBoxMiqdar.TabIndex = 7;
             this.textBoxMiqdar.TextChanged += new System.EventHandler(this.textBoxMiqdar_TextChanged);
             this.textBoxMiqdar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxMiqdar_KeyPress);
             // 
             // textBoxBarkodNo
             // 
-            this.textBoxBarkodNo.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxBarkodNo.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxBarkodNo.Location = new System.Drawing.Point(100, 146);
             this.textBoxBarkodNo.Name = "textBoxBarkodNo";
-            this.textBoxBarkodNo.Size = new System.Drawing.Size(138, 22);
+            this.textBoxBarkodNo.Size = new System.Drawing.Size(138, 21);
             this.textBoxBarkodNo.TabIndex = 5;
             this.textBoxBarkodNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxBarkodNo_KeyPress);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label9.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label9.Location = new System.Drawing.Point(58, 298);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(36, 14);
+            this.label9.Size = new System.Drawing.Size(37, 15);
             this.label9.TabIndex = 4;
             this.label9.Text = "Cəm:";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label8.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label8.Location = new System.Drawing.Point(47, 238);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(48, 14);
+            this.label8.Size = new System.Drawing.Size(48, 15);
             this.label8.TabIndex = 3;
             this.label8.Text = "Qiymət:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label6.Location = new System.Drawing.Point(25, 178);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(70, 14);
+            this.label6.Size = new System.Drawing.Size(70, 15);
             this.label6.TabIndex = 1;
             this.label6.Text = "Məhsul adı:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label5.Location = new System.Drawing.Point(29, 149);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 14);
+            this.label5.Size = new System.Drawing.Size(65, 15);
             this.label5.TabIndex = 0;
             this.label5.Text = "BarkodNo:";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label7.Location = new System.Drawing.Point(47, 268);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(48, 14);
+            this.label7.Size = new System.Drawing.Size(47, 15);
             this.label7.TabIndex = 2;
             this.label7.Text = "Miqdar:";
             // 
@@ -349,7 +352,7 @@ namespace WindowsForm.Forms.UserForms
             this.ButtonSalesFormSatisEtmek.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ButtonSalesFormSatisEtmek.FlatAppearance.BorderSize = 0;
             this.ButtonSalesFormSatisEtmek.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonSalesFormSatisEtmek.Font = new System.Drawing.Font("Helvetica", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ButtonSalesFormSatisEtmek.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ButtonSalesFormSatisEtmek.Image = ((System.Drawing.Image)(resources.GetObject("ButtonSalesFormSatisEtmek.Image")));
             this.ButtonSalesFormSatisEtmek.Location = new System.Drawing.Point(1075, 582);
             this.ButtonSalesFormSatisEtmek.Name = "ButtonSalesFormSatisEtmek";
@@ -364,7 +367,7 @@ namespace WindowsForm.Forms.UserForms
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Helvetica", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(261, 667);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(128, 22);
@@ -375,7 +378,7 @@ namespace WindowsForm.Forms.UserForms
             // 
             this.LabelSalesFormUmuniCem_qiymet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.LabelSalesFormUmuniCem_qiymet.AutoSize = true;
-            this.LabelSalesFormUmuniCem_qiymet.Font = new System.Drawing.Font("Helvetica", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.LabelSalesFormUmuniCem_qiymet.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.LabelSalesFormUmuniCem_qiymet.ForeColor = System.Drawing.Color.Red;
             this.LabelSalesFormUmuniCem_qiymet.Location = new System.Drawing.Point(387, 667);
             this.LabelSalesFormUmuniCem_qiymet.Name = "LabelSalesFormUmuniCem_qiymet";
@@ -418,10 +421,10 @@ namespace WindowsForm.Forms.UserForms
             // checkBoxBarkodNo
             // 
             this.checkBoxBarkodNo.AutoSize = true;
-            this.checkBoxBarkodNo.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxBarkodNo.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.checkBoxBarkodNo.Location = new System.Drawing.Point(263, 393);
             this.checkBoxBarkodNo.Name = "checkBoxBarkodNo";
-            this.checkBoxBarkodNo.Size = new System.Drawing.Size(79, 18);
+            this.checkBoxBarkodNo.Size = new System.Drawing.Size(78, 19);
             this.checkBoxBarkodNo.TabIndex = 37;
             this.checkBoxBarkodNo.Text = "Avtomatik";
             this.checkBoxBarkodNo.UseVisualStyleBackColor = true;
@@ -449,10 +452,10 @@ namespace WindowsForm.Forms.UserForms
             // textBoxCustomerId
             // 
             this.textBoxCustomerId.Enabled = false;
-            this.textBoxCustomerId.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxCustomerId.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxCustomerId.Location = new System.Drawing.Point(78, 21);
             this.textBoxCustomerId.Name = "textBoxCustomerId";
-            this.textBoxCustomerId.Size = new System.Drawing.Size(160, 22);
+            this.textBoxCustomerId.Size = new System.Drawing.Size(160, 21);
             this.textBoxCustomerId.TabIndex = 39;
             // 
             // buttonSec
@@ -488,57 +491,57 @@ namespace WindowsForm.Forms.UserForms
             // textBoxTelefon
             // 
             this.textBoxTelefon.Enabled = false;
-            this.textBoxTelefon.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxTelefon.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxTelefon.Location = new System.Drawing.Point(77, 105);
             this.textBoxTelefon.Name = "textBoxTelefon";
-            this.textBoxTelefon.Size = new System.Drawing.Size(160, 22);
+            this.textBoxTelefon.Size = new System.Drawing.Size(160, 21);
             this.textBoxTelefon.TabIndex = 5;
             // 
             // textBoxSoyad
             // 
             this.textBoxSoyad.Enabled = false;
-            this.textBoxSoyad.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxSoyad.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxSoyad.Location = new System.Drawing.Point(77, 77);
             this.textBoxSoyad.Name = "textBoxSoyad";
-            this.textBoxSoyad.Size = new System.Drawing.Size(160, 22);
+            this.textBoxSoyad.Size = new System.Drawing.Size(160, 21);
             this.textBoxSoyad.TabIndex = 4;
             // 
             // textBoxAd
             // 
             this.textBoxAd.Enabled = false;
-            this.textBoxAd.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxAd.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxAd.Location = new System.Drawing.Point(77, 49);
             this.textBoxAd.Name = "textBoxAd";
-            this.textBoxAd.Size = new System.Drawing.Size(160, 22);
+            this.textBoxAd.Size = new System.Drawing.Size(160, 21);
             this.textBoxAd.TabIndex = 3;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.Location = new System.Drawing.Point(18, 108);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 14);
+            this.label4.Size = new System.Drawing.Size(53, 15);
             this.label4.TabIndex = 2;
             this.label4.Text = "Telefon :";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.Location = new System.Drawing.Point(23, 80);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 14);
+            this.label3.Size = new System.Drawing.Size(47, 15);
             this.label3.TabIndex = 1;
             this.label3.Text = "Soyad :";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(43, 52);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(28, 14);
+            this.label2.Size = new System.Drawing.Size(27, 15);
             this.label2.TabIndex = 0;
             this.label2.Text = "Ad :";
             // 
@@ -555,7 +558,7 @@ namespace WindowsForm.Forms.UserForms
             this.groupBoxFilter.Controls.Add(this.comboBoxSupplierList);
             this.groupBoxFilter.Controls.Add(this.comboBoxBrandList);
             this.groupBoxFilter.Controls.Add(this.comboBoxCategoryList);
-            this.groupBoxFilter.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBoxFilter.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBoxFilter.Location = new System.Drawing.Point(261, -4);
             this.groupBoxFilter.Name = "groupBoxFilter";
             this.groupBoxFilter.Size = new System.Drawing.Size(848, 38);
@@ -579,10 +582,10 @@ namespace WindowsForm.Forms.UserForms
             // textBoxAxtar
             // 
             this.textBoxAxtar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxAxtar.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxAxtar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxAxtar.Location = new System.Drawing.Point(667, 10);
             this.textBoxAxtar.Name = "textBoxAxtar";
-            this.textBoxAxtar.Size = new System.Drawing.Size(138, 22);
+            this.textBoxAxtar.Size = new System.Drawing.Size(138, 21);
             this.textBoxAxtar.TabIndex = 18;
             this.textBoxAxtar.TextChanged += new System.EventHandler(this.textBoxAxtar_TextChanged);
             // 
@@ -591,7 +594,7 @@ namespace WindowsForm.Forms.UserForms
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(387, 16);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(70, 14);
+            this.label14.Size = new System.Drawing.Size(70, 15);
             this.label14.TabIndex = 41;
             this.label14.Text = "Tedarükçü :";
             // 
@@ -600,7 +603,7 @@ namespace WindowsForm.Forms.UserForms
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(208, 16);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(47, 14);
+            this.label13.Size = new System.Drawing.Size(46, 15);
             this.label13.TabIndex = 40;
             this.label13.Text = "Marka :";
             // 
@@ -620,10 +623,10 @@ namespace WindowsForm.Forms.UserForms
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label11.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label11.Location = new System.Drawing.Point(6, 16);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(72, 14);
+            this.label11.Size = new System.Drawing.Size(71, 15);
             this.label11.TabIndex = 39;
             this.label11.Text = "Kateqoriya :";
             // 
@@ -632,7 +635,7 @@ namespace WindowsForm.Forms.UserForms
             this.comboBoxSupplierList.FormattingEnabled = true;
             this.comboBoxSupplierList.Location = new System.Drawing.Point(460, 12);
             this.comboBoxSupplierList.Name = "comboBoxSupplierList";
-            this.comboBoxSupplierList.Size = new System.Drawing.Size(121, 22);
+            this.comboBoxSupplierList.Size = new System.Drawing.Size(121, 23);
             this.comboBoxSupplierList.TabIndex = 38;
             // 
             // comboBoxBrandList
@@ -640,7 +643,7 @@ namespace WindowsForm.Forms.UserForms
             this.comboBoxBrandList.FormattingEnabled = true;
             this.comboBoxBrandList.Location = new System.Drawing.Point(260, 12);
             this.comboBoxBrandList.Name = "comboBoxBrandList";
-            this.comboBoxBrandList.Size = new System.Drawing.Size(121, 22);
+            this.comboBoxBrandList.Size = new System.Drawing.Size(121, 23);
             this.comboBoxBrandList.TabIndex = 37;
             // 
             // comboBoxCategoryList
@@ -648,7 +651,7 @@ namespace WindowsForm.Forms.UserForms
             this.comboBoxCategoryList.FormattingEnabled = true;
             this.comboBoxCategoryList.Location = new System.Drawing.Point(81, 13);
             this.comboBoxCategoryList.Name = "comboBoxCategoryList";
-            this.comboBoxCategoryList.Size = new System.Drawing.Size(121, 22);
+            this.comboBoxCategoryList.Size = new System.Drawing.Size(121, 23);
             this.comboBoxCategoryList.TabIndex = 36;
             // 
             // buttonTemizleBonusCard
@@ -688,11 +691,11 @@ namespace WindowsForm.Forms.UserForms
             // 
             this.textBoxBonusCardCustomerName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxBonusCardCustomerName.Enabled = false;
-            this.textBoxBonusCardCustomerName.Font = new System.Drawing.Font("Helvetica", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxBonusCardCustomerName.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxBonusCardCustomerName.Location = new System.Drawing.Point(673, 383);
             this.textBoxBonusCardCustomerName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxBonusCardCustomerName.Name = "textBoxBonusCardCustomerName";
-            this.textBoxBonusCardCustomerName.Size = new System.Drawing.Size(167, 25);
+            this.textBoxBonusCardCustomerName.Size = new System.Drawing.Size(167, 24);
             this.textBoxBonusCardCustomerName.TabIndex = 41;
             this.textBoxBonusCardCustomerName.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -700,11 +703,11 @@ namespace WindowsForm.Forms.UserForms
             // 
             this.checkBoxBonusCard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxBonusCard.AutoSize = true;
-            this.checkBoxBonusCard.Font = new System.Drawing.Font("Helvetica", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBoxBonusCard.Location = new System.Drawing.Point(846, 361);
+            this.checkBoxBonusCard.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxBonusCard.Location = new System.Drawing.Point(847, 361);
             this.checkBoxBonusCard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBoxBonusCard.Name = "checkBoxBonusCard";
-            this.checkBoxBonusCard.Size = new System.Drawing.Size(79, 18);
+            this.checkBoxBonusCard.Size = new System.Drawing.Size(78, 19);
             this.checkBoxBonusCard.TabIndex = 45;
             this.checkBoxBonusCard.Text = "Avtomatik";
             this.checkBoxBonusCard.UseVisualStyleBackColor = true;
@@ -713,14 +716,41 @@ namespace WindowsForm.Forms.UserForms
             // textBoxBonusCardSelect
             // 
             this.textBoxBonusCardSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxBonusCardSelect.Font = new System.Drawing.Font("Helvetica", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxBonusCardSelect.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxBonusCardSelect.Location = new System.Drawing.Point(846, 383);
             this.textBoxBonusCardSelect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxBonusCardSelect.Name = "textBoxBonusCardSelect";
-            this.textBoxBonusCardSelect.Size = new System.Drawing.Size(126, 25);
+            this.textBoxBonusCardSelect.Size = new System.Drawing.Size(126, 24);
             this.textBoxBonusCardSelect.TabIndex = 44;
             this.textBoxBonusCardSelect.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxBonusCardSelect.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxBonusCardSelect_KeyPress);
+            // 
+            // checkBoxPrintReceipt
+            // 
+            this.checkBoxPrintReceipt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxPrintReceipt.AutoSize = true;
+            this.checkBoxPrintReceipt.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxPrintReceipt.Location = new System.Drawing.Point(1078, 558);
+            this.checkBoxPrintReceipt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.checkBoxPrintReceipt.Name = "checkBoxPrintReceipt";
+            this.checkBoxPrintReceipt.Size = new System.Drawing.Size(84, 19);
+            this.checkBoxPrintReceipt.TabIndex = 46;
+            this.checkBoxPrintReceipt.Text = "Çek çap et";
+            this.checkBoxPrintReceipt.UseVisualStyleBackColor = true;
+            // 
+            // printPreviewDialogReceipt
+            // 
+            this.printPreviewDialogReceipt.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialogReceipt.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialogReceipt.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialogReceipt.Enabled = true;
+            this.printPreviewDialogReceipt.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialogReceipt.Icon")));
+            this.printPreviewDialogReceipt.Name = "printPreviewDialogReceipt";
+            this.printPreviewDialogReceipt.Visible = false;
+            // 
+            // printDocReceipt
+            // 
+            this.printDocReceipt.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocReceipt_PrintPage);
             // 
             // SalesFormForUser
             // 
@@ -728,6 +758,7 @@ namespace WindowsForm.Forms.UserForms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(1174, 726);
+            this.Controls.Add(this.checkBoxPrintReceipt);
             this.Controls.Add(this.checkBoxBonusCard);
             this.Controls.Add(this.textBoxBonusCardSelect);
             this.Controls.Add(this.buttonTemizleBonusCard);
@@ -816,5 +847,8 @@ namespace WindowsForm.Forms.UserForms
         private System.Windows.Forms.TextBox textBoxBonusCardCustomerName;
         private System.Windows.Forms.CheckBox checkBoxBonusCard;
         private System.Windows.Forms.TextBox textBoxBonusCardSelect;
+        private System.Windows.Forms.CheckBox checkBoxPrintReceipt;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialogReceipt;
+        private System.Drawing.Printing.PrintDocument printDocReceipt;
     }
 }

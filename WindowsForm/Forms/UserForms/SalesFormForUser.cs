@@ -52,6 +52,8 @@ namespace WindowsForm.Forms.UserForms
         private List<ProductViewDashboardDetailDto> _dataProducts;
         private BonusCardCommonMethod _bonusCardCommonMethod;
         private readonly IReceiptOperation _receiptOperation;
+        private ReceiptDto receiptDto = new ReceiptDto();
+        private IDataResult<CartListDtoForReceipt> cartsFromReceipt;
 
         ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
 
@@ -65,7 +67,8 @@ namespace WindowsForm.Forms.UserForms
                             , IDebtService debtService
                             , IBonusCardService bonusCardService
                             , IFormSettingService formSettingService,
-                            IUserService userService)
+                            IUserService userService,
+                            IReceiptOperation receiptOperation)
         {
             _userService = userService;
             _productService = productService;
@@ -99,6 +102,7 @@ namespace WindowsForm.Forms.UserForms
             CustomerId = 0;
 
             _bonusCardCommonMethod = new BonusCardCommonMethod(_bonusCardService, _myControl, _formSettingService);
+            _receiptOperation = receiptOperation;
         }
 
         private void SalesForm_Load(object sender, EventArgs e)
@@ -395,9 +399,10 @@ namespace WindowsForm.Forms.UserForms
             {
                 Sale saleWinForm = new Sale();
                 IDataResult<List<Cart>> carts = _cartService.GetAllByUserId(UserId);
+                cartsFromReceipt = _cartService.GetAllCartListDtoForReceiptByUserId(UserId);
                 IResult saleWinFormAdded;
                 IResult productUpdated;
-                IResult bonusCardIncreased;
+                IDataResult<decimal> bonusCardIncreased=null;
                 List<string> messages = new List<string>();
                 string resultMessage = "";
                 string newResultMessage = "";
@@ -463,6 +468,26 @@ namespace WindowsForm.Forms.UserForms
                 }
                 RemoveCart();
                 CartListRefesh();
+                if (checkBoxPrintReceipt.Checked == true)
+                {
+                    decimal? value;
+                    try { value = bonusCardIncreased.Data; }
+                    catch (NullReferenceException)
+                    {
+                        value = 0;
+                    }
+                    receiptDto = new ReceiptDto(_userService, _bonusCardService,
+                                      UserId,
+                                      BonusCardId,
+                                      value
+                                     );
+                    IResult printReceipt = _receiptOperation.PrintReceipt(printPreviewDialogReceipt, printDocReceipt);
+                    if (!printReceipt.Success)
+                    {
+                        FormsMessage.WarningMessage(printReceipt.Message);
+                        return;
+                    }
+                }
                 ProductListRefesh();
                 GroupBoxMehsulControlClear();
                 TotalPriceLabelWrite();
@@ -944,6 +969,9 @@ namespace WindowsForm.Forms.UserForms
             comboBoxSupplierList.Text = "";
         }
 
-
+        private void printDocReceipt_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            _receiptOperation.PrepareAReceipt(e, printDocReceipt, cartsFromReceipt, receiptDto);
+        }
     }
 }

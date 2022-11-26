@@ -791,6 +791,7 @@ namespace WindowsForm.Forms
             this.printPreviewDialogReceipt.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialogReceipt.Icon")));
             this.printPreviewDialogReceipt.Name = "printPreviewDialogReceipt";
             this.printPreviewDialogReceipt.Visible = false;
+            this.printPreviewDialogReceipt.Load += new System.EventHandler(this.printPreviewDialogReceipt_Load);
             // 
             // SalesForm
             // 
