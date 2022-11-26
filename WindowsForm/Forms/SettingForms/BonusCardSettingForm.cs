@@ -33,13 +33,20 @@ namespace WindowsForm.Forms.SettingForms
         //Load--------------------------------->
         private void SettingForm_Load(object sender, EventArgs e)
         {
-            _myControl.SetAllParametersToControl(textBoxIGeneralInterestRate, textBoxWeeklyInterestRate, textBoxBonusCardBarcodeLenth);
+            _myControl.SetAllParametersToControl(textBoxIGeneralInterestRate,
+                                                 textBoxWeeklyInterestRate,
+                                                 textBoxBonusCardBarcodeLenth,
+                                                 textBoxBonusType);
             WriteDaysOfWeekInComboBox(comboBoxWhichDays);
         }
         //Click---------------------------------->
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            _myControl.UpdateAllSetting(textBoxWeeklyInterestRate, textBoxIGeneralInterestRate, comboBoxWhichDays, textBoxBonusCardBarcodeLenth);
+            _myControl.UpdateAllSetting(textBoxWeeklyInterestRate,
+                                        textBoxIGeneralInterestRate,
+                                        comboBoxWhichDays,
+                                        textBoxBonusCardBarcodeLenth,
+                                        textBoxBonusType);
         }
         //Text Changed---------------------------------->
 

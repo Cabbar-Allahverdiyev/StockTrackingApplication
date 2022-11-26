@@ -42,7 +42,7 @@ namespace WindowsForm.Utilities.Helpers.Receipts
             {
                 BonusCardBarcode = getBonusCard.Data.BarcodeNumber;
                 RemainingBonus = getBonusCard.Data.Balance;
-                EarnedBonus = earnedBonus == null ? earnedBonus : 0;
+                EarnedBonus = earnedBonus == null ? 0 : earnedBonus;
             }
             else
             {

@@ -38,7 +38,7 @@ namespace WindowsForm.Utilities.Helpers.Receipts
                    cashier = $"{receiptDto.UserFirstName} {receiptDto.UserLastName}",
                    bonusType = settings.SingleOrDefault(s => s.Name == SettingsDictionary.Settings[SettingParameter.BonusType]).Value == null ? "" : settings.SingleOrDefault(s => s.Name == SettingsDictionary.Settings[SettingParameter.BonusType]).Value,
                    bonusCardNumber = receiptDto.BonusCardBarcode,
-                   bonusEarned = receiptDto.EarnedBonus.ToString("00.00"),
+                   bonusEarned = receiptDto.EarnedBonus.ToString(),
                    remainingBonus = receiptDto.RemainingBonus.ToString(),
                    vaultModel = settings.SingleOrDefault(s => s.Name == SettingsDictionary.Settings[SettingParameter.VaultModel]).Value == null ? "" : settings.SingleOrDefault(s => s.Name == SettingsDictionary.Settings[SettingParameter.VaultModel]).Value,
                    vaultSerialNumber = settings.SingleOrDefault(s => s.Name == SettingsDictionary.Settings[SettingParameter.VaultSerialNumber]).Value == null ? "" : settings.SingleOrDefault(s => s.Name == SettingsDictionary.Settings[SettingParameter.VaultSerialNumber]).Value;

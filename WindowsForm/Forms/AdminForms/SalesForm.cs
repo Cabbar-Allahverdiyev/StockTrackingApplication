@@ -35,7 +35,7 @@ namespace WindowsForm.Forms
         private int CartId;
         private int BonusCardId;
         private int CustomerId;
-        private ReceiptDto receiptDto;
+        private ReceiptDto receiptDto=new ReceiptDto();
 
         private List<ProductViewDashboardDetailDto> _dataProduct;
 
