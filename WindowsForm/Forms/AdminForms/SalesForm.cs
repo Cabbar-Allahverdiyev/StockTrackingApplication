@@ -26,6 +26,8 @@ using Business.ValidationRules.FluentValidation;
 using WindowsForm.BonusCardSystem.CommonMethods;
 using Entities.Concrete.ForForms;
 using WindowsForm.Utilities.Helpers.Receipts;
+using ZXing.OneD;
+using System.Drawing.Printing;
 
 namespace WindowsForm.Forms
 {
@@ -508,28 +510,15 @@ namespace WindowsForm.Forms
                     FormsMessage.InformationMessage(CartMessages.ProductNotFound);
                     return;
                 }
+                _receiptOperation.PrintReceiptCheckedIsTrue(_userService, _bonusCardService,
+                                                            UserId,
+                                                            BonusCardId,
+                                                            checkBoxPrintReceipt.Checked,
+                                                            bonusCardIncreased.Data,
+                                                             ref receiptDto,
+                                                            printDocReceipt,
+                                                            printPreviewDialogReceipt);
                 RemoveCart();
-
-                if (checkBoxPrintReceipt.Checked == true)
-                {
-                    decimal? value;
-                    try { value = bonusCardIncreased.Data; }
-                    catch (NullReferenceException)
-                    {
-                        value = 0;
-                    }
-                    receiptDto = new ReceiptDto(_userService, _bonusCardService,
-                                      UserId,
-                                      BonusCardId,
-                                      value
-                                     );
-                    IResult printReceipt = _receiptOperation.PrintReceipt(printPreviewDialogReceipt, printDocReceipt);
-                    if (!printReceipt.Success)
-                    {
-                        FormsMessage.WarningMessage(printReceipt.Message);
-                        return;
-                    }
-                }
                 CartListRefesh();
                 ProductListRefesh();
                 GroupBoxMehsulControlClear();
@@ -543,6 +532,8 @@ namespace WindowsForm.Forms
             }
 
         }
+
+
 
         private void buttonAxtar_Click(object sender, EventArgs e)
         {
@@ -1012,6 +1003,8 @@ namespace WindowsForm.Forms
             }
         }
 
+
+
         private void textBoxBonusCardSelect_TextChanged(object sender, EventArgs e)
         {
 
@@ -1025,7 +1018,6 @@ namespace WindowsForm.Forms
         //Print Page
         private void printDocReceipt_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            // IDataResult<CartListDtoForReceipt> carts = _cartService.GetAllCartListDtoForReceiptByUserId(UserId);
             _receiptOperation.PrepareAReceipt(e, printDocReceipt, cartsFromReceipt, receiptDto);
         }
 

@@ -3,6 +3,7 @@ using Business.Constants.Dictionaries;
 using Business.Constants.Messages;
 using Core.Entities.Concrete;
 using Core.Utilities.Results;
+using Entities.Concrete;
 using Entities.Concrete.ForForms;
 using Entities.DTOs.CartDtos;
 using System;
@@ -10,8 +11,10 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
+using WindowsForm.Core.Constants.Messages;
 using WindowsForm.Forms;
 using static Business.Constants.Enums.SettingEnums;
 
@@ -186,6 +189,48 @@ namespace WindowsForm.Utilities.Helpers.Receipts
 
                 printDocReceipt.Print();
             }
+        }
+
+        public IResult PrintReceiptCheckedIsTrue(IUserService userService,
+                                                IBonusCardService bonusCardService,
+                                                int userId,
+                                                int bonusCardId,
+                                                bool situation,
+                                                decimal bonusIcreasedValue,
+                                                ref ReceiptDto receiptDto,
+                                                PrintDocument printDocReceipt,
+                                                PrintPreviewDialog printPreviewDialogReceipt)
+        {
+            try
+            {
+                if (situation == true)
+                {
+                    decimal? value;
+                    try { value = bonusIcreasedValue; }
+                    catch (NullReferenceException)
+                    {
+                        value = 0;
+                    }
+                    receiptDto = new ReceiptDto(userService, bonusCardService,
+                                      userId,
+                                      bonusCardId,
+                                      value
+                                     );
+                    IResult printReceipt = this.PrintReceipt(printPreviewDialogReceipt, printDocReceipt);
+                    if (!printReceipt.Success)
+                    {
+                        FormsMessage.WarningMessage(printReceipt.Message);
+                        return new ErrorResult(printReceipt.Message);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                FormsMessage.ErrorMessage(BaseMessages.ExceptionMessage("ReceiptOperations.PrintReceiptCheckedIsTrue", MethodBase.GetCurrentMethod().Name, ex));
+                return new ErrorResult();
+            }
+
+            return new SuccessResult();
         }
     }
 }

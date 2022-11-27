@@ -466,28 +466,16 @@ namespace WindowsForm.Forms.UserForms
                     FormsMessage.InformationMessage(CartMessages.ProductNotFound);
                     return;
                 }
+                _receiptOperation.PrintReceiptCheckedIsTrue(_userService, _bonusCardService,
+                                                            UserId,
+                                                            BonusCardId,
+                                                            checkBoxPrintReceipt.Checked,
+                                                            bonusCardIncreased.Data,
+                                                             ref receiptDto,
+                                                            printDocReceipt,
+                                                            printPreviewDialogReceipt);
                 RemoveCart();
                 CartListRefesh();
-                if (checkBoxPrintReceipt.Checked == true)
-                {
-                    decimal? value;
-                    try { value = bonusCardIncreased.Data; }
-                    catch (NullReferenceException)
-                    {
-                        value = 0;
-                    }
-                    receiptDto = new ReceiptDto(_userService, _bonusCardService,
-                                      UserId,
-                                      BonusCardId,
-                                      value
-                                     );
-                    IResult printReceipt = _receiptOperation.PrintReceipt(printPreviewDialogReceipt, printDocReceipt);
-                    if (!printReceipt.Success)
-                    {
-                        FormsMessage.WarningMessage(printReceipt.Message);
-                        return;
-                    }
-                }
                 ProductListRefesh();
                 GroupBoxMehsulControlClear();
                 TotalPriceLabelWrite();
