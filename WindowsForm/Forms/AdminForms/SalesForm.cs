@@ -442,7 +442,7 @@ namespace WindowsForm.Forms
                 cartsFromReceipt = _cartService.GetAllCartListDtoForReceiptByUserId(UserId);
                 IResult saleWinFormAdded;
                 IResult productUpdated;
-                IDataResult<decimal> bonusCardIncreased = null;
+                IDataResult<decimal> bonusCardIncreased = new SuccessDataResult<decimal>(0);
                 List<string> messages = new List<string>();
                 string resultMessage = "";
                 string newResultMessage = "";
