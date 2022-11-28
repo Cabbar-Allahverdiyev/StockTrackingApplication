@@ -27,10 +27,63 @@ namespace WindowsForm.Utilities.Helpers.Receipts
         {
             _formSettingService = formSettingService;
         }
+
+        private IDataResult<int> IsTheReceiptWrittenTodayAndIncrease()
+        {
+            IDataResult<FormSetting> receiptGivenOnTheDaySetting = _formSettingService.GetByName(SettingsDictionary.Settings[SettingParameter.ReceiptGivenOnTheDay]);
+            int receiptGivenOnTheDay = 0;
+            if (!receiptGivenOnTheDaySetting.Success)
+            {
+                IResult addedSetting = _formSettingService.Add(new FormSetting() { Name = SettingsDictionary.Settings[SettingParameter.ReceiptGivenOnTheDay], Value = $"0&{DateTime.Today}" });
+                if (!addedSetting.Success)
+                {
+                    return new ErrorDataResult<int>(0);//mesaj yarat
+                }
+                return new SuccessDataResult<int>(0);//
+
+
+            }
+            string data = receiptGivenOnTheDaySetting.Data.Value;
+            int index = data.IndexOf('&');
+            if (data.Substring(index + 1, data.Length - (index + 1)) == DateTime.Today.ToString())
+            {
+                receiptGivenOnTheDay = int.Parse(data.Substring(0, index));
+                receiptGivenOnTheDay++;
+            }
+
+            receiptGivenOnTheDaySetting.Data.Value = $"{receiptGivenOnTheDay}&{DateTime.Today}";
+            IResult updateSetting = _formSettingService.Update(receiptGivenOnTheDaySetting.Data);
+            if (updateSetting.Success)
+            {
+                return new SuccessDataResult<int>(receiptGivenOnTheDay);//
+            }
+            return new ErrorDataResult<int>(0);//
+
+        }
+
+        private IDataResult<int> RecipeNumberExistsAndIncrease()
+        {
+            IDataResult<FormSetting> getRecipeNumberSetting = _formSettingService.GetByName(SettingsDictionary.Settings[SettingParameter.ReceiptNumber]);
+            if (getRecipeNumberSetting.Success)
+            {
+                getRecipeNumberSetting.Data.Value = (int.Parse(getRecipeNumberSetting.Data.Value) + 1).ToString();
+                _formSettingService.Update(getRecipeNumberSetting.Data);
+                return new SuccessDataResult<int>(int.Parse(getRecipeNumberSetting.Data.Value));
+            }
+
+            IResult addedSetting = _formSettingService.Add(new FormSetting()
+            {
+                Name = SettingsDictionary.Settings[SettingParameter.ReceiptNumber],
+                Value = 0.ToString()
+            });
+            return new SuccessDataResult<int>(0);
+
+
+        }
         public IDataResult<PrintDocument> PrepareAReceipt(System.Drawing.Printing.PrintPageEventArgs e,
                                                           PrintDocument printDocReceipt,
                                                           IDataResult<CartListDtoForReceipt> carts,
-                                                          ReceiptDto receiptDto)                                                          
+                                                          ReceiptDto receiptDto)
         {
             List<FormSetting> settings = _formSettingService.GetAll().Data;
             string shopName = settings.SingleOrDefault(s => s.Name == SettingsDictionary.Settings[SettingParameter.ShopName]).Value == null ? "" : settings.SingleOrDefault(s => s.Name == SettingsDictionary.Settings[SettingParameter.ShopName]).Value,
@@ -46,12 +99,15 @@ namespace WindowsForm.Utilities.Helpers.Receipts
                    vaultModel = settings.SingleOrDefault(s => s.Name == SettingsDictionary.Settings[SettingParameter.VaultModel]).Value == null ? "" : settings.SingleOrDefault(s => s.Name == SettingsDictionary.Settings[SettingParameter.VaultModel]).Value,
                    vaultSerialNumber = settings.SingleOrDefault(s => s.Name == SettingsDictionary.Settings[SettingParameter.VaultSerialNumber]).Value == null ? "" : settings.SingleOrDefault(s => s.Name == SettingsDictionary.Settings[SettingParameter.VaultSerialNumber]).Value;
 
-            FormSetting recipeNumberSetting = settings.SingleOrDefault(s => s.Name == SettingsDictionary.Settings[SettingParameter.ReceiptNumber]);
-            FormSetting receiptGivenOnTheDaySetting = settings.SingleOrDefault(s => s.Name == SettingsDictionary.Settings[SettingParameter.ReceiptGivenOnTheDay]);
+            // FormSetting recipeNumberSetting = settings.SingleOrDefault(s => s.Name == SettingsDictionary.Settings[SettingParameter.ReceiptNumber]);
 
-            int receiptNumber = int.Parse(recipeNumberSetting.Value);
-            int receiptGivenOnTheDay = int.Parse(receiptGivenOnTheDaySetting.Value);
-            receiptGivenOnTheDay++;
+            int receiptNumber = this.RecipeNumberExistsAndIncrease().Data;
+            IDataResult<int> receiptGivenOnTheDayResult = this.IsTheReceiptWrittenTodayAndIncrease();
+            if (!receiptGivenOnTheDayResult.Success)
+            {
+                FormsMessage.ErrorMessage(receiptGivenOnTheDayResult.Message);
+            }
+            int receiptGivenOnTheDay = receiptGivenOnTheDayResult.Data;
             receiptNumber++;
 
             List<ReceiptText> receiptTexts = new List<ReceiptText>()
@@ -147,16 +203,10 @@ namespace WindowsForm.Utilities.Helpers.Receipts
                                       new Point(receiptText.X, receiptText.Y));
             }
 
-
             foreach (var item in receiptTexts)
             {
                 item.Y = 0;
             }
-
-            //save  receiptNumber  receiptGivenOnTheDay  
-
-            _formSettingService.Update(new FormSetting() { Id = recipeNumberSetting.Id, Name = recipeNumberSetting.Name, Value = receiptNumber.ToString() });
-            _formSettingService.Update(new FormSetting() { Id = receiptGivenOnTheDaySetting.Id, Name = receiptGivenOnTheDaySetting.Name, Value = receiptGivenOnTheDay.ToString() });
             return new SuccessDataResult<PrintDocument>(printDocReceipt);
         }
 
@@ -165,7 +215,7 @@ namespace WindowsForm.Utilities.Helpers.Receipts
         {
             IDataResult<FormSetting> printerSetting = _formSettingService.GetByName(
                         SettingsDictionary.Settings[SettingParameter.ReceiptPrinterModel]);
-            if (printerSetting.Success && printerSetting.Data.Value!="")
+            if (printerSetting.Success && printerSetting.Data.Value != "")
             {
                 printDocReceipt.DefaultPageSettings.PrinterSettings.PrinterName = printerSetting.Data.Value;
                 try { printDocReceipt.Print(); }
@@ -173,7 +223,7 @@ namespace WindowsForm.Utilities.Helpers.Receipts
                 {
                     return new ErrorResult(PrinterMessages.PrinterNameIsNotFound(printerSetting.Data.Value));
                 }
-               
+
             }
 
             else this.PrintShowDialog(printDocReceipt);
