@@ -90,7 +90,7 @@ namespace WindowsForm
             Application.Run(new Forms.LoginForm(_userOperationClaimForFormsService, _userService, _operationClaimForFormsService, _productService
                , _categoryService, _customerService, _customerBalanceService, _customerPaymentService, _cartService, _debtService, _saleService, _supplierService
                , _brandService, _bonusCardService, _formSettingService, _bonusCardOperationService
-               , _barcodeGenerator, _loggerService,_receiptOperation));
+               , _barcodeGenerator, _loggerService, _receiptOperation));
 
             //Application.Run(new BonusCardSystem.Forms.BonusCardSystemLoginForm(_userOperationClaimForFormsService,
             //                                                                   _userService,

@@ -194,7 +194,6 @@ namespace WindowsForm.Forms.AdminForms
             // 
             // textBoxBonusCardBarcode
             // 
-            this.textBoxBonusCardBarcode.Enabled = false;
             this.textBoxBonusCardBarcode.Location = new System.Drawing.Point(78, 54);
             this.textBoxBonusCardBarcode.Name = "textBoxBonusCardBarcode";
             this.textBoxBonusCardBarcode.Size = new System.Drawing.Size(176, 21);

@@ -67,6 +67,9 @@ namespace WindowsForm.Forms.AdminForms
                         return;
                     }
                     bonusCard = getCard.Data;
+                    bonusCard.BarcodeNumber=textBoxBonusCardBarcode.Text==""
+                        ?getCard.Data.BarcodeNumber
+                        : textBoxBonusCardBarcode.Text;
                     bonusCard.InterestAdvantage = decimal.Parse(textBoxGuzest.Text);
                     if (!FormValidationTool.IsValid(new BonusCardValidator(), bonusCard))
                     {

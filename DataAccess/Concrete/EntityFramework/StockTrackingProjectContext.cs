@@ -14,12 +14,12 @@ namespace DataAccess.Concrete.EntityFramework
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseSqlServer(@"Server=DESKTOP-N8AGODS\MSSQLSERVER66;Database=StockTracking;Trusted_Connection=true");
-       // optionsBuilder.UseSqlServer(@"Server=(localdb)\MsSqlLocalDb;Database=StockTracking;Trusted_Connection=true"); //menim T-SQL
+           optionsBuilder.UseSqlServer(@"Server=(localdb)\MsSqlLocalDb;Database=StockTracking;Trusted_Connection=true"); //menim T-SQL
             //optionsBuilder.UseNpgsql(@"Server=localhost;Database=TapSat;Port=5432;User Id=postgres;Password=Cabiw****"); //menim Postgre
          // optionsBuilder.UseSqlServer(@"Server=DESKTOP-SN5E5RA\SQLEXPRESS01;Database=StockTracking;Trusted_Connection=true"); //Murad IphoneShop
           //optionsBuilder.UseSqlServer(@"Server=DESKTOP-S1BUG4V\SQLEXPRESS;Database=StockTracking;Trusted_Connection=true"); //Narmobile
        //   optionsBuilder.UseSqlServer(@"Server=DESKTOP-77IJ791\SQLEXPRESS;Database=StockTracking;Trusted_Connection=true"); //Rauf Kontakt Tel
-        optionsBuilder.UseSqlServer(@"Server=localhost\SQLEXPRESS;Database=StockTracking;Trusted_Connection=true"); //Asim Kassa Tel
+       //optionsBuilder.UseSqlServer(@"Server=localhost\SQLEXPRESS;Database=StockTracking;Trusted_Connection=true"); //Asim Kassa Tel
         }
 
         public DbSet<User> Users { get; set; }

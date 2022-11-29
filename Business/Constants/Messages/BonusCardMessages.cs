@@ -18,6 +18,7 @@ namespace Business.Constants.Messages
 
         public static string ThisCustomerDoesNotHaveABonusCard = "Bu Müştəriyə aid bonus kart yoxdur";
         public static string ThisCustomerAlreadyExistsABonusCard = "Bu müştərinin artıq başqa bonus kartı var";
+        public static string ThisBarcodeAlreadyExistsABonusCard = "Bu barkod artıq başqa bonus kartda qeyd edilib";
 
         public static string IncreaseBalance(string customerName) => $"{customerName} balansı artırıldı";
         public static string NotIncreaseBalance(string customerName) => $"{customerName} balansı artırıla bilmədi !";

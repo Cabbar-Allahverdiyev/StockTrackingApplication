@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Constants.Dictionaries;
+using Business.Constants.Enums;
 using Business.Constants.Messages;
 using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
@@ -72,9 +74,18 @@ namespace Business.Concrete
         [CacheRemoveAspect("IBonusCardService.Get")]
         public IResult Update(BonusCard bonusCard)
         {
+            var rules = BusinessRules.Run(DoesTheCustomerHaveABonusCardForUpdate(bonusCard),
+                                          IsThereAnotherBonusCardInThisBarcodeForUpdate(bonusCard),
+                                          IsBarcodeNumberLenthVerified(bonusCard.BarcodeNumber)
+                                        );
+            if (rules != null)
+            {
+                return new ErrorResult(rules.Message);
+            }
             _bonusCardDal.Update(bonusCard);
             return new SuccessResult(BonusCardMessages.Updated);
         }
+
 
         [CacheAspect]
         public IDataResult<List<BonusCard>> GetAll()
@@ -151,7 +162,6 @@ namespace Business.Concrete
         [CacheRemoveAspect("IBonusCardService.Get")]
         public IResult ReduceBalance(int cardId, int userId, decimal value)
         {
-
             IResult rules = BusinessRules.Run(BonusCardIdExist(cardId)
                                             , IsValueGreaterThanZero(value)
                                             , IsBalanceGreaterThanOrEqualsValue(cardId, value));
@@ -281,9 +291,24 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
+
+        private IResult IsThereAnotherBonusCardInThisBarcodeForUpdate(BonusCard bonusCard)
+        {
+            BonusCard  data = _bonusCardDal.Get(b => b.BarcodeNumber == bonusCard.BarcodeNumber & b.Id != bonusCard.Id);
+            if (data != null) return new ErrorResult(BonusCardMessages.ThisBarcodeAlreadyExistsABonusCard);
+            return new SuccessResult();
+        }
+
+        private IResult DoesTheCustomerHaveABonusCardForUpdate(BonusCard bonusCard)
+        {
+            BonusCard data = _bonusCardDal.Get(b => b.CustomerId == bonusCard.CustomerId & b.Id != bonusCard.Id);
+            if (data != null) return new ErrorResult(BonusCardMessages.ThisCustomerAlreadyExistsABonusCard);
+            return new SuccessResult();
+        }
+
         private IResult IsBarcodeNumberLenthVerified(string barcodeNumber)
         {
-            IDataResult<FormSetting> result = _formSettingService.GetByName("textBoxBonusCardBarcodeLenth");
+            IDataResult<FormSetting> result = _formSettingService.GetByName(SettingsDictionary.Settings[SettingEnums.SettingParameter.BonusCardBarcodeLenth]);
             if (result.Success)
             {
                 if (int.Parse(result.Data.Value) == barcodeNumber.Length)
