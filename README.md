@@ -2,9 +2,10 @@
 
 Telefon, Texnologiya avadanlıqları, Market, Yanacaq doldurma stansiyaları və s obyektlər üçün proqram.
 
+<img src="https://github.com/Cabbar-Allahverdiyev/TapSat/blob/master/Reaadme_Images/TapsatLogo.svg?raw=true"  width="100" > 
 
-![Logo](https://github.com/Cabbar-Allahverdiyev/TapSat/blob/master/Reaadme_Images/TapsatLogo.svg?raw=true)
 
+<!-- ![Logo](https://github.com/Cabbar-Allahverdiyev/TapSat/blob/master/Reaadme_Images/TapsatLogo.svg?raw=true) -->
     
 
 
