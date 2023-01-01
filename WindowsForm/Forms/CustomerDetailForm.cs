@@ -41,7 +41,8 @@ namespace WindowsForm.Forms
 
         private void CustomerRefresh()
         {
-            dataGridViewList.DataSource = _debtService.GetAllByCustomerId(_customerDto.CustomerId).Data;
+            //dataGridViewList.DataSource = _debtService.GetAllByCustomerId(_customerDto.CustomerId).Data;
+            dataGridViewList.DataSource = _debtService.GetAllDebtDetailByCustomerId(_customerDto.CustomerId).Data;
         }
         private void WriteToTextBox()
         {

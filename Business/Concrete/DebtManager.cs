@@ -6,6 +6,7 @@ using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs.DebtDtos;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -125,6 +126,16 @@ namespace Business.Concrete
                 return new ErrorDataResult<List<Debt>>();
             }
             return new SuccessDataResult<List<Debt>>(get,DebtMessages.GetAllByCustomerId);
+        }
+
+        public IDataResult<List<DebtDto>> GetAllDebtDetailByCustomerId(int customerId)
+        {
+            List<DebtDto> get = _debtDal.GetAllDebtDetail(d => d.CustomerId == customerId);
+            if (get.Count == 0)
+            {
+                return new ErrorDataResult<List<DebtDto>>();
+            }
+            return new SuccessDataResult<List<DebtDto>>(get, DebtMessages.GetAllByCustomerId);
         }
     }
 }
