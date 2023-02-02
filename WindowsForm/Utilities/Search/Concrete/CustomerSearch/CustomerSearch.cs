@@ -1,4 +1,5 @@
 ﻿using Entities.Concrete;
+using Entities.DTOs.CustomerDtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,16 +9,16 @@ using WindowsForm.Utilities.Search.Abstract;
 
 namespace WindowsForm.Utilities.Search.Concrete.CustomerSearch
 {
-    public class CustomerSearch : IWinFormsSearch<Customer>
+    public class CustomerSearch : IWinFormsSearch<CustomerDto>
     {
-        public void GetDataWriteGridView(List<Customer> data, string seachText, DataGridView dataGridView)
+        public void GetDataWriteGridView(List<CustomerDto> data, string seachText, DataGridView dataGridView)
         {
             dataGridView.DataSource = Search(data,seachText);
         }
 
-        public List<Customer> Search(List<Customer> data, string searchText)
+        public List<CustomerDto> Search(List<CustomerDto> data, string searchText)
         {
-            return data.Where(c => $"{c.Id} {c.FirstName} {c.LastName} {c.PhoneNumber} {c.Address} {c.Email} {c.CreatedDate}"
+            return data.Where(c => $"{c.CustomerId} {c.FirstName} {c.LastName} {c.PhoneNumber} {c.Address} {c.CustomerCreatedDate}"
            .ToLower().Contains(searchText.ToLower())).ToList();
         }
     }

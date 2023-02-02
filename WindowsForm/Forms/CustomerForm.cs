@@ -118,5 +118,10 @@ namespace WindowsForm.Forms
         {
 
         }
+
+        private void pictureBoxRefresh_Click(object sender, EventArgs e)
+        {
+            CustomerRefresh();
+        }
     }
 }

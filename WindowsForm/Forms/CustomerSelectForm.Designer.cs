@@ -70,6 +70,7 @@ namespace WindowsForm.Forms
             this.pictureBoxRefresh.Size = new System.Drawing.Size(25, 32);
             this.pictureBoxRefresh.TabIndex = 47;
             this.pictureBoxRefresh.TabStop = false;
+            this.pictureBoxRefresh.Click += new System.EventHandler(this.pictureBoxRefresh_Click);
             // 
             // textBoxAxtar
             // 

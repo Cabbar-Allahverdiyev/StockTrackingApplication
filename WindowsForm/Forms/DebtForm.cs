@@ -2,6 +2,7 @@
 using Core.Utilities.Business;
 using Core.Utilities.Results;
 using Entities.Concrete;
+using Entities.DTOs.DebtDtos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,7 +22,7 @@ namespace WindowsForm.Forms
         private readonly ICustomerBalanceService _customerBalanceService;
         
 
-        private List<Debt> _dataDebt;
+        private List<DebtDto> _dataDebt;
         public DebtForm(IDebtService debtService,
                         ICustomerService customerService,
                         ICustomerBalanceService customerBalanceService)
@@ -46,9 +47,9 @@ namespace WindowsForm.Forms
         {
             DebtsRefresh();
         }
-        private void DebtsRefresh()
+        private void DebtsRefresh() 
         {
-            _dataDebt = _debtService.GetAll().Data;
+            _dataDebt = _debtService.GetAllDebtDetail().Data;
             dataGridViewList.DataSource = _dataDebt;
         }
 

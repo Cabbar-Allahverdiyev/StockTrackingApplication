@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants.Messages;
 using Business.ValidationRules.FluentValidation;
+using Castle.Core.Resource;
 using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
@@ -136,6 +137,16 @@ namespace Business.Concrete
                 return new ErrorDataResult<List<DebtDto>>();
             }
             return new SuccessDataResult<List<DebtDto>>(get, DebtMessages.GetAllByCustomerId);
+        }
+
+        public IDataResult<List<DebtDto>> GetAllDebtDetail()
+        {
+            List<DebtDto> get = _debtDal.GetAllDebtDetail();
+            if (get.Count == 0)
+            {
+                return new ErrorDataResult<List<DebtDto>>();
+            }
+            return new SuccessDataResult<List<DebtDto>>(get, DebtMessages.GetAll);
         }
     }
 }

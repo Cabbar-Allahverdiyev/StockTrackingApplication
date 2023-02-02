@@ -31,7 +31,7 @@ namespace WindowsForm.Forms
         private void textBoxAxtar_TextChanged(object sender, EventArgs e)
         {
             CustomerSearch customerSearch = new CustomerSearch();
-            customerSearch.GetDataWriteGridView(_customerService.GetAll().Data
+            customerSearch.GetDataWriteGridView(_customerService.GetCustomerDetails().Data
                 , textBoxAxtar.Text, dataGridViewList);
         }
 
@@ -56,6 +56,11 @@ namespace WindowsForm.Forms
         {
             dataGridViewList.DataSource = _customerService.GetCustomerDetails().Data;
                                          //_customerService.GetAll().Data;
+        }
+
+        private void pictureBoxRefresh_Click(object sender, EventArgs e)
+        {
+            CustomerListRefresh();
         }
     }
 }
