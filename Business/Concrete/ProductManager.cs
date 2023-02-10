@@ -247,8 +247,8 @@ namespace Business.Concrete
 
         private IResult IsProductNameExists(string productName)
         {
-            string prName = productName.ToLower();
-            Product product = _productDal.Get(p => p.ProductName.ToLower() == prName);
+            string prName = productName.ToLower(new CultureInfo("en-Us",false));
+            Product product = _productDal.Get(p => p.ProductName.ToLower() == productName.ToLower(new CultureInfo("en-Us", false)));
             if (product != null)
             {
                 return new ErrorResult(ProductMessages.ProductNameAvailable);
