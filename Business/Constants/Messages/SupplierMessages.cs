@@ -20,7 +20,7 @@ namespace Business.Constants.Messages
 
         public static string PhoneNumberNotValid= "Telefon nömrəsi formata uyğun deyil məs: 0554926939"; //niyese islemir
 
-        public static string AlreadyExistsCompanyNameAndContactName(Supplier supplier) =>$"Bu {supplier.CompanyName}in {supplier.ContactName} mövcuddur ! ";
+        public static string AlreadyExistsCompanyNameAndContactName(Supplier supplier) =>$"Bu {supplier.CompanyName}-in {supplier.ContactName} adı mövcuddur ! ";
         public static string CompanyNameNotFound(string companyName) => $"{companyName} tapılmadı";
         public static string GetAllByCompanyName(string companyName) => $"Şirkət adı {companyName} uyğun olan bütün tədarükçülər sıralandı";
         public static string ContactNameNotFound(string contactName) => $"{contactName} tapılmadı";

@@ -167,10 +167,10 @@ namespace Business.Concrete
             List<Customer> customerGetAll = _customerDal.GetAll();
             foreach (Customer customer in customerGetAll)
             {
-
-                if (customer.FirstName.ToLower().Equals(firstName.ToLower()))
+                
+                if (customer.FirstName.ToLower(new CultureInfo("en-Us", false)).Equals(firstName.ToLower(new CultureInfo("en-Us", false))))
                 {
-                    if (customer.LastName.ToLower().Equals(lastName.ToLower()))
+                    if (customer.LastName.ToLower(new CultureInfo("en-Us", false)).Equals(lastName.ToLower(new CultureInfo("en-Us", false))))
                     {
                         return new ErrorResult(CustomerMessages.FirstNameAndLastNameAvailable);
                     }

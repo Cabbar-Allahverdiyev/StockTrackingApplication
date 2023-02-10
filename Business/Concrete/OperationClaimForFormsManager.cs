@@ -6,6 +6,7 @@ using DataAccess.Abstract;
 using Entities.Concrete.ForForms;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
@@ -66,7 +67,8 @@ namespace Business.Concrete
 
         public IDataResult<OperationClaimForForms> GetByName(string claimName)
         {
-            OperationClaimForForms get = _operationClaimForFormsDal.Get(c => c.Name.ToLower() == claimName.ToLower());
+            OperationClaimForForms get = _operationClaimForFormsDal.Get(c => 
+            c.Name.ToLower() == claimName.ToLower(new CultureInfo("en-Us", false)));
             if (get == null)
             {
                 return new ErrorDataResult<OperationClaimForForms>(OperationClaimForFormsMessages.NotFound);

@@ -123,7 +123,7 @@ namespace Business.Concrete
 
         private IResult IsBrandNameExists(string brandName)
         {
-            Brand brand = _brandDal.Get(b => b.BrandName.ToLower() == brandName.ToLower());
+            Brand brand = _brandDal.Get(b => b.BrandName.ToLower() == brandName.ToLower(new CultureInfo("en-Us", false)));
             if (brand != null)
             {
                 return new ErrorResult(BrandMessages.AlreadyExistsName);
@@ -133,7 +133,7 @@ namespace Business.Concrete
 
         private IResult IsBrandNameExistsForUpdate(Brand brand)
         {
-            Brand getBrand = _brandDal.Get(b => b.BrandName.ToLower() == brand.BrandName.ToLower());
+            Brand getBrand = _brandDal.Get(b => b.BrandName.ToLower() == brand.BrandName.ToLower(new CultureInfo("en-Us", false)));
             if (getBrand != null && getBrand.Id != brand.Id)
             {
                 return new ErrorResult(BrandMessages.AlreadyExistsName);

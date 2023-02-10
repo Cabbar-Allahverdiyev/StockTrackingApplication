@@ -116,7 +116,7 @@ namespace Business.Concrete
 
         public IDataResult<UserDto> GetUserDetailByMail(string mail)
         {
-            UserDto get = _userDal.GetUserDetail(u => u.Email.ToLower() == mail.ToLower());
+            UserDto get = _userDal.GetUserDetail(u => u.Email.ToLower() == mail.ToLower(new CultureInfo("en-Us", false)));
             if (get is null)
             {
                 return new ErrorDataResult<UserDto>(UserMessages.UserNotFound);
@@ -126,8 +126,8 @@ namespace Business.Concrete
 
         public IDataResult<UserDto> GetUserDetailByUserName(string firstName, string lastName)
         {
-            UserDto get = _userDal.GetUserDetail(u => u.FirstName.ToLower() == firstName.ToLower()
-                                                & u.LastName.ToLower() == lastName.ToLower());
+            UserDto get = _userDal.GetUserDetail(u => u.FirstName.ToLower() == firstName.ToLower(new CultureInfo("en-Us", false))
+                                                & u.LastName.ToLower() == lastName.ToLower(new CultureInfo("en-Us", false)));
             if (get is null)
             {
                 return new ErrorDataResult<UserDto>(UserMessages.UserNotFound);
@@ -150,7 +150,7 @@ namespace Business.Concrete
 
         public IDataResult<User> GetByMail(string email)
         {
-            User get = _userDal.Get(u => u.Email.ToLower() == email.ToLower());
+            User get = _userDal.Get(u => u.Email.ToLower() == email.ToLower(new CultureInfo("en-Us", false)));
             if (get == null)
             {
                 return new ErrorDataResult<User>(UserMessages.UserNotFound);

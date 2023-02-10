@@ -107,20 +107,16 @@ namespace Business.Concrete
 
         private IResult IsCategoryNameExists(string categoryName)
         {
-            List<Category> getAllCategories = _categoryDal.GetAll();
-            foreach (Category category in getAllCategories)
-            {
-                if (category.CategoryName.Equals(categoryName))
-                {
-                    return new ErrorResult(CategoryMessages.CategoryNameAvailable);
-                }
-            }
+            Category getCategory = _categoryDal.Get(c =>
+            c.CategoryName.ToLower() == categoryName.ToLower(new CultureInfo("en-Us", false)));
+            if(getCategory != null )return new ErrorResult(CategoryMessages.CategoryNameAvailable);
             return new SuccessResult();
         }
 
         private IResult IsCategoryNameExistsForUpdate(Category category)
         {
-            Category getCategory = _categoryDal.Get(c => c.CategoryName.ToLower() == category.CategoryName.ToLower());
+            Category getCategory = _categoryDal.Get(c => 
+            c.CategoryName.ToLower() == category.CategoryName.ToLower());
             if (getCategory != null && getCategory.Id != category.Id)
             {
                 return new ErrorResult(CategoryMessages.CategoryNameAvailable);

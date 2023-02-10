@@ -84,7 +84,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Supplier>> GetAllByCompanyName(string companyName)
         {
-            List<Supplier> get = _supplierDal.GetAll(s => s.CompanyName.ToLower() == companyName.ToLower());
+            List<Supplier> get = _supplierDal.GetAll(s => s.CompanyName.ToLower() == companyName.ToLower(new CultureInfo("en-Us", false)));
             if (get.Count == 0)
             {
                 return new ErrorDataResult<List<Supplier>>(SupplierMessages.CompanyNameNotFound(companyName));
@@ -94,7 +94,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Supplier>> GetAllByContactName(string contactName)
         {
-            List<Supplier> get = _supplierDal.GetAll(s => s.ContactName.ToLower() == contactName.ToLower());
+            List<Supplier> get = _supplierDal.GetAll(s => s.ContactName.ToLower() == contactName.ToLower(new CultureInfo("en-Us", false)));
             if (get.Count == 0)
             {
                 return new ErrorDataResult<List<Supplier>>(SupplierMessages.ContactNameNotFound(contactName));
@@ -105,8 +105,8 @@ namespace Business.Concrete
         //Business rules-------------------->
         private IResult IsSupplierExistsByCompanyNameAndContactName(Supplier supplier)
         {
-            Supplier getSupplier = _supplierDal.Get(s => s.ContactName.ToLower() == supplier.ContactName.ToLower()
-                                                    & s.CompanyName.ToLower() == supplier.CompanyName.ToLower());
+            Supplier getSupplier = _supplierDal.Get(s => s.ContactName.ToLower() == supplier.ContactName.ToLower(new CultureInfo("en-Us", false))
+                                                    & s.CompanyName.ToLower() == supplier.CompanyName.ToLower(new CultureInfo("en-Us", false)));
             if (getSupplier != null)
             {
                 return new ErrorResult(SupplierMessages.AlreadyExistsCompanyNameAndContactName(supplier));
