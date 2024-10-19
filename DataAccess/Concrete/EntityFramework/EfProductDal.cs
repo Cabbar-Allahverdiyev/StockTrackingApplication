@@ -8,6 +8,7 @@ using System.Linq.Expressions;
 using System.Linq;
 using System.Text;
 using Entities.DTOs.ProductDtos.ForAPI;
+using Entities.DTOs.ProductDtos.ForWinForms;
 
 namespace DataAccess.Concrete.EntityFramework
 {
@@ -67,6 +68,36 @@ namespace DataAccess.Concrete.EntityFramework
                                  StokdakiVahid = p.UnitsInStock,
                                  Qiymet = p.UnitPrice,
                                  AlisQiymet = p.PurchasePrice,
+                                 MehsulAdi = p.ProductName,
+                                 BarcodeNomresi = p.BarcodeNumber,
+                                 Kemiyyet = p.QuantityPerUnit,
+                                 Aciqlama = p.Description,
+                                 SonDeyistirilmeTaixi = p.LastModifiedDate,
+                                 Sonlanmis = p.Discontinued
+
+                             };
+                return filter == null ? result.ToList() : result.Where(filter).ToList();
+
+            }
+        }
+
+        public List<ProductViewUserDashboardDetailDto> GetProductViewUserDashboardDetails(Expression<Func<ProductViewUserDashboardDetailDto, bool>> filter = null)
+        {
+            using (StockTrackingProjectContext context = new StockTrackingProjectContext())
+            {
+                var result = from p in context.Products
+                             join c in context.Categories on p.CategoryId equals c.Id
+                             join b in context.Brands on p.BrandId equals b.Id
+                             join s in context.Suppliers on p.SupplierId equals s.Id
+                             orderby p.Id
+                             select new ProductViewUserDashboardDetailDto
+                             {
+                                 ProductId = p.Id,
+                                 Kateqoriya = c.CategoryName,
+                                 Marka = b.BrandName,
+                                 TedarikciSirket = s.CompanyName,
+                                 StokdakiVahid = p.UnitsInStock,
+                                 Qiymet = p.UnitPrice,
                                  MehsulAdi = p.ProductName,
                                  BarcodeNomresi = p.BarcodeNumber,
                                  Kemiyyet = p.QuantityPerUnit,
@@ -148,6 +179,7 @@ namespace DataAccess.Concrete.EntityFramework
 
             }
         }
+
 
         public ProductDetailDto GetProductDetail(Expression<Func<ProductDetailDto, bool>> filter)
         {
@@ -234,5 +266,7 @@ namespace DataAccess.Concrete.EntityFramework
 
             }
         }
+
+
     }
 }

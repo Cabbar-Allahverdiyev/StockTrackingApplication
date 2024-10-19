@@ -801,7 +801,7 @@ namespace WindowsForm.Forms
         private void CartListRefesh()
         {
             dataGridViewCartList.DataSource = _cartService.GetAllCartViewDetailsByUserId(UserId).Data;
-            MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "AlisQiymeti", Color.Yellow);
+            //MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "AlisQiymeti", Color.Yellow);
             MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "Qiymet", Color.Green);
             MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "Cem", Color.Red);
         }
@@ -810,7 +810,7 @@ namespace WindowsForm.Forms
         {
             _dataProduct = _productService.GetAllProductViewDasboardDetail().Data;
             dataGridViewProductList.DataSource = _dataProduct;
-            MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewProductList, "AlisQiymet", Color.Yellow);
+           // MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewProductList, "AlisQiymet", Color.Yellow);
             MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewProductList, "Qiymet", Color.Green);
         }
 

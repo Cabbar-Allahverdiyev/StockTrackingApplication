@@ -2,6 +2,7 @@
 using Entities.Concrete;
 using Entities.DTOs.ProductDtos;
 using Entities.DTOs.ProductDtos.ForAPI;
+using Entities.DTOs.ProductDtos.ForWinForms;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -24,6 +25,7 @@ namespace Business.Abstract
         //for forms
         IDataResult<List<ProductViewDetailDto>> GetAllProductViewDetail();
         IDataResult<List<ProductViewDashboardDetailDto>> GetAllProductViewDasboardDetail();
+        IDataResult<List<ProductViewUserDashboardDetailDto>> GetAllProductViewUserDasboardDetail();
         IDataResult<List<ProductViewDashboardDetailDto>> GetProductViewDasboardDetailByBarcodeNumber(string barcodeNumber);
         IDataResult<List<ProductCompactDetailDto>> GetAllProductCompactDetail();
         IDataResult<List<ProductCompactDetailDto>> GetAllCompactDetailByPrdouctName(string productName);

@@ -110,7 +110,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  MehsulAdi = p.ProductName,
                                  Kateqoriya = category.CategoryName,
                                  UserId = c.UserId,
-                                 AlisQiymeti = p.PurchasePrice,
+                                 //AlisQiymeti = p.PurchasePrice,
                                  //Istifadeci = $"{u.FirstName} {u.LastName}",
                                  Qiymet = c.SoldPrice,
                                  Miqdar = c.Quantity,

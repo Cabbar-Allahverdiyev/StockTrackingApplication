@@ -23,15 +23,15 @@ namespace WindowsForm.Forms.UserForms
     {
         ISaleService _saleWinFormService;
 
-        SaleWinFormDetailDtoSearch _detailSearch;
-        List<SaleWinFormDto> _dataSaleWinFormDto;
+        SaleWinFormDetailUserDtoSearch _detailSearch;
+        List<SaleWinFormUserDto> _dataSaleWinFormDto;
 
         public FormSalesListForUser(ISaleService saleWinFormService)
         {
             _saleWinFormService = saleWinFormService;
 
-           _dataSaleWinFormDto = _saleWinFormService.GetAllSaleWinFormDtoDetails().Data;
-            _detailSearch = new SaleWinFormDetailDtoSearch();
+           _dataSaleWinFormDto = _saleWinFormService.GetAllSaleWinFormUserDtoDetails().Data;
+            _detailSearch = new SaleWinFormDetailUserDtoSearch();
             InitializeComponent();
         }
 
@@ -63,10 +63,10 @@ namespace WindowsForm.Forms.UserForms
 
                 if (comboBoxDays.SelectedItem == null && comboBoxMonths.SelectedItem != null && comboBoxYears.SelectedItem == null)
                 {
-                    List<SaleWinFormDto> dataMonth = _saleWinFormService
-                        .GetAllSaleWinFormDetailsSalesForMonthAndYear(selectedMonthItem, selectedYearItem).Data;
+                    List<SaleWinFormUserDto> dataMonth = _saleWinFormService
+                        .GetAllSaleWinFormDetailsUserSalesForMonthAndYear(selectedMonthItem, selectedYearItem).Data;
 
-                    foreach (SaleWinFormDto item in dataMonth)
+                    foreach (SaleWinFormUserDto item in dataMonth)
                     {
                         if (item.SatisinVeziyyeti == true)
                         {
@@ -83,10 +83,10 @@ namespace WindowsForm.Forms.UserForms
 
                 if (comboBoxDays.SelectedItem == null && comboBoxMonths.SelectedItem == null && comboBoxYears.SelectedItem != null)
                 {
-                    List<SaleWinFormDto> dataYear = _saleWinFormService
-                        .GetAllSaleWinFormDetailsSalesForYear(selectedYearItem).Data;
+                    List<SaleWinFormUserDto> dataYear = _saleWinFormService
+                        .GetAllSaleWinFormDetailsUserSalesForYear(selectedYearItem).Data;
 
-                    foreach (SaleWinFormDto item in dataYear)
+                    foreach (SaleWinFormUserDto item in dataYear)
                     {
                         if (item.SatisinVeziyyeti == true)
                         {
@@ -103,9 +103,9 @@ namespace WindowsForm.Forms.UserForms
 
                 if (comboBoxDays.SelectedItem == null && comboBoxMonths.SelectedItem != null && comboBoxYears.SelectedItem != null)
                 {
-                    List<SaleWinFormDto> dataMonth = _saleWinFormService
-                        .GetAllSaleWinFormDetailsSalesForMonthAndYear(selectedMonthItem, selectedYearItem).Data;
-                    foreach (SaleWinFormDto item in dataMonth)
+                    List<SaleWinFormUserDto> dataMonth = _saleWinFormService
+                        .GetAllSaleWinFormDetailsUserSalesForMonthAndYear(selectedMonthItem, selectedYearItem).Data;
+                    foreach (SaleWinFormUserDto item in dataMonth)
                     {
                         if (item.SatisinVeziyyeti == true)
                         {
@@ -118,9 +118,9 @@ namespace WindowsForm.Forms.UserForms
                     return;
                 }
 
-                List<SaleWinFormDto> data = _saleWinFormService
-                        .GetAllSaleWinFormDetailsSalesForDayAndMonthAndYear(selectedDayItem, selectedMonthItem, selectedYearItem).Data;
-                foreach (SaleWinFormDto item in data)
+                List<SaleWinFormUserDto> data = _saleWinFormService
+                        .GetAllSaleWinFormDetailsUserSalesForDayAndMonthAndYear(selectedDayItem, selectedMonthItem, selectedYearItem).Data;
+                foreach (SaleWinFormUserDto item in data)
                 {
                     if (item.SatisinVeziyyeti == true)
                     {
@@ -198,7 +198,7 @@ namespace WindowsForm.Forms.UserForms
 
         private void buttonTemizle_Click(object sender, EventArgs e)
         {
-            ComboBoxController.ClearAllComboBoxByGroupBox(groupBox1);
+            ComboBoxController.ClearAllComboBoxByGroupBox(groupBoxDate);
         }
 
         //Cell double click ------------------->
@@ -223,8 +223,8 @@ namespace WindowsForm.Forms.UserForms
 
         private void SaleListRefesh()
         {
-            dataGridViewSaleList.DataSource = _saleWinFormService.GetAllSaleWinFormDtoDetails().Data;
-            MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewSaleList, "AlisQiymeti", Color.Yellow);
+            dataGridViewSaleList.DataSource = _saleWinFormService.GetAllSaleWinFormUserDtoDetails().Data;
+           // MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewSaleList, "AlisQiymeti", Color.Yellow);
             MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewSaleList, "SatilanQiymet", Color.Green);
             MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewSaleList, "Cem", Color.Red);
         }

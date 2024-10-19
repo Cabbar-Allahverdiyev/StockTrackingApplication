@@ -49,7 +49,7 @@ namespace Business.Concrete
             return new SuccessResult(SaleMessages.Updated);
         }
 
-        
+
 
         [CacheRemoveAspect("ISaleService.Get")]
         [ValidationAspect(typeof(UpdateSaleValidator))]
@@ -57,7 +57,7 @@ namespace Business.Concrete
         {
             IDataResult<Sale> getSale = GetById(sale.Id);
             IResult result = BusinessRules.Run(IsTheSaleStatusTrue(getSale.Data.SaleStatus)
-                                               ,IsSuccess(getSale));
+                                               , IsSuccess(getSale));
 
             if (result != null)
             {
@@ -128,6 +128,8 @@ namespace Business.Concrete
             return new SuccessDataResult<List<SaleWinFormDto>>(get, SaleMessages.Found);
         }
 
+
+
         [CacheAspect]
         public IDataResult<List<SaleWinFormDto>> GetAllSaleWinFormDetailsSalesForDay(int day)
         {
@@ -166,7 +168,7 @@ namespace Business.Concrete
         public IDataResult<List<SaleWinFormDto>> GetAllSaleWinFormDetailsSalesForDayAndMonthAndYear(int day, int month, int year)
         {
             //List<SaleWinFormDto> get = _saleWinFormDal.GetAllWinFormDtoDetailsByDayAndMonthAndYear(day, month, year);
-            List<SaleWinFormDto> get = _saleDal.GetAllWinFormDtoDetails(s =>s.Tarix.Day.ToString().Equals(day.ToString())).Where(s => s.Tarix.Month.ToString().Equals(month.ToString())).Where(s => s.Tarix.Year.ToString().Equals(year.ToString())).ToList();
+            List<SaleWinFormDto> get = _saleDal.GetAllWinFormDtoDetails(s => s.Tarix.Day.ToString().Equals(day.ToString())).Where(s => s.Tarix.Month.ToString().Equals(month.ToString())).Where(s => s.Tarix.Year.ToString().Equals(year.ToString())).ToList();
             //if (get == null)
             //{
             //    return new ErrorDataResult<List<SaleWinFormDto>>(SaleMessages.NotFound);
@@ -184,6 +186,41 @@ namespace Business.Concrete
             //    return new ErrorDataResult<List<SaleWinFormDto>>(SaleMessages.NotFound);
             //}
             return new SuccessDataResult<List<SaleWinFormDto>>(get, SaleMessages.Found);
+        }
+
+        public IDataResult<List<SaleWinFormUserDto>> GetAllSaleWinFormUserDtoDetails()
+        {
+            List<SaleWinFormUserDto> get = _saleDal.GetAllWinFormUserDtoDetails();
+            return new SuccessDataResult<List<SaleWinFormUserDto>>(get, SaleMessages.Found);
+        }
+        public IDataResult<List<SaleWinFormUserDto>> GetAllSaleWinFormDetailsUserSalesForDay(int day)
+        {
+            List<SaleWinFormUserDto> get = _saleDal.GetAllWinFormUserDtoDetails(s => s.Tarix.Day == day);
+            return new SuccessDataResult<List<SaleWinFormUserDto>>(get, SaleMessages.Found);
+        }
+
+        public IDataResult<List<SaleWinFormUserDto>> GetAllSaleWinFormDetailsUserSalesForMonth(int month)
+        {
+            List<SaleWinFormUserDto> get = _saleDal.GetAllWinFormUserDtoDetails(s => s.Tarix.Month == month);
+            return new SuccessDataResult<List<SaleWinFormUserDto>>(get, SaleMessages.Found);
+        }
+
+        public IDataResult<List<SaleWinFormUserDto>> GetAllSaleWinFormDetailsUserSalesForYear(int year)
+        {
+            List<SaleWinFormUserDto> get = _saleDal.GetAllWinFormUserDtoDetails(s => s.Tarix.Year == year);
+            return new SuccessDataResult<List<SaleWinFormUserDto>>(get, SaleMessages.Found);
+        }
+
+        public IDataResult<List<SaleWinFormUserDto>> GetAllSaleWinFormDetailsUserSalesForDayAndMonthAndYear(int day, int month, int year)
+        {
+            List<SaleWinFormUserDto> get = _saleDal.GetAllWinFormUserDtoDetails(s => s.Tarix.Day.ToString().Equals(day.ToString())).Where(s => s.Tarix.Month.ToString().Equals(month.ToString())).Where(s => s.Tarix.Year.ToString().Equals(year.ToString())).ToList();
+            return new SuccessDataResult<List<SaleWinFormUserDto>>(get, SaleMessages.Found);
+        }
+
+        public IDataResult<List<SaleWinFormUserDto>> GetAllSaleWinFormDetailsUserSalesForMonthAndYear(int month, int year)
+        {
+            List<SaleWinFormUserDto> get = _saleDal.GetAllWinFormUserDtoDetails().Where(s => s.Tarix.Month.ToString().Equals(month.ToString())).Where(s => s.Tarix.Year.ToString().Equals(year.ToString())).ToList();
+            return new SuccessDataResult<List<SaleWinFormUserDto>>(get, SaleMessages.Found);
         }
 
 
@@ -215,5 +252,7 @@ namespace Business.Concrete
             }
             return new ErrorResult(result.Message);
         }
+
+
     }
 }

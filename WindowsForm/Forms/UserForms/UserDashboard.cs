@@ -348,18 +348,18 @@ namespace WindowsForm.Forms.UserForms
 
         private void sıralaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormProductList(_productService, 
-                                                _brandService,
-                                                _categoryService, 
-                                                _supplierService,
-                                                _formSettingService,
-                                                _barcodeGenerator), sender);
+            //OpenChildForm(new FormProductList(_productService, 
+            //                                    _brandService,
+            //                                    _categoryService, 
+            //                                    _supplierService,
+            //                                    _formSettingService,
+            //                                    _barcodeGenerator), sender);
 
         }
 
         private void əlavəEtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormProductAdd(_productService, _brandService, _categoryService, _supplierService, _formSettingService, _barcodeGenerator), sender);
+            //OpenChildForm(new FormProductAdd(_productService, _brandService, _categoryService, _supplierService, _formSettingService, _barcodeGenerator), sender);
 
         }
 

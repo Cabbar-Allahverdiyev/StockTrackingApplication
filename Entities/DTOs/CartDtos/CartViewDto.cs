@@ -13,7 +13,7 @@ namespace Entities.DTOs.CartDtos
         public int Miqdar { get; set; }
         public decimal Cem { get; set; }
         public string Aciqlama { get; set; }
-        public decimal AlisQiymeti { get; set; }
+        //public decimal AlisQiymeti { get; set; }
         public DateTime CartDate { get; set; }
         public int Id { get; set; }
         public int ProductId { get; set; }

@@ -13,15 +13,18 @@ namespace DataAccess.Concrete.EntityFramework
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-          //optionsBuilder.UseSqlServer(@"Server=DESKTOP-N8AGODS\MSSQLSERVER66;Database=StockTracking;Trusted_Connection=true");
-          optionsBuilder.UseSqlServer(@"Server=(localdb)\MsSqlLocalDb;Database=StockTracking;Trusted_Connection=true"); //menim T-SQL
-          //optionsBuilder.UseNpgsql(@"Server=localhost;Database=TapSat;Port=5432;User Id=postgres;Password=Cabiw****"); //menim Postgre
-        // optionsBuilder.UseSqlServer(@"Server=localhost\SQLEXPRESS;Database=StockTracking;Trusted_Connection=true"); //Murad & Seymur
-          //optionsBuilder.UseSqlServer(@"Server=DESKTOP-HE06A4P\SQLEXPRESS;Database=StockTracking;Trusted_Connection=true"); //Murad IphoneShop
-          //optionsBuilder.UseSqlServer(@"Server=DESKTOP-2AFSH3V\SQLEXPRESS;Database=StockTracking;Trusted_Connection=true"); //Narmobile
-         // optionsBuilder.UseSqlServer(@"Server=DESKTOP-77IJ791\SQLEXPRESS;Database=StockTracking;Trusted_Connection=true"); //Rauf Kontakt Tel
-          //optionsBuilder.UseSqlServer(@"Server=localhost\SQLEXPRESS;Database=StockTracking;Trusted_Connection=true"); //Asim Kassa Tel
-          //optionsBuilder.UseSqlServer(@"Server=DESKTOP-1USNGJQ\SQLEXPRESS;Database=StockTracking;Trusted_Connection=true"); //Asim Kassa Tel yeni
+            //optionsBuilder.UseSqlServer(@"Server=DESKTOP-N8AGODS\MSSQLSERVER66;Database=StockTracking;Trusted_Connection=true");
+            //optionsBuilder.UseSqlServer(@"Server=(localdb)\MsSqlLocalDb;Database=StockTracking;Trusted_Connection=true"); //menim T-SQL
+            //optionsBuilder.UseNpgsql(@"Server=localhost;Database=TapSat;Port=5432;User Id=postgres;Password=Cabiw****"); //menim Postgre
+            // optionsBuilder.UseSqlServer(@"Server=localhost\SQLEXPRESS;Database=StockTracking;Trusted_Connection=true"); //Murad & Seymur
+            //optionsBuilder.UseSqlServer(@"Server=DESKTOP-HE06A4P\SQLEXPRESS;Database=StockTracking;Trusted_Connection=true"); //Murad IphoneShop
+            //optionsBuilder.UseSqlServer(@"Server=DESKTOP-2AFSH3V\SQLEXPRESS;Database=StockTracking;Trusted_Connection=true"); //Narmobile
+            // optionsBuilder.UseSqlServer(@"Server=DESKTOP-77IJ791\SQLEXPRESS;Database=StockTracking;Trusted_Connection=true"); //Rauf Kontakt Tel
+            ////////optionsBuilder.UseSqlServer(@"Server=localhost\SQLEXPRESS;Database=StockTracking;Trusted_Connection=true"); //Asim Kassa Tel
+            //optionsBuilder.UseSqlServer(@"Server=DESKTOP-1USNGJQ\SQLEXPRESS;Database=StockTracking;Trusted_Connection=true"); //Asim Kassa Tel yeni
+            //optionsBuilder.UseSqlServer(@"Server=DESKTOP-RPJIB7U\SQLEXPRESS;Database=StockTracking;Trusted_Connection=true"); //Asim Kassa Tel yeni
+            // optionsBuilder.UseSqlServer(@"Server=DESKTOP-0019BBJ\SQLEXPRESS;Database=StockTracking;Trusted_Connection=true"); //Asim Kassa Tel yeni
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-3K1ILI5\SQLEXPRESS;Database=StockTracking;Trusted_Connection=true"); //Saleh 
         }
 
         public DbSet<User> Users { get; set; }

@@ -26,6 +26,7 @@ using WindowsForm.Utilities.Helpers.Calculators;
 using WindowsForm.Utilities.Helpers.Selectors.CustomerSelectors;
 using WindowsForm.BonusCardSystem.CommonMethods;
 using WindowsForm.Utilities.Helpers.Receipts;
+using Entities.DTOs.ProductDtos.ForWinForms;
 
 namespace WindowsForm.Forms.UserForms
 {
@@ -49,13 +50,13 @@ namespace WindowsForm.Forms.UserForms
         IUserService _userService;
 
         private MyControl _myControl;
-        private List<ProductViewDashboardDetailDto> _dataProducts;
+        private List<ProductViewUserDashboardDetailDto> _dataProducts;
         private BonusCardCommonMethod _bonusCardCommonMethod;
         private readonly IReceiptOperation _receiptOperation;
         private ReceiptDto receiptDto = new ReceiptDto();
         private IDataResult<CartListDtoForReceipt> cartsFromReceipt;
 
-        ProductViewDashboardDetailsSearch detailsSearch = new ProductViewDashboardDetailsSearch();
+        ProductViewUserDashboardDetailsSearch detailsSearch = new ProductViewUserDashboardDetailsSearch();
 
         public SalesFormForUser(ICategoryService categoryService
                             , IBrandService brandService
@@ -83,7 +84,7 @@ namespace WindowsForm.Forms.UserForms
             _bonusCardService = bonusCardService;
             _formSettingService = formSettingService;
 
-            _dataProducts = _productService.GetAllProductViewDasboardDetail().Data;
+            _dataProducts = _productService.GetAllProductViewUserDasboardDetail().Data;
             _myControl = new MyControl(_formSettingService);
             UserId = LoginForm.UserId;
             InitializeComponent();
@@ -825,16 +826,14 @@ namespace WindowsForm.Forms.UserForms
         {
             dataGridViewCartList.DataSource = _cartService.GetAllCartViewDetailsByUserId(UserId).Data;
 
-            MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "AlisQiymeti", Color.Yellow);
             MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "Qiymet", Color.Green);
             MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewCartList, "Cem", Color.Red);
         }
 
         private void ProductListRefesh()
         {
-            _dataProducts= _productService.GetAllProductViewDasboardDetail().Data;
+            _dataProducts= _productService.GetAllProductViewUserDasboardDetail().Data;
             dataGridViewProductList.DataSource = _dataProducts;
-            MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewProductList, "AlisQiymet", Color.Yellow);
             MyControl.MakeDataGridViewCurrentColumnCurrentColor(dataGridViewProductList, "Qiymet", Color.Green);
         }
 

@@ -11,6 +11,7 @@ namespace DataAccess.Abstract
     public interface ISaleDal : IEntityRepository<Sale>
     {
         List<SaleWinFormDto> GetAllWinFormDtoDetails(Expression<Func<SaleWinFormDto, bool>> filter = null);
+        List<SaleWinFormUserDto> GetAllWinFormUserDtoDetails(Expression<Func<SaleWinFormUserDto, bool>> filter = null);
         //List<SaleWinFormDto> GetAllWinFormDtoDetailsByTopSelling(Expression<Func<SaleWinFormDto, bool>> filter = null);
         //List<SaleWinFormDto> GetAllWinFormDtoDetailsByDecreasingProducts(Expression<Func<SaleWinFormDto, bool>> filter = null);
         //List<SaleWinFormDto> GetAllWinFormDtoDetailsByProductsThatNeverSell(Expression<Func<SaleWinFormDto, bool>> filter = null);

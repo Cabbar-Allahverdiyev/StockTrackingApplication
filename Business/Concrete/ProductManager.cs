@@ -11,6 +11,7 @@ using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs.ProductDtos;
 using Entities.DTOs.ProductDtos.ForAPI;
+using Entities.DTOs.ProductDtos.ForWinForms;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -169,6 +170,17 @@ namespace Business.Concrete
             return new SuccessDataResult<List<ProductViewDashboardDetailDto>>(get, ProductMessages.ProductGetAll);
         }
 
+        [CacheAspect]
+        public IDataResult<List<ProductViewUserDashboardDetailDto>> GetAllProductViewUserDasboardDetail()
+        {
+            List<ProductViewUserDashboardDetailDto> get = _productDal.GetProductViewUserDashboardDetails();
+            if (get == null)
+            {
+                return new ErrorDataResult<List<ProductViewUserDashboardDetailDto>>(ProductMessages.ProductNotFound);
+            }
+            return new SuccessDataResult<List<ProductViewUserDashboardDetailDto>>(get, ProductMessages.ProductGetAll);
+        }
+
         public IDataResult<List<ProductViewDashboardDetailDto>> GetProductViewDasboardDetailByBarcodeNumber(string barcodeNumber)
         {
             List<ProductViewDashboardDetailDto> get = _productDal.GetProductViewDashboardDetails(p => p.BarcodeNomresi == barcodeNumber);
@@ -273,7 +285,9 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-       
+        
+
+
 
 
 

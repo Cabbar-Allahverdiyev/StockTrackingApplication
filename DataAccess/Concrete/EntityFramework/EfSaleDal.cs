@@ -49,6 +49,37 @@ namespace DataAccess.Concrete.EntityFramework
 
         }
 
+        public List<SaleWinFormUserDto> GetAllWinFormUserDtoDetails(Expression<Func<SaleWinFormUserDto, bool>> filter = null)
+        {
+            using (StockTrackingProjectContext context = new StockTrackingProjectContext())
+            {
+                var result = from s in context.Sales
+                             join p in context.Products on s.ProductId equals p.Id
+                             join u in context.Users on s.UserId equals u.Id
+                             join c in context.Categories on p.CategoryId equals c.Id
+                             join b in context.Brands on p.BrandId equals b.Id
+                             orderby s.SellDate descending
+                             select new SaleWinFormUserDto
+                             {
+                                 BarkodNomresi = p.BarcodeNumber,
+                                 SaleId = s.Id,
+                                 ProductId = s.ProductId,
+                                 MehsulAdi = p.ProductName,
+                                 Kateqoriya = c.CategoryName,
+                                 Marka = b.BrandName,
+                                 Istifadeci = $"{u.FirstName} {u.LastName}",
+                                 SatilanQiymet = s.SoldPrice,
+                                 Miqdar = s.Quantity,
+                                 Cem = s.SoldPrice * s.Quantity,
+                                 SatisinVeziyyeti = s.SaleStatus,
+                                 Tarix = s.SellDate
+
+                             };
+
+                return filter == null ? result.ToList() : result.Where(filter).ToList();
+            }
+        }
+
 
         //public List<SaleWinFormDto> GetAllWinFormDtoDetailsByDayAndMonthAndYear(int day, int month, int year)
         //{
@@ -82,7 +113,7 @@ namespace DataAccess.Concrete.EntityFramework
 
         //}
 
-      
+
         //public List<SaleWinFormDto> GetAllWinFormDtoDetailsByMonthAndYear(int month, int year)
         //{
 

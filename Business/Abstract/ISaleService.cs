@@ -19,12 +19,18 @@ namespace Business.Abstract
         IDataResult<Sale> GetById(int id);
 
         //SaleWinFormDto
-        IDataResult<List<SaleWinFormDto>> GetAllSaleWinFormDtoDetails();
+        IDataResult<List<SaleWinFormDto>> GetAllSaleWinFormDtoDetails();       
         IDataResult<List<SaleWinFormDto>> GetAllSaleWinFormDetailsSalesForDay(int day);
         IDataResult<List<SaleWinFormDto>> GetAllSalewinFormDetailsSalesForMonth(int month);
         IDataResult<List<SaleWinFormDto>> GetAllSaleWinFormDetailsSalesForYear(int year);
         IDataResult<List<SaleWinFormDto>> GetAllSaleWinFormDetailsSalesForDayAndMonthAndYear(int day, int month, int year);
         IDataResult<List<SaleWinFormDto>> GetAllSaleWinFormDetailsSalesForMonthAndYear(int month, int year);
 
+        IDataResult<List<SaleWinFormUserDto>> GetAllSaleWinFormUserDtoDetails();
+        IDataResult<List<SaleWinFormUserDto>> GetAllSaleWinFormDetailsUserSalesForDay(int day);
+        IDataResult<List<SaleWinFormUserDto>> GetAllSaleWinFormDetailsUserSalesForMonth(int month);
+        IDataResult<List<SaleWinFormUserDto>> GetAllSaleWinFormDetailsUserSalesForYear(int year);
+        IDataResult<List<SaleWinFormUserDto>> GetAllSaleWinFormDetailsUserSalesForDayAndMonthAndYear(int day, int month, int year);
+        IDataResult<List<SaleWinFormUserDto>> GetAllSaleWinFormDetailsUserSalesForMonthAndYear(int month, int year);
     }
 }
